@@ -1,0 +1,11 @@
+django
+django-extensions
+djangorestframework
+markdown
+django-filter
+drf-yasg
+iso4217
+pycountry
+pytz
+lxml
+forex-python
