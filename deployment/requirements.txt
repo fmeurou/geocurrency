@@ -9,3 +9,4 @@ pycountry
 pytz
 lxml
 forex-python
+django_redis

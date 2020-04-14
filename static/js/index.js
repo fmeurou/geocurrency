@@ -29,8 +29,7 @@ var geolocation = new Geolocation({
     enableHighAccuracy: true
   },
   projection: view.getProjection()
-});
-
+})
 function el(id) {
   return document.getElementById(id);
 }

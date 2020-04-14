@@ -1,6 +1,7 @@
 from datetime import date, datetime, timedelta
 
 from django.db import models
+from django.core.cache import cache
 from iso4217 import Currency
 from pycountry import countries
 from geocurrencies.countries.models import Country
@@ -41,15 +42,19 @@ class CurrencyModel(models.Model):
         except ConversionRate.DoesNotExist:
             return None
 
-    def convert(self, base_currency=None, amount=1, conversion_date=None):
-        if not base_currency:
-            base_currency = CurrencyModel.objects.get(code=BASE_CURRENCY)
-        else:
-            base_currency = CurrencyModel.objects.get(code=base_currency)
+    def convert(self, base_currency, amount=1, conversion_date=None):
         if not conversion_date:
             conversion_date = datetime.now() - timedelta(1)
-        c = CurrencyRates()
-        return c.convert(base_currency.code, self.code, amount, conversion_date)
+        cache_key = 'GEO{}{}{}'.format(
+            conversion_date.strftime('%Y%m%d'),
+            base_currency.code,
+            self.code
+        )
+        base_rate = cache.get(cache_key)
+        if not base_rate:
+            c = CurrencyRates()
+            base_rate = c.convert(base_currency.code, self.code, 1, conversion_date)
+        return conversion_date, base_currency, base_rate * amount
 
 
 class ConversionRate(models.Model):
