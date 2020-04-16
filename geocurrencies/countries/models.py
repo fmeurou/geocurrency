@@ -21,7 +21,7 @@ class Country(models.Model):
     def timezones(self):
         output = []
         fmt = '%z'
-        base_time = datetime(year=2020, month=1, day=1)
+        base_time = datetime.utcnow()
         for tz_info in pytz.country_timezones[self.alpha_2]:
             tz = timezone(tz_info)
             offset = tz.localize(base_time).strftime(fmt)
@@ -29,7 +29,8 @@ class Country(models.Model):
             output.append({
                 'name': tz_info,
                 'offset': f'UTC {offset}',
-                'numeric_offset': numeric_offset
+                'numeric_offset': numeric_offset,
+                'current_time':  base_time.astimezone(tz).strftime('%Y-%m-%d %H:%M')
             })
         return sorted(output, key=lambda x:x['numeric_offset'])
 

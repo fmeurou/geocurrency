@@ -1,3 +1,4 @@
+import requests
 from django.http import HttpResponseNotFound
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
@@ -12,6 +13,8 @@ from .filters import CountryFilter
 from .models import Country
 from .permissions import CountryObjectPermission
 from .serializers import CountrySerializer
+
+from .settings import *
 
 
 class CountryViewset(ReadOnlyModelViewSet):
@@ -36,8 +39,6 @@ class CountryViewset(ReadOnlyModelViewSet):
     def retrieve(self, request, *args, **kwargs):
         return super(CountryViewset, self).retrieve(request, *args, **kwargs)
 
-    @method_decorator(cache_page(60 * 60 * 2))
-    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='timezones', url_name="get_timezones")
     def get_timezones(self, request, pk, *args, **kwargs):
         """
@@ -50,3 +51,35 @@ class CountryViewset(ReadOnlyModelViewSet):
             return Response(country.timezones, content_type="application/json")
         except Country.DoesNotExist:
             return HttpResponseNotFound('Country not found')
+
+    @action(['GET'], detail=False, url_path='geocode', url_name='geocoding')
+    def geocode(self, request, *args, **kwargs):
+        """
+        Geocoding with Pelias
+        """
+        response = requests.get(PELIAS_API + 'search', {'text': request.GET.get('text')})
+        data = response.json()
+        alphas = []
+        for feature in data.get('features'):
+            alphas.append(feature.get('properties').get('country_a'))
+        countries = Country.objects.filter(alpha_3__in=alphas)
+        serializer = CountrySerializer(countries, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    @action(['GET'], detail=False, url_path='reverse', url_name='reverse_geocoding')
+    def reverse_geocode(self, request, *args, **kwargs):
+        """
+        Geocoding with Pelias
+        """
+        response = requests.get(PELIAS_API + 'reverse',
+                                {
+                                    'point.lat': request.GET.get('point.lat'),
+                                    'point.lon': request.GET.get('point.lon')
+                                })
+        data = response.json()
+        alphas = []
+        for feature in data.get('features'):
+            alphas.append(feature.get('properties').get('country_a'))
+        countries = Country.objects.filter(alpha_3__in=alphas)
+        serializer = CountrySerializer(countries, many=True, context={'request': request})
+        return Response(serializer.data)

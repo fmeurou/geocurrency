@@ -6,6 +6,7 @@ from iso4217 import Currency
 from pycountry import countries
 from geocurrencies.countries.models import Country
 from forex_python.converter import CurrencyRates
+from forex_python.converter import RatesNotAvailableError
 
 BASE_CURRENCY = 'EUR'
 
@@ -31,17 +32,6 @@ class CurrencyModel(models.Model):
     countries = models.ManyToManyField(Country, related_name='currencies', through="CurrencyCountry")
     objects = CurrencyManager()
 
-    @property
-    def current_rate(self):
-        yesterday = date.today() - timedelta(1)
-        return self.rate(yesterday)
-
-    def rate(self, conversion_date):
-        try:
-            return self.conversions.get(date=conversion_date).rate
-        except ConversionRate.DoesNotExist:
-            return None
-
     def convert(self, base_currency, amount=1, conversion_date=None):
         if not conversion_date:
             conversion_date = datetime.now() - timedelta(1)
@@ -52,19 +42,13 @@ class CurrencyModel(models.Model):
         )
         base_rate = cache.get(cache_key)
         if not base_rate:
-            c = CurrencyRates()
-            base_rate = c.convert(base_currency.code, self.code, 1, conversion_date)
+            try:
+                c = CurrencyRates()
+                base_rate = c.convert(base_currency.code, self.code, 1, conversion_date)
+                cache.set(cache_key, base_rate, 60*60*24)
+            except RatesNotAvailableError:
+                base_rate = 0
         return conversion_date, base_currency, base_rate * amount
-
-
-class ConversionRate(models.Model):
-    currency = models.ForeignKey(CurrencyModel, related_name='conversions', on_delete=models.CASCADE)
-    base_currency = models.ForeignKey(CurrencyModel, related_name='base_conversions', on_delete=models.CASCADE)
-    date = models.DateField()
-    rate = models.FloatField()
-
-    class Meta:
-        unique_together = [['currency', 'base_currency', 'date']]
 
 
 class CurrencyCountry(models.Model):
