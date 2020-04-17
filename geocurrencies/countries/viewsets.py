@@ -1,20 +1,22 @@
 import requests
 from django.http import HttpResponseNotFound
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
-from django.views.decorators.vary import vary_on_cookie
+from timezonefinder import TimezoneFinder
 
 from .filters import CountryFilter
 from .models import Country
 from .permissions import CountryObjectPermission
 from .serializers import CountrySerializer
-
 from .settings import *
+
+tf = TimezoneFinder(in_memory=True)
 
 
 class CountryViewset(ReadOnlyModelViewSet):
@@ -59,10 +61,7 @@ class CountryViewset(ReadOnlyModelViewSet):
         """
         response = requests.get(PELIAS_API + 'search', {'text': request.GET.get('text')})
         data = response.json()
-        alphas = []
-        for feature in data.get('features'):
-            alphas.append(feature.get('properties').get('country_a'))
-        countries = Country.objects.filter(alpha_3__in=alphas)
+        countries = self.locations(data)
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
@@ -77,9 +76,25 @@ class CountryViewset(ReadOnlyModelViewSet):
                                     'point.lon': request.GET.get('point.lon')
                                 })
         data = response.json()
-        alphas = []
-        for feature in data.get('features'):
-            alphas.append(feature.get('properties').get('country_a'))
-        countries = Country.objects.filter(alpha_3__in=alphas)
+        countries = self.locations(data)
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
+
+    def locations(self, data):
+        """
+        parse response from pelias service
+        """
+        alphas = {}
+        countries = []
+        for feature in data.get('features'):
+            longitude, latitude = feature.get('geometry').get('coordinates')
+            alphas[feature.get('properties').get('country_a')] = {
+                'coordinates': feature.get('geometry').get('coordinates'),
+                'timezone': tf.timezone_at(lng=longitude, lat=latitude)
+            }
+        for alpha, location in alphas.items():
+            country = Country.objects.get(alpha_3=alpha)
+            setattr(country, 'coordinates', location.get('coordinates', [0, 0]))
+            setattr(country, 'timezone', location.get('timezone', ''))
+            countries.append(country)
+        return countries

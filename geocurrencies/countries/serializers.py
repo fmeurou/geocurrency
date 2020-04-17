@@ -5,9 +5,10 @@ from .models import Country
 
 class CountrySerializer(serializers.ModelSerializer):
     """
-    Serializer for UserProfile
+    Serializer for Country
     """
-
+    timezone = serializers.CharField()
+    coordinates = serializers.CharField()
     class Meta:
         model = Country
         fields = [
@@ -22,4 +23,19 @@ class CountrySerializer(serializers.ModelSerializer):
             'region',
             'subregion',
             'dependency',
+            'timezone',
+            'coordinates'
         ]
+
+        def get_timezone(self, obj):
+            try:
+                return getattr(obj, 'timezone', '')
+            except AttributeError:
+                return ''
+
+        def get_coordinates(self, obj):
+            try:
+                return getattr(obj, 'coordinates', '')
+            except AttributeError:
+                return ''
+
