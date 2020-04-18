@@ -177,6 +177,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/geocurrencies/static'
+MEDIA_ROOT = '/var/www/geocurrencies/media'
+
+SENDFILE_BACKEND = 'sendfile.backends.nginx'
+SENDFILE_ROOT = '/var/www/geocurrencies/media'
+SENDFILE_URL = '/media'
 
 
 LOGGING = {

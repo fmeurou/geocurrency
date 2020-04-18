@@ -32,23 +32,23 @@ class CurrencyModel(models.Model):
     countries = models.ManyToManyField(Country, related_name='currencies', through="CurrencyCountry")
     objects = CurrencyManager()
 
-    def convert(self, base_currency, amount=1, conversion_date=None):
+    def convert(self, target_currency, amount=1, conversion_date=None):
         if not conversion_date:
             conversion_date = datetime.now() - timedelta(1)
         cache_key = 'GEO{}{}{}'.format(
             conversion_date.strftime('%Y%m%d'),
-            base_currency.code,
+            target_currency.code,
             self.code
         )
         base_rate = cache.get(cache_key)
         if not base_rate:
             try:
                 c = CurrencyRates()
-                base_rate = c.convert(base_currency.code, self.code, 1, conversion_date)
+                base_rate = c.convert(target_currency.code, self.code, 1, conversion_date)
                 cache.set(cache_key, base_rate, 60*60*24)
             except RatesNotAvailableError:
                 base_rate = 0
-        return conversion_date, base_currency, base_rate * amount
+        return conversion_date, target_currency, base_rate * amount
 
 
 class CurrencyCountry(models.Model):

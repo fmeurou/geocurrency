@@ -98,3 +98,5 @@ class CountryViewset(ReadOnlyModelViewSet):
             setattr(country, 'timezone', location.get('timezone', ''))
             countries.append(country)
         return countries
+
+

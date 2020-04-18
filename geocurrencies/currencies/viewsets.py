@@ -58,57 +58,96 @@ class CurrencyViewset(ReadOnlyModelViewSet):
         except CurrencyModel.DoesNotExist:
             return HttpResponseNotFound('Currency not found')
 
-    date = openapi.Parameter('date', openapi.IN_QUERY, description="specific date", type=openapi.TYPE_STRING)
     from_date = openapi.Parameter('from_date', openapi.IN_QUERY, description="From date (YYYY-MM-DD)",
                                   type=openapi.TYPE_STRING)
     to_date = openapi.Parameter('to_date', openapi.IN_QUERY, description="To date (YYYY-MM-DD)",
                                 type=openapi.TYPE_STRING)
-    reference = openapi.Parameter('reference', openapi.IN_QUERY, description="Reference currency (defaults to EUR)",
+    base = openapi.Parameter('base', openapi.IN_QUERY, description="Base currency (defaults to EUR)",
+                               type=openapi.TYPE_STRING)
+    target = openapi.Parameter('target', openapi.IN_QUERY, description="Target currency (defaults to EUR)",
                                   type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(method='get', manual_parameters=[date, from_date, to_date, reference])
-    @action(['GET'], detail=True, url_path='rates', url_name="get_conversions")
-    def get_rates(self, request, pk, *args, **kwargs):
+    @swagger_auto_schema(method='get', manual_parameters=[from_date, to_date, target])
+    @action(['GET'], detail=True, url_path='rates', url_name="get_currency_rates")
+    def get_currency_rates(self, request, pk, *args, **kwargs):
         """
         Get conversion rates for the currency
         :param pk: Currency id
         :return: List of countries
         """
         try:
-            currency = CurrencyModel.objects.get(pk=pk)
+            base_currency = CurrencyModel.objects.get(pk=pk)
         except CurrencyModel.DoesNotExist:
             return HttpResponseNotFound('Currency not found')
         try:
-            reference = CurrencyModel.objects.get(pk=request.GET.get('reference', 'EUR'))
+            target_currency = CurrencyModel.objects.get(pk=request.GET.get('target', 'EUR'))
         except CurrencyModel.DoesNotExist:
-            reference = CurrencyModel.objects.get(pk='EUR')
-        dates = []
-        rates = []
-        stat = {}
+            target_currency = CurrencyModel.objects.get(pk='EUR')
         from_date = datetime.now()
         to_date = datetime.now()
         if request.GET.get('from_date'):
             from_date = datetime.strptime(request.GET.get('from_date'), '%Y-%m-%d')
         if request.GET.get('to_date'):
             to_date = datetime.strptime(request.GET.get('to_date'), '%Y-%m-%d')
-        if request.GET.get('date'):
-            from_date = datetime.strptime(request.GET.get('date'), '%Y-%m-%d')
-            to_date = datetime.strptime(request.GET.get('date'), '%Y-%m-%d')
+        return Response(self._get_rates(
+            base_currency=base_currency,
+            target_currency=target_currency,
+            from_date=from_date,
+            to_date=to_date
+        ), content_type="application/json")
+
+    @swagger_auto_schema(method='get', manual_parameters=[from_date, to_date, base, target])
+    @action(['GET'], detail=False, url_path='rates', url_name="get_conversions")
+    def get_rates(self, request, *args, **kwargs):
+        """
+        Get conversion rates between two currencies
+        :param pk: Currency id
+        :return: List of conversion rates
+        """
+        try:
+            base_currency = CurrencyModel.objects.get(pk=request.GET.get('base', 'EUR'))
+        except CurrencyModel.DoesNotExist:
+            base_currency = CurrencyModel.objects.get(pk='EUR')
+        try:
+            target_currency = CurrencyModel.objects.get(pk=request.GET.get('target', 'EUR'))
+        except CurrencyModel.DoesNotExist:
+            target_currency = CurrencyModel.objects.get(pk='EUR')
+        from_date = datetime.now()
+        to_date = datetime.now()
+        if request.GET.get('from_date'):
+            from_date = datetime.strptime(request.GET.get('from_date'), '%Y-%m-%d')
+        if request.GET.get('to_date'):
+            to_date = datetime.strptime(request.GET.get('to_date'), '%Y-%m-%d')
+
+        return Response(self._get_rates(
+            base_currency=base_currency,
+            target_currency=target_currency,
+            from_date=from_date,
+            to_date=to_date
+        ), content_type="application/json")
+
+    def _get_rates(self, base_currency, target_currency, from_date, to_date):
+        """
+        Generates list of rates and stats
+        """
+        rates = []
+        dates = []
         for i in range((to_date - from_date).days + 1):
             d = from_date + timedelta(i)
-            cd, reference, rate = currency.convert(
-                base_currency=reference,
+            cd, reference, rate = base_currency.convert(
+                target_currency=target_currency,
                 conversion_date=d
             )
             rates.append(rate)
             dates.append(
                 {
                     'conversion_date': cd.strftime('%Y-%m-%d'),
-                    'currency': currency.code,
-                    'reference': reference.code,
+                    'currency': base_currency.code,
+                    'reference': target_currency.code,
                     'rate': rate
                 }
             )
+        stat = {}
         if len(rates) > 1:
             stat = {
                 'avg': statistics.mean(rates),
@@ -117,4 +156,4 @@ class CurrencyViewset(ReadOnlyModelViewSet):
                 'min': min(rates),
                 'std_deviation': statistics.stdev(rates)
             }
-        return Response({'rates': dates, 'statistics': stat}, content_type="application/json")
+        return {'rates': dates, 'statistics': stat}

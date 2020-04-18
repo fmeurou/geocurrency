@@ -7,6 +7,7 @@ class CurrencyFilter(filters.FilterSet):
     name = filters.CharFilter(field_name='name', lookup_expr='icontains')
     exponent = filters.NumberFilter(field_name='exponent')
     country = filters.CharFilter(field_name='countries__name', lookup_expr='icontains')
+    exact_country = filters.CharFilter(field_name='countries__name', lookup_expr='iexact')
     capital = filters.CharFilter(field_name='countries__capital', lookup_expr='icontains')
 
 
@@ -17,5 +18,6 @@ class CurrencyFilter(filters.FilterSet):
             'name',
             'exponent',
             'country',
+            'exact_country',
             'capital'
         ]
