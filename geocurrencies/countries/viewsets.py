@@ -65,6 +65,8 @@ class CountryViewset(ReadOnlyModelViewSet):
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=False, url_path='colors', url_name='colors')
     def colors(self, request, *args, **kwargs):
         """
@@ -109,5 +111,3 @@ class CountryViewset(ReadOnlyModelViewSet):
             setattr(country, 'timezone', location.get('timezone', ''))
             countries.append(country)
         return countries
-
-
