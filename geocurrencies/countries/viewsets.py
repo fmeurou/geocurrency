@@ -65,6 +65,17 @@ class CountryViewset(ReadOnlyModelViewSet):
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
+    @action(['GET'], detail=False, url_path='colors', url_name='colors')
+    def colors(self, request, *args, **kwargs):
+        """
+            Get existing flag colors
+        """
+        _colors = []
+        for country in Country.objects.all():
+            if country.colors:
+                _colors.extend(country.colors.split(','))
+        return Response(sorted(list(set(_colors))), content_type="application/json")
+
     @action(['GET'], detail=False, url_path='reverse', url_name='reverse_geocoding')
     def reverse_geocode(self, request, *args, **kwargs):
         """

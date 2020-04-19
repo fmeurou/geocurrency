@@ -14,7 +14,7 @@ from .settings import *
 
 class CountryManager(models.Manager):
 
-    def get_by_color(self, color, proximity=0.1):
+    def get_by_color(self, color, proximity=1):
         """
         Take a hex color and finds near country based on flag and color proximity
         :param color: hex color (FFF, FFFFFF, FFFFFFFF, #FFF, #FFFFFF, #FFFFFFFF)
