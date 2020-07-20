@@ -1,11 +1,10 @@
 from rest_framework import serializers
-from .models import CurrencyModel
-from geocurrencies.countries.serializers import CountrySerializer
 
 
-class CurrencySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CurrencyModel
-        fields = ['name', 'code', 'exponent']
-
+class CurrencySerializer(serializers.Serializer):
+    code = serializers.CharField(read_only=True)
+    name = serializers.CharField(read_only=True)
+    currency_name = serializers.CharField(read_only=True)
+    exponent = serializers.IntegerField(read_only=True)
+    number = serializers.IntegerField(read_only=True)
+    value = serializers.CharField(read_only=True)

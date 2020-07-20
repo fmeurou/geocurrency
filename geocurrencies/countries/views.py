@@ -1,4 +1,5 @@
 import os
+import logging
 import requests
 from django.conf import settings
 from django.http import HttpResponseBadRequest, HttpResponseNotFound
@@ -31,7 +32,7 @@ class FlagView(View):
                     flag_file.write(flag_content)
                     flag_file.close()
                 except IOError:
-                    print("enable to write file", flag_path)
+                    logging.error("unable to write file", flag_path)
                     return HttpResponseBadRequest("Error fetching file")
             return sendfile(request, flag_path)
         except Country.DoesNotExist:

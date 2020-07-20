@@ -16,3 +16,5 @@ RATES = {
     #     'current': 'https://www.bankofcanada.ca/valet/observations/group/FX_RATES_DAILY/csv?start_date=2017-01-03'
     # },
 }
+
+BASE_CURRENCY = 'EUR'

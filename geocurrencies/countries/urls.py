@@ -7,7 +7,7 @@ from .views import FlagView
 app_name = 'countries'
 
 router = routers.DefaultRouter()
-router.register(r'', CountryViewset)
+router.register(r'', CountryViewset, basename='countries')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

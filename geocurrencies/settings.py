@@ -68,11 +68,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',
     'drf_yasg',
     'django_filters',
     'corsheaders',
     'geocurrencies.countries',
-    'geocurrencies.currencies'
+    'geocurrencies.currencies',
+    'geocurrencies.rates',
 ]
 
 MIDDLEWARE = [
@@ -202,3 +204,12 @@ LOGGING = {
         },
     },
 }
+
+DATABASES = {
+
+}
+
+try:
+    from .local import *
+except ImportError:
+    pass

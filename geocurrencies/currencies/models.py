@@ -1,36 +1,49 @@
-from datetime import date, datetime, timedelta
-
-from django.db import models
+from datetime import datetime, timedelta
 from django.core.cache import cache
-from iso4217 import Currency
-from pycountry import countries
-from geocurrencies.countries.models import Country
 from forex_python.converter import CurrencyRates
 from forex_python.converter import RatesNotAvailableError
+from iso4217 import Currency as Iso4217
+
+from geocurrencies.countries.models import Country
 
 BASE_CURRENCY = 'EUR'
 
 
-class CurrencyManager(models.Manager):
+class Currency:
+    code = None
+    name = None
+    currency_name = None
+    exponent = None
+    number = 0
+    value = None
 
-    def filter_by_country(self, country):
+    def __init__(self, code):
+        """
+        Returns a iso4217.Currency instance
+        """
+        i = Iso4217(code)
+        for a in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
+            setattr(self, a, getattr(i, a))
+
+    @classmethod
+    def all_currencies(cls):
+        """
+        Returns an array of currencies
+        """
+        return [Currency(c.code) for c in Iso4217]
+
+
+    @classmethod
+    def get_for_country(cls, alpha2):
+        """
+        Return a list of currencies for an alpha2 country code
+        :params alpha2: alpha2 code of a country
+        """
         try:
-            country = countries.lookup(country)
-        except LookupError:
-            return None
-        codes = [cur.code for cur in
-                 [cur for cur in Currency if country.name.lower() in map(str.lower, cur.country_names)]
-                 ]
-        return CurrencyModel.objects.filter(code__in=codes)
-
-
-class CurrencyModel(models.Model):
-    code = models.CharField(max_length=3, primary_key=True)
-    numeric = models.IntegerField()
-    name = models.CharField(max_length=255)
-    exponent = models.IntegerField()
-    countries = models.ManyToManyField(Country, related_name='currencies', through="CurrencyCountry")
-    objects = CurrencyManager()
+            country = Country(alpha2)
+            return [Currency(cur) for cur in country.currencies()]
+        except ValueError:
+            return []
 
     def convert(self, target_currency, amount=1, conversion_date=None):
         if not conversion_date:
@@ -45,12 +58,7 @@ class CurrencyModel(models.Model):
             try:
                 c = CurrencyRates()
                 base_rate = c.convert(target_currency.code, self.code, 1, conversion_date)
-                cache.set(cache_key, base_rate, 60*60*24)
+                cache.set(cache_key, base_rate, 60 * 60 * 24)
             except RatesNotAvailableError:
                 base_rate = 0
         return conversion_date, target_currency, base_rate * amount
-
-
-class CurrencyCountry(models.Model):
-    currency = models.ForeignKey(CurrencyModel, on_delete=models.CASCADE)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)

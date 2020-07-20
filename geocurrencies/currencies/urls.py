@@ -6,7 +6,7 @@ from .viewsets import CurrencyViewset
 app_name = 'currencies'
 
 router = routers.DefaultRouter()
-router.register(r'', CurrencyViewset)
+router.register(r'', CurrencyViewset, basename='currencies')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

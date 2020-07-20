@@ -1,12 +1,16 @@
 import os
-
 import pytz
+from pytz import timezone
 import re
 import requests
 from datetime import datetime
+from pycountry import countries
+from countryinfo import CountryInfo
+
+from django.core.cache import cache
 from django.conf import settings
 from django.db import models
-from pytz import timezone
+
 
 from .helpers import ColorProximity, hextorgb
 from .settings import *
@@ -32,20 +36,34 @@ class CountryManager(models.Manager):
         return Country.objects.filter(pk__in=set(countries))
 
 
-class Country(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
-    alpha_2 = models.CharField(max_length=2)
-    alpha_3 = models.CharField(max_length=3)
-    formal_name = models.CharField(max_length=2000)
-    capital = models.CharField(max_length=255)
-    continent = models.CharField(max_length=2)
-    dial = models.CharField(max_length=20)
-    region = models.CharField(max_length=255)
-    subregion = models.CharField(max_length=255)
-    dependency = models.CharField(max_length=255)
-    colors = models.CharField(max_length=2000, null=True)
-    objects = CountryManager()
+class Country(CountryInfo):
+    # data extracted from pycountry as basic data if CountryInfo for this country does not exist
+    alpha_2 = None
+    alpha_3 = None
+    name = None
+    numeric = None
+
+    def __init__(self, country_name):
+        """
+        Init a Country object with an alpha2 code
+        :params country_name: ISO-3166 alpha_2 code
+        """
+        super(Country, self).__init__(country_name)
+        for field, value in countries.get(alpha_2=country_name)._fields.items():
+            setattr(self, field, value)
+
+    @classmethod
+    def all_countries(cls):
+        """
+        List all countries, instanciate CountryInfo for each country in pycountry.countries
+        """
+        return list(map(lambda x:cls(x.alpha_2), countries))
+
+    def base(self):
+        """
+        Returns a basic representation of a country with name and iso codes
+        """
+        return countries.get(alpha_2=self.alpha_2)._fields
 
     @property
     def timezones(self):
@@ -64,30 +82,60 @@ class Country(models.Model):
             })
         return sorted(output, key=lambda x: x['numeric_offset'])
 
+    @property
+    def flag_path(self):
+        """
+        Path to the flag temporary file
+        :return: string, absolute path to the flag file
+        """
+        return os.path.join(settings.MEDIA_ROOT, self.alpha_2 + '.svg')
+
+    def flag_exists(self):
+        """
+        Checks if flag file exists
+        :return: bool, True if flag exists, False otherwise
+        """
+        return os.path.exists(self.flag_path)
+
     def download_flag(self):
-        flag_path = os.path.join(settings.MEDIA_ROOT, self.alpha_2 + '.svg')
-        if not os.path.exists(flag_path):
+        """
+        Downloads flag for country in temporary path
+        :return: Path to the file
+        """
+        if not self.flag_exists():
             response = requests.get(FLAG_SOURCE.format(alpha_2=self.alpha_2))
             try:
                 flag_content = response.text
-                flag_file = open(flag_path, 'w')
+                flag_file = open(self.flag_path, 'w')
                 flag_file.write(flag_content)
                 flag_file.close()
+                return self.flag_path
             except IOError:
-                print("enable to write file", flag_path)
+                print("unable to write file", self.flag_path)
+                return None
 
     def analyze_flag(self):
+        """
+        Analyze colors of the flag for the country and caches the result
+        :returns: array, list of colors
+        """
         flag_path = os.path.join(settings.MEDIA_ROOT, self.alpha_2 + '.svg')
+        # Checks if flag has been downloaded, downloads it otherwise, and return None if download failed
+        if not self.flag_exists() and not self.download_flag():
+            return None
         with open(flag_path, 'r') as flag:
             content = flag.read()
             result = re.findall(r'\#[0-9A-Fa-f]{1,2}[0-9A-Fa-f]{1,2}[0-9A-Fa-f]{1,2}', content)
             if result:
-                self.colors = ','.join(result)
-                self.save()
+                cache.set('COLORS-' + self.alpha_2, result)
+            return result
 
-
-class Subdivision(models.Model):
-    country = models.ForeignKey(Country, related_name='subdivisions', on_delete=models.CASCADE)
-    name = models.CharField(max_length=2000)
-    code = models.CharField(max_length=6)
-    type = models.CharField(max_length=255)
+    def colors(self):
+        """
+        List colors present in the flag of the country
+        :returns: array, list of colors
+        """
+        if colors := cache.get('COLORS-' + self.alpha_2):
+            return colors
+        else:
+            return self.analyze_flag()
