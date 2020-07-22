@@ -24,14 +24,14 @@ class CountryDetailSerializer(serializers.Serializer):
     tld = serializers.SerializerMethodField()
     capital = serializers.SerializerMethodField()
 
-    def get_region(self, obj):
+    def get_region(self, obj) -> str:
         return CountryInfo(obj.alpha_2).region()
 
-    def get_subregion(self, obj):
+    def get_subregion(self, obj) -> str:
         return CountryInfo(obj.alpha_2).subregion()
 
-    def get_tld(self, obj):
+    def get_tld(self, obj) -> str:
         return CountryInfo(obj.alpha_2).tld()
 
-    def get_capital(self, obj):
+    def get_capital(self, obj) -> str:
         return CountryInfo(obj.alpha_2).capital()

@@ -110,12 +110,13 @@ class CountryViewset(ViewSet):
     lng = openapi.Parameter('longitude', openapi.IN_QUERY, description="Longitude",
                             type=openapi.TYPE_STRING)
 
+    @swagger_auto_schema(method='get', responses={200:openapi.TYPE_ARRAY})
     @action(['GET'], detail=False, url_path='geocoders', url_name='geocoders')
-    def geocoders(self):
+    def geocoders(self, request):
         """
         Return a list of available geocoders. As defined in settings.GEOCODING_SERVICE_SETTINGS
         """
-        return Response(settings.SERVICES.get('geocoding', []), content_type="application/json")
+        return Response(settings.SERVICES.get('geocoding', {}).keys(), content_type="application/json")
 
     @swagger_auto_schema(method='get', manual_parameters=[address, geocoder, geocoder_api_key])
     @action(['GET'], detail=False, url_path='geocode', url_name='geocoding')
