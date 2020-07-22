@@ -212,10 +212,14 @@ DATABASES = {
 }
 
 SERVICES = {
-    'pelias': 'geocurrencies.countries.services.pelias',
-    'google': 'geocurrencies.countries.services.google',
-    'forex': 'geocurrencies.rates.services.forex',
-    'currencylayer': 'geocurrencies.rates.services.currencylayer'
+    'geocoding': {
+        'pelias': 'geocurrencies.countries.services.pelias.PeliasGeocoder',
+        'google': 'geocurrencies.countries.services.google.GoogleGeocoder',
+    },
+    'rates':  {
+        'forex': 'geocurrencies.rates.services.forex.ForexService',
+        'currencylayer': 'geocurrencies.rates.services.currencylayer.CurrencyLayerService'
+    }
 }
 
 SWAGGER_SETTINGS = {

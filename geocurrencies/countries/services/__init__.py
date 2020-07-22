@@ -1,11 +1,5 @@
-import json
-import logging
-import requests
-from django.conf import settings
-from pycountry import countries
 from timezonefinder import TimezoneFinder
 
-from ..settings import *
 from geocurrencies.countries.models import Country
 
 tf = TimezoneFinder(in_memory=True)

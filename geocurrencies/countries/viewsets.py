@@ -10,9 +10,10 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND
 from rest_framework.viewsets import ViewSet
 
+from geocurrencies.helpers import service
+
 from .models import Country
 from .serializers import CountrySerializer
-from ..geocoding.models import Geocoder
 
 
 class CountryViewset(ViewSet):
@@ -65,21 +66,22 @@ class CountryViewset(ViewSet):
     lng = openapi.Parameter('longitude', openapi.IN_QUERY, description="Longitude",
                             type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(method='get', manual_parameters=[address, geocoder, geocoder_api_key])
-    @action(['GET'], detail=False, url_path='geocode', url_name='geocoding')
-    def geocoders(self):
+    @action(['GET'], detail=False, url_path='geocoders', url_name='geocoders')
+    def geocoders(self, request, *args, **kwargs):
         """
         Return a list of available geocoders. As defined in settings.GEOCODING_SERVICE_SETTINGS
         """
-
+        return Response(settings.SERVICES.get('geocoding', []), type="application/json")
 
     @swagger_auto_schema(method='get', manual_parameters=[address, geocoder, geocoder_api_key])
     @action(['GET'], detail=False, url_path='geocode', url_name='geocoding')
-    def geocode(self, request, address, geocoder=settings.GEOCODING_SERVICE, geocoder_api_key='', *args, **kwargs):
+    def geocode(self, request, *args, **kwargs):
         """
         Find country by geocoding (giving address or POI)
         """
-        geocoder = Geocoder(coder_type=geocoder, key=geocoder_api_key)
+        geocoder = service(service_type='geocoding',
+                           service_name=request.GET.get('geocoder', settings.GEOCODING_SERVICE),
+                           key=request.GET.get('geocoder_api_key', settings.GEOCODER_GOOGLE_KEY))
         data = geocoder.search(address=request.GET.get('address'))
         countries = geocoder.countries(data)
         serializer = CountrySerializer(countries, many=True, context={'request': request})
@@ -87,11 +89,13 @@ class CountryViewset(ViewSet):
 
     @swagger_auto_schema(method='get', manual_parameters=[lat, lng, geocoder, geocoder_api_key])
     @action(['GET'], detail=False, url_path='reverse', url_name='reverse_geocoding')
-    def reverse_geocode(self, request, lat, lng, geocoder=settings.GEOCODING_SERVICE, geocoder_api_key='',*args, **kwargs):
+    def reverse_geocode(self, request, *args, **kwargs):
         """
         Find country by reverse geocoding (giving latitude and longitude)
         """
-        geocoder = Geocoder(coder_type=geocoder, key=geocoder_api_key)
+        geocoder = service(service_type='geocoding',
+                           service_name=request.GET.get('geocoder', settings.GEOCODING_SERVICE),
+                           key=request.GET.get('geocoder_api_key', settings.GEOCODER_GOOGLE_KEY))
         data = geocoder.reverse(
             lat=request.GET.get('lat'),
             lng=request.GET.get('lon')

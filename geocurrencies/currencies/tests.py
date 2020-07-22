@@ -21,7 +21,9 @@ class CurrencyTestCase(TestCase):
         self.assertEqual(c.code, 'EUR')
 
     def test_get_for_country(self):
-        c = Currency.get_for_country('FR')
+        currencies = Currency.get_for_country('FR')
+        self.assertIsNotNone(currencies)
+        c = currencies[0]
         self.assertEqual(c.name, 'eur')
         self.assertEqual(c.value, 'EUR')
         self.assertEqual(c.currency_name, 'Euro')

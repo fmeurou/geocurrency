@@ -68,6 +68,9 @@ class Country:
         ci = CountryInfo(self.alpha_2)
         return ci.currencies()
 
+    def info(self):
+        return CountryInfo(self.alpha_2).info()
+
     @property
     def timezones(self):
         output = []

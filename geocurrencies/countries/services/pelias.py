@@ -7,12 +7,9 @@ from . import Geocoder
 from ..settings import *
 
 
-class PeliasGeoCoder(Geocoder):
+class PeliasGeocoder(Geocoder):
     coder_type = 'pelias'
     server_url = None
-
-    def __new__(cls, *args, **kwargs):
-        return super(Geocoder, cls).__new__(cls)
 
     def __init__(self, server_url=None):
         """
