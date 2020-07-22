@@ -45,10 +45,16 @@ class Currency:
     @property
     def countries(self) -> Iterator[Country]:
         countries = []
+        if cached_countries := cache.get(self.code + 'COUNTRIES'):
+            return [Country(alpha_2) for alpha_2 in cached_countries]
         for country in Country.all_countries():
-            print(country.alpha_2)
-            if self.code in country.currencies():
-                countries.append(country)
+            try:
+                if self.code in country.currencies():
+                    countries.append(country)
+            except KeyError:
+                # Some countries listed in pycountry are not present in countryinfo
+                pass
+        cache.set(self.code + 'COUNTRIES', [country.alpha_2 for country in countries])
         return countries
 
     @classmethod

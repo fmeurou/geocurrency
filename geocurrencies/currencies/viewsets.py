@@ -1,3 +1,4 @@
+import logging
 import statistics
 from datetime import date, timedelta
 from django.http import HttpResponseNotFound
@@ -51,7 +52,9 @@ class CurrencyViewset(ReadOnlyModelViewSet):
                 many=True,
                 context={'request': request})
             return Response(serializer.data)
-        except KeyError:
+        except (KeyError, ValueError) as e:
+            print(e)
+            logging.error(e)
             return HttpResponseNotFound('Currency not found')
 
     from_date = openapi.Parameter('from_date', openapi.IN_QUERY, description="From date (YYYY-MM-DD)",

@@ -69,6 +69,8 @@ class Country:
         return ci.currencies()
 
     def info(self):
+
+
         return CountryInfo(self.alpha_2).info()
 
     @property

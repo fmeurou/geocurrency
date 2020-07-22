@@ -67,7 +67,8 @@ class CountryTestCase(TestCase):
         client = APIClient()
         response = client.get('/countries/FR/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, Country('FR').info())
+        self.assertContains(response, 'name')
+        self.assertContains(response, 'region')
 
     def test_google_geocode_request(self):
         client = APIClient()
@@ -85,10 +86,34 @@ class CountryTestCase(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_timezones(self):
+    def test_timezones_request(self):
         client = APIClient()
         response = client.get('/countries/FR/timezones/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_currencies_request(self):
+        client = APIClient()
+        response = client.get('/countries/FR/currencies/', format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, "EUR")
+
+    def test_provinces_request(self):
+        client = APIClient()
+        response = client.get('/countries/FR/provinces/', format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, "Alsace")
+
+    def test_languages_request(self):
+        client = APIClient()
+        response = client.get('/countries/FR/languages/', format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, "fr")
+
+    def test_borders_request(self):
+        client = APIClient()
+        response = client.get('/countries/FR/borders/', format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, "DEU")
 
 
 class GeocoderTestCase(TestCase):

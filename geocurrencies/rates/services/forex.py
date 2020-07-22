@@ -1,5 +1,6 @@
 # Python_forex based wrapper
 # uses ratesapi.io
+import logging
 from datetime import date, timedelta
 from django.conf import settings
 from forex_python import converter
@@ -22,8 +23,10 @@ class ForexService(RateService):
                 currency=key,
                 date=date_obj,
                 value=value
-            ) for key, value in _rates]
-        except converter.RatesNotAvailableError:
+            ) for key, value in _rates.items()]
+        except converter.RatesNotAvailableError as e:
+            logging.error(e)
+            print(e)
             raise RatesNotAvailableError
 
     def _fetch_single_rate(self,
@@ -38,7 +41,9 @@ class ForexService(RateService):
                 value=value
             )]
 
-        except converter.RatesNotAvailableError:
+        except converter.RatesNotAvailableError as e:
+            logging.error(e)
+            print(e)
             raise RatesNotAvailableError
 
     def fetch_rates(self,

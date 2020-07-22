@@ -1,20 +1,24 @@
+import logging
 from datetime import date
-from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models.signals import post_save
-from django.db.models import QuerySet
 from django.dispatch import receiver
 
 from geocurrencies.helpers import service
 from .settings import *
-from django.conf import settings
 
 try:
     RATE_SERVICE = settings.RATE_SERVICE
 except AttributeError:
     pass
 
-from .services import RatesNotAvailableError, RateService
+from .services import RatesNotAvailableError
+
+
+class Rate:
+    pass
 
 
 class RateManager(models.Manager):
@@ -25,7 +29,7 @@ class RateManager(models.Manager):
         """
         output = []
         for rate in rates:
-            _rate = Rate.objects.get_or_create(
+            _rate, created = Rate.objects.get_or_create(
                 base_currency=base_currency,
                 currency=rate.get('currency'),
                 value_date=rate.get('date')
@@ -50,18 +54,23 @@ class RateManager(models.Manager):
         """
         service_name = rate_service or settings.RATE_SERVICE
         try:
-            rates = service(service_name).fetch_rates(
-                base_cur=base_currency,
+            rates = service(service_type='rates', service_name=service_name).fetch_rates(
+                base_currency=base_currency,
                 currency=currency,
                 date_obj=date_obj,
                 to_obj=to_obj)
+            print("Rate.fetch_rate", rates)
             if not rates:
                 return False
-        except RatesNotAvailableError:
+        except RatesNotAvailableError as e:
             return False
-        return self.__sync_rates__(base_currency=base_currency, date_obj=date_obj, to_obj=to_obj)
+        return self.__sync_rates__(rates=rates, base_currency=base_currency, date_obj=date_obj, to_obj=to_obj)
 
-    def rate_at_date(self, currency, key=None, base_currency='EUR', date_obj=date.today()):
+    def rate_at_date(self,
+                     currency: str,
+                     key: str = None,
+                     base_currency: str = settings.BASE_CURRENCY,
+                     date_obj: date = date.today()) -> Rate:
         # See here for process
         # https://app.lucidchart.com/documents/edit/cee5a97f-021f-4eab-8cf3-d66c88cf46f2/0_0?beaconFlowId=4B33C87C22AD8D63
         if rate := self.find_direct_rate(currency=currency, key=key, base_currency=base_currency, date_obj=date_obj):
@@ -70,7 +79,16 @@ class RateManager(models.Manager):
             return rate
         return None
 
-    def find_direct_rate(self, currency, key=None, base_currency='EUR', date_obj=date.today(), use_forex=False):
+    def find_direct_rate(self,
+                         currency: str,
+                         rate_service: str = None,
+                         key: str = None,
+                         base_currency: str = settings.BASE_CURRENCY,
+                         date_obj: date = date.today(),
+                         use_forex: bool = False) -> Rate:
+        """
+        Find base_currency / currency at date with the specific key
+        """
         rates = Rate.objects.filter(
             key=key,
             currency=currency,
@@ -80,11 +98,30 @@ class RateManager(models.Manager):
         if rates:
             return rates.latest('value_date')
         elif use_forex:
-            c = CurrencyRates()
-            c.get_rate(dest_cur=currency, base_cur=base_currency, date_obj=date_obj)
+            service_name = rate_service or settings.RATE_SERVICE
+            try:
+                rates = service(service_type='rates', service_name=service_name).fetch_rates(
+                    base_currency=base_currency,
+                    currency=currency,
+                    date_obj=date_obj)
+                if not rates:
+                    return False
+                return Rate.objects.get(
+                    key=key,
+                    currency=currency,
+                    base_currency=base_currency,
+                    value_date=date_obj
+                )
+            except RatesNotAvailableError as e:
+                logging.error(e)
+                return None
         return None
 
-    def find_pivot_rate(self, currency, key=None, base_currency='EUR', date_obj=date.today()):
+    def find_pivot_rate(self,
+                        currency: str,
+                        key: str = None,
+                        base_currency: str = 'EUR',
+                        date_obj: date = date.today()):
         # We simplify the algorithm to only one pivot
         # Most currencies convert to Euro or Dollar
         # So there is an obvious path in finding only one pivot
@@ -150,7 +187,7 @@ class Rate(models.Model):
     objects = RateManager()
 
     class Meta:
-        ordering = ['-value_date',]
+        ordering = ['-value_date', ]
         indexes = [
             models.Index(fields=['currency', 'base_currency', 'value_date']),
             models.Index(fields=['key', 'currency', 'base_currency', 'value_date']),
