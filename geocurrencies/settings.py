@@ -93,8 +93,9 @@ ROOT_URLCONF = 'geocurrencies.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), ]
-        ,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -186,6 +187,7 @@ SENDFILE_ROOT = '/var/www/geocurrencies/media'
 SENDFILE_URL = '/media'
 
 
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -208,6 +210,27 @@ LOGGING = {
 DATABASES = {
 
 }
+
+SERVICES = {
+    'pelias': 'geocurrencies.countries.services.pelias',
+    'google': 'geocurrencies.countries.services.google',
+    'forex': 'geocurrencies.rates.services.forex',
+    'currencylayer': 'geocurrencies.rates.services.currencylayer'
+}
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
+
+from geocurrencies.countries.settings import *
+from geocurrencies.currencies.settings import *
+from geocurrencies.rates.settings import *
 
 try:
     from .local import *

@@ -36,7 +36,7 @@ class CountryManager(models.Manager):
         return Country.objects.filter(pk__in=set(countries))
 
 
-class Country(CountryInfo):
+class Country:
     # data extracted from pycountry as basic data if CountryInfo for this country does not exist
     alpha_2 = None
     alpha_3 = None
@@ -48,7 +48,6 @@ class Country(CountryInfo):
         Init a Country object with an alpha2 code
         :params country_name: ISO-3166 alpha_2 code
         """
-        super(Country, self).__init__(country_name)
         for field, value in countries.get(alpha_2=country_name)._fields.items():
             setattr(self, field, value)
 
@@ -57,13 +56,17 @@ class Country(CountryInfo):
         """
         List all countries, instanciate CountryInfo for each country in pycountry.countries
         """
-        return list(map(lambda x:cls(x.alpha_2), countries))
+        return list(map(lambda x: cls(x.alpha_2), countries))
 
     def base(self):
         """
         Returns a basic representation of a country with name and iso codes
         """
         return countries.get(alpha_2=self.alpha_2)._fields
+
+    def currencies(self):
+        ci = CountryInfo(self.alpha_2)
+        return ci.currencies()
 
     @property
     def timezones(self):

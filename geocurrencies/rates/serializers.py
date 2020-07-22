@@ -10,7 +10,6 @@ class RateSerializer(serializers.ModelSerializer):
            'key',
            'currency',
            'base_currency',
-           'start_date',
-           'end_date',
+           'value_date',
            'value',
         ]

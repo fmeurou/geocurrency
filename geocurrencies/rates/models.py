@@ -2,63 +2,64 @@ from datetime import date
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.db.models import QuerySet
 from django.dispatch import receiver
-from forex_python.converter import CurrencyRates
+
+from geocurrencies.helpers import service
+from .settings import *
+from django.conf import settings
+
+try:
+    RATE_SERVICE = settings.RATE_SERVICE
+except AttributeError:
+    pass
+
+from .services import RatesNotAvailableError, RateService
 
 
 class RateManager(models.Manager):
 
-    @classmethod
-    def fetch_forex_rates(self, base_cur, date_obj=None):
+    def __sync_rates__(self, rates: [], base_currency: str, date_obj: date, to_obj: date = None):
         """
-        Get rates for a base currency and stores them in the database
+        rates: array of dict of rates from service
         """
-        c = CurrencyRates()
-        rates = c.get_rates(base_cur=base_cur, date_obj=date.today())
-        if not rates:
-            return False
-        existing_rates = Rate.objects.filter(base_currency=base_cur, start_date=date_obj, end_date=date_obj)
-        for existing_rate in existing_rates:
-            existing_rate.value = rates[existing_rate.currency].value
-            existing_rate.save()
-        for currency in set(rates.keys()) - set(existing_rates.values_list('currency', flat=True)):
-            Rate.objects.create(
-                key=None,
-                start_date=date_obj,
-                end_date=date_obj,
-                currency=currency,
-                base_currency=base_cur,
-                value=rates[currency]
+        output = []
+        for rate in rates:
+            _rate = Rate.objects.get_or_create(
+                base_currency=base_currency,
+                currency=rate.get('currency'),
+                value_date=rate.get('date')
             )
-        return Rate.objects.filter(base_currency=base_cur, start_date=date_obj, end_date=date_obj)
+            _rate.value = rate.get('value')
+            _rate.save()
+        return output
 
-    def fetch_forex_rate(self, dest_cur, base_cur, date_obj=date.today()):
+    def fetch_rates(self,
+                    base_currency: str,
+                    currency: str = None,
+                    rate_service: str = None,
+                    date_obj: date = date.today(),
+                    to_obj: date = None) -> []:
         """
-        Get rate between a base currency and a currency and stores it in the database
+        Get rates from a service for a base currency and stores them in the database
+        :param rate_service: Service class to fetch from
+        :param currency: currency to obtain rate for
+        :param base_currency: base currency to get rate from
+        :param date_obj: date to fetch rates at
+        :return: QuerySet of Rate
         """
-        c = CurrencyRates()
-        value = c.get_rate(dest_cur=dest_cur, base_cur=base_cur, date_obj=date_obj)
+        service_name = rate_service or settings.RATE_SERVICE
         try:
-            # Do we have the rate in database ? update it
-            rate = Rate.objects.get(
-                key=None,
-                start_date=date_obj,
-                end_date=date_obj,
-                currency=dest_cur,
-                base_currency=base_cur
-            )
-            rate.save()
-        except Rate.DoesNotExist:
-            # We don‘t have the rate ? create it
-            rate = Rate.objects.create(
-                key=None,
-                start_date=date_obj,
-                end_date=date_obj,
-                currency=dest_cur,
-                base_currency=base_cur,
-                value=value
-            )
-        return rate
+            rates = service(service_name).fetch_rates(
+                base_cur=base_currency,
+                currency=currency,
+                date_obj=date_obj,
+                to_obj=to_obj)
+            if not rates:
+                return False
+        except RatesNotAvailableError:
+            return False
+        return self.__sync_rates__(base_currency=base_currency, date_obj=date_obj, to_obj=to_obj)
 
     def rate_at_date(self, currency, key=None, base_currency='EUR', date_obj=date.today()):
         # See here for process
@@ -74,11 +75,10 @@ class RateManager(models.Manager):
             key=key,
             currency=currency,
             base_currency=base_currency,
-            start_date__lte=date_obj,
-            end_date__gte=date_obj
+            value_date=date_obj
         )
         if rates:
-            return rates.latest('start_date')
+            return rates.latest('value_date')
         elif use_forex:
             c = CurrencyRates()
             c.get_rate(dest_cur=currency, base_cur=base_currency, date_obj=date_obj)
@@ -92,15 +92,13 @@ class RateManager(models.Manager):
         rates = Rate.objects.filter(
             key=key,
             currency=currency,
-            start_date__lte=date_obj,
-            end_date__gte=date_obj
+            value_date__lte=date_obj
         )
         pivot_rates = Rate.objects.filter(
             key=key,
             currency__in=rates.values_list('base_currency', flat=True),
             base_currency=base_currency,
-            start_date__lte=date_obj,
-            end_date__gte=date_obj
+            value_date=date_obj
         )
         if not rates:
             # Can‘t find any rate for this client for this date, using standard rates
@@ -110,20 +108,19 @@ class RateManager(models.Manager):
                 date_obj=date_obj,
                 use_forex=True)
         if pivot_rates.exists():
-            pivot_rate = pivot_rates.latest('start_date')
-            rate = rates.filter(base_currency=pivot_rate.currency).latest('start_date')
+            pivot_rate = pivot_rates.latest('value_date')
+            rate = rates.filter(base_currency=pivot_rate.currency).latest('value_date')
             # It exists! let‘s store it
             rate = Rate.objects.create(
                 key=key,
-                start_date=date_obj,
-                end_date=date_obj,
+                value_date=date_obj,
                 currency=rate.currency,
                 base_currency=base_currency,
                 value=rate.value * pivot_rate.value
             )
             return rate
         else:
-            rate = rates.latest('start_date')
+            rate = rates.latest('value_date')
             pivot_rate = self.find_direct_rate(
                 currency=rate.base_currency,
                 base_currency=base_currency,
@@ -134,8 +131,7 @@ class RateManager(models.Manager):
                 # It exists! let‘s store it
                 rate = Rate.objects.create(
                     key=key,
-                    start_date=date_obj,
-                    end_date=date_obj,
+                    value_date=date_obj,
                     currency=rate.currency,
                     base_currency=base_currency,
                     value=rate.value * pivot_rate.value
@@ -146,20 +142,20 @@ class RateManager(models.Manager):
 
 class Rate(models.Model):
     user = models.ForeignKey(User, related_name='rates', on_delete=models.PROTECT, null=True)
-    key = models.CharField(max_length=255, default=None, db_index=True)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    key = models.CharField(max_length=255, default=None, db_index=True, null=True)
+    value_date = models.DateField()
     value = models.FloatField(default=0)
     currency = models.CharField(max_length=3)
     base_currency = models.CharField(max_length=3, default='EUR')
+    objects = RateManager()
 
     class Meta:
-        ordering = ['-start_date', '-end_date']
+        ordering = ['-value_date',]
         indexes = [
-            models.Index(fields=['currency', 'base_currency', 'start_date', 'end_date']),
-            models.Index(fields=['key', 'currency', 'base_currency', 'start_date', 'end_date']),
+            models.Index(fields=['currency', 'base_currency', 'value_date']),
+            models.Index(fields=['key', 'currency', 'base_currency', 'value_date']),
         ]
-        unique_together = [['key', 'currency', 'base_currency', 'start_date', 'end_date']]
+        unique_together = [['key', 'currency', 'base_currency', 'value_date']]
 
     @classmethod
     def convert(cls, currency, key=None, base_currency='EUR', date_obj=date.today(), amount=0):
@@ -178,15 +174,14 @@ class Rate(models.Model):
 def create_reverse_rate(sender, instance, created, **kwargs):
     if created and not Rate.objects.filter(
             key=instance.key,
-            start_date=instance.start_date,
-            end_date=instance.end_date,
+            value_date=instance.value_date,
             currency=instance.base_currency,
             base_currency=instance.currency,
     ).exists() and instance.value != 0:
         Rate.objects.create(
             key=instance.key,
-            start_date=instance.start_date,
-            end_date=instance.end_date,
+            value_date=instance.value_date,
             currency=instance.base_currency,
             base_currency=instance.currency,
-        ).update(value=1 / instance.value)
+            value=1 / instance.value
+        )
