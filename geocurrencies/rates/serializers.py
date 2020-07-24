@@ -2,7 +2,7 @@ from datetime import datetime, date
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Rate, Amount
+from .models import Rate, Amount, Batch
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -72,8 +72,15 @@ class AmountSerializer(serializers.Serializer):
 
 
 class BatchSerializer(serializers.Serializer):
-    batch = serializers.CharField()
+    id = serializers.CharField()
     status = serializers.CharField()
+
+    def create(self, validated_data):
+        return Batch(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.status = validated_data.get('status', instance.status)
+        return instance
 
 
 class ErrorSerializer(serializers.Serializer):
@@ -95,4 +102,5 @@ class ResultSerializer(serializers.Serializer):
     target = serializers.CharField()
     detail = DetailSerializer(many=True)
     sum = serializers.FloatField()
+    status = serializers.CharField()
     errors = ErrorSerializer(many=True)

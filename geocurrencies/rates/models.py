@@ -229,6 +229,15 @@ def create_reverse_rate(sender, instance, created, **kwargs):
         )
 
 
+class Batch:
+    id = None
+    status = None
+
+    def __init__(self, id, status):
+        self.id = id
+        self.status = status
+
+
 class Amount:
     currency = None
     amount = 0
@@ -261,11 +270,11 @@ class Converter:
     aggregated_result = {}
     cached_currencies = {}
 
-    def __init__(self, user: User, key: str = None, base_currency: str = settings.BASE_CURRENCY):
+    def __init__(self, user: User, id: str = None, key: str = None, base_currency: str = settings.BASE_CURRENCY):
         self.base_currency = base_currency
         self.user = user
         self.key = key
-        self.id = uuid.uuid4()
+        self.id = id or uuid.uuid4()
         self.data = []
 
     @classmethod
@@ -329,10 +338,11 @@ class Converter:
         Converts data to base currency
         """
         output = {
-            'batch_id': self.id,
+            'id': self.id,
             'target': self.base_currency,
             'detail': [],
             'sum': 0,
+            'status': None,
             'errors': []
         }
         sum = 0
@@ -355,5 +365,6 @@ class Converter:
                     'date': amount.date_obj
                 })
         output['sum'] = sum
+        output['status'] = self.FINISHED
         self.status = self.FINISHED
         return output

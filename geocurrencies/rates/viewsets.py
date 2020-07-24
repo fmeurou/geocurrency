@@ -11,7 +11,7 @@ from rest_framework.status import HTTP_400_BAD_REQUEST
 
 from geocurrencies.currencies.models import Currency
 from .forms import RateForm
-from .models import Rate, Converter
+from .models import Rate, Converter, Batch
 from .permissions import RateObjectPermission
 from .serializers import RateSerializer, BatchSerializer, ResultSerializer
 
@@ -63,10 +63,10 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         return qs
 
     data = openapi.Parameter('data', openapi.IN_QUERY,
-                             description="Array of amounts to convert",
+                             description="Array of amounts to convert {currency: str, amount: float, date: YYYY-MM-DD}",
                              type=openapi.TYPE_ARRAY,
                              items=[openapi.TYPE_STRING, openapi.TYPE_NUMBER, openapi.TYPE_STRING])
-    target = openapi.Parameter('target', openapi.IN_QUERY, description="Currency to convert to",
+    target = openapi.Parameter('target', openapi.IN_QUERY, description="Currency to convert to (EUR)",
                                type=openapi.TYPE_STRING)
     key = openapi.Parameter('key', openapi.IN_QUERY, description="Client key", type=openapi.TYPE_STRING)
     batch = openapi.Parameter('batch_id', openapi.IN_QUERY, description="Batch number for multiple sets",
@@ -164,30 +164,29 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         serializer = RateSerializer(rates, many=True)
         return Response(serializer.data, content_type="application/json")
 
-    @swagger_auto_schema(method='post', manual_parameters=[data, batch, eob], responses={200: ResultSerializer})
+    @swagger_auto_schema(method='post', manual_parameters=[data, target, key, batch, eob], responses={200: ResultSerializer})
     @action(['POST'], detail=False, url_path='convert', url_name="convert")
     def convert(self, request):
         """
         Converts a list of amounts with currency and date to a reference currency
         :param request: HTTP request
         """
-        data = request.POST.get('data')
-        target = request.POST.get('target', 'EUR')
-        batch_id = request.POST.get('batch')
-        key = request.POST.get('key')
-        eob = request.POST.get('eob', False)
-        converter = None
-        if batch_id:
+        data = request.data.get('data')
+        target = request.data.get('target', 'EUR')
+        batch_id = request.data.get('batch')
+        key = request.data.get('key')
+        eob = request.data.get('eob', False)
+        try:
             converter = Converter.load(batch_id)
-        if not converter:
+        except KeyError:
             converter = Converter(
+                id=batch_id,
                 user=request.user,
                 key=key,
                 base_currency=target
             )
-        if errors := converter.check_data(data=data):
+        if errors := converter.add_data(data=data):
             return Response(errors, status=HTTP_400_BAD_REQUEST)
-        converter.add_data(data=data)
         if eob or not batch_id:
             result = converter.convert()
             return Response(result, content_type="application/json")
@@ -198,4 +197,6 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     @action(['GET'], detail=True, url_path='watch', url_name="watch")
     def watch(self, request, pk: str):
         converter = Converter.load(pk)
-        return Response({'id': pk, 'status': converter.status}, content_type="application/json")
+        batch = Batch(pk, converter.status)
+        serializer = BatchSerializer(batch)
+        return Response(serializer.data, content_type="application/json")
