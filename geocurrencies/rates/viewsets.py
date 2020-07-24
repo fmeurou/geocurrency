@@ -8,6 +8,7 @@ from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
+from rest_framework.views import APIView
 
 from geocurrencies.currencies.models import Currency
 from .forms import RateForm
@@ -62,16 +63,8 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             qs = qs.filter(base_currency=currency)
         return qs
 
-    data = openapi.Parameter('data', openapi.IN_QUERY,
-                             description="Array of amounts to convert {currency: str, amount: float, date: YYYY-MM-DD}",
-                             type=openapi.TYPE_ARRAY,
-                             items=[openapi.TYPE_STRING, openapi.TYPE_NUMBER, openapi.TYPE_STRING])
-    target = openapi.Parameter('target', openapi.IN_QUERY, description="Currency to convert to (EUR)",
-                               type=openapi.TYPE_STRING)
     key = openapi.Parameter('key', openapi.IN_QUERY, description="Client key", type=openapi.TYPE_STRING)
-    batch = openapi.Parameter('batch_id', openapi.IN_QUERY, description="Batch number for multiple sets",
-                              type=openapi.FORMAT_UUID)
-    eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
+
     base_currency = openapi.Parameter('base_currency', openapi.IN_QUERY, description="Base currency for rate",
                                       type=openapi.TYPE_STRING)
     currency = openapi.Parameter('currency', openapi.IN_QUERY, description="Currency for rate",
@@ -164,9 +157,23 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         serializer = RateSerializer(rates, many=True)
         return Response(serializer.data, content_type="application/json")
 
-    @swagger_auto_schema(method='post', manual_parameters=[data, target, key, batch, eob], responses={200: ResultSerializer})
-    @action(['POST'], detail=False, url_path='convert', url_name="convert")
-    def convert(self, request):
+
+class ConvertView(APIView):
+    data = openapi.Parameter('data', openapi.IN_QUERY,
+                             description="Array of amounts to convert {currency: str, amount: float, date: YYYY-MM-DD}",
+                             type=openapi.TYPE_ARRAY,
+                             items=[openapi.TYPE_STRING, openapi.TYPE_NUMBER, openapi.TYPE_STRING])
+    target = openapi.Parameter('target', openapi.IN_QUERY, description="Currency to convert to (EUR)",
+                               type=openapi.TYPE_STRING)
+    key = openapi.Parameter('key', openapi.IN_QUERY, description="Client key", type=openapi.TYPE_STRING)
+    batch = openapi.Parameter('batch_id', openapi.IN_QUERY, description="Batch number for multiple sets",
+                              type=openapi.FORMAT_UUID)
+    eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
+
+    @swagger_auto_schema(manual_parameters=[data, target, key, batch, eob],
+                         responses={200: ResultSerializer})
+    @action(['POST'], detail=False, url_path='', url_name="convert")
+    def post(self, request, *args, **kwargs):
         """
         Converts a list of amounts with currency and date to a reference currency
         :param request: HTTP request
@@ -193,9 +200,12 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         else:
             return Response({'id': converter.id, 'status': converter.status}, content_type="application/json")
 
-    @swagger_auto_schema(method='get', responses={200: BatchSerializer})
-    @action(['GET'], detail=True, url_path='watch', url_name="watch")
-    def watch(self, request, pk: str):
+
+class WatchView(APIView):
+
+    @swagger_auto_schema(responses={200: BatchSerializer})
+    @action(['GET'], detail=True, url_path='', url_name="watch")
+    def get(self, request, pk, *args, **kwargs):
         converter = Converter.load(pk)
         batch = Batch(pk, converter.status)
         serializer = BatchSerializer(batch)

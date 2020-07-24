@@ -262,52 +262,10 @@ class RateTestCase(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_convert_request(self):
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        client = APIClient()
-        response = client.post(
-            '/rates/convert/',
-            data={
-                'data': self.amounts,
-                'target': 'EUR',
-            },
-            format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('sum', response.json())
-        self.assertEqual(len(response.json().get('detail')), len(self.amounts))
-
-    def test_convert_batch_request(self):
-        batch_id = uuid.uuid4()
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        client = APIClient()
-        response = client.post(
-            '/rates/convert/',
-            data={
-                'data': self.amounts,
-                'target': 'EUR',
-                'batch': batch_id,
-            },
-            format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
-        self.assertEqual(response.json().get('id'), str(batch_id))
-        response = client.post(
-            '/rates/convert/',
-            data={
-                'data': self.amounts,
-                'batch': batch_id,
-                'target': 'EUR',
-                'eob': True
-            },
-            format='json')
-        self.assertEqual(response.json().get('status'), Converter.FINISHED)
-        self.assertEqual(len(response.json().get('detail')), 2*len(self.amounts))
-
 
 class ConverterTest(TestCase):
+    base_currency = 'EUR'
+    currency = 'USD'
 
     def setUp(self) -> None:
         self.user, created = User.objects.get_or_create(
@@ -394,3 +352,70 @@ class ConverterTest(TestCase):
         self.assertEqual(len(output.get('detail')), len(converter.data))
         converted_sum = sum([d['converted_amount'] for d in output['detail']])
         self.assertEqual(output.get('sum'), converted_sum)
+
+    def test_convert_request(self):
+        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
+        client = APIClient()
+        response = client.post(
+            '/convert/',
+            data={
+                'data': self.amounts,
+                'target': 'EUR',
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('sum', response.json())
+        self.assertEqual(len(response.json().get('detail')), len(self.amounts))
+
+    def test_convert_batch_request(self):
+        batch_id = uuid.uuid4()
+        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
+        client = APIClient()
+        response = client.post(
+            '/convert/',
+            data={
+                'data': self.amounts,
+                'target': 'EUR',
+                'batch': batch_id,
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('id', response.json())
+        self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('id'), str(batch_id))
+        response = client.post(
+            '/convert/',
+            data={
+                'data': self.amounts,
+                'batch': batch_id,
+                'target': 'EUR',
+                'eob': True
+            },
+            format='json')
+        self.assertEqual(response.json().get('status'), Converter.FINISHED)
+        self.assertEqual(len(response.json().get('detail')), 2*len(self.amounts))
+
+    def test_watch_request(self):
+        batch_id = uuid.uuid4()
+        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
+        client = APIClient()
+        response = client.post(
+            '/convert/',
+            data={
+                'data': self.amounts,
+                'target': 'EUR',
+                'batch': batch_id,
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('id', response.json())
+        self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('id'), str(batch_id))
+        response = client.get(
+            f'/convert/{batch_id}/',
+            format='json')
+        self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('id'), str(batch_id))

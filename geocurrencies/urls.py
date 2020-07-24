@@ -23,6 +23,7 @@ from rest_framework import permissions
 from geocurrencies.countries import urls as country_urls
 from geocurrencies.currencies import urls as currency_urls
 from geocurrencies.rates import urls as rate_urls
+from geocurrencies.rates import convert_urls
 from .views import index
 
 schema_view = get_schema_view(
@@ -48,5 +49,6 @@ urlpatterns = [
     path('currencies/', include(currency_urls)),
     path('countries/', include(country_urls)),
     path('rates/', include(rate_urls)),
+    path('convert/', include(convert_urls)),
     path('', index)
 ]
