@@ -1,7 +1,10 @@
 import logging
+import pickle
+import uuid
 from datetime import date
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -36,6 +39,7 @@ class RateManager(models.Manager):
             )
             _rate.value = rate.get('value')
             _rate.save()
+            output.append(_rate)
         return output
 
     def fetch_rates(self,
@@ -59,10 +63,9 @@ class RateManager(models.Manager):
                 currency=currency,
                 date_obj=date_obj,
                 to_obj=to_obj)
-            print("Rate.fetch_rate", rates)
             if not rates:
                 return False
-        except RatesNotAvailableError as e:
+        except RatesNotAvailableError:
             return False
         return self.__sync_rates__(rates=rates, base_currency=base_currency, date_obj=date_obj, to_obj=to_obj)
 
@@ -98,14 +101,13 @@ class RateManager(models.Manager):
         if rates:
             return rates.latest('value_date')
         elif use_forex:
-            service_name = rate_service or settings.RATE_SERVICE
             try:
-                rates = service(service_type='rates', service_name=service_name).fetch_rates(
+                rates = self.fetch_rates(
                     base_currency=base_currency,
                     currency=currency,
                     date_obj=date_obj)
                 if not rates:
-                    return False
+                    return None
                 return Rate.objects.get(
                     key=key,
                     currency=currency,
@@ -195,30 +197,163 @@ class Rate(models.Model):
         unique_together = [['key', 'currency', 'base_currency', 'value_date']]
 
     @classmethod
-    def convert(cls, currency, key=None, base_currency='EUR', date_obj=date.today(), amount=0):
-        rate = Rate.objects.rate_at_date(currency, key, base_currency, date_obj)
-        return {
-            'currency': rate.currency,
-            'base': rate.base_currency,
-            'date': date_obj,
-            'exchange_rate': rate.value,
-            'amount': amount,
-            'converted_amount': rate.value * amount
-        }
+    def convert(self, currency, key=None, base_currency='EUR', date_obj=date.today(), amount=0):
+        converter = Converter(self.user, key=key, base_currency=base_currency)
+        converter.add_data(
+            {
+                'currency': currency,
+                'amount': amount,
+                'date': date_obj
+            }
+        )
+        result = converter.convert()
+        return result
 
 
 @receiver(post_save, sender=Rate)
 def create_reverse_rate(sender, instance, created, **kwargs):
     if created and not Rate.objects.filter(
+            user=instance.user,
             key=instance.key,
             value_date=instance.value_date,
             currency=instance.base_currency,
             base_currency=instance.currency,
     ).exists() and instance.value != 0:
         Rate.objects.create(
+            user=instance.user,
             key=instance.key,
             value_date=instance.value_date,
             currency=instance.base_currency,
             base_currency=instance.currency,
             value=1 / instance.value
         )
+
+
+class Amount:
+    currency = None
+    amount = 0
+    date_obj = None
+
+    def __init__(self, currency, amount, date_obj):
+        self.currency = currency
+        self.amount = amount
+        self.date_obj = date_obj
+
+    def __repr__(self):
+        return f'{self.date_obj}: {self.currency} {self.amount}'
+
+
+class Converter:
+    pass
+
+
+class Converter:
+    INITIATED_STATUS = 'initiated'
+    INSERTING_STATUS = 'inserting'
+    PENDING_STATUS = 'pending'
+    FINISHED = 'finished'
+    id = None
+    user = None
+    base_currency = settings.BASE_CURRENCY
+    status = INITIATED_STATUS
+    data = []
+    converted_lines = []
+    aggregated_result = {}
+    cached_currencies = {}
+
+    def __init__(self, user: User, key: str = None, base_currency: str = settings.BASE_CURRENCY):
+        self.base_currency = base_currency
+        self.user = user
+        self.key = key
+        self.id = uuid.uuid4()
+        self.data = []
+
+    @classmethod
+    def load(cls, id: str) -> Converter:
+        obj = cache.get(id)
+        if obj:
+            return pickle.loads(obj)
+        raise KeyError(f"Conversion with id {id} not found in cache")
+
+    def save(self):
+        cache.set(self.id, pickle.dumps(self))
+
+    def add_data(self, data: []) -> []:
+        """
+        Check data and add it to the dataset
+        Return list of errors
+        """
+        if errors := self.check_data(data):
+            return errors
+        self.status = self.INSERTING_STATUS
+        self.cache_currencies()
+        self.save()
+        return []
+
+    def end_batch(self):
+        self.status = self.PENDING_STATUS
+
+    def check_data(self, data):
+        """
+        Validates that the data contains
+        - currency (str)
+        - amount (float)
+        - date (YYYY-MM-DD)
+        """
+        from .serializers import AmountSerializer
+        errors = []
+        for line in data:
+            serializer = AmountSerializer(data=line)
+            if serializer.is_valid():
+                self.data.append(serializer.create(serializer.validated_data))
+            else:
+                errors.append(serializer.errors)
+        return errors
+
+    def cache_currencies(self):
+        """
+        Reads currencies in data and fetches rates, put them in memory
+        """
+        for line in self.data:
+            self.cached_currencies[line.date_obj] = self.cached_currencies.get(line.date_obj) or {}
+            rate = Rate.objects.rate_at_date(
+                key=self.key,
+                base_currency=self.base_currency,
+                currency=line.currency,
+                date_obj=line.date_obj)
+            if rate:
+                self.cached_currencies[line.date_obj][line.currency] = rate.value
+
+    def convert(self) -> dict:
+        """
+        Converts data to base currency
+        """
+        output = {
+            'batch_id': self.id,
+            'target': self.base_currency,
+            'detail': [],
+            'sum': 0,
+            'errors': []
+        }
+        sum = 0
+        for amount in self.data:
+            rate = self.cached_currencies[amount.date_obj][amount.currency]
+            if rate:
+                value = float(amount.amount) / rate
+                sum += value
+                output['detail'].append({
+                    'currency': amount.currency,
+                    'original_amount': amount.amount,
+                    'date': amount.date_obj,
+                    'rate': rate,
+                    'converted_amount': value
+                })
+            else:
+                output['errors'].append({
+                    'currency': amount.currency,
+                    'original_amount': amount.amount,
+                    'date': amount.date_obj
+                })
+        output['sum'] = sum
+        self.status = self.FINISHED
+        return output

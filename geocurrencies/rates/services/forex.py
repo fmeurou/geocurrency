@@ -26,12 +26,12 @@ class ForexService(RateService):
             ) for key, value in _rates.items()]
         except converter.RatesNotAvailableError as e:
             logging.error(e)
-            print(e)
             raise RatesNotAvailableError
 
     def _fetch_single_rate(self,
                            provider: converter.CurrencyRates,
-                           base_currency: str, currency: str, date_obj: date) -> []:
+                           base_currency: str,
+                           currency: str, date_obj: date) -> []:
         try:
             value = provider.get_rate(dest_cur=currency, base_cur=base_currency, date_obj=date_obj)
             return [self.serializer(
@@ -43,7 +43,6 @@ class ForexService(RateService):
 
         except converter.RatesNotAvailableError as e:
             logging.error(e)
-            print(e)
             raise RatesNotAvailableError
 
     def fetch_rates(self,
@@ -55,9 +54,11 @@ class ForexService(RateService):
         _rates = []
         if currency:
             for i in range(((to_obj or date_obj) - date_obj).days + 1):
-                _rates = self._fetch_all_rates(c, base_currency=base_currency, date_obj=date_obj + timedelta(i))
+                _rates = self._fetch_single_rate(c, base_currency=base_currency, currency=currency,
+                                                 date_obj=date_obj + timedelta(i))
+                rates.extend(_rates)
         else:
             for i in range(((to_obj or date_obj) - date_obj).days + 1):
                 _rates = self._fetch_all_rates(c, base_currency=base_currency, date_obj=date_obj + timedelta(i))
-            rates.extend(_rates)
+                rates.extend(_rates)
         return rates

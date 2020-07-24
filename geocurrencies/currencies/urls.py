@@ -10,5 +10,4 @@ router.register(r'', CurrencyViewset, basename='currencies')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-
 ]

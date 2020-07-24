@@ -1,5 +1,6 @@
-import logging
 import statistics
+
+import logging
 from datetime import date, timedelta
 from django.http import HttpResponseNotFound
 from django.utils.decorators import method_decorator
@@ -11,7 +12,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from geocurrencies.countries.models import Country
 from geocurrencies.countries.serializers import CountrySerializer
 from geocurrencies.rates.serializers import RateSerializer
 from .models import Currency
@@ -26,34 +26,41 @@ class CurrencyViewset(ReadOnlyModelViewSet):
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
     def list(self, request, *args, **kwargs):
+        """
+        List of currencies
+        """
         currencies = Currency.all_currencies()
         serializer = CurrencySerializer(currencies, many=True, context={'request': request})
         return Response(serializer.data)
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
-    def retrieve(self, request, pk, *args, **kwargs):
+    def retrieve(self, request, pk, *args, **kwargs) -> Response:
+        """
+        Retrieve single record
+        """
         currency = Currency(pk)
         serializer = CurrencySerializer(currency, context={'request': request})
         return Response(serializer.data)
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: CountrySerializer})
     @action(['GET'], detail=True, url_path='countries', url_name="get_countries")
-    def get_countries(self, request, pk, *args, **kwargs):
+    def get_countries(self, request, pk) -> Response:
         """
         Get all countries for the currency
+        :param request: HTTP request
         :param pk: Currency id
         :return: List of countries
         """
         try:
             currency = Currency(pk)
             serializer = CountrySerializer(currency.countries,
-                many=True,
-                context={'request': request})
+                                           many=True,
+                                           context={'request': request})
             return Response(serializer.data)
         except (KeyError, ValueError) as e:
-            print(e)
             logging.error(e)
             return HttpResponseNotFound('Currency not found')
 
@@ -62,19 +69,21 @@ class CurrencyViewset(ReadOnlyModelViewSet):
     to_date = openapi.Parameter('to_date', openapi.IN_QUERY, description="To date (YYYY-MM-DD)",
                                 type=openapi.TYPE_STRING)
     base_currency = openapi.Parameter('base', openapi.IN_QUERY, description="Base currency (defaults to EUR)",
-                               type=openapi.TYPE_STRING)
+                                      type=openapi.TYPE_STRING)
     currency = openapi.Parameter('base_currency', openapi.IN_QUERY, description="currency",
-                                  type=openapi.TYPE_STRING)
+                                 type=openapi.TYPE_STRING)
     key = openapi.Parameter('key', openapi.IN_QUERY, description="custom key", type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(method='get', manual_parameters=[from_date, to_date, base_currency, key])
+    @swagger_auto_schema(method='get',
+                         manual_parameters=[from_date, to_date, base_currency, key],
+                         responses={200: RateSerializer})
     @action(['GET'], detail=True, url_path='rates', url_name="get_currency_rates")
     def get_rates(self, request, pk: str,
                   key: str = None, base_currency: str = 'EUR',
-                  from_date: date = date.today(), to_date: date = date.today(),
-                  *args, **kwargs):
+                  from_date: date = date.today(), to_date: date = date.today()) -> Response:
         """
         Get conversion rates for the currency
+        :param request: HTTP request
         :param pk: Currency id
         :param key: optional custom key
         :param base_currency: optional base currency, defaults to EUR
@@ -93,7 +102,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
         except Currency.DoesNotExist:
             return HttpResponseNotFound('Currency not found')
 
-    def _get_rates(self, base_currency, target_currency, from_date, to_date):
+    def _get_rates(self, base_currency: str, target_currency: str, from_date: date, to_date: date) -> dict:
         """
         Generates list of rates and stats
         """

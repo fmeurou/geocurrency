@@ -10,7 +10,6 @@ from iso4217 import Currency as Iso4217
 from typing import Iterator
 
 from geocurrencies.countries.models import Country
-from geocurrencies.rates.models import Rate
 
 BASE_CURRENCY = 'EUR'
 
@@ -34,6 +33,13 @@ class Currency:
         i = Iso4217(code)
         for a in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
             setattr(self, a, getattr(i, a))
+
+    @classmethod
+    def is_valid(cls, cur: str) -> bool:
+        """
+        Checks if currency is part of iso4217
+        """
+        return cur and cur in [c.code for c in cls.all_currencies()]
 
     @classmethod
     def all_currencies(cls) -> Iterator[Currency]:
@@ -80,6 +86,7 @@ class Currency:
         :params end_date: rates to that date included
         :return: List of rates
         """
+        from geocurrencies.rates.models import Rate
         qs = Rate.objects.filter(currency=self.code)
         if user:
             qs = qs.filter(models.Q(user=user) | models.Q(user=None))
@@ -92,21 +99,3 @@ class Currency:
         if end_date:
             qs = qs.filter(value_date__lte=end_date)
         return qs
-
-    def convert(self, client_key, target_currency, amount=1, conversion_date=None):
-        if not conversion_date:
-            conversion_date = datetime.now() - timedelta(1)
-        cache_key = 'GEO{}{}{}'.format(
-            conversion_date.strftime('%Y%m%d'),
-            target_currency.code,
-            self.code
-        )
-        base_rate = cache.get(cache_key)
-        if not base_rate:
-            try:
-                c = CurrencyRates()
-                base_rate = c.convert(target_currency.code, self.code, 1, conversion_date)
-                cache.set(cache_key, base_rate, 60 * 60 * 24)
-            except RatesNotAvailableError:
-                base_rate = 0
-        return conversion_date, target_currency, base_rate * amount

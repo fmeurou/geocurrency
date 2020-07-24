@@ -1,6 +1,6 @@
-from iso4217 import Currency as Iso4217
 from datetime import date
 from django.test import TestCase
+from iso4217 import Currency as Iso4217
 from rest_framework import status
 from rest_framework.test import APIClient
 
@@ -20,6 +20,10 @@ class CurrencyTestCase(TestCase):
         self.assertEqual(c.number, 978)
         self.assertEqual(c.code, 'EUR')
 
+    def test_is_valid(self):
+        self.assertTrue(Currency.is_valid('EUR'))
+        self.assertFalse(Currency.is_valid('REU'))
+
     def test_get_for_country(self):
         currencies = Currency.get_for_country('FR')
         self.assertIsNotNone(currencies)
@@ -30,13 +34,18 @@ class CurrencyTestCase(TestCase):
         self.assertEqual(c.number, 978)
         self.assertEqual(c.code, 'EUR')
 
-    def test_convert(self):
+    def test_countries(self):
         c = Currency('EUR')
+        self.assertIsNotNone(c.countries)
+
+    def test_get_rates(self):
+        c = Currency('EUR')
+        rates = c.get_rates()
+        self.assertIsNotNone(rates)
 
     def test_list_request(self):
         client = APIClient()
         response = client.get('/currencies/', format='json')
-        first_country = Currency.all_currencies()[0]
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(Currency.all_currencies()))
         self.assertEqual(response.data[0].get('code'), 'AFN')
