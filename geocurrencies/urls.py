@@ -49,6 +49,6 @@ urlpatterns = [
     path('currencies/', include(currency_urls)),
     path('countries/', include(country_urls)),
     path('rates/', include(rate_urls)),
-    path('convert/', include(convert_urls)),
+    path('rates/convert/', include(convert_urls)),
     path('', index)
 ]

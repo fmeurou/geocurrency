@@ -8,3 +8,7 @@ class CurrencySerializer(serializers.Serializer):
     exponent = serializers.IntegerField(read_only=True)
     number = serializers.IntegerField(read_only=True)
     value = serializers.CharField(read_only=True)
+    symbol = serializers.SerializerMethodField()
+
+    def get_symbol(self, obj):
+        return obj.symbol

@@ -16,3 +16,4 @@ lxml
 pysendfile
 countryinfo
 djongo
+pint

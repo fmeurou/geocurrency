@@ -19,6 +19,7 @@ class CurrencyTestCase(TestCase):
         self.assertEqual(c.currency_name, 'Euro')
         self.assertEqual(c.number, 978)
         self.assertEqual(c.code, 'EUR')
+        self.assertEqual(c.symbol, '€')
 
     def test_is_valid(self):
         self.assertTrue(Currency.is_valid('EUR'))
@@ -55,6 +56,7 @@ class CurrencyTestCase(TestCase):
         response = client.get('/currencies/EUR/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data.get('code'), 'EUR')
+        self.assertEqual(response.data.get('symbol'), '€')
 
     def test_get_countries_request(self):
         client = APIClient()

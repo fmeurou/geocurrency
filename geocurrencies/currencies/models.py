@@ -1,17 +1,14 @@
 import logging
 from datetime import date
-from datetime import datetime, timedelta
+from typing import Iterator
+
 from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.db import models
-from forex_python.converter import CurrencyRates
-from forex_python.converter import RatesNotAvailableError
 from iso4217 import Currency as Iso4217
-from typing import Iterator
 
 from geocurrencies.countries.models import Country
-
-BASE_CURRENCY = 'EUR'
+from . import CURRENCY_SYMBOLS, DEFAULT_SYMBOL
 
 
 class Currency:
@@ -99,3 +96,7 @@ class Currency:
         if end_date:
             qs = qs.filter(value_date__lte=end_date)
         return qs
+
+    @property
+    def symbol(self):
+        return CURRENCY_SYMBOLS.get(self.code, DEFAULT_SYMBOL)
