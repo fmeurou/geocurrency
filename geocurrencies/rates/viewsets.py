@@ -1,6 +1,6 @@
 from datetime import datetime, date, timedelta
 from django.db import models
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseNotFound
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, status, mixins
@@ -205,8 +205,11 @@ class WatchView(APIView):
 
     @swagger_auto_schema(responses={200: BatchSerializer})
     @action(['GET'], detail=True, url_path='', url_name="watch")
-    def get(self, request, pk, *args, **kwargs):
-        converter = Converter.load(pk)
-        batch = Batch(pk, converter.status)
+    def get(self, request, converter_id, *args, **kwargs):
+        try:
+            converter = Converter.load(converter_id)
+        except KeyError:
+            return HttpResponseNotFound('Converter not found')
+        batch = Batch(converter_id, converter.status)
         serializer = BatchSerializer(batch)
         return Response(serializer.data, content_type="application/json")

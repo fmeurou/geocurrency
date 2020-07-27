@@ -358,7 +358,7 @@ class ConverterTest(TestCase):
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         client = APIClient()
         response = client.post(
-            '/convert/',
+            '/rates/convert/',
             data={
                 'data': self.amounts,
                 'target': 'EUR',
@@ -374,7 +374,7 @@ class ConverterTest(TestCase):
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         client = APIClient()
         response = client.post(
-            '/convert/',
+            '/rates/convert/',
             data={
                 'data': self.amounts,
                 'target': 'EUR',
@@ -386,7 +386,7 @@ class ConverterTest(TestCase):
         self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
         response = client.post(
-            '/convert/',
+            '/rates/convert/',
             data={
                 'data': self.amounts,
                 'batch': batch_id,
@@ -399,11 +399,12 @@ class ConverterTest(TestCase):
 
     def test_watch_request(self):
         batch_id = uuid.uuid4()
+        print(batch_id)
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         client = APIClient()
         response = client.post(
-            '/convert/',
+            '/rates/convert/',
             data={
                 'data': self.amounts,
                 'target': 'EUR',
@@ -415,7 +416,9 @@ class ConverterTest(TestCase):
         self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
         response = client.get(
-            f'/convert/{batch_id}/',
+            f'/rates/watch/{str(batch_id)}/',
             format='json')
+        print(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json().get('status'), Converter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))

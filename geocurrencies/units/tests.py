@@ -2,6 +2,8 @@ import pint
 from datetime import datetime
 from django.test import TestCase
 from django.utils.translation import ugettext_lazy as _
+from rest_framework.test import APIClient
+from rest_framework import status
 
 from .models import UnitSystem, Unit
 
@@ -9,53 +11,73 @@ from .models import UnitSystem, Unit
 class UnitTest(TestCase):
 
     def test_creation(self):
-        unit = Unit('meter')
+        us = UnitSystem()
+        unit = us.unit('meter')
         self.assertTrue(isinstance(unit.unit, pint.Unit))
 
     def test_readable_dimension(self):
-        unit = Unit('meter')
+        us = UnitSystem()
+        unit = us.unit(unit_name='meter')
         self.assertEqual(unit.readable_dimension, _('length'))
-        unit = Unit('US_international_ohm')
+        unit = us.unit(unit_name='US_international_ohm')
         self.assertEqual(unit.readable_dimension, f"{_('length')}^2 * {_('mass')} / {_('current')}^2 / {_('time')}^3")
+
+    def test_list_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 class UnitSystemTest(TestCase):
 
     def test_available_systems(self):
-        print(datetime.now())
         us = UnitSystem()
         available_systems = us.available_systems()
-        print("available systems", datetime.now())
         self.assertEqual(available_systems, ['Planck', 'SI', 'US', 'atomic', 'cgs', 'imperial', 'mks'])
 
     def test_available_units(self):
-        print(datetime.now())
-        us = UnitSystem(system='imperial')
-        available_units = us.available_units()
-        print("available units", datetime.now())
+        us = UnitSystem(system_name='imperial')
+        available_units = us.available_unit_names()
         self.assertIn('UK_hundredweight', available_units)
 
     def test_available_units_different(self):
-        print("available_units end", datetime.now())
-        us = UnitSystem(system='mks')
-        available_units = us.available_units()
-        print("available_units si", datetime.now())
+        us = UnitSystem(system_name='mks')
+        available_units = us.available_unit_names()
         self.assertIn('meter', available_units)
         self.assertNotIn('UK_hundredweight', available_units)
-        imperial_available_units = us.available_units('imperial')
-        print("available_units imperial", datetime.now())
+        imperial = UnitSystem(system_name='imperial')
+        imperial_available_units = imperial.available_unit_names()
         self.assertIn('UK_hundredweight', imperial_available_units)
 
     def test_units_per_dimensionality(self):
-        print(datetime.now())
-        us = UnitSystem(system='mks')
+        us = UnitSystem(system_name='mks')
         upd = us.units_per_dimensionality()
-        print("units_per_dimensionality", datetime.now())
         self.assertIn(_('length'), upd)
 
     def test_dimensionalities(self):
-        print(datetime.now())
-        us = UnitSystem(system='mks')
+        us = UnitSystem(system_name='mks')
         dims = us.dimensionalities
-        print("end dims", datetime.now())
         self.assertIn(_('length'), dims)
+
+    def test_list_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_retrieve_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_retrieve_request_not_found(self):
+        client = APIClient()
+        response = client.get(
+            '/units/si/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

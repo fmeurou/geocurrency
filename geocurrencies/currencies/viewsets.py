@@ -8,6 +8,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
@@ -22,6 +23,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
     """
     View for currency
     """
+    lookup_field = 'code'
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
@@ -35,11 +37,11 @@ class CurrencyViewset(ReadOnlyModelViewSet):
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
-    def retrieve(self, request, pk, *args, **kwargs) -> Response:
+    def retrieve(self, request, code, *args, **kwargs) -> Response:
         """
-        Retrieve single record
+        Retrieve single record based on iso4217 code
         """
-        currency = Currency(pk)
+        currency = Currency(code)
         serializer = CurrencySerializer(currency, context={'request': request})
         return Response(serializer.data)
 
@@ -47,22 +49,22 @@ class CurrencyViewset(ReadOnlyModelViewSet):
     @method_decorator(vary_on_cookie)
     @swagger_auto_schema(method='get', responses={200: CountrySerializer})
     @action(['GET'], detail=True, url_path='countries', url_name="get_countries")
-    def get_countries(self, request, pk) -> Response:
+    def get_countries(self, request, code) -> Response:
         """
         Get all countries for the currency
         :param request: HTTP request
-        :param pk: Currency id
+        :param code: Currency id
         :return: List of countries
         """
         try:
-            currency = Currency(pk)
+            currency = Currency(code)
             serializer = CountrySerializer(currency.countries,
                                            many=True,
                                            context={'request': request})
             return Response(serializer.data)
         except (KeyError, ValueError) as e:
             logging.error(e)
-            return HttpResponseNotFound('Currency not found')
+            return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
     from_date = openapi.Parameter('from_date', openapi.IN_QUERY, description="From date (YYYY-MM-DD)",
                                   type=openapi.TYPE_STRING)
@@ -78,13 +80,13 @@ class CurrencyViewset(ReadOnlyModelViewSet):
                          manual_parameters=[from_date, to_date, base_currency, key],
                          responses={200: RateSerializer})
     @action(['GET'], detail=True, url_path='rates', url_name="get_currency_rates")
-    def get_rates(self, request, pk: str,
+    def get_rates(self, request, code: str,
                   key: str = None, base_currency: str = 'EUR',
                   from_date: date = date.today(), to_date: date = date.today()) -> Response:
         """
         Get conversion rates for the currency
         :param request: HTTP request
-        :param pk: Currency id
+        :param code: Currency id
         :param key: optional custom key
         :param base_currency: optional base currency, defaults to EUR
         :param from_date: optional limit results to rates range in time
@@ -92,7 +94,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
         :return: List of rates
         """
         try:
-            c = Currency(pk)
+            c = Currency(code)
             user = None
             if request.user and request.user.is_authenticated:
                 user = request.user
@@ -100,7 +102,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
             serializer = RateSerializer(rates, many=True, context={'request': request})
             return Response(serializer.data)
         except Currency.DoesNotExist:
-            return HttpResponseNotFound('Currency not found')
+            return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
     def _get_rates(self, base_currency: str, target_currency: str, from_date: date, to_date: date) -> dict:
         """
@@ -118,8 +120,8 @@ class CurrencyViewset(ReadOnlyModelViewSet):
             dates.append(
                 {
                     'conversion_date': cd.strftime('%Y-%m-%d'),
-                    'currency': base_currency.code,
-                    'reference': target_currency.code,
+                    'currency': base_currency,
+                    'reference': target_currency,
                     'rate': rate
                 }
             )

@@ -19,71 +19,72 @@ class CountryViewset(ViewSet):
     """
     View for currency
     """
+    lookup_field = 'alpha_2'
 
     def list(self, request):
         countries = Country.all_countries()
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
-    def retrieve(self, request, pk):
+    def retrieve(self, request, alpha_2):
         try:
-            country = Country(pk)
+            country = Country(alpha_2)
             serializer = CountryDetailSerializer(country, context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     @action(['GET'], detail=True, url_path='timezones', url_name='timezones')
-    def timezones(self, request, pk):
+    def timezones(self, request, alpha_2):
         """
         Send timezones for a specific country
         """
         try:
-            c = Country(pk)
+            c = Country(alpha_2)
             return Response(c.timezones, content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     @action(['GET'], detail=True, url_path='currencies', url_name='currencies')
-    def currencies(self, request, pk):
+    def currencies(self, request, alpha_2):
         """
         Send timezones for a specific country
         """
         try:
-            c = CountryInfo(pk)
+            c = CountryInfo(alpha_2)
             return Response(c.currencies(), content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     @action(['GET'], detail=True, url_path='borders', url_name='borders')
-    def borders(self, request, pk):
+    def borders(self, request, alpha_2):
         """
         Send borders for a specific country
         """
         try:
-            c = CountryInfo(pk)
+            c = CountryInfo(alpha_2)
             return Response(c.borders(), content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     @action(['GET'], detail=True, url_path='provinces', url_name='provinces')
-    def provinces(self, request, pk):
+    def provinces(self, request, alpha_2):
         """
         Send provinces for a specific country
         """
         try:
-            c = CountryInfo(pk)
+            c = CountryInfo(alpha_2)
             return Response(c.provinces(), content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     @action(['GET'], detail=True, url_path='languages', url_name='languages')
-    def languages(self, request, pk):
+    def languages(self, request, alpha_2):
         """
         Send languages for a specific country
         """
         try:
-            c = CountryInfo(pk)
+            c = CountryInfo(alpha_2)
             return Response(c.languages(), content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
@@ -91,7 +92,7 @@ class CountryViewset(ViewSet):
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='colors', url_name='colors')
-    def colors(self, request, pk):
+    def colors(self, request, alpha_2):
         """
             Get existing flag colors
         """
