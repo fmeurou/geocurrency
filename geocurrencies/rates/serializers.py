@@ -1,8 +1,9 @@
 from datetime import datetime, date
+
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Rate, Amount, Batch
+from .models import Rate, Amount
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -65,42 +66,7 @@ class AmountSerializer(serializers.Serializer):
         return Amount(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.email = validated_data.get('currency', instance.email)
-        instance.content = validated_data.get('amount', instance.content)
-        instance.created = validated_data.get('date_obj', instance.created)
+        instance.currency = validated_data.get('currency', instance.email)
+        instance.amount = validated_data.get('amount', instance.content)
+        instance.date_obj = validated_data.get('date_obj', instance.created)
         return instance
-
-
-class BatchSerializer(serializers.Serializer):
-    id = serializers.CharField()
-    status = serializers.CharField()
-
-    def create(self, validated_data):
-        return Batch(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.status = validated_data.get('status', instance.status)
-        return instance
-
-
-class ErrorSerializer(serializers.Serializer):
-    currency = serializers.CharField()
-    original_amount = serializers.FloatField()
-    date = serializers.DateField()
-
-
-class DetailSerializer(serializers.Serializer):
-    currency = serializers.CharField()
-    original_amount = serializers.FloatField()
-    date = serializers.DateField()
-    rate = serializers.FloatField()
-    converted_amount = serializers.FloatField()
-
-
-class ResultSerializer(serializers.Serializer):
-    id = serializers.UUIDField()
-    target = serializers.CharField()
-    detail = DetailSerializer(many=True)
-    sum = serializers.FloatField()
-    status = serializers.CharField()
-    errors = ErrorSerializer(many=True)

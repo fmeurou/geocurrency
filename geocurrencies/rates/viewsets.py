@@ -10,11 +10,13 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
+from geocurrencies.converters.models import Batch
+from geocurrencies.converters.serializers import BatchSerializer, ConverterResultSerializer
 from geocurrencies.currencies.models import Currency
 from .forms import RateForm
-from .models import Rate, Converter, Batch
+from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer, BatchSerializer, ResultSerializer
+from .serializers import RateSerializer
 
 
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
@@ -171,7 +173,7 @@ class ConvertView(APIView):
     eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
 
     @swagger_auto_schema(manual_parameters=[data, target, key, batch, eob],
-                         responses={200: ResultSerializer})
+                         responses={200: ConverterResultSerializer})
     @action(['POST'], detail=False, url_path='', url_name="convert")
     def post(self, request, *args, **kwargs):
         """
@@ -184,9 +186,9 @@ class ConvertView(APIView):
         key = request.data.get('key')
         eob = request.data.get('eob', False)
         try:
-            converter = Converter.load(batch_id)
+            converter = RateConverter.load(batch_id)
         except KeyError:
-            converter = Converter(
+            converter = RateConverter(
                 id=batch_id,
                 user=request.user,
                 key=key,
@@ -196,20 +198,7 @@ class ConvertView(APIView):
             return Response(errors, status=HTTP_400_BAD_REQUEST)
         if eob or not batch_id:
             result = converter.convert()
-            return Response(result, content_type="application/json")
+            serializer = ConverterResultSerializer(result)
+            return Response(serializer.data, content_type="application/json")
         else:
             return Response({'id': converter.id, 'status': converter.status}, content_type="application/json")
-
-
-class WatchView(APIView):
-
-    @swagger_auto_schema(responses={200: BatchSerializer})
-    @action(['GET'], detail=True, url_path='', url_name="watch")
-    def get(self, request, converter_id, *args, **kwargs):
-        try:
-            converter = Converter.load(converter_id)
-        except KeyError:
-            return HttpResponseNotFound('Converter not found')
-        batch = Batch(converter_id, converter.status)
-        serializer = BatchSerializer(batch)
-        return Response(serializer.data, content_type="application/json")

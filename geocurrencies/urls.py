@@ -23,8 +23,8 @@ from rest_framework import permissions
 from geocurrencies.countries import urls as country_urls
 from geocurrencies.currencies import urls as currency_urls
 from geocurrencies.rates import urls as rate_urls
-from geocurrencies.rates import convert_urls
 from geocurrencies.units import urls as unit_urls
+from geocurrencies.converters.views import WatchView
 from .views import index
 
 schema_view = get_schema_view(
@@ -51,5 +51,6 @@ urlpatterns = [
     path('countries/', include(country_urls)),
     path('rates/', include(rate_urls)),
     path('units/', include(unit_urls)),
+    url(r'^watch/(?P<converter_id>[0-9a-f-]{36})/$', WatchView.as_view()),
     path('', index)
 ]

@@ -1,11 +1,14 @@
-import pint
-from datetime import datetime
-from django.test import TestCase
-from django.utils.translation import ugettext_lazy as _
-from rest_framework.test import APIClient
-from rest_framework import status
+import uuid
 
-from .models import UnitSystem, Unit
+import pint
+from django.test import TestCase
+from django.core.cache import cache
+from django.utils.translation import ugettext_lazy as _
+from rest_framework import status
+from rest_framework.test import APIClient
+
+from .models import UnitSystem, UnitConverter
+from .serializers import AmountSerializer
 
 
 class UnitTest(TestCase):
@@ -67,6 +70,7 @@ class UnitSystemTest(TestCase):
             '/units/'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('SI', [us['system_name'] for us in response.json()])
 
     def test_retrieve_request(self):
         client = APIClient()
@@ -74,6 +78,8 @@ class UnitSystemTest(TestCase):
             '/units/SI/'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json().get("system_name"), "SI")
+        self.assertIn("length", response.json().get("dimensions"))
 
     def test_retrieve_request_not_found(self):
         client = APIClient()
@@ -81,3 +87,147 @@ class UnitSystemTest(TestCase):
             '/units/si/'
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+class UnitConverterTest(TestCase):
+    base_system = 'SI'
+    base_unit = 'meter'
+
+    def setUp(self) -> None:
+        self.converter = UnitConverter(base_system='SI', base_unit='meter')
+        self.amounts = [
+            {
+                'system': 'SI',
+                'unit': 'furlong',
+                'value': 1,
+                'date_obj': '2020-07-22'
+            },
+            {
+                'system': 'SI',
+                'unit': 'yard',
+                'value': 1,
+                'date_obj': '2020-07-22'
+            },
+        ]
+        self.trash_amounts = [
+            {
+                'system': 'si',
+                'unit': 'trop',
+                'value': 100,
+                'date_obj': '01/01/2020'
+            },
+            {
+                'system': 'SI',
+                'unit': 'trop',
+                'value': 2,
+                'date_obj': '2020-07-23'
+            },
+            {
+                'system': 'SI',
+                'unit': 'meter',
+                'value': 'tete',
+                'date_obj': '2020-07-23'
+            },
+            {
+                'system': 'SI',
+                'unit': 'meter',
+                'value': 0,
+                'date_obj': '01/01/2021'
+            },
+        ]
+
+    def test_created(self):
+        self.assertEqual(self.converter.status, self.converter.INITIATED_STATUS)
+
+    def test_add_data(self):
+        errors = self.converter.add_data(self.amounts)
+        self.assertEqual(errors, [])
+        self.assertEqual(self.converter.status, self.converter.INSERTING_STATUS)
+        self.assertIsNotNone(cache.get(self.converter.id))
+
+    def test_trash_amounts(self):
+        converter = UnitConverter(base_system='SI', base_unit='meter')
+        errors = converter.add_data(self.trash_amounts)
+        self.assertEqual(len(errors), 3)
+        self.assertIn("system", errors[0])
+        self.assertIn("value", errors[1])
+        self.assertIn("date_obj", errors[2])
+
+    def test_convert(self):
+        result = self.converter.convert()
+        self.assertEqual(result.id, self.converter.id)
+        self.assertEqual(result.target, 'meter')
+        self.assertEqual(self.converter.status, self.converter.FINISHED)
+        self.assertEqual(len(result.errors), 0)
+        self.assertEqual(len(result.detail), len(self.converter.data))
+        converted_sum = sum([d.converted_value for d in result.detail])
+        self.assertEqual(result.sum, converted_sum)
+
+    def test_convert_request(self):
+        amounts = AmountSerializer(self.amounts, many=True)
+        client = APIClient()
+        response = client.post(
+            '/units/convert/',
+            data={
+                'data': amounts.data,
+                'base_system': 'SI',
+                'base_unit': 'meter'
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('sum', response.json())
+        self.assertEqual(len(response.json().get('detail')), len(self.amounts))
+
+    def test_convert_batch_request(self):
+        batch_id = uuid.uuid4()
+        client = APIClient()
+        amounts = AmountSerializer(self.amounts, many=True)
+        response = client.post(
+            '/units/convert/',
+            data={
+                'data': amounts.data,
+                'base_system': 'SI',
+                'base_unit': 'meter',
+                'batch': batch_id,
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('id', response.json())
+        self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('id'), str(batch_id))
+        response = client.post(
+            '/units/convert/',
+            data={
+                'data': amounts.data,
+                'batch': batch_id,
+                'base_system': 'SI',
+                'base_unit': 'meter',
+                'eob': True
+            },
+            format='json')
+        self.assertEqual(response.json().get('status'), UnitConverter.FINISHED)
+        self.assertEqual(len(response.json().get('detail')), 2 * len(self.amounts))
+
+    def test_watch_request(self):
+        batch_id = uuid.uuid4()
+        client = APIClient()
+        amounts = AmountSerializer(self.amounts, many=True)
+        response = client.post(
+            '/units/convert/',
+            data={
+                'data': amounts.data,
+                'base_system': 'SI',
+                'base_unit': 'meter',
+                'batch': batch_id,
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('id', response.json())
+        self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('id'), str(batch_id))
+        response = client.get(
+            f'/watch/{str(batch_id)}/',
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('id'), str(batch_id))

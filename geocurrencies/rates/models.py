@@ -1,14 +1,14 @@
 import logging
-import pickle
-import uuid
 from datetime import date
+
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.cache import cache
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
 
+from geocurrencies.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
 from geocurrencies.helpers import service
 from .settings import *
 
@@ -20,8 +20,11 @@ except AttributeError:
 from .services import RatesNotAvailableError
 
 
-class Rate:
-    pass
+class BaseRate(models.Model):
+    value = None
+
+    class Meta:
+        abstract = True
 
 
 class RateManager(models.Manager):
@@ -73,14 +76,20 @@ class RateManager(models.Manager):
                      currency: str,
                      key: str = None,
                      base_currency: str = settings.BASE_CURRENCY,
-                     date_obj: date = date.today()) -> Rate:
+                     date_obj: date = date.today()) -> BaseRate:
         # See here for process
         # https://app.lucidchart.com/documents/edit/cee5a97f-021f-4eab-8cf3-d66c88cf46f2/0_0?beaconFlowId=4B33C87C22AD8D63
-        if rate := self.find_direct_rate(currency=currency, key=key, base_currency=base_currency, date_obj=date_obj):
+        rate = self.find_direct_rate(
+                currency=currency,
+                key=key,
+                base_currency=base_currency,
+                date_obj=date_obj)
+        if rate.pk:
             return rate
-        if rate := self.find_pivot_rate(currency=currency, key=key, base_currency=base_currency, date_obj=date_obj):
+        rate = self.find_pivot_rate(currency=currency, key=key, base_currency=base_currency, date_obj=date_obj)
+        if rate.pk:
             return rate
-        return None
+        return Rate()
 
     def find_direct_rate(self,
                          currency: str,
@@ -88,7 +97,7 @@ class RateManager(models.Manager):
                          key: str = None,
                          base_currency: str = settings.BASE_CURRENCY,
                          date_obj: date = date.today(),
-                         use_forex: bool = False) -> Rate:
+                         use_forex: bool = False) -> BaseRate:
         """
         Find base_currency / currency at date with the specific key
         """
@@ -103,11 +112,12 @@ class RateManager(models.Manager):
         elif use_forex:
             try:
                 rates = self.fetch_rates(
+                    rate_service=rate_service,
                     base_currency=base_currency,
                     currency=currency,
                     date_obj=date_obj)
                 if not rates:
-                    return None
+                    return Rate()
                 return Rate.objects.get(
                     key=key,
                     currency=currency,
@@ -116,8 +126,8 @@ class RateManager(models.Manager):
                 )
             except RatesNotAvailableError as e:
                 logging.error(e)
-                return None
-        return None
+                return Rate()
+        return Rate()
 
     def find_pivot_rate(self,
                         currency: str,
@@ -179,7 +189,7 @@ class RateManager(models.Manager):
         return None
 
 
-class Rate(models.Model):
+class Rate(BaseRate):
     user = models.ForeignKey(User, related_name='rates', on_delete=models.PROTECT, null=True)
     key = models.CharField(max_length=255, default=None, db_index=True, null=True)
     value_date = models.DateField()
@@ -197,8 +207,13 @@ class Rate(models.Model):
         unique_together = [['key', 'currency', 'base_currency', 'value_date']]
 
     @classmethod
-    def convert(self, currency, key=None, base_currency='EUR', date_obj=date.today(), amount=0):
-        converter = Converter(self.user, key=key, base_currency=base_currency)
+    def convert(cls, currency: str,
+                user: User = None,
+                key: str = None,
+                base_currency: str = 'EUR',
+                date_obj: date = date.today(),
+                amount: float = 0) -> ConverterResult:
+        converter = RateConverter(user=user, key=key, base_currency=base_currency)
         converter.add_data(
             {
                 'currency': currency,
@@ -229,21 +244,12 @@ def create_reverse_rate(sender, instance, created, **kwargs):
         )
 
 
-class Batch:
-    id = None
-    status = None
-
-    def __init__(self, id, status):
-        self.id = id
-        self.status = status
-
-
 class Amount:
     currency = None
     amount = 0
     date_obj = None
 
-    def __init__(self, currency, amount, date_obj):
+    def __init__(self, currency: str, amount: float, date_obj: date):
         self.currency = currency
         self.amount = amount
         self.date_obj = date_obj
@@ -252,57 +258,28 @@ class Amount:
         return f'{self.date_obj}: {self.currency} {self.amount}'
 
 
-class Converter:
-    pass
-
-
-class Converter:
-    INITIATED_STATUS = 'initiated'
-    INSERTING_STATUS = 'inserting'
-    PENDING_STATUS = 'pending'
-    FINISHED = 'finished'
-    id = None
-    user = None
+class RateConverter(BaseConverter):
     base_currency = settings.BASE_CURRENCY
-    status = INITIATED_STATUS
-    data = []
-    converted_lines = []
-    aggregated_result = {}
     cached_currencies = {}
+    user = None
+    key = None
 
     def __init__(self, user: User, id: str = None, key: str = None, base_currency: str = settings.BASE_CURRENCY):
+        super(RateConverter, self).__init__(id=id)
         self.base_currency = base_currency
         self.user = user
         self.key = key
-        self.id = id or uuid.uuid4()
-        self.data = []
 
-    @classmethod
-    def load(cls, id: str) -> Converter:
-        obj = cache.get(id)
-        if obj:
-            return pickle.loads(obj)
-        raise KeyError(f"Conversion with id {id} not found in cache")
-
-    def save(self):
-        cache.set(self.id, pickle.dumps(self))
-
-    def add_data(self, data: []) -> []:
+    def add_data(self, data: [Amount]) -> []:
         """
         Check data and add it to the dataset
         Return list of errors
         """
-        if errors := self.check_data(data):
-            return errors
-        self.status = self.INSERTING_STATUS
+        errors = super(RateConverter, self).add_data(data)
         self.cache_currencies()
-        self.save()
-        return []
+        return errors
 
-    def end_batch(self):
-        self.status = self.PENDING_STATUS
-
-    def check_data(self, data):
+    def check_data(self, data: []) -> []:
         """
         Validates that the data contains
         - currency (str)
@@ -330,41 +307,34 @@ class Converter:
                 base_currency=self.base_currency,
                 currency=line.currency,
                 date_obj=line.date_obj)
-            if rate:
+            if rate.pk:
                 self.cached_currencies[line.date_obj][line.currency] = rate.value
 
-    def convert(self) -> dict:
+    def convert(self) -> ConverterResult:
         """
         Converts data to base currency
         """
-        output = {
-            'id': self.id,
-            'target': self.base_currency,
-            'detail': [],
-            'sum': 0,
-            'status': None,
-            'errors': []
-        }
-        sum = 0
+        result = ConverterResult(id=self.id, target=self.base_currency)
         for amount in self.data:
             rate = self.cached_currencies[amount.date_obj][amount.currency]
             if rate:
                 value = float(amount.amount) / rate
-                sum += value
-                output['detail'].append({
-                    'currency': amount.currency,
-                    'original_amount': amount.amount,
-                    'date': amount.date_obj,
-                    'rate': rate,
-                    'converted_amount': value
-                })
+                result.increment_sum(value)
+                detail = ConverterResultDetail(
+                    unit=amount.currency,
+                    original_value=amount.amount,
+                    date=amount.date_obj,
+                    conversion_rate=rate,
+                    converted_value=value
+                )
+                result.detail.append(detail)
             else:
-                output['errors'].append({
-                    'currency': amount.currency,
-                    'original_amount': amount.amount,
-                    'date': amount.date_obj
-                })
-        output['sum'] = sum
-        output['status'] = self.FINISHED
-        self.status = self.FINISHED
-        return output
+                error = ConverterResultError(
+                    unit=amount.currency,
+                    original_value=amount.amount,
+                    date=amount.date_obj,
+                    error=_('Rate could not be found')
+                )
+                result.errors.append(error)
+        self.end_batch(result.end_batch())
+        return result

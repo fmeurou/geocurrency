@@ -1,5 +1,5 @@
-from rest_framework import serializers
 from countryinfo import CountryInfo
+from rest_framework import serializers
 
 
 class CountrySerializer(serializers.Serializer):
@@ -10,6 +10,7 @@ class CountrySerializer(serializers.Serializer):
     numeric = serializers.IntegerField(read_only=True)
     alpha_2 = serializers.CharField(read_only=True)
     alpha_3 = serializers.CharField(read_only=True)
+
 
 class CountryDetailSerializer(serializers.Serializer):
     """
