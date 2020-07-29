@@ -16,6 +16,10 @@ from .helpers import ColorProximity, hextorgb
 from .settings import *
 
 
+class CountryNotFoundError(Exception):
+    msg = 'Country not found'
+
+
 class CountryManager(models.Manager):
 
     def get_by_color(self, color, proximity=1):
@@ -43,13 +47,18 @@ class Country:
     name = None
     numeric = None
 
-    def __init__(self, country_name):
+    def __init__(self, alpha_2):
         """
         Init a Country object with an alpha2 code
         :params country_name: ISO-3166 alpha_2 code
         """
-        for field, value in countries.get(alpha_2=country_name)._fields.items():
-            setattr(self, field, value)
+        country = countries.get(alpha_2=alpha_2)
+        if not country:
+            raise CountryNotFoundError()
+        self.alpha_2 = country.alpha_2
+        self.alpha_3 = country.alpha_3
+        self.name = country.name
+        self.numeric = country.numeric
 
     @classmethod
     def all_countries(cls):
@@ -69,9 +78,17 @@ class Country:
         return ci.currencies()
 
     def info(self):
-
-
         return CountryInfo(self.alpha_2).info()
+
+    @property
+    def unit_system(self):
+        if self.alpha_2 == 'US':
+            return 'US'
+        if self.alpha_2 == 'LR':
+            return 'US'
+        if self.alpha_2 == 'MM':
+            return 'imperial'
+        return 'SI'
 
     @property
     def timezones(self):
@@ -147,3 +164,19 @@ class Country:
             return colors
         else:
             return self.analyze_flag()
+
+    @property
+    def region(self) -> str:
+        return CountryInfo(self.alpha_2).region()
+
+    @property
+    def subregion(self) -> str:
+        return CountryInfo(self.alpha_2).subregion()
+
+    @property
+    def tld(self) -> str:
+        return CountryInfo(self.alpha_2).tld()
+
+    @property
+    def capital(self) -> str:
+        return CountryInfo(self.alpha_2).capital()

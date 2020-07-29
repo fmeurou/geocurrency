@@ -8,6 +8,7 @@ from rest_framework.test import APIClient
 from geocurrencies.helpers import service
 
 from .models import Country
+from .serializers import CountrySerializer
 from .services import Geocoder
 
 PELIAS_TEST_URL = 'http://api.geocurrency.me:3100/v1'
@@ -40,6 +41,13 @@ class CountryTestCase(TestCase):
         self.assertEqual(country.base().get('alpha_2'), 'FR')
         self.assertEqual(country.base().get('alpha_3'), 'FRA')
         self.assertEqual(country.base().get('numeric'), '250')
+        self.assertEqual(country.unit_system, 'SI')
+
+    def test_unit_system(self):
+        self.assertEqual(Country('FR').unit_system, 'SI')
+        self.assertEqual(Country('US').unit_system, 'US')
+        self.assertEqual(Country('LR').unit_system, 'US')
+        self.assertEqual(Country('MM').unit_system, 'imperial')
 
     def test_flag_path(self):
         country = Country('FR')
@@ -65,10 +73,15 @@ class CountryTestCase(TestCase):
 
     def test_retrieve_request(self):
         client = APIClient()
-        response = client.get('/countries/FR/', format='json')
+        response = client.get('/countries/US/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertContains(response, 'name')
-        self.assertContains(response, 'region')
+        cs = CountrySerializer(data=response.json())
+        self.assertTrue(cs.is_valid())
+        country = cs.create(cs.validated_data)
+        self.assertEqual(country.name, 'United States')
+        self.assertEqual(country.region, 'Americas')
+        self.assertEqual(country.subregion, 'Northern America')
+        self.assertEqual(country.unit_system, 'US')
 
     def test_google_geocode_request(self):
         client = APIClient()

@@ -11,7 +11,7 @@ from rest_framework.status import HTTP_404_NOT_FOUND
 from rest_framework.viewsets import ViewSet
 
 from geocurrencies.helpers import service
-from .models import Country
+from .models import Country, CountryNotFoundError
 from .serializers import CountrySerializer, CountryDetailSerializer
 
 
@@ -31,7 +31,7 @@ class CountryViewset(ViewSet):
             country = Country(alpha_2)
             serializer = CountryDetailSerializer(country, context={'request': request})
             return Response(serializer.data, content_type="application/json")
-        except KeyError:
+        except CountryNotFoundError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     @action(['GET'], detail=True, url_path='timezones', url_name='timezones')
