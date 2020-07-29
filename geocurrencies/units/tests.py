@@ -32,6 +32,20 @@ class UnitTest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_retrieve_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/meter/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_compatible_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/meter/compatible/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
 
 class UnitSystemTest(TestCase):
 

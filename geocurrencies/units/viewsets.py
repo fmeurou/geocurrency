@@ -61,6 +61,15 @@ class UnitViewset(ViewSet):
         except (ValueError, KeyError):
             return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
 
+    @action(methods=['GET'], detail=True, url_path='compatible', url_name='compatible_units')
+    def compatible_units(self, request, system_name, unit_name):
+        try:
+            us = UnitSystem(system_name=system_name)
+            unit = us.unit(unit_name=unit_name)
+            return Response(map(str, unit.unit.compatible_units()), content_type="application/json")
+        except (ValueError, KeyError):
+            return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
+
 
 class ConvertView(APIView):
     data = openapi.Parameter('data', openapi.IN_QUERY,
