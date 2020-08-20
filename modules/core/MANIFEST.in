@@ -1,0 +1,2 @@
+recursive-include geocurrency/core/templates *.html
+recursive-include geocurrency/core/fixtures *.json

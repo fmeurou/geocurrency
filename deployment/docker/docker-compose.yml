@@ -1,0 +1,84 @@
+version: '3'
+
+volumes:
+  logs:
+  static:
+  media:
+
+services:
+  cache:
+    image: redis:latest
+  db:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=${GEOCURRENCY_DB_NAME}
+      - POSTGRES_USER=${GEOCURRENCY_DB_USERNAME}
+      - POSTGRES_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  api:
+    build: api/
+    image: api
+    command: "/usr/bin/supervisord -c /etc/supervisor/conf.d/api.conf"
+    environment:
+      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
+      - GEOCURRENCY_DB_HOST=db
+      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
+      - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
+      - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+    volumes:
+      - logs:/var/log/supervisor
+      - static:/var/apps/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - cache
+  migration:
+    image: api
+    command: python /var/apps/api/manage.py migrate --noinput
+    environment:
+      - GEOCURRENCY_SERVICE_EMAIL=admin@peabytes.me
+      - GEOCURRENCY_SERVICE_URL=127.0.0.1
+      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
+      - GEOCURRENCY_DB_HOST=db
+      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
+      - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
+      - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+    depends_on:
+      - api
+  superuser:
+    image: api
+    command: python /var/apps/api/manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'T3st2020.')"
+    environment:
+      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
+      - GEOCURRENCY_DB_HOST=db
+      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
+      - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
+      - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+    depends_on:
+      - migration
+  fetch_rates:
+    image: api
+    command: python /var/apps/api/manage.py fetch_rates
+    environment:
+      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
+      - GEOCURRENCY_DB_HOST=db
+      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
+      - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
+      - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+    depends_on:
+      - migration
+  lb:
+    build: lb/
+    ports:
+      - "80:80"
+    volumes:
+      - static:/var/www/static
+    depends_on:
+      - api

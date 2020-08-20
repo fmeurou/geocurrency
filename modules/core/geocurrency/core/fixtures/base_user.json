@@ -1,0 +1,14 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "email": "admin@peabytes.me",
+      "first_name": "Admin",
+      "last_name": "PeaBytes",
+      "is_superuser": "True",
+      "password": "Admin0."
+    }
+  }
+]
