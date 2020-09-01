@@ -54,7 +54,7 @@ class Country:
         """
         country = countries.get(alpha_2=alpha_2)
         if not country:
-            raise CountryNotFoundError()
+            raise CountryNotFoundError("Invalid country alpha2 code")
         self.alpha_2 = country.alpha_2
         self.alpha_3 = country.alpha_3
         self.name = country.name
