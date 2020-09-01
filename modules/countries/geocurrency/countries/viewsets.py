@@ -21,11 +21,15 @@ class CountryViewset(ViewSet):
     """
     lookup_field = 'alpha_2'
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     def list(self, request):
         countries = Country.all_countries()
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     def retrieve(self, request, alpha_2):
         try:
             country = Country(alpha_2)
@@ -34,6 +38,8 @@ class CountryViewset(ViewSet):
         except CountryNotFoundError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='timezones', url_name='timezones')
     def timezones(self, request, alpha_2):
         """
@@ -45,6 +51,8 @@ class CountryViewset(ViewSet):
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='currencies', url_name='currencies')
     def currencies(self, request, alpha_2):
         """
@@ -56,6 +64,8 @@ class CountryViewset(ViewSet):
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='borders', url_name='borders')
     def borders(self, request, alpha_2):
         """
@@ -67,6 +77,8 @@ class CountryViewset(ViewSet):
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='provinces', url_name='provinces')
     def provinces(self, request, alpha_2):
         """
@@ -78,6 +90,8 @@ class CountryViewset(ViewSet):
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
     @action(['GET'], detail=True, url_path='languages', url_name='languages')
     def languages(self, request, alpha_2):
         """
@@ -97,8 +111,9 @@ class CountryViewset(ViewSet):
             Get existing flag colors
         """
         try:
-            return Response(Country(alpha_2=alpha_2).colors(), content_type="application/json")
-        except KeyError:
+            c = Country(alpha_2=alpha_2)
+            return Response(c.colors(), content_type="application/json")
+        except CountryNotFoundError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
     geocoder = openapi.Parameter('geocoder', openapi.IN_QUERY, description="Geocoder type", type=openapi.TYPE_STRING)

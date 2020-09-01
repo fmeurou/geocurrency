@@ -6,8 +6,8 @@ SOCKFILE=/var/apps/envs/geocurrencies/run/gunicorn.sock  # we will communicte us
 USER=apps                                        # the user to run as
 GROUP=apps                                                              # the group to run as
 NUM_WORKERS=2 #$(((`grep -c ^processor /proc/cpuinfo`) * 2 + 1))                                     # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE=geocurrency.settings             # which settings file should Django use
-DJANGO_WSGI_MODULE=geocurrency.wsgi                     # WSGI module name
+DJANGO_SETTINGS_MODULE=api.settings             # which settings file should Django use
+DJANGO_WSGI_MODULE=api.wsgi                     # WSGI module name
 
 echo "Starting $NAME as `whoami`"
 
