@@ -11,6 +11,10 @@ from geocurrency.countries.models import Country
 from . import CURRENCY_SYMBOLS, DEFAULT_SYMBOL
 
 
+class CurrencyNotFoundError(Exception):
+    msg = 'Currency not found'
+
+
 class Currency:
     pass
 
@@ -27,16 +31,23 @@ class Currency:
         """
         Returns a iso4217.Currency instance
         """
-        i = Iso4217(code)
-        for a in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
-            setattr(self, a, getattr(i, a))
+        try:
+            i = Iso4217(code)
+            for a in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
+                setattr(self, a, getattr(i, a))
+        except ValueError:
+            raise CurrencyNotFoundError('Invalid currency code')
 
     @classmethod
     def is_valid(cls, cur: str) -> bool:
         """
         Checks if currency is part of iso4217
         """
-        return cur and cur in [c.code for c in cls.all_currencies()]
+        try:
+            Currency(cur)
+            return True
+        except CurrencyNotFoundError:
+            return False
 
     @classmethod
     def all_currencies(cls) -> Iterator[Currency]:
@@ -69,7 +80,7 @@ class Currency:
         try:
             country = Country(alpha2)
             return [Currency(cur) for cur in country.currencies()]
-        except ValueError as e:
+        except CurrencyNotFoundError as e:
             logging.error("Error fetching currency")
             logging.error(e)
             return []
@@ -100,3 +111,4 @@ class Currency:
     @property
     def symbol(self):
         return CURRENCY_SYMBOLS.get(self.code, DEFAULT_SYMBOL)
+

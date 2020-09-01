@@ -14,7 +14,7 @@ from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from geocurrency.countries.serializers import CountrySerializer
 from geocurrency.rates.serializers import RateSerializer
-from .models import Currency
+from .models import Currency, CurrencyNotFoundError
 from .serializers import CurrencySerializer
 
 
@@ -40,9 +40,12 @@ class CurrencyViewset(ReadOnlyModelViewSet):
         """
         Retrieve single record based on iso4217 code
         """
-        currency = Currency(code)
-        serializer = CurrencySerializer(currency, context={'request': request})
-        return Response(serializer.data)
+        try:
+            currency = Currency(code)
+            serializer = CurrencySerializer(currency, context={'request': request})
+            return Response(serializer.data)
+        except CurrencyNotFoundError:
+            return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
@@ -61,7 +64,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
                                            many=True,
                                            context={'request': request})
             return Response(serializer.data)
-        except (KeyError, ValueError) as e:
+        except CurrencyNotFoundError as e:
             logging.error(e)
             return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
@@ -100,7 +103,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
             rates = c.get_rates(user=user, key=key, base_currency=base_currency, start_date=from_date, end_date=to_date)
             serializer = RateSerializer(rates, many=True, context={'request': request})
             return Response(serializer.data)
-        except Currency.DoesNotExist:
+        except CurrencyNotFoundError:
             return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
     def _get_rates(self, base_currency: str, target_currency: str, from_date: date, to_date: date) -> dict:

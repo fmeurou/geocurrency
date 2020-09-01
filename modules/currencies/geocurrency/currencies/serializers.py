@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Currency
+from .models import Currency, CurrencyNotFoundError
 
 
 class CurrencySerializer(serializers.Serializer):
@@ -17,3 +17,4 @@ class CurrencySerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return Currency(code=validated_data.get('code'))
+
