@@ -121,6 +121,11 @@ class CountryTestCase(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertContains(response, "fr")
 
+    def test_colors_request(self):
+        client = APIClient()
+        response = client.get('/countries/FR/colors/', format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_borders_request(self):
         client = APIClient()
         response = client.get('/countries/FR/borders/', format='json')

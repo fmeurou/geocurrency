@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'corsheaders',
+    'geocurrency.core',
     'geocurrency.rates',
 ]
 
@@ -91,7 +92,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '../../../modules/core/geocurrency/core/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

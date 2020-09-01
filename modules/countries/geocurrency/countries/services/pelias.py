@@ -11,7 +11,7 @@ class PeliasGeocoder(Geocoder):
     coder_type = 'pelias'
     server_url = None
 
-    def __init__(self, server_url=None):
+    def __init__(self, server_url=None, *args, **kwargs):
         """
         Init pelias geocoder
         :params server_url: Custom pelias URL, defaults to 'http://127.0.0.1:3100/v1'

@@ -22,7 +22,7 @@ class FlagView(View):
     @method_decorator(vary_on_cookie)
     def get(self, request, pk, *args, **kwargs):
         try:
-            country = Country.objects.get(pk=pk)
+            country = Country(alpha_2=pk)
             flag_path = os.path.join(settings.MEDIA_ROOT, country.alpha_2 + '.svg')
             if not os.path.exists(flag_path):
                 response = requests.get(FLAG_SOURCE.format(alpha_2=country.alpha_2))
@@ -35,5 +35,7 @@ class FlagView(View):
                     logging.error("unable to write file", flag_path)
                     return HttpResponseBadRequest("Error fetching file")
             return sendfile(request, flag_path)
-        except Country.DoesNotExist:
-            return HttpResponseNotFound('Country not found')
+        except ValueError as e:
+            logging.error("Error fetching country")
+            logging.error(e)
+            return HttpResponseNotFound("Invalid country")

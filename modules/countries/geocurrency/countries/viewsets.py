@@ -97,7 +97,7 @@ class CountryViewset(ViewSet):
             Get existing flag colors
         """
         try:
-            return Response(Country(pk).colors(), content_type="application/json")
+            return Response(Country(alpha_2=alpha_2).colors(), content_type="application/json")
         except KeyError:
             return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
 
