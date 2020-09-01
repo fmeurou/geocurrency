@@ -1,5 +1,5 @@
 #!/bin/bash
-source $VENV_DIR/geocurrencies/bin/activate
+source $VENV_DIR/dev/bin/activate
 for MODULE in 'core' 'converters' 'countries' 'currencies' 'rates' 'units'
 do
     cd $GEOCURRENCY_SRC/modules/$MODULE
