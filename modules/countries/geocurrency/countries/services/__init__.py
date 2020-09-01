@@ -1,6 +1,6 @@
 from timezonefinder import TimezoneFinder
 
-from geocurrency.countries.models import Country
+from geocurrency.countries.models import Country, CountryNotFoundError
 
 tf = TimezoneFinder(in_memory=True)
 
@@ -38,7 +38,7 @@ class Geocoder:
         """
         countries = []
         alphas = self.parse_countries(data=data)
-        for alpha in alphas:
+        for alpha in set(alphas):
             try:
                 if len(alpha) == 2:
                     country = Country(alpha)
@@ -46,7 +46,7 @@ class Geocoder:
                     country = Country(alpha[0:2])
                 else:
                     country = Country(alpha)
-            except KeyError:
+            except CountryNotFoundError:
                 continue
             countries.append(country)
-        return countries
+        return sorted(countries, key=lambda x: x.name)
