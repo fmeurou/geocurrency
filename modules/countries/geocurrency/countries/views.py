@@ -9,7 +9,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from sendfile import sendfile
 
-from .models import Country
+from .models import Country, CountryNotFoundError
 from .settings import *
 
 
@@ -35,7 +35,7 @@ class FlagView(View):
                     logging.error("unable to write file", flag_path)
                     return HttpResponseBadRequest("Error fetching file")
             return sendfile(request, flag_path)
-        except ValueError as e:
+        except CountryNotFoundError as e:
             logging.error("Error fetching country")
             logging.error(e)
             return HttpResponseNotFound("Invalid country")
