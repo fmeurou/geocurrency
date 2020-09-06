@@ -2,6 +2,7 @@ from datetime import date
 
 import pint
 from django.utils.translation import ugettext as _
+from django.db import models
 
 from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
 

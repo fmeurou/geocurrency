@@ -1,5 +1,8 @@
+import pycountry
+import gettext
 from countryinfo import CountryInfo
 from django.conf import settings
+from django.utils.translation import gettext as _
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
@@ -21,15 +24,22 @@ class CountryViewset(ViewSet):
     """
     lookup_field = 'alpha_2'
 
-    @method_decorator(cache_page(60 * 60 * 2))
-    @method_decorator(vary_on_cookie)
+    language_header = openapi.Parameter('Accept-Language', openapi.IN_HEADER, description="language",
+                                      type=openapi.TYPE_STRING)
+    language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
+                                      type=openapi.TYPE_STRING)
+
+    #@method_decorator(cache_page(60 * 60 * 2))
+    #@method_decorator(vary_on_cookie)
+    @swagger_auto_schema(manual_parameters=[language, language_header])
     def list(self, request):
         countries = Country.all_countries()
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
-    @method_decorator(cache_page(60 * 60 * 2))
-    @method_decorator(vary_on_cookie)
+    #@method_decorator(cache_page(60 * 60 * 2))
+    #@method_decorator(vary_on_cookie)
+    @swagger_auto_schema(manual_parameters=[language, language_header])
     def retrieve(self, request, alpha_2):
         try:
             country = Country(alpha_2)

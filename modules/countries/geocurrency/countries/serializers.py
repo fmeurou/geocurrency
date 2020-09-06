@@ -1,3 +1,5 @@
+import pycountry
+import gettext
 from pycountry import countries
 from rest_framework import serializers
 
@@ -12,6 +14,7 @@ class CountrySerializer(serializers.Serializer):
     numeric = serializers.IntegerField(read_only=True)
     alpha_2 = serializers.CharField()
     alpha_3 = serializers.CharField(read_only=True)
+    translated_name = serializers.SerializerMethodField()
 
     @staticmethod
     def validate_alpha2(alpha_2):
@@ -27,6 +30,19 @@ class CountrySerializer(serializers.Serializer):
         country = Country(validated_data.get('alpha_2'))
         self.instance = country
 
+    def get_translated_name(self, obj: Country) -> str:
+        request = self.context.get('request', None)
+        if request:
+            try:
+                language = request.GET.get('language', request.LANGUAGE_CODE)
+                translation = gettext.translation('iso3166', pycountry.LOCALES_DIR, languages=[language])
+                translation.install()
+                return translation.gettext(obj.name)
+            except FileNotFoundError:
+                return obj.name
+        else:
+            return obj.name
+
 
 class CountryDetailSerializer(serializers.Serializer):
     """
@@ -41,6 +57,7 @@ class CountryDetailSerializer(serializers.Serializer):
     tld = serializers.SerializerMethodField()
     capital = serializers.SerializerMethodField()
     unit_system = serializers.SerializerMethodField()
+    translated_name = serializers.SerializerMethodField()
 
     def get_region(self, obj) -> str:
         return obj.region
@@ -56,3 +73,6 @@ class CountryDetailSerializer(serializers.Serializer):
 
     def get_unit_system(self, obj) -> str:
         return obj.unit_system
+
+    def get_translated_name(self, obj: Country) -> str:
+        return _(obj.name)
