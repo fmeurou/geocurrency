@@ -75,4 +75,14 @@ class CountryDetailSerializer(serializers.Serializer):
         return obj.unit_system
 
     def get_translated_name(self, obj: Country) -> str:
-        return _(obj.name)
+        request = self.context.get('request', None)
+        if request:
+            try:
+                language = request.GET.get('language', request.LANGUAGE_CODE)
+                translation = gettext.translation('iso3166', pycountry.LOCALES_DIR, languages=[language])
+                translation.install()
+                return translation.gettext(obj.name)
+            except FileNotFoundError:
+                return obj.name
+        else:
+            return obj.name

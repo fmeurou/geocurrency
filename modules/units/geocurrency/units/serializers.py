@@ -52,9 +52,13 @@ class UnitSystemListSerializer(serializers.Serializer):
 class UnitSystemDetailSerializer(serializers.Serializer):
     system_name = serializers.CharField()
     dimensions = serializers.SerializerMethodField()
+    units = serializers.SerializerMethodField()
 
     def get_dimensions(self, obj):
         return obj.dimensionalities
+
+    def get_units(self, obj):
+        return obj.units_per_dimensionality()
 
 
 class UnitSerializer(serializers.Serializer):

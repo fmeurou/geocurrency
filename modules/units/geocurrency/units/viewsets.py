@@ -18,15 +18,24 @@ class UnitSystemViewset(ViewSet):
     """
     lookup_field = 'system_name'
 
+    language_header = openapi.Parameter('Accept-Language', openapi.IN_HEADER, description="language",
+                                        type=openapi.TYPE_STRING)
+    language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
+                                 type=openapi.TYPE_STRING)
+
+    @swagger_auto_schema(manual_parameters=[language, language_header])
     def list(self, request):
-        us = UnitSystem()
+        language = request.GET.get('language', request.LANGUAGE_CODE)
+        us = UnitSystem(fmt_locale=language)
         us = [UnitSystem(system_name=s) for s in us.available_systems()]
         serializer = UnitSystemListSerializer(us, many=True, context={'request': request})
         return Response(serializer.data)
 
+    @swagger_auto_schema(manual_parameters=[language, language_header])
     def retrieve(self, request, system_name):
+        language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
-            us = UnitSystem(system_name=system_name)
+            us = UnitSystem(system_name=system_name, fmt_locale=language)
             serializer = UnitSystemDetailSerializer(us, context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except (ValueError, KeyError):
@@ -38,14 +47,18 @@ class UnitViewset(ViewSet):
     View for currency
     """
     lookup_field = 'unit_name'
-
+    language_header = openapi.Parameter('Accept-Language', openapi.IN_HEADER, description="language",
+                                        type=openapi.TYPE_STRING)
+    language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
+                                 type=openapi.TYPE_STRING)
     dimension = openapi.Parameter('dimension', openapi.IN_QUERY, description="Unit dimension",
                                  type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(manual_parameters=[dimension])
+    @swagger_auto_schema(manual_parameters=[dimension, language, language_header])
     def list(self, request, system_name):
+        language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
-            us = UnitSystem(system_name=system_name)
+            us = UnitSystem(system_name=system_name, fmt_locale=language)
             if dimension := request.GET.get('dimension'):
                 available_units = us.units_per_dimensionality().get(dimension)
             else:
@@ -58,22 +71,26 @@ class UnitViewset(ViewSet):
         except KeyError:
             return Response('Invalid Unit System', status=status.HTTP_404_NOT_FOUND)
 
+    @swagger_auto_schema(manual_parameters=[language, language_header])
     def retrieve(self, request, system_name, unit_name):
         """
         Get unit information for unit in unit system
         """
+        language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
-            us = UnitSystem(system_name=system_name)
+            us = UnitSystem(system_name=system_name, fmt_locale=language)
             unit = us.unit(unit_name=unit_name)
             serializer = UnitSerializer(unit, context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except (ValueError, KeyError):
             return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
 
+    @swagger_auto_schema(manual_parameters=[language, language_header])
     @action(methods=['GET'], detail=True, url_path='compatible', url_name='compatible_units')
     def compatible_units(self, request, system_name, unit_name):
+        language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
-            us = UnitSystem(system_name=system_name)
+            us = UnitSystem(system_name=system_name, fmt_locale=language)
             unit = us.unit(unit_name=unit_name)
             return Response(map(str, unit.unit.compatible_units()), content_type="application/json")
         except (ValueError, KeyError):

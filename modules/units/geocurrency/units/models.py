@@ -7,6 +7,8 @@ from django.db import models
 from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
 
 
+
+
 class Amount:
     system = None
     unit = None
@@ -32,10 +34,10 @@ class UnitSystem:
     system_name = None
     system = None
 
-    def __init__(self, system_name='SI'):
+    def __init__(self, system_name='SI', fmt_locale='en'):
         self.system_name = system_name
         try:
-            self.ureg = pint.UnitRegistry(system=system_name)
+            self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
         except (FileNotFoundError, AttributeError):
             raise ValueError("Invalid unit system")
@@ -68,14 +70,13 @@ class UnitSystem:
         """
         return dir(self.system)
 
-    def unit_dimensionality(self, unit: str) -> str:
+    def unit_dimensionality(self, unit: str) -> dict:
         """
         User friendly representation of the dimension
         :param unit: name of the unit to display
         :return: Human readable dimension
         """
-        unit_obj = getattr(self.system, unit)
-        return Unit.dimensionality_string(unit_obj=unit_obj)
+        return Unit.dimensionality_string(unit_system=self.system, unit_str=unit)
 
     def units_per_dimensionality(self) -> {}:
         """
@@ -86,7 +87,7 @@ class UnitSystem:
         units_array = self.available_unit_names()
         output = {}
         for unit_str in units_array:
-            dimension = self.unit_dimensionality(unit=unit_str)
+            dimension = Unit.dimensionality_string(self, unit_str)
             try:
                 output[dimension].append(unit_str)
             except KeyError:
@@ -99,7 +100,7 @@ class UnitSystem:
         List of dimensions available in the Unit system
         :return: list of dimensions for Unit system
         """
-        return self.units_per_dimensionality().keys()
+        return set([Unit.dimensionality_string(self, unit_str) for unit_str in dir(self.system)])
 
 
 class Unit:
@@ -120,23 +121,28 @@ class Unit:
             raise ValueError("invalid unit for system")
 
     @staticmethod
-    def dimensionality_string(unit_obj: pint.Unit) -> str:
+    def dimensionality_string(unit_system: UnitSystem, unit_str: str) -> str:
         """
         Converts pint dimensionality string to human readable string
+        :param unit_system: UnitSystem
         :param unit_obj: pint.Unit
         :return: str
         """
-        ds = str(unit_obj.dimensionality).replace('[', '').replace(']', '')
+        ds = str(getattr(unit_system.ureg, unit_str).dimensionality).replace('[', '').replace(']', '')
         ds = ds.replace(' ** ', '^')
         ds = ds.split()
         return ' '.join([_(d) for d in ds])
+
+    @staticmethod
+    def translated_unit(unit_system: UnitSystem, unit_str: str) -> str:
+        return '{}'.format(unit_system.ureg[unit_str])
 
     @property
     def readable_dimension(self):
         """
         Wrapper around Unit.dimensionality_string
         """
-        return Unit.dimensionality_string(self.unit)
+        return Unit.dimensionality_string(unit_system=self.unit_system, unit_str=self.name)
 
 
 class UnitConverter:
