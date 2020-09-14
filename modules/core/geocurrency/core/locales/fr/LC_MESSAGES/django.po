@@ -3,409 +3,410 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-14 13:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-09-16 12:48+0000\n"
+"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
+"Language-Team: French <http://peabytes.me/projects/geocurrency/api/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.2.2\n"
+
 #: deployment/dev/api/settings.py:178
 msgid "Afrikaans"
-msgstr ""
+msgstr "afrikaans"
 
 #: deployment/dev/api/settings.py:179
 msgid "Arabic"
-msgstr ""
+msgstr "arabe"
 
 #: deployment/dev/api/settings.py:180
 msgid "Algerian Arabic"
-msgstr ""
+msgstr "Arabe algérien"
 
 #: deployment/dev/api/settings.py:181
 msgid "Asturian"
-msgstr ""
+msgstr "Asturien"
 
 #: deployment/dev/api/settings.py:182
 msgid "Azerbaijani"
-msgstr ""
+msgstr "azerbaïdjanais"
 
 #: deployment/dev/api/settings.py:183
 msgid "Bulgarian"
-msgstr ""
+msgstr "bulgare"
 
 #: deployment/dev/api/settings.py:184
 msgid "Belarusian"
-msgstr ""
+msgstr "Biélorusse"
 
 #: deployment/dev/api/settings.py:185
 msgid "Bengali"
-msgstr ""
+msgstr "bengali"
 
 #: deployment/dev/api/settings.py:186
 msgid "Breton"
-msgstr ""
+msgstr "Breton"
 
 #: deployment/dev/api/settings.py:187
 msgid "Bosnian"
-msgstr ""
+msgstr "Bosniaque"
 
 #: deployment/dev/api/settings.py:188
 msgid "Catalan"
-msgstr ""
+msgstr "catalan"
 
 #: deployment/dev/api/settings.py:189
 msgid "Czech"
-msgstr ""
+msgstr "tchèque"
 
 #: deployment/dev/api/settings.py:190
 msgid "Welsh"
-msgstr ""
+msgstr "gallois"
 
 #: deployment/dev/api/settings.py:191
 msgid "Danish"
-msgstr ""
+msgstr "danois"
 
 #: deployment/dev/api/settings.py:192
 msgid "German"
-msgstr ""
+msgstr "allemand"
 
 #: deployment/dev/api/settings.py:193
 msgid "Lower Sorbian"
-msgstr ""
+msgstr "Bas sorabe"
 
 #: deployment/dev/api/settings.py:194
 msgid "Greek"
-msgstr ""
+msgstr "grec"
 
 #: deployment/dev/api/settings.py:195
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: deployment/dev/api/settings.py:196
 msgid "Australian English"
-msgstr ""
+msgstr "Anglais australien"
 
 #: deployment/dev/api/settings.py:197
 msgid "British English"
-msgstr ""
+msgstr "Anglais britannique"
 
 #: deployment/dev/api/settings.py:198
 msgid "Esperanto"
-msgstr ""
+msgstr "espéranto"
 
 #: deployment/dev/api/settings.py:199
 msgid "Spanish"
-msgstr ""
+msgstr "Espagnol"
 
 #: deployment/dev/api/settings.py:200
 msgid "Argentinian Spanish"
-msgstr ""
+msgstr "Espagnol argentin"
 
 #: deployment/dev/api/settings.py:201
 msgid "Colombian Spanish"
-msgstr ""
+msgstr "Espagnol colombien"
 
 #: deployment/dev/api/settings.py:202
 msgid "Mexican Spanish"
-msgstr ""
+msgstr "Espagnol mexicain"
 
 #: deployment/dev/api/settings.py:203
 msgid "Nicaraguan Spanish"
-msgstr ""
+msgstr "Espagnol nicaraguayen"
 
 #: deployment/dev/api/settings.py:204
 msgid "Venezuelan Spanish"
-msgstr ""
+msgstr "Espagnol vénézuélien"
 
 #: deployment/dev/api/settings.py:205
 msgid "Estonian"
-msgstr ""
+msgstr "estonien"
 
 #: deployment/dev/api/settings.py:206
 msgid "Basque"
-msgstr ""
+msgstr "basque"
 
 #: deployment/dev/api/settings.py:207
 msgid "Persian"
-msgstr ""
+msgstr "persan"
 
 #: deployment/dev/api/settings.py:208
 msgid "Finnish"
-msgstr ""
+msgstr "finlandais"
 
 #: deployment/dev/api/settings.py:209
 msgid "French"
-msgstr ""
+msgstr "français"
 
 #: deployment/dev/api/settings.py:210
 msgid "Frisian"
-msgstr ""
+msgstr "frison"
 
 #: deployment/dev/api/settings.py:211
 msgid "Irish"
-msgstr ""
+msgstr "irlandais"
 
 #: deployment/dev/api/settings.py:212
 msgid "Scottish Gaelic"
-msgstr ""
+msgstr "Gaélique écossais"
 
 #: deployment/dev/api/settings.py:213
 msgid "Galician"
-msgstr ""
+msgstr "Galicien"
 
 #: deployment/dev/api/settings.py:214
 msgid "Hebrew"
-msgstr ""
+msgstr "hébreu"
 
 #: deployment/dev/api/settings.py:215
 msgid "Hindi"
-msgstr ""
+msgstr "hindi"
 
 #: deployment/dev/api/settings.py:216
 msgid "Croatian"
-msgstr ""
+msgstr "croate"
 
 #: deployment/dev/api/settings.py:217
 msgid "Upper Sorbian"
-msgstr ""
+msgstr "Haut sorabe"
 
 #: deployment/dev/api/settings.py:218
 msgid "Hungarian"
-msgstr ""
+msgstr "hongrois"
 
 #: deployment/dev/api/settings.py:219
 msgid "Armenian"
-msgstr ""
+msgstr "arménien"
 
 #: deployment/dev/api/settings.py:220
 msgid "Interlingua"
-msgstr ""
+msgstr "Interlingua"
 
 #: deployment/dev/api/settings.py:221
 msgid "Indonesian"
-msgstr ""
+msgstr "indonésien"
 
 #: deployment/dev/api/settings.py:222
 msgid "Igbo"
-msgstr ""
+msgstr "Igbo"
 
 #: deployment/dev/api/settings.py:223
 msgid "Ido"
-msgstr ""
+msgstr "Je fais"
 
 #: deployment/dev/api/settings.py:224
 msgid "Icelandic"
-msgstr ""
+msgstr "islandais"
 
 #: deployment/dev/api/settings.py:225
 msgid "Italian"
-msgstr ""
+msgstr "italien"
 
 #: deployment/dev/api/settings.py:226
 msgid "Japanese"
-msgstr ""
+msgstr "Japonais"
 
 #: deployment/dev/api/settings.py:227
 msgid "Georgian"
-msgstr ""
+msgstr "géorgien"
 
 #: deployment/dev/api/settings.py:228
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: deployment/dev/api/settings.py:229
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazakh"
 
 #: deployment/dev/api/settings.py:230
 msgid "Khmer"
-msgstr ""
+msgstr "Khmer"
 
 #: deployment/dev/api/settings.py:231
 msgid "Kannada"
-msgstr ""
+msgstr "Kannada"
 
 #: deployment/dev/api/settings.py:232
 msgid "Korean"
-msgstr ""
+msgstr "coréen"
 
 #: deployment/dev/api/settings.py:233
 msgid "Kyrgyz"
-msgstr ""
+msgstr "Kirghize"
 
 #: deployment/dev/api/settings.py:234
 msgid "Luxembourgish"
-msgstr ""
+msgstr "Luxembourgeois"
 
 #: deployment/dev/api/settings.py:235
 msgid "Lithuanian"
-msgstr ""
+msgstr "lituanien"
 
 #: deployment/dev/api/settings.py:236
 msgid "Latvian"
-msgstr ""
+msgstr "letton"
 
 #: deployment/dev/api/settings.py:237
 msgid "Macedonian"
-msgstr ""
+msgstr "Macédonien"
 
 #: deployment/dev/api/settings.py:238
 msgid "Malayalam"
-msgstr ""
+msgstr "Malayalam"
 
 #: deployment/dev/api/settings.py:239
 msgid "Mongolian"
-msgstr ""
+msgstr "mongol"
 
 #: deployment/dev/api/settings.py:240
 msgid "Marathi"
-msgstr ""
+msgstr "Marathi"
 
 #: deployment/dev/api/settings.py:241
 msgid "Burmese"
-msgstr ""
+msgstr "birman"
 
 #: deployment/dev/api/settings.py:242
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "Norvégien bokmål"
 
 #: deployment/dev/api/settings.py:243
 msgid "Nepali"
-msgstr ""
+msgstr "népalais"
 
 #: deployment/dev/api/settings.py:244
 msgid "Dutch"
-msgstr ""
+msgstr "néerlandais"
 
 #: deployment/dev/api/settings.py:245
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "Norvégien nynorsk"
 
 #: deployment/dev/api/settings.py:246
 msgid "Ossetic"
-msgstr ""
+msgstr "Ossétique"
 
 #: deployment/dev/api/settings.py:247
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: deployment/dev/api/settings.py:248
 msgid "Polish"
-msgstr ""
+msgstr "polonais"
 
 #: deployment/dev/api/settings.py:249
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugais"
 
 #: deployment/dev/api/settings.py:250
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "portugais brésilien"
 
 #: deployment/dev/api/settings.py:251
 msgid "Romanian"
-msgstr ""
+msgstr "roumain"
 
 #: deployment/dev/api/settings.py:252
 msgid "Russian"
-msgstr ""
+msgstr "russe"
 
 #: deployment/dev/api/settings.py:253
 msgid "Slovak"
-msgstr ""
+msgstr "slovaque"
 
 #: deployment/dev/api/settings.py:254
 msgid "Slovenian"
-msgstr ""
+msgstr "slovène"
 
 #: deployment/dev/api/settings.py:255
 msgid "Albanian"
-msgstr ""
+msgstr "albanais"
 
 #: deployment/dev/api/settings.py:256
 msgid "Serbian"
-msgstr ""
+msgstr "serbe"
 
 #: deployment/dev/api/settings.py:257
 msgid "Serbian Latin"
-msgstr ""
+msgstr "Latin serbe"
 
 #: deployment/dev/api/settings.py:258
 msgid "Swedish"
-msgstr ""
+msgstr "suédois"
 
 #: deployment/dev/api/settings.py:259
 msgid "Swahili"
-msgstr ""
+msgstr "Swahili"
 
 #: deployment/dev/api/settings.py:260
 msgid "Tamil"
-msgstr ""
+msgstr "Tamil"
 
 #: deployment/dev/api/settings.py:261
 msgid "Telugu"
-msgstr ""
+msgstr "Telugu"
 
 #: deployment/dev/api/settings.py:262
 msgid "Tajik"
-msgstr ""
+msgstr "Tadjik"
 
 #: deployment/dev/api/settings.py:263
 msgid "Thai"
-msgstr ""
+msgstr "thaïlandais"
 
 #: deployment/dev/api/settings.py:264
 msgid "Turkmen"
-msgstr ""
+msgstr "Turkmène"
 
 #: deployment/dev/api/settings.py:265
 msgid "Turkish"
-msgstr ""
+msgstr "turc"
 
 #: deployment/dev/api/settings.py:266
 msgid "Tatar"
-msgstr ""
+msgstr "tatar"
 
 #: deployment/dev/api/settings.py:267
 msgid "Udmurt"
-msgstr ""
+msgstr "Udmurt"
 
 #: deployment/dev/api/settings.py:268
 msgid "Ukrainian"
-msgstr ""
+msgstr "ukrainien"
 
 #: deployment/dev/api/settings.py:269
 msgid "Urdu"
-msgstr ""
+msgstr "Ourdou"
 
 #: deployment/dev/api/settings.py:270
 msgid "Uzbek"
-msgstr ""
+msgstr "Ouzbek"
 
 #: deployment/dev/api/settings.py:271
 msgid "Vietnamese"
-msgstr ""
+msgstr "vietnamien"
 
 #: deployment/dev/api/settings.py:272
 msgid "Simplified Chinese"
-msgstr ""
+msgstr "Chinois simplifié"
 
 #: deployment/dev/api/settings.py:273
 msgid "Traditional Chinese"
-msgstr ""
+msgstr "Chinois traditionnel"
 
 #: deployment/dev/geocurrency/rates/models.py:335
 #: modules/rates/build/lib/geocurrency/rates/models.py:335
 #: modules/rates/geocurrency/rates/models.py:335
 msgid "Rate could not be found"
-msgstr ""
+msgstr "Le taux n'a pas pu être trouvé"
 
 #: deployment/dev/geocurrency/units/__init__.py:4
 #: deployment/dev/geocurrency/units/__init__.py:70
@@ -444,7 +445,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:584
 #: modules/units/geocurrency/units/__init__.py:648
 msgid "dimensionless"
-msgstr ""
+msgstr "adimensionnelle"
 
 #: deployment/dev/geocurrency/units/__init__.py:5
 #: deployment/dev/geocurrency/units/__init__.py:211
@@ -582,7 +583,7 @@ msgstr ""
 #: modules/units/geocurrency/units/tests.py:96
 #: modules/units/geocurrency/units/tests.py:101
 msgid "length"
-msgstr ""
+msgstr "longueur"
 
 #: deployment/dev/geocurrency/units/__init__.py:6
 #: deployment/dev/geocurrency/units/__init__.py:191
@@ -627,7 +628,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1446
 #: modules/units/geocurrency/units/__init__.py:1582
 msgid "surface"
-msgstr ""
+msgstr "surface"
 
 #: deployment/dev/geocurrency/units/__init__.py:7
 #: deployment/dev/geocurrency/units/__init__.py:196
@@ -756,7 +757,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1534
 #: modules/units/geocurrency/units/__init__.py:1542
 msgid "volume"
-msgstr ""
+msgstr "le volume"
 
 #: deployment/dev/geocurrency/units/__init__.py:8
 #: deployment/dev/geocurrency/units/__init__.py:281
@@ -840,7 +841,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1678
 #: modules/units/geocurrency/units/__init__.py:1710
 msgid "time"
-msgstr ""
+msgstr "temps"
 
 #: deployment/dev/geocurrency/units/__init__.py:9
 #: deployment/dev/geocurrency/units/__init__.py:99
@@ -939,7 +940,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1618
 #: modules/units/geocurrency/units/__init__.py:1626
 msgid "mass"
-msgstr ""
+msgstr "Masse"
 
 #: deployment/dev/geocurrency/units/__init__.py:10
 #: deployment/dev/geocurrency/units/__init__.py:314
@@ -969,7 +970,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1106
 #: modules/units/geocurrency/units/__init__.py:1414
 msgid "speed"
-msgstr ""
+msgstr "la vitesse"
 
 #: deployment/dev/geocurrency/units/__init__.py:11
 #: deployment/dev/geocurrency/units/__init__.py:787
@@ -978,7 +979,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:11
 #: modules/units/geocurrency/units/__init__.py:787
 msgid "acceleration"
-msgstr ""
+msgstr "accélération"
 
 #: deployment/dev/geocurrency/units/__init__.py:12
 #: deployment/dev/geocurrency/units/__init__.py:1174
@@ -990,7 +991,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1174
 #: modules/units/geocurrency/units/__init__.py:1178
 msgid "meter per gram"
-msgstr ""
+msgstr "mètre par gramme"
 
 #: deployment/dev/geocurrency/units/__init__.py:13
 #: deployment/dev/geocurrency/units/__init__.py:86
@@ -1011,7 +1012,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1322
 #: modules/units/geocurrency/units/__init__.py:1402
 msgid "absorption"
-msgstr ""
+msgstr "absorption"
 
 #: deployment/dev/geocurrency/units/__init__.py:14
 #: deployment/dev/geocurrency/units/__init__.py:92
@@ -1059,7 +1060,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1158
 #: modules/units/geocurrency/units/__init__.py:1286
 msgid "force"
-msgstr ""
+msgstr "Obliger"
 
 #: deployment/dev/geocurrency/units/__init__.py:15
 #: deployment/dev/geocurrency/units/__init__.py:34
@@ -1119,7 +1120,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1598
 #: modules/units/geocurrency/units/__init__.py:1670
 msgid "energy"
-msgstr ""
+msgstr "énergie"
 
 #: deployment/dev/geocurrency/units/__init__.py:16
 #: deployment/dev/geocurrency/units/__init__.py:129
@@ -1152,7 +1153,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1250
 #: modules/units/geocurrency/units/__init__.py:1462
 msgid "electric current"
-msgstr ""
+msgstr "courant électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:17
 #: deployment/dev/geocurrency/units/__init__.py:135
@@ -1176,7 +1177,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1062
 #: modules/units/geocurrency/units/__init__.py:1186
 msgid "electric charge"
-msgstr ""
+msgstr "charge électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:18
 #: deployment/dev/geocurrency/units/__init__.py:658
@@ -1185,7 +1186,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:18
 #: modules/units/geocurrency/units/__init__.py:658
 msgid "elementary charge"
-msgstr ""
+msgstr "charge élémentaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:19
 #: deployment/dev/geocurrency/units/__init__.py:156
@@ -1203,7 +1204,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:514
 #: modules/units/geocurrency/units/__init__.py:660
 msgid "electromagnetic inductance"
-msgstr ""
+msgstr "inductance électromagnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:20
 #: deployment/dev/geocurrency/units/__init__.py:871
@@ -1212,7 +1213,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:20
 #: modules/units/geocurrency/units/__init__.py:871
 msgid "electromagnetic resistance"
-msgstr ""
+msgstr "résistance électromagnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:21
 #: deployment/dev/geocurrency/units/__init__.py:181
@@ -1230,7 +1231,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1398
 #: modules/units/geocurrency/units/__init__.py:1474
 msgid "electrical conductance"
-msgstr ""
+msgstr "conductance électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:22
 #: deployment/dev/geocurrency/units/__init__.py:141
@@ -1257,7 +1258,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1486
 #: modules/units/geocurrency/units/__init__.py:1642
 msgid "electric potential difference"
-msgstr ""
+msgstr "différence de potentiel électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:23
 #: deployment/dev/geocurrency/units/__init__.py:265
@@ -1266,7 +1267,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:23
 #: modules/units/geocurrency/units/__init__.py:265
 msgid "electric field"
-msgstr ""
+msgstr "champ électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:24
 #: deployment/dev/geocurrency/units/__init__.py:161
@@ -1284,7 +1285,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:636
 #: modules/units/geocurrency/units/__init__.py:1554
 msgid "linear mass density"
-msgstr ""
+msgstr "masse volumique linéaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:25
 #: deployment/dev/geocurrency/units/__init__.py:273
@@ -1293,7 +1294,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:25
 #: modules/units/geocurrency/units/__init__.py:273
 msgid "intensity"
-msgstr ""
+msgstr "intensité"
 
 #: deployment/dev/geocurrency/units/__init__.py:26
 #: deployment/dev/geocurrency/units/__init__.py:277
@@ -1320,7 +1321,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:967
 #: modules/units/geocurrency/units/__init__.py:1262
 msgid "temperature"
-msgstr ""
+msgstr "Température"
 
 #: deployment/dev/geocurrency/units/__init__.py:27
 #: deployment/dev/geocurrency/units/__init__.py:1138
@@ -1332,13 +1333,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1138
 #: modules/units/geocurrency/units/__init__.py:1202
 msgid "amount of substance"
-msgstr ""
+msgstr "une quantité de substance"
 
 #: deployment/dev/geocurrency/units/__init__.py:28
 #: modules/units/build/lib/geocurrency/units/__init__.py:28
 #: modules/units/geocurrency/units/__init__.py:28
 msgid "density of particle"
-msgstr ""
+msgstr "densité de particule"
 
 #: deployment/dev/geocurrency/units/__init__.py:29
 #: deployment/dev/geocurrency/units/__init__.py:668
@@ -1350,7 +1351,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:668
 #: modules/units/geocurrency/units/__init__.py:963
 msgid "catalytic activity"
-msgstr ""
+msgstr "activité catalytique"
 
 #: deployment/dev/geocurrency/units/__init__.py:30
 #: deployment/dev/geocurrency/units/__init__.py:344
@@ -1362,7 +1363,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:344
 #: modules/units/geocurrency/units/__init__.py:394
 msgid "quantity of information"
-msgstr ""
+msgstr "quantité d'informations"
 
 #: deployment/dev/geocurrency/units/__init__.py:31
 #: deployment/dev/geocurrency/units/__init__.py:349
@@ -1377,7 +1378,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1238
 #: modules/units/geocurrency/units/__init__.py:1242
 msgid "density of information"
-msgstr ""
+msgstr "densité d'informations"
 
 #: deployment/dev/geocurrency/units/__init__.py:32
 #: deployment/dev/geocurrency/units/__init__.py:35
@@ -1395,7 +1396,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:384
 #: modules/units/geocurrency/units/__init__.py:1170
 msgid "magnetic moment"
-msgstr ""
+msgstr "moment magnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:33
 #: deployment/dev/geocurrency/units/__init__.py:576
@@ -1404,7 +1405,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:33
 #: modules/units/geocurrency/units/__init__.py:576
 msgid "electric moment"
-msgstr ""
+msgstr "moment électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:36
 #: deployment/dev/geocurrency/units/__init__.py:409
@@ -1413,7 +1414,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:36
 #: modules/units/geocurrency/units/__init__.py:409
 msgid "luminous intensity"
-msgstr ""
+msgstr "intensité lumineuse"
 
 #: deployment/dev/geocurrency/units/__init__.py:37
 #: deployment/dev/geocurrency/units/__init__.py:166
@@ -1428,13 +1429,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:680
 #: modules/units/geocurrency/units/__init__.py:1466
 msgid "electrical capacitance"
-msgstr ""
+msgstr "capacité électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:38
 #: modules/units/build/lib/geocurrency/units/__init__.py:38
 #: modules/units/geocurrency/units/__init__.py:38
 msgid "electric force"
-msgstr ""
+msgstr "force électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:39
 #: deployment/dev/geocurrency/units/__init__.py:528
@@ -1452,19 +1453,19 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:851
 #: modules/units/geocurrency/units/__init__.py:1350
 msgid "frequency"
-msgstr ""
+msgstr "la fréquence"
 
 #: deployment/dev/geocurrency/units/__init__.py:40
 #: modules/units/build/lib/geocurrency/units/__init__.py:40
 #: modules/units/geocurrency/units/__init__.py:40
 msgid "electromagnetic action"
-msgstr ""
+msgstr "action électromagnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:41
 #: modules/units/build/lib/geocurrency/units/__init__.py:41
 #: modules/units/geocurrency/units/__init__.py:41
 msgid "power per unit per wavelength interval"
-msgstr ""
+msgstr "puissance par unité par intervalle de longueur d'onde"
 
 #: deployment/dev/geocurrency/units/__init__.py:42
 #: deployment/dev/geocurrency/units/__init__.py:779
@@ -1476,7 +1477,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:779
 #: modules/units/geocurrency/units/__init__.py:1054
 msgid "electrostatic unit of charge"
-msgstr ""
+msgstr "unité de charge électrostatique"
 
 #: deployment/dev/geocurrency/units/__init__.py:43
 #: deployment/dev/geocurrency/units/__init__.py:803
@@ -1485,7 +1486,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:43
 #: modules/units/geocurrency/units/__init__.py:803
 msgid "magnetic induction"
-msgstr ""
+msgstr "induction magnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:44
 #: deployment/dev/geocurrency/units/__init__.py:815
@@ -1503,7 +1504,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1306
 #: modules/units/geocurrency/units/__init__.py:1622
 msgid "angle"
-msgstr ""
+msgstr "angle"
 
 #: deployment/dev/geocurrency/units/__init__.py:45
 #: deployment/dev/geocurrency/units/__init__.py:995
@@ -1518,7 +1519,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1166
 #: modules/units/geocurrency/units/__init__.py:1506
 msgid "luminance"
-msgstr ""
+msgstr "luminance"
 
 #: deployment/dev/geocurrency/units/__init__.py:46
 #: deployment/dev/geocurrency/units/__init__.py:999
@@ -1527,7 +1528,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:46
 #: modules/units/geocurrency/units/__init__.py:999
 msgid "radiation"
-msgstr ""
+msgstr "radiation"
 
 #: deployment/dev/geocurrency/units/__init__.py:47
 #: deployment/dev/geocurrency/units/__init__.py:1042
@@ -1536,7 +1537,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:47
 #: modules/units/geocurrency/units/__init__.py:1042
 msgid "luminous flux"
-msgstr ""
+msgstr "flux lumineux"
 
 #: deployment/dev/geocurrency/units/__init__.py:48
 #: deployment/dev/geocurrency/units/__init__.py:1046
@@ -1545,7 +1546,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:48
 #: modules/units/geocurrency/units/__init__.py:1046
 msgid "illuminance"
-msgstr ""
+msgstr "éclairement"
 
 #: deployment/dev/geocurrency/units/__init__.py:49
 #: deployment/dev/geocurrency/units/__init__.py:1048
@@ -1557,7 +1558,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1048
 #: modules/units/geocurrency/units/__init__.py:1050
 msgid "magnetic flux quantum"
-msgstr ""
+msgstr "quantum de flux magnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:50
 #: deployment/dev/geocurrency/units/__init__.py:1130
@@ -1566,13 +1567,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:50
 #: modules/units/geocurrency/units/__init__.py:1130
 msgid "concentration"
-msgstr ""
+msgstr "concentration"
 
 #: deployment/dev/geocurrency/units/__init__.py:51
 #: modules/units/build/lib/geocurrency/units/__init__.py:51
 #: modules/units/geocurrency/units/__init__.py:51
 msgid "energy per temperature increment per mole"
-msgstr ""
+msgstr "énergie par incrément de température par mole"
 
 #: deployment/dev/geocurrency/units/__init__.py:52
 #: deployment/dev/geocurrency/units/__init__.py:1148
@@ -1584,7 +1585,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1148
 #: modules/units/geocurrency/units/__init__.py:1150
 msgid "neper"
-msgstr ""
+msgstr "neper"
 
 #: deployment/dev/geocurrency/units/__init__.py:53
 #: deployment/dev/geocurrency/units/__init__.py:1160
@@ -1593,7 +1594,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:53
 #: modules/units/geocurrency/units/__init__.py:1160
 msgid "newtonian constant of gravitation"
-msgstr ""
+msgstr "constante newtonienne de gravitation"
 
 #: deployment/dev/geocurrency/units/__init__.py:54
 #: deployment/dev/geocurrency/units/__init__.py:1274
@@ -1608,7 +1609,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1334
 #: modules/units/geocurrency/units/__init__.py:1510
 msgid "viscosity"
-msgstr ""
+msgstr "viscosité"
 
 #: deployment/dev/geocurrency/units/__init__.py:55
 #: deployment/dev/geocurrency/units/__init__.py:297
@@ -1662,7 +1663,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1546
 #: modules/units/geocurrency/units/__init__.py:1602
 msgid "pressure"
-msgstr ""
+msgstr "pression"
 
 #: deployment/dev/geocurrency/units/__init__.py:56
 #: deployment/dev/geocurrency/units/__init__.py:1314
@@ -1671,7 +1672,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:56
 #: modules/units/geocurrency/units/__init__.py:1314
 msgid "reciprocal length"
-msgstr ""
+msgstr "longueur réciproque"
 
 #: deployment/dev/geocurrency/units/__init__.py:57
 #: deployment/dev/geocurrency/units/__init__.py:1326
@@ -1683,7 +1684,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1326
 #: modules/units/geocurrency/units/__init__.py:1330
 msgid "angular speed"
-msgstr ""
+msgstr "vitesse angulaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:58
 #: deployment/dev/geocurrency/units/__init__.py:1338
@@ -1692,7 +1693,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:58
 #: modules/units/geocurrency/units/__init__.py:1338
 msgid "reciprocal viscosity"
-msgstr ""
+msgstr "viscosité réciproque"
 
 #: deployment/dev/geocurrency/units/__init__.py:59
 #: deployment/dev/geocurrency/units/__init__.py:1346
@@ -1701,13 +1702,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:59
 #: modules/units/geocurrency/units/__init__.py:1346
 msgid "radiation exposure"
-msgstr ""
+msgstr "exposition aux radiations"
 
 #: deployment/dev/geocurrency/units/__init__.py:60
 #: modules/units/build/lib/geocurrency/units/__init__.py:60
 #: modules/units/geocurrency/units/__init__.py:60
 msgid "solid degree"
-msgstr ""
+msgstr "diplôme solide"
 
 #: deployment/dev/geocurrency/units/__init__.py:61
 #: deployment/dev/geocurrency/units/__init__.py:1458
@@ -1716,7 +1717,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:61
 #: modules/units/geocurrency/units/__init__.py:1458
 msgid "volumetric flow rate"
-msgstr ""
+msgstr "débit volumétrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:62
 #: deployment/dev/geocurrency/units/__init__.py:1482
@@ -1728,43 +1729,43 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1482
 #: modules/units/geocurrency/units/__init__.py:1550
 msgid "magnetic field"
-msgstr ""
+msgstr "champ magnétique"
 
 #: deployment/dev/geocurrency/units/__init__.py:63
 #: modules/units/build/lib/geocurrency/units/__init__.py:63
 #: modules/units/geocurrency/units/__init__.py:63
 msgid "mass density"
-msgstr ""
+msgstr "masse volumique"
 
 #: deployment/dev/geocurrency/units/__init__.py:68
 #: modules/units/build/lib/geocurrency/units/__init__.py:68
 #: modules/units/geocurrency/units/__init__.py:68
 msgid "Copper Kα"
-msgstr ""
+msgstr "Cuivre Kα"
 
 #: deployment/dev/geocurrency/units/__init__.py:73
 #: modules/units/build/lib/geocurrency/units/__init__.py:73
 #: modules/units/geocurrency/units/__init__.py:73
 msgid "Molybdenum K-α"
-msgstr ""
+msgstr "Molybdène K-α"
 
 #: deployment/dev/geocurrency/units/__init__.py:78
 #: modules/units/build/lib/geocurrency/units/__init__.py:78
 #: modules/units/geocurrency/units/__init__.py:78
 msgid "Tungsten K-α"
-msgstr ""
+msgstr "Tungstène K-α"
 
 #: deployment/dev/geocurrency/units/__init__.py:79
 #: modules/units/build/lib/geocurrency/units/__init__.py:79
 #: modules/units/geocurrency/units/__init__.py:79
 msgid "W Kα"
-msgstr ""
+msgstr "W Kα"
 
 #: deployment/dev/geocurrency/units/__init__.py:83
 #: modules/units/build/lib/geocurrency/units/__init__.py:83
 #: modules/units/geocurrency/units/__init__.py:83
 msgid "RKM"
-msgstr ""
+msgstr "RKM"
 
 #: deployment/dev/geocurrency/units/__init__.py:89
 #: deployment/dev/geocurrency/units/__init__.py:748
@@ -1773,7 +1774,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:89
 #: modules/units/geocurrency/units/__init__.py:748
 msgid "long ton-force"
-msgstr ""
+msgstr "longue tonne-force"
 
 #: deployment/dev/geocurrency/units/__init__.py:102
 #: deployment/dev/geocurrency/units/__init__.py:1035
@@ -1782,85 +1783,85 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:102
 #: modules/units/geocurrency/units/__init__.py:1035
 msgid "long ton"
-msgstr ""
+msgstr "longue tonne"
 
 #: deployment/dev/geocurrency/units/__init__.py:108
 #: modules/units/build/lib/geocurrency/units/__init__.py:108
 #: modules/units/geocurrency/units/__init__.py:108
 msgid "short ton force"
-msgstr ""
+msgstr "force de tonne courte"
 
 #: deployment/dev/geocurrency/units/__init__.py:114
 #: modules/units/build/lib/geocurrency/units/__init__.py:114
 #: modules/units/geocurrency/units/__init__.py:114
 msgid "short hundredweight"
-msgstr ""
+msgstr "petit quintal"
 
 #: deployment/dev/geocurrency/units/__init__.py:120
 #: modules/units/build/lib/geocurrency/units/__init__.py:120
 #: modules/units/geocurrency/units/__init__.py:120
 msgid "short ton"
-msgstr ""
+msgstr "tonne courte"
 
 #: deployment/dev/geocurrency/units/__init__.py:126
 #: modules/units/build/lib/geocurrency/units/__init__.py:126
 #: modules/units/geocurrency/units/__init__.py:126
 msgid "US International Ampere"
-msgstr ""
+msgstr "Ampère international américain"
 
 #: deployment/dev/geocurrency/units/__init__.py:132
 #: modules/units/build/lib/geocurrency/units/__init__.py:132
 #: modules/units/geocurrency/units/__init__.py:132
 msgid "US international Ohm"
-msgstr ""
+msgstr "Ohm international américain"
 
 #: deployment/dev/geocurrency/units/__init__.py:138
 #: modules/units/build/lib/geocurrency/units/__init__.py:138
 #: modules/units/geocurrency/units/__init__.py:138
 msgid "US international Volt"
-msgstr ""
+msgstr "International américain Volt"
 
 #: deployment/dev/geocurrency/units/__init__.py:144
 #: modules/units/build/lib/geocurrency/units/__init__.py:144
 #: modules/units/geocurrency/units/__init__.py:144
 msgid "US therm"
-msgstr ""
+msgstr "US therm"
 
 #: deployment/dev/geocurrency/units/__init__.py:146
 #: modules/units/build/lib/geocurrency/units/__init__.py:146
 #: modules/units/geocurrency/units/__init__.py:146
 msgid "heat energy"
-msgstr ""
+msgstr "énergie thermique"
 
 #: deployment/dev/geocurrency/units/__init__.py:149
 #: modules/units/build/lib/geocurrency/units/__init__.py:149
 #: modules/units/geocurrency/units/__init__.py:149
 msgid "abampere"
-msgstr ""
+msgstr "abampere"
 
 #: deployment/dev/geocurrency/units/__init__.py:154
 #: modules/units/build/lib/geocurrency/units/__init__.py:154
 #: modules/units/geocurrency/units/__init__.py:154
 msgid "abcoulomb"
-msgstr ""
+msgstr "abcoulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:159
 #: modules/units/build/lib/geocurrency/units/__init__.py:159
 #: modules/units/geocurrency/units/__init__.py:159
 msgid "Aberdeen"
-msgstr ""
+msgstr "Aberdeen"
 
 #: deployment/dev/geocurrency/units/__init__.py:164
 #: modules/units/build/lib/geocurrency/units/__init__.py:164
 #: modules/units/geocurrency/units/__init__.py:164
 msgid "abfarad"
-msgstr ""
+msgstr "abfarad"
 
 #: deployment/dev/geocurrency/units/__init__.py:169
 #: modules/units/build/lib/geocurrency/units/__init__.py:169
 #: modules/units/geocurrency/units/__init__.py:169
 msgid "abhenry"
-msgstr ""
+msgstr "Abhenry"
 
 #: deployment/dev/geocurrency/units/__init__.py:171
 #: deployment/dev/geocurrency/units/__init__.py:484
@@ -1875,37 +1876,37 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:847
 #: modules/units/geocurrency/units/__init__.py:1470
 msgid "electrical inductance"
-msgstr ""
+msgstr "inductance électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:174
 #: modules/units/build/lib/geocurrency/units/__init__.py:174
 #: modules/units/geocurrency/units/__init__.py:174
 msgid "abohm"
-msgstr ""
+msgstr "abohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:179
 #: modules/units/build/lib/geocurrency/units/__init__.py:179
 #: modules/units/geocurrency/units/__init__.py:179
 msgid "absiemens"
-msgstr ""
+msgstr "absiemens"
 
 #: deployment/dev/geocurrency/units/__init__.py:184
 #: modules/units/build/lib/geocurrency/units/__init__.py:184
 #: modules/units/geocurrency/units/__init__.py:184
 msgid "abvolt"
-msgstr ""
+msgstr "abvolt"
 
 #: deployment/dev/geocurrency/units/__init__.py:189
 #: modules/units/build/lib/geocurrency/units/__init__.py:189
 #: modules/units/geocurrency/units/__init__.py:189
 msgid "acre"
-msgstr ""
+msgstr "acre"
 
 #: deployment/dev/geocurrency/units/__init__.py:194
 #: modules/units/build/lib/geocurrency/units/__init__.py:194
 #: modules/units/geocurrency/units/__init__.py:194
 msgid "acre-foot"
-msgstr ""
+msgstr "acre-pied"
 
 #: deployment/dev/geocurrency/units/__init__.py:199
 #: deployment/dev/geocurrency/units/__init__.py:260
@@ -1914,79 +1915,79 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:199
 #: modules/units/geocurrency/units/__init__.py:260
 msgid "ampere"
-msgstr ""
+msgstr "ampère"
 
 #: deployment/dev/geocurrency/units/__init__.py:204
 #: modules/units/build/lib/geocurrency/units/__init__.py:204
 #: modules/units/geocurrency/units/__init__.py:204
 msgid "ampere-turn"
-msgstr ""
+msgstr "ampère-tour"
 
 #: deployment/dev/geocurrency/units/__init__.py:209
 #: modules/units/build/lib/geocurrency/units/__init__.py:209
 #: modules/units/geocurrency/units/__init__.py:209
 msgid "angstrom"
-msgstr ""
+msgstr "Angström"
 
 #: deployment/dev/geocurrency/units/__init__.py:214
 #: modules/units/build/lib/geocurrency/units/__init__.py:214
 #: modules/units/geocurrency/units/__init__.py:214
 msgid "angstrom star"
-msgstr ""
+msgstr "étoile angström"
 
 #: deployment/dev/geocurrency/units/__init__.py:219
 #: modules/units/build/lib/geocurrency/units/__init__.py:219
 #: modules/units/geocurrency/units/__init__.py:219
 msgid "apothecary dram"
-msgstr ""
+msgstr "apothicaire dram"
 
 #: deployment/dev/geocurrency/units/__init__.py:224
 #: modules/units/build/lib/geocurrency/units/__init__.py:224
 #: modules/units/geocurrency/units/__init__.py:224
 msgid "apothecary ounce"
-msgstr ""
+msgstr "once d'apothicaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:229
 #: modules/units/build/lib/geocurrency/units/__init__.py:229
 #: modules/units/geocurrency/units/__init__.py:229
 msgid "apothecary pound"
-msgstr ""
+msgstr "livre d'apothicaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:233
 #: modules/units/build/lib/geocurrency/units/__init__.py:233
 #: modules/units/geocurrency/units/__init__.py:233
 msgid "minute of arc"
-msgstr ""
+msgstr "minute d'arc"
 
 #: deployment/dev/geocurrency/units/__init__.py:237
 #: modules/units/build/lib/geocurrency/units/__init__.py:237
 #: modules/units/geocurrency/units/__init__.py:237
 msgid "second of arc"
-msgstr ""
+msgstr "seconde d'arc"
 
 #: deployment/dev/geocurrency/units/__init__.py:241
 #: modules/units/build/lib/geocurrency/units/__init__.py:241
 #: modules/units/geocurrency/units/__init__.py:241
 msgid "are"
-msgstr ""
+msgstr "sont"
 
 #: deployment/dev/geocurrency/units/__init__.py:245
 #: modules/units/build/lib/geocurrency/units/__init__.py:245
 #: modules/units/geocurrency/units/__init__.py:245
 msgid "astronomical unit"
-msgstr ""
+msgstr "unité astronomique"
 
 #: deployment/dev/geocurrency/units/__init__.py:249
 #: modules/units/build/lib/geocurrency/units/__init__.py:249
 #: modules/units/geocurrency/units/__init__.py:249
 msgid "atmosphere liter"
-msgstr ""
+msgstr "atmosphère litre"
 
 #: deployment/dev/geocurrency/units/__init__.py:253
 #: modules/units/build/lib/geocurrency/units/__init__.py:253
 #: modules/units/geocurrency/units/__init__.py:253
 msgid "atomic mass constant"
-msgstr ""
+msgstr "constante de masse atomique"
 
 #: deployment/dev/geocurrency/units/__init__.py:255
 #: deployment/dev/geocurrency/units/__init__.py:285
@@ -2106,175 +2107,175 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1702
 #: modules/units/geocurrency/units/__init__.py:1714
 msgid "constant"
-msgstr ""
+msgstr "constant"
 
 #: deployment/dev/geocurrency/units/__init__.py:258
 #: modules/units/build/lib/geocurrency/units/__init__.py:258
 #: modules/units/geocurrency/units/__init__.py:258
 msgid "atomic unit of current"
-msgstr ""
+msgstr "unité atomique de courant"
 
 #: deployment/dev/geocurrency/units/__init__.py:263
 #: modules/units/build/lib/geocurrency/units/__init__.py:263
 #: modules/units/geocurrency/units/__init__.py:263
 msgid "atomic unit of electric field"
-msgstr ""
+msgstr "unité atomique de champ électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:267
 #: modules/units/build/lib/geocurrency/units/__init__.py:267
 #: modules/units/geocurrency/units/__init__.py:267
 msgid "atomic unit of force"
-msgstr ""
+msgstr "unité atomique de force"
 
 #: deployment/dev/geocurrency/units/__init__.py:271
 #: modules/units/build/lib/geocurrency/units/__init__.py:271
 #: modules/units/geocurrency/units/__init__.py:271
 msgid "atomic unit of intensity"
-msgstr ""
+msgstr "unité atomique d'intensité"
 
 #: deployment/dev/geocurrency/units/__init__.py:275
 #: modules/units/build/lib/geocurrency/units/__init__.py:275
 #: modules/units/geocurrency/units/__init__.py:275
 msgid "atomic unit of temperature"
-msgstr ""
+msgstr "unité atomique de température"
 
 #: deployment/dev/geocurrency/units/__init__.py:279
 #: modules/units/build/lib/geocurrency/units/__init__.py:279
 #: modules/units/geocurrency/units/__init__.py:279
 msgid "atomic unit of time"
-msgstr ""
+msgstr "unité atomique de temps"
 
 #: deployment/dev/geocurrency/units/__init__.py:283
 #: modules/units/build/lib/geocurrency/units/__init__.py:283
 #: modules/units/geocurrency/units/__init__.py:283
 msgid "Avogadro constant"
-msgstr ""
+msgstr "Constante d'Avogadro"
 
 #: deployment/dev/geocurrency/units/__init__.py:287
 #: modules/units/build/lib/geocurrency/units/__init__.py:287
 #: modules/units/geocurrency/units/__init__.py:287
 msgid "Avogadro number"
-msgstr ""
+msgstr "Numéro Avogadro"
 
 #: deployment/dev/geocurrency/units/__init__.py:291
 #: modules/units/build/lib/geocurrency/units/__init__.py:291
 #: modules/units/geocurrency/units/__init__.py:291
 msgid "bag"
-msgstr ""
+msgstr "sac"
 
 #: deployment/dev/geocurrency/units/__init__.py:293
 #: modules/units/build/lib/geocurrency/units/__init__.py:293
 #: modules/units/geocurrency/units/__init__.py:293
 msgid "quantity"
-msgstr ""
+msgstr "quantité"
 
 #: deployment/dev/geocurrency/units/__init__.py:295
 #: modules/units/build/lib/geocurrency/units/__init__.py:295
 #: modules/units/geocurrency/units/__init__.py:295
 msgid "bar"
-msgstr ""
+msgstr "bar"
 
 #: deployment/dev/geocurrency/units/__init__.py:299
 #: modules/units/build/lib/geocurrency/units/__init__.py:299
 #: modules/units/geocurrency/units/__init__.py:299
 msgid "barn"
-msgstr ""
+msgstr "Grange"
 
 #: deployment/dev/geocurrency/units/__init__.py:303
 #: modules/units/build/lib/geocurrency/units/__init__.py:303
 #: modules/units/geocurrency/units/__init__.py:303
 msgid "barrel"
-msgstr ""
+msgstr "baril"
 
 #: deployment/dev/geocurrency/units/__init__.py:307
 #: modules/units/build/lib/geocurrency/units/__init__.py:307
 #: modules/units/geocurrency/units/__init__.py:307
 msgid "barrye"
-msgstr ""
+msgstr "Barrye"
 
 #: deployment/dev/geocurrency/units/__init__.py:312
 #: modules/units/build/lib/geocurrency/units/__init__.py:312
 #: modules/units/geocurrency/units/__init__.py:312
 msgid "baud"
-msgstr ""
+msgstr "baud"
 
 #: deployment/dev/geocurrency/units/__init__.py:317
 #: modules/units/build/lib/geocurrency/units/__init__.py:317
 #: modules/units/geocurrency/units/__init__.py:317
 msgid "becquerel"
-msgstr ""
+msgstr "becquerel"
 
 #: deployment/dev/geocurrency/units/__init__.py:319
 #: modules/units/build/lib/geocurrency/units/__init__.py:319
 #: modules/units/geocurrency/units/__init__.py:319
 msgid "radioactivity"
-msgstr ""
+msgstr "radioactivité"
 
 #: deployment/dev/geocurrency/units/__init__.py:322
 #: modules/units/build/lib/geocurrency/units/__init__.py:322
 #: modules/units/geocurrency/units/__init__.py:322
 msgid "beer barrel"
-msgstr ""
+msgstr "baril de bière"
 
 #: deployment/dev/geocurrency/units/__init__.py:327
 #: modules/units/build/lib/geocurrency/units/__init__.py:327
 #: modules/units/geocurrency/units/__init__.py:327
 msgid "bel"
-msgstr ""
+msgstr "bel"
 
 #: deployment/dev/geocurrency/units/__init__.py:329
 #: modules/units/build/lib/geocurrency/units/__init__.py:329
 #: modules/units/geocurrency/units/__init__.py:329
 msgid "field quantity"
-msgstr ""
+msgstr "quantité de champ"
 
 #: deployment/dev/geocurrency/units/__init__.py:332
 #: modules/units/build/lib/geocurrency/units/__init__.py:332
 #: modules/units/geocurrency/units/__init__.py:332
 msgid "biot"
-msgstr ""
+msgstr "biot"
 
 #: deployment/dev/geocurrency/units/__init__.py:337
 #: modules/units/build/lib/geocurrency/units/__init__.py:337
 #: modules/units/geocurrency/units/__init__.py:337
 msgid "biot turn"
-msgstr ""
+msgstr "virage biot"
 
 #: deployment/dev/geocurrency/units/__init__.py:342
 #: modules/units/build/lib/geocurrency/units/__init__.py:342
 #: modules/units/geocurrency/units/__init__.py:342
 msgid "bit"
-msgstr ""
+msgstr "bit"
 
 #: deployment/dev/geocurrency/units/__init__.py:347
 #: modules/units/build/lib/geocurrency/units/__init__.py:347
 #: modules/units/geocurrency/units/__init__.py:347
 msgid "bits per pixel"
-msgstr ""
+msgstr "bits par pixel"
 
 #: deployment/dev/geocurrency/units/__init__.py:352
 #: modules/units/build/lib/geocurrency/units/__init__.py:352
 #: modules/units/geocurrency/units/__init__.py:352
 msgid "board foot"
-msgstr ""
+msgstr "pied de planche"
 
 #: deployment/dev/geocurrency/units/__init__.py:357
 #: modules/units/build/lib/geocurrency/units/__init__.py:357
 #: modules/units/geocurrency/units/__init__.py:357
 msgid "bohr"
-msgstr ""
+msgstr "bohr"
 
 #: deployment/dev/geocurrency/units/__init__.py:362
 #: modules/units/build/lib/geocurrency/units/__init__.py:362
 #: modules/units/geocurrency/units/__init__.py:362
 msgid "bohr magneton"
-msgstr ""
+msgstr "bohr magneton"
 
 #: deployment/dev/geocurrency/units/__init__.py:367
 #: modules/units/build/lib/geocurrency/units/__init__.py:367
 #: modules/units/geocurrency/units/__init__.py:367
 msgid "boiler horsepower"
-msgstr ""
+msgstr "puissance de la chaudière"
 
 #: deployment/dev/geocurrency/units/__init__.py:369
 #: deployment/dev/geocurrency/units/__init__.py:509
@@ -2301,543 +2302,543 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1646
 #: modules/units/geocurrency/units/__init__.py:1666
 msgid "power"
-msgstr ""
+msgstr "Puissance"
 
 #: deployment/dev/geocurrency/units/__init__.py:372
 #: modules/units/build/lib/geocurrency/units/__init__.py:372
 #: modules/units/geocurrency/units/__init__.py:372
 msgid "boltzmann constant"
-msgstr ""
+msgstr "constante de Boltzmann"
 
 #: deployment/dev/geocurrency/units/__init__.py:377
 #: modules/units/build/lib/geocurrency/units/__init__.py:377
 #: modules/units/geocurrency/units/__init__.py:377
 msgid "british thermal unit"
-msgstr ""
+msgstr "Unité thermique britannique"
 
 #: deployment/dev/geocurrency/units/__init__.py:382
 #: modules/units/build/lib/geocurrency/units/__init__.py:382
 #: modules/units/geocurrency/units/__init__.py:382
 msgid "buckingham"
-msgstr ""
+msgstr "Buckingham"
 
 #: deployment/dev/geocurrency/units/__init__.py:387
 #: modules/units/build/lib/geocurrency/units/__init__.py:387
 #: modules/units/geocurrency/units/__init__.py:387
 msgid "bushel"
-msgstr ""
+msgstr "boisseau"
 
 #: deployment/dev/geocurrency/units/__init__.py:392
 #: modules/units/build/lib/geocurrency/units/__init__.py:392
 #: modules/units/geocurrency/units/__init__.py:392
 msgid "byte"
-msgstr ""
+msgstr "octet"
 
 #: deployment/dev/geocurrency/units/__init__.py:397
 #: modules/units/build/lib/geocurrency/units/__init__.py:397
 #: modules/units/geocurrency/units/__init__.py:397
 msgid "cable length"
-msgstr ""
+msgstr "longueur de câble"
 
 #: deployment/dev/geocurrency/units/__init__.py:402
 #: modules/units/build/lib/geocurrency/units/__init__.py:402
 #: modules/units/geocurrency/units/__init__.py:402
 msgid "calorie"
-msgstr ""
+msgstr "calorie"
 
 #: deployment/dev/geocurrency/units/__init__.py:407
 #: modules/units/build/lib/geocurrency/units/__init__.py:407
 #: modules/units/geocurrency/units/__init__.py:407
 msgid "candela"
-msgstr ""
+msgstr "Candela"
 
 #: deployment/dev/geocurrency/units/__init__.py:412
 #: modules/units/build/lib/geocurrency/units/__init__.py:412
 #: modules/units/geocurrency/units/__init__.py:412
 msgid "carat"
-msgstr ""
+msgstr "carat"
 
 #: deployment/dev/geocurrency/units/__init__.py:417
 #: modules/units/build/lib/geocurrency/units/__init__.py:417
 #: modules/units/geocurrency/units/__init__.py:417
 msgid "centimeter H20"
-msgstr ""
+msgstr "centimètre H20"
 
 #: deployment/dev/geocurrency/units/__init__.py:422
 #: modules/units/build/lib/geocurrency/units/__init__.py:422
 #: modules/units/geocurrency/units/__init__.py:422
 msgid "centimeter Hg"
-msgstr ""
+msgstr "centimètre Hg"
 
 #: deployment/dev/geocurrency/units/__init__.py:427
 #: modules/units/build/lib/geocurrency/units/__init__.py:427
 #: modules/units/geocurrency/units/__init__.py:427
 msgid "century"
-msgstr ""
+msgstr "siècle"
 
 #: deployment/dev/geocurrency/units/__init__.py:432
 #: modules/units/build/lib/geocurrency/units/__init__.py:432
 #: modules/units/geocurrency/units/__init__.py:432
 msgid "chain"
-msgstr ""
+msgstr "chaîne"
 
 #: deployment/dev/geocurrency/units/__init__.py:437
 #: modules/units/build/lib/geocurrency/units/__init__.py:437
 #: modules/units/geocurrency/units/__init__.py:437
 msgid "cicero"
-msgstr ""
+msgstr "cicéron"
 
 #: deployment/dev/geocurrency/units/__init__.py:442
 #: modules/units/build/lib/geocurrency/units/__init__.py:442
 #: modules/units/geocurrency/units/__init__.py:442
 msgid "circular mil"
-msgstr ""
+msgstr "mil circulaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:447
 #: modules/units/build/lib/geocurrency/units/__init__.py:447
 #: modules/units/geocurrency/units/__init__.py:447
 msgid "classical electron radius"
-msgstr ""
+msgstr "rayon d'électrons classique"
 
 #: deployment/dev/geocurrency/units/__init__.py:452
 #: modules/units/build/lib/geocurrency/units/__init__.py:452
 #: modules/units/geocurrency/units/__init__.py:452
 msgid "clausius"
-msgstr ""
+msgstr "Clausius"
 
 #: deployment/dev/geocurrency/units/__init__.py:457
 #: modules/units/build/lib/geocurrency/units/__init__.py:457
 #: modules/units/geocurrency/units/__init__.py:457
 msgid "common year"
-msgstr ""
+msgstr "année commune"
 
 #: deployment/dev/geocurrency/units/__init__.py:462
 #: modules/units/build/lib/geocurrency/units/__init__.py:462
 #: modules/units/geocurrency/units/__init__.py:462
 msgid "conductance quantum"
-msgstr ""
+msgstr "quantum de conductance"
 
 #: deployment/dev/geocurrency/units/__init__.py:467
 #: modules/units/build/lib/geocurrency/units/__init__.py:467
 #: modules/units/geocurrency/units/__init__.py:467
 msgid "conventional ampere"
-msgstr ""
+msgstr "ampère conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:472
 #: modules/units/build/lib/geocurrency/units/__init__.py:472
 #: modules/units/geocurrency/units/__init__.py:472
 msgid "conventional coulomb"
-msgstr ""
+msgstr "coulomb conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:477
 #: modules/units/build/lib/geocurrency/units/__init__.py:477
 #: modules/units/geocurrency/units/__init__.py:477
 msgid "conventional farad"
-msgstr ""
+msgstr "farad conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:479
 #: modules/units/build/lib/geocurrency/units/__init__.py:479
 #: modules/units/geocurrency/units/__init__.py:479
 msgid "eletrical capacitance"
-msgstr ""
+msgstr "capacité électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:482
 #: modules/units/build/lib/geocurrency/units/__init__.py:482
 #: modules/units/geocurrency/units/__init__.py:482
 msgid "conventional henry"
-msgstr ""
+msgstr "Henry conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:487
 #: modules/units/build/lib/geocurrency/units/__init__.py:487
 #: modules/units/geocurrency/units/__init__.py:487
 msgid "conventional josephson constant"
-msgstr ""
+msgstr "constante de Josephson conventionnelle"
 
 #: deployment/dev/geocurrency/units/__init__.py:492
 #: modules/units/build/lib/geocurrency/units/__init__.py:492
 #: modules/units/geocurrency/units/__init__.py:492
 msgid "conventional ohm"
-msgstr ""
+msgstr "ohm conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:497
 #: modules/units/build/lib/geocurrency/units/__init__.py:497
 #: modules/units/geocurrency/units/__init__.py:497
 msgid "conventional volt"
-msgstr ""
+msgstr "volt conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:502
 #: modules/units/build/lib/geocurrency/units/__init__.py:502
 #: modules/units/geocurrency/units/__init__.py:502
 msgid "conventional Von Klitzing constant"
-msgstr ""
+msgstr "constante de Von Klitzing conventionnelle"
 
 #: deployment/dev/geocurrency/units/__init__.py:507
 #: modules/units/build/lib/geocurrency/units/__init__.py:507
 #: modules/units/geocurrency/units/__init__.py:507
 msgid "conventional Watt"
-msgstr ""
+msgstr "Watt conventionnel"
 
 #: deployment/dev/geocurrency/units/__init__.py:512
 #: modules/units/build/lib/geocurrency/units/__init__.py:512
 #: modules/units/geocurrency/units/__init__.py:512
 msgid "coulomb"
-msgstr ""
+msgstr "coulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:516
 #: modules/units/build/lib/geocurrency/units/__init__.py:516
 #: modules/units/geocurrency/units/__init__.py:516
 msgid "coulomb constant"
-msgstr ""
+msgstr "constante de Coulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:521
 #: modules/units/build/lib/geocurrency/units/__init__.py:521
 #: modules/units/geocurrency/units/__init__.py:521
 msgid "count"
-msgstr ""
+msgstr "compter"
 
 #: deployment/dev/geocurrency/units/__init__.py:526
 #: modules/units/build/lib/geocurrency/units/__init__.py:526
 #: modules/units/geocurrency/units/__init__.py:526
 msgid "counts per second"
-msgstr ""
+msgstr "compte par seconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:531
 #: modules/units/build/lib/geocurrency/units/__init__.py:531
 #: modules/units/geocurrency/units/__init__.py:531
 msgid "CSS pixel"
-msgstr ""
+msgstr "Pixel CSS"
 
 #: deployment/dev/geocurrency/units/__init__.py:536
 #: modules/units/build/lib/geocurrency/units/__init__.py:536
 #: modules/units/geocurrency/units/__init__.py:536
 msgid "cubic centimeter"
-msgstr ""
+msgstr "centimètre cube"
 
 #: deployment/dev/geocurrency/units/__init__.py:541
 #: modules/units/build/lib/geocurrency/units/__init__.py:541
 #: modules/units/geocurrency/units/__init__.py:541
 msgid "cubic foot"
-msgstr ""
+msgstr "pied carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:546
 #: modules/units/build/lib/geocurrency/units/__init__.py:546
 #: modules/units/geocurrency/units/__init__.py:546
 msgid "cubic inch"
-msgstr ""
+msgstr "pouce cube"
 
 #: deployment/dev/geocurrency/units/__init__.py:550
 #: modules/units/build/lib/geocurrency/units/__init__.py:550
 #: modules/units/geocurrency/units/__init__.py:550
 msgid "cubic yard"
-msgstr ""
+msgstr "verge cube"
 
 #: deployment/dev/geocurrency/units/__init__.py:554
 #: modules/units/build/lib/geocurrency/units/__init__.py:554
 #: modules/units/geocurrency/units/__init__.py:554
 msgid "cup"
-msgstr ""
+msgstr "tasse"
 
 #: deployment/dev/geocurrency/units/__init__.py:558
 #: modules/units/build/lib/geocurrency/units/__init__.py:558
 #: modules/units/geocurrency/units/__init__.py:558
 msgid "curie"
-msgstr ""
+msgstr "curie"
 
 #: deployment/dev/geocurrency/units/__init__.py:562
 #: modules/units/build/lib/geocurrency/units/__init__.py:562
 #: modules/units/geocurrency/units/__init__.py:562
 msgid "dalton"
-msgstr ""
+msgstr "Dalton"
 
 #: deployment/dev/geocurrency/units/__init__.py:566
 #: modules/units/build/lib/geocurrency/units/__init__.py:566
 #: modules/units/geocurrency/units/__init__.py:566
 msgid "darcy"
-msgstr ""
+msgstr "darcy"
 
 #: deployment/dev/geocurrency/units/__init__.py:568
 #: modules/units/build/lib/geocurrency/units/__init__.py:568
 #: modules/units/geocurrency/units/__init__.py:568
 msgid "permeability"
-msgstr ""
+msgstr "perméabilité"
 
 #: deployment/dev/geocurrency/units/__init__.py:570
 #: modules/units/build/lib/geocurrency/units/__init__.py:570
 #: modules/units/geocurrency/units/__init__.py:570
 msgid "day"
-msgstr ""
+msgstr "journée"
 
 #: deployment/dev/geocurrency/units/__init__.py:571
 #: modules/units/build/lib/geocurrency/units/__init__.py:571
 #: modules/units/geocurrency/units/__init__.py:571
 msgctxt "unit"
 msgid "day"
-msgstr ""
+msgstr "journée"
 
 #: deployment/dev/geocurrency/units/__init__.py:574
 #: modules/units/build/lib/geocurrency/units/__init__.py:574
 #: modules/units/geocurrency/units/__init__.py:574
 msgid "debye"
-msgstr ""
+msgstr "debye"
 
 #: deployment/dev/geocurrency/units/__init__.py:578
 #: modules/units/build/lib/geocurrency/units/__init__.py:578
 #: modules/units/geocurrency/units/__init__.py:578
 msgid "decade"
-msgstr ""
+msgstr "décennie"
 
 #: deployment/dev/geocurrency/units/__init__.py:579
 #: modules/units/build/lib/geocurrency/units/__init__.py:579
 #: modules/units/geocurrency/units/__init__.py:579
 msgctxt "symbol"
 msgid "decade"
-msgstr ""
+msgstr "décennie"
 
 #: deployment/dev/geocurrency/units/__init__.py:582
 #: modules/units/build/lib/geocurrency/units/__init__.py:582
 #: modules/units/geocurrency/units/__init__.py:582
 msgid "degree"
-msgstr ""
+msgstr "degré"
 
 #: deployment/dev/geocurrency/units/__init__.py:586
 #: modules/units/build/lib/geocurrency/units/__init__.py:586
 #: modules/units/geocurrency/units/__init__.py:586
 msgid "degree Celsius"
-msgstr ""
+msgstr "degré Celsius"
 
 #: deployment/dev/geocurrency/units/__init__.py:590
 #: modules/units/build/lib/geocurrency/units/__init__.py:590
 #: modules/units/geocurrency/units/__init__.py:590
 msgid "degree Fahrenheit"
-msgstr ""
+msgstr "degré Fahrenheit"
 
 #: deployment/dev/geocurrency/units/__init__.py:594
 #: modules/units/build/lib/geocurrency/units/__init__.py:594
 #: modules/units/geocurrency/units/__init__.py:594
 msgid "degree Rankine"
-msgstr ""
+msgstr "degré Rankine"
 
 #: deployment/dev/geocurrency/units/__init__.py:598
 #: modules/units/build/lib/geocurrency/units/__init__.py:598
 #: modules/units/geocurrency/units/__init__.py:598
 msgid "degree Reaumur"
-msgstr ""
+msgstr "degré Reaumur"
 
 #: deployment/dev/geocurrency/units/__init__.py:602
 #: modules/units/build/lib/geocurrency/units/__init__.py:602
 #: modules/units/geocurrency/units/__init__.py:602
 msgid "denier"
-msgstr ""
+msgstr "denier"
 
 #: deployment/dev/geocurrency/units/__init__.py:606
 #: modules/units/build/lib/geocurrency/units/__init__.py:606
 #: modules/units/geocurrency/units/__init__.py:606
 msgid "didot"
-msgstr ""
+msgstr "didot"
 
 #: deployment/dev/geocurrency/units/__init__.py:610
 #: modules/units/build/lib/geocurrency/units/__init__.py:610
 #: modules/units/geocurrency/units/__init__.py:610
 msgid "Dirac constant"
-msgstr ""
+msgstr "Constante de Dirac"
 
 #: deployment/dev/geocurrency/units/__init__.py:614
 #: modules/units/build/lib/geocurrency/units/__init__.py:614
 #: modules/units/geocurrency/units/__init__.py:614
 msgid "dram"
-msgstr ""
+msgstr "drachme"
 
 #: deployment/dev/geocurrency/units/__init__.py:618
 #: modules/units/build/lib/geocurrency/units/__init__.py:618
 #: modules/units/geocurrency/units/__init__.py:618
 msgid "dry barrel"
-msgstr ""
+msgstr "baril sec"
 
 #: deployment/dev/geocurrency/units/__init__.py:622
 #: modules/units/build/lib/geocurrency/units/__init__.py:622
 #: modules/units/geocurrency/units/__init__.py:622
 msgid "dry gallon"
-msgstr ""
+msgstr "gallon sec"
 
 #: deployment/dev/geocurrency/units/__init__.py:626
 #: modules/units/build/lib/geocurrency/units/__init__.py:626
 #: modules/units/geocurrency/units/__init__.py:626
 msgid "dry pint"
-msgstr ""
+msgstr "pinte sèche"
 
 #: deployment/dev/geocurrency/units/__init__.py:630
 #: modules/units/build/lib/geocurrency/units/__init__.py:630
 #: modules/units/geocurrency/units/__init__.py:630
 msgid "dry quart"
-msgstr ""
+msgstr "litre sec"
 
 #: deployment/dev/geocurrency/units/__init__.py:634
 #: modules/units/build/lib/geocurrency/units/__init__.py:634
 #: modules/units/geocurrency/units/__init__.py:634
 msgid "decitex"
-msgstr ""
+msgstr "décitex"
 
 #: deployment/dev/geocurrency/units/__init__.py:638
 #: modules/units/build/lib/geocurrency/units/__init__.py:638
 #: modules/units/geocurrency/units/__init__.py:638
 msgid "dyne"
-msgstr ""
+msgstr "dyne"
 
 #: deployment/dev/geocurrency/units/__init__.py:642
 #: modules/units/build/lib/geocurrency/units/__init__.py:642
 #: modules/units/geocurrency/units/__init__.py:642
 msgid "eletcrical horsepower"
-msgstr ""
+msgstr "puissance électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:646
 #: modules/units/build/lib/geocurrency/units/__init__.py:646
 #: modules/units/geocurrency/units/__init__.py:646
 msgid "electron G-factor"
-msgstr ""
+msgstr "facteur G électronique"
 
 #: deployment/dev/geocurrency/units/__init__.py:650
 #: modules/units/build/lib/geocurrency/units/__init__.py:650
 #: modules/units/geocurrency/units/__init__.py:650
 msgid "electron mass"
-msgstr ""
+msgstr "masse électronique"
 
 #: deployment/dev/geocurrency/units/__init__.py:654
 #: modules/units/build/lib/geocurrency/units/__init__.py:654
 #: modules/units/geocurrency/units/__init__.py:654
 msgid "electronvolt"
-msgstr ""
+msgstr "électron-volt"
 
 #: deployment/dev/geocurrency/units/__init__.py:662
 #: modules/units/build/lib/geocurrency/units/__init__.py:662
 #: modules/units/geocurrency/units/__init__.py:662
 msgid "entropy unit"
-msgstr ""
+msgstr "unité d'entropie"
 
 #: deployment/dev/geocurrency/units/__init__.py:664
 #: modules/units/build/lib/geocurrency/units/__init__.py:664
 #: modules/units/geocurrency/units/__init__.py:664
 msgid "energy by temperature"
-msgstr ""
+msgstr "énergie par température"
 
 #: deployment/dev/geocurrency/units/__init__.py:666
 #: modules/units/build/lib/geocurrency/units/__init__.py:666
 #: modules/units/geocurrency/units/__init__.py:666
 msgid "enzyme unit"
-msgstr ""
+msgstr "unité enzymatique"
 
 #: deployment/dev/geocurrency/units/__init__.py:670
 #: modules/units/build/lib/geocurrency/units/__init__.py:670
 #: modules/units/geocurrency/units/__init__.py:670
 msgid "eon"
-msgstr ""
+msgstr "eon"
 
 #: deployment/dev/geocurrency/units/__init__.py:674
 #: modules/units/build/lib/geocurrency/units/__init__.py:674
 #: modules/units/geocurrency/units/__init__.py:674
 msgid "erg"
-msgstr ""
+msgstr "erg"
 
 #: deployment/dev/geocurrency/units/__init__.py:678
 #: modules/units/build/lib/geocurrency/units/__init__.py:678
 #: modules/units/geocurrency/units/__init__.py:678
 msgid "farad"
-msgstr ""
+msgstr "farad"
 
 #: deployment/dev/geocurrency/units/__init__.py:682
 #: modules/units/build/lib/geocurrency/units/__init__.py:682
 #: modules/units/geocurrency/units/__init__.py:682
 msgid "faraday"
-msgstr ""
+msgstr "Faraday"
 
 #: deployment/dev/geocurrency/units/__init__.py:686
 #: modules/units/build/lib/geocurrency/units/__init__.py:686
 #: modules/units/geocurrency/units/__init__.py:686
 msgid "faraday constant"
-msgstr ""
+msgstr "constante de Faraday"
 
 #: deployment/dev/geocurrency/units/__init__.py:690
 #: modules/units/build/lib/geocurrency/units/__init__.py:690
 #: modules/units/geocurrency/units/__init__.py:690
 msgid "fathom"
-msgstr ""
+msgstr "brasse"
 
 #: deployment/dev/geocurrency/units/__init__.py:694
 #: modules/units/build/lib/geocurrency/units/__init__.py:694
 #: modules/units/geocurrency/units/__init__.py:694
 msgid "fermi"
-msgstr ""
+msgstr "fermi"
 
 #: deployment/dev/geocurrency/units/__init__.py:698
 #: modules/units/build/lib/geocurrency/units/__init__.py:698
 #: modules/units/geocurrency/units/__init__.py:698
 msgid "fifteen degree calorie"
-msgstr ""
+msgstr "quinze degrés de calories"
 
 #: deployment/dev/geocurrency/units/__init__.py:702
 #: modules/units/build/lib/geocurrency/units/__init__.py:702
 #: modules/units/geocurrency/units/__init__.py:702
 msgid "fifth"
-msgstr ""
+msgstr "cinquième"
 
 #: deployment/dev/geocurrency/units/__init__.py:706
 #: modules/units/build/lib/geocurrency/units/__init__.py:706
 #: modules/units/geocurrency/units/__init__.py:706
 msgid "fine structure constant"
-msgstr ""
+msgstr "constante de structure fine"
 
 #: deployment/dev/geocurrency/units/__init__.py:710
 #: modules/units/build/lib/geocurrency/units/__init__.py:710
 #: modules/units/geocurrency/units/__init__.py:710
 msgid "first radiation constant"
-msgstr ""
+msgstr "première constante de rayonnement"
 
 #: deployment/dev/geocurrency/units/__init__.py:714
 #: modules/units/build/lib/geocurrency/units/__init__.py:714
 #: modules/units/geocurrency/units/__init__.py:714
 msgid "fluid dram"
-msgstr ""
+msgstr "dram fluide"
 
 #: deployment/dev/geocurrency/units/__init__.py:718
 #: modules/units/build/lib/geocurrency/units/__init__.py:718
 #: modules/units/geocurrency/units/__init__.py:718
 msgid "fluid ounce"
-msgstr ""
+msgstr "once liquide"
 
 #: deployment/dev/geocurrency/units/__init__.py:722
 #: modules/units/build/lib/geocurrency/units/__init__.py:722
 #: modules/units/geocurrency/units/__init__.py:722
 msgid "foot"
-msgstr ""
+msgstr "pied"
 
 #: deployment/dev/geocurrency/units/__init__.py:726
 #: modules/units/build/lib/geocurrency/units/__init__.py:726
 #: modules/units/geocurrency/units/__init__.py:726
 msgid "foot H2O"
-msgstr ""
+msgstr "pied H2O"
 
 #: deployment/dev/geocurrency/units/__init__.py:730
 #: modules/units/build/lib/geocurrency/units/__init__.py:730
 #: modules/units/geocurrency/units/__init__.py:730
 msgid "foot per second"
-msgstr ""
+msgstr "pied par seconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:734
 #: modules/units/build/lib/geocurrency/units/__init__.py:734
 #: modules/units/geocurrency/units/__init__.py:734
 msgid "foot pound"
-msgstr ""
+msgstr "pied livre"
 
 #: deployment/dev/geocurrency/units/__init__.py:738
 #: modules/units/build/lib/geocurrency/units/__init__.py:738
 #: modules/units/geocurrency/units/__init__.py:738
 msgid "gram-force"
-msgstr ""
+msgstr "gramme-force"
 
 #: deployment/dev/geocurrency/units/__init__.py:743
 #: modules/units/build/lib/geocurrency/units/__init__.py:743
 #: modules/units/geocurrency/units/__init__.py:743
 msgid "kilogram-force"
-msgstr ""
+msgstr "kilogramme-force"
 
 #: deployment/dev/geocurrency/units/__init__.py:753
 #: deployment/dev/geocurrency/units/__init__.py:768
@@ -2846,49 +2847,49 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:753
 #: modules/units/geocurrency/units/__init__.py:768
 msgid "tonne-force"
-msgstr ""
+msgstr "tonne-force"
 
 #: deployment/dev/geocurrency/units/__init__.py:758
 #: modules/units/build/lib/geocurrency/units/__init__.py:758
 #: modules/units/geocurrency/units/__init__.py:758
 msgid "ounce-force"
-msgstr ""
+msgstr "once-force"
 
 #: deployment/dev/geocurrency/units/__init__.py:763
 #: modules/units/build/lib/geocurrency/units/__init__.py:763
 #: modules/units/geocurrency/units/__init__.py:763
 msgid "pound-force"
-msgstr ""
+msgstr "livre-force"
 
 #: deployment/dev/geocurrency/units/__init__.py:773
 #: modules/units/build/lib/geocurrency/units/__init__.py:773
 #: modules/units/geocurrency/units/__init__.py:773
 msgid "fortnight"
-msgstr ""
+msgstr "quinze jours"
 
 #: deployment/dev/geocurrency/units/__init__.py:777
 #: modules/units/build/lib/geocurrency/units/__init__.py:777
 #: modules/units/geocurrency/units/__init__.py:777
 msgid "franklin"
-msgstr ""
+msgstr "Franklin"
 
 #: deployment/dev/geocurrency/units/__init__.py:781
 #: modules/units/build/lib/geocurrency/units/__init__.py:781
 #: modules/units/geocurrency/units/__init__.py:781
 msgid "furlong"
-msgstr ""
+msgstr "furlong"
 
 #: deployment/dev/geocurrency/units/__init__.py:785
 #: modules/units/build/lib/geocurrency/units/__init__.py:785
 #: modules/units/geocurrency/units/__init__.py:785
 msgid "galileo"
-msgstr ""
+msgstr "galilée"
 
 #: deployment/dev/geocurrency/units/__init__.py:789
 #: modules/units/build/lib/geocurrency/units/__init__.py:789
 #: modules/units/geocurrency/units/__init__.py:789
 msgid "gallon"
-msgstr ""
+msgstr "gallon"
 
 #: deployment/dev/geocurrency/units/__init__.py:793
 #: deployment/dev/geocurrency/units/__init__.py:797
@@ -2897,332 +2898,332 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:793
 #: modules/units/geocurrency/units/__init__.py:797
 msgid "gamma"
-msgstr ""
+msgstr "gamma"
 
 #: deployment/dev/geocurrency/units/__init__.py:801
 #: modules/units/build/lib/geocurrency/units/__init__.py:801
 #: modules/units/geocurrency/units/__init__.py:801
 msgid "gauss"
-msgstr ""
+msgstr "gauss"
 
 #: deployment/dev/geocurrency/units/__init__.py:805
 #: modules/units/build/lib/geocurrency/units/__init__.py:805
 #: modules/units/geocurrency/units/__init__.py:805
 msgid "gilbert"
-msgstr ""
+msgstr "Gilbert"
 
 #: deployment/dev/geocurrency/units/__init__.py:809
 #: modules/units/build/lib/geocurrency/units/__init__.py:809
 #: modules/units/geocurrency/units/__init__.py:809
 msgid "gill"
-msgstr ""
+msgstr "branchie"
 
 #: deployment/dev/geocurrency/units/__init__.py:813
 #: modules/units/build/lib/geocurrency/units/__init__.py:813
 #: modules/units/geocurrency/units/__init__.py:813
 msgid "grade"
-msgstr ""
+msgstr "classe"
 
 #: deployment/dev/geocurrency/units/__init__.py:817
 #: modules/units/build/lib/geocurrency/units/__init__.py:817
 #: modules/units/geocurrency/units/__init__.py:817
 msgid "grain"
-msgstr ""
+msgstr "grain"
 
 #: deployment/dev/geocurrency/units/__init__.py:821
 #: modules/units/build/lib/geocurrency/units/__init__.py:821
 #: modules/units/geocurrency/units/__init__.py:821
 msgid "gram"
-msgstr ""
+msgstr "gramme"
 
 #: deployment/dev/geocurrency/units/__init__.py:825
 #: modules/units/build/lib/geocurrency/units/__init__.py:825
 #: modules/units/geocurrency/units/__init__.py:825
 msgid "gray"
-msgstr ""
+msgstr "gris"
 
 #: deployment/dev/geocurrency/units/__init__.py:829
 #: modules/units/build/lib/geocurrency/units/__init__.py:829
 #: modules/units/geocurrency/units/__init__.py:829
 msgid "gregorian year"
-msgstr ""
+msgstr "année grégorienne"
 
 #: deployment/dev/geocurrency/units/__init__.py:830
 #: modules/units/build/lib/geocurrency/units/__init__.py:830
 #: modules/units/geocurrency/units/__init__.py:830
 msgctxt "unit"
 msgid "gregorian year"
-msgstr ""
+msgstr "année grégorienne"
 
 #: deployment/dev/geocurrency/units/__init__.py:833
 #: modules/units/build/lib/geocurrency/units/__init__.py:833
 #: modules/units/geocurrency/units/__init__.py:833
 msgid "hand"
-msgstr ""
+msgstr "main"
 
 #: deployment/dev/geocurrency/units/__init__.py:837
 #: modules/units/build/lib/geocurrency/units/__init__.py:837
 #: modules/units/geocurrency/units/__init__.py:837
 msgid "hartree"
-msgstr ""
+msgstr "Hartree"
 
 #: deployment/dev/geocurrency/units/__init__.py:841
 #: modules/units/build/lib/geocurrency/units/__init__.py:841
 #: modules/units/geocurrency/units/__init__.py:841
 msgid "hectare"
-msgstr ""
+msgstr "hectare"
 
 #: deployment/dev/geocurrency/units/__init__.py:845
 #: modules/units/build/lib/geocurrency/units/__init__.py:845
 #: modules/units/geocurrency/units/__init__.py:845
 msgid "henry"
-msgstr ""
+msgstr "Henri"
 
 #: deployment/dev/geocurrency/units/__init__.py:849
 #: modules/units/build/lib/geocurrency/units/__init__.py:849
 #: modules/units/geocurrency/units/__init__.py:849
 msgid "hertz"
-msgstr ""
+msgstr "hertz"
 
 #: deployment/dev/geocurrency/units/__init__.py:853
 #: modules/units/build/lib/geocurrency/units/__init__.py:853
 #: modules/units/geocurrency/units/__init__.py:853
 msgid "hogshead"
-msgstr ""
+msgstr "barrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:857
 #: modules/units/build/lib/geocurrency/units/__init__.py:857
 #: modules/units/geocurrency/units/__init__.py:857
 msgid "horsepower"
-msgstr ""
+msgstr "puissance"
 
 #: deployment/dev/geocurrency/units/__init__.py:861
 #: modules/units/build/lib/geocurrency/units/__init__.py:861
 #: modules/units/geocurrency/units/__init__.py:861
 msgid "hour"
-msgstr ""
+msgstr "heure"
 
 #: deployment/dev/geocurrency/units/__init__.py:865
 #: modules/units/build/lib/geocurrency/units/__init__.py:865
 #: modules/units/geocurrency/units/__init__.py:865
 msgid "hundredweight"
-msgstr ""
+msgstr "quintal"
 
 #: deployment/dev/geocurrency/units/__init__.py:869
 #: modules/units/build/lib/geocurrency/units/__init__.py:869
 #: modules/units/geocurrency/units/__init__.py:869
 msgid "impedance of free space"
-msgstr ""
+msgstr "impédance de l'espace libre"
 
 #: deployment/dev/geocurrency/units/__init__.py:873
 #: modules/units/build/lib/geocurrency/units/__init__.py:873
 #: modules/units/geocurrency/units/__init__.py:873
 msgid "imperial barrel"
-msgstr ""
+msgstr "baril impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:877
 #: modules/units/build/lib/geocurrency/units/__init__.py:877
 #: modules/units/geocurrency/units/__init__.py:877
 msgid "imperial bushel"
-msgstr ""
+msgstr "boisseau impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:881
 #: modules/units/build/lib/geocurrency/units/__init__.py:881
 #: modules/units/geocurrency/units/__init__.py:881
 msgid "imperial cup"
-msgstr ""
+msgstr "coupe impériale"
 
 #: deployment/dev/geocurrency/units/__init__.py:885
 #: modules/units/build/lib/geocurrency/units/__init__.py:885
 #: modules/units/geocurrency/units/__init__.py:885
 msgid "imperial fluid drachm"
-msgstr ""
+msgstr "drachme fluide impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:889
 #: modules/units/build/lib/geocurrency/units/__init__.py:889
 #: modules/units/geocurrency/units/__init__.py:889
 msgid "imperial fluid ounce"
-msgstr ""
+msgstr "once liquide impériale"
 
 #: deployment/dev/geocurrency/units/__init__.py:893
 #: modules/units/build/lib/geocurrency/units/__init__.py:893
 #: modules/units/geocurrency/units/__init__.py:893
 msgid "imperial fluid scruple"
-msgstr ""
+msgstr "scrupule fluide impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:897
 #: modules/units/build/lib/geocurrency/units/__init__.py:897
 #: modules/units/geocurrency/units/__init__.py:897
 msgid "imperial gallon"
-msgstr ""
+msgstr "gallon impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:901
 #: modules/units/build/lib/geocurrency/units/__init__.py:901
 #: modules/units/geocurrency/units/__init__.py:901
 msgid "imperial gill"
-msgstr ""
+msgstr "branchies impériales"
 
 #: deployment/dev/geocurrency/units/__init__.py:905
 #: modules/units/build/lib/geocurrency/units/__init__.py:905
 #: modules/units/geocurrency/units/__init__.py:905
 msgid "imperial minim"
-msgstr ""
+msgstr "minim impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:909
 #: modules/units/build/lib/geocurrency/units/__init__.py:909
 #: modules/units/geocurrency/units/__init__.py:909
 msgid "imperial peck"
-msgstr ""
+msgstr "pic impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:913
 #: modules/units/build/lib/geocurrency/units/__init__.py:913
 #: modules/units/geocurrency/units/__init__.py:913
 msgid "imperial pint"
-msgstr ""
+msgstr "pinte impériale"
 
 #: deployment/dev/geocurrency/units/__init__.py:917
 #: modules/units/build/lib/geocurrency/units/__init__.py:917
 #: modules/units/geocurrency/units/__init__.py:917
 msgid "imperial quart"
-msgstr ""
+msgstr "quart impérial"
 
 #: deployment/dev/geocurrency/units/__init__.py:921
 #: modules/units/build/lib/geocurrency/units/__init__.py:921
 #: modules/units/geocurrency/units/__init__.py:921
 msgid "inch"
-msgstr ""
+msgstr "pouce"
 
 #: deployment/dev/geocurrency/units/__init__.py:925
 #: modules/units/build/lib/geocurrency/units/__init__.py:925
 #: modules/units/geocurrency/units/__init__.py:925
 msgid "inch H20 39F"
-msgstr ""
+msgstr "pouces H20 39F"
 
 #: deployment/dev/geocurrency/units/__init__.py:929
 #: modules/units/build/lib/geocurrency/units/__init__.py:929
 #: modules/units/geocurrency/units/__init__.py:929
 msgid "inch H20 60F"
-msgstr ""
+msgstr "pouces H20 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:933
 #: modules/units/build/lib/geocurrency/units/__init__.py:933
 #: modules/units/geocurrency/units/__init__.py:933
 msgid "inch Hg"
-msgstr ""
+msgstr "pouces Hg"
 
 #: deployment/dev/geocurrency/units/__init__.py:937
 #: modules/units/build/lib/geocurrency/units/__init__.py:937
 #: modules/units/geocurrency/units/__init__.py:937
 msgid "inch Hg 60F"
-msgstr ""
+msgstr "pouces Hg 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:941
 #: modules/units/build/lib/geocurrency/units/__init__.py:941
 #: modules/units/geocurrency/units/__init__.py:941
 msgid "international Btu"
-msgstr ""
+msgstr "international Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:945
 #: modules/units/build/lib/geocurrency/units/__init__.py:945
 #: modules/units/geocurrency/units/__init__.py:945
 msgid "international calorie"
-msgstr ""
+msgstr "calorie internationale"
 
 #: deployment/dev/geocurrency/units/__init__.py:949
 #: modules/units/build/lib/geocurrency/units/__init__.py:949
 #: modules/units/geocurrency/units/__init__.py:949
 msgid "Josephson constant"
-msgstr ""
+msgstr "Constante de Josephson"
 
 #: deployment/dev/geocurrency/units/__init__.py:953
 #: modules/units/build/lib/geocurrency/units/__init__.py:953
 #: modules/units/geocurrency/units/__init__.py:953
 msgid "Joule"
-msgstr ""
+msgstr "Joule"
 
 #: deployment/dev/geocurrency/units/__init__.py:957
 #: modules/units/build/lib/geocurrency/units/__init__.py:957
 #: modules/units/geocurrency/units/__init__.py:957
 msgid "jute"
-msgstr ""
+msgstr "jute"
 
 #: deployment/dev/geocurrency/units/__init__.py:961
 #: modules/units/build/lib/geocurrency/units/__init__.py:961
 #: modules/units/geocurrency/units/__init__.py:961
 msgid "katal"
-msgstr ""
+msgstr "katal"
 
 #: deployment/dev/geocurrency/units/__init__.py:965
 #: modules/units/build/lib/geocurrency/units/__init__.py:965
 #: modules/units/geocurrency/units/__init__.py:965
 msgid "kelvin"
-msgstr ""
+msgstr "Kelvin"
 
 #: deployment/dev/geocurrency/units/__init__.py:969
 #: modules/units/build/lib/geocurrency/units/__init__.py:969
 #: modules/units/geocurrency/units/__init__.py:969
 msgid "kilometer per hour"
-msgstr ""
+msgstr "kilomètre par heure"
 
 #: deployment/dev/geocurrency/units/__init__.py:973
 #: modules/units/build/lib/geocurrency/units/__init__.py:973
 #: modules/units/geocurrency/units/__init__.py:973
 msgid "kilometer per second"
-msgstr ""
+msgstr "kilomètre par seconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:977
 #: modules/units/build/lib/geocurrency/units/__init__.py:977
 #: modules/units/geocurrency/units/__init__.py:977
 msgid "kip"
-msgstr ""
+msgstr "kip"
 
 #: deployment/dev/geocurrency/units/__init__.py:981
 #: modules/units/build/lib/geocurrency/units/__init__.py:981
 #: modules/units/geocurrency/units/__init__.py:981
 msgid "kip per square inch"
-msgstr ""
+msgstr "kip par pouce carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:985
 #: modules/units/build/lib/geocurrency/units/__init__.py:985
 #: modules/units/geocurrency/units/__init__.py:985
 msgid "knot"
-msgstr ""
+msgstr "nœud"
 
 #: deployment/dev/geocurrency/units/__init__.py:989
 #: modules/units/build/lib/geocurrency/units/__init__.py:989
 #: modules/units/geocurrency/units/__init__.py:989
 msgid "lambda"
-msgstr ""
+msgstr "lambda"
 
 #: deployment/dev/geocurrency/units/__init__.py:993
 #: modules/units/build/lib/geocurrency/units/__init__.py:993
 #: modules/units/geocurrency/units/__init__.py:993
 msgid "lambert"
-msgstr ""
+msgstr "Lambert"
 
 #: deployment/dev/geocurrency/units/__init__.py:997
 #: modules/units/build/lib/geocurrency/units/__init__.py:997
 #: modules/units/geocurrency/units/__init__.py:997
 msgid "langley"
-msgstr ""
+msgstr "Langley"
 
 #: deployment/dev/geocurrency/units/__init__.py:1001
 #: modules/units/build/lib/geocurrency/units/__init__.py:1001
 #: modules/units/geocurrency/units/__init__.py:1001
 msgid "lattice constant"
-msgstr ""
+msgstr "constante de réseau"
 
 #: deployment/dev/geocurrency/units/__init__.py:1005
 #: modules/units/build/lib/geocurrency/units/__init__.py:1005
 #: modules/units/geocurrency/units/__init__.py:1005
 msgid "league"
-msgstr ""
+msgstr "ligue"
 
 #: deployment/dev/geocurrency/units/__init__.py:1010
 #: modules/units/build/lib/geocurrency/units/__init__.py:1010
 #: modules/units/geocurrency/units/__init__.py:1010
 msgid "leap year"
-msgstr ""
+msgstr "année bissextile"
 
 #: deployment/dev/geocurrency/units/__init__.py:1011
 #: deployment/dev/geocurrency/units/__init__.py:1708
@@ -3234,163 +3235,163 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1708
 #: modules/units/geocurrency/units/__init__.py:1709
 msgid "year"
-msgstr ""
+msgstr "an"
 
 #: deployment/dev/geocurrency/units/__init__.py:1014
 #: modules/units/build/lib/geocurrency/units/__init__.py:1014
 #: modules/units/geocurrency/units/__init__.py:1014
 msgid "light year"
-msgstr ""
+msgstr "année-lumière"
 
 #: deployment/dev/geocurrency/units/__init__.py:1015
 #: modules/units/build/lib/geocurrency/units/__init__.py:1015
 #: modules/units/geocurrency/units/__init__.py:1015
 msgid "ly"
-msgstr ""
+msgstr "ly"
 
 #: deployment/dev/geocurrency/units/__init__.py:1018
 #: modules/units/build/lib/geocurrency/units/__init__.py:1018
 #: modules/units/geocurrency/units/__init__.py:1018
 msgid "link"
-msgstr ""
+msgstr "lien"
 
 #: deployment/dev/geocurrency/units/__init__.py:1019
 #: modules/units/build/lib/geocurrency/units/__init__.py:1019
 #: modules/units/geocurrency/units/__init__.py:1019
 msgid "li"
-msgstr ""
+msgstr "li"
 
 #: deployment/dev/geocurrency/units/__init__.py:1022
 #: modules/units/build/lib/geocurrency/units/__init__.py:1022
 #: modules/units/geocurrency/units/__init__.py:1022
 msgid "liter"
-msgstr ""
+msgstr "litre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1023
 #: modules/units/build/lib/geocurrency/units/__init__.py:1023
 #: modules/units/geocurrency/units/__init__.py:1023
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: deployment/dev/geocurrency/units/__init__.py:1026
 #: modules/units/build/lib/geocurrency/units/__init__.py:1026
 #: modules/units/geocurrency/units/__init__.py:1026
 msgid "log 10"
-msgstr ""
+msgstr "log 10"
 
 #: deployment/dev/geocurrency/units/__init__.py:1027
 #: modules/units/build/lib/geocurrency/units/__init__.py:1027
 #: modules/units/geocurrency/units/__init__.py:1027
 msgid "ln10"
-msgstr ""
+msgstr "ln10"
 
 #: deployment/dev/geocurrency/units/__init__.py:1028
 #: modules/units/build/lib/geocurrency/units/__init__.py:1028
 #: modules/units/geocurrency/units/__init__.py:1028
 msgid "dimesionless"
-msgstr ""
+msgstr "sans dimesion"
 
 #: deployment/dev/geocurrency/units/__init__.py:1030
 #: modules/units/build/lib/geocurrency/units/__init__.py:1030
 #: modules/units/geocurrency/units/__init__.py:1030
 msgid "long hundredweight"
-msgstr ""
+msgstr "long quintal"
 
 #: deployment/dev/geocurrency/units/__init__.py:1040
 #: modules/units/build/lib/geocurrency/units/__init__.py:1040
 #: modules/units/geocurrency/units/__init__.py:1040
 msgid "lumen"
-msgstr ""
+msgstr "lumen"
 
 #: deployment/dev/geocurrency/units/__init__.py:1044
 #: modules/units/build/lib/geocurrency/units/__init__.py:1044
 #: modules/units/geocurrency/units/__init__.py:1044
 msgid "lux"
-msgstr ""
+msgstr "lux"
 
 #: deployment/dev/geocurrency/units/__init__.py:1052
 #: modules/units/build/lib/geocurrency/units/__init__.py:1052
 #: modules/units/geocurrency/units/__init__.py:1052
 msgid "maxwell"
-msgstr ""
+msgstr "Maxwell"
 
 #: deployment/dev/geocurrency/units/__init__.py:1056
 #: modules/units/build/lib/geocurrency/units/__init__.py:1056
 #: modules/units/geocurrency/units/__init__.py:1056
 msgid "mean international ampere"
-msgstr ""
+msgstr "Ampère international moyen"
 
 #: deployment/dev/geocurrency/units/__init__.py:1060
 #: modules/units/build/lib/geocurrency/units/__init__.py:1060
 #: modules/units/geocurrency/units/__init__.py:1060
 msgid "mean international Ohm"
-msgstr ""
+msgstr "signifie Ohm international"
 
 #: deployment/dev/geocurrency/units/__init__.py:1064
 #: modules/units/build/lib/geocurrency/units/__init__.py:1064
 #: modules/units/geocurrency/units/__init__.py:1064
 msgid "mean international Volt"
-msgstr ""
+msgstr "signifie Volt internationale"
 
 #: deployment/dev/geocurrency/units/__init__.py:1068
 #: modules/units/build/lib/geocurrency/units/__init__.py:1068
 #: modules/units/geocurrency/units/__init__.py:1068
 msgid "density of mercury"
-msgstr ""
+msgstr "densité de mercure"
 
 #: deployment/dev/geocurrency/units/__init__.py:1072
 #: modules/units/build/lib/geocurrency/units/__init__.py:1072
 #: modules/units/geocurrency/units/__init__.py:1072
 msgid "density of mercury 60F"
-msgstr ""
+msgstr "densité de mercure 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1076
 #: modules/units/build/lib/geocurrency/units/__init__.py:1076
 #: modules/units/geocurrency/units/__init__.py:1076
 msgid "meter"
-msgstr ""
+msgstr "mètre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1080
 #: modules/units/build/lib/geocurrency/units/__init__.py:1080
 #: modules/units/geocurrency/units/__init__.py:1080
 msgid "meter per second"
-msgstr ""
+msgstr "mètre par seconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:1084
 #: modules/units/build/lib/geocurrency/units/__init__.py:1084
 #: modules/units/geocurrency/units/__init__.py:1084
 msgid "metric horsepower"
-msgstr ""
+msgstr "puissance métrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1088
 #: modules/units/build/lib/geocurrency/units/__init__.py:1088
 #: modules/units/geocurrency/units/__init__.py:1088
 msgid "metric ton"
-msgstr ""
+msgstr "tonne"
 
 #: deployment/dev/geocurrency/units/__init__.py:1092
 #: modules/units/build/lib/geocurrency/units/__init__.py:1092
 #: modules/units/geocurrency/units/__init__.py:1092
 msgid "micron"
-msgstr ""
+msgstr "micron"
 
 #: deployment/dev/geocurrency/units/__init__.py:1096
 #: modules/units/build/lib/geocurrency/units/__init__.py:1096
 #: modules/units/geocurrency/units/__init__.py:1096
 msgid "mil"
-msgstr ""
+msgstr "mil"
 
 #: deployment/dev/geocurrency/units/__init__.py:1100
 #: modules/units/build/lib/geocurrency/units/__init__.py:1100
 #: modules/units/geocurrency/units/__init__.py:1100
 msgid "mile"
-msgstr ""
+msgstr "mile"
 
 #: deployment/dev/geocurrency/units/__init__.py:1104
 #: modules/units/build/lib/geocurrency/units/__init__.py:1104
 #: modules/units/geocurrency/units/__init__.py:1104
 msgid "mile per hour"
-msgstr ""
+msgstr "mile par heure"
 
 #: deployment/dev/geocurrency/units/__init__.py:1108
 #: deployment/dev/geocurrency/units/__init__.py:1109
@@ -3399,217 +3400,217 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1108
 #: modules/units/geocurrency/units/__init__.py:1109
 msgid "millenium"
-msgstr ""
+msgstr "millénaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:1112
 #: modules/units/build/lib/geocurrency/units/__init__.py:1112
 #: modules/units/geocurrency/units/__init__.py:1112
 msgid "milliarcsecond"
-msgstr ""
+msgstr "milliarcseconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:1116
 #: modules/units/build/lib/geocurrency/units/__init__.py:1116
 #: modules/units/geocurrency/units/__init__.py:1116
 msgid "Hg millimeter"
-msgstr ""
+msgstr "Hg millimètre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1120
 #: modules/units/build/lib/geocurrency/units/__init__.py:1120
 #: modules/units/geocurrency/units/__init__.py:1120
 msgid "minim"
-msgstr ""
+msgstr "blanche"
 
 #: deployment/dev/geocurrency/units/__init__.py:1124
 #: modules/units/build/lib/geocurrency/units/__init__.py:1124
 #: modules/units/geocurrency/units/__init__.py:1124
 msgid "minute"
-msgstr ""
+msgstr "minute"
 
 #: deployment/dev/geocurrency/units/__init__.py:1128
 #: modules/units/build/lib/geocurrency/units/__init__.py:1128
 #: modules/units/geocurrency/units/__init__.py:1128
 msgid "molar"
-msgstr ""
+msgstr "molaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:1132
 #: modules/units/build/lib/geocurrency/units/__init__.py:1132
 #: modules/units/geocurrency/units/__init__.py:1132
 msgid "molar gas constant"
-msgstr ""
+msgstr "constante molaire des gaz"
 
 #: deployment/dev/geocurrency/units/__init__.py:1136
 #: modules/units/build/lib/geocurrency/units/__init__.py:1136
 #: modules/units/geocurrency/units/__init__.py:1136
 msgid "mole"
-msgstr ""
+msgstr "Môle"
 
 #: deployment/dev/geocurrency/units/__init__.py:1140
 #: modules/units/build/lib/geocurrency/units/__init__.py:1140
 #: modules/units/geocurrency/units/__init__.py:1140
 msgid "month"
-msgstr ""
+msgstr "mois"
 
 #: deployment/dev/geocurrency/units/__init__.py:1144
 #: modules/units/build/lib/geocurrency/units/__init__.py:1144
 #: modules/units/geocurrency/units/__init__.py:1144
 msgid "nautical mile"
-msgstr ""
+msgstr "mile nautique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1145
 #: modules/units/build/lib/geocurrency/units/__init__.py:1145
 #: modules/units/geocurrency/units/__init__.py:1145
 msgid "nm"
-msgstr ""
+msgstr "nm"
 
 #: deployment/dev/geocurrency/units/__init__.py:1149
 #: modules/units/build/lib/geocurrency/units/__init__.py:1149
 #: modules/units/geocurrency/units/__init__.py:1149
 msgid "Np"
-msgstr ""
+msgstr "Np"
 
 #: deployment/dev/geocurrency/units/__init__.py:1152
 #: modules/units/build/lib/geocurrency/units/__init__.py:1152
 #: modules/units/geocurrency/units/__init__.py:1152
 msgid "neutron mass"
-msgstr ""
+msgstr "masse neutronique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1156
 #: modules/units/build/lib/geocurrency/units/__init__.py:1156
 #: modules/units/geocurrency/units/__init__.py:1156
 msgid "newton"
-msgstr ""
+msgstr "newton"
 
 #: deployment/dev/geocurrency/units/__init__.py:1164
 #: modules/units/build/lib/geocurrency/units/__init__.py:1164
 #: modules/units/geocurrency/units/__init__.py:1164
 msgid "nit"
-msgstr ""
+msgstr "lente"
 
 #: deployment/dev/geocurrency/units/__init__.py:1168
 #: modules/units/build/lib/geocurrency/units/__init__.py:1168
 #: modules/units/geocurrency/units/__init__.py:1168
 msgid "nuclear magneton"
-msgstr ""
+msgstr "magnéton nucléaire"
 
 #: deployment/dev/geocurrency/units/__init__.py:1172
 #: modules/units/build/lib/geocurrency/units/__init__.py:1172
 #: modules/units/geocurrency/units/__init__.py:1172
 msgid "number english"
-msgstr ""
+msgstr "numéro anglais"
 
 #: deployment/dev/geocurrency/units/__init__.py:1176
 #: modules/units/build/lib/geocurrency/units/__init__.py:1176
 #: modules/units/geocurrency/units/__init__.py:1176
 msgid "number meter"
-msgstr ""
+msgstr "compteur numérique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1180
 #: modules/units/build/lib/geocurrency/units/__init__.py:1180
 #: modules/units/geocurrency/units/__init__.py:1180
 msgid "oersted"
-msgstr ""
+msgstr "oersted"
 
 #: deployment/dev/geocurrency/units/__init__.py:1182
 #: modules/units/build/lib/geocurrency/units/__init__.py:1182
 #: modules/units/geocurrency/units/__init__.py:1182
 msgid "H-field"
-msgstr ""
+msgstr "Champ H"
 
 #: deployment/dev/geocurrency/units/__init__.py:1184
 #: modules/units/build/lib/geocurrency/units/__init__.py:1184
 #: modules/units/geocurrency/units/__init__.py:1184
 msgid "ohm"
-msgstr ""
+msgstr "ohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:1188
 #: modules/units/build/lib/geocurrency/units/__init__.py:1188
 #: modules/units/geocurrency/units/__init__.py:1188
 msgid "oil barrel"
-msgstr ""
+msgstr "baril de pétrole"
 
 #: deployment/dev/geocurrency/units/__init__.py:1192
 #: modules/units/build/lib/geocurrency/units/__init__.py:1192
 #: modules/units/geocurrency/units/__init__.py:1192
 msgid "ounce"
-msgstr ""
+msgstr "once"
 
 #: deployment/dev/geocurrency/units/__init__.py:1196
 #: modules/units/build/lib/geocurrency/units/__init__.py:1196
 #: modules/units/geocurrency/units/__init__.py:1196
 msgid "parsec"
-msgstr ""
+msgstr "parsec"
 
 #: deployment/dev/geocurrency/units/__init__.py:1200
 #: modules/units/build/lib/geocurrency/units/__init__.py:1200
 #: modules/units/geocurrency/units/__init__.py:1200
 msgid "particle"
-msgstr ""
+msgstr "particule"
 
 #: deployment/dev/geocurrency/units/__init__.py:1204
 #: modules/units/build/lib/geocurrency/units/__init__.py:1204
 #: modules/units/geocurrency/units/__init__.py:1204
 msgid "pascal"
-msgstr ""
+msgstr "pascal"
 
 #: deployment/dev/geocurrency/units/__init__.py:1208
 #: modules/units/build/lib/geocurrency/units/__init__.py:1208
 #: modules/units/geocurrency/units/__init__.py:1208
 msgid "peak sun hour"
-msgstr ""
+msgstr "heure de pointe du soleil"
 
 #: deployment/dev/geocurrency/units/__init__.py:1212
 #: modules/units/build/lib/geocurrency/units/__init__.py:1212
 #: modules/units/geocurrency/units/__init__.py:1212
 msgid "peck"
-msgstr ""
+msgstr "picorer"
 
 #: deployment/dev/geocurrency/units/__init__.py:1216
 #: modules/units/build/lib/geocurrency/units/__init__.py:1216
 #: modules/units/geocurrency/units/__init__.py:1216
 msgid "pennyweight"
-msgstr ""
+msgstr "pennyweight"
 
 #: deployment/dev/geocurrency/units/__init__.py:1224
 #: modules/units/build/lib/geocurrency/units/__init__.py:1224
 #: modules/units/geocurrency/units/__init__.py:1224
 msgid "pica"
-msgstr ""
+msgstr "pica"
 
 #: deployment/dev/geocurrency/units/__init__.py:1228
 #: modules/units/build/lib/geocurrency/units/__init__.py:1228
 #: modules/units/geocurrency/units/__init__.py:1228
 msgid "pint"
-msgstr ""
+msgstr "pinte"
 
 #: deployment/dev/geocurrency/units/__init__.py:1232
 #: modules/units/build/lib/geocurrency/units/__init__.py:1232
 #: modules/units/geocurrency/units/__init__.py:1232
 msgid "pixel"
-msgstr ""
+msgstr "pixel"
 
 #: deployment/dev/geocurrency/units/__init__.py:1234
 #: modules/units/build/lib/geocurrency/units/__init__.py:1234
 #: modules/units/geocurrency/units/__init__.py:1234
 msgid "unit"
-msgstr ""
+msgstr "unité"
 
 #: deployment/dev/geocurrency/units/__init__.py:1236
 #: modules/units/build/lib/geocurrency/units/__init__.py:1236
 #: modules/units/geocurrency/units/__init__.py:1236
 msgid "pixel per centimeter"
-msgstr ""
+msgstr "pixel par centimètre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1240
 #: modules/units/build/lib/geocurrency/units/__init__.py:1240
 #: modules/units/geocurrency/units/__init__.py:1240
 msgid "pixel per inch"
-msgstr ""
+msgstr "pixel par pouce"
 
 #: deployment/dev/geocurrency/units/__init__.py:1244
 #: modules/units/build/lib/geocurrency/units/__init__.py:1244
 #: modules/units/geocurrency/units/__init__.py:1244
 msgid "Planck constant"
-msgstr ""
+msgstr "Constante de Planck"
 
 #: deployment/dev/geocurrency/units/__init__.py:1248
 #: deployment/dev/geocurrency/units/__init__.py:1252
@@ -3618,163 +3619,163 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1248
 #: modules/units/geocurrency/units/__init__.py:1252
 msgid "Planck current"
-msgstr ""
+msgstr "Courant de Planck"
 
 #: deployment/dev/geocurrency/units/__init__.py:1249
 #: modules/units/build/lib/geocurrency/units/__init__.py:1249
 #: modules/units/geocurrency/units/__init__.py:1249
 msgid "qP"
-msgstr ""
+msgstr "qP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1253
 #: modules/units/build/lib/geocurrency/units/__init__.py:1253
 #: modules/units/geocurrency/units/__init__.py:1253
 msgid "lP"
-msgstr ""
+msgstr "lP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1256
 #: modules/units/build/lib/geocurrency/units/__init__.py:1256
 #: modules/units/geocurrency/units/__init__.py:1256
 msgid "Planck mass"
-msgstr ""
+msgstr "Masse de Planck"
 
 #: deployment/dev/geocurrency/units/__init__.py:1257
 #: modules/units/build/lib/geocurrency/units/__init__.py:1257
 #: modules/units/geocurrency/units/__init__.py:1257
 msgid "mP"
-msgstr ""
+msgstr "mP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1260
 #: modules/units/build/lib/geocurrency/units/__init__.py:1260
 #: modules/units/geocurrency/units/__init__.py:1260
 msgid "Planck temperature"
-msgstr ""
+msgstr "Température de Planck"
 
 #: deployment/dev/geocurrency/units/__init__.py:1261
 #: modules/units/build/lib/geocurrency/units/__init__.py:1261
 #: modules/units/geocurrency/units/__init__.py:1261
 msgid "TP"
-msgstr ""
+msgstr "TP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1264
 #: modules/units/build/lib/geocurrency/units/__init__.py:1264
 #: modules/units/geocurrency/units/__init__.py:1264
 msgid "Planck time"
-msgstr ""
+msgstr "Heure de Planck"
 
 #: deployment/dev/geocurrency/units/__init__.py:1265
 #: modules/units/build/lib/geocurrency/units/__init__.py:1265
 #: modules/units/geocurrency/units/__init__.py:1265
 msgid "tP"
-msgstr ""
+msgstr "tP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1268
 #: modules/units/build/lib/geocurrency/units/__init__.py:1268
 #: modules/units/geocurrency/units/__init__.py:1268
 msgid "point"
-msgstr ""
+msgstr "point"
 
 #: deployment/dev/geocurrency/units/__init__.py:1272
 #: modules/units/build/lib/geocurrency/units/__init__.py:1272
 #: modules/units/geocurrency/units/__init__.py:1272
 msgid "poise"
-msgstr ""
+msgstr "équilibre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1276
 #: modules/units/build/lib/geocurrency/units/__init__.py:1276
 #: modules/units/geocurrency/units/__init__.py:1276
 msgid "pound"
-msgstr ""
+msgstr "livre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1280
 #: modules/units/build/lib/geocurrency/units/__init__.py:1280
 #: modules/units/geocurrency/units/__init__.py:1280
 msgid "pound force per square inch"
-msgstr ""
+msgstr "livre force par pouce carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:1284
 #: modules/units/build/lib/geocurrency/units/__init__.py:1284
 #: modules/units/geocurrency/units/__init__.py:1284
 msgid "poundal"
-msgstr ""
+msgstr "poundal"
 
 #: deployment/dev/geocurrency/units/__init__.py:1288
 #: modules/units/build/lib/geocurrency/units/__init__.py:1288
 #: modules/units/geocurrency/units/__init__.py:1288
 msgid "proton mass"
-msgstr ""
+msgstr "masse de protons"
 
 #: deployment/dev/geocurrency/units/__init__.py:1292
 #: modules/units/build/lib/geocurrency/units/__init__.py:1292
 #: modules/units/geocurrency/units/__init__.py:1292
 msgid "quadrillion Btu"
-msgstr ""
+msgstr "quadrillion de Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1296
 #: modules/units/build/lib/geocurrency/units/__init__.py:1296
 #: modules/units/geocurrency/units/__init__.py:1296
 msgid "quart"
-msgstr ""
+msgstr "litre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1300
 #: modules/units/build/lib/geocurrency/units/__init__.py:1300
 #: modules/units/geocurrency/units/__init__.py:1300
 msgid "quarter"
-msgstr ""
+msgstr "trimestre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1304
 #: modules/units/build/lib/geocurrency/units/__init__.py:1304
 #: modules/units/geocurrency/units/__init__.py:1304
 msgid "radian"
-msgstr ""
+msgstr "radian"
 
 #: deployment/dev/geocurrency/units/__init__.py:1308
 #: modules/units/build/lib/geocurrency/units/__init__.py:1308
 #: modules/units/geocurrency/units/__init__.py:1308
 msgid "rads"
-msgstr ""
+msgstr "rads"
 
 #: deployment/dev/geocurrency/units/__init__.py:1312
 #: modules/units/build/lib/geocurrency/units/__init__.py:1312
 #: modules/units/geocurrency/units/__init__.py:1312
 msgid "reciprocal centimeter"
-msgstr ""
+msgstr "centimètre réciproque"
 
 #: deployment/dev/geocurrency/units/__init__.py:1316
 #: modules/units/build/lib/geocurrency/units/__init__.py:1316
 #: modules/units/geocurrency/units/__init__.py:1316
 msgid "refrigeration ton"
-msgstr ""
+msgstr "tonne de réfrigération"
 
 #: deployment/dev/geocurrency/units/__init__.py:1320
 #: modules/units/build/lib/geocurrency/units/__init__.py:1320
 #: modules/units/geocurrency/units/__init__.py:1320
 msgid "roentgen equivalent man"
-msgstr ""
+msgstr "homme équivalent roentgen"
 
 #: deployment/dev/geocurrency/units/__init__.py:1324
 #: modules/units/build/lib/geocurrency/units/__init__.py:1324
 #: modules/units/geocurrency/units/__init__.py:1324
 msgid "revolutions per minute"
-msgstr ""
+msgstr "révolutions par minute"
 
 #: deployment/dev/geocurrency/units/__init__.py:1325
 #: modules/units/build/lib/geocurrency/units/__init__.py:1325
 #: modules/units/geocurrency/units/__init__.py:1325
 msgid "rpm"
-msgstr ""
+msgstr "tr / min"
 
 #: deployment/dev/geocurrency/units/__init__.py:1328
 #: modules/units/build/lib/geocurrency/units/__init__.py:1328
 #: modules/units/geocurrency/units/__init__.py:1328
 msgid "revolutions per second"
-msgstr ""
+msgstr "révolutions par seconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:1329
 #: modules/units/build/lib/geocurrency/units/__init__.py:1329
 #: modules/units/geocurrency/units/__init__.py:1329
 msgid "rps"
-msgstr ""
+msgstr "rps"
 
 #: deployment/dev/geocurrency/units/__init__.py:1332
 #: deployment/dev/geocurrency/units/__init__.py:1333
@@ -3783,154 +3784,154 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1332
 #: modules/units/geocurrency/units/__init__.py:1333
 msgid "reyn"
-msgstr ""
+msgstr "Reyn"
 
 #: deployment/dev/geocurrency/units/__init__.py:1336
 #: modules/units/build/lib/geocurrency/units/__init__.py:1336
 #: modules/units/geocurrency/units/__init__.py:1336
 msgid "reciprocal poise"
-msgstr ""
+msgstr "équilibre réciproque"
 
 #: deployment/dev/geocurrency/units/__init__.py:1340
 #: modules/units/build/lib/geocurrency/units/__init__.py:1340
 #: modules/units/geocurrency/units/__init__.py:1340
 msgid "rod"
-msgstr ""
+msgstr "barre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1344
 #: modules/units/build/lib/geocurrency/units/__init__.py:1344
 #: modules/units/geocurrency/units/__init__.py:1344
 msgid "roentgen"
-msgstr ""
+msgstr "roentgen"
 
 #: deployment/dev/geocurrency/units/__init__.py:1348
 #: modules/units/build/lib/geocurrency/units/__init__.py:1348
 #: modules/units/geocurrency/units/__init__.py:1348
 msgid "rutherford"
-msgstr ""
+msgstr "Rutherford"
 
 #: deployment/dev/geocurrency/units/__init__.py:1352
 #: modules/units/build/lib/geocurrency/units/__init__.py:1352
 #: modules/units/geocurrency/units/__init__.py:1352
 msgid "rydberg"
-msgstr ""
+msgstr "Rydberg"
 
 #: deployment/dev/geocurrency/units/__init__.py:1356
 #: modules/units/build/lib/geocurrency/units/__init__.py:1356
 #: modules/units/geocurrency/units/__init__.py:1356
 msgid "rydberg constant"
-msgstr ""
+msgstr "constante de Rydberg"
 
 #: deployment/dev/geocurrency/units/__init__.py:1360
 #: modules/units/build/lib/geocurrency/units/__init__.py:1360
 #: modules/units/geocurrency/units/__init__.py:1360
 msgid "scaled point"
-msgstr ""
+msgstr "point mis à l'échelle"
 
 #: deployment/dev/geocurrency/units/__init__.py:1364
 #: modules/units/build/lib/geocurrency/units/__init__.py:1364
 #: modules/units/geocurrency/units/__init__.py:1364
 msgid "scruple"
-msgstr ""
+msgstr "scrupule"
 
 #: deployment/dev/geocurrency/units/__init__.py:1368
 #: modules/units/build/lib/geocurrency/units/__init__.py:1368
 #: modules/units/geocurrency/units/__init__.py:1368
 msgid "second"
-msgstr ""
+msgstr "seconde"
 
 #: deployment/dev/geocurrency/units/__init__.py:1372
 #: modules/units/build/lib/geocurrency/units/__init__.py:1372
 #: modules/units/geocurrency/units/__init__.py:1372
 msgid "second radiation constant"
-msgstr ""
+msgstr "deuxième constante de rayonnement"
 
 #: deployment/dev/geocurrency/units/__init__.py:1376
 #: modules/units/build/lib/geocurrency/units/__init__.py:1376
 #: modules/units/geocurrency/units/__init__.py:1376
 msgid "shake"
-msgstr ""
+msgstr "secouer"
 
 #: deployment/dev/geocurrency/units/__init__.py:1380
 #: modules/units/build/lib/geocurrency/units/__init__.py:1380
 #: modules/units/geocurrency/units/__init__.py:1380
 msgid "shot"
-msgstr ""
+msgstr "coup"
 
 #: deployment/dev/geocurrency/units/__init__.py:1384
 #: modules/units/build/lib/geocurrency/units/__init__.py:1384
 #: modules/units/geocurrency/units/__init__.py:1384
 msgid "sidereal day"
-msgstr ""
+msgstr "jour sidéral"
 
 #: deployment/dev/geocurrency/units/__init__.py:1385
 #: modules/units/build/lib/geocurrency/units/__init__.py:1385
 #: modules/units/geocurrency/units/__init__.py:1385
 msgctxt "unit"
 msgid "sidereal day"
-msgstr ""
+msgstr "jour sidéral"
 
 #: deployment/dev/geocurrency/units/__init__.py:1388
 #: modules/units/build/lib/geocurrency/units/__init__.py:1388
 #: modules/units/geocurrency/units/__init__.py:1388
 msgid "sidereal month"
-msgstr ""
+msgstr "mois sidéral"
 
 #: deployment/dev/geocurrency/units/__init__.py:1389
 #: modules/units/build/lib/geocurrency/units/__init__.py:1389
 #: modules/units/geocurrency/units/__init__.py:1389
 msgctxt "unit"
 msgid "sidereal month"
-msgstr ""
+msgstr "mois sidéral"
 
 #: deployment/dev/geocurrency/units/__init__.py:1392
 #: modules/units/build/lib/geocurrency/units/__init__.py:1392
 #: modules/units/geocurrency/units/__init__.py:1392
 msgid "sidereal year"
-msgstr ""
+msgstr "année sidérale"
 
 #: deployment/dev/geocurrency/units/__init__.py:1393
 #: modules/units/build/lib/geocurrency/units/__init__.py:1393
 #: modules/units/geocurrency/units/__init__.py:1393
 msgctxt "unit"
 msgid "sidereal year"
-msgstr ""
+msgstr "année sidérale"
 
 #: deployment/dev/geocurrency/units/__init__.py:1396
 #: modules/units/build/lib/geocurrency/units/__init__.py:1396
 #: modules/units/geocurrency/units/__init__.py:1396
 msgid "siemens"
-msgstr ""
+msgstr "siemens"
 
 #: deployment/dev/geocurrency/units/__init__.py:1400
 #: modules/units/build/lib/geocurrency/units/__init__.py:1400
 #: modules/units/geocurrency/units/__init__.py:1400
 msgid "sievert"
-msgstr ""
+msgstr "Sievert"
 
 #: deployment/dev/geocurrency/units/__init__.py:1404
 #: modules/units/build/lib/geocurrency/units/__init__.py:1404
 #: modules/units/geocurrency/units/__init__.py:1404
 msgid "slinch"
-msgstr ""
+msgstr "slinch"
 
 #: deployment/dev/geocurrency/units/__init__.py:1408
 #: modules/units/build/lib/geocurrency/units/__init__.py:1408
 #: modules/units/geocurrency/units/__init__.py:1408
 msgid "slug"
-msgstr ""
+msgstr "limace"
 
 #: deployment/dev/geocurrency/units/__init__.py:1412
 #: modules/units/build/lib/geocurrency/units/__init__.py:1412
 #: modules/units/geocurrency/units/__init__.py:1412
 msgid "speed of light"
-msgstr ""
+msgstr "vitesse de la lumière"
 
 #: deployment/dev/geocurrency/units/__init__.py:1416
 #: modules/units/build/lib/geocurrency/units/__init__.py:1416
 #: modules/units/geocurrency/units/__init__.py:1416
 msgid "square degree"
-msgstr ""
+msgstr "degré carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:1418
 #: deployment/dev/geocurrency/units/__init__.py:1498
@@ -3939,73 +3940,73 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1418
 #: modules/units/geocurrency/units/__init__.py:1498
 msgid "solid angle"
-msgstr ""
+msgstr "angle solide"
 
 #: deployment/dev/geocurrency/units/__init__.py:1420
 #: modules/units/build/lib/geocurrency/units/__init__.py:1420
 #: modules/units/geocurrency/units/__init__.py:1420
 msgid "square foot"
-msgstr ""
+msgstr "pied carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:1424
 #: modules/units/build/lib/geocurrency/units/__init__.py:1424
 #: modules/units/geocurrency/units/__init__.py:1424
 msgid "square inch"
-msgstr ""
+msgstr "pouce carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:1428
 #: modules/units/build/lib/geocurrency/units/__init__.py:1428
 #: modules/units/geocurrency/units/__init__.py:1428
 msgid "square league"
-msgstr ""
+msgstr "lieue carrée"
 
 #: deployment/dev/geocurrency/units/__init__.py:1432
 #: modules/units/build/lib/geocurrency/units/__init__.py:1432
 #: modules/units/geocurrency/units/__init__.py:1432
 msgid "square mile"
-msgstr ""
+msgstr "mile carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:1436
 #: modules/units/build/lib/geocurrency/units/__init__.py:1436
 #: modules/units/geocurrency/units/__init__.py:1436
 msgid "square rod"
-msgstr ""
+msgstr "tige carrée"
 
 #: deployment/dev/geocurrency/units/__init__.py:1440
 #: modules/units/build/lib/geocurrency/units/__init__.py:1440
 #: modules/units/geocurrency/units/__init__.py:1440
 msgid "square survey mile"
-msgstr ""
+msgstr "mile carré d'enquête"
 
 #: deployment/dev/geocurrency/units/__init__.py:1444
 #: modules/units/build/lib/geocurrency/units/__init__.py:1444
 #: modules/units/geocurrency/units/__init__.py:1444
 msgid "square yard"
-msgstr ""
+msgstr "Yard carré"
 
 #: deployment/dev/geocurrency/units/__init__.py:1448
 #: modules/units/build/lib/geocurrency/units/__init__.py:1448
 #: modules/units/geocurrency/units/__init__.py:1448
 msgid "standard atmosphere"
-msgstr ""
+msgstr "atmosphère standard"
 
 #: deployment/dev/geocurrency/units/__init__.py:1452
 #: modules/units/build/lib/geocurrency/units/__init__.py:1452
 #: modules/units/geocurrency/units/__init__.py:1452
 msgid "standard gravity"
-msgstr ""
+msgstr "gravité standard"
 
 #: deployment/dev/geocurrency/units/__init__.py:1456
 #: modules/units/build/lib/geocurrency/units/__init__.py:1456
 #: modules/units/geocurrency/units/__init__.py:1456
 msgid "standard liter per minute"
-msgstr ""
+msgstr "litre standard par minute"
 
 #: deployment/dev/geocurrency/units/__init__.py:1478
 #: modules/units/build/lib/geocurrency/units/__init__.py:1478
 #: modules/units/geocurrency/units/__init__.py:1478
 msgid "electrical resistance"
-msgstr ""
+msgstr "résistance électrique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1490
 #: deployment/dev/geocurrency/units/__init__.py:1674
@@ -4014,55 +4015,55 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1490
 #: modules/units/geocurrency/units/__init__.py:1674
 msgid "flux density"
-msgstr ""
+msgstr "densité de flux"
 
 #: deployment/dev/geocurrency/units/__init__.py:1492
 #: modules/units/build/lib/geocurrency/units/__init__.py:1492
 #: modules/units/geocurrency/units/__init__.py:1492
 msgid "Stefan-Boltzmann constant"
-msgstr ""
+msgstr "Constante de Stefan-Boltzmann"
 
 #: deployment/dev/geocurrency/units/__init__.py:1496
 #: modules/units/build/lib/geocurrency/units/__init__.py:1496
 #: modules/units/geocurrency/units/__init__.py:1496
 msgid "steradian"
-msgstr ""
+msgstr "stéradian"
 
 #: deployment/dev/geocurrency/units/__init__.py:1500
 #: modules/units/build/lib/geocurrency/units/__init__.py:1500
 #: modules/units/geocurrency/units/__init__.py:1500
 msgid "stere"
-msgstr ""
+msgstr "stère"
 
 #: deployment/dev/geocurrency/units/__init__.py:1504
 #: modules/units/build/lib/geocurrency/units/__init__.py:1504
 #: modules/units/geocurrency/units/__init__.py:1504
 msgid "stilb"
-msgstr ""
+msgstr "stilb"
 
 #: deployment/dev/geocurrency/units/__init__.py:1508
 #: modules/units/build/lib/geocurrency/units/__init__.py:1508
 #: modules/units/geocurrency/units/__init__.py:1508
 msgid "stokes"
-msgstr ""
+msgstr "stokes"
 
 #: deployment/dev/geocurrency/units/__init__.py:1512
 #: modules/units/build/lib/geocurrency/units/__init__.py:1512
 #: modules/units/geocurrency/units/__init__.py:1512
 msgid "stone"
-msgstr ""
+msgstr "calcul"
 
 #: deployment/dev/geocurrency/units/__init__.py:1516
 #: modules/units/build/lib/geocurrency/units/__init__.py:1516
 #: modules/units/geocurrency/units/__init__.py:1516
 msgid "survey foot"
-msgstr ""
+msgstr "pied d'arpentage"
 
 #: deployment/dev/geocurrency/units/__init__.py:1520
 #: modules/units/build/lib/geocurrency/units/__init__.py:1520
 #: modules/units/geocurrency/units/__init__.py:1520
 msgid "survey mile"
-msgstr ""
+msgstr "mile d'enquête"
 
 #: deployment/dev/geocurrency/units/__init__.py:1528
 #: deployment/dev/geocurrency/units/__init__.py:1529
@@ -4071,7 +4072,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1528
 #: modules/units/geocurrency/units/__init__.py:1529
 msgid "synodic month"
-msgstr ""
+msgstr "mois synodique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1532
 #: deployment/dev/geocurrency/units/__init__.py:1533
@@ -4080,7 +4081,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1532
 #: modules/units/geocurrency/units/__init__.py:1533
 msgid "tablespoon"
-msgstr ""
+msgstr "cuillerée à soupe"
 
 #: deployment/dev/geocurrency/units/__init__.py:1540
 #: deployment/dev/geocurrency/units/__init__.py:1541
@@ -4089,55 +4090,55 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1540
 #: modules/units/geocurrency/units/__init__.py:1541
 msgid "teaspoon"
-msgstr ""
+msgstr "cuillère à café"
 
 #: deployment/dev/geocurrency/units/__init__.py:1544
 #: modules/units/build/lib/geocurrency/units/__init__.py:1544
 #: modules/units/geocurrency/units/__init__.py:1544
 msgid "technical atmosphere"
-msgstr ""
+msgstr "atmosphère technique"
 
 #: deployment/dev/geocurrency/units/__init__.py:1572
 #: modules/units/build/lib/geocurrency/units/__init__.py:1572
 #: modules/units/geocurrency/units/__init__.py:1572
 msgid "therm"
-msgstr ""
+msgstr "thermie"
 
 #: deployment/dev/geocurrency/units/__init__.py:1576
 #: modules/units/build/lib/geocurrency/units/__init__.py:1576
 #: modules/units/geocurrency/units/__init__.py:1576
 msgid "thermochemical Btu"
-msgstr ""
+msgstr "thermochimique Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1580
 #: modules/units/build/lib/geocurrency/units/__init__.py:1580
 #: modules/units/geocurrency/units/__init__.py:1580
 msgid "Thomson cross section"
-msgstr ""
+msgstr "Coupe transversale de Thomson"
 
 #: deployment/dev/geocurrency/units/__init__.py:1588
 #: modules/units/build/lib/geocurrency/units/__init__.py:1588
 #: modules/units/geocurrency/units/__init__.py:1588
 msgid "ton"
-msgstr ""
+msgstr "tonne"
 
 #: deployment/dev/geocurrency/units/__init__.py:1592
 #: modules/units/build/lib/geocurrency/units/__init__.py:1592
 #: modules/units/geocurrency/units/__init__.py:1592
 msgid "ton of TNT"
-msgstr ""
+msgstr "tonne de TNT"
 
 #: deployment/dev/geocurrency/units/__init__.py:1596
 #: modules/units/build/lib/geocurrency/units/__init__.py:1596
 #: modules/units/geocurrency/units/__init__.py:1596
 msgid "ton of oil equivalent"
-msgstr ""
+msgstr "tonne d'équivalent pétrole"
 
 #: deployment/dev/geocurrency/units/__init__.py:1597
 #: modules/units/build/lib/geocurrency/units/__init__.py:1597
 #: modules/units/geocurrency/units/__init__.py:1597
 msgid "toe"
-msgstr ""
+msgstr "doigt de pied"
 
 #: deployment/dev/geocurrency/units/__init__.py:1604
 #: deployment/dev/geocurrency/units/__init__.py:1605
@@ -4146,7 +4147,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1604
 #: modules/units/geocurrency/units/__init__.py:1605
 msgid "tropical month"
-msgstr ""
+msgstr "mois tropical"
 
 #: deployment/dev/geocurrency/units/__init__.py:1608
 #: deployment/dev/geocurrency/units/__init__.py:1609
@@ -4155,7 +4156,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1608
 #: modules/units/geocurrency/units/__init__.py:1609
 msgid "tropical year"
-msgstr ""
+msgstr "année tropicale"
 
 #: deployment/dev/geocurrency/units/__init__.py:1612
 #: deployment/dev/geocurrency/units/__init__.py:1613
@@ -4164,7 +4165,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1612
 #: modules/units/geocurrency/units/__init__.py:1613
 msgid "troy ounce"
-msgstr ""
+msgstr "once troy"
 
 #: deployment/dev/geocurrency/units/__init__.py:1616
 #: deployment/dev/geocurrency/units/__init__.py:1617
@@ -4173,7 +4174,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1616
 #: modules/units/geocurrency/units/__init__.py:1617
 msgid "troy pound"
-msgstr ""
+msgstr "livre troy"
 
 #: deployment/dev/geocurrency/units/__init__.py:1620
 #: deployment/dev/geocurrency/units/__init__.py:1621
@@ -4182,7 +4183,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1620
 #: modules/units/geocurrency/units/__init__.py:1621
 msgid "turn"
-msgstr ""
+msgstr "tour"
 
 #: deployment/dev/geocurrency/units/__init__.py:1624
 #: deployment/dev/geocurrency/units/__init__.py:1625
@@ -4191,94 +4192,94 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1624
 #: modules/units/geocurrency/units/__init__.py:1625
 msgid "unified atomic mass unit"
-msgstr ""
+msgstr "unité de masse atomique unifiée"
 
 #: deployment/dev/geocurrency/units/__init__.py:1628
 #: modules/units/build/lib/geocurrency/units/__init__.py:1628
 #: modules/units/geocurrency/units/__init__.py:1628
 msgid "unit pole"
-msgstr ""
+msgstr "pôle d'unité"
 
 #: deployment/dev/geocurrency/units/__init__.py:1632
 #: modules/units/build/lib/geocurrency/units/__init__.py:1632
 #: modules/units/geocurrency/units/__init__.py:1632
 msgid "vacuum permeability"
-msgstr ""
+msgstr "perméabilité au vide"
 
 #: deployment/dev/geocurrency/units/__init__.py:1636
 #: modules/units/build/lib/geocurrency/units/__init__.py:1636
 #: modules/units/geocurrency/units/__init__.py:1636
 msgid "vacuum permittivity"
-msgstr ""
+msgstr "permittivité du vide"
 
 #: deployment/dev/geocurrency/units/__init__.py:1648
 #: modules/units/build/lib/geocurrency/units/__init__.py:1648
 #: modules/units/geocurrency/units/__init__.py:1648
 msgid "Von Klitzing constant"
-msgstr ""
+msgstr "Constante de Von Klitzing"
 
 #: deployment/dev/geocurrency/units/__init__.py:1652
 #: modules/units/build/lib/geocurrency/units/__init__.py:1652
 #: modules/units/geocurrency/units/__init__.py:1652
 msgid "Water volumic mass"
-msgstr ""
+msgstr "Masse volumique de l'eau"
 
 #: deployment/dev/geocurrency/units/__init__.py:1656
 #: modules/units/build/lib/geocurrency/units/__init__.py:1656
 #: modules/units/geocurrency/units/__init__.py:1656
 msgid "Water volumic mass at 39F"
-msgstr ""
+msgstr "Masse volumique de l'eau à 39F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1660
 #: modules/units/build/lib/geocurrency/units/__init__.py:1660
 #: modules/units/geocurrency/units/__init__.py:1660
 msgid "Water volumic mass at 60F"
-msgstr ""
+msgstr "Masse volumique de l'eau à 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1680
 #: modules/units/build/lib/geocurrency/units/__init__.py:1680
 #: modules/units/geocurrency/units/__init__.py:1680
 msgid "wien frequency displacement law constant"
-msgstr ""
+msgstr "constante de la loi de déplacement de fréquence de wien"
 
 #: deployment/dev/geocurrency/units/__init__.py:1684
 #: modules/units/build/lib/geocurrency/units/__init__.py:1684
 #: modules/units/geocurrency/units/__init__.py:1684
 msgid "wien u"
-msgstr ""
+msgstr "wien u"
 
 #: deployment/dev/geocurrency/units/__init__.py:1688
 #: modules/units/build/lib/geocurrency/units/__init__.py:1688
 #: modules/units/geocurrency/units/__init__.py:1688
 msgid "wien displacement law constant"
-msgstr ""
+msgstr "constante de la loi de déplacement de Wien"
 
 #: deployment/dev/geocurrency/units/__init__.py:1692
 #: modules/units/build/lib/geocurrency/units/__init__.py:1692
 #: modules/units/geocurrency/units/__init__.py:1692
 msgid "wien x"
-msgstr ""
+msgstr "wien x"
 
 #: deployment/dev/geocurrency/units/__init__.py:1696
 #: modules/units/build/lib/geocurrency/units/__init__.py:1696
 #: modules/units/geocurrency/units/__init__.py:1696
 msgid "Cu X-ray wavelength"
-msgstr ""
+msgstr "Longueur d'onde des rayons X Cu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1700
 #: modules/units/build/lib/geocurrency/units/__init__.py:1700
 #: modules/units/geocurrency/units/__init__.py:1700
 msgid "Mo X-ray wavelength"
-msgstr ""
+msgstr "Longueur d'onde des rayons X Mo"
 
 #: deployment/dev/geocurrency/units/models.py:300
 #: modules/units/build/lib/geocurrency/units/models.py:300
 #: modules/units/geocurrency/units/models.py:300
 msgid "Incompatible units"
-msgstr ""
+msgstr "Unités incompatibles"
 
 #: deployment/dev/geocurrency/units/models.py:321
 #: modules/units/build/lib/geocurrency/units/models.py:321
 #: modules/units/geocurrency/units/models.py:321
 msgid "Undefined unit in the registry"
-msgstr ""
+msgstr "Unité non définie dans le registre"
