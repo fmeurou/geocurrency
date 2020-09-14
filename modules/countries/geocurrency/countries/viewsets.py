@@ -29,17 +29,21 @@ class CountryViewset(ViewSet):
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                       type=openapi.TYPE_STRING)
 
-    #@method_decorator(cache_page(60 * 60 * 2))
-    #@method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[language, language_header])
+    countries_response = openapi.Response('List of countries', CountrySerializer)
+    country_detail_response = openapi.Response('Country detail', CountryDetailSerializer)
+
+
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: countries_response})
     def list(self, request):
         countries = Country.all_countries()
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
-    #@method_decorator(cache_page(60 * 60 * 2))
-    #@method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[language, language_header])
+    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: country_detail_response})
     def retrieve(self, request, alpha_2):
         try:
             country = Country(alpha_2)

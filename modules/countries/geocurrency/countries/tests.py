@@ -195,6 +195,7 @@ class GeocoderTestCase(TestCase):
         self.assertIsNotNone(data)
         if 'errors' in data:
             print("ERROR - pelias-interpolation service is not working, avoiding test")
+            return
         self.assertIn("FR", geocoder.parse_countries(data))
 
     def test_google_search_parse_countries(self):

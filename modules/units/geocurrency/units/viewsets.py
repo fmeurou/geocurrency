@@ -23,7 +23,10 @@ class UnitSystemViewset(ViewSet):
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(manual_parameters=[language, language_header])
+    unit_systems_response = openapi.Response('List of unit systems', UnitSystemListSerializer)
+    unit_system_response = openapi.Response('Dimensions and units in a system', UnitSystemDetailSerializer)
+
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: unit_systems_response})
     def list(self, request):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         us = UnitSystem(fmt_locale=language)
@@ -31,15 +34,15 @@ class UnitSystemViewset(ViewSet):
         serializer = UnitSystemListSerializer(us, many=True, context={'request': request})
         return Response(serializer.data)
 
-    @swagger_auto_schema(manual_parameters=[language, language_header])
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: unit_system_response})
     def retrieve(self, request, system_name):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
             serializer = UnitSystemDetailSerializer(us, context={'request': request})
             return Response(serializer.data, content_type="application/json")
-        except (ValueError, KeyError):
-            return Response("Unknown unit system", status=HTTP_404_NOT_FOUND)
+        except (ValueError, KeyError) as e:
+            return Response("Unknown unit system: " + str(e), status=HTTP_404_NOT_FOUND)
 
 
 class UnitViewset(ViewSet):
@@ -51,16 +54,18 @@ class UnitViewset(ViewSet):
                                         type=openapi.TYPE_STRING)
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
-    dimension = openapi.Parameter('dimension', openapi.IN_QUERY, description="Unit dimension",
+    family = openapi.Parameter('family', openapi.IN_QUERY, description="Unit dimension",
                                  type=openapi.TYPE_STRING)
+    units_response = openapi.Response('List of units in a system', UnitSerializer)
+    unit_response = openapi.Response('Detail of a unit', UnitSerializer)
 
-    @swagger_auto_schema(manual_parameters=[dimension, language, language_header])
+    @swagger_auto_schema(manual_parameters=[family, language, language_header], responses={200: units_response})
     def list(self, request, system_name):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
-            if dimension := request.GET.get('dimension'):
-                available_units = us.units_per_dimensionality().get(dimension)
+            if dimension := request.GET.get('family'):
+                available_units = [unit.code for unit in us.units_per_family().get(dimension)]
             else:
                 available_units = us.available_unit_names()
             units = []
@@ -71,7 +76,7 @@ class UnitViewset(ViewSet):
         except KeyError:
             return Response('Invalid Unit System', status=status.HTTP_404_NOT_FOUND)
 
-    @swagger_auto_schema(manual_parameters=[language, language_header])
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: unit_response})
     def retrieve(self, request, system_name, unit_name):
         """
         Get unit information for unit in unit system
@@ -85,14 +90,16 @@ class UnitViewset(ViewSet):
         except (ValueError, KeyError):
             return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
 
-    @swagger_auto_schema(manual_parameters=[language, language_header])
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: units_response})
     @action(methods=['GET'], detail=True, url_path='compatible', url_name='compatible_units')
     def compatible_units(self, request, system_name, unit_name):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
             unit = us.unit(unit_name=unit_name)
-            return Response(map(str, unit.unit.compatible_units()), content_type="application/json")
+            compatible_units = [us.unit(unit_name=cunit) for cunit in map(str, unit.unit.compatible_units())]
+            serializer = UnitSerializer(compatible_units, many=True, context={'request': request})
+            return Response(serializer.data, content_type="application/json")
         except (ValueError, KeyError):
             return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
 

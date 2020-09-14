@@ -37,22 +37,22 @@ class UnitTest(TestCase):
         response = client.get(
             '/units/mks/units/',
             data={
-                'dimension': 'length'
+                'family': 'length'
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(set([c['dimension'] for c in response.json()]), {'length'})
+        self.assertEqual(set([c['family'] for c in response.json()]), {'length'})
 
     def test_list_with_dimension_2_request(self):
         client = APIClient()
         response = client.get(
             '/units/mks/units/',
             data={
-                'dimension': 'length ** 2'
+                'family': 'surface'
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(set([c['dimension'] for c in response.json()]), set())
+        self.assertEqual(set([c['family'] for c in response.json()]), {'surface'})
 
     def test_retrieve_request(self):
         client = APIClient()
@@ -120,7 +120,7 @@ class UnitSystemTest(TestCase):
     def test_retrieve_request_not_found(self):
         client = APIClient()
         response = client.get(
-            '/units/si/'
+            '/units/sO/'
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 

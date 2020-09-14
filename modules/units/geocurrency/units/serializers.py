@@ -1,5 +1,6 @@
 from datetime import date, datetime
 
+from drf_yasg.utils import swagger_serializer_method
 from rest_framework import serializers
 
 from .models import Amount
@@ -13,7 +14,7 @@ class AmountSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_system(system):
-        from geocurrency.units.models import UnitSystem
+        from .models import UnitSystem
         if not UnitSystem.is_valid(system):
             raise serializers.ValidationError('Invalid system')
         return system
@@ -45,6 +46,22 @@ class AmountSerializer(serializers.Serializer):
         return instance
 
 
+class UnitSerializer(serializers.Serializer):
+    code = serializers.CharField()
+    name = serializers.CharField()
+    family = serializers.CharField()
+    dimensions = serializers.SerializerMethodField()
+
+    @swagger_serializer_method(serializer_or_field=serializers.ListField)
+    def get_dimensions(self, obj):
+        return str(obj.dimension)
+
+
+class UnitFamilySerializer(serializers.Serializer):
+    family = serializers.CharField()
+    units = UnitSerializer(many=True)
+
+
 class UnitSystemListSerializer(serializers.Serializer):
     system_name = serializers.CharField()
 
@@ -52,18 +69,12 @@ class UnitSystemListSerializer(serializers.Serializer):
 class UnitSystemDetailSerializer(serializers.Serializer):
     system_name = serializers.CharField()
     dimensions = serializers.SerializerMethodField()
-    units = serializers.SerializerMethodField()
+    units = UnitFamilySerializer(many=True)
 
+    @swagger_serializer_method(serializer_or_field=serializers.ListField)
     def get_dimensions(self, obj):
         return obj.dimensionalities
 
+    @swagger_serializer_method(serializer_or_field=UnitSerializer)
     def get_units(self, obj):
-        return obj.units_per_dimensionality()
-
-
-class UnitSerializer(serializers.Serializer):
-    name = serializers.CharField()
-    dimension = serializers.SerializerMethodField()
-
-    def get_dimension(self, obj):
-        return obj.readable_dimension
+        return obj.units_per_family()

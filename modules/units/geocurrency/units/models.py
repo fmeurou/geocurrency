@@ -2,11 +2,9 @@ from datetime import date
 
 import pint
 from django.utils.translation import ugettext as _
-from django.db import models
-
 from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
 
-
+from . import UNIT_EXTENDED_DEFINITION
 
 
 class Amount:
@@ -29,12 +27,28 @@ class Unit:
     pass
 
 
+class UnitFamily:
+    family = None
+    units = []
+
+    def __init__(self, family: str, units: [Unit]):
+        self.family = family
+        self.units = units
+
+
 class UnitSystem:
     ureg = None
     system_name = None
     system = None
 
     def __init__(self, system_name='SI', fmt_locale='en'):
+        found = False
+        for available_system in UnitSystem.available_systems():
+            if system_name.lower() == available_system.lower():
+                system_name = available_system
+                found = True
+        if not found:
+            raise ValueError("Invalid unit system")
         self.system_name = system_name
         try:
             self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
@@ -42,12 +56,14 @@ class UnitSystem:
         except (FileNotFoundError, AttributeError):
             raise ValueError("Invalid unit system")
 
-    def available_systems(self) -> [str]:
+    @classmethod
+    def available_systems(cls) -> [str]:
         """
         List of available Unit Systems
         :return: Array of string
         """
-        return dir(self.ureg.sys)
+        ureg = pint.UnitRegistry(system='SI')
+        return dir(ureg.sys)
 
     @classmethod
     def is_valid(cls, system: str) -> bool:
@@ -61,7 +77,14 @@ class UnitSystem:
         return self.ureg
 
     def unit(self, unit_name):
-        return Unit(unit_system=self, name=unit_name)
+        return Unit(unit_system=self, code=unit_name)
+
+    @property
+    def units(self):
+        """
+        Wrapper used by serializer
+        """
+        return [UnitFamily(family=family, units=units) for family, units in self.units_per_family().items()]
 
     def available_unit_names(self) -> [str]:
         """
@@ -70,7 +93,7 @@ class UnitSystem:
         """
         return dir(self.system)
 
-    def unit_dimensionality(self, unit: str) -> dict:
+    def unit_dimensionality(self, unit: str) -> str:
         """
         User friendly representation of the dimension
         :param unit: name of the unit to display
@@ -78,10 +101,28 @@ class UnitSystem:
         """
         return Unit.dimensionality_string(unit_system=self.system, unit_str=unit)
 
+    def units_per_family(self) -> []:
+        """
+        List of units per dimension.
+        Dimension is the dimension as identified in Units.UNIT_EXTENDED_DEFINITION
+        :return: array of dict of dimensions, with lists of unit strings
+        """
+        units_array = self.available_unit_names()
+        output = {}
+        for unit_str in units_array:
+            try:
+                unit = self.unit(unit_name=unit_str)
+            except ValueError:
+                continue
+            try:
+                output[str(unit.family)].append(unit)
+            except KeyError:
+                output[str(unit.family)] = [unit]
+        return output
+
     def units_per_dimensionality(self) -> {}:
         """
         List of units per dimension
-        :param system: Unit system to use
         :return: dict of dimensions, with lists of unit strings
         """
         units_array = self.available_unit_names()
@@ -105,27 +146,67 @@ class UnitSystem:
 
 class Unit:
     unit_system = None
-    name = None
+    code = None
     unit = None
 
-    def __init__(self, unit_system: UnitSystem, name: str, ):
+    def __init__(self, unit_system: UnitSystem, code: str, ):
         """
         :param unit_system: UnitSystem instance
-        :param name: name of the pint.Unit
+        :param code: code of the pint.Unit
         """
         self.unit_system = unit_system
-        self.name = name
+        self.code = code
         try:
-            self.unit = getattr(unit_system.system, name)
+            self.unit = getattr(unit_system.system, code)
         except pint.errors.UndefinedUnitError:
             raise ValueError("invalid unit for system")
+
+    @property
+    def family(self):
+        return self.unit_family(self.code)
+
+    @property
+    def name(self):
+        return self.unit_name(self.code)
+
+    @property
+    def symbol(self):
+        return self.unit_symbol(self.code)
+
+    @property
+    def dimension(self):
+        return self.unit.dimensionality
+
+    @staticmethod
+    def unit_family(unit_str: str) -> str:
+        try:
+            ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
+            return ext_unit['family']
+        except KeyError:
+            return ''
+
+    @staticmethod
+    def unit_name(unit_str: str) -> str:
+        try:
+            ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
+            return ext_unit['name']
+        except KeyError:
+            return unit_str
+
+    @staticmethod
+    def unit_symbol(unit_str: str) -> str:
+        try:
+            ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
+            return ext_unit['symbol']
+        except KeyError:
+            return ''
 
     @staticmethod
     def dimensionality_string(unit_system: UnitSystem, unit_str: str) -> str:
         """
         Converts pint dimensionality string to human readable string
         :param unit_system: UnitSystem
-        :param unit_obj: pint.Unit
+        :param unit_str: Unit name
         :return: str
         """
         ds = str(getattr(unit_system.ureg, unit_str).dimensionality).replace('[', '').replace(']', '')
@@ -134,7 +215,7 @@ class Unit:
         return ' '.join([_(d) for d in ds])
 
     @staticmethod
-    def translated_unit(unit_system: UnitSystem, unit_str: str) -> str:
+    def translated_name(unit_system: UnitSystem, unit_str: str) -> str:
         return '{}'.format(unit_system.ureg[unit_str])
 
     @property
@@ -142,7 +223,7 @@ class Unit:
         """
         Wrapper around Unit.dimensionality_string
         """
-        return Unit.dimensionality_string(unit_system=self.unit_system, unit_str=self.name)
+        return Unit.dimensionality_string(unit_system=self.unit_system, unit_str=self.code)
 
 
 class UnitConverter:
@@ -158,7 +239,7 @@ class UnitConverter(BaseConverter):
         self.base_system = base_system
         self.base_unit = base_unit
         self.system = UnitSystem(system_name=base_system)
-        self.unit = Unit(unit_system=self.system, name=base_unit)
+        self.unit = Unit(unit_system=self.system, code=base_unit)
         self.compatible_units = [str(u) for u in self.unit.unit.compatible_units()]
 
     def add_data(self, data: []) -> []:
@@ -190,7 +271,7 @@ class UnitConverter(BaseConverter):
     def load(cls, id: str) -> UnitConverter:
         uc = super(UnitConverter, cls).load(id)
         uc.system = UnitSystem(system_name=uc.base_system)
-        uc.unit = Unit(unit_system=uc.system, name=uc.base_unit)
+        uc.unit = Unit(unit_system=uc.system, code=uc.base_unit)
         return uc
 
     def save(self):

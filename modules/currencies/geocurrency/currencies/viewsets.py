@@ -24,8 +24,12 @@ class CurrencyViewset(ReadOnlyModelViewSet):
     """
     lookup_field = 'code'
 
+    currencies_response = openapi.Response('List of currencies', CurrencySerializer)
+    currency_response = openapi.Response('Currency detail', CurrencySerializer)
+
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(responses={200: currencies_response})
     def list(self, request, *args, **kwargs):
         """
         List of currencies
@@ -36,6 +40,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(responses={200: currency_response})
     def retrieve(self, request, code, *args, **kwargs) -> Response:
         """
         Retrieve single record based on iso4217 code

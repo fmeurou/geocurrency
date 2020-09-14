@@ -1,5 +1,7 @@
 import pycountry
 import gettext
+
+from drf_yasg.utils import swagger_serializer_method
 from pycountry import countries
 from rest_framework import serializers
 
@@ -30,6 +32,7 @@ class CountrySerializer(serializers.Serializer):
         country = Country(validated_data.get('alpha_2'))
         self.instance = country
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_translated_name(self, obj: Country) -> str:
         request = self.context.get('request', None)
         if request:
@@ -59,21 +62,27 @@ class CountryDetailSerializer(serializers.Serializer):
     unit_system = serializers.SerializerMethodField()
     translated_name = serializers.SerializerMethodField()
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_region(self, obj) -> str:
         return obj.region
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_subregion(self, obj) -> str:
         return obj.subregion
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_tld(self, obj) -> str:
         return obj.tld
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_capital(self, obj) -> str:
         return obj.capital
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_unit_system(self, obj) -> str:
         return obj.unit_system
 
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_translated_name(self, obj: Country) -> str:
         request = self.context.get('request', None)
         if request:
