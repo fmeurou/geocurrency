@@ -3,411 +3,412 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-14 13:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-09-16 12:48+0000\n"
+"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
+"Language-Team: Lithuanian <http://peabytes.me/projects/geocurrency/api/lt/>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
-"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
-"1 : n % 1 != 0 ? 2: 3);\n"
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 :"
+" n % 1 != 0 ? 2: 3);\n"
+"X-Generator: Weblate 4.2.2\n"
+
 #: deployment/dev/api/settings.py:178
 msgid "Afrikaans"
-msgstr ""
+msgstr "Afrikanų kalba"
 
 #: deployment/dev/api/settings.py:179
 msgid "Arabic"
-msgstr ""
+msgstr "arabiškas"
 
 #: deployment/dev/api/settings.py:180
 msgid "Algerian Arabic"
-msgstr ""
+msgstr "Alžyro arabų"
 
 #: deployment/dev/api/settings.py:181
 msgid "Asturian"
-msgstr ""
+msgstr "Astūriškas"
 
 #: deployment/dev/api/settings.py:182
 msgid "Azerbaijani"
-msgstr ""
+msgstr "Azerbaidžanietis"
 
 #: deployment/dev/api/settings.py:183
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarų"
 
 #: deployment/dev/api/settings.py:184
 msgid "Belarusian"
-msgstr ""
+msgstr "Baltarusių"
 
 #: deployment/dev/api/settings.py:185
 msgid "Bengali"
-msgstr ""
+msgstr "Bengalų k"
 
 #: deployment/dev/api/settings.py:186
 msgid "Breton"
-msgstr ""
+msgstr "Bretonų"
 
 #: deployment/dev/api/settings.py:187
 msgid "Bosnian"
-msgstr ""
+msgstr "Bosnių"
 
 #: deployment/dev/api/settings.py:188
 msgid "Catalan"
-msgstr ""
+msgstr "Katalonų"
 
 #: deployment/dev/api/settings.py:189
 msgid "Czech"
-msgstr ""
+msgstr "Čekų"
 
 #: deployment/dev/api/settings.py:190
 msgid "Welsh"
-msgstr ""
+msgstr "Valų kalba"
 
 #: deployment/dev/api/settings.py:191
 msgid "Danish"
-msgstr ""
+msgstr "Danų"
 
 #: deployment/dev/api/settings.py:192
 msgid "German"
-msgstr ""
+msgstr "Vokiečių kalba"
 
 #: deployment/dev/api/settings.py:193
 msgid "Lower Sorbian"
-msgstr ""
+msgstr "Žemutinė sorbų kalba"
 
 #: deployment/dev/api/settings.py:194
 msgid "Greek"
-msgstr ""
+msgstr "Graikų"
 
 #: deployment/dev/api/settings.py:195
 msgid "English"
-msgstr ""
+msgstr "Anglų"
 
 #: deployment/dev/api/settings.py:196
 msgid "Australian English"
-msgstr ""
+msgstr "Australijos anglų kalba"
 
 #: deployment/dev/api/settings.py:197
 msgid "British English"
-msgstr ""
+msgstr "Britų anglų kalba"
 
 #: deployment/dev/api/settings.py:198
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto k"
 
 #: deployment/dev/api/settings.py:199
 msgid "Spanish"
-msgstr ""
+msgstr "Ispanų"
 
 #: deployment/dev/api/settings.py:200
 msgid "Argentinian Spanish"
-msgstr ""
+msgstr "Argentiniečių ispanų"
 
 #: deployment/dev/api/settings.py:201
 msgid "Colombian Spanish"
-msgstr ""
+msgstr "Kolumbijos ispanas"
 
 #: deployment/dev/api/settings.py:202
 msgid "Mexican Spanish"
-msgstr ""
+msgstr "Meksikos ispanų"
 
 #: deployment/dev/api/settings.py:203
 msgid "Nicaraguan Spanish"
-msgstr ""
+msgstr "Nikaragvos ispanas"
 
 #: deployment/dev/api/settings.py:204
 msgid "Venezuelan Spanish"
-msgstr ""
+msgstr "Venesuelos ispanas"
 
 #: deployment/dev/api/settings.py:205
 msgid "Estonian"
-msgstr ""
+msgstr "Estų"
 
 #: deployment/dev/api/settings.py:206
 msgid "Basque"
-msgstr ""
+msgstr "Baskų kalba"
 
 #: deployment/dev/api/settings.py:207
 msgid "Persian"
-msgstr ""
+msgstr "Persų"
 
 #: deployment/dev/api/settings.py:208
 msgid "Finnish"
-msgstr ""
+msgstr "Suomių"
 
 #: deployment/dev/api/settings.py:209
 msgid "French"
-msgstr ""
+msgstr "Prancūzų kalba"
 
 #: deployment/dev/api/settings.py:210
 msgid "Frisian"
-msgstr ""
+msgstr "Frizas"
 
 #: deployment/dev/api/settings.py:211
 msgid "Irish"
-msgstr ""
+msgstr "Airių"
 
 #: deployment/dev/api/settings.py:212
 msgid "Scottish Gaelic"
-msgstr ""
+msgstr "Škotų gėlų"
 
 #: deployment/dev/api/settings.py:213
 msgid "Galician"
-msgstr ""
+msgstr "Galisų"
 
 #: deployment/dev/api/settings.py:214
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrajų kalba"
 
 #: deployment/dev/api/settings.py:215
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi k"
 
 #: deployment/dev/api/settings.py:216
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatų"
 
 #: deployment/dev/api/settings.py:217
 msgid "Upper Sorbian"
-msgstr ""
+msgstr "Viršutinė sorbė"
 
 #: deployment/dev/api/settings.py:218
 msgid "Hungarian"
-msgstr ""
+msgstr "Vengrų"
 
 #: deployment/dev/api/settings.py:219
 msgid "Armenian"
-msgstr ""
+msgstr "Armėnų"
 
 #: deployment/dev/api/settings.py:220
 msgid "Interlingua"
-msgstr ""
+msgstr "Interlingva"
 
 #: deployment/dev/api/settings.py:221
 msgid "Indonesian"
-msgstr ""
+msgstr "Indoneziečių"
 
 #: deployment/dev/api/settings.py:222
 msgid "Igbo"
-msgstr ""
+msgstr "Igbo"
 
 #: deployment/dev/api/settings.py:223
 msgid "Ido"
-msgstr ""
+msgstr "Aš darau"
 
 #: deployment/dev/api/settings.py:224
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandų"
 
 #: deployment/dev/api/settings.py:225
 msgid "Italian"
-msgstr ""
+msgstr "Italų"
 
 #: deployment/dev/api/settings.py:226
 msgid "Japanese"
-msgstr ""
+msgstr "Japonų"
 
 #: deployment/dev/api/settings.py:227
 msgid "Georgian"
-msgstr ""
+msgstr "Gruzinas"
 
 #: deployment/dev/api/settings.py:228
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: deployment/dev/api/settings.py:229
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazachas"
 
 #: deployment/dev/api/settings.py:230
 msgid "Khmer"
-msgstr ""
+msgstr "Khmerai"
 
 #: deployment/dev/api/settings.py:231
 msgid "Kannada"
-msgstr ""
+msgstr "Kannada"
 
 #: deployment/dev/api/settings.py:232
 msgid "Korean"
-msgstr ""
+msgstr "Korėjiečių"
 
 #: deployment/dev/api/settings.py:233
 msgid "Kyrgyz"
-msgstr ""
+msgstr "Kirgizai"
 
 #: deployment/dev/api/settings.py:234
 msgid "Luxembourgish"
-msgstr ""
+msgstr "Liuksemburgiečių"
 
 #: deployment/dev/api/settings.py:235
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lietuvis"
 
 #: deployment/dev/api/settings.py:236
 msgid "Latvian"
-msgstr ""
+msgstr "Latvių"
 
 #: deployment/dev/api/settings.py:237
 msgid "Macedonian"
-msgstr ""
+msgstr "Makedonų"
 
 #: deployment/dev/api/settings.py:238
 msgid "Malayalam"
-msgstr ""
+msgstr "Malajalam"
 
 #: deployment/dev/api/settings.py:239
 msgid "Mongolian"
-msgstr ""
+msgstr "Mongolų"
 
 #: deployment/dev/api/settings.py:240
 msgid "Marathi"
-msgstr ""
+msgstr "Maratų kalba"
 
 #: deployment/dev/api/settings.py:241
 msgid "Burmese"
-msgstr ""
+msgstr "Birmiečių"
 
 #: deployment/dev/api/settings.py:242
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "Norvegų bokmål"
 
 #: deployment/dev/api/settings.py:243
 msgid "Nepali"
-msgstr ""
+msgstr "Nepalo kalba"
 
 #: deployment/dev/api/settings.py:244
 msgid "Dutch"
-msgstr ""
+msgstr "Olandų"
 
 #: deployment/dev/api/settings.py:245
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "Norvegų Nynorskas"
 
 #: deployment/dev/api/settings.py:246
 msgid "Ossetic"
-msgstr ""
+msgstr "Osetinė"
 
 #: deployment/dev/api/settings.py:247
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: deployment/dev/api/settings.py:248
 msgid "Polish"
-msgstr ""
+msgstr "lenkas"
 
 #: deployment/dev/api/settings.py:249
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalų"
 
 #: deployment/dev/api/settings.py:250
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Brazilijos portugalas"
 
 #: deployment/dev/api/settings.py:251
 msgid "Romanian"
-msgstr ""
+msgstr "Rumunų"
 
 #: deployment/dev/api/settings.py:252
 msgid "Russian"
-msgstr ""
+msgstr "Rusų"
 
 #: deployment/dev/api/settings.py:253
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakų"
 
 #: deployment/dev/api/settings.py:254
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovėnų"
 
 #: deployment/dev/api/settings.py:255
 msgid "Albanian"
-msgstr ""
+msgstr "Albanų"
 
 #: deployment/dev/api/settings.py:256
 msgid "Serbian"
-msgstr ""
+msgstr "Serbų"
 
 #: deployment/dev/api/settings.py:257
 msgid "Serbian Latin"
-msgstr ""
+msgstr "Serbų lotynų"
 
 #: deployment/dev/api/settings.py:258
 msgid "Swedish"
-msgstr ""
+msgstr "Švedų"
 
 #: deployment/dev/api/settings.py:259
 msgid "Swahili"
-msgstr ""
+msgstr "Svahili kalba"
 
 #: deployment/dev/api/settings.py:260
 msgid "Tamil"
-msgstr ""
+msgstr "Tamilų"
 
 #: deployment/dev/api/settings.py:261
 msgid "Telugu"
-msgstr ""
+msgstr "Telugų k"
 
 #: deployment/dev/api/settings.py:262
 msgid "Tajik"
-msgstr ""
+msgstr "Tadžikų kalba"
 
 #: deployment/dev/api/settings.py:263
 msgid "Thai"
-msgstr ""
+msgstr "Tajų"
 
 #: deployment/dev/api/settings.py:264
 msgid "Turkmen"
-msgstr ""
+msgstr "Turkmėnų"
 
 #: deployment/dev/api/settings.py:265
 msgid "Turkish"
-msgstr ""
+msgstr "Turkų"
 
 #: deployment/dev/api/settings.py:266
 msgid "Tatar"
-msgstr ""
+msgstr "Totorius"
 
 #: deployment/dev/api/settings.py:267
 msgid "Udmurt"
-msgstr ""
+msgstr "Udmurtas"
 
 #: deployment/dev/api/settings.py:268
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainietis"
 
 #: deployment/dev/api/settings.py:269
 msgid "Urdu"
-msgstr ""
+msgstr "Urdu kalba"
 
 #: deployment/dev/api/settings.py:270
 msgid "Uzbek"
-msgstr ""
+msgstr "Uzbekų"
 
 #: deployment/dev/api/settings.py:271
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamiečių"
 
 #: deployment/dev/api/settings.py:272
 msgid "Simplified Chinese"
-msgstr ""
+msgstr "Supaprastinta kinų kalba"
 
 #: deployment/dev/api/settings.py:273
 msgid "Traditional Chinese"
-msgstr ""
+msgstr "Tradicinis kinietiškas"
 
 #: deployment/dev/geocurrency/rates/models.py:335
 #: modules/rates/build/lib/geocurrency/rates/models.py:335
 #: modules/rates/geocurrency/rates/models.py:335
 msgid "Rate could not be found"
-msgstr ""
+msgstr "Įvertinimo rasti nepavyko"
 
 #: deployment/dev/geocurrency/units/__init__.py:4
 #: deployment/dev/geocurrency/units/__init__.py:70
@@ -446,7 +447,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:584
 #: modules/units/geocurrency/units/__init__.py:648
 msgid "dimensionless"
-msgstr ""
+msgstr "be matmenų"
 
 #: deployment/dev/geocurrency/units/__init__.py:5
 #: deployment/dev/geocurrency/units/__init__.py:211
@@ -584,7 +585,7 @@ msgstr ""
 #: modules/units/geocurrency/units/tests.py:96
 #: modules/units/geocurrency/units/tests.py:101
 msgid "length"
-msgstr ""
+msgstr "ilgio"
 
 #: deployment/dev/geocurrency/units/__init__.py:6
 #: deployment/dev/geocurrency/units/__init__.py:191
@@ -629,7 +630,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1446
 #: modules/units/geocurrency/units/__init__.py:1582
 msgid "surface"
-msgstr ""
+msgstr "paviršius"
 
 #: deployment/dev/geocurrency/units/__init__.py:7
 #: deployment/dev/geocurrency/units/__init__.py:196
@@ -758,7 +759,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1534
 #: modules/units/geocurrency/units/__init__.py:1542
 msgid "volume"
-msgstr ""
+msgstr "apimtis"
 
 #: deployment/dev/geocurrency/units/__init__.py:8
 #: deployment/dev/geocurrency/units/__init__.py:281
@@ -842,7 +843,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1678
 #: modules/units/geocurrency/units/__init__.py:1710
 msgid "time"
-msgstr ""
+msgstr "laikas"
 
 #: deployment/dev/geocurrency/units/__init__.py:9
 #: deployment/dev/geocurrency/units/__init__.py:99
@@ -941,7 +942,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1618
 #: modules/units/geocurrency/units/__init__.py:1626
 msgid "mass"
-msgstr ""
+msgstr "masės"
 
 #: deployment/dev/geocurrency/units/__init__.py:10
 #: deployment/dev/geocurrency/units/__init__.py:314
@@ -971,7 +972,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1106
 #: modules/units/geocurrency/units/__init__.py:1414
 msgid "speed"
-msgstr ""
+msgstr "greičiu"
 
 #: deployment/dev/geocurrency/units/__init__.py:11
 #: deployment/dev/geocurrency/units/__init__.py:787
@@ -980,7 +981,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:11
 #: modules/units/geocurrency/units/__init__.py:787
 msgid "acceleration"
-msgstr ""
+msgstr "pagreitis"
 
 #: deployment/dev/geocurrency/units/__init__.py:12
 #: deployment/dev/geocurrency/units/__init__.py:1174
@@ -992,7 +993,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1174
 #: modules/units/geocurrency/units/__init__.py:1178
 msgid "meter per gram"
-msgstr ""
+msgstr "metras už gramą"
 
 #: deployment/dev/geocurrency/units/__init__.py:13
 #: deployment/dev/geocurrency/units/__init__.py:86
@@ -1013,7 +1014,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1322
 #: modules/units/geocurrency/units/__init__.py:1402
 msgid "absorption"
-msgstr ""
+msgstr "absorbcija"
 
 #: deployment/dev/geocurrency/units/__init__.py:14
 #: deployment/dev/geocurrency/units/__init__.py:92
@@ -1061,7 +1062,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1158
 #: modules/units/geocurrency/units/__init__.py:1286
 msgid "force"
-msgstr ""
+msgstr "jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:15
 #: deployment/dev/geocurrency/units/__init__.py:34
@@ -1121,7 +1122,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1598
 #: modules/units/geocurrency/units/__init__.py:1670
 msgid "energy"
-msgstr ""
+msgstr "energijos"
 
 #: deployment/dev/geocurrency/units/__init__.py:16
 #: deployment/dev/geocurrency/units/__init__.py:129
@@ -1154,7 +1155,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1250
 #: modules/units/geocurrency/units/__init__.py:1462
 msgid "electric current"
-msgstr ""
+msgstr "elektros srovė"
 
 #: deployment/dev/geocurrency/units/__init__.py:17
 #: deployment/dev/geocurrency/units/__init__.py:135
@@ -1178,7 +1179,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1062
 #: modules/units/geocurrency/units/__init__.py:1186
 msgid "electric charge"
-msgstr ""
+msgstr "elektros krūvis"
 
 #: deployment/dev/geocurrency/units/__init__.py:18
 #: deployment/dev/geocurrency/units/__init__.py:658
@@ -1187,7 +1188,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:18
 #: modules/units/geocurrency/units/__init__.py:658
 msgid "elementary charge"
-msgstr ""
+msgstr "elementarusis krūvis"
 
 #: deployment/dev/geocurrency/units/__init__.py:19
 #: deployment/dev/geocurrency/units/__init__.py:156
@@ -1205,7 +1206,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:514
 #: modules/units/geocurrency/units/__init__.py:660
 msgid "electromagnetic inductance"
-msgstr ""
+msgstr "elektromagnetinis induktyvumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:20
 #: deployment/dev/geocurrency/units/__init__.py:871
@@ -1214,7 +1215,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:20
 #: modules/units/geocurrency/units/__init__.py:871
 msgid "electromagnetic resistance"
-msgstr ""
+msgstr "elektromagnetinė varža"
 
 #: deployment/dev/geocurrency/units/__init__.py:21
 #: deployment/dev/geocurrency/units/__init__.py:181
@@ -1232,7 +1233,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1398
 #: modules/units/geocurrency/units/__init__.py:1474
 msgid "electrical conductance"
-msgstr ""
+msgstr "elektros laidumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:22
 #: deployment/dev/geocurrency/units/__init__.py:141
@@ -1259,7 +1260,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1486
 #: modules/units/geocurrency/units/__init__.py:1642
 msgid "electric potential difference"
-msgstr ""
+msgstr "elektrinio potencialo skirtumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:23
 #: deployment/dev/geocurrency/units/__init__.py:265
@@ -1268,7 +1269,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:23
 #: modules/units/geocurrency/units/__init__.py:265
 msgid "electric field"
-msgstr ""
+msgstr "elektrinis laukas"
 
 #: deployment/dev/geocurrency/units/__init__.py:24
 #: deployment/dev/geocurrency/units/__init__.py:161
@@ -1286,7 +1287,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:636
 #: modules/units/geocurrency/units/__init__.py:1554
 msgid "linear mass density"
-msgstr ""
+msgstr "linijinis masės tankis"
 
 #: deployment/dev/geocurrency/units/__init__.py:25
 #: deployment/dev/geocurrency/units/__init__.py:273
@@ -1295,7 +1296,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:25
 #: modules/units/geocurrency/units/__init__.py:273
 msgid "intensity"
-msgstr ""
+msgstr "intensyvumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:26
 #: deployment/dev/geocurrency/units/__init__.py:277
@@ -1322,7 +1323,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:967
 #: modules/units/geocurrency/units/__init__.py:1262
 msgid "temperature"
-msgstr ""
+msgstr "temperatūra"
 
 #: deployment/dev/geocurrency/units/__init__.py:27
 #: deployment/dev/geocurrency/units/__init__.py:1138
@@ -1334,13 +1335,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1138
 #: modules/units/geocurrency/units/__init__.py:1202
 msgid "amount of substance"
-msgstr ""
+msgstr "medžiagos kiekio"
 
 #: deployment/dev/geocurrency/units/__init__.py:28
 #: modules/units/build/lib/geocurrency/units/__init__.py:28
 #: modules/units/geocurrency/units/__init__.py:28
 msgid "density of particle"
-msgstr ""
+msgstr "dalelės tankis"
 
 #: deployment/dev/geocurrency/units/__init__.py:29
 #: deployment/dev/geocurrency/units/__init__.py:668
@@ -1352,7 +1353,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:668
 #: modules/units/geocurrency/units/__init__.py:963
 msgid "catalytic activity"
-msgstr ""
+msgstr "katalizinis aktyvumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:30
 #: deployment/dev/geocurrency/units/__init__.py:344
@@ -1364,7 +1365,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:344
 #: modules/units/geocurrency/units/__init__.py:394
 msgid "quantity of information"
-msgstr ""
+msgstr "informacijos kiekis"
 
 #: deployment/dev/geocurrency/units/__init__.py:31
 #: deployment/dev/geocurrency/units/__init__.py:349
@@ -1379,7 +1380,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1238
 #: modules/units/geocurrency/units/__init__.py:1242
 msgid "density of information"
-msgstr ""
+msgstr "informacijos tankumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:32
 #: deployment/dev/geocurrency/units/__init__.py:35
@@ -1397,7 +1398,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:384
 #: modules/units/geocurrency/units/__init__.py:1170
 msgid "magnetic moment"
-msgstr ""
+msgstr "magnetinis momentas"
 
 #: deployment/dev/geocurrency/units/__init__.py:33
 #: deployment/dev/geocurrency/units/__init__.py:576
@@ -1406,7 +1407,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:33
 #: modules/units/geocurrency/units/__init__.py:576
 msgid "electric moment"
-msgstr ""
+msgstr "elektrinis momentas"
 
 #: deployment/dev/geocurrency/units/__init__.py:36
 #: deployment/dev/geocurrency/units/__init__.py:409
@@ -1415,7 +1416,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:36
 #: modules/units/geocurrency/units/__init__.py:409
 msgid "luminous intensity"
-msgstr ""
+msgstr "šviesos intensyvumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:37
 #: deployment/dev/geocurrency/units/__init__.py:166
@@ -1430,13 +1431,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:680
 #: modules/units/geocurrency/units/__init__.py:1466
 msgid "electrical capacitance"
-msgstr ""
+msgstr "elektrinė talpa"
 
 #: deployment/dev/geocurrency/units/__init__.py:38
 #: modules/units/build/lib/geocurrency/units/__init__.py:38
 #: modules/units/geocurrency/units/__init__.py:38
 msgid "electric force"
-msgstr ""
+msgstr "elektros jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:39
 #: deployment/dev/geocurrency/units/__init__.py:528
@@ -1454,19 +1455,19 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:851
 #: modules/units/geocurrency/units/__init__.py:1350
 msgid "frequency"
-msgstr ""
+msgstr "dažnis"
 
 #: deployment/dev/geocurrency/units/__init__.py:40
 #: modules/units/build/lib/geocurrency/units/__init__.py:40
 #: modules/units/geocurrency/units/__init__.py:40
 msgid "electromagnetic action"
-msgstr ""
+msgstr "elektromagnetinis veikimas"
 
 #: deployment/dev/geocurrency/units/__init__.py:41
 #: modules/units/build/lib/geocurrency/units/__init__.py:41
 #: modules/units/geocurrency/units/__init__.py:41
 msgid "power per unit per wavelength interval"
-msgstr ""
+msgstr "galia vienetui bangos ilgio intervale"
 
 #: deployment/dev/geocurrency/units/__init__.py:42
 #: deployment/dev/geocurrency/units/__init__.py:779
@@ -1478,7 +1479,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:779
 #: modules/units/geocurrency/units/__init__.py:1054
 msgid "electrostatic unit of charge"
-msgstr ""
+msgstr "elektrostatinis įkrovos vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:43
 #: deployment/dev/geocurrency/units/__init__.py:803
@@ -1487,7 +1488,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:43
 #: modules/units/geocurrency/units/__init__.py:803
 msgid "magnetic induction"
-msgstr ""
+msgstr "magnetinė indukcija"
 
 #: deployment/dev/geocurrency/units/__init__.py:44
 #: deployment/dev/geocurrency/units/__init__.py:815
@@ -1505,7 +1506,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1306
 #: modules/units/geocurrency/units/__init__.py:1622
 msgid "angle"
-msgstr ""
+msgstr "kampu"
 
 #: deployment/dev/geocurrency/units/__init__.py:45
 #: deployment/dev/geocurrency/units/__init__.py:995
@@ -1520,7 +1521,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1166
 #: modules/units/geocurrency/units/__init__.py:1506
 msgid "luminance"
-msgstr ""
+msgstr "skaistis"
 
 #: deployment/dev/geocurrency/units/__init__.py:46
 #: deployment/dev/geocurrency/units/__init__.py:999
@@ -1529,7 +1530,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:46
 #: modules/units/geocurrency/units/__init__.py:999
 msgid "radiation"
-msgstr ""
+msgstr "radiacija"
 
 #: deployment/dev/geocurrency/units/__init__.py:47
 #: deployment/dev/geocurrency/units/__init__.py:1042
@@ -1538,7 +1539,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:47
 #: modules/units/geocurrency/units/__init__.py:1042
 msgid "luminous flux"
-msgstr ""
+msgstr "šviesos srautas"
 
 #: deployment/dev/geocurrency/units/__init__.py:48
 #: deployment/dev/geocurrency/units/__init__.py:1046
@@ -1547,7 +1548,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:48
 #: modules/units/geocurrency/units/__init__.py:1046
 msgid "illuminance"
-msgstr ""
+msgstr "apšvietimas"
 
 #: deployment/dev/geocurrency/units/__init__.py:49
 #: deployment/dev/geocurrency/units/__init__.py:1048
@@ -1559,7 +1560,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1048
 #: modules/units/geocurrency/units/__init__.py:1050
 msgid "magnetic flux quantum"
-msgstr ""
+msgstr "magnetinio srauto kvantas"
 
 #: deployment/dev/geocurrency/units/__init__.py:50
 #: deployment/dev/geocurrency/units/__init__.py:1130
@@ -1568,13 +1569,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:50
 #: modules/units/geocurrency/units/__init__.py:1130
 msgid "concentration"
-msgstr ""
+msgstr "susikaupimas"
 
 #: deployment/dev/geocurrency/units/__init__.py:51
 #: modules/units/build/lib/geocurrency/units/__init__.py:51
 #: modules/units/geocurrency/units/__init__.py:51
 msgid "energy per temperature increment per mole"
-msgstr ""
+msgstr "energijos, tenkančios temperatūros prieaugiui moliui"
 
 #: deployment/dev/geocurrency/units/__init__.py:52
 #: deployment/dev/geocurrency/units/__init__.py:1148
@@ -1586,7 +1587,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1148
 #: modules/units/geocurrency/units/__init__.py:1150
 msgid "neper"
-msgstr ""
+msgstr "neperis"
 
 #: deployment/dev/geocurrency/units/__init__.py:53
 #: deployment/dev/geocurrency/units/__init__.py:1160
@@ -1595,7 +1596,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:53
 #: modules/units/geocurrency/units/__init__.py:1160
 msgid "newtonian constant of gravitation"
-msgstr ""
+msgstr "niutono gravitacijos konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:54
 #: deployment/dev/geocurrency/units/__init__.py:1274
@@ -1610,7 +1611,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1334
 #: modules/units/geocurrency/units/__init__.py:1510
 msgid "viscosity"
-msgstr ""
+msgstr "klampumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:55
 #: deployment/dev/geocurrency/units/__init__.py:297
@@ -1664,7 +1665,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1546
 #: modules/units/geocurrency/units/__init__.py:1602
 msgid "pressure"
-msgstr ""
+msgstr "spaudimas"
 
 #: deployment/dev/geocurrency/units/__init__.py:56
 #: deployment/dev/geocurrency/units/__init__.py:1314
@@ -1673,7 +1674,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:56
 #: modules/units/geocurrency/units/__init__.py:1314
 msgid "reciprocal length"
-msgstr ""
+msgstr "abipusis ilgis"
 
 #: deployment/dev/geocurrency/units/__init__.py:57
 #: deployment/dev/geocurrency/units/__init__.py:1326
@@ -1685,7 +1686,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1326
 #: modules/units/geocurrency/units/__init__.py:1330
 msgid "angular speed"
-msgstr ""
+msgstr "kampinis greitis"
 
 #: deployment/dev/geocurrency/units/__init__.py:58
 #: deployment/dev/geocurrency/units/__init__.py:1338
@@ -1694,7 +1695,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:58
 #: modules/units/geocurrency/units/__init__.py:1338
 msgid "reciprocal viscosity"
-msgstr ""
+msgstr "abipusis klampumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:59
 #: deployment/dev/geocurrency/units/__init__.py:1346
@@ -1703,13 +1704,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:59
 #: modules/units/geocurrency/units/__init__.py:1346
 msgid "radiation exposure"
-msgstr ""
+msgstr "radiacijos poveikis"
 
 #: deployment/dev/geocurrency/units/__init__.py:60
 #: modules/units/build/lib/geocurrency/units/__init__.py:60
 #: modules/units/geocurrency/units/__init__.py:60
 msgid "solid degree"
-msgstr ""
+msgstr "tvirtas laipsnis"
 
 #: deployment/dev/geocurrency/units/__init__.py:61
 #: deployment/dev/geocurrency/units/__init__.py:1458
@@ -1718,7 +1719,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:61
 #: modules/units/geocurrency/units/__init__.py:1458
 msgid "volumetric flow rate"
-msgstr ""
+msgstr "tūrinis srautas"
 
 #: deployment/dev/geocurrency/units/__init__.py:62
 #: deployment/dev/geocurrency/units/__init__.py:1482
@@ -1730,43 +1731,43 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1482
 #: modules/units/geocurrency/units/__init__.py:1550
 msgid "magnetic field"
-msgstr ""
+msgstr "magnetinis laukas"
 
 #: deployment/dev/geocurrency/units/__init__.py:63
 #: modules/units/build/lib/geocurrency/units/__init__.py:63
 #: modules/units/geocurrency/units/__init__.py:63
 msgid "mass density"
-msgstr ""
+msgstr "masės tankis"
 
 #: deployment/dev/geocurrency/units/__init__.py:68
 #: modules/units/build/lib/geocurrency/units/__init__.py:68
 #: modules/units/geocurrency/units/__init__.py:68
 msgid "Copper Kα"
-msgstr ""
+msgstr "Varis Kα"
 
 #: deployment/dev/geocurrency/units/__init__.py:73
 #: modules/units/build/lib/geocurrency/units/__init__.py:73
 #: modules/units/geocurrency/units/__init__.py:73
 msgid "Molybdenum K-α"
-msgstr ""
+msgstr "Molibdenas K-α"
 
 #: deployment/dev/geocurrency/units/__init__.py:78
 #: modules/units/build/lib/geocurrency/units/__init__.py:78
 #: modules/units/geocurrency/units/__init__.py:78
 msgid "Tungsten K-α"
-msgstr ""
+msgstr "Volframas K-α"
 
 #: deployment/dev/geocurrency/units/__init__.py:79
 #: modules/units/build/lib/geocurrency/units/__init__.py:79
 #: modules/units/geocurrency/units/__init__.py:79
 msgid "W Kα"
-msgstr ""
+msgstr "W Kα"
 
 #: deployment/dev/geocurrency/units/__init__.py:83
 #: modules/units/build/lib/geocurrency/units/__init__.py:83
 #: modules/units/geocurrency/units/__init__.py:83
 msgid "RKM"
-msgstr ""
+msgstr "RKM"
 
 #: deployment/dev/geocurrency/units/__init__.py:89
 #: deployment/dev/geocurrency/units/__init__.py:748
@@ -1775,7 +1776,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:89
 #: modules/units/geocurrency/units/__init__.py:748
 msgid "long ton-force"
-msgstr ""
+msgstr "ilga tona jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:102
 #: deployment/dev/geocurrency/units/__init__.py:1035
@@ -1784,85 +1785,85 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:102
 #: modules/units/geocurrency/units/__init__.py:1035
 msgid "long ton"
-msgstr ""
+msgstr "ilga tona"
 
 #: deployment/dev/geocurrency/units/__init__.py:108
 #: modules/units/build/lib/geocurrency/units/__init__.py:108
 #: modules/units/geocurrency/units/__init__.py:108
 msgid "short ton force"
-msgstr ""
+msgstr "trumpa tonos jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:114
 #: modules/units/build/lib/geocurrency/units/__init__.py:114
 #: modules/units/geocurrency/units/__init__.py:114
 msgid "short hundredweight"
-msgstr ""
+msgstr "trumpas šimtas svorio"
 
 #: deployment/dev/geocurrency/units/__init__.py:120
 #: modules/units/build/lib/geocurrency/units/__init__.py:120
 #: modules/units/geocurrency/units/__init__.py:120
 msgid "short ton"
-msgstr ""
+msgstr "trumpa tona"
 
 #: deployment/dev/geocurrency/units/__init__.py:126
 #: modules/units/build/lib/geocurrency/units/__init__.py:126
 #: modules/units/geocurrency/units/__init__.py:126
 msgid "US International Ampere"
-msgstr ""
+msgstr "JAV tarptautinis amperas"
 
 #: deployment/dev/geocurrency/units/__init__.py:132
 #: modules/units/build/lib/geocurrency/units/__init__.py:132
 #: modules/units/geocurrency/units/__init__.py:132
 msgid "US international Ohm"
-msgstr ""
+msgstr "JAV tarptautinis omas"
 
 #: deployment/dev/geocurrency/units/__init__.py:138
 #: modules/units/build/lib/geocurrency/units/__init__.py:138
 #: modules/units/geocurrency/units/__init__.py:138
 msgid "US international Volt"
-msgstr ""
+msgstr "JAV tarptautinis „Volt“"
 
 #: deployment/dev/geocurrency/units/__init__.py:144
 #: modules/units/build/lib/geocurrency/units/__init__.py:144
 #: modules/units/geocurrency/units/__init__.py:144
 msgid "US therm"
-msgstr ""
+msgstr "JAV term"
 
 #: deployment/dev/geocurrency/units/__init__.py:146
 #: modules/units/build/lib/geocurrency/units/__init__.py:146
 #: modules/units/geocurrency/units/__init__.py:146
 msgid "heat energy"
-msgstr ""
+msgstr "šilumos energija"
 
 #: deployment/dev/geocurrency/units/__init__.py:149
 #: modules/units/build/lib/geocurrency/units/__init__.py:149
 #: modules/units/geocurrency/units/__init__.py:149
 msgid "abampere"
-msgstr ""
+msgstr "abampere"
 
 #: deployment/dev/geocurrency/units/__init__.py:154
 #: modules/units/build/lib/geocurrency/units/__init__.py:154
 #: modules/units/geocurrency/units/__init__.py:154
 msgid "abcoulomb"
-msgstr ""
+msgstr "abcoulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:159
 #: modules/units/build/lib/geocurrency/units/__init__.py:159
 #: modules/units/geocurrency/units/__init__.py:159
 msgid "Aberdeen"
-msgstr ""
+msgstr "Aberdynas"
 
 #: deployment/dev/geocurrency/units/__init__.py:164
 #: modules/units/build/lib/geocurrency/units/__init__.py:164
 #: modules/units/geocurrency/units/__init__.py:164
 msgid "abfarad"
-msgstr ""
+msgstr "abfaradas"
 
 #: deployment/dev/geocurrency/units/__init__.py:169
 #: modules/units/build/lib/geocurrency/units/__init__.py:169
 #: modules/units/geocurrency/units/__init__.py:169
 msgid "abhenry"
-msgstr ""
+msgstr "abenrija"
 
 #: deployment/dev/geocurrency/units/__init__.py:171
 #: deployment/dev/geocurrency/units/__init__.py:484
@@ -1877,37 +1878,37 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:847
 #: modules/units/geocurrency/units/__init__.py:1470
 msgid "electrical inductance"
-msgstr ""
+msgstr "elektrinis induktyvumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:174
 #: modules/units/build/lib/geocurrency/units/__init__.py:174
 #: modules/units/geocurrency/units/__init__.py:174
 msgid "abohm"
-msgstr ""
+msgstr "abohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:179
 #: modules/units/build/lib/geocurrency/units/__init__.py:179
 #: modules/units/geocurrency/units/__init__.py:179
 msgid "absiemens"
-msgstr ""
+msgstr "absiemens"
 
 #: deployment/dev/geocurrency/units/__init__.py:184
 #: modules/units/build/lib/geocurrency/units/__init__.py:184
 #: modules/units/geocurrency/units/__init__.py:184
 msgid "abvolt"
-msgstr ""
+msgstr "abvoltas"
 
 #: deployment/dev/geocurrency/units/__init__.py:189
 #: modules/units/build/lib/geocurrency/units/__init__.py:189
 #: modules/units/geocurrency/units/__init__.py:189
 msgid "acre"
-msgstr ""
+msgstr "akras"
 
 #: deployment/dev/geocurrency/units/__init__.py:194
 #: modules/units/build/lib/geocurrency/units/__init__.py:194
 #: modules/units/geocurrency/units/__init__.py:194
 msgid "acre-foot"
-msgstr ""
+msgstr "arų pėda"
 
 #: deployment/dev/geocurrency/units/__init__.py:199
 #: deployment/dev/geocurrency/units/__init__.py:260
@@ -1916,79 +1917,79 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:199
 #: modules/units/geocurrency/units/__init__.py:260
 msgid "ampere"
-msgstr ""
+msgstr "amperų"
 
 #: deployment/dev/geocurrency/units/__init__.py:204
 #: modules/units/build/lib/geocurrency/units/__init__.py:204
 #: modules/units/geocurrency/units/__init__.py:204
 msgid "ampere-turn"
-msgstr ""
+msgstr "ampero posūkis"
 
 #: deployment/dev/geocurrency/units/__init__.py:209
 #: modules/units/build/lib/geocurrency/units/__init__.py:209
 #: modules/units/geocurrency/units/__init__.py:209
 msgid "angstrom"
-msgstr ""
+msgstr "angstremas"
 
 #: deployment/dev/geocurrency/units/__init__.py:214
 #: modules/units/build/lib/geocurrency/units/__init__.py:214
 #: modules/units/geocurrency/units/__init__.py:214
 msgid "angstrom star"
-msgstr ""
+msgstr "angstremo žvaigždė"
 
 #: deployment/dev/geocurrency/units/__init__.py:219
 #: modules/units/build/lib/geocurrency/units/__init__.py:219
 #: modules/units/geocurrency/units/__init__.py:219
 msgid "apothecary dram"
-msgstr ""
+msgstr "vaistininkų dramas"
 
 #: deployment/dev/geocurrency/units/__init__.py:224
 #: modules/units/build/lib/geocurrency/units/__init__.py:224
 #: modules/units/geocurrency/units/__init__.py:224
 msgid "apothecary ounce"
-msgstr ""
+msgstr "vaistininko uncija"
 
 #: deployment/dev/geocurrency/units/__init__.py:229
 #: modules/units/build/lib/geocurrency/units/__init__.py:229
 #: modules/units/geocurrency/units/__init__.py:229
 msgid "apothecary pound"
-msgstr ""
+msgstr "vaistininko svaras"
 
 #: deployment/dev/geocurrency/units/__init__.py:233
 #: modules/units/build/lib/geocurrency/units/__init__.py:233
 #: modules/units/geocurrency/units/__init__.py:233
 msgid "minute of arc"
-msgstr ""
+msgstr "lanko minutė"
 
 #: deployment/dev/geocurrency/units/__init__.py:237
 #: modules/units/build/lib/geocurrency/units/__init__.py:237
 #: modules/units/geocurrency/units/__init__.py:237
 msgid "second of arc"
-msgstr ""
+msgstr "sekundės lanko"
 
 #: deployment/dev/geocurrency/units/__init__.py:241
 #: modules/units/build/lib/geocurrency/units/__init__.py:241
 #: modules/units/geocurrency/units/__init__.py:241
 msgid "are"
-msgstr ""
+msgstr "yra"
 
 #: deployment/dev/geocurrency/units/__init__.py:245
 #: modules/units/build/lib/geocurrency/units/__init__.py:245
 #: modules/units/geocurrency/units/__init__.py:245
 msgid "astronomical unit"
-msgstr ""
+msgstr "astronominis vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:249
 #: modules/units/build/lib/geocurrency/units/__init__.py:249
 #: modules/units/geocurrency/units/__init__.py:249
 msgid "atmosphere liter"
-msgstr ""
+msgstr "atmosferos litras"
 
 #: deployment/dev/geocurrency/units/__init__.py:253
 #: modules/units/build/lib/geocurrency/units/__init__.py:253
 #: modules/units/geocurrency/units/__init__.py:253
 msgid "atomic mass constant"
-msgstr ""
+msgstr "atominės masės konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:255
 #: deployment/dev/geocurrency/units/__init__.py:285
@@ -2108,175 +2109,175 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1702
 #: modules/units/geocurrency/units/__init__.py:1714
 msgid "constant"
-msgstr ""
+msgstr "pastovus"
 
 #: deployment/dev/geocurrency/units/__init__.py:258
 #: modules/units/build/lib/geocurrency/units/__init__.py:258
 #: modules/units/geocurrency/units/__init__.py:258
 msgid "atomic unit of current"
-msgstr ""
+msgstr "atominis srovės vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:263
 #: modules/units/build/lib/geocurrency/units/__init__.py:263
 #: modules/units/geocurrency/units/__init__.py:263
 msgid "atomic unit of electric field"
-msgstr ""
+msgstr "atominis elektrinio lauko vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:267
 #: modules/units/build/lib/geocurrency/units/__init__.py:267
 #: modules/units/geocurrency/units/__init__.py:267
 msgid "atomic unit of force"
-msgstr ""
+msgstr "atominis jėgos vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:271
 #: modules/units/build/lib/geocurrency/units/__init__.py:271
 #: modules/units/geocurrency/units/__init__.py:271
 msgid "atomic unit of intensity"
-msgstr ""
+msgstr "atominis intensyvumo vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:275
 #: modules/units/build/lib/geocurrency/units/__init__.py:275
 #: modules/units/geocurrency/units/__init__.py:275
 msgid "atomic unit of temperature"
-msgstr ""
+msgstr "atominis temperatūros vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:279
 #: modules/units/build/lib/geocurrency/units/__init__.py:279
 #: modules/units/geocurrency/units/__init__.py:279
 msgid "atomic unit of time"
-msgstr ""
+msgstr "atominis laiko vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:283
 #: modules/units/build/lib/geocurrency/units/__init__.py:283
 #: modules/units/geocurrency/units/__init__.py:283
 msgid "Avogadro constant"
-msgstr ""
+msgstr "Avogadro konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:287
 #: modules/units/build/lib/geocurrency/units/__init__.py:287
 #: modules/units/geocurrency/units/__init__.py:287
 msgid "Avogadro number"
-msgstr ""
+msgstr "„Avogadro“ numeris"
 
 #: deployment/dev/geocurrency/units/__init__.py:291
 #: modules/units/build/lib/geocurrency/units/__init__.py:291
 #: modules/units/geocurrency/units/__init__.py:291
 msgid "bag"
-msgstr ""
+msgstr "maišas"
 
 #: deployment/dev/geocurrency/units/__init__.py:293
 #: modules/units/build/lib/geocurrency/units/__init__.py:293
 #: modules/units/geocurrency/units/__init__.py:293
 msgid "quantity"
-msgstr ""
+msgstr "kiekis"
 
 #: deployment/dev/geocurrency/units/__init__.py:295
 #: modules/units/build/lib/geocurrency/units/__init__.py:295
 #: modules/units/geocurrency/units/__init__.py:295
 msgid "bar"
-msgstr ""
+msgstr "baras"
 
 #: deployment/dev/geocurrency/units/__init__.py:299
 #: modules/units/build/lib/geocurrency/units/__init__.py:299
 #: modules/units/geocurrency/units/__init__.py:299
 msgid "barn"
-msgstr ""
+msgstr "tvartas"
 
 #: deployment/dev/geocurrency/units/__init__.py:303
 #: modules/units/build/lib/geocurrency/units/__init__.py:303
 #: modules/units/geocurrency/units/__init__.py:303
 msgid "barrel"
-msgstr ""
+msgstr "statinė"
 
 #: deployment/dev/geocurrency/units/__init__.py:307
 #: modules/units/build/lib/geocurrency/units/__init__.py:307
 #: modules/units/geocurrency/units/__init__.py:307
 msgid "barrye"
-msgstr ""
+msgstr "barrye"
 
 #: deployment/dev/geocurrency/units/__init__.py:312
 #: modules/units/build/lib/geocurrency/units/__init__.py:312
 #: modules/units/geocurrency/units/__init__.py:312
 msgid "baud"
-msgstr ""
+msgstr "baud"
 
 #: deployment/dev/geocurrency/units/__init__.py:317
 #: modules/units/build/lib/geocurrency/units/__init__.py:317
 #: modules/units/geocurrency/units/__init__.py:317
 msgid "becquerel"
-msgstr ""
+msgstr "bekerelis"
 
 #: deployment/dev/geocurrency/units/__init__.py:319
 #: modules/units/build/lib/geocurrency/units/__init__.py:319
 #: modules/units/geocurrency/units/__init__.py:319
 msgid "radioactivity"
-msgstr ""
+msgstr "radioaktyvumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:322
 #: modules/units/build/lib/geocurrency/units/__init__.py:322
 #: modules/units/geocurrency/units/__init__.py:322
 msgid "beer barrel"
-msgstr ""
+msgstr "alaus statinė"
 
 #: deployment/dev/geocurrency/units/__init__.py:327
 #: modules/units/build/lib/geocurrency/units/__init__.py:327
 #: modules/units/geocurrency/units/__init__.py:327
 msgid "bel"
-msgstr ""
+msgstr "bel"
 
 #: deployment/dev/geocurrency/units/__init__.py:329
 #: modules/units/build/lib/geocurrency/units/__init__.py:329
 #: modules/units/geocurrency/units/__init__.py:329
 msgid "field quantity"
-msgstr ""
+msgstr "lauko kiekis"
 
 #: deployment/dev/geocurrency/units/__init__.py:332
 #: modules/units/build/lib/geocurrency/units/__init__.py:332
 #: modules/units/geocurrency/units/__init__.py:332
 msgid "biot"
-msgstr ""
+msgstr "biotas"
 
 #: deployment/dev/geocurrency/units/__init__.py:337
 #: modules/units/build/lib/geocurrency/units/__init__.py:337
 #: modules/units/geocurrency/units/__init__.py:337
 msgid "biot turn"
-msgstr ""
+msgstr "biot posūkis"
 
 #: deployment/dev/geocurrency/units/__init__.py:342
 #: modules/units/build/lib/geocurrency/units/__init__.py:342
 #: modules/units/geocurrency/units/__init__.py:342
 msgid "bit"
-msgstr ""
+msgstr "šiek tiek"
 
 #: deployment/dev/geocurrency/units/__init__.py:347
 #: modules/units/build/lib/geocurrency/units/__init__.py:347
 #: modules/units/geocurrency/units/__init__.py:347
 msgid "bits per pixel"
-msgstr ""
+msgstr "bitų pikselyje"
 
 #: deployment/dev/geocurrency/units/__init__.py:352
 #: modules/units/build/lib/geocurrency/units/__init__.py:352
 #: modules/units/geocurrency/units/__init__.py:352
 msgid "board foot"
-msgstr ""
+msgstr "lentos koja"
 
 #: deployment/dev/geocurrency/units/__init__.py:357
 #: modules/units/build/lib/geocurrency/units/__init__.py:357
 #: modules/units/geocurrency/units/__init__.py:357
 msgid "bohr"
-msgstr ""
+msgstr "bohr"
 
 #: deployment/dev/geocurrency/units/__init__.py:362
 #: modules/units/build/lib/geocurrency/units/__init__.py:362
 #: modules/units/geocurrency/units/__init__.py:362
 msgid "bohr magneton"
-msgstr ""
+msgstr "bohr magnetonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:367
 #: modules/units/build/lib/geocurrency/units/__init__.py:367
 #: modules/units/geocurrency/units/__init__.py:367
 msgid "boiler horsepower"
-msgstr ""
+msgstr "katilo arklio galia"
 
 #: deployment/dev/geocurrency/units/__init__.py:369
 #: deployment/dev/geocurrency/units/__init__.py:509
@@ -2303,543 +2304,543 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1646
 #: modules/units/geocurrency/units/__init__.py:1666
 msgid "power"
-msgstr ""
+msgstr "galia"
 
 #: deployment/dev/geocurrency/units/__init__.py:372
 #: modules/units/build/lib/geocurrency/units/__init__.py:372
 #: modules/units/geocurrency/units/__init__.py:372
 msgid "boltzmann constant"
-msgstr ""
+msgstr "boltzmann konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:377
 #: modules/units/build/lib/geocurrency/units/__init__.py:377
 #: modules/units/geocurrency/units/__init__.py:377
 msgid "british thermal unit"
-msgstr ""
+msgstr "britiškas terminis blokas"
 
 #: deployment/dev/geocurrency/units/__init__.py:382
 #: modules/units/build/lib/geocurrency/units/__init__.py:382
 #: modules/units/geocurrency/units/__init__.py:382
 msgid "buckingham"
-msgstr ""
+msgstr "buckingham"
 
 #: deployment/dev/geocurrency/units/__init__.py:387
 #: modules/units/build/lib/geocurrency/units/__init__.py:387
 #: modules/units/geocurrency/units/__init__.py:387
 msgid "bushel"
-msgstr ""
+msgstr "bušelis"
 
 #: deployment/dev/geocurrency/units/__init__.py:392
 #: modules/units/build/lib/geocurrency/units/__init__.py:392
 #: modules/units/geocurrency/units/__init__.py:392
 msgid "byte"
-msgstr ""
+msgstr "baitas"
 
 #: deployment/dev/geocurrency/units/__init__.py:397
 #: modules/units/build/lib/geocurrency/units/__init__.py:397
 #: modules/units/geocurrency/units/__init__.py:397
 msgid "cable length"
-msgstr ""
+msgstr "laido ilgis"
 
 #: deployment/dev/geocurrency/units/__init__.py:402
 #: modules/units/build/lib/geocurrency/units/__init__.py:402
 #: modules/units/geocurrency/units/__init__.py:402
 msgid "calorie"
-msgstr ""
+msgstr "kalorijų"
 
 #: deployment/dev/geocurrency/units/__init__.py:407
 #: modules/units/build/lib/geocurrency/units/__init__.py:407
 #: modules/units/geocurrency/units/__init__.py:407
 msgid "candela"
-msgstr ""
+msgstr "kandela"
 
 #: deployment/dev/geocurrency/units/__init__.py:412
 #: modules/units/build/lib/geocurrency/units/__init__.py:412
 #: modules/units/geocurrency/units/__init__.py:412
 msgid "carat"
-msgstr ""
+msgstr "karatų"
 
 #: deployment/dev/geocurrency/units/__init__.py:417
 #: modules/units/build/lib/geocurrency/units/__init__.py:417
 #: modules/units/geocurrency/units/__init__.py:417
 msgid "centimeter H20"
-msgstr ""
+msgstr "centimetras H20"
 
 #: deployment/dev/geocurrency/units/__init__.py:422
 #: modules/units/build/lib/geocurrency/units/__init__.py:422
 #: modules/units/geocurrency/units/__init__.py:422
 msgid "centimeter Hg"
-msgstr ""
+msgstr "centimetras Hg"
 
 #: deployment/dev/geocurrency/units/__init__.py:427
 #: modules/units/build/lib/geocurrency/units/__init__.py:427
 #: modules/units/geocurrency/units/__init__.py:427
 msgid "century"
-msgstr ""
+msgstr "amžiaus"
 
 #: deployment/dev/geocurrency/units/__init__.py:432
 #: modules/units/build/lib/geocurrency/units/__init__.py:432
 #: modules/units/geocurrency/units/__init__.py:432
 msgid "chain"
-msgstr ""
+msgstr "grandinė"
 
 #: deployment/dev/geocurrency/units/__init__.py:437
 #: modules/units/build/lib/geocurrency/units/__init__.py:437
 #: modules/units/geocurrency/units/__init__.py:437
 msgid "cicero"
-msgstr ""
+msgstr "ciceronas"
 
 #: deployment/dev/geocurrency/units/__init__.py:442
 #: modules/units/build/lib/geocurrency/units/__init__.py:442
 #: modules/units/geocurrency/units/__init__.py:442
 msgid "circular mil"
-msgstr ""
+msgstr "žiedinis mil"
 
 #: deployment/dev/geocurrency/units/__init__.py:447
 #: modules/units/build/lib/geocurrency/units/__init__.py:447
 #: modules/units/geocurrency/units/__init__.py:447
 msgid "classical electron radius"
-msgstr ""
+msgstr "klasikinis elektronų spindulys"
 
 #: deployment/dev/geocurrency/units/__init__.py:452
 #: modules/units/build/lib/geocurrency/units/__init__.py:452
 #: modules/units/geocurrency/units/__init__.py:452
 msgid "clausius"
-msgstr ""
+msgstr "clausius"
 
 #: deployment/dev/geocurrency/units/__init__.py:457
 #: modules/units/build/lib/geocurrency/units/__init__.py:457
 #: modules/units/geocurrency/units/__init__.py:457
 msgid "common year"
-msgstr ""
+msgstr "bendri metai"
 
 #: deployment/dev/geocurrency/units/__init__.py:462
 #: modules/units/build/lib/geocurrency/units/__init__.py:462
 #: modules/units/geocurrency/units/__init__.py:462
 msgid "conductance quantum"
-msgstr ""
+msgstr "laidumo kvantas"
 
 #: deployment/dev/geocurrency/units/__init__.py:467
 #: modules/units/build/lib/geocurrency/units/__init__.py:467
 #: modules/units/geocurrency/units/__init__.py:467
 msgid "conventional ampere"
-msgstr ""
+msgstr "įprastas amperas"
 
 #: deployment/dev/geocurrency/units/__init__.py:472
 #: modules/units/build/lib/geocurrency/units/__init__.py:472
 #: modules/units/geocurrency/units/__init__.py:472
 msgid "conventional coulomb"
-msgstr ""
+msgstr "įprastas kulonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:477
 #: modules/units/build/lib/geocurrency/units/__init__.py:477
 #: modules/units/geocurrency/units/__init__.py:477
 msgid "conventional farad"
-msgstr ""
+msgstr "įprastinis faradas"
 
 #: deployment/dev/geocurrency/units/__init__.py:479
 #: modules/units/build/lib/geocurrency/units/__init__.py:479
 #: modules/units/geocurrency/units/__init__.py:479
 msgid "eletrical capacitance"
-msgstr ""
+msgstr "elektrinė talpa"
 
 #: deployment/dev/geocurrency/units/__init__.py:482
 #: modules/units/build/lib/geocurrency/units/__init__.py:482
 #: modules/units/geocurrency/units/__init__.py:482
 msgid "conventional henry"
-msgstr ""
+msgstr "įprastas Henry"
 
 #: deployment/dev/geocurrency/units/__init__.py:487
 #: modules/units/build/lib/geocurrency/units/__init__.py:487
 #: modules/units/geocurrency/units/__init__.py:487
 msgid "conventional josephson constant"
-msgstr ""
+msgstr "įprasta josephson konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:492
 #: modules/units/build/lib/geocurrency/units/__init__.py:492
 #: modules/units/geocurrency/units/__init__.py:492
 msgid "conventional ohm"
-msgstr ""
+msgstr "įprastas omas"
 
 #: deployment/dev/geocurrency/units/__init__.py:497
 #: modules/units/build/lib/geocurrency/units/__init__.py:497
 #: modules/units/geocurrency/units/__init__.py:497
 msgid "conventional volt"
-msgstr ""
+msgstr "įprastas voltas"
 
 #: deployment/dev/geocurrency/units/__init__.py:502
 #: modules/units/build/lib/geocurrency/units/__init__.py:502
 #: modules/units/geocurrency/units/__init__.py:502
 msgid "conventional Von Klitzing constant"
-msgstr ""
+msgstr "įprasta Von Klitzingo konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:507
 #: modules/units/build/lib/geocurrency/units/__init__.py:507
 #: modules/units/geocurrency/units/__init__.py:507
 msgid "conventional Watt"
-msgstr ""
+msgstr "įprastas vatas"
 
 #: deployment/dev/geocurrency/units/__init__.py:512
 #: modules/units/build/lib/geocurrency/units/__init__.py:512
 #: modules/units/geocurrency/units/__init__.py:512
 msgid "coulomb"
-msgstr ""
+msgstr "kulona"
 
 #: deployment/dev/geocurrency/units/__init__.py:516
 #: modules/units/build/lib/geocurrency/units/__init__.py:516
 #: modules/units/geocurrency/units/__init__.py:516
 msgid "coulomb constant"
-msgstr ""
+msgstr "kulono konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:521
 #: modules/units/build/lib/geocurrency/units/__init__.py:521
 #: modules/units/geocurrency/units/__init__.py:521
 msgid "count"
-msgstr ""
+msgstr "suskaičiuoti"
 
 #: deployment/dev/geocurrency/units/__init__.py:526
 #: modules/units/build/lib/geocurrency/units/__init__.py:526
 #: modules/units/geocurrency/units/__init__.py:526
 msgid "counts per second"
-msgstr ""
+msgstr "skaičiuojama per sekundę"
 
 #: deployment/dev/geocurrency/units/__init__.py:531
 #: modules/units/build/lib/geocurrency/units/__init__.py:531
 #: modules/units/geocurrency/units/__init__.py:531
 msgid "CSS pixel"
-msgstr ""
+msgstr "CSS taškas"
 
 #: deployment/dev/geocurrency/units/__init__.py:536
 #: modules/units/build/lib/geocurrency/units/__init__.py:536
 #: modules/units/geocurrency/units/__init__.py:536
 msgid "cubic centimeter"
-msgstr ""
+msgstr "kubinis centimetras"
 
 #: deployment/dev/geocurrency/units/__init__.py:541
 #: modules/units/build/lib/geocurrency/units/__init__.py:541
 #: modules/units/geocurrency/units/__init__.py:541
 msgid "cubic foot"
-msgstr ""
+msgstr "kubinė pėda"
 
 #: deployment/dev/geocurrency/units/__init__.py:546
 #: modules/units/build/lib/geocurrency/units/__init__.py:546
 #: modules/units/geocurrency/units/__init__.py:546
 msgid "cubic inch"
-msgstr ""
+msgstr "kubinis colis"
 
 #: deployment/dev/geocurrency/units/__init__.py:550
 #: modules/units/build/lib/geocurrency/units/__init__.py:550
 #: modules/units/geocurrency/units/__init__.py:550
 msgid "cubic yard"
-msgstr ""
+msgstr "kubinis kiemas"
 
 #: deployment/dev/geocurrency/units/__init__.py:554
 #: modules/units/build/lib/geocurrency/units/__init__.py:554
 #: modules/units/geocurrency/units/__init__.py:554
 msgid "cup"
-msgstr ""
+msgstr "puodelis"
 
 #: deployment/dev/geocurrency/units/__init__.py:558
 #: modules/units/build/lib/geocurrency/units/__init__.py:558
 #: modules/units/geocurrency/units/__init__.py:558
 msgid "curie"
-msgstr ""
+msgstr "curie"
 
 #: deployment/dev/geocurrency/units/__init__.py:562
 #: modules/units/build/lib/geocurrency/units/__init__.py:562
 #: modules/units/geocurrency/units/__init__.py:562
 msgid "dalton"
-msgstr ""
+msgstr "daltonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:566
 #: modules/units/build/lib/geocurrency/units/__init__.py:566
 #: modules/units/geocurrency/units/__init__.py:566
 msgid "darcy"
-msgstr ""
+msgstr "darcy"
 
 #: deployment/dev/geocurrency/units/__init__.py:568
 #: modules/units/build/lib/geocurrency/units/__init__.py:568
 #: modules/units/geocurrency/units/__init__.py:568
 msgid "permeability"
-msgstr ""
+msgstr "pralaidumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:570
 #: modules/units/build/lib/geocurrency/units/__init__.py:570
 #: modules/units/geocurrency/units/__init__.py:570
 msgid "day"
-msgstr ""
+msgstr "diena"
 
 #: deployment/dev/geocurrency/units/__init__.py:571
 #: modules/units/build/lib/geocurrency/units/__init__.py:571
 #: modules/units/geocurrency/units/__init__.py:571
 msgctxt "unit"
 msgid "day"
-msgstr ""
+msgstr "diena"
 
 #: deployment/dev/geocurrency/units/__init__.py:574
 #: modules/units/build/lib/geocurrency/units/__init__.py:574
 #: modules/units/geocurrency/units/__init__.py:574
 msgid "debye"
-msgstr ""
+msgstr "debye"
 
 #: deployment/dev/geocurrency/units/__init__.py:578
 #: modules/units/build/lib/geocurrency/units/__init__.py:578
 #: modules/units/geocurrency/units/__init__.py:578
 msgid "decade"
-msgstr ""
+msgstr "dešimtmetis"
 
 #: deployment/dev/geocurrency/units/__init__.py:579
 #: modules/units/build/lib/geocurrency/units/__init__.py:579
 #: modules/units/geocurrency/units/__init__.py:579
 msgctxt "symbol"
 msgid "decade"
-msgstr ""
+msgstr "dešimtmetis"
 
 #: deployment/dev/geocurrency/units/__init__.py:582
 #: modules/units/build/lib/geocurrency/units/__init__.py:582
 #: modules/units/geocurrency/units/__init__.py:582
 msgid "degree"
-msgstr ""
+msgstr "laipsnį"
 
 #: deployment/dev/geocurrency/units/__init__.py:586
 #: modules/units/build/lib/geocurrency/units/__init__.py:586
 #: modules/units/geocurrency/units/__init__.py:586
 msgid "degree Celsius"
-msgstr ""
+msgstr "laipsnio Celsijaus"
 
 #: deployment/dev/geocurrency/units/__init__.py:590
 #: modules/units/build/lib/geocurrency/units/__init__.py:590
 #: modules/units/geocurrency/units/__init__.py:590
 msgid "degree Fahrenheit"
-msgstr ""
+msgstr "laipsnis pagal Farenheitą"
 
 #: deployment/dev/geocurrency/units/__init__.py:594
 #: modules/units/build/lib/geocurrency/units/__init__.py:594
 #: modules/units/geocurrency/units/__init__.py:594
 msgid "degree Rankine"
-msgstr ""
+msgstr "laipsnio Rankine"
 
 #: deployment/dev/geocurrency/units/__init__.py:598
 #: modules/units/build/lib/geocurrency/units/__init__.py:598
 #: modules/units/geocurrency/units/__init__.py:598
 msgid "degree Reaumur"
-msgstr ""
+msgstr "laipsnio Reaumur"
 
 #: deployment/dev/geocurrency/units/__init__.py:602
 #: modules/units/build/lib/geocurrency/units/__init__.py:602
 #: modules/units/geocurrency/units/__init__.py:602
 msgid "denier"
-msgstr ""
+msgstr "neigėjas"
 
 #: deployment/dev/geocurrency/units/__init__.py:606
 #: modules/units/build/lib/geocurrency/units/__init__.py:606
 #: modules/units/geocurrency/units/__init__.py:606
 msgid "didot"
-msgstr ""
+msgstr "didot"
 
 #: deployment/dev/geocurrency/units/__init__.py:610
 #: modules/units/build/lib/geocurrency/units/__init__.py:610
 #: modules/units/geocurrency/units/__init__.py:610
 msgid "Dirac constant"
-msgstr ""
+msgstr "Dirac konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:614
 #: modules/units/build/lib/geocurrency/units/__init__.py:614
 #: modules/units/geocurrency/units/__init__.py:614
 msgid "dram"
-msgstr ""
+msgstr "dramas"
 
 #: deployment/dev/geocurrency/units/__init__.py:618
 #: modules/units/build/lib/geocurrency/units/__init__.py:618
 #: modules/units/geocurrency/units/__init__.py:618
 msgid "dry barrel"
-msgstr ""
+msgstr "sausa statinė"
 
 #: deployment/dev/geocurrency/units/__init__.py:622
 #: modules/units/build/lib/geocurrency/units/__init__.py:622
 #: modules/units/geocurrency/units/__init__.py:622
 msgid "dry gallon"
-msgstr ""
+msgstr "sausas galonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:626
 #: modules/units/build/lib/geocurrency/units/__init__.py:626
 #: modules/units/geocurrency/units/__init__.py:626
 msgid "dry pint"
-msgstr ""
+msgstr "sausas pintas"
 
 #: deployment/dev/geocurrency/units/__init__.py:630
 #: modules/units/build/lib/geocurrency/units/__init__.py:630
 #: modules/units/geocurrency/units/__init__.py:630
 msgid "dry quart"
-msgstr ""
+msgstr "sausas litras"
 
 #: deployment/dev/geocurrency/units/__init__.py:634
 #: modules/units/build/lib/geocurrency/units/__init__.py:634
 #: modules/units/geocurrency/units/__init__.py:634
 msgid "decitex"
-msgstr ""
+msgstr "deciteksas"
 
 #: deployment/dev/geocurrency/units/__init__.py:638
 #: modules/units/build/lib/geocurrency/units/__init__.py:638
 #: modules/units/geocurrency/units/__init__.py:638
 msgid "dyne"
-msgstr ""
+msgstr "dyne"
 
 #: deployment/dev/geocurrency/units/__init__.py:642
 #: modules/units/build/lib/geocurrency/units/__init__.py:642
 #: modules/units/geocurrency/units/__init__.py:642
 msgid "eletcrical horsepower"
-msgstr ""
+msgstr "eletrinė arklio galia"
 
 #: deployment/dev/geocurrency/units/__init__.py:646
 #: modules/units/build/lib/geocurrency/units/__init__.py:646
 #: modules/units/geocurrency/units/__init__.py:646
 msgid "electron G-factor"
-msgstr ""
+msgstr "elektronų G faktorius"
 
 #: deployment/dev/geocurrency/units/__init__.py:650
 #: modules/units/build/lib/geocurrency/units/__init__.py:650
 #: modules/units/geocurrency/units/__init__.py:650
 msgid "electron mass"
-msgstr ""
+msgstr "elektronų masė"
 
 #: deployment/dev/geocurrency/units/__init__.py:654
 #: modules/units/build/lib/geocurrency/units/__init__.py:654
 #: modules/units/geocurrency/units/__init__.py:654
 msgid "electronvolt"
-msgstr ""
+msgstr "elektronvoltas"
 
 #: deployment/dev/geocurrency/units/__init__.py:662
 #: modules/units/build/lib/geocurrency/units/__init__.py:662
 #: modules/units/geocurrency/units/__init__.py:662
 msgid "entropy unit"
-msgstr ""
+msgstr "entropijos vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:664
 #: modules/units/build/lib/geocurrency/units/__init__.py:664
 #: modules/units/geocurrency/units/__init__.py:664
 msgid "energy by temperature"
-msgstr ""
+msgstr "energija pagal temperatūrą"
 
 #: deployment/dev/geocurrency/units/__init__.py:666
 #: modules/units/build/lib/geocurrency/units/__init__.py:666
 #: modules/units/geocurrency/units/__init__.py:666
 msgid "enzyme unit"
-msgstr ""
+msgstr "fermento vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:670
 #: modules/units/build/lib/geocurrency/units/__init__.py:670
 #: modules/units/geocurrency/units/__init__.py:670
 msgid "eon"
-msgstr ""
+msgstr "eon"
 
 #: deployment/dev/geocurrency/units/__init__.py:674
 #: modules/units/build/lib/geocurrency/units/__init__.py:674
 #: modules/units/geocurrency/units/__init__.py:674
 msgid "erg"
-msgstr ""
+msgstr "erg"
 
 #: deployment/dev/geocurrency/units/__init__.py:678
 #: modules/units/build/lib/geocurrency/units/__init__.py:678
 #: modules/units/geocurrency/units/__init__.py:678
 msgid "farad"
-msgstr ""
+msgstr "faradas"
 
 #: deployment/dev/geocurrency/units/__init__.py:682
 #: modules/units/build/lib/geocurrency/units/__init__.py:682
 #: modules/units/geocurrency/units/__init__.py:682
 msgid "faraday"
-msgstr ""
+msgstr "faraday"
 
 #: deployment/dev/geocurrency/units/__init__.py:686
 #: modules/units/build/lib/geocurrency/units/__init__.py:686
 #: modules/units/geocurrency/units/__init__.py:686
 msgid "faraday constant"
-msgstr ""
+msgstr "faraday konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:690
 #: modules/units/build/lib/geocurrency/units/__init__.py:690
 #: modules/units/geocurrency/units/__init__.py:690
 msgid "fathom"
-msgstr ""
+msgstr "supratimas"
 
 #: deployment/dev/geocurrency/units/__init__.py:694
 #: modules/units/build/lib/geocurrency/units/__init__.py:694
 #: modules/units/geocurrency/units/__init__.py:694
 msgid "fermi"
-msgstr ""
+msgstr "fermi"
 
 #: deployment/dev/geocurrency/units/__init__.py:698
 #: modules/units/build/lib/geocurrency/units/__init__.py:698
 #: modules/units/geocurrency/units/__init__.py:698
 msgid "fifteen degree calorie"
-msgstr ""
+msgstr "penkiolikos laipsnių kalorijų"
 
 #: deployment/dev/geocurrency/units/__init__.py:702
 #: modules/units/build/lib/geocurrency/units/__init__.py:702
 #: modules/units/geocurrency/units/__init__.py:702
 msgid "fifth"
-msgstr ""
+msgstr "penkta"
 
 #: deployment/dev/geocurrency/units/__init__.py:706
 #: modules/units/build/lib/geocurrency/units/__init__.py:706
 #: modules/units/geocurrency/units/__init__.py:706
 msgid "fine structure constant"
-msgstr ""
+msgstr "smulkios struktūros pastovi"
 
 #: deployment/dev/geocurrency/units/__init__.py:710
 #: modules/units/build/lib/geocurrency/units/__init__.py:710
 #: modules/units/geocurrency/units/__init__.py:710
 msgid "first radiation constant"
-msgstr ""
+msgstr "pirmoji radiacijos konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:714
 #: modules/units/build/lib/geocurrency/units/__init__.py:714
 #: modules/units/geocurrency/units/__init__.py:714
 msgid "fluid dram"
-msgstr ""
+msgstr "skystas dramas"
 
 #: deployment/dev/geocurrency/units/__init__.py:718
 #: modules/units/build/lib/geocurrency/units/__init__.py:718
 #: modules/units/geocurrency/units/__init__.py:718
 msgid "fluid ounce"
-msgstr ""
+msgstr "skysčio uncija"
 
 #: deployment/dev/geocurrency/units/__init__.py:722
 #: modules/units/build/lib/geocurrency/units/__init__.py:722
 #: modules/units/geocurrency/units/__init__.py:722
 msgid "foot"
-msgstr ""
+msgstr "pėda"
 
 #: deployment/dev/geocurrency/units/__init__.py:726
 #: modules/units/build/lib/geocurrency/units/__init__.py:726
 #: modules/units/geocurrency/units/__init__.py:726
 msgid "foot H2O"
-msgstr ""
+msgstr "pėda H2O"
 
 #: deployment/dev/geocurrency/units/__init__.py:730
 #: modules/units/build/lib/geocurrency/units/__init__.py:730
 #: modules/units/geocurrency/units/__init__.py:730
 msgid "foot per second"
-msgstr ""
+msgstr "pėda per sekundę"
 
 #: deployment/dev/geocurrency/units/__init__.py:734
 #: modules/units/build/lib/geocurrency/units/__init__.py:734
 #: modules/units/geocurrency/units/__init__.py:734
 msgid "foot pound"
-msgstr ""
+msgstr "pėdos svaras"
 
 #: deployment/dev/geocurrency/units/__init__.py:738
 #: modules/units/build/lib/geocurrency/units/__init__.py:738
 #: modules/units/geocurrency/units/__init__.py:738
 msgid "gram-force"
-msgstr ""
+msgstr "gramo jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:743
 #: modules/units/build/lib/geocurrency/units/__init__.py:743
 #: modules/units/geocurrency/units/__init__.py:743
 msgid "kilogram-force"
-msgstr ""
+msgstr "kilogramo jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:753
 #: deployment/dev/geocurrency/units/__init__.py:768
@@ -2848,49 +2849,49 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:753
 #: modules/units/geocurrency/units/__init__.py:768
 msgid "tonne-force"
-msgstr ""
+msgstr "tonos jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:758
 #: modules/units/build/lib/geocurrency/units/__init__.py:758
 #: modules/units/geocurrency/units/__init__.py:758
 msgid "ounce-force"
-msgstr ""
+msgstr "uncijos jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:763
 #: modules/units/build/lib/geocurrency/units/__init__.py:763
 #: modules/units/geocurrency/units/__init__.py:763
 msgid "pound-force"
-msgstr ""
+msgstr "svaro jėga"
 
 #: deployment/dev/geocurrency/units/__init__.py:773
 #: modules/units/build/lib/geocurrency/units/__init__.py:773
 #: modules/units/geocurrency/units/__init__.py:773
 msgid "fortnight"
-msgstr ""
+msgstr "dvi savaites"
 
 #: deployment/dev/geocurrency/units/__init__.py:777
 #: modules/units/build/lib/geocurrency/units/__init__.py:777
 #: modules/units/geocurrency/units/__init__.py:777
 msgid "franklin"
-msgstr ""
+msgstr "Franklinas"
 
 #: deployment/dev/geocurrency/units/__init__.py:781
 #: modules/units/build/lib/geocurrency/units/__init__.py:781
 #: modules/units/geocurrency/units/__init__.py:781
 msgid "furlong"
-msgstr ""
+msgstr "ilgas"
 
 #: deployment/dev/geocurrency/units/__init__.py:785
 #: modules/units/build/lib/geocurrency/units/__init__.py:785
 #: modules/units/geocurrency/units/__init__.py:785
 msgid "galileo"
-msgstr ""
+msgstr "galileo"
 
 #: deployment/dev/geocurrency/units/__init__.py:789
 #: modules/units/build/lib/geocurrency/units/__init__.py:789
 #: modules/units/geocurrency/units/__init__.py:789
 msgid "gallon"
-msgstr ""
+msgstr "galonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:793
 #: deployment/dev/geocurrency/units/__init__.py:797
@@ -2899,332 +2900,332 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:793
 #: modules/units/geocurrency/units/__init__.py:797
 msgid "gamma"
-msgstr ""
+msgstr "gama"
 
 #: deployment/dev/geocurrency/units/__init__.py:801
 #: modules/units/build/lib/geocurrency/units/__init__.py:801
 #: modules/units/geocurrency/units/__init__.py:801
 msgid "gauss"
-msgstr ""
+msgstr "gauss"
 
 #: deployment/dev/geocurrency/units/__init__.py:805
 #: modules/units/build/lib/geocurrency/units/__init__.py:805
 #: modules/units/geocurrency/units/__init__.py:805
 msgid "gilbert"
-msgstr ""
+msgstr "gilbertas"
 
 #: deployment/dev/geocurrency/units/__init__.py:809
 #: modules/units/build/lib/geocurrency/units/__init__.py:809
 #: modules/units/geocurrency/units/__init__.py:809
 msgid "gill"
-msgstr ""
+msgstr "žiaunos"
 
 #: deployment/dev/geocurrency/units/__init__.py:813
 #: modules/units/build/lib/geocurrency/units/__init__.py:813
 #: modules/units/geocurrency/units/__init__.py:813
 msgid "grade"
-msgstr ""
+msgstr "laipsnio"
 
 #: deployment/dev/geocurrency/units/__init__.py:817
 #: modules/units/build/lib/geocurrency/units/__init__.py:817
 #: modules/units/geocurrency/units/__init__.py:817
 msgid "grain"
-msgstr ""
+msgstr "grūdai"
 
 #: deployment/dev/geocurrency/units/__init__.py:821
 #: modules/units/build/lib/geocurrency/units/__init__.py:821
 #: modules/units/geocurrency/units/__init__.py:821
 msgid "gram"
-msgstr ""
+msgstr "gramas"
 
 #: deployment/dev/geocurrency/units/__init__.py:825
 #: modules/units/build/lib/geocurrency/units/__init__.py:825
 #: modules/units/geocurrency/units/__init__.py:825
 msgid "gray"
-msgstr ""
+msgstr "pilka"
 
 #: deployment/dev/geocurrency/units/__init__.py:829
 #: modules/units/build/lib/geocurrency/units/__init__.py:829
 #: modules/units/geocurrency/units/__init__.py:829
 msgid "gregorian year"
-msgstr ""
+msgstr "grigaliaus metais"
 
 #: deployment/dev/geocurrency/units/__init__.py:830
 #: modules/units/build/lib/geocurrency/units/__init__.py:830
 #: modules/units/geocurrency/units/__init__.py:830
 msgctxt "unit"
 msgid "gregorian year"
-msgstr ""
+msgstr "grigaliaus metais"
 
 #: deployment/dev/geocurrency/units/__init__.py:833
 #: modules/units/build/lib/geocurrency/units/__init__.py:833
 #: modules/units/geocurrency/units/__init__.py:833
 msgid "hand"
-msgstr ""
+msgstr "ranka"
 
 #: deployment/dev/geocurrency/units/__init__.py:837
 #: modules/units/build/lib/geocurrency/units/__init__.py:837
 #: modules/units/geocurrency/units/__init__.py:837
 msgid "hartree"
-msgstr ""
+msgstr "hartree"
 
 #: deployment/dev/geocurrency/units/__init__.py:841
 #: modules/units/build/lib/geocurrency/units/__init__.py:841
 #: modules/units/geocurrency/units/__init__.py:841
 msgid "hectare"
-msgstr ""
+msgstr "hektaro"
 
 #: deployment/dev/geocurrency/units/__init__.py:845
 #: modules/units/build/lib/geocurrency/units/__init__.py:845
 #: modules/units/geocurrency/units/__init__.py:845
 msgid "henry"
-msgstr ""
+msgstr "Henry"
 
 #: deployment/dev/geocurrency/units/__init__.py:849
 #: modules/units/build/lib/geocurrency/units/__init__.py:849
 #: modules/units/geocurrency/units/__init__.py:849
 msgid "hertz"
-msgstr ""
+msgstr "hercas"
 
 #: deployment/dev/geocurrency/units/__init__.py:853
 #: modules/units/build/lib/geocurrency/units/__init__.py:853
 #: modules/units/geocurrency/units/__init__.py:853
 msgid "hogshead"
-msgstr ""
+msgstr "kiaulytė"
 
 #: deployment/dev/geocurrency/units/__init__.py:857
 #: modules/units/build/lib/geocurrency/units/__init__.py:857
 #: modules/units/geocurrency/units/__init__.py:857
 msgid "horsepower"
-msgstr ""
+msgstr "arklio galių"
 
 #: deployment/dev/geocurrency/units/__init__.py:861
 #: modules/units/build/lib/geocurrency/units/__init__.py:861
 #: modules/units/geocurrency/units/__init__.py:861
 msgid "hour"
-msgstr ""
+msgstr "valandą"
 
 #: deployment/dev/geocurrency/units/__init__.py:865
 #: modules/units/build/lib/geocurrency/units/__init__.py:865
 #: modules/units/geocurrency/units/__init__.py:865
 msgid "hundredweight"
-msgstr ""
+msgstr "šimtas svorio"
 
 #: deployment/dev/geocurrency/units/__init__.py:869
 #: modules/units/build/lib/geocurrency/units/__init__.py:869
 #: modules/units/geocurrency/units/__init__.py:869
 msgid "impedance of free space"
-msgstr ""
+msgstr "laisvos vietos varža"
 
 #: deployment/dev/geocurrency/units/__init__.py:873
 #: modules/units/build/lib/geocurrency/units/__init__.py:873
 #: modules/units/geocurrency/units/__init__.py:873
 msgid "imperial barrel"
-msgstr ""
+msgstr "imperijos statinė"
 
 #: deployment/dev/geocurrency/units/__init__.py:877
 #: modules/units/build/lib/geocurrency/units/__init__.py:877
 #: modules/units/geocurrency/units/__init__.py:877
 msgid "imperial bushel"
-msgstr ""
+msgstr "imperijos bušelis"
 
 #: deployment/dev/geocurrency/units/__init__.py:881
 #: modules/units/build/lib/geocurrency/units/__init__.py:881
 #: modules/units/geocurrency/units/__init__.py:881
 msgid "imperial cup"
-msgstr ""
+msgstr "imperijos taurė"
 
 #: deployment/dev/geocurrency/units/__init__.py:885
 #: modules/units/build/lib/geocurrency/units/__init__.py:885
 #: modules/units/geocurrency/units/__init__.py:885
 msgid "imperial fluid drachm"
-msgstr ""
+msgstr "imperijos skysčio drachmas"
 
 #: deployment/dev/geocurrency/units/__init__.py:889
 #: modules/units/build/lib/geocurrency/units/__init__.py:889
 #: modules/units/geocurrency/units/__init__.py:889
 msgid "imperial fluid ounce"
-msgstr ""
+msgstr "imperijos skysčio uncija"
 
 #: deployment/dev/geocurrency/units/__init__.py:893
 #: modules/units/build/lib/geocurrency/units/__init__.py:893
 #: modules/units/geocurrency/units/__init__.py:893
 msgid "imperial fluid scruple"
-msgstr ""
+msgstr "imperijos skysčio skrupulas"
 
 #: deployment/dev/geocurrency/units/__init__.py:897
 #: modules/units/build/lib/geocurrency/units/__init__.py:897
 #: modules/units/geocurrency/units/__init__.py:897
 msgid "imperial gallon"
-msgstr ""
+msgstr "imperijos galonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:901
 #: modules/units/build/lib/geocurrency/units/__init__.py:901
 #: modules/units/geocurrency/units/__init__.py:901
 msgid "imperial gill"
-msgstr ""
+msgstr "imperijos žiaunos"
 
 #: deployment/dev/geocurrency/units/__init__.py:905
 #: modules/units/build/lib/geocurrency/units/__init__.py:905
 #: modules/units/geocurrency/units/__init__.py:905
 msgid "imperial minim"
-msgstr ""
+msgstr "imperinis minimumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:909
 #: modules/units/build/lib/geocurrency/units/__init__.py:909
 #: modules/units/geocurrency/units/__init__.py:909
 msgid "imperial peck"
-msgstr ""
+msgstr "imperatoriškasis peckas"
 
 #: deployment/dev/geocurrency/units/__init__.py:913
 #: modules/units/build/lib/geocurrency/units/__init__.py:913
 #: modules/units/geocurrency/units/__init__.py:913
 msgid "imperial pint"
-msgstr ""
+msgstr "imperijos pinta"
 
 #: deployment/dev/geocurrency/units/__init__.py:917
 #: modules/units/build/lib/geocurrency/units/__init__.py:917
 #: modules/units/geocurrency/units/__init__.py:917
 msgid "imperial quart"
-msgstr ""
+msgstr "imperijos kvarta"
 
 #: deployment/dev/geocurrency/units/__init__.py:921
 #: modules/units/build/lib/geocurrency/units/__init__.py:921
 #: modules/units/geocurrency/units/__init__.py:921
 msgid "inch"
-msgstr ""
+msgstr "colio"
 
 #: deployment/dev/geocurrency/units/__init__.py:925
 #: modules/units/build/lib/geocurrency/units/__init__.py:925
 #: modules/units/geocurrency/units/__init__.py:925
 msgid "inch H20 39F"
-msgstr ""
+msgstr "colių H20 39F"
 
 #: deployment/dev/geocurrency/units/__init__.py:929
 #: modules/units/build/lib/geocurrency/units/__init__.py:929
 #: modules/units/geocurrency/units/__init__.py:929
 msgid "inch H20 60F"
-msgstr ""
+msgstr "colių H20 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:933
 #: modules/units/build/lib/geocurrency/units/__init__.py:933
 #: modules/units/geocurrency/units/__init__.py:933
 msgid "inch Hg"
-msgstr ""
+msgstr "colio Hg"
 
 #: deployment/dev/geocurrency/units/__init__.py:937
 #: modules/units/build/lib/geocurrency/units/__init__.py:937
 #: modules/units/geocurrency/units/__init__.py:937
 msgid "inch Hg 60F"
-msgstr ""
+msgstr "colių Hg 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:941
 #: modules/units/build/lib/geocurrency/units/__init__.py:941
 #: modules/units/geocurrency/units/__init__.py:941
 msgid "international Btu"
-msgstr ""
+msgstr "tarptautinis Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:945
 #: modules/units/build/lib/geocurrency/units/__init__.py:945
 #: modules/units/geocurrency/units/__init__.py:945
 msgid "international calorie"
-msgstr ""
+msgstr "tarptautinė kalorija"
 
 #: deployment/dev/geocurrency/units/__init__.py:949
 #: modules/units/build/lib/geocurrency/units/__init__.py:949
 #: modules/units/geocurrency/units/__init__.py:949
 msgid "Josephson constant"
-msgstr ""
+msgstr "Džozefsono pastovus"
 
 #: deployment/dev/geocurrency/units/__init__.py:953
 #: modules/units/build/lib/geocurrency/units/__init__.py:953
 #: modules/units/geocurrency/units/__init__.py:953
 msgid "Joule"
-msgstr ""
+msgstr "Džoulis"
 
 #: deployment/dev/geocurrency/units/__init__.py:957
 #: modules/units/build/lib/geocurrency/units/__init__.py:957
 #: modules/units/geocurrency/units/__init__.py:957
 msgid "jute"
-msgstr ""
+msgstr "džiutas"
 
 #: deployment/dev/geocurrency/units/__init__.py:961
 #: modules/units/build/lib/geocurrency/units/__init__.py:961
 #: modules/units/geocurrency/units/__init__.py:961
 msgid "katal"
-msgstr ""
+msgstr "katal"
 
 #: deployment/dev/geocurrency/units/__init__.py:965
 #: modules/units/build/lib/geocurrency/units/__init__.py:965
 #: modules/units/geocurrency/units/__init__.py:965
 msgid "kelvin"
-msgstr ""
+msgstr "kelvinas"
 
 #: deployment/dev/geocurrency/units/__init__.py:969
 #: modules/units/build/lib/geocurrency/units/__init__.py:969
 #: modules/units/geocurrency/units/__init__.py:969
 msgid "kilometer per hour"
-msgstr ""
+msgstr "kilometras per valandą"
 
 #: deployment/dev/geocurrency/units/__init__.py:973
 #: modules/units/build/lib/geocurrency/units/__init__.py:973
 #: modules/units/geocurrency/units/__init__.py:973
 msgid "kilometer per second"
-msgstr ""
+msgstr "kilometras per sekundę"
 
 #: deployment/dev/geocurrency/units/__init__.py:977
 #: modules/units/build/lib/geocurrency/units/__init__.py:977
 #: modules/units/geocurrency/units/__init__.py:977
 msgid "kip"
-msgstr ""
+msgstr "kip"
 
 #: deployment/dev/geocurrency/units/__init__.py:981
 #: modules/units/build/lib/geocurrency/units/__init__.py:981
 #: modules/units/geocurrency/units/__init__.py:981
 msgid "kip per square inch"
-msgstr ""
+msgstr "kip už kvadratinį colį"
 
 #: deployment/dev/geocurrency/units/__init__.py:985
 #: modules/units/build/lib/geocurrency/units/__init__.py:985
 #: modules/units/geocurrency/units/__init__.py:985
 msgid "knot"
-msgstr ""
+msgstr "mazgas"
 
 #: deployment/dev/geocurrency/units/__init__.py:989
 #: modules/units/build/lib/geocurrency/units/__init__.py:989
 #: modules/units/geocurrency/units/__init__.py:989
 msgid "lambda"
-msgstr ""
+msgstr "lambda"
 
 #: deployment/dev/geocurrency/units/__init__.py:993
 #: modules/units/build/lib/geocurrency/units/__init__.py:993
 #: modules/units/geocurrency/units/__init__.py:993
 msgid "lambert"
-msgstr ""
+msgstr "lambert"
 
 #: deployment/dev/geocurrency/units/__init__.py:997
 #: modules/units/build/lib/geocurrency/units/__init__.py:997
 #: modules/units/geocurrency/units/__init__.py:997
 msgid "langley"
-msgstr ""
+msgstr "langley"
 
 #: deployment/dev/geocurrency/units/__init__.py:1001
 #: modules/units/build/lib/geocurrency/units/__init__.py:1001
 #: modules/units/geocurrency/units/__init__.py:1001
 msgid "lattice constant"
-msgstr ""
+msgstr "grotelių konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1005
 #: modules/units/build/lib/geocurrency/units/__init__.py:1005
 #: modules/units/geocurrency/units/__init__.py:1005
 msgid "league"
-msgstr ""
+msgstr "lyga"
 
 #: deployment/dev/geocurrency/units/__init__.py:1010
 #: modules/units/build/lib/geocurrency/units/__init__.py:1010
 #: modules/units/geocurrency/units/__init__.py:1010
 msgid "leap year"
-msgstr ""
+msgstr "keliamaisiais metais"
 
 #: deployment/dev/geocurrency/units/__init__.py:1011
 #: deployment/dev/geocurrency/units/__init__.py:1708
@@ -3236,163 +3237,163 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1708
 #: modules/units/geocurrency/units/__init__.py:1709
 msgid "year"
-msgstr ""
+msgstr "metus"
 
 #: deployment/dev/geocurrency/units/__init__.py:1014
 #: modules/units/build/lib/geocurrency/units/__init__.py:1014
 #: modules/units/geocurrency/units/__init__.py:1014
 msgid "light year"
-msgstr ""
+msgstr "Šviesmetis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1015
 #: modules/units/build/lib/geocurrency/units/__init__.py:1015
 #: modules/units/geocurrency/units/__init__.py:1015
 msgid "ly"
-msgstr ""
+msgstr "ly"
 
 #: deployment/dev/geocurrency/units/__init__.py:1018
 #: modules/units/build/lib/geocurrency/units/__init__.py:1018
 #: modules/units/geocurrency/units/__init__.py:1018
 msgid "link"
-msgstr ""
+msgstr "nuoroda"
 
 #: deployment/dev/geocurrency/units/__init__.py:1019
 #: modules/units/build/lib/geocurrency/units/__init__.py:1019
 #: modules/units/geocurrency/units/__init__.py:1019
 msgid "li"
-msgstr ""
+msgstr "li"
 
 #: deployment/dev/geocurrency/units/__init__.py:1022
 #: modules/units/build/lib/geocurrency/units/__init__.py:1022
 #: modules/units/geocurrency/units/__init__.py:1022
 msgid "liter"
-msgstr ""
+msgstr "litro"
 
 #: deployment/dev/geocurrency/units/__init__.py:1023
 #: modules/units/build/lib/geocurrency/units/__init__.py:1023
 #: modules/units/geocurrency/units/__init__.py:1023
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: deployment/dev/geocurrency/units/__init__.py:1026
 #: modules/units/build/lib/geocurrency/units/__init__.py:1026
 #: modules/units/geocurrency/units/__init__.py:1026
 msgid "log 10"
-msgstr ""
+msgstr "žurnalas 10"
 
 #: deployment/dev/geocurrency/units/__init__.py:1027
 #: modules/units/build/lib/geocurrency/units/__init__.py:1027
 #: modules/units/geocurrency/units/__init__.py:1027
 msgid "ln10"
-msgstr ""
+msgstr "ln10"
 
 #: deployment/dev/geocurrency/units/__init__.py:1028
 #: modules/units/build/lib/geocurrency/units/__init__.py:1028
 #: modules/units/geocurrency/units/__init__.py:1028
 msgid "dimesionless"
-msgstr ""
+msgstr "bešimtis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1030
 #: modules/units/build/lib/geocurrency/units/__init__.py:1030
 #: modules/units/geocurrency/units/__init__.py:1030
 msgid "long hundredweight"
-msgstr ""
+msgstr "ilgas šimtas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1040
 #: modules/units/build/lib/geocurrency/units/__init__.py:1040
 #: modules/units/geocurrency/units/__init__.py:1040
 msgid "lumen"
-msgstr ""
+msgstr "spindis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1044
 #: modules/units/build/lib/geocurrency/units/__init__.py:1044
 #: modules/units/geocurrency/units/__init__.py:1044
 msgid "lux"
-msgstr ""
+msgstr "liukso"
 
 #: deployment/dev/geocurrency/units/__init__.py:1052
 #: modules/units/build/lib/geocurrency/units/__init__.py:1052
 #: modules/units/geocurrency/units/__init__.py:1052
 msgid "maxwell"
-msgstr ""
+msgstr "Maksvelas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1056
 #: modules/units/build/lib/geocurrency/units/__init__.py:1056
 #: modules/units/geocurrency/units/__init__.py:1056
 msgid "mean international ampere"
-msgstr ""
+msgstr "reiškia tarptautinę amperą"
 
 #: deployment/dev/geocurrency/units/__init__.py:1060
 #: modules/units/build/lib/geocurrency/units/__init__.py:1060
 #: modules/units/geocurrency/units/__init__.py:1060
 msgid "mean international Ohm"
-msgstr ""
+msgstr "reiškia tarptautinį omą"
 
 #: deployment/dev/geocurrency/units/__init__.py:1064
 #: modules/units/build/lib/geocurrency/units/__init__.py:1064
 #: modules/units/geocurrency/units/__init__.py:1064
 msgid "mean international Volt"
-msgstr ""
+msgstr "reiškia tarptautinį Voltą"
 
 #: deployment/dev/geocurrency/units/__init__.py:1068
 #: modules/units/build/lib/geocurrency/units/__init__.py:1068
 #: modules/units/geocurrency/units/__init__.py:1068
 msgid "density of mercury"
-msgstr ""
+msgstr "gyvsidabrio tankis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1072
 #: modules/units/build/lib/geocurrency/units/__init__.py:1072
 #: modules/units/geocurrency/units/__init__.py:1072
 msgid "density of mercury 60F"
-msgstr ""
+msgstr "gyvsidabrio tankis 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1076
 #: modules/units/build/lib/geocurrency/units/__init__.py:1076
 #: modules/units/geocurrency/units/__init__.py:1076
 msgid "meter"
-msgstr ""
+msgstr "metras"
 
 #: deployment/dev/geocurrency/units/__init__.py:1080
 #: modules/units/build/lib/geocurrency/units/__init__.py:1080
 #: modules/units/geocurrency/units/__init__.py:1080
 msgid "meter per second"
-msgstr ""
+msgstr "metras per sekundę"
 
 #: deployment/dev/geocurrency/units/__init__.py:1084
 #: modules/units/build/lib/geocurrency/units/__init__.py:1084
 #: modules/units/geocurrency/units/__init__.py:1084
 msgid "metric horsepower"
-msgstr ""
+msgstr "metrinė arklio galia"
 
 #: deployment/dev/geocurrency/units/__init__.py:1088
 #: modules/units/build/lib/geocurrency/units/__init__.py:1088
 #: modules/units/geocurrency/units/__init__.py:1088
 msgid "metric ton"
-msgstr ""
+msgstr "metrinės tonos"
 
 #: deployment/dev/geocurrency/units/__init__.py:1092
 #: modules/units/build/lib/geocurrency/units/__init__.py:1092
 #: modules/units/geocurrency/units/__init__.py:1092
 msgid "micron"
-msgstr ""
+msgstr "mikrono"
 
 #: deployment/dev/geocurrency/units/__init__.py:1096
 #: modules/units/build/lib/geocurrency/units/__init__.py:1096
 #: modules/units/geocurrency/units/__init__.py:1096
 msgid "mil"
-msgstr ""
+msgstr "mil"
 
 #: deployment/dev/geocurrency/units/__init__.py:1100
 #: modules/units/build/lib/geocurrency/units/__init__.py:1100
 #: modules/units/geocurrency/units/__init__.py:1100
 msgid "mile"
-msgstr ""
+msgstr "mylios"
 
 #: deployment/dev/geocurrency/units/__init__.py:1104
 #: modules/units/build/lib/geocurrency/units/__init__.py:1104
 #: modules/units/geocurrency/units/__init__.py:1104
 msgid "mile per hour"
-msgstr ""
+msgstr "mylios per valandą"
 
 #: deployment/dev/geocurrency/units/__init__.py:1108
 #: deployment/dev/geocurrency/units/__init__.py:1109
@@ -3401,217 +3402,217 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1108
 #: modules/units/geocurrency/units/__init__.py:1109
 msgid "millenium"
-msgstr ""
+msgstr "tūkstantmetis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1112
 #: modules/units/build/lib/geocurrency/units/__init__.py:1112
 #: modules/units/geocurrency/units/__init__.py:1112
 msgid "milliarcsecond"
-msgstr ""
+msgstr "miliarksekundė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1116
 #: modules/units/build/lib/geocurrency/units/__init__.py:1116
 #: modules/units/geocurrency/units/__init__.py:1116
 msgid "Hg millimeter"
-msgstr ""
+msgstr "Hg milimetras"
 
 #: deployment/dev/geocurrency/units/__init__.py:1120
 #: modules/units/build/lib/geocurrency/units/__init__.py:1120
 #: modules/units/geocurrency/units/__init__.py:1120
 msgid "minim"
-msgstr ""
+msgstr "minimalus"
 
 #: deployment/dev/geocurrency/units/__init__.py:1124
 #: modules/units/build/lib/geocurrency/units/__init__.py:1124
 #: modules/units/geocurrency/units/__init__.py:1124
 msgid "minute"
-msgstr ""
+msgstr "minutė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1128
 #: modules/units/build/lib/geocurrency/units/__init__.py:1128
 #: modules/units/geocurrency/units/__init__.py:1128
 msgid "molar"
-msgstr ""
+msgstr "krūminis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1132
 #: modules/units/build/lib/geocurrency/units/__init__.py:1132
 #: modules/units/geocurrency/units/__init__.py:1132
 msgid "molar gas constant"
-msgstr ""
+msgstr "molinė dujų konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1136
 #: modules/units/build/lib/geocurrency/units/__init__.py:1136
 #: modules/units/geocurrency/units/__init__.py:1136
 msgid "mole"
-msgstr ""
+msgstr "apgamas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1140
 #: modules/units/build/lib/geocurrency/units/__init__.py:1140
 #: modules/units/geocurrency/units/__init__.py:1140
 msgid "month"
-msgstr ""
+msgstr "mėnesį"
 
 #: deployment/dev/geocurrency/units/__init__.py:1144
 #: modules/units/build/lib/geocurrency/units/__init__.py:1144
 #: modules/units/geocurrency/units/__init__.py:1144
 msgid "nautical mile"
-msgstr ""
+msgstr "jūrmylė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1145
 #: modules/units/build/lib/geocurrency/units/__init__.py:1145
 #: modules/units/geocurrency/units/__init__.py:1145
 msgid "nm"
-msgstr ""
+msgstr "nm"
 
 #: deployment/dev/geocurrency/units/__init__.py:1149
 #: modules/units/build/lib/geocurrency/units/__init__.py:1149
 #: modules/units/geocurrency/units/__init__.py:1149
 msgid "Np"
-msgstr ""
+msgstr "Np"
 
 #: deployment/dev/geocurrency/units/__init__.py:1152
 #: modules/units/build/lib/geocurrency/units/__init__.py:1152
 #: modules/units/geocurrency/units/__init__.py:1152
 msgid "neutron mass"
-msgstr ""
+msgstr "neutronų masė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1156
 #: modules/units/build/lib/geocurrency/units/__init__.py:1156
 #: modules/units/geocurrency/units/__init__.py:1156
 msgid "newton"
-msgstr ""
+msgstr "niutonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1164
 #: modules/units/build/lib/geocurrency/units/__init__.py:1164
 #: modules/units/geocurrency/units/__init__.py:1164
 msgid "nit"
-msgstr ""
+msgstr "nit"
 
 #: deployment/dev/geocurrency/units/__init__.py:1168
 #: modules/units/build/lib/geocurrency/units/__init__.py:1168
 #: modules/units/geocurrency/units/__init__.py:1168
 msgid "nuclear magneton"
-msgstr ""
+msgstr "branduolio magnetonas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1172
 #: modules/units/build/lib/geocurrency/units/__init__.py:1172
 #: modules/units/geocurrency/units/__init__.py:1172
 msgid "number english"
-msgstr ""
+msgstr "numeris angliškai"
 
 #: deployment/dev/geocurrency/units/__init__.py:1176
 #: modules/units/build/lib/geocurrency/units/__init__.py:1176
 #: modules/units/geocurrency/units/__init__.py:1176
 msgid "number meter"
-msgstr ""
+msgstr "skaičių matuoklis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1180
 #: modules/units/build/lib/geocurrency/units/__init__.py:1180
 #: modules/units/geocurrency/units/__init__.py:1180
 msgid "oersted"
-msgstr ""
+msgstr "išmestas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1182
 #: modules/units/build/lib/geocurrency/units/__init__.py:1182
 #: modules/units/geocurrency/units/__init__.py:1182
 msgid "H-field"
-msgstr ""
+msgstr "H laukas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1184
 #: modules/units/build/lib/geocurrency/units/__init__.py:1184
 #: modules/units/geocurrency/units/__init__.py:1184
 msgid "ohm"
-msgstr ""
+msgstr "omas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1188
 #: modules/units/build/lib/geocurrency/units/__init__.py:1188
 #: modules/units/geocurrency/units/__init__.py:1188
 msgid "oil barrel"
-msgstr ""
+msgstr "naftos statinė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1192
 #: modules/units/build/lib/geocurrency/units/__init__.py:1192
 #: modules/units/geocurrency/units/__init__.py:1192
 msgid "ounce"
-msgstr ""
+msgstr "uncija"
 
 #: deployment/dev/geocurrency/units/__init__.py:1196
 #: modules/units/build/lib/geocurrency/units/__init__.py:1196
 #: modules/units/geocurrency/units/__init__.py:1196
 msgid "parsec"
-msgstr ""
+msgstr "parsek"
 
 #: deployment/dev/geocurrency/units/__init__.py:1200
 #: modules/units/build/lib/geocurrency/units/__init__.py:1200
 #: modules/units/geocurrency/units/__init__.py:1200
 msgid "particle"
-msgstr ""
+msgstr "dalelė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1204
 #: modules/units/build/lib/geocurrency/units/__init__.py:1204
 #: modules/units/geocurrency/units/__init__.py:1204
 msgid "pascal"
-msgstr ""
+msgstr "pascal"
 
 #: deployment/dev/geocurrency/units/__init__.py:1208
 #: modules/units/build/lib/geocurrency/units/__init__.py:1208
 #: modules/units/geocurrency/units/__init__.py:1208
 msgid "peak sun hour"
-msgstr ""
+msgstr "piko saulės valandą"
 
 #: deployment/dev/geocurrency/units/__init__.py:1212
 #: modules/units/build/lib/geocurrency/units/__init__.py:1212
 #: modules/units/geocurrency/units/__init__.py:1212
 msgid "peck"
-msgstr ""
+msgstr "knarkti"
 
 #: deployment/dev/geocurrency/units/__init__.py:1216
 #: modules/units/build/lib/geocurrency/units/__init__.py:1216
 #: modules/units/geocurrency/units/__init__.py:1216
 msgid "pennyweight"
-msgstr ""
+msgstr "centų svoris"
 
 #: deployment/dev/geocurrency/units/__init__.py:1224
 #: modules/units/build/lib/geocurrency/units/__init__.py:1224
 #: modules/units/geocurrency/units/__init__.py:1224
 msgid "pica"
-msgstr ""
+msgstr "pica"
 
 #: deployment/dev/geocurrency/units/__init__.py:1228
 #: modules/units/build/lib/geocurrency/units/__init__.py:1228
 #: modules/units/geocurrency/units/__init__.py:1228
 msgid "pint"
-msgstr ""
+msgstr "pinta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1232
 #: modules/units/build/lib/geocurrency/units/__init__.py:1232
 #: modules/units/geocurrency/units/__init__.py:1232
 msgid "pixel"
-msgstr ""
+msgstr "pikselių"
 
 #: deployment/dev/geocurrency/units/__init__.py:1234
 #: modules/units/build/lib/geocurrency/units/__init__.py:1234
 #: modules/units/geocurrency/units/__init__.py:1234
 msgid "unit"
-msgstr ""
+msgstr "vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1236
 #: modules/units/build/lib/geocurrency/units/__init__.py:1236
 #: modules/units/geocurrency/units/__init__.py:1236
 msgid "pixel per centimeter"
-msgstr ""
+msgstr "pikselių centimetre"
 
 #: deployment/dev/geocurrency/units/__init__.py:1240
 #: modules/units/build/lib/geocurrency/units/__init__.py:1240
 #: modules/units/geocurrency/units/__init__.py:1240
 msgid "pixel per inch"
-msgstr ""
+msgstr "pikselių colyje"
 
 #: deployment/dev/geocurrency/units/__init__.py:1244
 #: modules/units/build/lib/geocurrency/units/__init__.py:1244
 #: modules/units/geocurrency/units/__init__.py:1244
 msgid "Planck constant"
-msgstr ""
+msgstr "Planko konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1248
 #: deployment/dev/geocurrency/units/__init__.py:1252
@@ -3620,163 +3621,163 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1248
 #: modules/units/geocurrency/units/__init__.py:1252
 msgid "Planck current"
-msgstr ""
+msgstr "Planko srovė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1249
 #: modules/units/build/lib/geocurrency/units/__init__.py:1249
 #: modules/units/geocurrency/units/__init__.py:1249
 msgid "qP"
-msgstr ""
+msgstr "qP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1253
 #: modules/units/build/lib/geocurrency/units/__init__.py:1253
 #: modules/units/geocurrency/units/__init__.py:1253
 msgid "lP"
-msgstr ""
+msgstr "l"
 
 #: deployment/dev/geocurrency/units/__init__.py:1256
 #: modules/units/build/lib/geocurrency/units/__init__.py:1256
 #: modules/units/geocurrency/units/__init__.py:1256
 msgid "Planck mass"
-msgstr ""
+msgstr "Planko masė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1257
 #: modules/units/build/lib/geocurrency/units/__init__.py:1257
 #: modules/units/geocurrency/units/__init__.py:1257
 msgid "mP"
-msgstr ""
+msgstr "mP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1260
 #: modules/units/build/lib/geocurrency/units/__init__.py:1260
 #: modules/units/geocurrency/units/__init__.py:1260
 msgid "Planck temperature"
-msgstr ""
+msgstr "Planko temperatūra"
 
 #: deployment/dev/geocurrency/units/__init__.py:1261
 #: modules/units/build/lib/geocurrency/units/__init__.py:1261
 #: modules/units/geocurrency/units/__init__.py:1261
 msgid "TP"
-msgstr ""
+msgstr "TP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1264
 #: modules/units/build/lib/geocurrency/units/__init__.py:1264
 #: modules/units/geocurrency/units/__init__.py:1264
 msgid "Planck time"
-msgstr ""
+msgstr "Planko laikas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1265
 #: modules/units/build/lib/geocurrency/units/__init__.py:1265
 #: modules/units/geocurrency/units/__init__.py:1265
 msgid "tP"
-msgstr ""
+msgstr "tP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1268
 #: modules/units/build/lib/geocurrency/units/__init__.py:1268
 #: modules/units/geocurrency/units/__init__.py:1268
 msgid "point"
-msgstr ""
+msgstr "taškas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1272
 #: modules/units/build/lib/geocurrency/units/__init__.py:1272
 #: modules/units/geocurrency/units/__init__.py:1272
 msgid "poise"
-msgstr ""
+msgstr "nusiteikimas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1276
 #: modules/units/build/lib/geocurrency/units/__init__.py:1276
 #: modules/units/geocurrency/units/__init__.py:1276
 msgid "pound"
-msgstr ""
+msgstr "svaras"
 
 #: deployment/dev/geocurrency/units/__init__.py:1280
 #: modules/units/build/lib/geocurrency/units/__init__.py:1280
 #: modules/units/geocurrency/units/__init__.py:1280
 msgid "pound force per square inch"
-msgstr ""
+msgstr "svaro jėgos kvadratiniam coliui"
 
 #: deployment/dev/geocurrency/units/__init__.py:1284
 #: modules/units/build/lib/geocurrency/units/__init__.py:1284
 #: modules/units/geocurrency/units/__init__.py:1284
 msgid "poundal"
-msgstr ""
+msgstr "svaras"
 
 #: deployment/dev/geocurrency/units/__init__.py:1288
 #: modules/units/build/lib/geocurrency/units/__init__.py:1288
 #: modules/units/geocurrency/units/__init__.py:1288
 msgid "proton mass"
-msgstr ""
+msgstr "protonų masė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1292
 #: modules/units/build/lib/geocurrency/units/__init__.py:1292
 #: modules/units/geocurrency/units/__init__.py:1292
 msgid "quadrillion Btu"
-msgstr ""
+msgstr "kvadrilijonas Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1296
 #: modules/units/build/lib/geocurrency/units/__init__.py:1296
 #: modules/units/geocurrency/units/__init__.py:1296
 msgid "quart"
-msgstr ""
+msgstr "kv"
 
 #: deployment/dev/geocurrency/units/__init__.py:1300
 #: modules/units/build/lib/geocurrency/units/__init__.py:1300
 #: modules/units/geocurrency/units/__init__.py:1300
 msgid "quarter"
-msgstr ""
+msgstr "ketvirtį"
 
 #: deployment/dev/geocurrency/units/__init__.py:1304
 #: modules/units/build/lib/geocurrency/units/__init__.py:1304
 #: modules/units/geocurrency/units/__init__.py:1304
 msgid "radian"
-msgstr ""
+msgstr "radianas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1308
 #: modules/units/build/lib/geocurrency/units/__init__.py:1308
 #: modules/units/geocurrency/units/__init__.py:1308
 msgid "rads"
-msgstr ""
+msgstr "rads"
 
 #: deployment/dev/geocurrency/units/__init__.py:1312
 #: modules/units/build/lib/geocurrency/units/__init__.py:1312
 #: modules/units/geocurrency/units/__init__.py:1312
 msgid "reciprocal centimeter"
-msgstr ""
+msgstr "abipusis centimetras"
 
 #: deployment/dev/geocurrency/units/__init__.py:1316
 #: modules/units/build/lib/geocurrency/units/__init__.py:1316
 #: modules/units/geocurrency/units/__init__.py:1316
 msgid "refrigeration ton"
-msgstr ""
+msgstr "šaldymo toną"
 
 #: deployment/dev/geocurrency/units/__init__.py:1320
 #: modules/units/build/lib/geocurrency/units/__init__.py:1320
 #: modules/units/geocurrency/units/__init__.py:1320
 msgid "roentgen equivalent man"
-msgstr ""
+msgstr "roentgenas lygiavertis žmogus"
 
 #: deployment/dev/geocurrency/units/__init__.py:1324
 #: modules/units/build/lib/geocurrency/units/__init__.py:1324
 #: modules/units/geocurrency/units/__init__.py:1324
 msgid "revolutions per minute"
-msgstr ""
+msgstr "apsisukimai per minutę"
 
 #: deployment/dev/geocurrency/units/__init__.py:1325
 #: modules/units/build/lib/geocurrency/units/__init__.py:1325
 #: modules/units/geocurrency/units/__init__.py:1325
 msgid "rpm"
-msgstr ""
+msgstr "aps./min"
 
 #: deployment/dev/geocurrency/units/__init__.py:1328
 #: modules/units/build/lib/geocurrency/units/__init__.py:1328
 #: modules/units/geocurrency/units/__init__.py:1328
 msgid "revolutions per second"
-msgstr ""
+msgstr "apsisukimų per sekundę"
 
 #: deployment/dev/geocurrency/units/__init__.py:1329
 #: modules/units/build/lib/geocurrency/units/__init__.py:1329
 #: modules/units/geocurrency/units/__init__.py:1329
 msgid "rps"
-msgstr ""
+msgstr "rps"
 
 #: deployment/dev/geocurrency/units/__init__.py:1332
 #: deployment/dev/geocurrency/units/__init__.py:1333
@@ -3785,154 +3786,154 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1332
 #: modules/units/geocurrency/units/__init__.py:1333
 msgid "reyn"
-msgstr ""
+msgstr "Reyn"
 
 #: deployment/dev/geocurrency/units/__init__.py:1336
 #: modules/units/build/lib/geocurrency/units/__init__.py:1336
 #: modules/units/geocurrency/units/__init__.py:1336
 msgid "reciprocal poise"
-msgstr ""
+msgstr "abipusis nusistatymas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1340
 #: modules/units/build/lib/geocurrency/units/__init__.py:1340
 #: modules/units/geocurrency/units/__init__.py:1340
 msgid "rod"
-msgstr ""
+msgstr "lazdele"
 
 #: deployment/dev/geocurrency/units/__init__.py:1344
 #: modules/units/build/lib/geocurrency/units/__init__.py:1344
 #: modules/units/geocurrency/units/__init__.py:1344
 msgid "roentgen"
-msgstr ""
+msgstr "roentgenas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1348
 #: modules/units/build/lib/geocurrency/units/__init__.py:1348
 #: modules/units/geocurrency/units/__init__.py:1348
 msgid "rutherford"
-msgstr ""
+msgstr "rutherfordas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1352
 #: modules/units/build/lib/geocurrency/units/__init__.py:1352
 #: modules/units/geocurrency/units/__init__.py:1352
 msgid "rydberg"
-msgstr ""
+msgstr "Rydbergas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1356
 #: modules/units/build/lib/geocurrency/units/__init__.py:1356
 #: modules/units/geocurrency/units/__init__.py:1356
 msgid "rydberg constant"
-msgstr ""
+msgstr "rydbergo konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1360
 #: modules/units/build/lib/geocurrency/units/__init__.py:1360
 #: modules/units/geocurrency/units/__init__.py:1360
 msgid "scaled point"
-msgstr ""
+msgstr "mastelio taškas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1364
 #: modules/units/build/lib/geocurrency/units/__init__.py:1364
 #: modules/units/geocurrency/units/__init__.py:1364
 msgid "scruple"
-msgstr ""
+msgstr "skrupulas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1368
 #: modules/units/build/lib/geocurrency/units/__init__.py:1368
 #: modules/units/geocurrency/units/__init__.py:1368
 msgid "second"
-msgstr ""
+msgstr "antra"
 
 #: deployment/dev/geocurrency/units/__init__.py:1372
 #: modules/units/build/lib/geocurrency/units/__init__.py:1372
 #: modules/units/geocurrency/units/__init__.py:1372
 msgid "second radiation constant"
-msgstr ""
+msgstr "antroji radiacijos konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1376
 #: modules/units/build/lib/geocurrency/units/__init__.py:1376
 #: modules/units/geocurrency/units/__init__.py:1376
 msgid "shake"
-msgstr ""
+msgstr "papurtyti"
 
 #: deployment/dev/geocurrency/units/__init__.py:1380
 #: modules/units/build/lib/geocurrency/units/__init__.py:1380
 #: modules/units/geocurrency/units/__init__.py:1380
 msgid "shot"
-msgstr ""
+msgstr "nušautas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1384
 #: modules/units/build/lib/geocurrency/units/__init__.py:1384
 #: modules/units/geocurrency/units/__init__.py:1384
 msgid "sidereal day"
-msgstr ""
+msgstr "sideralinė diena"
 
 #: deployment/dev/geocurrency/units/__init__.py:1385
 #: modules/units/build/lib/geocurrency/units/__init__.py:1385
 #: modules/units/geocurrency/units/__init__.py:1385
 msgctxt "unit"
 msgid "sidereal day"
-msgstr ""
+msgstr "sideralinė diena"
 
 #: deployment/dev/geocurrency/units/__init__.py:1388
 #: modules/units/build/lib/geocurrency/units/__init__.py:1388
 #: modules/units/geocurrency/units/__init__.py:1388
 msgid "sidereal month"
-msgstr ""
+msgstr "šalutinis mėnuo"
 
 #: deployment/dev/geocurrency/units/__init__.py:1389
 #: modules/units/build/lib/geocurrency/units/__init__.py:1389
 #: modules/units/geocurrency/units/__init__.py:1389
 msgctxt "unit"
 msgid "sidereal month"
-msgstr ""
+msgstr "šalutinis mėnuo"
 
 #: deployment/dev/geocurrency/units/__init__.py:1392
 #: modules/units/build/lib/geocurrency/units/__init__.py:1392
 #: modules/units/geocurrency/units/__init__.py:1392
 msgid "sidereal year"
-msgstr ""
+msgstr "sideriniai metai"
 
 #: deployment/dev/geocurrency/units/__init__.py:1393
 #: modules/units/build/lib/geocurrency/units/__init__.py:1393
 #: modules/units/geocurrency/units/__init__.py:1393
 msgctxt "unit"
 msgid "sidereal year"
-msgstr ""
+msgstr "sideriniai metai"
 
 #: deployment/dev/geocurrency/units/__init__.py:1396
 #: modules/units/build/lib/geocurrency/units/__init__.py:1396
 #: modules/units/geocurrency/units/__init__.py:1396
 msgid "siemens"
-msgstr ""
+msgstr "siemens"
 
 #: deployment/dev/geocurrency/units/__init__.py:1400
 #: modules/units/build/lib/geocurrency/units/__init__.py:1400
 #: modules/units/geocurrency/units/__init__.py:1400
 msgid "sievert"
-msgstr ""
+msgstr "sievert"
 
 #: deployment/dev/geocurrency/units/__init__.py:1404
 #: modules/units/build/lib/geocurrency/units/__init__.py:1404
 #: modules/units/geocurrency/units/__init__.py:1404
 msgid "slinch"
-msgstr ""
+msgstr "slinkti"
 
 #: deployment/dev/geocurrency/units/__init__.py:1408
 #: modules/units/build/lib/geocurrency/units/__init__.py:1408
 #: modules/units/geocurrency/units/__init__.py:1408
 msgid "slug"
-msgstr ""
+msgstr "šliužas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1412
 #: modules/units/build/lib/geocurrency/units/__init__.py:1412
 #: modules/units/geocurrency/units/__init__.py:1412
 msgid "speed of light"
-msgstr ""
+msgstr "šviesos greitis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1416
 #: modules/units/build/lib/geocurrency/units/__init__.py:1416
 #: modules/units/geocurrency/units/__init__.py:1416
 msgid "square degree"
-msgstr ""
+msgstr "kvadrato laipsnis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1418
 #: deployment/dev/geocurrency/units/__init__.py:1498
@@ -3941,73 +3942,73 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1418
 #: modules/units/geocurrency/units/__init__.py:1498
 msgid "solid angle"
-msgstr ""
+msgstr "vientisas kampas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1420
 #: modules/units/build/lib/geocurrency/units/__init__.py:1420
 #: modules/units/geocurrency/units/__init__.py:1420
 msgid "square foot"
-msgstr ""
+msgstr "kvadratinė pėda"
 
 #: deployment/dev/geocurrency/units/__init__.py:1424
 #: modules/units/build/lib/geocurrency/units/__init__.py:1424
 #: modules/units/geocurrency/units/__init__.py:1424
 msgid "square inch"
-msgstr ""
+msgstr "kvadratinis colis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1428
 #: modules/units/build/lib/geocurrency/units/__init__.py:1428
 #: modules/units/geocurrency/units/__init__.py:1428
 msgid "square league"
-msgstr ""
+msgstr "kvadrato lyga"
 
 #: deployment/dev/geocurrency/units/__init__.py:1432
 #: modules/units/build/lib/geocurrency/units/__init__.py:1432
 #: modules/units/geocurrency/units/__init__.py:1432
 msgid "square mile"
-msgstr ""
+msgstr "kvadratinė mylia"
 
 #: deployment/dev/geocurrency/units/__init__.py:1436
 #: modules/units/build/lib/geocurrency/units/__init__.py:1436
 #: modules/units/geocurrency/units/__init__.py:1436
 msgid "square rod"
-msgstr ""
+msgstr "kvadratinis strypas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1440
 #: modules/units/build/lib/geocurrency/units/__init__.py:1440
 #: modules/units/geocurrency/units/__init__.py:1440
 msgid "square survey mile"
-msgstr ""
+msgstr "kvadrato matavimo mylia"
 
 #: deployment/dev/geocurrency/units/__init__.py:1444
 #: modules/units/build/lib/geocurrency/units/__init__.py:1444
 #: modules/units/geocurrency/units/__init__.py:1444
 msgid "square yard"
-msgstr ""
+msgstr "kvadratinis kiemas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1448
 #: modules/units/build/lib/geocurrency/units/__init__.py:1448
 #: modules/units/geocurrency/units/__init__.py:1448
 msgid "standard atmosphere"
-msgstr ""
+msgstr "standartinė atmosfera"
 
 #: deployment/dev/geocurrency/units/__init__.py:1452
 #: modules/units/build/lib/geocurrency/units/__init__.py:1452
 #: modules/units/geocurrency/units/__init__.py:1452
 msgid "standard gravity"
-msgstr ""
+msgstr "standartinis sunkis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1456
 #: modules/units/build/lib/geocurrency/units/__init__.py:1456
 #: modules/units/geocurrency/units/__init__.py:1456
 msgid "standard liter per minute"
-msgstr ""
+msgstr "standartinis litras per minutę"
 
 #: deployment/dev/geocurrency/units/__init__.py:1478
 #: modules/units/build/lib/geocurrency/units/__init__.py:1478
 #: modules/units/geocurrency/units/__init__.py:1478
 msgid "electrical resistance"
-msgstr ""
+msgstr "elektrinė varža"
 
 #: deployment/dev/geocurrency/units/__init__.py:1490
 #: deployment/dev/geocurrency/units/__init__.py:1674
@@ -4016,55 +4017,55 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1490
 #: modules/units/geocurrency/units/__init__.py:1674
 msgid "flux density"
-msgstr ""
+msgstr "srauto tankis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1492
 #: modules/units/build/lib/geocurrency/units/__init__.py:1492
 #: modules/units/geocurrency/units/__init__.py:1492
 msgid "Stefan-Boltzmann constant"
-msgstr ""
+msgstr "Stefano-Boltzmanno konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1496
 #: modules/units/build/lib/geocurrency/units/__init__.py:1496
 #: modules/units/geocurrency/units/__init__.py:1496
 msgid "steradian"
-msgstr ""
+msgstr "steradianas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1500
 #: modules/units/build/lib/geocurrency/units/__init__.py:1500
 #: modules/units/geocurrency/units/__init__.py:1500
 msgid "stere"
-msgstr ""
+msgstr "stereas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1504
 #: modules/units/build/lib/geocurrency/units/__init__.py:1504
 #: modules/units/geocurrency/units/__init__.py:1504
 msgid "stilb"
-msgstr ""
+msgstr "stilb"
 
 #: deployment/dev/geocurrency/units/__init__.py:1508
 #: modules/units/build/lib/geocurrency/units/__init__.py:1508
 #: modules/units/geocurrency/units/__init__.py:1508
 msgid "stokes"
-msgstr ""
+msgstr "stokai"
 
 #: deployment/dev/geocurrency/units/__init__.py:1512
 #: modules/units/build/lib/geocurrency/units/__init__.py:1512
 #: modules/units/geocurrency/units/__init__.py:1512
 msgid "stone"
-msgstr ""
+msgstr "akmuo"
 
 #: deployment/dev/geocurrency/units/__init__.py:1516
 #: modules/units/build/lib/geocurrency/units/__init__.py:1516
 #: modules/units/geocurrency/units/__init__.py:1516
 msgid "survey foot"
-msgstr ""
+msgstr "apklausos pėda"
 
 #: deployment/dev/geocurrency/units/__init__.py:1520
 #: modules/units/build/lib/geocurrency/units/__init__.py:1520
 #: modules/units/geocurrency/units/__init__.py:1520
 msgid "survey mile"
-msgstr ""
+msgstr "apklausos mylia"
 
 #: deployment/dev/geocurrency/units/__init__.py:1528
 #: deployment/dev/geocurrency/units/__init__.py:1529
@@ -4073,7 +4074,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1528
 #: modules/units/geocurrency/units/__init__.py:1529
 msgid "synodic month"
-msgstr ""
+msgstr "sinodinis mėnuo"
 
 #: deployment/dev/geocurrency/units/__init__.py:1532
 #: deployment/dev/geocurrency/units/__init__.py:1533
@@ -4082,7 +4083,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1532
 #: modules/units/geocurrency/units/__init__.py:1533
 msgid "tablespoon"
-msgstr ""
+msgstr "šaukštas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1540
 #: deployment/dev/geocurrency/units/__init__.py:1541
@@ -4091,55 +4092,55 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1540
 #: modules/units/geocurrency/units/__init__.py:1541
 msgid "teaspoon"
-msgstr ""
+msgstr "šaukštelio"
 
 #: deployment/dev/geocurrency/units/__init__.py:1544
 #: modules/units/build/lib/geocurrency/units/__init__.py:1544
 #: modules/units/geocurrency/units/__init__.py:1544
 msgid "technical atmosphere"
-msgstr ""
+msgstr "techninė atmosfera"
 
 #: deployment/dev/geocurrency/units/__init__.py:1572
 #: modules/units/build/lib/geocurrency/units/__init__.py:1572
 #: modules/units/geocurrency/units/__init__.py:1572
 msgid "therm"
-msgstr ""
+msgstr "term"
 
 #: deployment/dev/geocurrency/units/__init__.py:1576
 #: modules/units/build/lib/geocurrency/units/__init__.py:1576
 #: modules/units/geocurrency/units/__init__.py:1576
 msgid "thermochemical Btu"
-msgstr ""
+msgstr "termocheminis Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1580
 #: modules/units/build/lib/geocurrency/units/__init__.py:1580
 #: modules/units/geocurrency/units/__init__.py:1580
 msgid "Thomson cross section"
-msgstr ""
+msgstr "„Thomson“ skerspjūvis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1588
 #: modules/units/build/lib/geocurrency/units/__init__.py:1588
 #: modules/units/geocurrency/units/__init__.py:1588
 msgid "ton"
-msgstr ""
+msgstr "tonos"
 
 #: deployment/dev/geocurrency/units/__init__.py:1592
 #: modules/units/build/lib/geocurrency/units/__init__.py:1592
 #: modules/units/geocurrency/units/__init__.py:1592
 msgid "ton of TNT"
-msgstr ""
+msgstr "tonos TNT"
 
 #: deployment/dev/geocurrency/units/__init__.py:1596
 #: modules/units/build/lib/geocurrency/units/__init__.py:1596
 #: modules/units/geocurrency/units/__init__.py:1596
 msgid "ton of oil equivalent"
-msgstr ""
+msgstr "tonos naftos ekvivalento"
 
 #: deployment/dev/geocurrency/units/__init__.py:1597
 #: modules/units/build/lib/geocurrency/units/__init__.py:1597
 #: modules/units/geocurrency/units/__init__.py:1597
 msgid "toe"
-msgstr ""
+msgstr "pirštas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1604
 #: deployment/dev/geocurrency/units/__init__.py:1605
@@ -4148,7 +4149,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1604
 #: modules/units/geocurrency/units/__init__.py:1605
 msgid "tropical month"
-msgstr ""
+msgstr "atogrąžų mėnuo"
 
 #: deployment/dev/geocurrency/units/__init__.py:1608
 #: deployment/dev/geocurrency/units/__init__.py:1609
@@ -4157,7 +4158,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1608
 #: modules/units/geocurrency/units/__init__.py:1609
 msgid "tropical year"
-msgstr ""
+msgstr "tropiniai metai"
 
 #: deployment/dev/geocurrency/units/__init__.py:1612
 #: deployment/dev/geocurrency/units/__init__.py:1613
@@ -4166,7 +4167,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1612
 #: modules/units/geocurrency/units/__init__.py:1613
 msgid "troy ounce"
-msgstr ""
+msgstr "Trojos uncija"
 
 #: deployment/dev/geocurrency/units/__init__.py:1616
 #: deployment/dev/geocurrency/units/__init__.py:1617
@@ -4175,7 +4176,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1616
 #: modules/units/geocurrency/units/__init__.py:1617
 msgid "troy pound"
-msgstr ""
+msgstr "Trojos svaras"
 
 #: deployment/dev/geocurrency/units/__init__.py:1620
 #: deployment/dev/geocurrency/units/__init__.py:1621
@@ -4184,7 +4185,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1620
 #: modules/units/geocurrency/units/__init__.py:1621
 msgid "turn"
-msgstr ""
+msgstr "posūkis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1624
 #: deployment/dev/geocurrency/units/__init__.py:1625
@@ -4193,94 +4194,94 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1624
 #: modules/units/geocurrency/units/__init__.py:1625
 msgid "unified atomic mass unit"
-msgstr ""
+msgstr "vieningas atominės masės vienetas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1628
 #: modules/units/build/lib/geocurrency/units/__init__.py:1628
 #: modules/units/geocurrency/units/__init__.py:1628
 msgid "unit pole"
-msgstr ""
+msgstr "vieneto stulpas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1632
 #: modules/units/build/lib/geocurrency/units/__init__.py:1632
 #: modules/units/geocurrency/units/__init__.py:1632
 msgid "vacuum permeability"
-msgstr ""
+msgstr "vakuuminis pralaidumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1636
 #: modules/units/build/lib/geocurrency/units/__init__.py:1636
 #: modules/units/geocurrency/units/__init__.py:1636
 msgid "vacuum permittivity"
-msgstr ""
+msgstr "vakuuminis laidumas"
 
 #: deployment/dev/geocurrency/units/__init__.py:1648
 #: modules/units/build/lib/geocurrency/units/__init__.py:1648
 #: modules/units/geocurrency/units/__init__.py:1648
 msgid "Von Klitzing constant"
-msgstr ""
+msgstr "Von Klitzing pastovus"
 
 #: deployment/dev/geocurrency/units/__init__.py:1652
 #: modules/units/build/lib/geocurrency/units/__init__.py:1652
 #: modules/units/geocurrency/units/__init__.py:1652
 msgid "Water volumic mass"
-msgstr ""
+msgstr "Vandens tūrinė masė"
 
 #: deployment/dev/geocurrency/units/__init__.py:1656
 #: modules/units/build/lib/geocurrency/units/__init__.py:1656
 #: modules/units/geocurrency/units/__init__.py:1656
 msgid "Water volumic mass at 39F"
-msgstr ""
+msgstr "Vandens tūrinė masė esant 39F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1660
 #: modules/units/build/lib/geocurrency/units/__init__.py:1660
 #: modules/units/geocurrency/units/__init__.py:1660
 msgid "Water volumic mass at 60F"
-msgstr ""
+msgstr "Vandens tūrinė masė esant 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1680
 #: modules/units/build/lib/geocurrency/units/__init__.py:1680
 #: modules/units/geocurrency/units/__init__.py:1680
 msgid "wien frequency displacement law constant"
-msgstr ""
+msgstr "wien dažnio poslinkio dėsnio konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1684
 #: modules/units/build/lib/geocurrency/units/__init__.py:1684
 #: modules/units/geocurrency/units/__init__.py:1684
 msgid "wien u"
-msgstr ""
+msgstr "wien u"
 
 #: deployment/dev/geocurrency/units/__init__.py:1688
 #: modules/units/build/lib/geocurrency/units/__init__.py:1688
 #: modules/units/geocurrency/units/__init__.py:1688
 msgid "wien displacement law constant"
-msgstr ""
+msgstr "wien poslinkio dėsnio konstanta"
 
 #: deployment/dev/geocurrency/units/__init__.py:1692
 #: modules/units/build/lib/geocurrency/units/__init__.py:1692
 #: modules/units/geocurrency/units/__init__.py:1692
 msgid "wien x"
-msgstr ""
+msgstr "wien x"
 
 #: deployment/dev/geocurrency/units/__init__.py:1696
 #: modules/units/build/lib/geocurrency/units/__init__.py:1696
 #: modules/units/geocurrency/units/__init__.py:1696
 msgid "Cu X-ray wavelength"
-msgstr ""
+msgstr "Cu rentgeno bangos ilgis"
 
 #: deployment/dev/geocurrency/units/__init__.py:1700
 #: modules/units/build/lib/geocurrency/units/__init__.py:1700
 #: modules/units/geocurrency/units/__init__.py:1700
 msgid "Mo X-ray wavelength"
-msgstr ""
+msgstr "Mo rentgeno bangos ilgis"
 
 #: deployment/dev/geocurrency/units/models.py:300
 #: modules/units/build/lib/geocurrency/units/models.py:300
 #: modules/units/geocurrency/units/models.py:300
 msgid "Incompatible units"
-msgstr ""
+msgstr "Nesuderinami vienetai"
 
 #: deployment/dev/geocurrency/units/models.py:321
 #: modules/units/build/lib/geocurrency/units/models.py:321
 #: modules/units/geocurrency/units/models.py:321
 msgid "Undefined unit in the registry"
-msgstr ""
+msgstr "Nenustatytas vienetas registre"
