@@ -3,409 +3,410 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-14 13:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-09-16 12:48+0000\n"
+"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
+"Language-Team: Hungarian <http://peabytes.me/projects/geocurrency/api/hu/>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.2.2\n"
+
 #: deployment/dev/api/settings.py:178
 msgid "Afrikaans"
-msgstr ""
+msgstr "Afrikaans"
 
 #: deployment/dev/api/settings.py:179
 msgid "Arabic"
-msgstr ""
+msgstr "arab"
 
 #: deployment/dev/api/settings.py:180
 msgid "Algerian Arabic"
-msgstr ""
+msgstr "Algériai arab"
 
 #: deployment/dev/api/settings.py:181
 msgid "Asturian"
-msgstr ""
+msgstr "Asztriai"
 
 #: deployment/dev/api/settings.py:182
 msgid "Azerbaijani"
-msgstr ""
+msgstr "azerbajdzsáni"
 
 #: deployment/dev/api/settings.py:183
 msgid "Bulgarian"
-msgstr ""
+msgstr "bolgár"
 
 #: deployment/dev/api/settings.py:184
 msgid "Belarusian"
-msgstr ""
+msgstr "Belorusz"
 
 #: deployment/dev/api/settings.py:185
 msgid "Bengali"
-msgstr ""
+msgstr "bengáli"
 
 #: deployment/dev/api/settings.py:186
 msgid "Breton"
-msgstr ""
+msgstr "Breton"
 
 #: deployment/dev/api/settings.py:187
 msgid "Bosnian"
-msgstr ""
+msgstr "Bosnyák"
 
 #: deployment/dev/api/settings.py:188
 msgid "Catalan"
-msgstr ""
+msgstr "katalán"
 
 #: deployment/dev/api/settings.py:189
 msgid "Czech"
-msgstr ""
+msgstr "cseh"
 
 #: deployment/dev/api/settings.py:190
 msgid "Welsh"
-msgstr ""
+msgstr "walesi"
 
 #: deployment/dev/api/settings.py:191
 msgid "Danish"
-msgstr ""
+msgstr "dán"
 
 #: deployment/dev/api/settings.py:192
 msgid "German"
-msgstr ""
+msgstr "német"
 
 #: deployment/dev/api/settings.py:193
 msgid "Lower Sorbian"
-msgstr ""
+msgstr "Alsó szorb"
 
 #: deployment/dev/api/settings.py:194
 msgid "Greek"
-msgstr ""
+msgstr "görög"
 
 #: deployment/dev/api/settings.py:195
 msgid "English"
-msgstr ""
+msgstr "angol"
 
 #: deployment/dev/api/settings.py:196
 msgid "Australian English"
-msgstr ""
+msgstr "Ausztrál angol"
 
 #: deployment/dev/api/settings.py:197
 msgid "British English"
-msgstr ""
+msgstr "brit angol"
 
 #: deployment/dev/api/settings.py:198
 msgid "Esperanto"
-msgstr ""
+msgstr "eszperantó"
 
 #: deployment/dev/api/settings.py:199
 msgid "Spanish"
-msgstr ""
+msgstr "spanyol"
 
 #: deployment/dev/api/settings.py:200
 msgid "Argentinian Spanish"
-msgstr ""
+msgstr "Argentin spanyol"
 
 #: deployment/dev/api/settings.py:201
 msgid "Colombian Spanish"
-msgstr ""
+msgstr "Kolumbiai spanyol"
 
 #: deployment/dev/api/settings.py:202
 msgid "Mexican Spanish"
-msgstr ""
+msgstr "Mexikói spanyol"
 
 #: deployment/dev/api/settings.py:203
 msgid "Nicaraguan Spanish"
-msgstr ""
+msgstr "Nicaraguai spanyol"
 
 #: deployment/dev/api/settings.py:204
 msgid "Venezuelan Spanish"
-msgstr ""
+msgstr "Venezuelai spanyol"
 
 #: deployment/dev/api/settings.py:205
 msgid "Estonian"
-msgstr ""
+msgstr "észt"
 
 #: deployment/dev/api/settings.py:206
 msgid "Basque"
-msgstr ""
+msgstr "baszk"
 
 #: deployment/dev/api/settings.py:207
 msgid "Persian"
-msgstr ""
+msgstr "perzsa"
 
 #: deployment/dev/api/settings.py:208
 msgid "Finnish"
-msgstr ""
+msgstr "finn"
 
 #: deployment/dev/api/settings.py:209
 msgid "French"
-msgstr ""
+msgstr "Francia"
 
 #: deployment/dev/api/settings.py:210
 msgid "Frisian"
-msgstr ""
+msgstr "fríz"
 
 #: deployment/dev/api/settings.py:211
 msgid "Irish"
-msgstr ""
+msgstr "ír"
 
 #: deployment/dev/api/settings.py:212
 msgid "Scottish Gaelic"
-msgstr ""
+msgstr "Skót gael"
 
 #: deployment/dev/api/settings.py:213
 msgid "Galician"
-msgstr ""
+msgstr "Galíciai"
 
 #: deployment/dev/api/settings.py:214
 msgid "Hebrew"
-msgstr ""
+msgstr "héber"
 
 #: deployment/dev/api/settings.py:215
 msgid "Hindi"
-msgstr ""
+msgstr "hindi"
 
 #: deployment/dev/api/settings.py:216
 msgid "Croatian"
-msgstr ""
+msgstr "horvát"
 
 #: deployment/dev/api/settings.py:217
 msgid "Upper Sorbian"
-msgstr ""
+msgstr "Felső szorb"
 
 #: deployment/dev/api/settings.py:218
 msgid "Hungarian"
-msgstr ""
+msgstr "Magyar"
 
 #: deployment/dev/api/settings.py:219
 msgid "Armenian"
-msgstr ""
+msgstr "örmény"
 
 #: deployment/dev/api/settings.py:220
 msgid "Interlingua"
-msgstr ""
+msgstr "Interlingva"
 
 #: deployment/dev/api/settings.py:221
 msgid "Indonesian"
-msgstr ""
+msgstr "indonéz"
 
 #: deployment/dev/api/settings.py:222
 msgid "Igbo"
-msgstr ""
+msgstr "Igbo"
 
 #: deployment/dev/api/settings.py:223
 msgid "Ido"
-msgstr ""
+msgstr "Ido"
 
 #: deployment/dev/api/settings.py:224
 msgid "Icelandic"
-msgstr ""
+msgstr "izlandi"
 
 #: deployment/dev/api/settings.py:225
 msgid "Italian"
-msgstr ""
+msgstr "olasz"
 
 #: deployment/dev/api/settings.py:226
 msgid "Japanese"
-msgstr ""
+msgstr "japán"
 
 #: deployment/dev/api/settings.py:227
 msgid "Georgian"
-msgstr ""
+msgstr "grúz"
 
 #: deployment/dev/api/settings.py:228
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: deployment/dev/api/settings.py:229
 msgid "Kazakh"
-msgstr ""
+msgstr "kazah"
 
 #: deployment/dev/api/settings.py:230
 msgid "Khmer"
-msgstr ""
+msgstr "Khmer"
 
 #: deployment/dev/api/settings.py:231
 msgid "Kannada"
-msgstr ""
+msgstr "Kannada"
 
 #: deployment/dev/api/settings.py:232
 msgid "Korean"
-msgstr ""
+msgstr "koreai"
 
 #: deployment/dev/api/settings.py:233
 msgid "Kyrgyz"
-msgstr ""
+msgstr "Kirgiz"
 
 #: deployment/dev/api/settings.py:234
 msgid "Luxembourgish"
-msgstr ""
+msgstr "Luxemburgi"
 
 #: deployment/dev/api/settings.py:235
 msgid "Lithuanian"
-msgstr ""
+msgstr "litván"
 
 #: deployment/dev/api/settings.py:236
 msgid "Latvian"
-msgstr ""
+msgstr "lett"
 
 #: deployment/dev/api/settings.py:237
 msgid "Macedonian"
-msgstr ""
+msgstr "Macedón"
 
 #: deployment/dev/api/settings.py:238
 msgid "Malayalam"
-msgstr ""
+msgstr "Malayalam"
 
 #: deployment/dev/api/settings.py:239
 msgid "Mongolian"
-msgstr ""
+msgstr "mongol"
 
 #: deployment/dev/api/settings.py:240
 msgid "Marathi"
-msgstr ""
+msgstr "Marathi"
 
 #: deployment/dev/api/settings.py:241
 msgid "Burmese"
-msgstr ""
+msgstr "burmai"
 
 #: deployment/dev/api/settings.py:242
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "Norvég bokmål"
 
 #: deployment/dev/api/settings.py:243
 msgid "Nepali"
-msgstr ""
+msgstr "nepáli"
 
 #: deployment/dev/api/settings.py:244
 msgid "Dutch"
-msgstr ""
+msgstr "holland"
 
 #: deployment/dev/api/settings.py:245
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "Norvég Nynorsk"
 
 #: deployment/dev/api/settings.py:246
 msgid "Ossetic"
-msgstr ""
+msgstr "Oszét"
 
 #: deployment/dev/api/settings.py:247
 msgid "Punjabi"
-msgstr ""
+msgstr "pandzsábi"
 
 #: deployment/dev/api/settings.py:248
 msgid "Polish"
-msgstr ""
+msgstr "fényesít"
 
 #: deployment/dev/api/settings.py:249
 msgid "Portuguese"
-msgstr ""
+msgstr "portugál"
 
 #: deployment/dev/api/settings.py:250
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Brazil-Portugál"
 
 #: deployment/dev/api/settings.py:251
 msgid "Romanian"
-msgstr ""
+msgstr "román"
 
 #: deployment/dev/api/settings.py:252
 msgid "Russian"
-msgstr ""
+msgstr "orosz"
 
 #: deployment/dev/api/settings.py:253
 msgid "Slovak"
-msgstr ""
+msgstr "szlovák"
 
 #: deployment/dev/api/settings.py:254
 msgid "Slovenian"
-msgstr ""
+msgstr "szlovén"
 
 #: deployment/dev/api/settings.py:255
 msgid "Albanian"
-msgstr ""
+msgstr "albán"
 
 #: deployment/dev/api/settings.py:256
 msgid "Serbian"
-msgstr ""
+msgstr "szerb"
 
 #: deployment/dev/api/settings.py:257
 msgid "Serbian Latin"
-msgstr ""
+msgstr "Szerb latin"
 
 #: deployment/dev/api/settings.py:258
 msgid "Swedish"
-msgstr ""
+msgstr "svéd"
 
 #: deployment/dev/api/settings.py:259
 msgid "Swahili"
-msgstr ""
+msgstr "Szuahéli"
 
 #: deployment/dev/api/settings.py:260
 msgid "Tamil"
-msgstr ""
+msgstr "tamil"
 
 #: deployment/dev/api/settings.py:261
 msgid "Telugu"
-msgstr ""
+msgstr "Telugu"
 
 #: deployment/dev/api/settings.py:262
 msgid "Tajik"
-msgstr ""
+msgstr "Tadzsik"
 
 #: deployment/dev/api/settings.py:263
 msgid "Thai"
-msgstr ""
+msgstr "Thai"
 
 #: deployment/dev/api/settings.py:264
 msgid "Turkmen"
-msgstr ""
+msgstr "Türkmén"
 
 #: deployment/dev/api/settings.py:265
 msgid "Turkish"
-msgstr ""
+msgstr "török"
 
 #: deployment/dev/api/settings.py:266
 msgid "Tatar"
-msgstr ""
+msgstr "tatár"
 
 #: deployment/dev/api/settings.py:267
 msgid "Udmurt"
-msgstr ""
+msgstr "Udmurt"
 
 #: deployment/dev/api/settings.py:268
 msgid "Ukrainian"
-msgstr ""
+msgstr "ukrán"
 
 #: deployment/dev/api/settings.py:269
 msgid "Urdu"
-msgstr ""
+msgstr "urdu"
 
 #: deployment/dev/api/settings.py:270
 msgid "Uzbek"
-msgstr ""
+msgstr "üzbég"
 
 #: deployment/dev/api/settings.py:271
 msgid "Vietnamese"
-msgstr ""
+msgstr "vietnami"
 
 #: deployment/dev/api/settings.py:272
 msgid "Simplified Chinese"
-msgstr ""
+msgstr "Egyszerűsített kínai"
 
 #: deployment/dev/api/settings.py:273
 msgid "Traditional Chinese"
-msgstr ""
+msgstr "Tradicionális kínai"
 
 #: deployment/dev/geocurrency/rates/models.py:335
 #: modules/rates/build/lib/geocurrency/rates/models.py:335
 #: modules/rates/geocurrency/rates/models.py:335
 msgid "Rate could not be found"
-msgstr ""
+msgstr "Az arány nem található"
 
 #: deployment/dev/geocurrency/units/__init__.py:4
 #: deployment/dev/geocurrency/units/__init__.py:70
@@ -444,7 +445,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:584
 #: modules/units/geocurrency/units/__init__.py:648
 msgid "dimensionless"
-msgstr ""
+msgstr "dimenzió nélküli"
 
 #: deployment/dev/geocurrency/units/__init__.py:5
 #: deployment/dev/geocurrency/units/__init__.py:211
@@ -582,7 +583,7 @@ msgstr ""
 #: modules/units/geocurrency/units/tests.py:96
 #: modules/units/geocurrency/units/tests.py:101
 msgid "length"
-msgstr ""
+msgstr "hossz"
 
 #: deployment/dev/geocurrency/units/__init__.py:6
 #: deployment/dev/geocurrency/units/__init__.py:191
@@ -627,7 +628,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1446
 #: modules/units/geocurrency/units/__init__.py:1582
 msgid "surface"
-msgstr ""
+msgstr "felület"
 
 #: deployment/dev/geocurrency/units/__init__.py:7
 #: deployment/dev/geocurrency/units/__init__.py:196
@@ -756,7 +757,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1534
 #: modules/units/geocurrency/units/__init__.py:1542
 msgid "volume"
-msgstr ""
+msgstr "hangerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:8
 #: deployment/dev/geocurrency/units/__init__.py:281
@@ -840,7 +841,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1678
 #: modules/units/geocurrency/units/__init__.py:1710
 msgid "time"
-msgstr ""
+msgstr "idő"
 
 #: deployment/dev/geocurrency/units/__init__.py:9
 #: deployment/dev/geocurrency/units/__init__.py:99
@@ -939,7 +940,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1618
 #: modules/units/geocurrency/units/__init__.py:1626
 msgid "mass"
-msgstr ""
+msgstr "tömeg"
 
 #: deployment/dev/geocurrency/units/__init__.py:10
 #: deployment/dev/geocurrency/units/__init__.py:314
@@ -969,7 +970,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1106
 #: modules/units/geocurrency/units/__init__.py:1414
 msgid "speed"
-msgstr ""
+msgstr "sebesség"
 
 #: deployment/dev/geocurrency/units/__init__.py:11
 #: deployment/dev/geocurrency/units/__init__.py:787
@@ -978,7 +979,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:11
 #: modules/units/geocurrency/units/__init__.py:787
 msgid "acceleration"
-msgstr ""
+msgstr "gyorsulás"
 
 #: deployment/dev/geocurrency/units/__init__.py:12
 #: deployment/dev/geocurrency/units/__init__.py:1174
@@ -990,7 +991,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1174
 #: modules/units/geocurrency/units/__init__.py:1178
 msgid "meter per gram"
-msgstr ""
+msgstr "méter / gramm"
 
 #: deployment/dev/geocurrency/units/__init__.py:13
 #: deployment/dev/geocurrency/units/__init__.py:86
@@ -1011,7 +1012,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1322
 #: modules/units/geocurrency/units/__init__.py:1402
 msgid "absorption"
-msgstr ""
+msgstr "abszorpció"
 
 #: deployment/dev/geocurrency/units/__init__.py:14
 #: deployment/dev/geocurrency/units/__init__.py:92
@@ -1059,7 +1060,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1158
 #: modules/units/geocurrency/units/__init__.py:1286
 msgid "force"
-msgstr ""
+msgstr "Kényszerítés"
 
 #: deployment/dev/geocurrency/units/__init__.py:15
 #: deployment/dev/geocurrency/units/__init__.py:34
@@ -1119,7 +1120,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1598
 #: modules/units/geocurrency/units/__init__.py:1670
 msgid "energy"
-msgstr ""
+msgstr "energia"
 
 #: deployment/dev/geocurrency/units/__init__.py:16
 #: deployment/dev/geocurrency/units/__init__.py:129
@@ -1152,7 +1153,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1250
 #: modules/units/geocurrency/units/__init__.py:1462
 msgid "electric current"
-msgstr ""
+msgstr "elektromos áram"
 
 #: deployment/dev/geocurrency/units/__init__.py:17
 #: deployment/dev/geocurrency/units/__init__.py:135
@@ -1176,7 +1177,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1062
 #: modules/units/geocurrency/units/__init__.py:1186
 msgid "electric charge"
-msgstr ""
+msgstr "elektromos töltés"
 
 #: deployment/dev/geocurrency/units/__init__.py:18
 #: deployment/dev/geocurrency/units/__init__.py:658
@@ -1185,7 +1186,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:18
 #: modules/units/geocurrency/units/__init__.py:658
 msgid "elementary charge"
-msgstr ""
+msgstr "elemi töltés"
 
 #: deployment/dev/geocurrency/units/__init__.py:19
 #: deployment/dev/geocurrency/units/__init__.py:156
@@ -1203,7 +1204,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:514
 #: modules/units/geocurrency/units/__init__.py:660
 msgid "electromagnetic inductance"
-msgstr ""
+msgstr "elektromágneses induktivitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:20
 #: deployment/dev/geocurrency/units/__init__.py:871
@@ -1212,7 +1213,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:20
 #: modules/units/geocurrency/units/__init__.py:871
 msgid "electromagnetic resistance"
-msgstr ""
+msgstr "elektromágneses ellenállás"
 
 #: deployment/dev/geocurrency/units/__init__.py:21
 #: deployment/dev/geocurrency/units/__init__.py:181
@@ -1230,7 +1231,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1398
 #: modules/units/geocurrency/units/__init__.py:1474
 msgid "electrical conductance"
-msgstr ""
+msgstr "elektromos vezetőképesség"
 
 #: deployment/dev/geocurrency/units/__init__.py:22
 #: deployment/dev/geocurrency/units/__init__.py:141
@@ -1257,7 +1258,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1486
 #: modules/units/geocurrency/units/__init__.py:1642
 msgid "electric potential difference"
-msgstr ""
+msgstr "elektromos potenciálkülönbség"
 
 #: deployment/dev/geocurrency/units/__init__.py:23
 #: deployment/dev/geocurrency/units/__init__.py:265
@@ -1266,7 +1267,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:23
 #: modules/units/geocurrency/units/__init__.py:265
 msgid "electric field"
-msgstr ""
+msgstr "elektromos mező"
 
 #: deployment/dev/geocurrency/units/__init__.py:24
 #: deployment/dev/geocurrency/units/__init__.py:161
@@ -1284,7 +1285,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:636
 #: modules/units/geocurrency/units/__init__.py:1554
 msgid "linear mass density"
-msgstr ""
+msgstr "lineáris tömegsűrűség"
 
 #: deployment/dev/geocurrency/units/__init__.py:25
 #: deployment/dev/geocurrency/units/__init__.py:273
@@ -1293,7 +1294,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:25
 #: modules/units/geocurrency/units/__init__.py:273
 msgid "intensity"
-msgstr ""
+msgstr "intenzitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:26
 #: deployment/dev/geocurrency/units/__init__.py:277
@@ -1320,7 +1321,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:967
 #: modules/units/geocurrency/units/__init__.py:1262
 msgid "temperature"
-msgstr ""
+msgstr "hőfok"
 
 #: deployment/dev/geocurrency/units/__init__.py:27
 #: deployment/dev/geocurrency/units/__init__.py:1138
@@ -1332,13 +1333,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1138
 #: modules/units/geocurrency/units/__init__.py:1202
 msgid "amount of substance"
-msgstr ""
+msgstr "anyagmennyiség"
 
 #: deployment/dev/geocurrency/units/__init__.py:28
 #: modules/units/build/lib/geocurrency/units/__init__.py:28
 #: modules/units/geocurrency/units/__init__.py:28
 msgid "density of particle"
-msgstr ""
+msgstr "részecske sűrűsége"
 
 #: deployment/dev/geocurrency/units/__init__.py:29
 #: deployment/dev/geocurrency/units/__init__.py:668
@@ -1350,7 +1351,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:668
 #: modules/units/geocurrency/units/__init__.py:963
 msgid "catalytic activity"
-msgstr ""
+msgstr "katalitikus aktivitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:30
 #: deployment/dev/geocurrency/units/__init__.py:344
@@ -1362,7 +1363,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:344
 #: modules/units/geocurrency/units/__init__.py:394
 msgid "quantity of information"
-msgstr ""
+msgstr "információ mennyisége"
 
 #: deployment/dev/geocurrency/units/__init__.py:31
 #: deployment/dev/geocurrency/units/__init__.py:349
@@ -1377,7 +1378,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1238
 #: modules/units/geocurrency/units/__init__.py:1242
 msgid "density of information"
-msgstr ""
+msgstr "információsűrűség"
 
 #: deployment/dev/geocurrency/units/__init__.py:32
 #: deployment/dev/geocurrency/units/__init__.py:35
@@ -1395,7 +1396,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:384
 #: modules/units/geocurrency/units/__init__.py:1170
 msgid "magnetic moment"
-msgstr ""
+msgstr "mágneses pillanat"
 
 #: deployment/dev/geocurrency/units/__init__.py:33
 #: deployment/dev/geocurrency/units/__init__.py:576
@@ -1404,7 +1405,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:33
 #: modules/units/geocurrency/units/__init__.py:576
 msgid "electric moment"
-msgstr ""
+msgstr "elektromos pillanat"
 
 #: deployment/dev/geocurrency/units/__init__.py:36
 #: deployment/dev/geocurrency/units/__init__.py:409
@@ -1413,7 +1414,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:36
 #: modules/units/geocurrency/units/__init__.py:409
 msgid "luminous intensity"
-msgstr ""
+msgstr "fényerősség"
 
 #: deployment/dev/geocurrency/units/__init__.py:37
 #: deployment/dev/geocurrency/units/__init__.py:166
@@ -1428,13 +1429,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:680
 #: modules/units/geocurrency/units/__init__.py:1466
 msgid "electrical capacitance"
-msgstr ""
+msgstr "elektromos kapacitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:38
 #: modules/units/build/lib/geocurrency/units/__init__.py:38
 #: modules/units/geocurrency/units/__init__.py:38
 msgid "electric force"
-msgstr ""
+msgstr "elektromos erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:39
 #: deployment/dev/geocurrency/units/__init__.py:528
@@ -1452,19 +1453,19 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:851
 #: modules/units/geocurrency/units/__init__.py:1350
 msgid "frequency"
-msgstr ""
+msgstr "frekvencia"
 
 #: deployment/dev/geocurrency/units/__init__.py:40
 #: modules/units/build/lib/geocurrency/units/__init__.py:40
 #: modules/units/geocurrency/units/__init__.py:40
 msgid "electromagnetic action"
-msgstr ""
+msgstr "elektromágneses működés"
 
 #: deployment/dev/geocurrency/units/__init__.py:41
 #: modules/units/build/lib/geocurrency/units/__init__.py:41
 #: modules/units/geocurrency/units/__init__.py:41
 msgid "power per unit per wavelength interval"
-msgstr ""
+msgstr "egységnyi teljesítmény hullámhossz-intervallumonként"
 
 #: deployment/dev/geocurrency/units/__init__.py:42
 #: deployment/dev/geocurrency/units/__init__.py:779
@@ -1476,7 +1477,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:779
 #: modules/units/geocurrency/units/__init__.py:1054
 msgid "electrostatic unit of charge"
-msgstr ""
+msgstr "elektrosztatikus töltési egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:43
 #: deployment/dev/geocurrency/units/__init__.py:803
@@ -1485,7 +1486,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:43
 #: modules/units/geocurrency/units/__init__.py:803
 msgid "magnetic induction"
-msgstr ""
+msgstr "mágneses indukció"
 
 #: deployment/dev/geocurrency/units/__init__.py:44
 #: deployment/dev/geocurrency/units/__init__.py:815
@@ -1503,7 +1504,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1306
 #: modules/units/geocurrency/units/__init__.py:1622
 msgid "angle"
-msgstr ""
+msgstr "szög"
 
 #: deployment/dev/geocurrency/units/__init__.py:45
 #: deployment/dev/geocurrency/units/__init__.py:995
@@ -1518,7 +1519,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1166
 #: modules/units/geocurrency/units/__init__.py:1506
 msgid "luminance"
-msgstr ""
+msgstr "fényerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:46
 #: deployment/dev/geocurrency/units/__init__.py:999
@@ -1527,7 +1528,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:46
 #: modules/units/geocurrency/units/__init__.py:999
 msgid "radiation"
-msgstr ""
+msgstr "sugárzás"
 
 #: deployment/dev/geocurrency/units/__init__.py:47
 #: deployment/dev/geocurrency/units/__init__.py:1042
@@ -1536,7 +1537,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:47
 #: modules/units/geocurrency/units/__init__.py:1042
 msgid "luminous flux"
-msgstr ""
+msgstr "fényáram"
 
 #: deployment/dev/geocurrency/units/__init__.py:48
 #: deployment/dev/geocurrency/units/__init__.py:1046
@@ -1545,7 +1546,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:48
 #: modules/units/geocurrency/units/__init__.py:1046
 msgid "illuminance"
-msgstr ""
+msgstr "megvilágítás"
 
 #: deployment/dev/geocurrency/units/__init__.py:49
 #: deployment/dev/geocurrency/units/__init__.py:1048
@@ -1557,7 +1558,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1048
 #: modules/units/geocurrency/units/__init__.py:1050
 msgid "magnetic flux quantum"
-msgstr ""
+msgstr "mágneses fluxus kvantum"
 
 #: deployment/dev/geocurrency/units/__init__.py:50
 #: deployment/dev/geocurrency/units/__init__.py:1130
@@ -1566,13 +1567,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:50
 #: modules/units/geocurrency/units/__init__.py:1130
 msgid "concentration"
-msgstr ""
+msgstr "koncentráció"
 
 #: deployment/dev/geocurrency/units/__init__.py:51
 #: modules/units/build/lib/geocurrency/units/__init__.py:51
 #: modules/units/geocurrency/units/__init__.py:51
 msgid "energy per temperature increment per mole"
-msgstr ""
+msgstr "energia / hőmérséklet növekmény / mol"
 
 #: deployment/dev/geocurrency/units/__init__.py:52
 #: deployment/dev/geocurrency/units/__init__.py:1148
@@ -1584,7 +1585,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1148
 #: modules/units/geocurrency/units/__init__.py:1150
 msgid "neper"
-msgstr ""
+msgstr "neper"
 
 #: deployment/dev/geocurrency/units/__init__.py:53
 #: deployment/dev/geocurrency/units/__init__.py:1160
@@ -1593,7 +1594,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:53
 #: modules/units/geocurrency/units/__init__.py:1160
 msgid "newtonian constant of gravitation"
-msgstr ""
+msgstr "newtoni állandó gravitáció"
 
 #: deployment/dev/geocurrency/units/__init__.py:54
 #: deployment/dev/geocurrency/units/__init__.py:1274
@@ -1608,7 +1609,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1334
 #: modules/units/geocurrency/units/__init__.py:1510
 msgid "viscosity"
-msgstr ""
+msgstr "viszkozitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:55
 #: deployment/dev/geocurrency/units/__init__.py:297
@@ -1662,7 +1663,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1546
 #: modules/units/geocurrency/units/__init__.py:1602
 msgid "pressure"
-msgstr ""
+msgstr "nyomás"
 
 #: deployment/dev/geocurrency/units/__init__.py:56
 #: deployment/dev/geocurrency/units/__init__.py:1314
@@ -1671,7 +1672,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:56
 #: modules/units/geocurrency/units/__init__.py:1314
 msgid "reciprocal length"
-msgstr ""
+msgstr "kölcsönös hosszúságú"
 
 #: deployment/dev/geocurrency/units/__init__.py:57
 #: deployment/dev/geocurrency/units/__init__.py:1326
@@ -1683,7 +1684,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1326
 #: modules/units/geocurrency/units/__init__.py:1330
 msgid "angular speed"
-msgstr ""
+msgstr "szögsebesség"
 
 #: deployment/dev/geocurrency/units/__init__.py:58
 #: deployment/dev/geocurrency/units/__init__.py:1338
@@ -1692,7 +1693,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:58
 #: modules/units/geocurrency/units/__init__.py:1338
 msgid "reciprocal viscosity"
-msgstr ""
+msgstr "kölcsönös viszkozitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:59
 #: deployment/dev/geocurrency/units/__init__.py:1346
@@ -1701,13 +1702,13 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:59
 #: modules/units/geocurrency/units/__init__.py:1346
 msgid "radiation exposure"
-msgstr ""
+msgstr "sugárterhelés"
 
 #: deployment/dev/geocurrency/units/__init__.py:60
 #: modules/units/build/lib/geocurrency/units/__init__.py:60
 #: modules/units/geocurrency/units/__init__.py:60
 msgid "solid degree"
-msgstr ""
+msgstr "szilárd fokozat"
 
 #: deployment/dev/geocurrency/units/__init__.py:61
 #: deployment/dev/geocurrency/units/__init__.py:1458
@@ -1716,7 +1717,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:61
 #: modules/units/geocurrency/units/__init__.py:1458
 msgid "volumetric flow rate"
-msgstr ""
+msgstr "térfogatáram"
 
 #: deployment/dev/geocurrency/units/__init__.py:62
 #: deployment/dev/geocurrency/units/__init__.py:1482
@@ -1728,43 +1729,43 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1482
 #: modules/units/geocurrency/units/__init__.py:1550
 msgid "magnetic field"
-msgstr ""
+msgstr "mágneses mező"
 
 #: deployment/dev/geocurrency/units/__init__.py:63
 #: modules/units/build/lib/geocurrency/units/__init__.py:63
 #: modules/units/geocurrency/units/__init__.py:63
 msgid "mass density"
-msgstr ""
+msgstr "tömegsűrűség"
 
 #: deployment/dev/geocurrency/units/__init__.py:68
 #: modules/units/build/lib/geocurrency/units/__init__.py:68
 #: modules/units/geocurrency/units/__init__.py:68
 msgid "Copper Kα"
-msgstr ""
+msgstr "Réz Kα"
 
 #: deployment/dev/geocurrency/units/__init__.py:73
 #: modules/units/build/lib/geocurrency/units/__init__.py:73
 #: modules/units/geocurrency/units/__init__.py:73
 msgid "Molybdenum K-α"
-msgstr ""
+msgstr "Molibdén K-a"
 
 #: deployment/dev/geocurrency/units/__init__.py:78
 #: modules/units/build/lib/geocurrency/units/__init__.py:78
 #: modules/units/geocurrency/units/__init__.py:78
 msgid "Tungsten K-α"
-msgstr ""
+msgstr "Volfrám K-α"
 
 #: deployment/dev/geocurrency/units/__init__.py:79
 #: modules/units/build/lib/geocurrency/units/__init__.py:79
 #: modules/units/geocurrency/units/__init__.py:79
 msgid "W Kα"
-msgstr ""
+msgstr "W Kα"
 
 #: deployment/dev/geocurrency/units/__init__.py:83
 #: modules/units/build/lib/geocurrency/units/__init__.py:83
 #: modules/units/geocurrency/units/__init__.py:83
 msgid "RKM"
-msgstr ""
+msgstr "RKM"
 
 #: deployment/dev/geocurrency/units/__init__.py:89
 #: deployment/dev/geocurrency/units/__init__.py:748
@@ -1773,7 +1774,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:89
 #: modules/units/geocurrency/units/__init__.py:748
 msgid "long ton-force"
-msgstr ""
+msgstr "hosszú tonnaerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:102
 #: deployment/dev/geocurrency/units/__init__.py:1035
@@ -1782,85 +1783,85 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:102
 #: modules/units/geocurrency/units/__init__.py:1035
 msgid "long ton"
-msgstr ""
+msgstr "hosszú tonna"
 
 #: deployment/dev/geocurrency/units/__init__.py:108
 #: modules/units/build/lib/geocurrency/units/__init__.py:108
 #: modules/units/geocurrency/units/__init__.py:108
 msgid "short ton force"
-msgstr ""
+msgstr "rövid tonna erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:114
 #: modules/units/build/lib/geocurrency/units/__init__.py:114
 #: modules/units/geocurrency/units/__init__.py:114
 msgid "short hundredweight"
-msgstr ""
+msgstr "rövid százsúlyú"
 
 #: deployment/dev/geocurrency/units/__init__.py:120
 #: modules/units/build/lib/geocurrency/units/__init__.py:120
 #: modules/units/geocurrency/units/__init__.py:120
 msgid "short ton"
-msgstr ""
+msgstr "rövid tonna"
 
 #: deployment/dev/geocurrency/units/__init__.py:126
 #: modules/units/build/lib/geocurrency/units/__init__.py:126
 #: modules/units/geocurrency/units/__init__.py:126
 msgid "US International Ampere"
-msgstr ""
+msgstr "USA Nemzetközi Ampere"
 
 #: deployment/dev/geocurrency/units/__init__.py:132
 #: modules/units/build/lib/geocurrency/units/__init__.py:132
 #: modules/units/geocurrency/units/__init__.py:132
 msgid "US international Ohm"
-msgstr ""
+msgstr "USA nemzetközi Ohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:138
 #: modules/units/build/lib/geocurrency/units/__init__.py:138
 #: modules/units/geocurrency/units/__init__.py:138
 msgid "US international Volt"
-msgstr ""
+msgstr "Amerikai nemzetközi Volt"
 
 #: deployment/dev/geocurrency/units/__init__.py:144
 #: modules/units/build/lib/geocurrency/units/__init__.py:144
 #: modules/units/geocurrency/units/__init__.py:144
 msgid "US therm"
-msgstr ""
+msgstr "USA term"
 
 #: deployment/dev/geocurrency/units/__init__.py:146
 #: modules/units/build/lib/geocurrency/units/__init__.py:146
 #: modules/units/geocurrency/units/__init__.py:146
 msgid "heat energy"
-msgstr ""
+msgstr "hőenergia"
 
 #: deployment/dev/geocurrency/units/__init__.py:149
 #: modules/units/build/lib/geocurrency/units/__init__.py:149
 #: modules/units/geocurrency/units/__init__.py:149
 msgid "abampere"
-msgstr ""
+msgstr "abampere"
 
 #: deployment/dev/geocurrency/units/__init__.py:154
 #: modules/units/build/lib/geocurrency/units/__init__.py:154
 #: modules/units/geocurrency/units/__init__.py:154
 msgid "abcoulomb"
-msgstr ""
+msgstr "abcoulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:159
 #: modules/units/build/lib/geocurrency/units/__init__.py:159
 #: modules/units/geocurrency/units/__init__.py:159
 msgid "Aberdeen"
-msgstr ""
+msgstr "Aberdeen"
 
 #: deployment/dev/geocurrency/units/__init__.py:164
 #: modules/units/build/lib/geocurrency/units/__init__.py:164
 #: modules/units/geocurrency/units/__init__.py:164
 msgid "abfarad"
-msgstr ""
+msgstr "abfarad"
 
 #: deployment/dev/geocurrency/units/__init__.py:169
 #: modules/units/build/lib/geocurrency/units/__init__.py:169
 #: modules/units/geocurrency/units/__init__.py:169
 msgid "abhenry"
-msgstr ""
+msgstr "abhenry"
 
 #: deployment/dev/geocurrency/units/__init__.py:171
 #: deployment/dev/geocurrency/units/__init__.py:484
@@ -1875,37 +1876,37 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:847
 #: modules/units/geocurrency/units/__init__.py:1470
 msgid "electrical inductance"
-msgstr ""
+msgstr "elektromos induktivitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:174
 #: modules/units/build/lib/geocurrency/units/__init__.py:174
 #: modules/units/geocurrency/units/__init__.py:174
 msgid "abohm"
-msgstr ""
+msgstr "abohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:179
 #: modules/units/build/lib/geocurrency/units/__init__.py:179
 #: modules/units/geocurrency/units/__init__.py:179
 msgid "absiemens"
-msgstr ""
+msgstr "absiemens"
 
 #: deployment/dev/geocurrency/units/__init__.py:184
 #: modules/units/build/lib/geocurrency/units/__init__.py:184
 #: modules/units/geocurrency/units/__init__.py:184
 msgid "abvolt"
-msgstr ""
+msgstr "abvolt"
 
 #: deployment/dev/geocurrency/units/__init__.py:189
 #: modules/units/build/lib/geocurrency/units/__init__.py:189
 #: modules/units/geocurrency/units/__init__.py:189
 msgid "acre"
-msgstr ""
+msgstr "hold"
 
 #: deployment/dev/geocurrency/units/__init__.py:194
 #: modules/units/build/lib/geocurrency/units/__init__.py:194
 #: modules/units/geocurrency/units/__init__.py:194
 msgid "acre-foot"
-msgstr ""
+msgstr "hektáros"
 
 #: deployment/dev/geocurrency/units/__init__.py:199
 #: deployment/dev/geocurrency/units/__init__.py:260
@@ -1914,79 +1915,79 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:199
 #: modules/units/geocurrency/units/__init__.py:260
 msgid "ampere"
-msgstr ""
+msgstr "amper"
 
 #: deployment/dev/geocurrency/units/__init__.py:204
 #: modules/units/build/lib/geocurrency/units/__init__.py:204
 #: modules/units/geocurrency/units/__init__.py:204
 msgid "ampere-turn"
-msgstr ""
+msgstr "amperfordulat"
 
 #: deployment/dev/geocurrency/units/__init__.py:209
 #: modules/units/build/lib/geocurrency/units/__init__.py:209
 #: modules/units/geocurrency/units/__init__.py:209
 msgid "angstrom"
-msgstr ""
+msgstr "angström"
 
 #: deployment/dev/geocurrency/units/__init__.py:214
 #: modules/units/build/lib/geocurrency/units/__init__.py:214
 #: modules/units/geocurrency/units/__init__.py:214
 msgid "angstrom star"
-msgstr ""
+msgstr "angström csillag"
 
 #: deployment/dev/geocurrency/units/__init__.py:219
 #: modules/units/build/lib/geocurrency/units/__init__.py:219
 #: modules/units/geocurrency/units/__init__.py:219
 msgid "apothecary dram"
-msgstr ""
+msgstr "patikus dram"
 
 #: deployment/dev/geocurrency/units/__init__.py:224
 #: modules/units/build/lib/geocurrency/units/__init__.py:224
 #: modules/units/geocurrency/units/__init__.py:224
 msgid "apothecary ounce"
-msgstr ""
+msgstr "patikus uncia"
 
 #: deployment/dev/geocurrency/units/__init__.py:229
 #: modules/units/build/lib/geocurrency/units/__init__.py:229
 #: modules/units/geocurrency/units/__init__.py:229
 msgid "apothecary pound"
-msgstr ""
+msgstr "patikus font"
 
 #: deployment/dev/geocurrency/units/__init__.py:233
 #: modules/units/build/lib/geocurrency/units/__init__.py:233
 #: modules/units/geocurrency/units/__init__.py:233
 msgid "minute of arc"
-msgstr ""
+msgstr "ívperc"
 
 #: deployment/dev/geocurrency/units/__init__.py:237
 #: modules/units/build/lib/geocurrency/units/__init__.py:237
 #: modules/units/geocurrency/units/__init__.py:237
 msgid "second of arc"
-msgstr ""
+msgstr "ív másodperc"
 
 #: deployment/dev/geocurrency/units/__init__.py:241
 #: modules/units/build/lib/geocurrency/units/__init__.py:241
 #: modules/units/geocurrency/units/__init__.py:241
 msgid "are"
-msgstr ""
+msgstr "vannak"
 
 #: deployment/dev/geocurrency/units/__init__.py:245
 #: modules/units/build/lib/geocurrency/units/__init__.py:245
 #: modules/units/geocurrency/units/__init__.py:245
 msgid "astronomical unit"
-msgstr ""
+msgstr "csillagászati egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:249
 #: modules/units/build/lib/geocurrency/units/__init__.py:249
 #: modules/units/geocurrency/units/__init__.py:249
 msgid "atmosphere liter"
-msgstr ""
+msgstr "légkör liter"
 
 #: deployment/dev/geocurrency/units/__init__.py:253
 #: modules/units/build/lib/geocurrency/units/__init__.py:253
 #: modules/units/geocurrency/units/__init__.py:253
 msgid "atomic mass constant"
-msgstr ""
+msgstr "atomi tömegállandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:255
 #: deployment/dev/geocurrency/units/__init__.py:285
@@ -2106,175 +2107,175 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1702
 #: modules/units/geocurrency/units/__init__.py:1714
 msgid "constant"
-msgstr ""
+msgstr "állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:258
 #: modules/units/build/lib/geocurrency/units/__init__.py:258
 #: modules/units/geocurrency/units/__init__.py:258
 msgid "atomic unit of current"
-msgstr ""
+msgstr "atomi áramegység"
 
 #: deployment/dev/geocurrency/units/__init__.py:263
 #: modules/units/build/lib/geocurrency/units/__init__.py:263
 #: modules/units/geocurrency/units/__init__.py:263
 msgid "atomic unit of electric field"
-msgstr ""
+msgstr "az elektromos tér atomi egysége"
 
 #: deployment/dev/geocurrency/units/__init__.py:267
 #: modules/units/build/lib/geocurrency/units/__init__.py:267
 #: modules/units/geocurrency/units/__init__.py:267
 msgid "atomic unit of force"
-msgstr ""
+msgstr "atomi erőegység"
 
 #: deployment/dev/geocurrency/units/__init__.py:271
 #: modules/units/build/lib/geocurrency/units/__init__.py:271
 #: modules/units/geocurrency/units/__init__.py:271
 msgid "atomic unit of intensity"
-msgstr ""
+msgstr "atomi intenzitási egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:275
 #: modules/units/build/lib/geocurrency/units/__init__.py:275
 #: modules/units/geocurrency/units/__init__.py:275
 msgid "atomic unit of temperature"
-msgstr ""
+msgstr "atomi hőmérsékleti egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:279
 #: modules/units/build/lib/geocurrency/units/__init__.py:279
 #: modules/units/geocurrency/units/__init__.py:279
 msgid "atomic unit of time"
-msgstr ""
+msgstr "atomi időegység"
 
 #: deployment/dev/geocurrency/units/__init__.py:283
 #: modules/units/build/lib/geocurrency/units/__init__.py:283
 #: modules/units/geocurrency/units/__init__.py:283
 msgid "Avogadro constant"
-msgstr ""
+msgstr "Avogadro állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:287
 #: modules/units/build/lib/geocurrency/units/__init__.py:287
 #: modules/units/geocurrency/units/__init__.py:287
 msgid "Avogadro number"
-msgstr ""
+msgstr "Avogadro szám"
 
 #: deployment/dev/geocurrency/units/__init__.py:291
 #: modules/units/build/lib/geocurrency/units/__init__.py:291
 #: modules/units/geocurrency/units/__init__.py:291
 msgid "bag"
-msgstr ""
+msgstr "táska"
 
 #: deployment/dev/geocurrency/units/__init__.py:293
 #: modules/units/build/lib/geocurrency/units/__init__.py:293
 #: modules/units/geocurrency/units/__init__.py:293
 msgid "quantity"
-msgstr ""
+msgstr "Mennyiség"
 
 #: deployment/dev/geocurrency/units/__init__.py:295
 #: modules/units/build/lib/geocurrency/units/__init__.py:295
 #: modules/units/geocurrency/units/__init__.py:295
 msgid "bar"
-msgstr ""
+msgstr "rúd"
 
 #: deployment/dev/geocurrency/units/__init__.py:299
 #: modules/units/build/lib/geocurrency/units/__init__.py:299
 #: modules/units/geocurrency/units/__init__.py:299
 msgid "barn"
-msgstr ""
+msgstr "istálló"
 
 #: deployment/dev/geocurrency/units/__init__.py:303
 #: modules/units/build/lib/geocurrency/units/__init__.py:303
 #: modules/units/geocurrency/units/__init__.py:303
 msgid "barrel"
-msgstr ""
+msgstr "hordó"
 
 #: deployment/dev/geocurrency/units/__init__.py:307
 #: modules/units/build/lib/geocurrency/units/__init__.py:307
 #: modules/units/geocurrency/units/__init__.py:307
 msgid "barrye"
-msgstr ""
+msgstr "barrye"
 
 #: deployment/dev/geocurrency/units/__init__.py:312
 #: modules/units/build/lib/geocurrency/units/__init__.py:312
 #: modules/units/geocurrency/units/__init__.py:312
 msgid "baud"
-msgstr ""
+msgstr "baud"
 
 #: deployment/dev/geocurrency/units/__init__.py:317
 #: modules/units/build/lib/geocurrency/units/__init__.py:317
 #: modules/units/geocurrency/units/__init__.py:317
 msgid "becquerel"
-msgstr ""
+msgstr "becquerel"
 
 #: deployment/dev/geocurrency/units/__init__.py:319
 #: modules/units/build/lib/geocurrency/units/__init__.py:319
 #: modules/units/geocurrency/units/__init__.py:319
 msgid "radioactivity"
-msgstr ""
+msgstr "radioaktivitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:322
 #: modules/units/build/lib/geocurrency/units/__init__.py:322
 #: modules/units/geocurrency/units/__init__.py:322
 msgid "beer barrel"
-msgstr ""
+msgstr "sörös hordó"
 
 #: deployment/dev/geocurrency/units/__init__.py:327
 #: modules/units/build/lib/geocurrency/units/__init__.py:327
 #: modules/units/geocurrency/units/__init__.py:327
 msgid "bel"
-msgstr ""
+msgstr "bel"
 
 #: deployment/dev/geocurrency/units/__init__.py:329
 #: modules/units/build/lib/geocurrency/units/__init__.py:329
 #: modules/units/geocurrency/units/__init__.py:329
 msgid "field quantity"
-msgstr ""
+msgstr "mezőmennyiség"
 
 #: deployment/dev/geocurrency/units/__init__.py:332
 #: modules/units/build/lib/geocurrency/units/__init__.py:332
 #: modules/units/geocurrency/units/__init__.py:332
 msgid "biot"
-msgstr ""
+msgstr "biot"
 
 #: deployment/dev/geocurrency/units/__init__.py:337
 #: modules/units/build/lib/geocurrency/units/__init__.py:337
 #: modules/units/geocurrency/units/__init__.py:337
 msgid "biot turn"
-msgstr ""
+msgstr "biot fordul"
 
 #: deployment/dev/geocurrency/units/__init__.py:342
 #: modules/units/build/lib/geocurrency/units/__init__.py:342
 #: modules/units/geocurrency/units/__init__.py:342
 msgid "bit"
-msgstr ""
+msgstr "bit"
 
 #: deployment/dev/geocurrency/units/__init__.py:347
 #: modules/units/build/lib/geocurrency/units/__init__.py:347
 #: modules/units/geocurrency/units/__init__.py:347
 msgid "bits per pixel"
-msgstr ""
+msgstr "bit / pixel"
 
 #: deployment/dev/geocurrency/units/__init__.py:352
 #: modules/units/build/lib/geocurrency/units/__init__.py:352
 #: modules/units/geocurrency/units/__init__.py:352
 msgid "board foot"
-msgstr ""
+msgstr "deszkaláb"
 
 #: deployment/dev/geocurrency/units/__init__.py:357
 #: modules/units/build/lib/geocurrency/units/__init__.py:357
 #: modules/units/geocurrency/units/__init__.py:357
 msgid "bohr"
-msgstr ""
+msgstr "bohr"
 
 #: deployment/dev/geocurrency/units/__init__.py:362
 #: modules/units/build/lib/geocurrency/units/__init__.py:362
 #: modules/units/geocurrency/units/__init__.py:362
 msgid "bohr magneton"
-msgstr ""
+msgstr "bohr magneton"
 
 #: deployment/dev/geocurrency/units/__init__.py:367
 #: modules/units/build/lib/geocurrency/units/__init__.py:367
 #: modules/units/geocurrency/units/__init__.py:367
 msgid "boiler horsepower"
-msgstr ""
+msgstr "kazán lóerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:369
 #: deployment/dev/geocurrency/units/__init__.py:509
@@ -2301,543 +2302,543 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1646
 #: modules/units/geocurrency/units/__init__.py:1666
 msgid "power"
-msgstr ""
+msgstr "erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:372
 #: modules/units/build/lib/geocurrency/units/__init__.py:372
 #: modules/units/geocurrency/units/__init__.py:372
 msgid "boltzmann constant"
-msgstr ""
+msgstr "boltzmann állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:377
 #: modules/units/build/lib/geocurrency/units/__init__.py:377
 #: modules/units/geocurrency/units/__init__.py:377
 msgid "british thermal unit"
-msgstr ""
+msgstr "brit termikus egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:382
 #: modules/units/build/lib/geocurrency/units/__init__.py:382
 #: modules/units/geocurrency/units/__init__.py:382
 msgid "buckingham"
-msgstr ""
+msgstr "buckingham"
 
 #: deployment/dev/geocurrency/units/__init__.py:387
 #: modules/units/build/lib/geocurrency/units/__init__.py:387
 #: modules/units/geocurrency/units/__init__.py:387
 msgid "bushel"
-msgstr ""
+msgstr "véka"
 
 #: deployment/dev/geocurrency/units/__init__.py:392
 #: modules/units/build/lib/geocurrency/units/__init__.py:392
 #: modules/units/geocurrency/units/__init__.py:392
 msgid "byte"
-msgstr ""
+msgstr "byte"
 
 #: deployment/dev/geocurrency/units/__init__.py:397
 #: modules/units/build/lib/geocurrency/units/__init__.py:397
 #: modules/units/geocurrency/units/__init__.py:397
 msgid "cable length"
-msgstr ""
+msgstr "kábelhosszúság"
 
 #: deployment/dev/geocurrency/units/__init__.py:402
 #: modules/units/build/lib/geocurrency/units/__init__.py:402
 #: modules/units/geocurrency/units/__init__.py:402
 msgid "calorie"
-msgstr ""
+msgstr "kalória"
 
 #: deployment/dev/geocurrency/units/__init__.py:407
 #: modules/units/build/lib/geocurrency/units/__init__.py:407
 #: modules/units/geocurrency/units/__init__.py:407
 msgid "candela"
-msgstr ""
+msgstr "kandela"
 
 #: deployment/dev/geocurrency/units/__init__.py:412
 #: modules/units/build/lib/geocurrency/units/__init__.py:412
 #: modules/units/geocurrency/units/__init__.py:412
 msgid "carat"
-msgstr ""
+msgstr "karát"
 
 #: deployment/dev/geocurrency/units/__init__.py:417
 #: modules/units/build/lib/geocurrency/units/__init__.py:417
 #: modules/units/geocurrency/units/__init__.py:417
 msgid "centimeter H20"
-msgstr ""
+msgstr "centiméter H20"
 
 #: deployment/dev/geocurrency/units/__init__.py:422
 #: modules/units/build/lib/geocurrency/units/__init__.py:422
 #: modules/units/geocurrency/units/__init__.py:422
 msgid "centimeter Hg"
-msgstr ""
+msgstr "centiméter Hg"
 
 #: deployment/dev/geocurrency/units/__init__.py:427
 #: modules/units/build/lib/geocurrency/units/__init__.py:427
 #: modules/units/geocurrency/units/__init__.py:427
 msgid "century"
-msgstr ""
+msgstr "század"
 
 #: deployment/dev/geocurrency/units/__init__.py:432
 #: modules/units/build/lib/geocurrency/units/__init__.py:432
 #: modules/units/geocurrency/units/__init__.py:432
 msgid "chain"
-msgstr ""
+msgstr "lánc"
 
 #: deployment/dev/geocurrency/units/__init__.py:437
 #: modules/units/build/lib/geocurrency/units/__init__.py:437
 #: modules/units/geocurrency/units/__init__.py:437
 msgid "cicero"
-msgstr ""
+msgstr "cicero"
 
 #: deployment/dev/geocurrency/units/__init__.py:442
 #: modules/units/build/lib/geocurrency/units/__init__.py:442
 #: modules/units/geocurrency/units/__init__.py:442
 msgid "circular mil"
-msgstr ""
+msgstr "körkörös mil"
 
 #: deployment/dev/geocurrency/units/__init__.py:447
 #: modules/units/build/lib/geocurrency/units/__init__.py:447
 #: modules/units/geocurrency/units/__init__.py:447
 msgid "classical electron radius"
-msgstr ""
+msgstr "klasszikus elektron sugara"
 
 #: deployment/dev/geocurrency/units/__init__.py:452
 #: modules/units/build/lib/geocurrency/units/__init__.py:452
 #: modules/units/geocurrency/units/__init__.py:452
 msgid "clausius"
-msgstr ""
+msgstr "clausius"
 
 #: deployment/dev/geocurrency/units/__init__.py:457
 #: modules/units/build/lib/geocurrency/units/__init__.py:457
 #: modules/units/geocurrency/units/__init__.py:457
 msgid "common year"
-msgstr ""
+msgstr "közös év"
 
 #: deployment/dev/geocurrency/units/__init__.py:462
 #: modules/units/build/lib/geocurrency/units/__init__.py:462
 #: modules/units/geocurrency/units/__init__.py:462
 msgid "conductance quantum"
-msgstr ""
+msgstr "vezetőképességi kvantum"
 
 #: deployment/dev/geocurrency/units/__init__.py:467
 #: modules/units/build/lib/geocurrency/units/__init__.py:467
 #: modules/units/geocurrency/units/__init__.py:467
 msgid "conventional ampere"
-msgstr ""
+msgstr "hagyományos amper"
 
 #: deployment/dev/geocurrency/units/__init__.py:472
 #: modules/units/build/lib/geocurrency/units/__init__.py:472
 #: modules/units/geocurrency/units/__init__.py:472
 msgid "conventional coulomb"
-msgstr ""
+msgstr "hagyományos coulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:477
 #: modules/units/build/lib/geocurrency/units/__init__.py:477
 #: modules/units/geocurrency/units/__init__.py:477
 msgid "conventional farad"
-msgstr ""
+msgstr "konvencionális farad"
 
 #: deployment/dev/geocurrency/units/__init__.py:479
 #: modules/units/build/lib/geocurrency/units/__init__.py:479
 #: modules/units/geocurrency/units/__init__.py:479
 msgid "eletrical capacitance"
-msgstr ""
+msgstr "villamos kapacitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:482
 #: modules/units/build/lib/geocurrency/units/__init__.py:482
 #: modules/units/geocurrency/units/__init__.py:482
 msgid "conventional henry"
-msgstr ""
+msgstr "konvencionális Henry"
 
 #: deployment/dev/geocurrency/units/__init__.py:487
 #: modules/units/build/lib/geocurrency/units/__init__.py:487
 #: modules/units/geocurrency/units/__init__.py:487
 msgid "conventional josephson constant"
-msgstr ""
+msgstr "hagyományos josephson állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:492
 #: modules/units/build/lib/geocurrency/units/__init__.py:492
 #: modules/units/geocurrency/units/__init__.py:492
 msgid "conventional ohm"
-msgstr ""
+msgstr "hagyományos ohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:497
 #: modules/units/build/lib/geocurrency/units/__init__.py:497
 #: modules/units/geocurrency/units/__init__.py:497
 msgid "conventional volt"
-msgstr ""
+msgstr "hagyományos volt"
 
 #: deployment/dev/geocurrency/units/__init__.py:502
 #: modules/units/build/lib/geocurrency/units/__init__.py:502
 #: modules/units/geocurrency/units/__init__.py:502
 msgid "conventional Von Klitzing constant"
-msgstr ""
+msgstr "hagyományos Von Klitzing-állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:507
 #: modules/units/build/lib/geocurrency/units/__init__.py:507
 #: modules/units/geocurrency/units/__init__.py:507
 msgid "conventional Watt"
-msgstr ""
+msgstr "hagyományos watt"
 
 #: deployment/dev/geocurrency/units/__init__.py:512
 #: modules/units/build/lib/geocurrency/units/__init__.py:512
 #: modules/units/geocurrency/units/__init__.py:512
 msgid "coulomb"
-msgstr ""
+msgstr "coulomb"
 
 #: deployment/dev/geocurrency/units/__init__.py:516
 #: modules/units/build/lib/geocurrency/units/__init__.py:516
 #: modules/units/geocurrency/units/__init__.py:516
 msgid "coulomb constant"
-msgstr ""
+msgstr "coulomb állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:521
 #: modules/units/build/lib/geocurrency/units/__init__.py:521
 #: modules/units/geocurrency/units/__init__.py:521
 msgid "count"
-msgstr ""
+msgstr "számol"
 
 #: deployment/dev/geocurrency/units/__init__.py:526
 #: modules/units/build/lib/geocurrency/units/__init__.py:526
 #: modules/units/geocurrency/units/__init__.py:526
 msgid "counts per second"
-msgstr ""
+msgstr "másodpercenként számít"
 
 #: deployment/dev/geocurrency/units/__init__.py:531
 #: modules/units/build/lib/geocurrency/units/__init__.py:531
 #: modules/units/geocurrency/units/__init__.py:531
 msgid "CSS pixel"
-msgstr ""
+msgstr "CSS pixel"
 
 #: deployment/dev/geocurrency/units/__init__.py:536
 #: modules/units/build/lib/geocurrency/units/__init__.py:536
 #: modules/units/geocurrency/units/__init__.py:536
 msgid "cubic centimeter"
-msgstr ""
+msgstr "köbcentiméter"
 
 #: deployment/dev/geocurrency/units/__init__.py:541
 #: modules/units/build/lib/geocurrency/units/__init__.py:541
 #: modules/units/geocurrency/units/__init__.py:541
 msgid "cubic foot"
-msgstr ""
+msgstr "köbméter"
 
 #: deployment/dev/geocurrency/units/__init__.py:546
 #: modules/units/build/lib/geocurrency/units/__init__.py:546
 #: modules/units/geocurrency/units/__init__.py:546
 msgid "cubic inch"
-msgstr ""
+msgstr "köbcenti"
 
 #: deployment/dev/geocurrency/units/__init__.py:550
 #: modules/units/build/lib/geocurrency/units/__init__.py:550
 #: modules/units/geocurrency/units/__init__.py:550
 msgid "cubic yard"
-msgstr ""
+msgstr "köbméter udvar"
 
 #: deployment/dev/geocurrency/units/__init__.py:554
 #: modules/units/build/lib/geocurrency/units/__init__.py:554
 #: modules/units/geocurrency/units/__init__.py:554
 msgid "cup"
-msgstr ""
+msgstr "csésze"
 
 #: deployment/dev/geocurrency/units/__init__.py:558
 #: modules/units/build/lib/geocurrency/units/__init__.py:558
 #: modules/units/geocurrency/units/__init__.py:558
 msgid "curie"
-msgstr ""
+msgstr "curie"
 
 #: deployment/dev/geocurrency/units/__init__.py:562
 #: modules/units/build/lib/geocurrency/units/__init__.py:562
 #: modules/units/geocurrency/units/__init__.py:562
 msgid "dalton"
-msgstr ""
+msgstr "dalton"
 
 #: deployment/dev/geocurrency/units/__init__.py:566
 #: modules/units/build/lib/geocurrency/units/__init__.py:566
 #: modules/units/geocurrency/units/__init__.py:566
 msgid "darcy"
-msgstr ""
+msgstr "darcy"
 
 #: deployment/dev/geocurrency/units/__init__.py:568
 #: modules/units/build/lib/geocurrency/units/__init__.py:568
 #: modules/units/geocurrency/units/__init__.py:568
 msgid "permeability"
-msgstr ""
+msgstr "áteresztőképesség"
 
 #: deployment/dev/geocurrency/units/__init__.py:570
 #: modules/units/build/lib/geocurrency/units/__init__.py:570
 #: modules/units/geocurrency/units/__init__.py:570
 msgid "day"
-msgstr ""
+msgstr "nap"
 
 #: deployment/dev/geocurrency/units/__init__.py:571
 #: modules/units/build/lib/geocurrency/units/__init__.py:571
 #: modules/units/geocurrency/units/__init__.py:571
 msgctxt "unit"
 msgid "day"
-msgstr ""
+msgstr "nap"
 
 #: deployment/dev/geocurrency/units/__init__.py:574
 #: modules/units/build/lib/geocurrency/units/__init__.py:574
 #: modules/units/geocurrency/units/__init__.py:574
 msgid "debye"
-msgstr ""
+msgstr "debye"
 
 #: deployment/dev/geocurrency/units/__init__.py:578
 #: modules/units/build/lib/geocurrency/units/__init__.py:578
 #: modules/units/geocurrency/units/__init__.py:578
 msgid "decade"
-msgstr ""
+msgstr "évtized"
 
 #: deployment/dev/geocurrency/units/__init__.py:579
 #: modules/units/build/lib/geocurrency/units/__init__.py:579
 #: modules/units/geocurrency/units/__init__.py:579
 msgctxt "symbol"
 msgid "decade"
-msgstr ""
+msgstr "évtized"
 
 #: deployment/dev/geocurrency/units/__init__.py:582
 #: modules/units/build/lib/geocurrency/units/__init__.py:582
 #: modules/units/geocurrency/units/__init__.py:582
 msgid "degree"
-msgstr ""
+msgstr "fokozat"
 
 #: deployment/dev/geocurrency/units/__init__.py:586
 #: modules/units/build/lib/geocurrency/units/__init__.py:586
 #: modules/units/geocurrency/units/__init__.py:586
 msgid "degree Celsius"
-msgstr ""
+msgstr "Celsius fok"
 
 #: deployment/dev/geocurrency/units/__init__.py:590
 #: modules/units/build/lib/geocurrency/units/__init__.py:590
 #: modules/units/geocurrency/units/__init__.py:590
 msgid "degree Fahrenheit"
-msgstr ""
+msgstr "fok Fahrenheit"
 
 #: deployment/dev/geocurrency/units/__init__.py:594
 #: modules/units/build/lib/geocurrency/units/__init__.py:594
 #: modules/units/geocurrency/units/__init__.py:594
 msgid "degree Rankine"
-msgstr ""
+msgstr "fokozatú Rankine"
 
 #: deployment/dev/geocurrency/units/__init__.py:598
 #: modules/units/build/lib/geocurrency/units/__init__.py:598
 #: modules/units/geocurrency/units/__init__.py:598
 msgid "degree Reaumur"
-msgstr ""
+msgstr "fokú Reaumur"
 
 #: deployment/dev/geocurrency/units/__init__.py:602
 #: modules/units/build/lib/geocurrency/units/__init__.py:602
 #: modules/units/geocurrency/units/__init__.py:602
 msgid "denier"
-msgstr ""
+msgstr "tagadó"
 
 #: deployment/dev/geocurrency/units/__init__.py:606
 #: modules/units/build/lib/geocurrency/units/__init__.py:606
 #: modules/units/geocurrency/units/__init__.py:606
 msgid "didot"
-msgstr ""
+msgstr "didot"
 
 #: deployment/dev/geocurrency/units/__init__.py:610
 #: modules/units/build/lib/geocurrency/units/__init__.py:610
 #: modules/units/geocurrency/units/__init__.py:610
 msgid "Dirac constant"
-msgstr ""
+msgstr "Dirac állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:614
 #: modules/units/build/lib/geocurrency/units/__init__.py:614
 #: modules/units/geocurrency/units/__init__.py:614
 msgid "dram"
-msgstr ""
+msgstr "dram"
 
 #: deployment/dev/geocurrency/units/__init__.py:618
 #: modules/units/build/lib/geocurrency/units/__init__.py:618
 #: modules/units/geocurrency/units/__init__.py:618
 msgid "dry barrel"
-msgstr ""
+msgstr "száraz hordó"
 
 #: deployment/dev/geocurrency/units/__init__.py:622
 #: modules/units/build/lib/geocurrency/units/__init__.py:622
 #: modules/units/geocurrency/units/__init__.py:622
 msgid "dry gallon"
-msgstr ""
+msgstr "száraz gallon"
 
 #: deployment/dev/geocurrency/units/__init__.py:626
 #: modules/units/build/lib/geocurrency/units/__init__.py:626
 #: modules/units/geocurrency/units/__init__.py:626
 msgid "dry pint"
-msgstr ""
+msgstr "száraz pint"
 
 #: deployment/dev/geocurrency/units/__init__.py:630
 #: modules/units/build/lib/geocurrency/units/__init__.py:630
 #: modules/units/geocurrency/units/__init__.py:630
 msgid "dry quart"
-msgstr ""
+msgstr "száraz liter"
 
 #: deployment/dev/geocurrency/units/__init__.py:634
 #: modules/units/build/lib/geocurrency/units/__init__.py:634
 #: modules/units/geocurrency/units/__init__.py:634
 msgid "decitex"
-msgstr ""
+msgstr "decitex"
 
 #: deployment/dev/geocurrency/units/__init__.py:638
 #: modules/units/build/lib/geocurrency/units/__init__.py:638
 #: modules/units/geocurrency/units/__init__.py:638
 msgid "dyne"
-msgstr ""
+msgstr "din"
 
 #: deployment/dev/geocurrency/units/__init__.py:642
 #: modules/units/build/lib/geocurrency/units/__init__.py:642
 #: modules/units/geocurrency/units/__init__.py:642
 msgid "eletcrical horsepower"
-msgstr ""
+msgstr "eletrikus lóerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:646
 #: modules/units/build/lib/geocurrency/units/__init__.py:646
 #: modules/units/geocurrency/units/__init__.py:646
 msgid "electron G-factor"
-msgstr ""
+msgstr "elektron G-faktor"
 
 #: deployment/dev/geocurrency/units/__init__.py:650
 #: modules/units/build/lib/geocurrency/units/__init__.py:650
 #: modules/units/geocurrency/units/__init__.py:650
 msgid "electron mass"
-msgstr ""
+msgstr "elektrontömeg"
 
 #: deployment/dev/geocurrency/units/__init__.py:654
 #: modules/units/build/lib/geocurrency/units/__init__.py:654
 #: modules/units/geocurrency/units/__init__.py:654
 msgid "electronvolt"
-msgstr ""
+msgstr "elektronvolt"
 
 #: deployment/dev/geocurrency/units/__init__.py:662
 #: modules/units/build/lib/geocurrency/units/__init__.py:662
 #: modules/units/geocurrency/units/__init__.py:662
 msgid "entropy unit"
-msgstr ""
+msgstr "entrópia egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:664
 #: modules/units/build/lib/geocurrency/units/__init__.py:664
 #: modules/units/geocurrency/units/__init__.py:664
 msgid "energy by temperature"
-msgstr ""
+msgstr "energia hőmérséklet szerint"
 
 #: deployment/dev/geocurrency/units/__init__.py:666
 #: modules/units/build/lib/geocurrency/units/__init__.py:666
 #: modules/units/geocurrency/units/__init__.py:666
 msgid "enzyme unit"
-msgstr ""
+msgstr "enzim egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:670
 #: modules/units/build/lib/geocurrency/units/__init__.py:670
 #: modules/units/geocurrency/units/__init__.py:670
 msgid "eon"
-msgstr ""
+msgstr "eon"
 
 #: deployment/dev/geocurrency/units/__init__.py:674
 #: modules/units/build/lib/geocurrency/units/__init__.py:674
 #: modules/units/geocurrency/units/__init__.py:674
 msgid "erg"
-msgstr ""
+msgstr "erg"
 
 #: deployment/dev/geocurrency/units/__init__.py:678
 #: modules/units/build/lib/geocurrency/units/__init__.py:678
 #: modules/units/geocurrency/units/__init__.py:678
 msgid "farad"
-msgstr ""
+msgstr "farad"
 
 #: deployment/dev/geocurrency/units/__init__.py:682
 #: modules/units/build/lib/geocurrency/units/__init__.py:682
 #: modules/units/geocurrency/units/__init__.py:682
 msgid "faraday"
-msgstr ""
+msgstr "faraday"
 
 #: deployment/dev/geocurrency/units/__init__.py:686
 #: modules/units/build/lib/geocurrency/units/__init__.py:686
 #: modules/units/geocurrency/units/__init__.py:686
 msgid "faraday constant"
-msgstr ""
+msgstr "faraday állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:690
 #: modules/units/build/lib/geocurrency/units/__init__.py:690
 #: modules/units/geocurrency/units/__init__.py:690
 msgid "fathom"
-msgstr ""
+msgstr "felfog"
 
 #: deployment/dev/geocurrency/units/__init__.py:694
 #: modules/units/build/lib/geocurrency/units/__init__.py:694
 #: modules/units/geocurrency/units/__init__.py:694
 msgid "fermi"
-msgstr ""
+msgstr "fermi"
 
 #: deployment/dev/geocurrency/units/__init__.py:698
 #: modules/units/build/lib/geocurrency/units/__init__.py:698
 #: modules/units/geocurrency/units/__init__.py:698
 msgid "fifteen degree calorie"
-msgstr ""
+msgstr "tizenöt fokos kalória"
 
 #: deployment/dev/geocurrency/units/__init__.py:702
 #: modules/units/build/lib/geocurrency/units/__init__.py:702
 #: modules/units/geocurrency/units/__init__.py:702
 msgid "fifth"
-msgstr ""
+msgstr "ötödik"
 
 #: deployment/dev/geocurrency/units/__init__.py:706
 #: modules/units/build/lib/geocurrency/units/__init__.py:706
 #: modules/units/geocurrency/units/__init__.py:706
 msgid "fine structure constant"
-msgstr ""
+msgstr "finom szerkezet állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:710
 #: modules/units/build/lib/geocurrency/units/__init__.py:710
 #: modules/units/geocurrency/units/__init__.py:710
 msgid "first radiation constant"
-msgstr ""
+msgstr "első sugárzási állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:714
 #: modules/units/build/lib/geocurrency/units/__init__.py:714
 #: modules/units/geocurrency/units/__init__.py:714
 msgid "fluid dram"
-msgstr ""
+msgstr "folyékony dram"
 
 #: deployment/dev/geocurrency/units/__init__.py:718
 #: modules/units/build/lib/geocurrency/units/__init__.py:718
 #: modules/units/geocurrency/units/__init__.py:718
 msgid "fluid ounce"
-msgstr ""
+msgstr "folyadék uncia"
 
 #: deployment/dev/geocurrency/units/__init__.py:722
 #: modules/units/build/lib/geocurrency/units/__init__.py:722
 #: modules/units/geocurrency/units/__init__.py:722
 msgid "foot"
-msgstr ""
+msgstr "láb"
 
 #: deployment/dev/geocurrency/units/__init__.py:726
 #: modules/units/build/lib/geocurrency/units/__init__.py:726
 #: modules/units/geocurrency/units/__init__.py:726
 msgid "foot H2O"
-msgstr ""
+msgstr "láb H2O"
 
 #: deployment/dev/geocurrency/units/__init__.py:730
 #: modules/units/build/lib/geocurrency/units/__init__.py:730
 #: modules/units/geocurrency/units/__init__.py:730
 msgid "foot per second"
-msgstr ""
+msgstr "láb másodpercenként"
 
 #: deployment/dev/geocurrency/units/__init__.py:734
 #: modules/units/build/lib/geocurrency/units/__init__.py:734
 #: modules/units/geocurrency/units/__init__.py:734
 msgid "foot pound"
-msgstr ""
+msgstr "láb font"
 
 #: deployment/dev/geocurrency/units/__init__.py:738
 #: modules/units/build/lib/geocurrency/units/__init__.py:738
 #: modules/units/geocurrency/units/__init__.py:738
 msgid "gram-force"
-msgstr ""
+msgstr "gramm-erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:743
 #: modules/units/build/lib/geocurrency/units/__init__.py:743
 #: modules/units/geocurrency/units/__init__.py:743
 msgid "kilogram-force"
-msgstr ""
+msgstr "kilogramm-erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:753
 #: deployment/dev/geocurrency/units/__init__.py:768
@@ -2846,49 +2847,49 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:753
 #: modules/units/geocurrency/units/__init__.py:768
 msgid "tonne-force"
-msgstr ""
+msgstr "tonna-erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:758
 #: modules/units/build/lib/geocurrency/units/__init__.py:758
 #: modules/units/geocurrency/units/__init__.py:758
 msgid "ounce-force"
-msgstr ""
+msgstr "uncia-erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:763
 #: modules/units/build/lib/geocurrency/units/__init__.py:763
 #: modules/units/geocurrency/units/__init__.py:763
 msgid "pound-force"
-msgstr ""
+msgstr "font-erő"
 
 #: deployment/dev/geocurrency/units/__init__.py:773
 #: modules/units/build/lib/geocurrency/units/__init__.py:773
 #: modules/units/geocurrency/units/__init__.py:773
 msgid "fortnight"
-msgstr ""
+msgstr "két hét"
 
 #: deployment/dev/geocurrency/units/__init__.py:777
 #: modules/units/build/lib/geocurrency/units/__init__.py:777
 #: modules/units/geocurrency/units/__init__.py:777
 msgid "franklin"
-msgstr ""
+msgstr "franklin"
 
 #: deployment/dev/geocurrency/units/__init__.py:781
 #: modules/units/build/lib/geocurrency/units/__init__.py:781
 #: modules/units/geocurrency/units/__init__.py:781
 msgid "furlong"
-msgstr ""
+msgstr "távolságmérték"
 
 #: deployment/dev/geocurrency/units/__init__.py:785
 #: modules/units/build/lib/geocurrency/units/__init__.py:785
 #: modules/units/geocurrency/units/__init__.py:785
 msgid "galileo"
-msgstr ""
+msgstr "galileo"
 
 #: deployment/dev/geocurrency/units/__init__.py:789
 #: modules/units/build/lib/geocurrency/units/__init__.py:789
 #: modules/units/geocurrency/units/__init__.py:789
 msgid "gallon"
-msgstr ""
+msgstr "gallon"
 
 #: deployment/dev/geocurrency/units/__init__.py:793
 #: deployment/dev/geocurrency/units/__init__.py:797
@@ -2897,332 +2898,332 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:793
 #: modules/units/geocurrency/units/__init__.py:797
 msgid "gamma"
-msgstr ""
+msgstr "gamma"
 
 #: deployment/dev/geocurrency/units/__init__.py:801
 #: modules/units/build/lib/geocurrency/units/__init__.py:801
 #: modules/units/geocurrency/units/__init__.py:801
 msgid "gauss"
-msgstr ""
+msgstr "gauss"
 
 #: deployment/dev/geocurrency/units/__init__.py:805
 #: modules/units/build/lib/geocurrency/units/__init__.py:805
 #: modules/units/geocurrency/units/__init__.py:805
 msgid "gilbert"
-msgstr ""
+msgstr "Gilbert"
 
 #: deployment/dev/geocurrency/units/__init__.py:809
 #: modules/units/build/lib/geocurrency/units/__init__.py:809
 #: modules/units/geocurrency/units/__init__.py:809
 msgid "gill"
-msgstr ""
+msgstr "kopoltyú"
 
 #: deployment/dev/geocurrency/units/__init__.py:813
 #: modules/units/build/lib/geocurrency/units/__init__.py:813
 #: modules/units/geocurrency/units/__init__.py:813
 msgid "grade"
-msgstr ""
+msgstr "fokozat"
 
 #: deployment/dev/geocurrency/units/__init__.py:817
 #: modules/units/build/lib/geocurrency/units/__init__.py:817
 #: modules/units/geocurrency/units/__init__.py:817
 msgid "grain"
-msgstr ""
+msgstr "gabona"
 
 #: deployment/dev/geocurrency/units/__init__.py:821
 #: modules/units/build/lib/geocurrency/units/__init__.py:821
 #: modules/units/geocurrency/units/__init__.py:821
 msgid "gram"
-msgstr ""
+msgstr "gramm"
 
 #: deployment/dev/geocurrency/units/__init__.py:825
 #: modules/units/build/lib/geocurrency/units/__init__.py:825
 #: modules/units/geocurrency/units/__init__.py:825
 msgid "gray"
-msgstr ""
+msgstr "szürke"
 
 #: deployment/dev/geocurrency/units/__init__.py:829
 #: modules/units/build/lib/geocurrency/units/__init__.py:829
 #: modules/units/geocurrency/units/__init__.py:829
 msgid "gregorian year"
-msgstr ""
+msgstr "gregorián év"
 
 #: deployment/dev/geocurrency/units/__init__.py:830
 #: modules/units/build/lib/geocurrency/units/__init__.py:830
 #: modules/units/geocurrency/units/__init__.py:830
 msgctxt "unit"
 msgid "gregorian year"
-msgstr ""
+msgstr "gregorián év"
 
 #: deployment/dev/geocurrency/units/__init__.py:833
 #: modules/units/build/lib/geocurrency/units/__init__.py:833
 #: modules/units/geocurrency/units/__init__.py:833
 msgid "hand"
-msgstr ""
+msgstr "kéz"
 
 #: deployment/dev/geocurrency/units/__init__.py:837
 #: modules/units/build/lib/geocurrency/units/__init__.py:837
 #: modules/units/geocurrency/units/__init__.py:837
 msgid "hartree"
-msgstr ""
+msgstr "hartree"
 
 #: deployment/dev/geocurrency/units/__init__.py:841
 #: modules/units/build/lib/geocurrency/units/__init__.py:841
 #: modules/units/geocurrency/units/__init__.py:841
 msgid "hectare"
-msgstr ""
+msgstr "hektár"
 
 #: deployment/dev/geocurrency/units/__init__.py:845
 #: modules/units/build/lib/geocurrency/units/__init__.py:845
 #: modules/units/geocurrency/units/__init__.py:845
 msgid "henry"
-msgstr ""
+msgstr "Henrik"
 
 #: deployment/dev/geocurrency/units/__init__.py:849
 #: modules/units/build/lib/geocurrency/units/__init__.py:849
 #: modules/units/geocurrency/units/__init__.py:849
 msgid "hertz"
-msgstr ""
+msgstr "hertz"
 
 #: deployment/dev/geocurrency/units/__init__.py:853
 #: modules/units/build/lib/geocurrency/units/__init__.py:853
 #: modules/units/geocurrency/units/__init__.py:853
 msgid "hogshead"
-msgstr ""
+msgstr "nagy hordó"
 
 #: deployment/dev/geocurrency/units/__init__.py:857
 #: modules/units/build/lib/geocurrency/units/__init__.py:857
 #: modules/units/geocurrency/units/__init__.py:857
 msgid "horsepower"
-msgstr ""
+msgstr "lóerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:861
 #: modules/units/build/lib/geocurrency/units/__init__.py:861
 #: modules/units/geocurrency/units/__init__.py:861
 msgid "hour"
-msgstr ""
+msgstr "óra"
 
 #: deployment/dev/geocurrency/units/__init__.py:865
 #: modules/units/build/lib/geocurrency/units/__init__.py:865
 #: modules/units/geocurrency/units/__init__.py:865
 msgid "hundredweight"
-msgstr ""
+msgstr "százas"
 
 #: deployment/dev/geocurrency/units/__init__.py:869
 #: modules/units/build/lib/geocurrency/units/__init__.py:869
 #: modules/units/geocurrency/units/__init__.py:869
 msgid "impedance of free space"
-msgstr ""
+msgstr "a szabad tér impedanciája"
 
 #: deployment/dev/geocurrency/units/__init__.py:873
 #: modules/units/build/lib/geocurrency/units/__init__.py:873
 #: modules/units/geocurrency/units/__init__.py:873
 msgid "imperial barrel"
-msgstr ""
+msgstr "császári hordó"
 
 #: deployment/dev/geocurrency/units/__init__.py:877
 #: modules/units/build/lib/geocurrency/units/__init__.py:877
 #: modules/units/geocurrency/units/__init__.py:877
 msgid "imperial bushel"
-msgstr ""
+msgstr "császári bokor"
 
 #: deployment/dev/geocurrency/units/__init__.py:881
 #: modules/units/build/lib/geocurrency/units/__init__.py:881
 #: modules/units/geocurrency/units/__init__.py:881
 msgid "imperial cup"
-msgstr ""
+msgstr "császári csésze"
 
 #: deployment/dev/geocurrency/units/__init__.py:885
 #: modules/units/build/lib/geocurrency/units/__init__.py:885
 #: modules/units/geocurrency/units/__init__.py:885
 msgid "imperial fluid drachm"
-msgstr ""
+msgstr "császári folyadék drachm"
 
 #: deployment/dev/geocurrency/units/__init__.py:889
 #: modules/units/build/lib/geocurrency/units/__init__.py:889
 #: modules/units/geocurrency/units/__init__.py:889
 msgid "imperial fluid ounce"
-msgstr ""
+msgstr "császári folyadék uncia"
 
 #: deployment/dev/geocurrency/units/__init__.py:893
 #: modules/units/build/lib/geocurrency/units/__init__.py:893
 #: modules/units/geocurrency/units/__init__.py:893
 msgid "imperial fluid scruple"
-msgstr ""
+msgstr "császári folyadék lepény"
 
 #: deployment/dev/geocurrency/units/__init__.py:897
 #: modules/units/build/lib/geocurrency/units/__init__.py:897
 #: modules/units/geocurrency/units/__init__.py:897
 msgid "imperial gallon"
-msgstr ""
+msgstr "angol gallon"
 
 #: deployment/dev/geocurrency/units/__init__.py:901
 #: modules/units/build/lib/geocurrency/units/__init__.py:901
 #: modules/units/geocurrency/units/__init__.py:901
 msgid "imperial gill"
-msgstr ""
+msgstr "császári kopoltyú"
 
 #: deployment/dev/geocurrency/units/__init__.py:905
 #: modules/units/build/lib/geocurrency/units/__init__.py:905
 #: modules/units/geocurrency/units/__init__.py:905
 msgid "imperial minim"
-msgstr ""
+msgstr "birodalmi minim"
 
 #: deployment/dev/geocurrency/units/__init__.py:909
 #: modules/units/build/lib/geocurrency/units/__init__.py:909
 #: modules/units/geocurrency/units/__init__.py:909
 msgid "imperial peck"
-msgstr ""
+msgstr "császári peck"
 
 #: deployment/dev/geocurrency/units/__init__.py:913
 #: modules/units/build/lib/geocurrency/units/__init__.py:913
 #: modules/units/geocurrency/units/__init__.py:913
 msgid "imperial pint"
-msgstr ""
+msgstr "császári pint"
 
 #: deployment/dev/geocurrency/units/__init__.py:917
 #: modules/units/build/lib/geocurrency/units/__init__.py:917
 #: modules/units/geocurrency/units/__init__.py:917
 msgid "imperial quart"
-msgstr ""
+msgstr "császári quart"
 
 #: deployment/dev/geocurrency/units/__init__.py:921
 #: modules/units/build/lib/geocurrency/units/__init__.py:921
 #: modules/units/geocurrency/units/__init__.py:921
 msgid "inch"
-msgstr ""
+msgstr "hüvelyk"
 
 #: deployment/dev/geocurrency/units/__init__.py:925
 #: modules/units/build/lib/geocurrency/units/__init__.py:925
 #: modules/units/geocurrency/units/__init__.py:925
 msgid "inch H20 39F"
-msgstr ""
+msgstr "hüvelykes H20 39F"
 
 #: deployment/dev/geocurrency/units/__init__.py:929
 #: modules/units/build/lib/geocurrency/units/__init__.py:929
 #: modules/units/geocurrency/units/__init__.py:929
 msgid "inch H20 60F"
-msgstr ""
+msgstr "hüvelykes H20 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:933
 #: modules/units/build/lib/geocurrency/units/__init__.py:933
 #: modules/units/geocurrency/units/__init__.py:933
 msgid "inch Hg"
-msgstr ""
+msgstr "hüvelyk Hg"
 
 #: deployment/dev/geocurrency/units/__init__.py:937
 #: modules/units/build/lib/geocurrency/units/__init__.py:937
 #: modules/units/geocurrency/units/__init__.py:937
 msgid "inch Hg 60F"
-msgstr ""
+msgstr "hüvelyk Hg 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:941
 #: modules/units/build/lib/geocurrency/units/__init__.py:941
 #: modules/units/geocurrency/units/__init__.py:941
 msgid "international Btu"
-msgstr ""
+msgstr "nemzetközi Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:945
 #: modules/units/build/lib/geocurrency/units/__init__.py:945
 #: modules/units/geocurrency/units/__init__.py:945
 msgid "international calorie"
-msgstr ""
+msgstr "nemzetközi kalória"
 
 #: deployment/dev/geocurrency/units/__init__.py:949
 #: modules/units/build/lib/geocurrency/units/__init__.py:949
 #: modules/units/geocurrency/units/__init__.py:949
 msgid "Josephson constant"
-msgstr ""
+msgstr "Josephson állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:953
 #: modules/units/build/lib/geocurrency/units/__init__.py:953
 #: modules/units/geocurrency/units/__init__.py:953
 msgid "Joule"
-msgstr ""
+msgstr "Joule"
 
 #: deployment/dev/geocurrency/units/__init__.py:957
 #: modules/units/build/lib/geocurrency/units/__init__.py:957
 #: modules/units/geocurrency/units/__init__.py:957
 msgid "jute"
-msgstr ""
+msgstr "juta"
 
 #: deployment/dev/geocurrency/units/__init__.py:961
 #: modules/units/build/lib/geocurrency/units/__init__.py:961
 #: modules/units/geocurrency/units/__init__.py:961
 msgid "katal"
-msgstr ""
+msgstr "katal"
 
 #: deployment/dev/geocurrency/units/__init__.py:965
 #: modules/units/build/lib/geocurrency/units/__init__.py:965
 #: modules/units/geocurrency/units/__init__.py:965
 msgid "kelvin"
-msgstr ""
+msgstr "kelvin"
 
 #: deployment/dev/geocurrency/units/__init__.py:969
 #: modules/units/build/lib/geocurrency/units/__init__.py:969
 #: modules/units/geocurrency/units/__init__.py:969
 msgid "kilometer per hour"
-msgstr ""
+msgstr "kilométer óránként"
 
 #: deployment/dev/geocurrency/units/__init__.py:973
 #: modules/units/build/lib/geocurrency/units/__init__.py:973
 #: modules/units/geocurrency/units/__init__.py:973
 msgid "kilometer per second"
-msgstr ""
+msgstr "kilométer másodpercenként"
 
 #: deployment/dev/geocurrency/units/__init__.py:977
 #: modules/units/build/lib/geocurrency/units/__init__.py:977
 #: modules/units/geocurrency/units/__init__.py:977
 msgid "kip"
-msgstr ""
+msgstr "kip"
 
 #: deployment/dev/geocurrency/units/__init__.py:981
 #: modules/units/build/lib/geocurrency/units/__init__.py:981
 #: modules/units/geocurrency/units/__init__.py:981
 msgid "kip per square inch"
-msgstr ""
+msgstr "kip per négyzet hüvelyk"
 
 #: deployment/dev/geocurrency/units/__init__.py:985
 #: modules/units/build/lib/geocurrency/units/__init__.py:985
 #: modules/units/geocurrency/units/__init__.py:985
 msgid "knot"
-msgstr ""
+msgstr "csomó"
 
 #: deployment/dev/geocurrency/units/__init__.py:989
 #: modules/units/build/lib/geocurrency/units/__init__.py:989
 #: modules/units/geocurrency/units/__init__.py:989
 msgid "lambda"
-msgstr ""
+msgstr "lambda"
 
 #: deployment/dev/geocurrency/units/__init__.py:993
 #: modules/units/build/lib/geocurrency/units/__init__.py:993
 #: modules/units/geocurrency/units/__init__.py:993
 msgid "lambert"
-msgstr ""
+msgstr "lambert"
 
 #: deployment/dev/geocurrency/units/__init__.py:997
 #: modules/units/build/lib/geocurrency/units/__init__.py:997
 #: modules/units/geocurrency/units/__init__.py:997
 msgid "langley"
-msgstr ""
+msgstr "langley"
 
 #: deployment/dev/geocurrency/units/__init__.py:1001
 #: modules/units/build/lib/geocurrency/units/__init__.py:1001
 #: modules/units/geocurrency/units/__init__.py:1001
 msgid "lattice constant"
-msgstr ""
+msgstr "rácsállandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1005
 #: modules/units/build/lib/geocurrency/units/__init__.py:1005
 #: modules/units/geocurrency/units/__init__.py:1005
 msgid "league"
-msgstr ""
+msgstr "liga"
 
 #: deployment/dev/geocurrency/units/__init__.py:1010
 #: modules/units/build/lib/geocurrency/units/__init__.py:1010
 #: modules/units/geocurrency/units/__init__.py:1010
 msgid "leap year"
-msgstr ""
+msgstr "szökőév"
 
 #: deployment/dev/geocurrency/units/__init__.py:1011
 #: deployment/dev/geocurrency/units/__init__.py:1708
@@ -3234,163 +3235,163 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1708
 #: modules/units/geocurrency/units/__init__.py:1709
 msgid "year"
-msgstr ""
+msgstr "év"
 
 #: deployment/dev/geocurrency/units/__init__.py:1014
 #: modules/units/build/lib/geocurrency/units/__init__.py:1014
 #: modules/units/geocurrency/units/__init__.py:1014
 msgid "light year"
-msgstr ""
+msgstr "fényév"
 
 #: deployment/dev/geocurrency/units/__init__.py:1015
 #: modules/units/build/lib/geocurrency/units/__init__.py:1015
 #: modules/units/geocurrency/units/__init__.py:1015
 msgid "ly"
-msgstr ""
+msgstr "ly"
 
 #: deployment/dev/geocurrency/units/__init__.py:1018
 #: modules/units/build/lib/geocurrency/units/__init__.py:1018
 #: modules/units/geocurrency/units/__init__.py:1018
 msgid "link"
-msgstr ""
+msgstr "link"
 
 #: deployment/dev/geocurrency/units/__init__.py:1019
 #: modules/units/build/lib/geocurrency/units/__init__.py:1019
 #: modules/units/geocurrency/units/__init__.py:1019
 msgid "li"
-msgstr ""
+msgstr "li"
 
 #: deployment/dev/geocurrency/units/__init__.py:1022
 #: modules/units/build/lib/geocurrency/units/__init__.py:1022
 #: modules/units/geocurrency/units/__init__.py:1022
 msgid "liter"
-msgstr ""
+msgstr "liter"
 
 #: deployment/dev/geocurrency/units/__init__.py:1023
 #: modules/units/build/lib/geocurrency/units/__init__.py:1023
 #: modules/units/geocurrency/units/__init__.py:1023
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: deployment/dev/geocurrency/units/__init__.py:1026
 #: modules/units/build/lib/geocurrency/units/__init__.py:1026
 #: modules/units/geocurrency/units/__init__.py:1026
 msgid "log 10"
-msgstr ""
+msgstr "log 10"
 
 #: deployment/dev/geocurrency/units/__init__.py:1027
 #: modules/units/build/lib/geocurrency/units/__init__.py:1027
 #: modules/units/geocurrency/units/__init__.py:1027
 msgid "ln10"
-msgstr ""
+msgstr "ln10"
 
 #: deployment/dev/geocurrency/units/__init__.py:1028
 #: modules/units/build/lib/geocurrency/units/__init__.py:1028
 #: modules/units/geocurrency/units/__init__.py:1028
 msgid "dimesionless"
-msgstr ""
+msgstr "dimesionless"
 
 #: deployment/dev/geocurrency/units/__init__.py:1030
 #: modules/units/build/lib/geocurrency/units/__init__.py:1030
 #: modules/units/geocurrency/units/__init__.py:1030
 msgid "long hundredweight"
-msgstr ""
+msgstr "hosszú százsúlyú"
 
 #: deployment/dev/geocurrency/units/__init__.py:1040
 #: modules/units/build/lib/geocurrency/units/__init__.py:1040
 #: modules/units/geocurrency/units/__init__.py:1040
 msgid "lumen"
-msgstr ""
+msgstr "lumen"
 
 #: deployment/dev/geocurrency/units/__init__.py:1044
 #: modules/units/build/lib/geocurrency/units/__init__.py:1044
 #: modules/units/geocurrency/units/__init__.py:1044
 msgid "lux"
-msgstr ""
+msgstr "lux"
 
 #: deployment/dev/geocurrency/units/__init__.py:1052
 #: modules/units/build/lib/geocurrency/units/__init__.py:1052
 #: modules/units/geocurrency/units/__init__.py:1052
 msgid "maxwell"
-msgstr ""
+msgstr "maxwell"
 
 #: deployment/dev/geocurrency/units/__init__.py:1056
 #: modules/units/build/lib/geocurrency/units/__init__.py:1056
 #: modules/units/geocurrency/units/__init__.py:1056
 msgid "mean international ampere"
-msgstr ""
+msgstr "jelenti a nemzetközi ampert"
 
 #: deployment/dev/geocurrency/units/__init__.py:1060
 #: modules/units/build/lib/geocurrency/units/__init__.py:1060
 #: modules/units/geocurrency/units/__init__.py:1060
 msgid "mean international Ohm"
-msgstr ""
+msgstr "jelenti a nemzetközi Ohm-ot"
 
 #: deployment/dev/geocurrency/units/__init__.py:1064
 #: modules/units/build/lib/geocurrency/units/__init__.py:1064
 #: modules/units/geocurrency/units/__init__.py:1064
 msgid "mean international Volt"
-msgstr ""
+msgstr "jelentése nemzetközi Volt"
 
 #: deployment/dev/geocurrency/units/__init__.py:1068
 #: modules/units/build/lib/geocurrency/units/__init__.py:1068
 #: modules/units/geocurrency/units/__init__.py:1068
 msgid "density of mercury"
-msgstr ""
+msgstr "a higany sűrűsége"
 
 #: deployment/dev/geocurrency/units/__init__.py:1072
 #: modules/units/build/lib/geocurrency/units/__init__.py:1072
 #: modules/units/geocurrency/units/__init__.py:1072
 msgid "density of mercury 60F"
-msgstr ""
+msgstr "higany sűrűsége 60F"
 
 #: deployment/dev/geocurrency/units/__init__.py:1076
 #: modules/units/build/lib/geocurrency/units/__init__.py:1076
 #: modules/units/geocurrency/units/__init__.py:1076
 msgid "meter"
-msgstr ""
+msgstr "méter"
 
 #: deployment/dev/geocurrency/units/__init__.py:1080
 #: modules/units/build/lib/geocurrency/units/__init__.py:1080
 #: modules/units/geocurrency/units/__init__.py:1080
 msgid "meter per second"
-msgstr ""
+msgstr "méter másodpercenként"
 
 #: deployment/dev/geocurrency/units/__init__.py:1084
 #: modules/units/build/lib/geocurrency/units/__init__.py:1084
 #: modules/units/geocurrency/units/__init__.py:1084
 msgid "metric horsepower"
-msgstr ""
+msgstr "metrikus lóerő"
 
 #: deployment/dev/geocurrency/units/__init__.py:1088
 #: modules/units/build/lib/geocurrency/units/__init__.py:1088
 #: modules/units/geocurrency/units/__init__.py:1088
 msgid "metric ton"
-msgstr ""
+msgstr "metrikus tonna"
 
 #: deployment/dev/geocurrency/units/__init__.py:1092
 #: modules/units/build/lib/geocurrency/units/__init__.py:1092
 #: modules/units/geocurrency/units/__init__.py:1092
 msgid "micron"
-msgstr ""
+msgstr "mikron"
 
 #: deployment/dev/geocurrency/units/__init__.py:1096
 #: modules/units/build/lib/geocurrency/units/__init__.py:1096
 #: modules/units/geocurrency/units/__init__.py:1096
 msgid "mil"
-msgstr ""
+msgstr "katonai"
 
 #: deployment/dev/geocurrency/units/__init__.py:1100
 #: modules/units/build/lib/geocurrency/units/__init__.py:1100
 #: modules/units/geocurrency/units/__init__.py:1100
 msgid "mile"
-msgstr ""
+msgstr "mérföld"
 
 #: deployment/dev/geocurrency/units/__init__.py:1104
 #: modules/units/build/lib/geocurrency/units/__init__.py:1104
 #: modules/units/geocurrency/units/__init__.py:1104
 msgid "mile per hour"
-msgstr ""
+msgstr "mérföld óránként"
 
 #: deployment/dev/geocurrency/units/__init__.py:1108
 #: deployment/dev/geocurrency/units/__init__.py:1109
@@ -3399,217 +3400,217 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1108
 #: modules/units/geocurrency/units/__init__.py:1109
 msgid "millenium"
-msgstr ""
+msgstr "évezred"
 
 #: deployment/dev/geocurrency/units/__init__.py:1112
 #: modules/units/build/lib/geocurrency/units/__init__.py:1112
 #: modules/units/geocurrency/units/__init__.py:1112
 msgid "milliarcsecond"
-msgstr ""
+msgstr "milliarcecond"
 
 #: deployment/dev/geocurrency/units/__init__.py:1116
 #: modules/units/build/lib/geocurrency/units/__init__.py:1116
 #: modules/units/geocurrency/units/__init__.py:1116
 msgid "Hg millimeter"
-msgstr ""
+msgstr "Hg milliméter"
 
 #: deployment/dev/geocurrency/units/__init__.py:1120
 #: modules/units/build/lib/geocurrency/units/__init__.py:1120
 #: modules/units/geocurrency/units/__init__.py:1120
 msgid "minim"
-msgstr ""
+msgstr "parányi dolog"
 
 #: deployment/dev/geocurrency/units/__init__.py:1124
 #: modules/units/build/lib/geocurrency/units/__init__.py:1124
 #: modules/units/geocurrency/units/__init__.py:1124
 msgid "minute"
-msgstr ""
+msgstr "perc"
 
 #: deployment/dev/geocurrency/units/__init__.py:1128
 #: modules/units/build/lib/geocurrency/units/__init__.py:1128
 #: modules/units/geocurrency/units/__init__.py:1128
 msgid "molar"
-msgstr ""
+msgstr "mól-"
 
 #: deployment/dev/geocurrency/units/__init__.py:1132
 #: modules/units/build/lib/geocurrency/units/__init__.py:1132
 #: modules/units/geocurrency/units/__init__.py:1132
 msgid "molar gas constant"
-msgstr ""
+msgstr "moláris gázállandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1136
 #: modules/units/build/lib/geocurrency/units/__init__.py:1136
 #: modules/units/geocurrency/units/__init__.py:1136
 msgid "mole"
-msgstr ""
+msgstr "anyajegy"
 
 #: deployment/dev/geocurrency/units/__init__.py:1140
 #: modules/units/build/lib/geocurrency/units/__init__.py:1140
 #: modules/units/geocurrency/units/__init__.py:1140
 msgid "month"
-msgstr ""
+msgstr "hónap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1144
 #: modules/units/build/lib/geocurrency/units/__init__.py:1144
 #: modules/units/geocurrency/units/__init__.py:1144
 msgid "nautical mile"
-msgstr ""
+msgstr "tengeri mérföld"
 
 #: deployment/dev/geocurrency/units/__init__.py:1145
 #: modules/units/build/lib/geocurrency/units/__init__.py:1145
 #: modules/units/geocurrency/units/__init__.py:1145
 msgid "nm"
-msgstr ""
+msgstr "nm"
 
 #: deployment/dev/geocurrency/units/__init__.py:1149
 #: modules/units/build/lib/geocurrency/units/__init__.py:1149
 #: modules/units/geocurrency/units/__init__.py:1149
 msgid "Np"
-msgstr ""
+msgstr "Np"
 
 #: deployment/dev/geocurrency/units/__init__.py:1152
 #: modules/units/build/lib/geocurrency/units/__init__.py:1152
 #: modules/units/geocurrency/units/__init__.py:1152
 msgid "neutron mass"
-msgstr ""
+msgstr "neutron tömeg"
 
 #: deployment/dev/geocurrency/units/__init__.py:1156
 #: modules/units/build/lib/geocurrency/units/__init__.py:1156
 #: modules/units/geocurrency/units/__init__.py:1156
 msgid "newton"
-msgstr ""
+msgstr "newton"
 
 #: deployment/dev/geocurrency/units/__init__.py:1164
 #: modules/units/build/lib/geocurrency/units/__init__.py:1164
 #: modules/units/geocurrency/units/__init__.py:1164
 msgid "nit"
-msgstr ""
+msgstr "serke"
 
 #: deployment/dev/geocurrency/units/__init__.py:1168
 #: modules/units/build/lib/geocurrency/units/__init__.py:1168
 #: modules/units/geocurrency/units/__init__.py:1168
 msgid "nuclear magneton"
-msgstr ""
+msgstr "magmagneton"
 
 #: deployment/dev/geocurrency/units/__init__.py:1172
 #: modules/units/build/lib/geocurrency/units/__init__.py:1172
 #: modules/units/geocurrency/units/__init__.py:1172
 msgid "number english"
-msgstr ""
+msgstr "szám angol"
 
 #: deployment/dev/geocurrency/units/__init__.py:1176
 #: modules/units/build/lib/geocurrency/units/__init__.py:1176
 #: modules/units/geocurrency/units/__init__.py:1176
 msgid "number meter"
-msgstr ""
+msgstr "számmérő"
 
 #: deployment/dev/geocurrency/units/__init__.py:1180
 #: modules/units/build/lib/geocurrency/units/__init__.py:1180
 #: modules/units/geocurrency/units/__init__.py:1180
 msgid "oersted"
-msgstr ""
+msgstr "oersted"
 
 #: deployment/dev/geocurrency/units/__init__.py:1182
 #: modules/units/build/lib/geocurrency/units/__init__.py:1182
 #: modules/units/geocurrency/units/__init__.py:1182
 msgid "H-field"
-msgstr ""
+msgstr "H-mező"
 
 #: deployment/dev/geocurrency/units/__init__.py:1184
 #: modules/units/build/lib/geocurrency/units/__init__.py:1184
 #: modules/units/geocurrency/units/__init__.py:1184
 msgid "ohm"
-msgstr ""
+msgstr "ohm"
 
 #: deployment/dev/geocurrency/units/__init__.py:1188
 #: modules/units/build/lib/geocurrency/units/__init__.py:1188
 #: modules/units/geocurrency/units/__init__.py:1188
 msgid "oil barrel"
-msgstr ""
+msgstr "olajos hordó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1192
 #: modules/units/build/lib/geocurrency/units/__init__.py:1192
 #: modules/units/geocurrency/units/__init__.py:1192
 msgid "ounce"
-msgstr ""
+msgstr "uncia"
 
 #: deployment/dev/geocurrency/units/__init__.py:1196
 #: modules/units/build/lib/geocurrency/units/__init__.py:1196
 #: modules/units/geocurrency/units/__init__.py:1196
 msgid "parsec"
-msgstr ""
+msgstr "parsec"
 
 #: deployment/dev/geocurrency/units/__init__.py:1200
 #: modules/units/build/lib/geocurrency/units/__init__.py:1200
 #: modules/units/geocurrency/units/__init__.py:1200
 msgid "particle"
-msgstr ""
+msgstr "részecske"
 
 #: deployment/dev/geocurrency/units/__init__.py:1204
 #: modules/units/build/lib/geocurrency/units/__init__.py:1204
 #: modules/units/geocurrency/units/__init__.py:1204
 msgid "pascal"
-msgstr ""
+msgstr "pascal"
 
 #: deployment/dev/geocurrency/units/__init__.py:1208
 #: modules/units/build/lib/geocurrency/units/__init__.py:1208
 #: modules/units/geocurrency/units/__init__.py:1208
 msgid "peak sun hour"
-msgstr ""
+msgstr "csúcs nap óra"
 
 #: deployment/dev/geocurrency/units/__init__.py:1212
 #: modules/units/build/lib/geocurrency/units/__init__.py:1212
 #: modules/units/geocurrency/units/__init__.py:1212
 msgid "peck"
-msgstr ""
+msgstr "csípés"
 
 #: deployment/dev/geocurrency/units/__init__.py:1216
 #: modules/units/build/lib/geocurrency/units/__init__.py:1216
 #: modules/units/geocurrency/units/__init__.py:1216
 msgid "pennyweight"
-msgstr ""
+msgstr "filléres"
 
 #: deployment/dev/geocurrency/units/__init__.py:1224
 #: modules/units/build/lib/geocurrency/units/__init__.py:1224
 #: modules/units/geocurrency/units/__init__.py:1224
 msgid "pica"
-msgstr ""
+msgstr "ciceró"
 
 #: deployment/dev/geocurrency/units/__init__.py:1228
 #: modules/units/build/lib/geocurrency/units/__init__.py:1228
 #: modules/units/geocurrency/units/__init__.py:1228
 msgid "pint"
-msgstr ""
+msgstr "pint"
 
 #: deployment/dev/geocurrency/units/__init__.py:1232
 #: modules/units/build/lib/geocurrency/units/__init__.py:1232
 #: modules/units/geocurrency/units/__init__.py:1232
 msgid "pixel"
-msgstr ""
+msgstr "pixel"
 
 #: deployment/dev/geocurrency/units/__init__.py:1234
 #: modules/units/build/lib/geocurrency/units/__init__.py:1234
 #: modules/units/geocurrency/units/__init__.py:1234
 msgid "unit"
-msgstr ""
+msgstr "Mértékegység"
 
 #: deployment/dev/geocurrency/units/__init__.py:1236
 #: modules/units/build/lib/geocurrency/units/__init__.py:1236
 #: modules/units/geocurrency/units/__init__.py:1236
 msgid "pixel per centimeter"
-msgstr ""
+msgstr "pixel / centiméter"
 
 #: deployment/dev/geocurrency/units/__init__.py:1240
 #: modules/units/build/lib/geocurrency/units/__init__.py:1240
 #: modules/units/geocurrency/units/__init__.py:1240
 msgid "pixel per inch"
-msgstr ""
+msgstr "pixel / hüvelyk"
 
 #: deployment/dev/geocurrency/units/__init__.py:1244
 #: modules/units/build/lib/geocurrency/units/__init__.py:1244
 #: modules/units/geocurrency/units/__init__.py:1244
 msgid "Planck constant"
-msgstr ""
+msgstr "Planck állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1248
 #: deployment/dev/geocurrency/units/__init__.py:1252
@@ -3618,163 +3619,163 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1248
 #: modules/units/geocurrency/units/__init__.py:1252
 msgid "Planck current"
-msgstr ""
+msgstr "Planck áram"
 
 #: deployment/dev/geocurrency/units/__init__.py:1249
 #: modules/units/build/lib/geocurrency/units/__init__.py:1249
 #: modules/units/geocurrency/units/__init__.py:1249
 msgid "qP"
-msgstr ""
+msgstr "qP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1253
 #: modules/units/build/lib/geocurrency/units/__init__.py:1253
 #: modules/units/geocurrency/units/__init__.py:1253
 msgid "lP"
-msgstr ""
+msgstr "l"
 
 #: deployment/dev/geocurrency/units/__init__.py:1256
 #: modules/units/build/lib/geocurrency/units/__init__.py:1256
 #: modules/units/geocurrency/units/__init__.py:1256
 msgid "Planck mass"
-msgstr ""
+msgstr "Planck-tömeg"
 
 #: deployment/dev/geocurrency/units/__init__.py:1257
 #: modules/units/build/lib/geocurrency/units/__init__.py:1257
 #: modules/units/geocurrency/units/__init__.py:1257
 msgid "mP"
-msgstr ""
+msgstr "mP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1260
 #: modules/units/build/lib/geocurrency/units/__init__.py:1260
 #: modules/units/geocurrency/units/__init__.py:1260
 msgid "Planck temperature"
-msgstr ""
+msgstr "Planck hőmérséklete"
 
 #: deployment/dev/geocurrency/units/__init__.py:1261
 #: modules/units/build/lib/geocurrency/units/__init__.py:1261
 #: modules/units/geocurrency/units/__init__.py:1261
 msgid "TP"
-msgstr ""
+msgstr "TP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1264
 #: modules/units/build/lib/geocurrency/units/__init__.py:1264
 #: modules/units/geocurrency/units/__init__.py:1264
 msgid "Planck time"
-msgstr ""
+msgstr "Planck ideje"
 
 #: deployment/dev/geocurrency/units/__init__.py:1265
 #: modules/units/build/lib/geocurrency/units/__init__.py:1265
 #: modules/units/geocurrency/units/__init__.py:1265
 msgid "tP"
-msgstr ""
+msgstr "tP"
 
 #: deployment/dev/geocurrency/units/__init__.py:1268
 #: modules/units/build/lib/geocurrency/units/__init__.py:1268
 #: modules/units/geocurrency/units/__init__.py:1268
 msgid "point"
-msgstr ""
+msgstr "pont"
 
 #: deployment/dev/geocurrency/units/__init__.py:1272
 #: modules/units/build/lib/geocurrency/units/__init__.py:1272
 #: modules/units/geocurrency/units/__init__.py:1272
 msgid "poise"
-msgstr ""
+msgstr "egyensúly"
 
 #: deployment/dev/geocurrency/units/__init__.py:1276
 #: modules/units/build/lib/geocurrency/units/__init__.py:1276
 #: modules/units/geocurrency/units/__init__.py:1276
 msgid "pound"
-msgstr ""
+msgstr "font"
 
 #: deployment/dev/geocurrency/units/__init__.py:1280
 #: modules/units/build/lib/geocurrency/units/__init__.py:1280
 #: modules/units/geocurrency/units/__init__.py:1280
 msgid "pound force per square inch"
-msgstr ""
+msgstr "font erő négyzet hüvelykenként"
 
 #: deployment/dev/geocurrency/units/__init__.py:1284
 #: modules/units/build/lib/geocurrency/units/__init__.py:1284
 #: modules/units/geocurrency/units/__init__.py:1284
 msgid "poundal"
-msgstr ""
+msgstr "font"
 
 #: deployment/dev/geocurrency/units/__init__.py:1288
 #: modules/units/build/lib/geocurrency/units/__init__.py:1288
 #: modules/units/geocurrency/units/__init__.py:1288
 msgid "proton mass"
-msgstr ""
+msgstr "proton tömeg"
 
 #: deployment/dev/geocurrency/units/__init__.py:1292
 #: modules/units/build/lib/geocurrency/units/__init__.py:1292
 #: modules/units/geocurrency/units/__init__.py:1292
 msgid "quadrillion Btu"
-msgstr ""
+msgstr "kvadrillió Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1296
 #: modules/units/build/lib/geocurrency/units/__init__.py:1296
 #: modules/units/geocurrency/units/__init__.py:1296
 msgid "quart"
-msgstr ""
+msgstr "kvart"
 
 #: deployment/dev/geocurrency/units/__init__.py:1300
 #: modules/units/build/lib/geocurrency/units/__init__.py:1300
 #: modules/units/geocurrency/units/__init__.py:1300
 msgid "quarter"
-msgstr ""
+msgstr "negyed"
 
 #: deployment/dev/geocurrency/units/__init__.py:1304
 #: modules/units/build/lib/geocurrency/units/__init__.py:1304
 #: modules/units/geocurrency/units/__init__.py:1304
 msgid "radian"
-msgstr ""
+msgstr "radián"
 
 #: deployment/dev/geocurrency/units/__init__.py:1308
 #: modules/units/build/lib/geocurrency/units/__init__.py:1308
 #: modules/units/geocurrency/units/__init__.py:1308
 msgid "rads"
-msgstr ""
+msgstr "rads"
 
 #: deployment/dev/geocurrency/units/__init__.py:1312
 #: modules/units/build/lib/geocurrency/units/__init__.py:1312
 #: modules/units/geocurrency/units/__init__.py:1312
 msgid "reciprocal centimeter"
-msgstr ""
+msgstr "kölcsönös centiméter"
 
 #: deployment/dev/geocurrency/units/__init__.py:1316
 #: modules/units/build/lib/geocurrency/units/__init__.py:1316
 #: modules/units/geocurrency/units/__init__.py:1316
 msgid "refrigeration ton"
-msgstr ""
+msgstr "hűtő tonna"
 
 #: deployment/dev/geocurrency/units/__init__.py:1320
 #: modules/units/build/lib/geocurrency/units/__init__.py:1320
 #: modules/units/geocurrency/units/__init__.py:1320
 msgid "roentgen equivalent man"
-msgstr ""
+msgstr "roentgen egyenértékű ember"
 
 #: deployment/dev/geocurrency/units/__init__.py:1324
 #: modules/units/build/lib/geocurrency/units/__init__.py:1324
 #: modules/units/geocurrency/units/__init__.py:1324
 msgid "revolutions per minute"
-msgstr ""
+msgstr "percenkénti fordulatszám"
 
 #: deployment/dev/geocurrency/units/__init__.py:1325
 #: modules/units/build/lib/geocurrency/units/__init__.py:1325
 #: modules/units/geocurrency/units/__init__.py:1325
 msgid "rpm"
-msgstr ""
+msgstr "fordulat"
 
 #: deployment/dev/geocurrency/units/__init__.py:1328
 #: modules/units/build/lib/geocurrency/units/__init__.py:1328
 #: modules/units/geocurrency/units/__init__.py:1328
 msgid "revolutions per second"
-msgstr ""
+msgstr "fordulat / másodperc"
 
 #: deployment/dev/geocurrency/units/__init__.py:1329
 #: modules/units/build/lib/geocurrency/units/__init__.py:1329
 #: modules/units/geocurrency/units/__init__.py:1329
 msgid "rps"
-msgstr ""
+msgstr "rps"
 
 #: deployment/dev/geocurrency/units/__init__.py:1332
 #: deployment/dev/geocurrency/units/__init__.py:1333
@@ -3783,154 +3784,154 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1332
 #: modules/units/geocurrency/units/__init__.py:1333
 msgid "reyn"
-msgstr ""
+msgstr "reyn"
 
 #: deployment/dev/geocurrency/units/__init__.py:1336
 #: modules/units/build/lib/geocurrency/units/__init__.py:1336
 #: modules/units/geocurrency/units/__init__.py:1336
 msgid "reciprocal poise"
-msgstr ""
+msgstr "kölcsönös tartás"
 
 #: deployment/dev/geocurrency/units/__init__.py:1340
 #: modules/units/build/lib/geocurrency/units/__init__.py:1340
 #: modules/units/geocurrency/units/__init__.py:1340
 msgid "rod"
-msgstr ""
+msgstr "rúd"
 
 #: deployment/dev/geocurrency/units/__init__.py:1344
 #: modules/units/build/lib/geocurrency/units/__init__.py:1344
 #: modules/units/geocurrency/units/__init__.py:1344
 msgid "roentgen"
-msgstr ""
+msgstr "roentgen"
 
 #: deployment/dev/geocurrency/units/__init__.py:1348
 #: modules/units/build/lib/geocurrency/units/__init__.py:1348
 #: modules/units/geocurrency/units/__init__.py:1348
 msgid "rutherford"
-msgstr ""
+msgstr "rutherford"
 
 #: deployment/dev/geocurrency/units/__init__.py:1352
 #: modules/units/build/lib/geocurrency/units/__init__.py:1352
 #: modules/units/geocurrency/units/__init__.py:1352
 msgid "rydberg"
-msgstr ""
+msgstr "rydberg"
 
 #: deployment/dev/geocurrency/units/__init__.py:1356
 #: modules/units/build/lib/geocurrency/units/__init__.py:1356
 #: modules/units/geocurrency/units/__init__.py:1356
 msgid "rydberg constant"
-msgstr ""
+msgstr "rydberg állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1360
 #: modules/units/build/lib/geocurrency/units/__init__.py:1360
 #: modules/units/geocurrency/units/__init__.py:1360
 msgid "scaled point"
-msgstr ""
+msgstr "méretarányos pont"
 
 #: deployment/dev/geocurrency/units/__init__.py:1364
 #: modules/units/build/lib/geocurrency/units/__init__.py:1364
 #: modules/units/geocurrency/units/__init__.py:1364
 msgid "scruple"
-msgstr ""
+msgstr "kétség"
 
 #: deployment/dev/geocurrency/units/__init__.py:1368
 #: modules/units/build/lib/geocurrency/units/__init__.py:1368
 #: modules/units/geocurrency/units/__init__.py:1368
 msgid "second"
-msgstr ""
+msgstr "második"
 
 #: deployment/dev/geocurrency/units/__init__.py:1372
 #: modules/units/build/lib/geocurrency/units/__init__.py:1372
 #: modules/units/geocurrency/units/__init__.py:1372
 msgid "second radiation constant"
-msgstr ""
+msgstr "második sugárzási állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1376
 #: modules/units/build/lib/geocurrency/units/__init__.py:1376
 #: modules/units/geocurrency/units/__init__.py:1376
 msgid "shake"
-msgstr ""
+msgstr "ráz"
 
 #: deployment/dev/geocurrency/units/__init__.py:1380
 #: modules/units/build/lib/geocurrency/units/__init__.py:1380
 #: modules/units/geocurrency/units/__init__.py:1380
 msgid "shot"
-msgstr ""
+msgstr "lövés"
 
 #: deployment/dev/geocurrency/units/__init__.py:1384
 #: modules/units/build/lib/geocurrency/units/__init__.py:1384
 #: modules/units/geocurrency/units/__init__.py:1384
 msgid "sidereal day"
-msgstr ""
+msgstr "sziderális nap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1385
 #: modules/units/build/lib/geocurrency/units/__init__.py:1385
 #: modules/units/geocurrency/units/__init__.py:1385
 msgctxt "unit"
 msgid "sidereal day"
-msgstr ""
+msgstr "sziderális nap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1388
 #: modules/units/build/lib/geocurrency/units/__init__.py:1388
 #: modules/units/geocurrency/units/__init__.py:1388
 msgid "sidereal month"
-msgstr ""
+msgstr "sziderális hónap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1389
 #: modules/units/build/lib/geocurrency/units/__init__.py:1389
 #: modules/units/geocurrency/units/__init__.py:1389
 msgctxt "unit"
 msgid "sidereal month"
-msgstr ""
+msgstr "sziderális hónap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1392
 #: modules/units/build/lib/geocurrency/units/__init__.py:1392
 #: modules/units/geocurrency/units/__init__.py:1392
 msgid "sidereal year"
-msgstr ""
+msgstr "sziderális év"
 
 #: deployment/dev/geocurrency/units/__init__.py:1393
 #: modules/units/build/lib/geocurrency/units/__init__.py:1393
 #: modules/units/geocurrency/units/__init__.py:1393
 msgctxt "unit"
 msgid "sidereal year"
-msgstr ""
+msgstr "sziderális év"
 
 #: deployment/dev/geocurrency/units/__init__.py:1396
 #: modules/units/build/lib/geocurrency/units/__init__.py:1396
 #: modules/units/geocurrency/units/__init__.py:1396
 msgid "siemens"
-msgstr ""
+msgstr "siemens"
 
 #: deployment/dev/geocurrency/units/__init__.py:1400
 #: modules/units/build/lib/geocurrency/units/__init__.py:1400
 #: modules/units/geocurrency/units/__init__.py:1400
 msgid "sievert"
-msgstr ""
+msgstr "sievert"
 
 #: deployment/dev/geocurrency/units/__init__.py:1404
 #: modules/units/build/lib/geocurrency/units/__init__.py:1404
 #: modules/units/geocurrency/units/__init__.py:1404
 msgid "slinch"
-msgstr ""
+msgstr "slinch"
 
 #: deployment/dev/geocurrency/units/__init__.py:1408
 #: modules/units/build/lib/geocurrency/units/__init__.py:1408
 #: modules/units/geocurrency/units/__init__.py:1408
 msgid "slug"
-msgstr ""
+msgstr "meztelen csiga"
 
 #: deployment/dev/geocurrency/units/__init__.py:1412
 #: modules/units/build/lib/geocurrency/units/__init__.py:1412
 #: modules/units/geocurrency/units/__init__.py:1412
 msgid "speed of light"
-msgstr ""
+msgstr "fénysebesség"
 
 #: deployment/dev/geocurrency/units/__init__.py:1416
 #: modules/units/build/lib/geocurrency/units/__init__.py:1416
 #: modules/units/geocurrency/units/__init__.py:1416
 msgid "square degree"
-msgstr ""
+msgstr "négyzet fok"
 
 #: deployment/dev/geocurrency/units/__init__.py:1418
 #: deployment/dev/geocurrency/units/__init__.py:1498
@@ -3939,73 +3940,73 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1418
 #: modules/units/geocurrency/units/__init__.py:1498
 msgid "solid angle"
-msgstr ""
+msgstr "szilárd szög"
 
 #: deployment/dev/geocurrency/units/__init__.py:1420
 #: modules/units/build/lib/geocurrency/units/__init__.py:1420
 #: modules/units/geocurrency/units/__init__.py:1420
 msgid "square foot"
-msgstr ""
+msgstr "négyzetméteres"
 
 #: deployment/dev/geocurrency/units/__init__.py:1424
 #: modules/units/build/lib/geocurrency/units/__init__.py:1424
 #: modules/units/geocurrency/units/__init__.py:1424
 msgid "square inch"
-msgstr ""
+msgstr "négyzet hüvelyk"
 
 #: deployment/dev/geocurrency/units/__init__.py:1428
 #: modules/units/build/lib/geocurrency/units/__init__.py:1428
 #: modules/units/geocurrency/units/__init__.py:1428
 msgid "square league"
-msgstr ""
+msgstr "négyzet bajnokság"
 
 #: deployment/dev/geocurrency/units/__init__.py:1432
 #: modules/units/build/lib/geocurrency/units/__init__.py:1432
 #: modules/units/geocurrency/units/__init__.py:1432
 msgid "square mile"
-msgstr ""
+msgstr "négyzetmérföld"
 
 #: deployment/dev/geocurrency/units/__init__.py:1436
 #: modules/units/build/lib/geocurrency/units/__init__.py:1436
 #: modules/units/geocurrency/units/__init__.py:1436
 msgid "square rod"
-msgstr ""
+msgstr "szögletes rúd"
 
 #: deployment/dev/geocurrency/units/__init__.py:1440
 #: modules/units/build/lib/geocurrency/units/__init__.py:1440
 #: modules/units/geocurrency/units/__init__.py:1440
 msgid "square survey mile"
-msgstr ""
+msgstr "négyzetmérő mérföld"
 
 #: deployment/dev/geocurrency/units/__init__.py:1444
 #: modules/units/build/lib/geocurrency/units/__init__.py:1444
 #: modules/units/geocurrency/units/__init__.py:1444
 msgid "square yard"
-msgstr ""
+msgstr "négyzetméteres udvar"
 
 #: deployment/dev/geocurrency/units/__init__.py:1448
 #: modules/units/build/lib/geocurrency/units/__init__.py:1448
 #: modules/units/geocurrency/units/__init__.py:1448
 msgid "standard atmosphere"
-msgstr ""
+msgstr "egyezményes légkör"
 
 #: deployment/dev/geocurrency/units/__init__.py:1452
 #: modules/units/build/lib/geocurrency/units/__init__.py:1452
 #: modules/units/geocurrency/units/__init__.py:1452
 msgid "standard gravity"
-msgstr ""
+msgstr "standard gravitáció"
 
 #: deployment/dev/geocurrency/units/__init__.py:1456
 #: modules/units/build/lib/geocurrency/units/__init__.py:1456
 #: modules/units/geocurrency/units/__init__.py:1456
 msgid "standard liter per minute"
-msgstr ""
+msgstr "normál liter percenként"
 
 #: deployment/dev/geocurrency/units/__init__.py:1478
 #: modules/units/build/lib/geocurrency/units/__init__.py:1478
 #: modules/units/geocurrency/units/__init__.py:1478
 msgid "electrical resistance"
-msgstr ""
+msgstr "elektromos ellenállás"
 
 #: deployment/dev/geocurrency/units/__init__.py:1490
 #: deployment/dev/geocurrency/units/__init__.py:1674
@@ -4014,55 +4015,55 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1490
 #: modules/units/geocurrency/units/__init__.py:1674
 msgid "flux density"
-msgstr ""
+msgstr "fluxus sűrűsége"
 
 #: deployment/dev/geocurrency/units/__init__.py:1492
 #: modules/units/build/lib/geocurrency/units/__init__.py:1492
 #: modules/units/geocurrency/units/__init__.py:1492
 msgid "Stefan-Boltzmann constant"
-msgstr ""
+msgstr "Stefan-Boltzmann állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1496
 #: modules/units/build/lib/geocurrency/units/__init__.py:1496
 #: modules/units/geocurrency/units/__init__.py:1496
 msgid "steradian"
-msgstr ""
+msgstr "szteradián"
 
 #: deployment/dev/geocurrency/units/__init__.py:1500
 #: modules/units/build/lib/geocurrency/units/__init__.py:1500
 #: modules/units/geocurrency/units/__init__.py:1500
 msgid "stere"
-msgstr ""
+msgstr "sztereó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1504
 #: modules/units/build/lib/geocurrency/units/__init__.py:1504
 #: modules/units/geocurrency/units/__init__.py:1504
 msgid "stilb"
-msgstr ""
+msgstr "stilb"
 
 #: deployment/dev/geocurrency/units/__init__.py:1508
 #: modules/units/build/lib/geocurrency/units/__init__.py:1508
 #: modules/units/geocurrency/units/__init__.py:1508
 msgid "stokes"
-msgstr ""
+msgstr "stokes"
 
 #: deployment/dev/geocurrency/units/__init__.py:1512
 #: modules/units/build/lib/geocurrency/units/__init__.py:1512
 #: modules/units/geocurrency/units/__init__.py:1512
 msgid "stone"
-msgstr ""
+msgstr "kő"
 
 #: deployment/dev/geocurrency/units/__init__.py:1516
 #: modules/units/build/lib/geocurrency/units/__init__.py:1516
 #: modules/units/geocurrency/units/__init__.py:1516
 msgid "survey foot"
-msgstr ""
+msgstr "felmérési láb"
 
 #: deployment/dev/geocurrency/units/__init__.py:1520
 #: modules/units/build/lib/geocurrency/units/__init__.py:1520
 #: modules/units/geocurrency/units/__init__.py:1520
 msgid "survey mile"
-msgstr ""
+msgstr "felmérési mérföld"
 
 #: deployment/dev/geocurrency/units/__init__.py:1528
 #: deployment/dev/geocurrency/units/__init__.py:1529
@@ -4071,7 +4072,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1528
 #: modules/units/geocurrency/units/__init__.py:1529
 msgid "synodic month"
-msgstr ""
+msgstr "zsinati hónap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1532
 #: deployment/dev/geocurrency/units/__init__.py:1533
@@ -4080,7 +4081,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1532
 #: modules/units/geocurrency/units/__init__.py:1533
 msgid "tablespoon"
-msgstr ""
+msgstr "evőkanál"
 
 #: deployment/dev/geocurrency/units/__init__.py:1540
 #: deployment/dev/geocurrency/units/__init__.py:1541
@@ -4089,55 +4090,55 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1540
 #: modules/units/geocurrency/units/__init__.py:1541
 msgid "teaspoon"
-msgstr ""
+msgstr "teáskanál"
 
 #: deployment/dev/geocurrency/units/__init__.py:1544
 #: modules/units/build/lib/geocurrency/units/__init__.py:1544
 #: modules/units/geocurrency/units/__init__.py:1544
 msgid "technical atmosphere"
-msgstr ""
+msgstr "technikai légkör"
 
 #: deployment/dev/geocurrency/units/__init__.py:1572
 #: modules/units/build/lib/geocurrency/units/__init__.py:1572
 #: modules/units/geocurrency/units/__init__.py:1572
 msgid "therm"
-msgstr ""
+msgstr "term"
 
 #: deployment/dev/geocurrency/units/__init__.py:1576
 #: modules/units/build/lib/geocurrency/units/__init__.py:1576
 #: modules/units/geocurrency/units/__init__.py:1576
 msgid "thermochemical Btu"
-msgstr ""
+msgstr "termokémiai Btu"
 
 #: deployment/dev/geocurrency/units/__init__.py:1580
 #: modules/units/build/lib/geocurrency/units/__init__.py:1580
 #: modules/units/geocurrency/units/__init__.py:1580
 msgid "Thomson cross section"
-msgstr ""
+msgstr "Thomson keresztmetszete"
 
 #: deployment/dev/geocurrency/units/__init__.py:1588
 #: modules/units/build/lib/geocurrency/units/__init__.py:1588
 #: modules/units/geocurrency/units/__init__.py:1588
 msgid "ton"
-msgstr ""
+msgstr "tonna"
 
 #: deployment/dev/geocurrency/units/__init__.py:1592
 #: modules/units/build/lib/geocurrency/units/__init__.py:1592
 #: modules/units/geocurrency/units/__init__.py:1592
 msgid "ton of TNT"
-msgstr ""
+msgstr "tonna TNT"
 
 #: deployment/dev/geocurrency/units/__init__.py:1596
 #: modules/units/build/lib/geocurrency/units/__init__.py:1596
 #: modules/units/geocurrency/units/__init__.py:1596
 msgid "ton of oil equivalent"
-msgstr ""
+msgstr "tonna olajegyenérték"
 
 #: deployment/dev/geocurrency/units/__init__.py:1597
 #: modules/units/build/lib/geocurrency/units/__init__.py:1597
 #: modules/units/geocurrency/units/__init__.py:1597
 msgid "toe"
-msgstr ""
+msgstr "lábujj"
 
 #: deployment/dev/geocurrency/units/__init__.py:1604
 #: deployment/dev/geocurrency/units/__init__.py:1605
@@ -4146,7 +4147,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1604
 #: modules/units/geocurrency/units/__init__.py:1605
 msgid "tropical month"
-msgstr ""
+msgstr "trópusi hónap"
 
 #: deployment/dev/geocurrency/units/__init__.py:1608
 #: deployment/dev/geocurrency/units/__init__.py:1609
@@ -4155,7 +4156,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1608
 #: modules/units/geocurrency/units/__init__.py:1609
 msgid "tropical year"
-msgstr ""
+msgstr "trópusi évben"
 
 #: deployment/dev/geocurrency/units/__init__.py:1612
 #: deployment/dev/geocurrency/units/__init__.py:1613
@@ -4164,7 +4165,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1612
 #: modules/units/geocurrency/units/__init__.py:1613
 msgid "troy ounce"
-msgstr ""
+msgstr "troy uncia"
 
 #: deployment/dev/geocurrency/units/__init__.py:1616
 #: deployment/dev/geocurrency/units/__init__.py:1617
@@ -4173,7 +4174,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1616
 #: modules/units/geocurrency/units/__init__.py:1617
 msgid "troy pound"
-msgstr ""
+msgstr "troy font"
 
 #: deployment/dev/geocurrency/units/__init__.py:1620
 #: deployment/dev/geocurrency/units/__init__.py:1621
@@ -4182,7 +4183,7 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1620
 #: modules/units/geocurrency/units/__init__.py:1621
 msgid "turn"
-msgstr ""
+msgstr "fordulat"
 
 #: deployment/dev/geocurrency/units/__init__.py:1624
 #: deployment/dev/geocurrency/units/__init__.py:1625
@@ -4191,94 +4192,94 @@ msgstr ""
 #: modules/units/geocurrency/units/__init__.py:1624
 #: modules/units/geocurrency/units/__init__.py:1625
 msgid "unified atomic mass unit"
-msgstr ""
+msgstr "egységes atomtömeg-egység"
 
 #: deployment/dev/geocurrency/units/__init__.py:1628
 #: modules/units/build/lib/geocurrency/units/__init__.py:1628
 #: modules/units/geocurrency/units/__init__.py:1628
 msgid "unit pole"
-msgstr ""
+msgstr "egységoszlop"
 
 #: deployment/dev/geocurrency/units/__init__.py:1632
 #: modules/units/build/lib/geocurrency/units/__init__.py:1632
 #: modules/units/geocurrency/units/__init__.py:1632
 msgid "vacuum permeability"
-msgstr ""
+msgstr "vákuumáteresztő képesség"
 
 #: deployment/dev/geocurrency/units/__init__.py:1636
 #: modules/units/build/lib/geocurrency/units/__init__.py:1636
 #: modules/units/geocurrency/units/__init__.py:1636
 msgid "vacuum permittivity"
-msgstr ""
+msgstr "vákuum permittivitás"
 
 #: deployment/dev/geocurrency/units/__init__.py:1648
 #: modules/units/build/lib/geocurrency/units/__init__.py:1648
 #: modules/units/geocurrency/units/__init__.py:1648
 msgid "Von Klitzing constant"
-msgstr ""
+msgstr "Von Klitzing állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1652
 #: modules/units/build/lib/geocurrency/units/__init__.py:1652
 #: modules/units/geocurrency/units/__init__.py:1652
 msgid "Water volumic mass"
-msgstr ""
+msgstr "Víz térfogati tömege"
 
 #: deployment/dev/geocurrency/units/__init__.py:1656
 #: modules/units/build/lib/geocurrency/units/__init__.py:1656
 #: modules/units/geocurrency/units/__init__.py:1656
 msgid "Water volumic mass at 39F"
-msgstr ""
+msgstr "A víz térfogati tömege 39F-on"
 
 #: deployment/dev/geocurrency/units/__init__.py:1660
 #: modules/units/build/lib/geocurrency/units/__init__.py:1660
 #: modules/units/geocurrency/units/__init__.py:1660
 msgid "Water volumic mass at 60F"
-msgstr ""
+msgstr "A víz térfogati tömege 60F-on"
 
 #: deployment/dev/geocurrency/units/__init__.py:1680
 #: modules/units/build/lib/geocurrency/units/__init__.py:1680
 #: modules/units/geocurrency/units/__init__.py:1680
 msgid "wien frequency displacement law constant"
-msgstr ""
+msgstr "wien frekvencia elmozdulás törvény állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1684
 #: modules/units/build/lib/geocurrency/units/__init__.py:1684
 #: modules/units/geocurrency/units/__init__.py:1684
 msgid "wien u"
-msgstr ""
+msgstr "wien u"
 
 #: deployment/dev/geocurrency/units/__init__.py:1688
 #: modules/units/build/lib/geocurrency/units/__init__.py:1688
 #: modules/units/geocurrency/units/__init__.py:1688
 msgid "wien displacement law constant"
-msgstr ""
+msgstr "wien elmozdulási törvény állandó"
 
 #: deployment/dev/geocurrency/units/__init__.py:1692
 #: modules/units/build/lib/geocurrency/units/__init__.py:1692
 #: modules/units/geocurrency/units/__init__.py:1692
 msgid "wien x"
-msgstr ""
+msgstr "wien x"
 
 #: deployment/dev/geocurrency/units/__init__.py:1696
 #: modules/units/build/lib/geocurrency/units/__init__.py:1696
 #: modules/units/geocurrency/units/__init__.py:1696
 msgid "Cu X-ray wavelength"
-msgstr ""
+msgstr "Cu röntgen hullámhossz"
 
 #: deployment/dev/geocurrency/units/__init__.py:1700
 #: modules/units/build/lib/geocurrency/units/__init__.py:1700
 #: modules/units/geocurrency/units/__init__.py:1700
 msgid "Mo X-ray wavelength"
-msgstr ""
+msgstr "Mo röntgen hullámhossz"
 
 #: deployment/dev/geocurrency/units/models.py:300
 #: modules/units/build/lib/geocurrency/units/models.py:300
 #: modules/units/geocurrency/units/models.py:300
 msgid "Incompatible units"
-msgstr ""
+msgstr "Nem kompatibilis egységek"
 
 #: deployment/dev/geocurrency/units/models.py:321
 #: modules/units/build/lib/geocurrency/units/models.py:321
 #: modules/units/geocurrency/units/models.py:321
 msgid "Undefined unit in the registry"
-msgstr ""
+msgstr "Meghatározatlan egység a nyilvántartásban"
