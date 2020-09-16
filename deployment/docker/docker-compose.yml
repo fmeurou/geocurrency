@@ -28,6 +28,7 @@ services:
       - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
       - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
       - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+      - GEOCURRENCY_SECRET_KEY=${GEOCURRENCY_SECRET_KEY}
     volumes:
       - logs:/var/log/supervisor
       - static:/var/apps/static
