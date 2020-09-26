@@ -32,6 +32,7 @@ module = 'geocurrency'
 
 setup(
     name='geocurrency',
+    python_requires='>3.8.0',
     version=get_version(module),
     author='Frédéric MEUROU',
     author_email='fm@peabytes.me',
