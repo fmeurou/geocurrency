@@ -24,7 +24,7 @@ from geocurrency.countries import urls as country_urls
 from geocurrency.currencies import urls as currency_urls
 from geocurrency.rates import urls as rate_urls
 from geocurrency.units import urls as unit_urls
-from geocurrency.converters import WatchView
+from geocurrency.converters.views import WatchView
 from .views import index
 
 schema_view = get_schema_view(
