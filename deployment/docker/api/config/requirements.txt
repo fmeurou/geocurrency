@@ -12,7 +12,6 @@ forex-python
 django_redis
 django-cors-middleware
 timezonefinder
-lxml
 pysendfile
 countryinfo
 pint

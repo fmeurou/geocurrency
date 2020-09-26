@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
+import os
 import subprocess
 from datetime import date
-
-import os
 from setuptools import setup, find_packages
 
-module = 'geocurrency.rates'
 
-
-def get_version():
+def get_version(module):
     version = date.today().strftime('%Y-%m')
     try:
         branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).rstrip().decode('utf8')
         git_describe = subprocess.check_output(["git", "describe", "--long"]).rstrip().decode('utf8')
         git_tag = git_describe.split('-')[0]
         git_commits = git_describe.split('-')[1]
-        if branch == 'release':
+        if branch == 'master':
             sep = '.'
         else:
             sep = 'dev'
@@ -31,18 +28,41 @@ def get_version():
         print('ERROR opening {}/__init__.py'.format(module), os.curdir)
     return version
 
+module = 'geocurrency'
 
 setup(
-    name='geocurrency.rates',
-    version=get_version(),
+    name='geocurrency',
+    version=get_version(module),
     author='Frédéric MEUROU',
     author_email='fm@peabytes.me',
-    description='Rate management and conversion module',
+    description='Services for conversions',
     url='https://www.geocurrency.me',
     install_requires=[
-        "geocurrency.core",
-        "geocurrency.converters",
-        "geocurrency.currencies",
+        "Django~=3.1.0",
+        "django-cors-headers~=3.2.0",
+        "django-cors-middleware~=1.5.0",
+        "django-createsuperuser",
+        "django-extensions~=3.0.0",
+        "django-filter~=2.3.0",
+        "django-redis~=4.12.0",
+        "django-sendfile~=0.3.0",
+        "djangorestframework~=3.11.0",
+        "drf-yasg~=1.17.0",
+        "markdown~=3.0",
+        "lxml~=4.0",
+        "django_redis~=4.0",
+        "pysendfile~=2.0",
+        "gunicorn",
+        "psycopg2",
+        "mysql",
+        "pytz",
+        "pycountry",
+        "countryinfo~=0.1.0",
+        "timezonefinder~=4.4.0",
+        "iso4217",
+        "forex-python~=1.0",
+        "Babel~=2.8",
+        "Pint~=0.15"
     ],
     packages=find_packages(),
     include_package_data=True,
@@ -53,5 +73,12 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Software Development"
     ],
-    py_modules=['geocurrency.rates'],
+    py_modules=[
+        'geocurrency.core',
+        'geocurrency.countries',
+        'geocurrency.currencies',
+        'geocurrency.rates',
+        'geocurrency.units',
+        'geocurrency.converters'
+    ],
 )

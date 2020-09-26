@@ -1,21 +1,16 @@
-#!/usr/bin/env python3
+import os
 import subprocess
 from datetime import date
 
-import os
-from setuptools import setup, find_packages
 
-module = 'geocurrency.countries'
-
-
-def get_version():
+def get_version(module):
     version = date.today().strftime('%Y-%m')
     try:
         branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).rstrip().decode('utf8')
         git_describe = subprocess.check_output(["git", "describe", "--long"]).rstrip().decode('utf8')
         git_tag = git_describe.split('-')[0]
         git_commits = git_describe.split('-')[1]
-        if branch == 'release':
+        if branch == 'master':
             sep = '.'
         else:
             sep = 'dev'
@@ -30,26 +25,3 @@ def get_version():
     except Exception:
         print('ERROR opening {}/__init__.py'.format(module), os.curdir)
     return version
-
-
-setup(
-    name='geocurrency.countries',
-    version=get_version(),
-    author='Frédéric MEUROU',
-    author_email='fm@peabytes.me',
-    description='Country management module',
-    url='https://www.geocurrency.me',
-    install_requires=[
-        "geocurrency.core",
-    ],
-    packages=find_packages(),
-    include_package_data=True,
-    classifiers=[
-        "Framework :: Django",
-        "Intended Audience :: Developers",
-        "Intended Audience :: System Administrators",
-        "Operating System :: OS Independent",
-        "Topic :: Software Development"
-    ],
-    py_modules=['geocurrency.countries'],
-)

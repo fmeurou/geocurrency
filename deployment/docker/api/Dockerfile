@@ -6,10 +6,10 @@ RUN groupadd apps
 RUN mkdir /var/apps /var/apps/bin /var/apps/packages /var/apps/media /var/apps/static /var/apps/logs
 RUN useradd -g apps -s /bin/bash -d /var/apps apps
 WORKDIR /var/apps
-COPY config/requirements.txt /var/apps/
+# COPY config/requirements.txt /var/apps/
 COPY packages/ /var/apps/packages
-RUN pip install -r requirements.txt
-RUN pip install --pre -f /var/apps/packages/ geocurrency.core geocurrency.countries geocurrency.currencies geocurrency.rates geocurrency.units
+# RUN pip install -r requirements.txt
+RUN pip install --pre -f /var/apps/packages/ geocurrency
 RUN django-admin startproject api
 COPY config/settings.py /var/apps/api/settings.py
 # TODO: fix path issue on gunicorn
