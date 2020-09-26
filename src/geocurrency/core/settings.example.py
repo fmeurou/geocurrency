@@ -21,17 +21,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    os.environ.get('GEOCURRENCY_SERVICE_URL', '127.0.0.1'),
+    # Put your service URL
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
-    os.environ.get('GEOCURRENCY_SERVICE_URL', '127.0.0.1'),
+    # Put your service URL or front end URL
 ]
 
 CORS_ALLOW_METHODS = [
@@ -72,10 +72,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'geocurrency.core',
     'geocurrency.rates',
+    'geocurrency.units',
 ]
-
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,8 +86,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
     {
@@ -107,28 +103,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'api.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -166,12 +140,15 @@ REST_FRAMEWORK = {
 
 FILTERS_DEFAULT_LOOKUP_EXPR = 'icontains'
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 # This is defined here as a do-nothing function because we can't import
 # django.utils.translation -- that module depends on the settings.
 def gettext_noop(s):
     return s
+
+
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = [
     ('af', gettext_noop('Afrikaans')),
@@ -276,8 +253,9 @@ LANGUAGES = [
 LANGUAGES_BIDI = ["he", "ar", "ar-dz", "fa", "ur"]
 
 import pycountry
+
 LOCALE_PATHS = [
-    'modules/core/geocurrency/core/locales',
+    'src/geocurrency/core/locales',
     pycountry.LOCALES_DIR,
 ]
 
@@ -293,14 +271,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/geocurrencies/static'
-MEDIA_ROOT = '/var/www/geocurrencies/media'
 
 SENDFILE_BACKEND = 'sendfile.backends.nginx'
-SENDFILE_ROOT = '/var/www/geocurrencies/media'
 SENDFILE_URL = '/media'
-
-
 
 LOGGING = {
     'version': 1,
@@ -326,20 +299,42 @@ SERVICES = {
         'pelias': 'geocurrency.countries.services.pelias.PeliasGeocoder',
         'google': 'geocurrency.countries.services.google.GoogleGeocoder',
     },
-    'rates':  {
+    'rates': {
         'forex': 'geocurrency.rates.services.forex.ForexService',
         'currencylayer': 'geocurrency.rates.services.currencylayer.CurrencyLayerService'
     }
 }
 
 SWAGGER_SETTINGS = {
-   'SECURITY_DEFINITIONS': {
-      'Token': {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header'
-      }
-   }
+        }
+    }
+}
+
+# Adapt to your local environment or override in local.py
+ROOT_URLCONF = 'api.urls'
+SENDFILE_ROOT = '/var/www/geocurrencies/media'
+STATIC_ROOT = '/var/www/geocurrencies/static'
+MEDIA_ROOT = '/var/www/geocurrencies/media'
+WSGI_APPLICATION = 'api.wsgi.application'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
 }
 
 from geocurrency.countries.settings import *

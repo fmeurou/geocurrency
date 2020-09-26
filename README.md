@@ -37,3 +37,18 @@ just run "docker-compose up"
 2. install required packages from deployment/docker/api/config/requirements.txt
 3. link deployment/dev to your virtual environment
 4. link each module (e.g. modules/converters/) to venv/dev/ 
+
+### Using packages
+
+ENV_NAME=<env_name>
+PROJECT_NAME=<project_name>
+PYTHON_VERSION=/usr/bin/python3 # use pypy :)
+virtualenv -p $PYTHON_VERSION $ENV_NAME
+cd $ENV_NAME
+source bin/activate
+pip install -f <path_to_packages> geocurrency
+django-admin startproject $PROJECT_NAME
+cp site_packages/geocurrency/core/settings.example.py $PROJECT_NAME/$PROJECT_NAME/settings.py
+cp site_packages/geocurrency/core/urls.example.py $PROJECT_NAME/$PROJECT_NAME/urls.py
+cd $PROJECT_NAME
+cp 
