@@ -578,7 +578,11 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('decade'),
         'symbol': pgettext_lazy('symbol', 'decade'),
         'family': _('time')
-    }, 'degree': {
+    }, 'decibel': {
+        'name': _('decibel'),
+        'symbol': 'dB',
+        'family': _('field quantity')
+    },'degree': {
         'name': _('degree'),
         'symbol': '°',
         'family': _('dimensionless')

@@ -1,3 +1,4 @@
+import logging
 from datetime import date
 
 import pint
@@ -182,7 +183,8 @@ class Unit:
         try:
             ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
             return ext_unit['family']
-        except KeyError:
+        except (KeyError, TypeError) as e:
+            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {unit_str}')
             return ''
 
     @staticmethod
@@ -190,7 +192,8 @@ class Unit:
         try:
             ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
             return ext_unit['name']
-        except KeyError:
+        except (KeyError, TypeError) as e:
+            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {unit_str}')
             return unit_str
 
     @staticmethod
@@ -198,7 +201,8 @@ class Unit:
         try:
             ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
             return ext_unit['symbol']
-        except KeyError:
+        except (KeyError, TypeError) as e:
+            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {unit_str}')
             return ''
 
     @staticmethod
