@@ -104,6 +104,8 @@ class BaseConverter:
         Check data and add it to the dataset
         Return list of errors
         """
+        if not data:
+            return [{'data': 'Empty data set', }]
         if errors := self.check_data(data):
             return errors
         self.status = self.INSERTING_STATUS

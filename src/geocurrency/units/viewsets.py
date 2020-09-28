@@ -130,6 +130,12 @@ class ConvertView(APIView):
         base_unit = request.data.get('base_unit')
         batch_id = request.data.get('batch')
         eob = request.data.get('eob', False)
+        if not data and not batch_id and not eob:
+            return Response('No data provided', status=HTTP_400_BAD_REQUEST)
+        if not base_system:
+            return Response('No base system provided', status=HTTP_400_BAD_REQUEST)
+        if not base_unit:
+            return Response('No base unit provided', status=HTTP_400_BAD_REQUEST)
         try:
             converter = UnitConverter.load(batch_id)
         except KeyError:
@@ -138,8 +144,9 @@ class ConvertView(APIView):
                 base_system=base_system,
                 base_unit=base_unit
             )
-        if errors := converter.add_data(data=data):
-            return Response(errors, status=HTTP_400_BAD_REQUEST)
+        if data:
+            if errors := converter.add_data(data=data):
+                return Response(errors, status=HTTP_400_BAD_REQUEST)
         if eob or not batch_id:
             result = converter.convert()
             serializer = ConverterResultSerializer(result)

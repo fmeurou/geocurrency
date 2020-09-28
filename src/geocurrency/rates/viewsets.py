@@ -184,6 +184,8 @@ class ConvertView(APIView):
         batch_id = request.data.get('batch')
         key = request.data.get('key')
         eob = request.data.get('eob', False)
+        if not data and not batch_id and not eob:
+            return Response('No data provided', status=HTTP_400_BAD_REQUEST)
         try:
             converter = RateConverter.load(batch_id)
         except KeyError:
@@ -193,8 +195,9 @@ class ConvertView(APIView):
                 key=key,
                 base_currency=target
             )
-        if errors := converter.add_data(data=data):
-            return Response(errors, status=HTTP_400_BAD_REQUEST)
+        if data:
+            if errors := converter.add_data(data=data):
+                return Response(errors, status=HTTP_400_BAD_REQUEST)
         if eob or not batch_id:
             result = converter.convert()
             serializer = ConverterResultSerializer(result)
