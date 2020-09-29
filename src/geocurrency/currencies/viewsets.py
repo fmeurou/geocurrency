@@ -27,7 +27,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
     currencies_response = openapi.Response('List of currencies', CurrencySerializer)
     currency_response = openapi.Response('Currency detail', CurrencySerializer)
 
-    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
     @swagger_auto_schema(responses={200: currencies_response})
     def list(self, request, *args, **kwargs):
@@ -38,7 +38,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
         serializer = CurrencySerializer(currencies, many=True, context={'request': request})
         return Response(serializer.data)
 
-    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
     @swagger_auto_schema(responses={200: currency_response})
     def retrieve(self, request, code, *args, **kwargs) -> Response:
@@ -52,7 +52,7 @@ class CurrencyViewset(ReadOnlyModelViewSet):
         except CurrencyNotFoundError:
             return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
-    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
     @swagger_auto_schema(method='get', responses={200: CountrySerializer})
     @action(['GET'], detail=True, url_path='countries', url_name="get_countries")

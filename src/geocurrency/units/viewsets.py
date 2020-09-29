@@ -1,3 +1,6 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
@@ -26,6 +29,8 @@ class UnitSystemViewset(ViewSet):
     unit_systems_response = openapi.Response('List of unit systems', UnitSystemListSerializer)
     unit_system_response = openapi.Response('Dimensions and units in a system', UnitSystemDetailSerializer)
 
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
     @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: unit_systems_response})
     def list(self, request):
         language = request.GET.get('language', request.LANGUAGE_CODE)
@@ -34,6 +39,8 @@ class UnitSystemViewset(ViewSet):
         serializer = UnitSystemListSerializer(us, many=True, context={'request': request})
         return Response(serializer.data)
 
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
     @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: unit_system_response})
     def retrieve(self, request, system_name):
         language = request.GET.get('language', request.LANGUAGE_CODE)
@@ -59,6 +66,8 @@ class UnitViewset(ViewSet):
     units_response = openapi.Response('List of units in a system', UnitSerializer)
     unit_response = openapi.Response('Detail of a unit', UnitSerializer)
 
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
     @swagger_auto_schema(manual_parameters=[family, language, language_header], responses={200: units_response})
     def list(self, request, system_name):
         language = request.GET.get('language', request.LANGUAGE_CODE)
@@ -76,6 +85,8 @@ class UnitViewset(ViewSet):
         except KeyError:
             return Response('Invalid Unit System', status=status.HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
     @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: unit_response})
     def retrieve(self, request, system_name, unit_name):
         """
@@ -90,6 +101,8 @@ class UnitViewset(ViewSet):
         except (ValueError, KeyError):
             return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
 
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
     @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: units_response})
     @action(methods=['GET'], detail=True, url_path='compatible', url_name='compatible_units')
     def compatible_units(self, request, system_name, unit_name):
