@@ -20,4 +20,4 @@ class LanguageView(APIView):
 
     @action(['GET'], detail=False, url_path='languages', url_name="languages")
     def get(self, request, *args, **kwargs):
-        return Response([{l[0], l[1]} for l in settings.LANGUAGES], content_type="application/json")
+        return Response([{'name': l[1], 'code': l[0]} for l in settings.LANGUAGES], content_type="application/json")
