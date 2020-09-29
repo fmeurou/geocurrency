@@ -35,9 +35,8 @@ class UnitSystemViewset(ViewSet):
     def list(self, request):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         us = UnitSystem(fmt_locale=language)
-        us = [UnitSystem(system_name=s) for s in us.available_systems()]
-        serializer = UnitSystemListSerializer(us, many=True, context={'request': request})
-        return Response(serializer.data)
+        us = [{'system_name': s} for s in us.available_systems()]
+        return Response(us, content_type="application/json")
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)

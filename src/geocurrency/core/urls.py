@@ -26,7 +26,7 @@ from geocurrency.currencies import urls as currency_urls
 from geocurrency.rates import urls as rate_urls
 from geocurrency.units import urls as unit_urls
 from geocurrency.converters.views import WatchView
-from .views import index, tos
+from .views import index, tos, LanguageView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -49,5 +49,6 @@ urlpatterns = [
     path('units/', include(unit_urls)),
     url(r'^watch/(?P<converter_id>[0-9a-f-]{36})/$', WatchView.as_view()),
     path('', index),
-    path('tos', tos)
+    path('tos', tos),
+    path('languages', LanguageView.as_view())
 ]
