@@ -18,6 +18,6 @@ def tos(request):
 
 class LanguageView(APIView):
 
-    @action(['GET'], url_path='', url_name="languages")
+    @action(['GET'], detail=False, url_path='languages', url_name="languages")
     def get(self, request, *args, **kwargs):
         return Response([{l[0], l[1]} for l in settings.LANGUAGES], content_type="application/json")
