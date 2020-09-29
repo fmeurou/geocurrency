@@ -1,8 +1,8 @@
 import uuid
 
 import pint
-from django.test import TestCase
 from django.core.cache import cache
+from django.test import TestCase
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -188,6 +188,11 @@ class UnitConverterTest(TestCase):
         self.assertIn("system", errors[0])
         self.assertIn("value", errors[1])
         self.assertIn("date_obj", errors[2])
+
+    def test_add_empty_data(self):
+        converter = UnitConverter(base_system='SI', base_unit='meter')
+        errors = converter.add_data(data=None)
+        self.assertEqual(len(errors), 1)
 
     def test_convert(self):
         result = self.converter.convert()

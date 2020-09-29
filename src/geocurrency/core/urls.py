@@ -20,21 +20,22 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
+import geocurrency
 from geocurrency.countries import urls as country_urls
 from geocurrency.currencies import urls as currency_urls
 from geocurrency.rates import urls as rate_urls
 from geocurrency.units import urls as unit_urls
 from geocurrency.converters.views import WatchView
-from .views import index
+from .views import index, tos
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="GeoCurrencies API",
+        title="GeoCurrency API",
         default_version='v1',
-        description="GeoCurrencies API",
-        terms_of_service="https://www.google.com/policies/terms/",
+        description="APIs for GeoCurrency v" +  '.'.join(map(str, geocurrency.__version__[:3])),
+        terms_of_service="/tos/",
         contact=openapi.Contact(email="fm@peabytes.me"),
-        license=openapi.License(name="BSD License"),
+        license=openapi.License(name="MIT License"),
     ),
     url='https://api.geocurrency.me/',
     public=True,
@@ -47,5 +48,6 @@ urlpatterns = [
     path('rates/', include(rate_urls)),
     path('units/', include(unit_urls)),
     url(r'^watch/(?P<converter_id>[0-9a-f-]{36})/$', WatchView.as_view()),
-    path('', index)
+    path('', index),
+    path('tos', tos)
 ]
