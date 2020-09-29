@@ -14,13 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
 from django.urls import path
-from drf_yasg import openapi
-from drf_yasg.views import get_schema_view
-from rest_framework import permissions
-
-import geocurrency
 from geocurrency.countries import urls as country_urls
 from geocurrency.currencies import urls as currency_urls
 from geocurrency.rates import urls as rate_urls
@@ -28,27 +22,13 @@ from geocurrency.units import urls as unit_urls
 from geocurrency.converters.views import WatchView
 from .views import index, tos, LanguageView
 
-schema_view = get_schema_view(
-    openapi.Info(
-        title="GeoCurrency API",
-        default_version='v1',
-        description="APIs for GeoCurrency v" +  '.'.join(map(str, geocurrency.__version__[:3])),
-        terms_of_service="/tos/",
-        contact=openapi.Contact(email="fm@peabytes.me"),
-        license=openapi.License(name="MIT License"),
-    ),
-    url='https://api.geocurrency.me/',
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
-
 urlpatterns = [
     path('currencies/', include(currency_urls)),
     path('countries/', include(country_urls)),
     path('rates/', include(rate_urls)),
     path('units/', include(unit_urls)),
     url(r'^watch/(?P<converter_id>[0-9a-f-]{36})/$', WatchView.as_view()),
+    path('tos/', tos),
+    path('languages/', LanguageView.as_view()),
     path('', index),
-    path('tos', tos),
-    path('languages', LanguageView.as_view())
 ]
