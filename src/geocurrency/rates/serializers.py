@@ -6,13 +6,13 @@ from rest_framework import serializers
 from .models import Rate, Amount, BulkRate
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            'username',
-            'email'
-        ]
+class UserSerializer(serializers.BaseSerializer):
+
+    def to_representation(self, instance):
+        return {
+            'username': instance.username,
+            'email': instance.email
+        }
 
 
 class BulkSerializer(serializers.Serializer):
