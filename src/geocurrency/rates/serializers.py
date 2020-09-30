@@ -72,7 +72,7 @@ class BulkSerializer(serializers.Serializer):
 
 class RateSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Rate
