@@ -7,6 +7,8 @@ from .models import Rate, Amount, BulkRate
 
 
 class UserSerializer(serializers.BaseSerializer):
+    username = serializers.CharField()
+    email = serializers.CharField()
 
     def to_representation(self, instance):
         return {
