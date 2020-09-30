@@ -1,3 +1,4 @@
+import datetime
 import uuid
 
 from datetime import date
@@ -270,7 +271,7 @@ class RateTest(TestCase):
         token = Token.objects.get(user__username=self.user.username)
         client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         post_response = client.post(
-            '/rates/',
+            '/rates/bulk/',
             data={
                 'key': self.key,
                 'currency': 'USD',
@@ -281,6 +282,9 @@ class RateTest(TestCase):
             }
         )
         self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(len(post_response.json()),
+                         (datetime.date(year=2020, month=9, day=1) - datetime.date(year=2020, month=1, day=1)).days + 1)
+
 
 class RateConverterTest(TestCase):
     base_currency = 'EUR'
@@ -414,7 +418,7 @@ class RateConverterTest(TestCase):
             },
             format='json')
         self.assertEqual(response.json().get('status'), RateConverter.FINISHED)
-        self.assertEqual(len(response.json().get('detail')), 2*len(self.amounts))
+        self.assertEqual(len(response.json().get('detail')), 2 * len(self.amounts))
 
     def test_watch_request(self):
         batch_id = uuid.uuid4()

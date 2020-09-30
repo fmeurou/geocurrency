@@ -277,17 +277,18 @@ class BulkRate:
         if not self.to_date:
             self.to_date = date.today()
         rates = []
-        for i in range((self.to_obj - self.from_obj).days + 1):
+        for i in range((self.to_date - self.from_date).days + 1):
             rate, created = Rate.objects.get_or_create(
                 user=user,
                 key=self.key,
                 base_currency=self.base_currency,
                 currency=self.currency,
-                value_date=self.from_obj + timedelta(i)
+                value_date=self.from_date + timedelta(i)
             )
             rate.value = self.value
             rate.save()
             rates.append(rate)
+        return rates
 
 
 class RateConverter(BaseConverter):

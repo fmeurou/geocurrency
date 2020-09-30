@@ -114,13 +114,13 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         """
         if not request.user or not request.user.is_authenticated:
             return HttpResponseForbidden()
-        bs = BulkSerializer(data=request.POST)
+        bs = BulkSerializer(data=request.data)
         if not bs.is_valid():
             return Response(bs.errors, status=status.HTTP_400_BAD_REQUEST)
-        bulk_rate = bs.create()
+        bulk_rate = bs.create(validated_data=bs.validated_data)
         rates = bulk_rate.to_rates(user=request.user)
         serializer = RateSerializer(rates, many=True)
-        return Response(serializer.data, content_type="application/json")
+        return Response(serializer.data, content_type="application/json", status=status.HTTP_201_CREATED)
 
 
 class ConvertView(APIView):
