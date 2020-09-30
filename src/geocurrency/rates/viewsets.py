@@ -106,7 +106,7 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         else:
             return Response(rate_form.errors, status=status.HTTP_400_BAD_REQUEST, content_type="application/json")
 
-    @swagger_auto_schema(method='post', request_body=BulkSerializer, responses={200: RateSerializer})
+    @swagger_auto_schema(method='post', request_body=BulkSerializer, responses={201: RateSerializer})
     @action(['POST'], detail=False, url_path='bulk', url_name="bulk_create")
     def create_bulk(self, request):
         """
