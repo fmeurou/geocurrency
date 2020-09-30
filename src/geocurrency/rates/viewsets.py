@@ -114,7 +114,7 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         """
         if not request.user or not request.user.is_authenticated:
             return HttpResponseForbidden()
-        bs = BulkSerializer(request.POST)
+        bs = BulkSerializer(data=request.POST)
         if not bs.is_valid():
             return Response(bs.errors, status=status.HTTP_400_BAD_REQUEST)
         bulk_rate = bs.create()
