@@ -15,7 +15,7 @@ from geocurrency.currencies.models import Currency
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer
+from .serializers import RateSerializer, BulkSerializer
 
 
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
@@ -106,8 +106,7 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         else:
             return Response(rate_form.errors, status=status.HTTP_400_BAD_REQUEST, content_type="application/json")
 
-    @swagger_auto_schema(method='post', manual_parameters=[key, base_currency, currency, from_obj, to_obj, value],
-                         responses={200: RateSerializer})
+    @swagger_auto_schema(method='post', request_body=BulkSerializer, responses={200: RateSerializer})
     @action(['POST'], detail=False, url_path='bulk', url_name="bulk_create")
     def create_bulk(self, request):
         """
@@ -115,46 +114,11 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         """
         if not request.user or not request.user.is_authenticated:
             return HttpResponseForbidden()
-        if not request.POST.get('from') or not request.POST.get('base_currency') or \
-                not request.POST.get('currency') or not request.POST.get('value') or \
-                not request.POST.get('key'):
-            return Response("parameters are mandatory: base_currency, currency, from_obj, value",
-                            status=status.HTTP_400_BAD_REQUEST)
-        base_currency = request.POST.get('base_currency')
-        currency = request.POST.get('currency')
-        key = request.POST.get('key')
-        try:
-            from_obj = datetime.strptime(request.POST.get('from'), 'YYYY-MM-DD')
-        except ValueError:
-            return Response("Invalid start of range", status=HTTP_400_BAD_REQUEST)
-        try:
-            to_obj = request.POST.get('to')
-            if to_obj:
-                to_obj = datetime.strptime(request.POST.get('to'), 'YYYY-MM-DD')
-            else:
-                to_obj = date.today()
-        except ValueError:
-            return Response("Invalid end of range", status=HTTP_400_BAD_REQUEST)
-        try:
-            value = float(request.POST.get('value'))
-        except ValueError:
-            return Response("Invalid value", status=HTTP_400_BAD_REQUEST)
-        if not Currency.is_valid(base_currency):
-            return Response("Invalid base currency", status=HTTP_400_BAD_REQUEST)
-        if not Currency.is_valid(currency):
-            return Response("Invalid currency", status=HTTP_400_BAD_REQUEST)
-        rates = []
-        for i in range((to_obj - from_obj).days + 1):
-            rate, created = Rate.objects.get_or_create(
-                user=request.user,
-                key=key,
-                base_currency=base_currency,
-                currency=currency,
-                value_date=from_obj + timedelta(i)
-            )
-            rate.value = value
-            rate.save()
-            rates.append(rate)
+        bs = BulkSerializer(request.POST)
+        if not bs.is_valid():
+            return Response(bs.errors, status=status.HTTP_400_BAD_REQUEST)
+        bulk_rate = bs.create()
+        rates = bulk_rate.to_rates(user=request.user)
         serializer = RateSerializer(rates, many=True)
         return Response(serializer.data, content_type="application/json")
 

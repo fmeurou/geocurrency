@@ -1,5 +1,5 @@
 import logging
-from datetime import date
+from datetime import date, timedelta
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -255,6 +255,39 @@ class Amount:
 
     def __repr__(self):
         return f'{self.date_obj}: {self.currency} {self.amount}'
+
+
+class BulkRate:
+    base_currency = settings.BASE_CURRENCY
+    currency = settings.BASE_CURRENCY
+    value = 0
+    key = None
+    from_date = None
+    to_date = None
+
+    def __init__(self, base_currency, currency, value, key, from_date, to_date):
+        self.base_currency = base_currency
+        self.currency = currency
+        self.value = value
+        self.key = key
+        self.from_date = from_date
+        self.to_date = to_date
+
+    def to_rates(self, user):
+        if not self.to_date:
+            self.to_date = date.today()
+        rates = []
+        for i in range((self.to_obj - self.from_obj).days + 1):
+            rate, created = Rate.objects.get_or_create(
+                user=user,
+                key=self.key,
+                base_currency=self.base_currency,
+                currency=self.currency,
+                value_date=self.from_obj + timedelta(i)
+            )
+            rate.value = self.value
+            rate.save()
+            rates.append(rate)
 
 
 class RateConverter(BaseConverter):
