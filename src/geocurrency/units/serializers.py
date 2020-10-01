@@ -6,7 +6,7 @@ from rest_framework import serializers
 from .models import Amount, UnitConversionPayload
 
 
-class AmountSerializer(serializers.Serializer):
+class UnitAmountSerializer(serializers.Serializer):
     system = serializers.CharField()
     unit = serializers.CharField()
     value = serializers.FloatField()
@@ -81,7 +81,7 @@ class UnitSystemDetailSerializer(serializers.Serializer):
 
 
 class UnitConversionPayloadSerializer(serializers.Serializer):
-    data = AmountSerializer(many=True, required=False)
+    data = UnitAmountSerializer(many=True, required=False)
     base_system = serializers.CharField(required=True)
     base_unit = serializers.CharField(required=True)
     batch_id = serializers.CharField(required=False)

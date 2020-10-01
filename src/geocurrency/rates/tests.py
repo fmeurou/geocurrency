@@ -11,7 +11,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 
 from .models import Rate, RateConverter
-from .serializers import AmountSerializer
+from .serializers import RateAmountSerializer
 
 
 class RateTest(TestCase):
@@ -377,7 +377,7 @@ class RateConverterTest(TestCase):
     def test_convert_request(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        amounts = AmountSerializer(self.amounts, many=True)
+        amounts = RateAmountSerializer(self.amounts, many=True)
         client = APIClient()
         response = client.post(
             '/rates/convert/',
@@ -395,7 +395,7 @@ class RateConverterTest(TestCase):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         client = APIClient()
-        amounts = AmountSerializer(self.amounts, many=True)
+        amounts = RateAmountSerializer(self.amounts, many=True)
         response = client.post(
             '/rates/convert/',
             data={
@@ -425,7 +425,7 @@ class RateConverterTest(TestCase):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         client = APIClient()
-        amounts = AmountSerializer(self.amounts, many=True)
+        amounts = RateAmountSerializer(self.amounts, many=True)
         response = client.post(
             '/rates/convert/',
             data={

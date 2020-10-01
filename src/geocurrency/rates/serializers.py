@@ -89,7 +89,7 @@ class RateSerializer(serializers.ModelSerializer):
         ]
 
 
-class AmountSerializer(serializers.Serializer):
+class RateAmountSerializer(serializers.Serializer):
     currency = serializers.CharField()
     amount = serializers.FloatField()
     date_obj = serializers.DateField()
@@ -130,7 +130,7 @@ class AmountSerializer(serializers.Serializer):
 
 
 class RateConversionPayloadSerializer(serializers.Serializer):
-    data = AmountSerializer(many=True, required=False)
+    data = RateAmountSerializer(many=True, required=False)
     target = serializers.CharField(required=True)
     batch_id = serializers.CharField(required=False)
     key = serializers.CharField(required=False)

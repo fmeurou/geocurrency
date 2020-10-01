@@ -334,10 +334,10 @@ class RateConverter(BaseConverter):
         - amount (float)
         - date (YYYY-MM-DD)
         """
-        from .serializers import AmountSerializer
+        from .serializers import RateAmountSerializer
         errors = []
         for line in data:
-            serializer = AmountSerializer(data=line)
+            serializer = RateAmountSerializer(data=line)
             if serializer.is_valid():
                 self.data.append(serializer.create(serializer.validated_data))
             else:

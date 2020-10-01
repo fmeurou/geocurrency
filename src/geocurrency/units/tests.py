@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from .models import UnitSystem, UnitConverter
-from .serializers import AmountSerializer
+from .serializers import UnitAmountSerializer
 
 
 class UnitTest(TestCase):
@@ -205,7 +205,7 @@ class UnitConverterTest(TestCase):
         self.assertEqual(result.sum, converted_sum)
 
     def test_convert_request(self):
-        amounts = AmountSerializer(self.amounts, many=True)
+        amounts = UnitAmountSerializer(self.amounts, many=True)
         client = APIClient()
         response = client.post(
             '/units/convert/',
@@ -222,7 +222,7 @@ class UnitConverterTest(TestCase):
     def test_convert_batch_request(self):
         batch_id = uuid.uuid4()
         client = APIClient()
-        amounts = AmountSerializer(self.amounts, many=True)
+        amounts = UnitAmountSerializer(self.amounts, many=True)
         response = client.post(
             '/units/convert/',
             data={
@@ -252,7 +252,7 @@ class UnitConverterTest(TestCase):
     def test_watch_request(self):
         batch_id = uuid.uuid4()
         client = APIClient()
-        amounts = AmountSerializer(self.amounts, many=True)
+        amounts = UnitAmountSerializer(self.amounts, many=True)
         response = client.post(
             '/units/convert/',
             data={
