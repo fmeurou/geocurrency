@@ -40,7 +40,16 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             qs = qs.filter(models.Q(user__isnull=True))
         return qs
 
-    @swagger_auto_schema(responses={200: RateSerializer})
+    currency_latest_values = openapi.Parameter('currency_latest_values', openapi.IN_QUERY,
+                                               description="Currency to filter on, limits results to latest values",
+                                               type=openapi.TYPE_STRING)
+    base_currency_latest_values = openapi.Parameter(
+        'base_currency_latest_values', openapi.IN_QUERY,
+        description="Base currency to filter on, limits results to latest values",
+        type=openapi.TYPE_STRING)
+
+    @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values],
+                         responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
         return super(RateViewSet, self).list(request, *args, **kwargs)
 
