@@ -20,8 +20,8 @@ set the following environment variables
 - GEOCURRENCY_DB_PASSWORD: database password
 
 ### Docker
-
-Generate packages from "deployment/scripts/packages.sh"
+Create a "packages" directory at the root of the project
+Generate packages from "build.sh"
 
 Folder "deployment/docker" provides an easy to setup docker environment running 
 - Django app
@@ -31,13 +31,6 @@ Folder "deployment/docker" provides an easy to setup docker environment running
 
 just run "docker-compose up"
 
-### Local environment
-
-1. install a python virtual environment
-2. install required packages from deployment/docker/api/config/requirements.txt
-3. link deployment/dev to your virtual environment
-4. link each module (e.g. modules/converters/) to venv/dev/ 
-
 ### Using packages
 
 ENV_NAME=<env_name>
@@ -46,9 +39,46 @@ PYTHON_VERSION=/usr/bin/python3 # use pypy :)
 virtualenv -p $PYTHON_VERSION $ENV_NAME
 cd $ENV_NAME
 source bin/activate
-pip install -f <path_to_packages> geocurrency
+pip install geocurrency
 django-admin startproject $PROJECT_NAME
 cp site_packages/geocurrency/core/settings.example.py $PROJECT_NAME/$PROJECT_NAME/settings.py
 cp site_packages/geocurrency/core/urls.example.py $PROJECT_NAME/$PROJECT_NAME/urls.py
 cd $PROJECT_NAME
-cp 
+
+Adapt settings and urls for your environment.
+
+## Usage
+
+### Routes
+This package provides a OpenAPI documentation. See urls.example.py for a setup example. 
+
+### Authentication
+The app provides most services without authentication. 
+Authentication is required to store custom conversion rates and custom conversion units.
+By default, the app is configured to allow authentication through an API token that can be generated for a user on the 
+Django admin site.
+
+API authentication can be achieved with an Authorization header header with value Token <APIToken>
+curl -H "Authorization: Token <user token>".
+
+### Language support
+The app supports translations for countries and units in 15 languages. More languages should be available soon.
+
+### Fetch rates
+The app uses python-forex as a mecanism to fetch currency rates. 
+A django command is available to fetch rates from command line :
+$ ./manage.py fetch_rates
+
+## About 
+
+### Project goals
+
+Web based services to convert units and currencies. 
+GeoCurrency is a portmanteau of the words "Geocoding" and "Currency" which where the main goals of the initial project
+
+### Project website
+A live version of this service is available at <https://api.geocurrency.me>.
+
+### Leadership
+
+This project is maintained by Frédéric Meurou <fm@peabytes.me>.
