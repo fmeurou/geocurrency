@@ -1,7 +1,8 @@
-from django_filters import rest_framework as filters
 from django.db import models
-from .models import Rate
 from django.db.models import OuterRef, Subquery
+from django_filters import rest_framework as filters
+
+from .models import Rate
 
 
 class RateFilter(filters.FilterSet):
@@ -22,9 +23,11 @@ class RateFilter(filters.FilterSet):
     base_currency = filters.CharFilter(label="filter by base currency", field_name='base_currency',
                                        lookup_expr='iexact')
     currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
-                                                  method='currency_latest_values')
+                                                field_name='currency',
+                                                method='currency_latest_values')
     base_currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
-                                                method='base_currency_latest_values')
+                                                     field_name='base_currency',
+                                                     method='base_currency_latest_values')
 
     class Meta:
         model = Rate
@@ -32,7 +35,7 @@ class RateFilter(filters.FilterSet):
             'user', 'key',
             'value_date', 'from_obj', 'to_obj',
             'value', 'lower_bound', 'higher_bound',
-            'currency'
+            'currency', 'base_currency'
 
         ]
 
