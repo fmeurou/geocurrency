@@ -1,6 +1,7 @@
 from datetime import datetime, date, timedelta
 from django.db import models
 from django.http import HttpResponseForbidden
+from django_filters import rest_framework as filters
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, status, mixins
@@ -12,6 +13,8 @@ from rest_framework.views import APIView
 
 from geocurrency.converters.serializers import ConverterResultSerializer
 from geocurrency.currencies.models import Currency
+
+from .filters import RateFilter
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
@@ -21,74 +24,23 @@ from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSe
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset = Rate.objects.all()
     serializer_class = RateSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = RateFilter
     pagination_class = PageNumberPagination
     permission_classes = [RateObjectPermission]
     display_page_controls = True
 
     def get_queryset(self):
+        qs = super(RateViewSet, self).get_queryset()
         if self.request.user and self.request.user.is_authenticated:
-            qs = Rate.objects.filter(
+            qs = qs.filter(
                 models.Q(user=self.request.user) | models.Q(user__isnull=True)
             )
-            user = self.request.query_params.get('user', False)
-            key = self.request.query_params.get('key', None)
-            if user:
-                qs = qs.filter(user=self.request.user)
-            if key:
-                qs = qs.filter(key=key)
         else:
-            qs = Rate.objects.filter(models.Q(user__isnull=True))
-        value = self.request.query_params.get('value_date', None)
-        if value is not None:
-            qs = qs.filter(value=value)
-        lower_bound = self.request.query_params.get('lower_bound', None)
-        if not value and lower_bound is not None:
-            qs = qs.filter(value__gte=lower_bound)
-        higher_bound = self.request.query_params.get('higher_bound', None)
-        if not value and higher_bound is not None:
-            qs = qs.filter(value__lte=higher_bound)
-        value_date = self.request.query_params.get('value_date', None)
-        if value_date:
-            qs = qs.filter(value_date=value_date)
-        from_date = self.request.query_params.get('from', None)
-        if not value_date and from_date:
-            qs = qs.filter(value_date__gte=from_date)
-        to_date = self.request.query_params.get('to', None)
-        if not value_date and to_date:
-            qs = qs.filter(value_date__lte=to_date)
-        base_currency = self.request.query_params.get('base_currency', None)
-        if base_currency:
-            qs = qs.filter(base_currency=base_currency)
-        currency = self.request.query_params.get('currency', None)
-        if currency:
-            qs = qs.filter(base_currency=currency)
+            qs = qs.filter(models.Q(user__isnull=True))
         return qs
 
-    key = openapi.Parameter('key', openapi.IN_QUERY, description="Client key", type=openapi.TYPE_STRING)
-
-    base_currency = openapi.Parameter('base_currency', openapi.IN_QUERY, description="Base currency for rate",
-                                      type=openapi.TYPE_STRING)
-    currency = openapi.Parameter('currency', openapi.IN_QUERY, description="Currency for rate",
-                                 type=openapi.TYPE_STRING)
-    from_obj = openapi.Parameter('from', openapi.IN_QUERY, description="included start of range",
-                                 type=openapi.FORMAT_DATE)
-    to_obj = openapi.Parameter('to', openapi.IN_QUERY, description="included end of range",
-                               type=openapi.FORMAT_DATE)
-    value_date = openapi.Parameter('value_date', openapi.IN_QUERY, description="date of value",
-                                   type=openapi.FORMAT_DATE)
-    value = openapi.Parameter('value', openapi.IN_QUERY, description="included end of range",
-                              type=openapi.FORMAT_DECIMAL)
-    lower_bound = openapi.Parameter('lower_bound', openapi.IN_QUERY, description="lower value bound",
-                                    type=openapi.FORMAT_DECIMAL)
-    higher_bound = openapi.Parameter('higher_bound', openapi.IN_QUERY, description="higher value bound",
-                                     type=openapi.FORMAT_DECIMAL)
-    user = openapi.Parameter('user', openapi.IN_QUERY, description="filter on current user ?",
-                             type=openapi.TYPE_BOOLEAN)
-
-    @swagger_auto_schema(manual_parameters=[user, key, base_currency, currency,
-                                            value_date, from_obj, to_obj, value,
-                                            lower_bound, higher_bound],
-                         responses={200: RateSerializer})
+    @swagger_auto_schema(responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
         return super(RateViewSet, self).list(request, *args, **kwargs)
 
