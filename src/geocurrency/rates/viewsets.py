@@ -124,16 +124,6 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
 
 
 class ConvertView(APIView):
-    data = openapi.Parameter('data', openapi.IN_QUERY,
-                             description="Array of amounts to convert {currency: str, amount: float, date: YYYY-MM-DD}",
-                             type=openapi.TYPE_ARRAY,
-                             items=[openapi.TYPE_STRING, openapi.TYPE_NUMBER, openapi.TYPE_STRING])
-    target = openapi.Parameter('target', openapi.IN_QUERY, description="Currency to convert to (EUR)",
-                               type=openapi.TYPE_STRING)
-    key = openapi.Parameter('key', openapi.IN_QUERY, description="Client key", type=openapi.TYPE_STRING)
-    batch = openapi.Parameter('batch_id', openapi.IN_QUERY, description="Batch number for multiple sets",
-                              type=openapi.FORMAT_UUID)
-    eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
 
     @swagger_auto_schema(request_body=ConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})
@@ -148,10 +138,10 @@ class ConvertView(APIView):
             return Response(cps.errors, status=HTTP_400_BAD_REQUEST, content_type="application/json")
         cp = cps.create(cps.validated_data)
         try:
-            converter = RateConverter.load(cp.batch)
+            converter = RateConverter.load(cp.batch_id)
         except KeyError:
             converter = RateConverter(
-                id=cp.batch,
+                id=cp.batch_id,
                 user=request.user,
                 key=cp.key,
                 base_currency=cp.target
@@ -159,7 +149,7 @@ class ConvertView(APIView):
         if cp.data:
             if errors := converter.add_data(data=cp.data):
                 return Response(errors, status=HTTP_400_BAD_REQUEST)
-        if cp.eob or not cp.batch:
+        if cp.eob or not cp.batch_id:
             result = converter.convert()
             serializer = ConverterResultSerializer(result)
             return Response(serializer.data, content_type="application/json")

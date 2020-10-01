@@ -11,7 +11,8 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 
 from .models import UnitSystem, UnitConverter
-from .serializers import UnitSerializer, UnitSystemListSerializer, UnitSystemDetailSerializer
+from .serializers import UnitSerializer, UnitSystemListSerializer, UnitSystemDetailSerializer, \
+    ConversionPayloadSerializer
 from geocurrency.converters.serializers import ConverterResultSerializer
 
 
@@ -129,7 +130,7 @@ class ConvertView(APIView):
                               type=openapi.FORMAT_UUID)
     eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
 
-    @swagger_auto_schema(manual_parameters=[data, base_system, base_unit, batch, eob],
+    @swagger_auto_schema(request_body=ConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})
     @action(['POST'], detail=False, url_path='', url_name="convert")
     def post(self, request, *args, **kwargs):
@@ -137,29 +138,22 @@ class ConvertView(APIView):
         Converts a list of amounts with currency and date to a reference currency
         :param request: HTTP request
         """
-        data = request.data.get('data')
-        base_system = request.data.get('base_system')
-        base_unit = request.data.get('base_unit')
-        batch_id = request.data.get('batch')
-        eob = request.data.get('eob', False)
-        if not data and not batch_id and not eob:
-            return Response('No data provided', status=HTTP_400_BAD_REQUEST)
-        if not base_system:
-            return Response('No base system provided', status=HTTP_400_BAD_REQUEST)
-        if not base_unit:
-            return Response('No base unit provided', status=HTTP_400_BAD_REQUEST)
+        cps = ConversionPayloadSerializer(data=request.data)
+        if not cps.is_valid():
+            return Response(cps.errors, status=HTTP_400_BAD_REQUEST, content_type="application/json")
+        cp = cps.create(cps.validated_data)
         try:
-            converter = UnitConverter.load(batch_id)
+            converter = UnitConverter.load(cp.batch_id)
         except KeyError:
             converter = UnitConverter(
-                id=batch_id,
-                base_system=base_system,
-                base_unit=base_unit
+                id=cp.batch_id,
+                base_system=cp.base_system,
+                base_unit=cp.base_unit
             )
-        if data:
-            if errors := converter.add_data(data=data):
+        if cp.data:
+            if errors := converter.add_data(data=cp.data):
                 return Response(errors, status=HTTP_400_BAD_REQUEST)
-        if eob or not batch_id:
+        if cp.eob or not cp.batch_id:
             result = converter.convert()
             serializer = ConverterResultSerializer(result)
             return Response(serializer.data, content_type="application/json")

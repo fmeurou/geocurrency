@@ -162,6 +162,14 @@ class Unit:
         except pint.errors.UndefinedUnitError:
             raise ValueError("invalid unit for system")
 
+    @classmethod
+    def is_valid(self, name):
+        us_si = UnitSystem(system_name='SI')
+        all_units = []
+        for us in us_si.available_systems():
+            all_units.extend(dir(getattr(us_si.ureg.sys, us)))
+        return name in set(all_units)
+
     @property
     def family(self):
         return self.unit_family(self.code)
@@ -327,3 +335,20 @@ class UnitConverter(BaseConverter):
                 result.errors.append(error)
         self.end_batch(result.end_batch())
         return result
+
+
+class ConversionPayload:
+    data = None
+    base_system = ''
+    base_unit = ''
+    key = ''
+    batch_id = ''
+    eob = False
+
+    def __init__(self, base_system, base_unit, data=None, key=None, batch_id=None, eob=False):
+        self.data = data
+        self.base_system = base_system
+        self.base_unit = base_unit
+        self.key = key
+        self.batch_id = batch_id
+        self.eob = eob

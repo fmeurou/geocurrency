@@ -261,14 +261,14 @@ class ConversionPayload:
     data = None
     target = ''
     key = ''
-    batch = ''
+    batch_id = ''
     eob = False
 
-    def __init__(self, target, data=None, key=None, batch=None, eob=False):
+    def __init__(self, target, data=None, key=None, batch_id=None, eob=False):
         self.data = data
         self.target = target
         self.key = key
-        self.batch = batch
+        self.batch_id = batch_id
         self.eob = eob
 
 

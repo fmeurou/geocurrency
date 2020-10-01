@@ -136,6 +136,15 @@ class ConversionPayloadSerializer(serializers.Serializer):
     key = serializers.CharField(required=False)
     eob = serializers.BooleanField(default=False)
 
+    def is_valid(self, raise_exception=False):
+        if not self.initial_data.get('data') and (not self.initial_data.get('batch_id')
+                                                  or (self.initial_data.get('batch_id')
+                                                      and not self.initial_data.get('eob'))):
+            raise serializers.ValidationError(
+                'data has to be provided if batch_id is not provided or batch_id is provided and eob is False'
+            )
+        return super(ConversionPayloadSerializer, self).is_valid()
+
     @staticmethod
     def validate_target(value):
         from geocurrency.currencies.models import Currency
