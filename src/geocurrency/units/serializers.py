@@ -3,7 +3,7 @@ from datetime import date, datetime
 from drf_yasg.utils import swagger_serializer_method
 from rest_framework import serializers
 
-from .models import Amount, ConversionPayload
+from .models import Amount, UnitConversionPayload
 
 
 class AmountSerializer(serializers.Serializer):
@@ -80,7 +80,7 @@ class UnitSystemDetailSerializer(serializers.Serializer):
         return obj.units_per_family()
 
 
-class ConversionPayloadSerializer(serializers.Serializer):
+class UnitConversionPayloadSerializer(serializers.Serializer):
     data = AmountSerializer(many=True, required=False)
     base_system = serializers.CharField(required=True)
     base_unit = serializers.CharField(required=True)
@@ -95,7 +95,7 @@ class ConversionPayloadSerializer(serializers.Serializer):
             raise serializers.ValidationError(
                 'data has to be provided if batch_id is not provided or batch_id is provided and eob is False'
             )
-        return super(ConversionPayloadSerializer, self).is_valid()
+        return super(UnitConversionPayloadSerializer, self).is_valid()
 
     @staticmethod
     def validate_base_system(value):
@@ -112,13 +112,13 @@ class ConversionPayloadSerializer(serializers.Serializer):
         return value
 
     def create(self, validated_data):
-        return ConversionPayload(**validated_data)
+        return UnitConversionPayload(**validated_data)
 
     def update(self, instance, validated_data):
         self.data = validated_data.get('data', instance.data)
         self.base_system = validated_data.get('base_system', instance.base_system)
         self.base_unit = validated_data.get('base_system', instance.base_unit)
-        self.batch_id = validated_data.get('data', instance.batch_id)
-        self.key = validated_data.get('data', instance.key)
+        self.batch_id = validated_data.get('batch_id', instance.batch_id)
+        self.key = validated_data.get('key', instance.key)
         self.eob = validated_data.get('eob', instance.eob)
         return instance

@@ -12,7 +12,7 @@ from rest_framework.viewsets import ViewSet
 
 from .models import UnitSystem, UnitConverter
 from .serializers import UnitSerializer, UnitSystemListSerializer, UnitSystemDetailSerializer, \
-    ConversionPayloadSerializer
+    UnitConversionPayloadSerializer
 from geocurrency.converters.serializers import ConverterResultSerializer
 
 
@@ -118,19 +118,8 @@ class UnitViewset(ViewSet):
 
 
 class ConvertView(APIView):
-    data = openapi.Parameter('data', openapi.IN_QUERY,
-                             description="Array of amounts to convert {system: str, unit: str, value: float, date: YYYY-MM-DD}",
-                             type=openapi.TYPE_ARRAY,
-                             items=[openapi.TYPE_STRING, openapi.TYPE_NUMBER, openapi.TYPE_STRING])
-    base_system = openapi.Parameter('base_system', openapi.IN_QUERY, description="System to convert to",
-                                    type=openapi.TYPE_STRING)
-    base_unit = openapi.Parameter('base_unit', openapi.IN_QUERY, description="Unit to convert to",
-                                  type=openapi.TYPE_STRING)
-    batch = openapi.Parameter('batch_id', openapi.IN_QUERY, description="Batch number for multiple sets",
-                              type=openapi.FORMAT_UUID)
-    eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
 
-    @swagger_auto_schema(request_body=ConversionPayloadSerializer,
+    @swagger_auto_schema(request_body=UnitConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})
     @action(['POST'], detail=False, url_path='', url_name="convert")
     def post(self, request, *args, **kwargs):
@@ -138,7 +127,7 @@ class ConvertView(APIView):
         Converts a list of amounts with currency and date to a reference currency
         :param request: HTTP request
         """
-        cps = ConversionPayloadSerializer(data=request.data)
+        cps = UnitConversionPayloadSerializer(data=request.data)
         if not cps.is_valid():
             return Response(cps.errors, status=HTTP_400_BAD_REQUEST, content_type="application/json")
         cp = cps.create(cps.validated_data)

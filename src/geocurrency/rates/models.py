@@ -257,7 +257,7 @@ class Amount:
         return f'{self.date_obj}: {self.currency} {self.amount}'
 
 
-class ConversionPayload:
+class RateConversionPayload:
     data = None
     target = ''
     key = ''

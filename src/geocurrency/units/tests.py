@@ -229,7 +229,7 @@ class UnitConverterTest(TestCase):
                 'data': amounts.data,
                 'base_system': 'SI',
                 'base_unit': 'meter',
-                'batch': batch_id,
+                'batch_id': batch_id,
             },
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -240,7 +240,7 @@ class UnitConverterTest(TestCase):
             '/units/convert/',
             data={
                 'data': amounts.data,
-                'batch': batch_id,
+                'batch_id': batch_id,
                 'base_system': 'SI',
                 'base_unit': 'meter',
                 'eob': True
@@ -259,7 +259,7 @@ class UnitConverterTest(TestCase):
                 'data': amounts.data,
                 'base_system': 'SI',
                 'base_unit': 'meter',
-                'batch': batch_id,
+                'batch_id': batch_id,
             },
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)

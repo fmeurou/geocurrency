@@ -15,7 +15,7 @@ from geocurrency.currencies.models import Currency
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer, BulkSerializer, ConversionPayloadSerializer
+from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSerializer
 
 
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
@@ -125,7 +125,7 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
 
 class ConvertView(APIView):
 
-    @swagger_auto_schema(request_body=ConversionPayloadSerializer,
+    @swagger_auto_schema(request_body=RateConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})
     @action(['POST'], detail=False, url_path='', url_name="convert")
     def post(self, request, *args, **kwargs):
@@ -133,7 +133,7 @@ class ConvertView(APIView):
         Converts a list of amounts with currency and date to a reference currency
         :param request: HTTP request
         """
-        cps = ConversionPayloadSerializer(data=request.data)
+        cps = RateConversionPayloadSerializer(data=request.data)
         if not cps.is_valid():
             return Response(cps.errors, status=HTTP_400_BAD_REQUEST, content_type="application/json")
         cp = cps.create(cps.validated_data)

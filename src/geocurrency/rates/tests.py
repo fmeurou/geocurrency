@@ -401,7 +401,7 @@ class RateConverterTest(TestCase):
             data={
                 'data': amounts.data,
                 'target': 'EUR',
-                'batch': batch_id,
+                'batch_id': batch_id,
             },
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -412,7 +412,7 @@ class RateConverterTest(TestCase):
             '/rates/convert/',
             data={
                 'data': amounts.data,
-                'batch': batch_id,
+                'batch_id': batch_id,
                 'target': 'EUR',
                 'eob': True
             },
@@ -431,7 +431,7 @@ class RateConverterTest(TestCase):
             data={
                 'data': amounts.data,
                 'target': 'EUR',
-                'batch': batch_id,
+                'batch_id': batch_id,
             },
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)

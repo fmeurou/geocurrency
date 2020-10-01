@@ -337,7 +337,7 @@ class UnitConverter(BaseConverter):
         return result
 
 
-class ConversionPayload:
+class UnitConversionPayload:
     data = None
     base_system = ''
     base_unit = ''

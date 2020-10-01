@@ -3,7 +3,7 @@ from datetime import datetime, date
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Rate, Amount, BulkRate, ConversionPayload
+from .models import Rate, Amount, BulkRate, RateConversionPayload
 
 
 class UserSerializer(serializers.BaseSerializer):
@@ -129,7 +129,7 @@ class AmountSerializer(serializers.Serializer):
         return instance
 
 
-class ConversionPayloadSerializer(serializers.Serializer):
+class RateConversionPayloadSerializer(serializers.Serializer):
     data = AmountSerializer(many=True, required=False)
     target = serializers.CharField(required=True)
     batch_id = serializers.CharField(required=False)
@@ -143,7 +143,7 @@ class ConversionPayloadSerializer(serializers.Serializer):
             raise serializers.ValidationError(
                 'data has to be provided if batch_id is not provided or batch_id is provided and eob is False'
             )
-        return super(ConversionPayloadSerializer, self).is_valid()
+        return super(RateConversionPayloadSerializer, self).is_valid()
 
     @staticmethod
     def validate_target(value):
@@ -153,13 +153,13 @@ class ConversionPayloadSerializer(serializers.Serializer):
         return value
 
     def create(self, validated_data):
-        return ConversionPayload(**validated_data)
+        return RateConversionPayload(**validated_data)
 
     def update(self, instance, validated_data):
         self.data = validated_data.get('data', instance.data)
         self.target = validated_data.get('target', instance.target)
-        self.batch_id = validated_data.get('data', instance.batch_id)
-        self.key = validated_data.get('data', instance.key)
+        self.batch_id = validated_data.get('batch_id', instance.batch_id)
+        self.key = validated_data.get('key', instance.key)
         self.eob = validated_data.get('eob', instance.eob)
         return instance
 
