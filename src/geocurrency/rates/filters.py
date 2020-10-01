@@ -3,12 +3,10 @@ from .models import Rate
 
 
 class RateFilter(filters.FilterSet):
-    user = filters.BooleanFilter(label="filter rate associated to connected user")
-    key = filters.CharFilter(label="filter rates with key", lookup_expr='exact',
-                             method='key_filter')
+    user = filters.BooleanFilter(label="filter rate associated to connected user", method='user_filter')
+    key = filters.CharFilter(label="filter rates with key",  method='key_filter')
     value_date = filters.DateFilter(label="filter rates at a specific date",
-                                    field_name='value_date', lookup_expr='exact',
-                                    method='key_filter')
+                                    field_name='value_date', lookup_expr='exact')
     from_obj = filters.DateFilter(label="filter rates after a specific date (included)",
                                   field_name='value_date', lookup_expr='gte')
     to_obj = filters.DateFilter(label="filter rates before a specific date (included)",
