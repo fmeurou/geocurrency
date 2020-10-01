@@ -23,9 +23,9 @@ class RateFilter(filters.FilterSet):
     base_currency = filters.CharFilter(label="filter by base currency", field_name='base_currency',
                                        lookup_expr='iexact')
     currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
-                                                method='currency_latest_values')
+                                                method='currency_latest_values_filter')
     base_currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
-                                                     method='base_currency_latest_values')
+                                                     method='base_currency_latest_values_filter')
 
     class Meta:
         model = Rate
@@ -50,16 +50,14 @@ class RateFilter(filters.FilterSet):
                 'key': value
             })
 
-    @staticmethod
-    def currency_latest_values(queryset, name, value):
+    def currency_latest_values_filter(self, queryset, name, value):
         queryset = queryset.filter(currency=value)
         latest = queryset.filter(currency=OuterRef('currency')).order_by('-value_date')
         return queryset.annotate(
             currency_latest=Subquery(latest.values('value_date')[:1])
         ).filter(value_date=models.F('currency_latest'))
 
-    @staticmethod
-    def base_currency_latest_values(queryset, name, value):
+    def base_currency_latest_values_filter(self, queryset, name, value):
         queryset = queryset.filter(base_currency=value)
         latest = queryset.filter(base_currency=OuterRef('base_currency')).order_by('-value_date')
         return queryset.annotate(

@@ -285,6 +285,31 @@ class RateTest(TestCase):
         self.assertEqual(len(post_response.json()),
                          (datetime.date(year=2020, month=9, day=1) - datetime.date(year=2020, month=1, day=1)).days + 1)
 
+    def test_latest_currency_request(self):
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/rates/bulk/',
+            data={
+                'key': self.key,
+                'currency': 'USD',
+                'base_currency': 'EUR',
+                'from_date': '2020-01-01',
+                'to_date': '2020-09-01',
+                'value': 1.10
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        response = client.get(
+            '/rates/?currency_latest_values=USD'
+        )
+        self.assertEqual(len(response.json()), 1)
+        response = client.get(
+            '/rates/?base_currency_latest_values=EUR'
+        )
+        self.assertEqual(len(response.json()), 1)
+
 
 class RateConverterTest(TestCase):
     base_currency = 'EUR'
