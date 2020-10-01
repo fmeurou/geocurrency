@@ -32,7 +32,7 @@ class RateFilter(filters.FilterSet):
             'user', 'key',
             'value_date', 'from_obj', 'to_obj',
             'value', 'lower_bound', 'higher_bound',
-            'currency', 'base_currency', 'currency_latest_values',
+            'currency'
 
         ]
 
