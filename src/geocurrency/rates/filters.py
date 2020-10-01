@@ -23,10 +23,8 @@ class RateFilter(filters.FilterSet):
     base_currency = filters.CharFilter(label="filter by base currency", field_name='base_currency',
                                        lookup_expr='iexact')
     currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
-                                                field_name='currency',
                                                 method='currency_latest_values')
     base_currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
-                                                     field_name='base_currency',
                                                      method='base_currency_latest_values')
 
     class Meta:
