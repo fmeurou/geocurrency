@@ -15,7 +15,7 @@ from geocurrency.currencies.models import Currency
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer, BulkSerializer
+from .serializers import RateSerializer, BulkSerializer, ConversionPayloadSerializer
 
 
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
@@ -135,7 +135,7 @@ class ConvertView(APIView):
                               type=openapi.FORMAT_UUID)
     eob = openapi.Parameter('end_of_batch', openapi.IN_QUERY, description="End of batch", type=openapi.TYPE_BOOLEAN)
 
-    @swagger_auto_schema(manual_parameters=[data, target, key, batch, eob],
+    @swagger_auto_schema(request_body=ConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})
     @action(['POST'], detail=False, url_path='', url_name="convert")
     def post(self, request, *args, **kwargs):
@@ -143,26 +143,23 @@ class ConvertView(APIView):
         Converts a list of amounts with currency and date to a reference currency
         :param request: HTTP request
         """
-        data = request.data.get('data')
-        target = request.data.get('target', 'EUR')
-        batch_id = request.data.get('batch')
-        key = request.data.get('key')
-        eob = request.data.get('eob', False)
-        if not data and not batch_id and not eob:
-            return Response('No data provided', status=HTTP_400_BAD_REQUEST)
+        cps = ConversionPayloadSerializer(data=request.data)
+        if not cps.is_valid():
+            return Response(cps.errors, status=HTTP_400_BAD_REQUEST, content_type="application/json")
+        cp = cps.create(cps.validated_data)
         try:
-            converter = RateConverter.load(batch_id)
+            converter = RateConverter.load(cp.batch)
         except KeyError:
             converter = RateConverter(
-                id=batch_id,
+                id=cp.batch,
                 user=request.user,
-                key=key,
-                base_currency=target
+                key=cp.key,
+                base_currency=cp.target
             )
-        if data:
-            if errors := converter.add_data(data=data):
+        if cp.data:
+            if errors := converter.add_data(data=cp.data):
                 return Response(errors, status=HTTP_400_BAD_REQUEST)
-        if eob or not batch_id:
+        if cp.eob or not cp.batch:
             result = converter.convert()
             serializer = ConverterResultSerializer(result)
             return Response(serializer.data, content_type="application/json")

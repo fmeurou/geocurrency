@@ -257,6 +257,21 @@ class Amount:
         return f'{self.date_obj}: {self.currency} {self.amount}'
 
 
+class ConversionPayload:
+    data = None
+    target = ''
+    key = ''
+    batch = ''
+    eob = False
+
+    def __init__(self, target, data=None, key=None, batch=None, eob=False):
+        self.data = data
+        self.target = target
+        self.key = key
+        self.batch = batch
+        self.eob = eob
+
+
 class BulkRate:
     base_currency = settings.BASE_CURRENCY
     currency = settings.BASE_CURRENCY

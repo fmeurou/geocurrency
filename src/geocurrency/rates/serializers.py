@@ -3,7 +3,7 @@ from datetime import datetime, date
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Rate, Amount, BulkRate
+from .models import Rate, Amount, BulkRate, ConversionPayload
 
 
 class UserSerializer(serializers.BaseSerializer):
@@ -127,3 +127,32 @@ class AmountSerializer(serializers.Serializer):
         instance.amount = validated_data.get('amount', instance.content)
         instance.date_obj = validated_data.get('date_obj', instance.created)
         return instance
+
+
+class ConversionPayloadSerializer(serializers.Serializer):
+    data = AmountSerializer(many=True, required=False)
+    target = serializers.CharField(required=True)
+    batch_id = serializers.CharField(required=False)
+    key = serializers.CharField(required=False)
+    eob = serializers.BooleanField(default=False)
+
+    @staticmethod
+    def validate_target(value):
+        from geocurrency.currencies.models import Currency
+        if not Currency.is_valid(value):
+            raise serializers.ValidationError('Invalid currency')
+        return value
+
+    def create(self, validated_data):
+        return ConversionPayload(**validated_data)
+
+    def update(self, instance, validated_data):
+        self.data = validated_data.get('data', instance.data)
+        self.target = validated_data.get('target', instance.target)
+        self.batch_id = validated_data.get('data', instance.batch_id)
+        self.key = validated_data.get('data', instance.key)
+        self.eob = validated_data.get('eob', instance.eob)
+        return instance
+
+
+
