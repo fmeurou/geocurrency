@@ -5,7 +5,7 @@ from .models import Rate
 class RateFilter(filters.FilterSet):
     user = filters.BooleanFilter(label="filter rate associated to connected user")
     key = filters.CharFilter(label="filter rates with key", lookup_expr='exact',
-                             method='user_filter')
+                             method='key_filter')
     value_date = filters.DateFilter(label="filter rates at a specific date",
                                     field_name='value_date', lookup_expr='exact',
                                     method='key_filter')
