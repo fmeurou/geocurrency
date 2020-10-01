@@ -4,6 +4,9 @@ import subprocess
 from datetime import date
 from setuptools import setup, find_packages
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 
 def get_version(module):
     version = date.today().strftime('%Y-%m')
@@ -32,12 +35,14 @@ module = 'geocurrency'
 
 setup(
     name='geocurrency',
+    description='Web based services to convert units and currencies.',
     python_requires='>3.8.0',
     version=get_version(module),
     author='Frédéric MEUROU',
     author_email='fm@peabytes.me',
-    description='Services for conversions',
-    url='https://www.geocurrency.me',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url='https://api.geocurrency.me/swagger/',
     install_requires=[
         "Django~=3.1.0",
         "django-cors-headers~=3.2.0",
