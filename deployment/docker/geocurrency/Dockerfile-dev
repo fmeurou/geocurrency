@@ -7,7 +7,8 @@ RUN mkdir /var/apps /var/apps/bin /var/apps/packages /var/apps/media /var/apps/s
 RUN useradd -g apps -s /bin/bash -d /var/apps apps
 WORKDIR /var/apps
 COPY config/requirements.txt /var/apps/
-RUN pip install --upgrade geocurrency
+COPY packages/ /var/apps/packages
+RUN pip install --upgrade --pre -f /var/apps/packages geocurrency
 RUN pip install -r requirements.txt
 RUN django-admin startproject api
 RUN cp /usr/local/lib/python3.8/site-packages/geocurrency/core/settings.example.py /var/apps/api/settings.py
