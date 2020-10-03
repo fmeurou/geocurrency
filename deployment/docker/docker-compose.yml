@@ -29,9 +29,9 @@ services:
       - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
       - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
       - GEOCURRENCY_SECRET_KEY=${GEOCURRENCY_SECRET_KEY}
-      - GEOCURRENCY_URL='127.0.0.1'
-      - GEOCURRENCY_ENV='Docker'
-      - GEOCURRENCY_CONTACT_EMAIL='fm@peabytes.me'
+      - GEOCURRENCY_URL=http://127.0.0.1/
+      - GEOCURRENCY_ENV=Docker
+      - GEOCURRENCY_CONTACT_EMAIL=fm@peabytes.me
     volumes:
       - logs:/var/log/supervisor
       - static:/var/apps/static
