@@ -16,11 +16,11 @@ def get_version(module):
         git_tag = git_describe.split('-')[0]
         git_commits = git_describe.split('-')[1]
         if branch == 'master':
-            sep = '.'
+            suffix = ''
         else:
-            sep = 'dev'
-        print(branch, git_tag, sep, git_commits)
-        version = '{}{}{}'.format(git_tag, sep, git_commits)
+            suffix = 'dev'
+        print(branch, git_tag, git_commits, suffix)
+        version = '{}.{}{}'.format(git_tag, git_commits, suffix)
     except (subprocess.CalledProcessError, OSError) as e:
         print('git not installed', e)
     try:

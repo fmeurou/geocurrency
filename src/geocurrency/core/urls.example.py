@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
@@ -20,18 +21,23 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
+import geocurrency
 from geocurrency.core import urls as geocurrency_urls
+
+environment = os.environ.get('GEOCURRENCY_ENV', 'dev')
+contact_email = os.environ.get('GEOCURRENCY_CONTACT', 'fm@peabytes.me')
+api_url = os.environ.get('GEOCURRENCY_URL', 'https://dev.geocurrency.me/')
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="GeoCurrencies API",
+        title=f"GeoCurrency {environment} API",
         default_version='v1',
-        description="GeoCurrencies API",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="fm@peabytes.me"),
-        license=openapi.License(name="BSD License"),
+        description="APIs for GeoCurrency v" + '.'.join(map(str, geocurrency.__version__[:3])),
+        terms_of_service="/tos/",
+        contact=openapi.Contact(email=contact_email),
+        license=openapi.License(name="MIT License"),
     ),
-    url='https://api.geocurrency.me/',
+    url=api_url,
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
