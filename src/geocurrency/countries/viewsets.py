@@ -1,19 +1,17 @@
-import pycountry
-import gettext
 from countryinfo import CountryInfo
 from django.conf import settings
-from django.utils.translation import gettext as _
 from django.utils.decorators import method_decorator
+from django.utils.translation import gettext as _
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from geocurrency.core.helpers import service
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND
 from rest_framework.viewsets import ViewSet
 
-from geocurrency.core.helpers import service
 from .models import Country, CountryNotFoundError
 from .serializers import CountrySerializer, CountryDetailSerializer
 
@@ -25,9 +23,9 @@ class CountryViewset(ViewSet):
     lookup_field = 'alpha_2'
 
     language_header = openapi.Parameter('Accept-Language', openapi.IN_HEADER, description="language",
-                                      type=openapi.TYPE_STRING)
+                                        type=openapi.TYPE_STRING)
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
-                                      type=openapi.TYPE_STRING)
+                                 type=openapi.TYPE_STRING)
 
     countries_response = openapi.Response('List of countries', CountrySerializer)
     country_detail_response = openapi.Response('Country detail', CountryDetailSerializer)
@@ -75,7 +73,7 @@ class CountryViewset(ViewSet):
             c = CountryInfo(alpha_2)
             return Response(c.currencies(), content_type="application/json")
         except KeyError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response(_("Unknown country or no info for this country"), status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -139,7 +137,7 @@ class CountryViewset(ViewSet):
     lng = openapi.Parameter('longitude', openapi.IN_QUERY, description="Longitude",
                             type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(method='get', responses={200:openapi.TYPE_ARRAY})
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=False, url_path='geocoders', url_name='geocoders')
     def geocoders(self, request):
         """
