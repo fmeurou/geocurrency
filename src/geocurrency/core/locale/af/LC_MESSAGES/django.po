@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-08 17:07+0000\n"
-"PO-Revision-Date: 2020-09-16 12:48+0000\n"
-"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
-"Language-Team: Afrikaans <http://peabytes.me/projects/geocurrency/api/af/>\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Afrikaans <http://translation.peabytes.me/projects/"
+"geocurrency/api/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -404,7 +405,7 @@ msgstr "Tradisionele Sjinees"
 
 #: src/geocurrency/countries/viewsets.py:76
 msgid "Unknown country or no info for this country"
-msgstr ""
+msgstr "Onbekende land of geen inligting vir hierdie land nie"
 
 #: src/geocurrency/rates/models.py:384
 msgid "Rate could not be found"
@@ -420,26 +421,20 @@ msgid "time"
 msgstr "tyd"
 
 #: src/geocurrency/units/__init__.py:5
-#, fuzzy
-#| msgid "Planck current"
 msgid "current"
-msgstr "Planck stroom"
+msgstr "huidige"
 
 #: src/geocurrency/units/__init__.py:6
-#, fuzzy
-#| msgid "luminous intensity"
 msgid "luminosity"
-msgstr "ligintensiteit"
+msgstr "helderheid"
 
 #: src/geocurrency/units/__init__.py:7
 msgid "mass"
 msgstr "massa"
 
 #: src/geocurrency/units/__init__.py:8
-#, fuzzy
-#| msgid "amount of substance"
 msgid "substance"
-msgstr "hoeveelheid stof"
+msgstr "stof"
 
 #: src/geocurrency/units/__init__.py:9
 msgid "temperature"
@@ -451,7 +446,7 @@ msgstr "konstant"
 
 #: src/geocurrency/units/__init__.py:11
 msgid "area"
-msgstr ""
+msgstr "gebied"
 
 #: src/geocurrency/units/__init__.py:12
 msgid "volume"
@@ -463,11 +458,11 @@ msgstr "frekwensie"
 
 #: src/geocurrency/units/__init__.py:14
 msgid "wavenumber"
-msgstr ""
+msgstr "golwe nommer"
 
 #: src/geocurrency/units/__init__.py:15
 msgid "velocity"
-msgstr ""
+msgstr "snelheid"
 
 #: src/geocurrency/units/__init__.py:16
 msgid "acceleration"
@@ -486,10 +481,8 @@ msgid "power"
 msgstr "krag"
 
 #: src/geocurrency/units/__init__.py:20
-#, fuzzy
-#| msgid "intensity"
 msgid "density"
-msgstr "intensiteit"
+msgstr "digtheid"
 
 #: src/geocurrency/units/__init__.py:21
 msgid "pressure"
@@ -497,45 +490,39 @@ msgstr "druk"
 
 #: src/geocurrency/units/__init__.py:22
 msgid "torque"
-msgstr ""
+msgstr "wringkrag"
 
 #: src/geocurrency/units/__init__.py:23
 msgid "viscosity"
 msgstr "viskositeit"
 
 #: src/geocurrency/units/__init__.py:24
-#, fuzzy
-#| msgid "reciprocal viscosity"
 msgid "kinematic viscosity"
-msgstr "wederkerige viskositeit"
+msgstr "kinematiese viskositeit"
 
 #: src/geocurrency/units/__init__.py:26
 msgid "fluidity"
-msgstr ""
+msgstr "vloeibaarheid"
 
 #: src/geocurrency/units/__init__.py:27
 msgid "concentration"
 msgstr "konsentrasie"
 
 #: src/geocurrency/units/__init__.py:28
-#, fuzzy
-#| msgid "radioactivity"
 msgid "activity"
-msgstr "radioaktiwiteit"
+msgstr "aktiwiteit"
 
 #: src/geocurrency/units/__init__.py:29
-#, fuzzy
-#| msgid "entropy unit"
 msgid "entropy"
-msgstr "entropie-eenheid"
+msgstr "entropie"
 
 #: src/geocurrency/units/__init__.py:31
 msgid "molar entropy"
-msgstr ""
+msgstr "molêre entropie"
 
 #: src/geocurrency/units/__init__.py:35
 msgid "heat transmission"
-msgstr ""
+msgstr "hitte-oordrag"
 
 #: src/geocurrency/units/__init__.py:38
 msgid "luminance"
@@ -555,187 +542,135 @@ msgstr "intensiteit"
 
 #: src/geocurrency/units/__init__.py:48
 msgid "charge"
-msgstr ""
+msgstr "hef"
 
 #: src/geocurrency/units/__init__.py:49
-#, fuzzy
-#| msgid "electric moment"
 msgid "electric potential"
-msgstr "elektriese oomblik"
+msgstr "elektriese potensiaal"
 
 #: src/geocurrency/units/__init__.py:52
 msgid "electric field"
 msgstr "elektriese veld"
 
 #: src/geocurrency/units/__init__.py:55
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "resistance"
-msgstr "elektriese weerstand"
+msgstr "weerstand"
 
 #: src/geocurrency/units/__init__.py:58
-#, fuzzy
-#| msgid "conductance quantum"
 msgid "conductance"
-msgstr "geleidingskwantum"
+msgstr "geleiding"
 
 #: src/geocurrency/units/__init__.py:61
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "capacitance"
-msgstr "elektriese kapasitansie"
+msgstr "kapasitansie"
 
 #: src/geocurrency/units/__init__.py:64
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "inductance"
-msgstr "elektriese induktansie"
+msgstr "induktansie"
 
 #: src/geocurrency/units/__init__.py:67
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic flux"
-msgstr "magnetiese veld"
+msgstr "magnetiese vloed"
 
 #: src/geocurrency/units/__init__.py:70
 msgid "magnetic field"
 msgstr "magnetiese veld"
 
 #: src/geocurrency/units/__init__.py:73
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetomotive force"
-msgstr "magnetiese veld"
+msgstr "magnetomotiewe krag"
 
 #: src/geocurrency/units/__init__.py:75
-#, fuzzy
-#| msgid "electric field"
 msgid "electric dipole"
-msgstr "elektriese veld"
+msgstr "elektriese dipool"
 
 #: src/geocurrency/units/__init__.py:78
-#, fuzzy
-#| msgid "electric charge"
 msgid "electric quadrupole"
-msgstr "elektriese lading"
+msgstr "elektriese vierhoek"
 
 #: src/geocurrency/units/__init__.py:81
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic dipole"
-msgstr "magnetiese veld"
+msgstr "magnetiese dipool"
 
 #: src/geocurrency/units/__init__.py:83
 msgid "printing unit"
-msgstr ""
+msgstr "drukeenheid"
 
 #: src/geocurrency/units/__init__.py:85
 msgid "gaussian charge"
-msgstr ""
+msgstr "gaussiese lading"
 
 #: src/geocurrency/units/__init__.py:88
-#, fuzzy
-#| msgid "Planck current"
 msgid "gaussian current"
-msgstr "Planck stroom"
+msgstr "gaussiese stroom"
 
 #: src/geocurrency/units/__init__.py:91
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "gaussian electric potential"
-msgstr "elektriese potensiaalverskil"
+msgstr "gaussiese elektriese potensiaal"
 
 #: src/geocurrency/units/__init__.py:94
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric field"
-msgstr "elektriese veld"
+msgstr "Gaussiese elektriese veld"
 
 #: src/geocurrency/units/__init__.py:97
 msgid "gaussian electric displacement field"
-msgstr ""
+msgstr "Gaussiese elektriese verplasingsveld"
 
 #: src/geocurrency/units/__init__.py:101
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric flux"
-msgstr "elektriese veld"
+msgstr "Gaussiese elektriese vloed"
 
 #: src/geocurrency/units/__init__.py:104
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field"
-msgstr "magnetiese veld"
+msgstr "gaussiese magnetiese veld"
 
 #: src/geocurrency/units/__init__.py:107
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field strength"
-msgstr "magnetiese veld"
+msgstr "gaussiese magnetiese veldsterkte"
 
 #: src/geocurrency/units/__init__.py:111
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic flux"
-msgstr "magnetiese veld"
+msgstr "gaussiese magnetiese vloed"
 
 #: src/geocurrency/units/__init__.py:114
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "gaussian resistance"
-msgstr "elektriese weerstand"
+msgstr "gaussiese weerstand"
 
 #: src/geocurrency/units/__init__.py:117
 msgid "gaussian resistivity"
-msgstr ""
+msgstr "gaussiese weerstand"
 
 #: src/geocurrency/units/__init__.py:119
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "gaussian capacitance"
-msgstr "elektriese kapasitansie"
+msgstr "gaussiese kapasiteit"
 
 #: src/geocurrency/units/__init__.py:121
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "gaussian inductance"
-msgstr "elektriese induktansie"
+msgstr "gaussiese induksie"
 
 #: src/geocurrency/units/__init__.py:124
-#, fuzzy
-#| msgid "electrical conductance"
 msgid "gaussian conductance"
-msgstr "elektriese geleiding"
+msgstr "gaussiese geleiding"
 
 #: src/geocurrency/units/__init__.py:127
-#, fuzzy
-#| msgid "electric charge"
 msgid "esu charge"
-msgstr "elektriese lading"
+msgstr "esu lading"
 
 #: src/geocurrency/units/__init__.py:130
-#, fuzzy
-#| msgid "electric current"
 msgid "esu current"
-msgstr "elektriese stroom"
+msgstr "esu stroom"
 
 #: src/geocurrency/units/__init__.py:133
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "esu electric potential"
-msgstr "elektriese potensiaalverskil"
+msgstr "esu elektriese potensiaal"
 
 #: src/geocurrency/units/__init__.py:137
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic flux"
-msgstr "magnetiese veld"
+msgstr "esu magnetiese vloed"
 
 #: src/geocurrency/units/__init__.py:140
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic field"
-msgstr "magnetiese veld"
+msgstr "esu magnetiese veld"
 
 #: src/geocurrency/units/__init__.py:233
 msgid "Copper Kα"
@@ -1118,20 +1053,16 @@ msgid "CSS pixel"
 msgstr "CSS-pixel"
 
 #: src/geocurrency/units/__init__.py:624
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "cubic meter"
-msgstr "kubieke sentimeter"
+msgstr "Kubieke meter"
 
 #: src/geocurrency/units/__init__.py:628
 msgid "cubic centimeter"
 msgstr "kubieke sentimeter"
 
 #: src/geocurrency/units/__init__.py:632
-#, fuzzy
-#| msgid "Hg millimeter"
 msgid "cubic milliimeter"
-msgstr "Hg millimeter"
+msgstr "kubieke millimeter"
 
 #: src/geocurrency/units/__init__.py:636
 msgid "cubic foot"
@@ -1184,10 +1115,8 @@ msgid "decade"
 msgstr "dekade"
 
 #: src/geocurrency/units/__init__.py:676
-#, fuzzy
-#| msgid "decitex"
 msgid "decibel"
-msgstr "decitex"
+msgstr "desibel"
 
 #: src/geocurrency/units/__init__.py:680
 msgid "degree"
@@ -1693,10 +1622,8 @@ msgid "meter per second"
 msgstr "meter per sekonde"
 
 #: src/geocurrency/units/__init__.py:1174
-#, fuzzy
-#| msgid "meter per second"
 msgid "meter per square second"
-msgstr "meter per sekonde"
+msgstr "meter per vierkante sekonde"
 
 #: src/geocurrency/units/__init__.py:1179
 msgid "metric horsepower"
@@ -2093,22 +2020,16 @@ msgid "square league"
 msgstr "vierkantige liga"
 
 #: src/geocurrency/units/__init__.py:1527
-#, fuzzy
-#| msgid "square mile"
 msgid "square meter"
-msgstr "vierkante myl"
+msgstr "vierkante meter"
 
 #: src/geocurrency/units/__init__.py:1531
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "square centimeter"
-msgstr "kubieke sentimeter"
+msgstr "vierkante sentimeter"
 
 #: src/geocurrency/units/__init__.py:1535
-#, fuzzy
-#| msgid "square mile"
 msgid "square millimeter"
-msgstr "vierkante myl"
+msgstr "vierkante millimeter"
 
 #: src/geocurrency/units/__init__.py:1539
 msgid "square mile"
@@ -2301,31 +2222,31 @@ msgstr "Mo X-straal golflengte"
 
 #: src/geocurrency/units/__init__.py:1811
 msgid "yard"
-msgstr ""
+msgstr "erf"
 
 #: src/geocurrency/units/__init__.py:1819
 msgid "zeta"
-msgstr ""
+msgstr "zeta"
 
 #: src/geocurrency/units/__init__.py:1823
 msgid "decibelmilliwatt"
-msgstr ""
+msgstr "decibelmilliwatt"
 
 #: src/geocurrency/units/__init__.py:1827
 msgid "decibelmicrowatt"
-msgstr ""
+msgstr "decibelmicrowatt"
 
 #: src/geocurrency/units/__init__.py:1831
 msgid "Euler‘s number"
-msgstr ""
+msgstr "Euler se nommer"
 
 #: src/geocurrency/units/__init__.py:1835
 msgid "octave"
-msgstr ""
+msgstr "oktaaf"
 
 #: src/geocurrency/units/__init__.py:1839
 msgid "sound pressure level"
-msgstr ""
+msgstr "klankdrukvlak"
 
 #: src/geocurrency/units/models.py:369
 msgid "Incompatible units"
