@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-08 17:07+0000\n"
-"PO-Revision-Date: 2020-09-16 12:48+0000\n"
-"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
-"Language-Team: Russian <http://peabytes.me/projects/geocurrency/api/ru/>\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Russian <http://translation.peabytes.me/projects/geocurrency/"
+"api/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -406,7 +407,7 @@ msgstr "Традиционный китайский"
 
 #: src/geocurrency/countries/viewsets.py:76
 msgid "Unknown country or no info for this country"
-msgstr ""
+msgstr "Неизвестная страна или информация об этой стране отсутствует"
 
 #: src/geocurrency/rates/models.py:384
 msgid "Rate could not be found"
@@ -422,26 +423,20 @@ msgid "time"
 msgstr "время"
 
 #: src/geocurrency/units/__init__.py:5
-#, fuzzy
-#| msgid "Planck current"
 msgid "current"
-msgstr "Планковский ток"
+msgstr "текущий"
 
 #: src/geocurrency/units/__init__.py:6
-#, fuzzy
-#| msgid "luminous intensity"
 msgid "luminosity"
-msgstr "интенсивность света"
+msgstr "яркость"
 
 #: src/geocurrency/units/__init__.py:7
 msgid "mass"
 msgstr "масса"
 
 #: src/geocurrency/units/__init__.py:8
-#, fuzzy
-#| msgid "amount of substance"
 msgid "substance"
-msgstr "количество вещества"
+msgstr "вещество"
 
 #: src/geocurrency/units/__init__.py:9
 msgid "temperature"
@@ -453,7 +448,7 @@ msgstr "постоянный"
 
 #: src/geocurrency/units/__init__.py:11
 msgid "area"
-msgstr ""
+msgstr "площадь"
 
 #: src/geocurrency/units/__init__.py:12
 msgid "volume"
@@ -465,11 +460,11 @@ msgstr "частота"
 
 #: src/geocurrency/units/__init__.py:14
 msgid "wavenumber"
-msgstr ""
+msgstr "волновое число"
 
 #: src/geocurrency/units/__init__.py:15
 msgid "velocity"
-msgstr ""
+msgstr "скорость"
 
 #: src/geocurrency/units/__init__.py:16
 msgid "acceleration"
@@ -488,10 +483,8 @@ msgid "power"
 msgstr "мощность"
 
 #: src/geocurrency/units/__init__.py:20
-#, fuzzy
-#| msgid "intensity"
 msgid "density"
-msgstr "интенсивность"
+msgstr "плотность"
 
 #: src/geocurrency/units/__init__.py:21
 msgid "pressure"
@@ -499,45 +492,39 @@ msgstr "давление"
 
 #: src/geocurrency/units/__init__.py:22
 msgid "torque"
-msgstr ""
+msgstr "крутящий момент"
 
 #: src/geocurrency/units/__init__.py:23
 msgid "viscosity"
 msgstr "вязкость"
 
 #: src/geocurrency/units/__init__.py:24
-#, fuzzy
-#| msgid "reciprocal viscosity"
 msgid "kinematic viscosity"
-msgstr "обратная вязкость"
+msgstr "кинематическая вязкость"
 
 #: src/geocurrency/units/__init__.py:26
 msgid "fluidity"
-msgstr ""
+msgstr "текучесть"
 
 #: src/geocurrency/units/__init__.py:27
 msgid "concentration"
 msgstr "концентрация"
 
 #: src/geocurrency/units/__init__.py:28
-#, fuzzy
-#| msgid "radioactivity"
 msgid "activity"
-msgstr "радиоактивность"
+msgstr "деятельность"
 
 #: src/geocurrency/units/__init__.py:29
-#, fuzzy
-#| msgid "entropy unit"
 msgid "entropy"
-msgstr "единица энтропии"
+msgstr "энтропия"
 
 #: src/geocurrency/units/__init__.py:31
 msgid "molar entropy"
-msgstr ""
+msgstr "молярная энтропия"
 
 #: src/geocurrency/units/__init__.py:35
 msgid "heat transmission"
-msgstr ""
+msgstr "передача тепла"
 
 #: src/geocurrency/units/__init__.py:38
 msgid "luminance"
@@ -557,187 +544,135 @@ msgstr "интенсивность"
 
 #: src/geocurrency/units/__init__.py:48
 msgid "charge"
-msgstr ""
+msgstr "обвинять"
 
 #: src/geocurrency/units/__init__.py:49
-#, fuzzy
-#| msgid "electric moment"
 msgid "electric potential"
-msgstr "электрический момент"
+msgstr "электрический потенциал"
 
 #: src/geocurrency/units/__init__.py:52
 msgid "electric field"
 msgstr "электрическое поле"
 
 #: src/geocurrency/units/__init__.py:55
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "resistance"
-msgstr "электрическое сопротивление"
+msgstr "сопротивление"
 
 #: src/geocurrency/units/__init__.py:58
-#, fuzzy
-#| msgid "conductance quantum"
 msgid "conductance"
-msgstr "квант проводимости"
+msgstr "проводимость"
 
 #: src/geocurrency/units/__init__.py:61
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "capacitance"
-msgstr "электрическая емкость"
+msgstr "емкость"
 
 #: src/geocurrency/units/__init__.py:64
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "inductance"
-msgstr "электрическая индуктивность"
+msgstr "индуктивность"
 
 #: src/geocurrency/units/__init__.py:67
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic flux"
-msgstr "магнитное поле"
+msgstr "магнитный поток"
 
 #: src/geocurrency/units/__init__.py:70
 msgid "magnetic field"
 msgstr "магнитное поле"
 
 #: src/geocurrency/units/__init__.py:73
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetomotive force"
-msgstr "магнитное поле"
+msgstr "магнитодвижущая сила"
 
 #: src/geocurrency/units/__init__.py:75
-#, fuzzy
-#| msgid "electric field"
 msgid "electric dipole"
-msgstr "электрическое поле"
+msgstr "электрический диполь"
 
 #: src/geocurrency/units/__init__.py:78
-#, fuzzy
-#| msgid "electric charge"
 msgid "electric quadrupole"
-msgstr "электрический заряд"
+msgstr "электрический квадруполь"
 
 #: src/geocurrency/units/__init__.py:81
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic dipole"
-msgstr "магнитное поле"
+msgstr "магнитный диполь"
 
 #: src/geocurrency/units/__init__.py:83
 msgid "printing unit"
-msgstr ""
+msgstr "типография"
 
 #: src/geocurrency/units/__init__.py:85
 msgid "gaussian charge"
-msgstr ""
+msgstr "гауссовский заряд"
 
 #: src/geocurrency/units/__init__.py:88
-#, fuzzy
-#| msgid "Planck current"
 msgid "gaussian current"
-msgstr "Планковский ток"
+msgstr "гауссовское течение"
 
 #: src/geocurrency/units/__init__.py:91
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "gaussian electric potential"
-msgstr "разность электрических потенциалов"
+msgstr "гауссов электрический потенциал"
 
 #: src/geocurrency/units/__init__.py:94
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric field"
-msgstr "электрическое поле"
+msgstr "гауссово электрическое поле"
 
 #: src/geocurrency/units/__init__.py:97
 msgid "gaussian electric displacement field"
-msgstr ""
+msgstr "гауссово электрическое поле смещения"
 
 #: src/geocurrency/units/__init__.py:101
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric flux"
-msgstr "электрическое поле"
+msgstr "гауссов электрический поток"
 
 #: src/geocurrency/units/__init__.py:104
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field"
-msgstr "магнитное поле"
+msgstr "гауссово магнитное поле"
 
 #: src/geocurrency/units/__init__.py:107
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field strength"
-msgstr "магнитное поле"
+msgstr "напряженность гауссова магнитного поля"
 
 #: src/geocurrency/units/__init__.py:111
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic flux"
-msgstr "магнитное поле"
+msgstr "гауссов магнитный поток"
 
 #: src/geocurrency/units/__init__.py:114
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "gaussian resistance"
-msgstr "электрическое сопротивление"
+msgstr "гауссовское сопротивление"
 
 #: src/geocurrency/units/__init__.py:117
 msgid "gaussian resistivity"
-msgstr ""
+msgstr "гауссово удельное сопротивление"
 
 #: src/geocurrency/units/__init__.py:119
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "gaussian capacitance"
-msgstr "электрическая емкость"
+msgstr "гауссова емкость"
 
 #: src/geocurrency/units/__init__.py:121
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "gaussian inductance"
-msgstr "электрическая индуктивность"
+msgstr "гауссова индуктивность"
 
 #: src/geocurrency/units/__init__.py:124
-#, fuzzy
-#| msgid "electrical conductance"
 msgid "gaussian conductance"
-msgstr "электрическая проводимость"
+msgstr "гауссовская проводимость"
 
 #: src/geocurrency/units/__init__.py:127
-#, fuzzy
-#| msgid "electric charge"
 msgid "esu charge"
-msgstr "электрический заряд"
+msgstr "обвинение ESU"
 
 #: src/geocurrency/units/__init__.py:130
-#, fuzzy
-#| msgid "electric current"
 msgid "esu current"
-msgstr "электрический ток"
+msgstr "ESU текущий"
 
 #: src/geocurrency/units/__init__.py:133
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "esu electric potential"
-msgstr "разность электрических потенциалов"
+msgstr "электрический потенциал ESU"
 
 #: src/geocurrency/units/__init__.py:137
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic flux"
-msgstr "магнитное поле"
+msgstr "магнитный поток esu"
 
 #: src/geocurrency/units/__init__.py:140
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic field"
-msgstr "магнитное поле"
+msgstr "магнитное поле esu"
 
 #: src/geocurrency/units/__init__.py:233
 msgid "Copper Kα"
@@ -1120,20 +1055,16 @@ msgid "CSS pixel"
 msgstr "CSS пиксель"
 
 #: src/geocurrency/units/__init__.py:624
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "cubic meter"
-msgstr "кубический сантиметр"
+msgstr "кубический метр"
 
 #: src/geocurrency/units/__init__.py:628
 msgid "cubic centimeter"
 msgstr "кубический сантиметр"
 
 #: src/geocurrency/units/__init__.py:632
-#, fuzzy
-#| msgid "Hg millimeter"
 msgid "cubic milliimeter"
-msgstr "Миллиметр рт. Ст."
+msgstr "кубический миллиметр"
 
 #: src/geocurrency/units/__init__.py:636
 msgid "cubic foot"
@@ -1186,10 +1117,8 @@ msgid "decade"
 msgstr "десятилетие"
 
 #: src/geocurrency/units/__init__.py:676
-#, fuzzy
-#| msgid "decitex"
 msgid "decibel"
-msgstr "децитекс"
+msgstr "децибел"
 
 #: src/geocurrency/units/__init__.py:680
 msgid "degree"
@@ -1695,10 +1624,8 @@ msgid "meter per second"
 msgstr "метр в секунду"
 
 #: src/geocurrency/units/__init__.py:1174
-#, fuzzy
-#| msgid "meter per second"
 msgid "meter per square second"
-msgstr "метр в секунду"
+msgstr "метр в секунду в квадрате"
 
 #: src/geocurrency/units/__init__.py:1179
 msgid "metric horsepower"
@@ -2095,22 +2022,16 @@ msgid "square league"
 msgstr "квадратная лига"
 
 #: src/geocurrency/units/__init__.py:1527
-#, fuzzy
-#| msgid "square mile"
 msgid "square meter"
-msgstr "квадратная миля"
+msgstr "квадратный метр"
 
 #: src/geocurrency/units/__init__.py:1531
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "square centimeter"
-msgstr "кубический сантиметр"
+msgstr "квадратный сантиметр"
 
 #: src/geocurrency/units/__init__.py:1535
-#, fuzzy
-#| msgid "square mile"
 msgid "square millimeter"
-msgstr "квадратная миля"
+msgstr "квадратный миллиметр"
 
 #: src/geocurrency/units/__init__.py:1539
 msgid "square mile"
@@ -2303,31 +2224,31 @@ msgstr "Mo длина волны рентгеновского излучения
 
 #: src/geocurrency/units/__init__.py:1811
 msgid "yard"
-msgstr ""
+msgstr "двор"
 
 #: src/geocurrency/units/__init__.py:1819
 msgid "zeta"
-msgstr ""
+msgstr "Зета"
 
 #: src/geocurrency/units/__init__.py:1823
 msgid "decibelmilliwatt"
-msgstr ""
+msgstr "децибельмилливатт"
 
 #: src/geocurrency/units/__init__.py:1827
 msgid "decibelmicrowatt"
-msgstr ""
+msgstr "децибелмикроватт"
 
 #: src/geocurrency/units/__init__.py:1831
 msgid "Euler‘s number"
-msgstr ""
+msgstr "Число Эйлера"
 
 #: src/geocurrency/units/__init__.py:1835
 msgid "octave"
-msgstr ""
+msgstr "октава"
 
 #: src/geocurrency/units/__init__.py:1839
 msgid "sound pressure level"
-msgstr ""
+msgstr "уровень звукового давления"
 
 #: src/geocurrency/units/models.py:369
 msgid "Incompatible units"
