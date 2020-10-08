@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-08 17:07+0000\n"
-"PO-Revision-Date: 2020-09-16 12:48+0000\n"
-"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
-"Language-Team: Japanese <http://peabytes.me/projects/geocurrency/api/ja/>\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Japanese <http://translation.peabytes.me/projects/geocurrency/"
+"api/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -404,7 +405,7 @@ msgstr "繁体字中国語"
 
 #: src/geocurrency/countries/viewsets.py:76
 msgid "Unknown country or no info for this country"
-msgstr ""
+msgstr "不明な国またはこの国の情報がありません"
 
 #: src/geocurrency/rates/models.py:384
 msgid "Rate could not be found"
@@ -420,14 +421,10 @@ msgid "time"
 msgstr "時間"
 
 #: src/geocurrency/units/__init__.py:5
-#, fuzzy
-#| msgid "Planck current"
 msgid "current"
-msgstr "プランク電流"
+msgstr "電流"
 
 #: src/geocurrency/units/__init__.py:6
-#, fuzzy
-#| msgid "luminous intensity"
 msgid "luminosity"
 msgstr "光度"
 
@@ -436,10 +433,8 @@ msgid "mass"
 msgstr "質量"
 
 #: src/geocurrency/units/__init__.py:8
-#, fuzzy
-#| msgid "amount of substance"
 msgid "substance"
-msgstr "物質の量"
+msgstr "物質"
 
 #: src/geocurrency/units/__init__.py:9
 msgid "temperature"
@@ -451,7 +446,7 @@ msgstr "絶え間ない"
 
 #: src/geocurrency/units/__init__.py:11
 msgid "area"
-msgstr ""
+msgstr "範囲"
 
 #: src/geocurrency/units/__init__.py:12
 msgid "volume"
@@ -463,11 +458,11 @@ msgstr "周波数"
 
 #: src/geocurrency/units/__init__.py:14
 msgid "wavenumber"
-msgstr ""
+msgstr "波数"
 
 #: src/geocurrency/units/__init__.py:15
 msgid "velocity"
-msgstr ""
+msgstr "速度"
 
 #: src/geocurrency/units/__init__.py:16
 msgid "acceleration"
@@ -486,10 +481,8 @@ msgid "power"
 msgstr "パワー"
 
 #: src/geocurrency/units/__init__.py:20
-#, fuzzy
-#| msgid "intensity"
 msgid "density"
-msgstr "強度"
+msgstr "密度"
 
 #: src/geocurrency/units/__init__.py:21
 msgid "pressure"
@@ -497,45 +490,39 @@ msgstr "圧力"
 
 #: src/geocurrency/units/__init__.py:22
 msgid "torque"
-msgstr ""
+msgstr "トルク"
 
 #: src/geocurrency/units/__init__.py:23
 msgid "viscosity"
 msgstr "粘度"
 
 #: src/geocurrency/units/__init__.py:24
-#, fuzzy
-#| msgid "reciprocal viscosity"
 msgid "kinematic viscosity"
-msgstr "逆粘度"
+msgstr "動粘度"
 
 #: src/geocurrency/units/__init__.py:26
 msgid "fluidity"
-msgstr ""
+msgstr "流動性"
 
 #: src/geocurrency/units/__init__.py:27
 msgid "concentration"
 msgstr "濃度"
 
 #: src/geocurrency/units/__init__.py:28
-#, fuzzy
-#| msgid "radioactivity"
 msgid "activity"
-msgstr "放射能"
+msgstr "アクティビティ"
 
 #: src/geocurrency/units/__init__.py:29
-#, fuzzy
-#| msgid "entropy unit"
 msgid "entropy"
-msgstr "エントロピー単位"
+msgstr "エントロピ"
 
 #: src/geocurrency/units/__init__.py:31
 msgid "molar entropy"
-msgstr ""
+msgstr "モルエントロピー"
 
 #: src/geocurrency/units/__init__.py:35
 msgid "heat transmission"
-msgstr ""
+msgstr "熱伝達"
 
 #: src/geocurrency/units/__init__.py:38
 msgid "luminance"
@@ -555,187 +542,135 @@ msgstr "強度"
 
 #: src/geocurrency/units/__init__.py:48
 msgid "charge"
-msgstr ""
+msgstr "充電"
 
 #: src/geocurrency/units/__init__.py:49
-#, fuzzy
-#| msgid "electric moment"
 msgid "electric potential"
-msgstr "電気モーメント"
+msgstr "電位"
 
 #: src/geocurrency/units/__init__.py:52
 msgid "electric field"
 msgstr "電界"
 
 #: src/geocurrency/units/__init__.py:55
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "resistance"
-msgstr "電気抵抗"
+msgstr "抵抗"
 
 #: src/geocurrency/units/__init__.py:58
-#, fuzzy
-#| msgid "conductance quantum"
 msgid "conductance"
-msgstr "コンダクタンス量子"
+msgstr "コンダクタンス"
 
 #: src/geocurrency/units/__init__.py:61
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "capacitance"
-msgstr "静電容量"
+msgstr "キャパシタンス"
 
 #: src/geocurrency/units/__init__.py:64
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "inductance"
-msgstr "電気インダクタンス"
+msgstr "インダクタンス"
 
 #: src/geocurrency/units/__init__.py:67
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic flux"
-msgstr "磁場"
+msgstr "磁束"
 
 #: src/geocurrency/units/__init__.py:70
 msgid "magnetic field"
 msgstr "磁場"
 
 #: src/geocurrency/units/__init__.py:73
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetomotive force"
-msgstr "磁場"
+msgstr "起磁力"
 
 #: src/geocurrency/units/__init__.py:75
-#, fuzzy
-#| msgid "electric field"
 msgid "electric dipole"
-msgstr "電界"
+msgstr "電気双極子"
 
 #: src/geocurrency/units/__init__.py:78
-#, fuzzy
-#| msgid "electric charge"
 msgid "electric quadrupole"
-msgstr "電荷"
+msgstr "電気四重極"
 
 #: src/geocurrency/units/__init__.py:81
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic dipole"
-msgstr "磁場"
+msgstr "磁気双極子"
 
 #: src/geocurrency/units/__init__.py:83
 msgid "printing unit"
-msgstr ""
+msgstr "印刷ユニット"
 
 #: src/geocurrency/units/__init__.py:85
 msgid "gaussian charge"
-msgstr ""
+msgstr "ガウス電荷"
 
 #: src/geocurrency/units/__init__.py:88
-#, fuzzy
-#| msgid "Planck current"
 msgid "gaussian current"
-msgstr "プランク電流"
+msgstr "ガウス電流"
 
 #: src/geocurrency/units/__init__.py:91
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "gaussian electric potential"
-msgstr "電位差"
+msgstr "ガウス電位"
 
 #: src/geocurrency/units/__init__.py:94
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric field"
-msgstr "電界"
+msgstr "ガウス電場"
 
 #: src/geocurrency/units/__init__.py:97
 msgid "gaussian electric displacement field"
-msgstr ""
+msgstr "ガウス電束密度"
 
 #: src/geocurrency/units/__init__.py:101
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric flux"
-msgstr "電界"
+msgstr "ガウス電束"
 
 #: src/geocurrency/units/__init__.py:104
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field"
-msgstr "磁場"
+msgstr "ガウス磁場"
 
 #: src/geocurrency/units/__init__.py:107
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field strength"
-msgstr "磁場"
+msgstr "ガウス磁場強度"
 
 #: src/geocurrency/units/__init__.py:111
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic flux"
-msgstr "磁場"
+msgstr "ガウス磁束"
 
 #: src/geocurrency/units/__init__.py:114
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "gaussian resistance"
-msgstr "電気抵抗"
+msgstr "ガウス抵抗"
 
 #: src/geocurrency/units/__init__.py:117
 msgid "gaussian resistivity"
-msgstr ""
+msgstr "ガウス抵抗率"
 
 #: src/geocurrency/units/__init__.py:119
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "gaussian capacitance"
-msgstr "静電容量"
+msgstr "ガウス静電容量"
 
 #: src/geocurrency/units/__init__.py:121
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "gaussian inductance"
-msgstr "電気インダクタンス"
+msgstr "ガウスインダクタンス"
 
 #: src/geocurrency/units/__init__.py:124
-#, fuzzy
-#| msgid "electrical conductance"
 msgid "gaussian conductance"
-msgstr "電気コンダクタンス"
+msgstr "ガウスコンダクタンス"
 
 #: src/geocurrency/units/__init__.py:127
-#, fuzzy
-#| msgid "electric charge"
 msgid "esu charge"
-msgstr "電荷"
+msgstr "エスチャージ"
 
 #: src/geocurrency/units/__init__.py:130
-#, fuzzy
-#| msgid "electric current"
 msgid "esu current"
-msgstr "電流"
+msgstr "esu current"
 
 #: src/geocurrency/units/__init__.py:133
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "esu electric potential"
-msgstr "電位差"
+msgstr "esu電位"
 
 #: src/geocurrency/units/__init__.py:137
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic flux"
-msgstr "磁場"
+msgstr "esu磁束"
 
 #: src/geocurrency/units/__init__.py:140
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic field"
-msgstr "磁場"
+msgstr "esu磁場"
 
 #: src/geocurrency/units/__init__.py:233
 msgid "Copper Kα"
@@ -1118,20 +1053,16 @@ msgid "CSS pixel"
 msgstr "CSSピクセル"
 
 #: src/geocurrency/units/__init__.py:624
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "cubic meter"
-msgstr "立方センチメートル"
+msgstr "立方メートル"
 
 #: src/geocurrency/units/__init__.py:628
 msgid "cubic centimeter"
 msgstr "立方センチメートル"
 
 #: src/geocurrency/units/__init__.py:632
-#, fuzzy
-#| msgid "Hg millimeter"
 msgid "cubic milliimeter"
-msgstr "Hgミリメートル"
+msgstr "立方ミリ"
 
 #: src/geocurrency/units/__init__.py:636
 msgid "cubic foot"
@@ -1184,10 +1115,8 @@ msgid "decade"
 msgstr "十年"
 
 #: src/geocurrency/units/__init__.py:676
-#, fuzzy
-#| msgid "decitex"
 msgid "decibel"
-msgstr "デシテックス"
+msgstr "デシベル"
 
 #: src/geocurrency/units/__init__.py:680
 msgid "degree"
@@ -1693,10 +1622,8 @@ msgid "meter per second"
 msgstr "メートル毎秒"
 
 #: src/geocurrency/units/__init__.py:1174
-#, fuzzy
-#| msgid "meter per second"
 msgid "meter per square second"
-msgstr "メートル毎秒"
+msgstr "メートル/秒"
 
 #: src/geocurrency/units/__init__.py:1179
 msgid "metric horsepower"
@@ -2093,22 +2020,16 @@ msgid "square league"
 msgstr "スクエアリーグ"
 
 #: src/geocurrency/units/__init__.py:1527
-#, fuzzy
-#| msgid "square mile"
 msgid "square meter"
-msgstr "平方マイル"
+msgstr "平方メートル"
 
 #: src/geocurrency/units/__init__.py:1531
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "square centimeter"
-msgstr "立方センチメートル"
+msgstr "平方センチメートル"
 
 #: src/geocurrency/units/__init__.py:1535
-#, fuzzy
-#| msgid "square mile"
 msgid "square millimeter"
-msgstr "平方マイル"
+msgstr "平方ミリメートル"
 
 #: src/geocurrency/units/__init__.py:1539
 msgid "square mile"
@@ -2301,31 +2222,31 @@ msgstr "Mo X線波長"
 
 #: src/geocurrency/units/__init__.py:1811
 msgid "yard"
-msgstr ""
+msgstr "ヤード"
 
 #: src/geocurrency/units/__init__.py:1819
 msgid "zeta"
-msgstr ""
+msgstr "ゼータ"
 
 #: src/geocurrency/units/__init__.py:1823
 msgid "decibelmilliwatt"
-msgstr ""
+msgstr "デシベルミリワット"
 
 #: src/geocurrency/units/__init__.py:1827
 msgid "decibelmicrowatt"
-msgstr ""
+msgstr "デシベルマイクロワット"
 
 #: src/geocurrency/units/__init__.py:1831
 msgid "Euler‘s number"
-msgstr ""
+msgstr "オイラーの数"
 
 #: src/geocurrency/units/__init__.py:1835
 msgid "octave"
-msgstr ""
+msgstr "オクターブ"
 
 #: src/geocurrency/units/__init__.py:1839
 msgid "sound pressure level"
-msgstr ""
+msgstr "音圧レベル"
 
 #: src/geocurrency/units/models.py:369
 msgid "Incompatible units"
