@@ -5,7 +5,7 @@ import pint
 from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
 
-from . import UNIT_EXTENDED_DEFINITION
+from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS
 
 
 class Amount:
@@ -26,15 +26,6 @@ class Amount:
 
 class Unit:
     pass
-
-
-class UnitFamily:
-    family = None
-    units = []
-
-    def __init__(self, family: str, units: [Unit]):
-        self.family = family
-        self.units = units
 
 
 class UnitSystem:
@@ -80,13 +71,6 @@ class UnitSystem:
     def unit(self, unit_name):
         return Unit(unit_system=self, code=unit_name)
 
-    @property
-    def units(self):
-        """
-        Wrapper used by serializer
-        """
-        return [UnitFamily(family=family, units=units) for family, units in self.units_per_family().items()]
-
     def available_unit_names(self) -> [str]:
         """
         List of available units for a given Unit system
@@ -102,23 +86,55 @@ class UnitSystem:
         """
         return Unit.dimensionality_string(unit_system=self.system, unit_str=unit)
 
-    def units_per_family(self) -> []:
+    def available_dimensions(self) -> {}:
+        return [Dimension(unit_system=self, code=dim) for dim in DIMENSIONS.keys()]
+
+    @property
+    def _ureg_dimensions(self):
         """
-        List of units per dimension.
-        Dimension is the dimension as identified in Units.UNIT_EXTENDED_DEFINITION
-        :return: array of dict of dimensions, with lists of unit strings
+        return dimensions with units
         """
-        units_array = self.available_unit_names()
-        output = {}
-        for unit_str in units_array:
+        dimensions = []
+        for dim in self.ureg._dimensions:
             try:
-                unit = self.unit(unit_name=unit_str)
-            except ValueError:
-                continue
-            try:
-                output[str(unit.family)].append(unit)
+                if not self.ureg.get_compatible_units(dim):
+                    continue
+                dimensions.append(dim)
             except KeyError:
-                output[str(unit.family)] = [unit]
+                continue
+        return dimensions
+
+    def _get_dimension_dimensionality(self, dimension: str) -> {}:
+        """
+        Return the dimensionality of a dimension based on the first compatible unit
+        """
+        for dim in self.ureg.get_compatible_units(dimension):
+            return self.ureg.get_base_units(dim)[1]
+
+    def _generate_dimension_delta_dictionnary(self) -> {}:
+        """
+        Generate the dict to put in DIMENSIONS
+        """
+        output = {}
+        for dim in self._ureg_dimensions:
+            if not dim in DIMENSIONS:
+                output[dim] = {
+                    'name': f'_({dim})',
+                    'dimension': str(self._get_dimension_dimensionality(dim)),
+                    'symbol': ''
+                }
+        return output
+
+    def units_per_dimension(self, dimensions: [str]) -> {}:
+        output = {}
+        registry_dimensions = dimensions or DIMENSIONS.keys()
+        for dim in registry_dimensions:
+            dimension = Dimension(unit_system=self, code=dim)
+            try:
+                if units := self.ureg.get_compatible_units(dim):
+                    output[dim] = units
+            except KeyError:
+                continue
         return output
 
     def units_per_dimensionality(self) -> {}:
@@ -145,22 +161,71 @@ class UnitSystem:
         return set([Unit.dimensionality_string(self, unit_str) for unit_str in dir(self.system)])
 
 
+class DimensionNotFound(Exception):
+    pass
+
+
+class Dimension:
+    unit_system = None
+    code = None
+    name = None
+    dimension = None
+
+    def __init__(self, unit_system: UnitSystem, code: str):
+        try:
+            dimension = DIMENSIONS[code]
+            self.unit_system = unit_system
+            self.code = code
+            self.name = dimension['name']
+            self.dimension = dimension['dimension']
+        except (ValueError, KeyError) as e:
+            logging.warning(str(e))
+            self.code = None
+        if not self.code:
+            raise DimensionNotFound
+
+    def __repr__(self):
+        return self.code
+
+    @property
+    def units(self):
+        return [Unit(unit_system=self.unit_system, pint_unit=unit)
+                for unit in self.unit_system.ureg.get_compatible_units(self.code)]
+
+    @property
+    def base_unit(self):
+        try:
+            return UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
+        except KeyError:
+            logging.warning(f'dimension {self.dimension} is not part of unit system {self.unit_system.system_name}')
+            return None
+
+
 class Unit:
     unit_system = None
     code = None
     unit = None
 
-    def __init__(self, unit_system: UnitSystem, code: str, ):
+    def __init__(self, unit_system: UnitSystem, code: str = '', pint_unit: pint.Unit = None):
         """
         :param unit_system: UnitSystem instance
         :param code: code of the pint.Unit
         """
         self.unit_system = unit_system
-        self.code = code
-        try:
-            self.unit = getattr(unit_system.system, code)
-        except pint.errors.UndefinedUnitError:
+        if pint_unit and isinstance(pint_unit, pint.Unit):
+            self.code = str(pint_unit)
+            self.unit = pint_unit
+        elif code:
+            self.code = code
+            try:
+                self.unit = getattr(unit_system.system, code)
+            except pint.errors.UndefinedUnitError:
+                raise ValueError("invalid unit for system")
+        else:
             raise ValueError("invalid unit for system")
+
+    def __repr__(self):
+        return self.code
 
     @classmethod
     def is_valid(self, name):
@@ -171,10 +236,6 @@ class Unit:
         return name in set(all_units)
 
     @property
-    def family(self):
-        return self.unit_family(self.code)
-
-    @property
     def name(self):
         return self.unit_name(self.code)
 
@@ -183,17 +244,9 @@ class Unit:
         return self.unit_symbol(self.code)
 
     @property
-    def dimension(self):
-        return self.unit.dimensionality
-
-    @staticmethod
-    def unit_family(unit_str: str) -> str:
-        try:
-            ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
-            return ext_unit['family']
-        except (KeyError, TypeError) as e:
-            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {unit_str}')
-            return ''
+    def dimensions(self):
+        return [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
+                if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
 
     @staticmethod
     def unit_name(unit_str: str) -> str:
@@ -225,6 +278,10 @@ class Unit:
         ds = ds.replace(' ** ', '^')
         ds = ds.split()
         return ' '.join([_(d) for d in ds])
+
+    @property
+    def dimensionality(self):
+        return self.unit_system.ureg.get_base_units(self.code)[1]
 
     @staticmethod
     def translated_name(unit_system: UnitSystem, unit_str: str) -> str:

@@ -3,7 +3,7 @@ from datetime import date, datetime
 from drf_yasg.utils import swagger_serializer_method
 from rest_framework import serializers
 
-from .models import Amount, UnitConversionPayload
+from .models import Amount, UnitConversionPayload, Dimension
 
 
 class UnitAmountSerializer(serializers.Serializer):
@@ -49,35 +49,44 @@ class UnitAmountSerializer(serializers.Serializer):
 class UnitSerializer(serializers.Serializer):
     code = serializers.CharField()
     name = serializers.CharField()
-    family = serializers.CharField()
     dimensions = serializers.SerializerMethodField()
 
     @swagger_serializer_method(serializer_or_field=serializers.ListField)
     def get_dimensions(self, obj):
-        return str(obj.dimension)
+        return str(obj.dimensions)
 
 
-class UnitFamilySerializer(serializers.Serializer):
-    family = serializers.CharField()
+class DimensionSerializer(serializers.Serializer):
+    code = serializers.CharField()
+    name = serializers.CharField()
+    dimension = serializers.CharField()
+    base_unit = serializers.SerializerMethodField()
+
+    def create(self, validated_data):
+        return Dimension(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.unit_system = validated_data.get('system', instance.unit_system)
+        instance.code = validated_data.get('code', instance.code)
+        instance.value = validated_data.get('name', instance.name)
+        instance.dimension = validated_data.get('date_obj', instance.dimension)
+        return instance
+
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
+    def get_base_unit(self, obj):
+        return obj.base_unit()
+
+
+class DimensionWithUnitsSerializer(DimensionSerializer):
     units = UnitSerializer(many=True)
-
-
-class UnitSystemListSerializer(serializers.Serializer):
-    system_name = serializers.CharField()
-
-
-class UnitSystemDetailSerializer(serializers.Serializer):
-    system_name = serializers.CharField()
-    dimensions = serializers.SerializerMethodField()
-    units = UnitFamilySerializer(many=True)
-
-    @swagger_serializer_method(serializer_or_field=serializers.ListField)
-    def get_dimensions(self, obj):
-        return obj.dimensionalities
 
     @swagger_serializer_method(serializer_or_field=UnitSerializer)
     def get_units(self, obj):
-        return obj.units_per_family()
+        return obj.units
+
+
+class UnitSystemSerializer(serializers.Serializer):
+    system_name = serializers.CharField()
 
 
 class UnitConversionPayloadSerializer(serializers.Serializer):

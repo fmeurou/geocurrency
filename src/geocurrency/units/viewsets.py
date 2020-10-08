@@ -10,9 +10,10 @@ from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 
-from .models import UnitSystem, UnitConverter
-from .serializers import UnitSerializer, UnitSystemListSerializer, UnitSystemDetailSerializer, \
-    UnitConversionPayloadSerializer
+from . import DIMENSIONS
+from .models import UnitSystem, UnitConverter, Dimension
+from .serializers import UnitSerializer, UnitSystemSerializer, \
+    UnitConversionPayloadSerializer, DimensionSerializer, DimensionWithUnitsSerializer
 from geocurrency.converters.serializers import ConverterResultSerializer
 
 
@@ -27,8 +28,8 @@ class UnitSystemViewset(ViewSet):
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
 
-    unit_systems_response = openapi.Response('List of unit systems', UnitSystemListSerializer)
-    unit_system_response = openapi.Response('Dimensions and units in a system', UnitSystemDetailSerializer)
+    unit_systems_response = openapi.Response('List of unit systems', UnitSystemSerializer)
+    unit_system_response = openapi.Response('Dimensions and units in a system', UnitSystemSerializer)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -46,7 +47,20 @@ class UnitSystemViewset(ViewSet):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
-            serializer = UnitSystemDetailSerializer(us, context={'request': request})
+            serializer = UnitSystemSerializer(us, context={'request': request})
+            return Response(serializer.data, content_type="application/json")
+        except (ValueError, KeyError) as e:
+            return Response("Unknown unit system: " + str(e), status=HTTP_404_NOT_FOUND)
+
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: DimensionSerializer})
+    @action(methods=['GET'], detail=True, name='dimensions', url_path='dimensions')
+    def dimensions(self, request, system_name):
+        language = request.GET.get('language', request.LANGUAGE_CODE)
+        try:
+            us = UnitSystem(system_name=system_name, fmt_locale=language)
+            serializer = DimensionSerializer(us.available_dimensions(), many=True, context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except (ValueError, KeyError) as e:
             return Response("Unknown unit system: " + str(e), status=HTTP_404_NOT_FOUND)
@@ -61,26 +75,42 @@ class UnitViewset(ViewSet):
                                         type=openapi.TYPE_STRING)
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
-    family = openapi.Parameter('family', openapi.IN_QUERY, description="Unit dimension",
+    dimension = openapi.Parameter('dimension', openapi.IN_QUERY, description="Unit dimension",
                                  type=openapi.TYPE_STRING)
     units_response = openapi.Response('List of units in a system', UnitSerializer)
     unit_response = openapi.Response('Detail of a unit', UnitSerializer)
+    dimension_response = openapi.Response('List of units per dimension', DimensionWithUnitsSerializer)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[family, language, language_header], responses={200: units_response})
+    @swagger_auto_schema(manual_parameters=[dimension, language, language_header], responses={200: units_response})
     def list(self, request, system_name):
         language = request.GET.get('language', request.LANGUAGE_CODE)
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
-            if dimension := request.GET.get('family'):
-                available_units = [unit.code for unit in us.units_per_family().get(dimension)]
+            units = []
+            if dimension_param := request.GET.get('dimension'):
+                dimension = Dimension(unit_system=us, code=dimension_param)
+                units = dimension.units
             else:
                 available_units = us.available_unit_names()
-            units = []
-            if available_units:
-                units = [us.unit(unit_name=unit_name) for unit_name in available_units]
+                if available_units:
+                    units = [us.unit(unit_name=unit_name) for unit_name in available_units]
             serializer = UnitSerializer(units, many=True, context={'request': request})
+            return Response(serializer.data)
+        except KeyError:
+            return Response('Invalid Unit System', status=status.HTTP_404_NOT_FOUND)
+
+    @method_decorator(cache_page(60 * 60 * 24))
+    @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: dimension_response})
+    @action(['GET'], detail=False, name='units per dimension', url_path='per_dimension')
+    def list_per_dimension(self, request, system_name):
+        language = request.GET.get('language', request.LANGUAGE_CODE)
+        try:
+            us = UnitSystem(system_name=system_name, fmt_locale=language)
+            dimensions = [Dimension(unit_system=us, code=code) for code in DIMENSIONS.keys()]
+            serializer = DimensionWithUnitsSerializer(dimensions, many=True, context={'request': request})
             return Response(serializer.data)
         except KeyError:
             return Response('Invalid Unit System', status=status.HTTP_404_NOT_FOUND)

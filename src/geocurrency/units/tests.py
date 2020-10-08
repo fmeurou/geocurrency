@@ -7,8 +7,26 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from .models import UnitSystem, UnitConverter
+from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound
 from .serializers import UnitAmountSerializer
+
+
+class DimensionTest(TestCase):
+
+    def test_creation(self):
+        us = UnitSystem()
+        dimension = Dimension(unit_system=us, code='[length]')
+        self.assertTrue(isinstance(dimension, Dimension))
+
+    def test_bad_creation(self):
+        us = UnitSystem()
+        self.assertRaises(DimensionNotFound, Dimension, unit_system=us, code='length')
+
+    def test_dimension_units(self):
+        us = UnitSystem()
+        dimension = Dimension(unit_system=us, code='[length]')
+        unit_codes = [unit.code for unit in dimension.units]
+        self.assertIn('meter', unit_codes)
 
 
 class UnitTest(TestCase):
@@ -17,6 +35,12 @@ class UnitTest(TestCase):
         us = UnitSystem()
         unit = us.unit('meter')
         self.assertTrue(isinstance(unit.unit, pint.Unit))
+
+    def test_dimensions(self):
+        us = UnitSystem()
+        dimension = Dimension(unit_system=us, code='[length]')
+        unit = us.unit('meter')
+        self.assertIn(dimension.code, [d.code for d in unit.dimensions])
 
     def test_readable_dimension(self):
         us = UnitSystem()
@@ -34,25 +58,27 @@ class UnitTest(TestCase):
 
     def test_list_with_dimension_request(self):
         client = APIClient()
+        us = UnitSystem(system_name='mks')
         response = client.get(
             '/units/mks/units/',
             data={
-                'family': 'length'
+                'dimension': '[length]'
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(set([c['family'] for c in response.json()]), {'length'})
+        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[length]').units))
 
     def test_list_with_dimension_2_request(self):
         client = APIClient()
+        us = UnitSystem(system_name='mks')
         response = client.get(
             '/units/mks/units/',
             data={
-                'family': 'surface'
+                'dimension': '[area]'
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(set([c['family'] for c in response.json()]), {'surface'})
+        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[area]').units))
 
     def test_retrieve_request(self):
         client = APIClient()
@@ -115,7 +141,14 @@ class UnitSystemTest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json().get("system_name"), "SI")
-        self.assertIn("length", response.json().get("dimensions"))
+
+    def test_list_dimensions_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/dimensions/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn("[length]", [r['code'] for r in response.json()])
 
     def test_retrieve_request_not_found(self):
         client = APIClient()

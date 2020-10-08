@@ -1,1721 +1,1843 @@
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 
-DIMENSION_FAMILIES = {
-    'dimensionless': _('dimensionless'),
-    'meter': _('length'),
-    'meter ** 2': _('surface'),
-    'meter ** 3': _('volume'),
-    'second': _('time'),
-    'gram': _('mass'),
-    'meter / second': _('speed'),
-    'meter / second ** 2': _('acceleration'),
-    'meter / gram': _('meter per gram'),
-    'meter ** 2 / second ** 2': _('absorption'),
-    'gram * meter / second ** 2': _('force'),
-    'gram * meter ** 2 / second ** 2': _('energy'),
-    'ampere': _('electric current'),
-    'ampere * second': _('electric charge'),
-    'ampere * second / mole': _('elementary charge'),
-    'gram * meter ** 2 / ampere ** 2 / second ** 2': _('electromagnetic inductance'),
-    'gram * meter ** 2 / ampere ** 2 / second ** 3': _('electromagnetic resistance'),
-    'ampere ** 2 * second ** 3 / gram / meter ** 2': _('electrical conductance'),
-    'gram * meter ** 2 / ampere / second ** 3': _('electric potential difference'),
-    'gram * meter / ampere / second ** 3': _('electric field'),
-    'gram / meter': _('linear mass density'),
-    'gram / second ** 3': _('intensity'),
-    'kelvin': _('temperature'),
-    'mole': _('amount of substance'),
-    '1 / mole': _('density of particle'),
-    'mole / second': _('catalytic activity'),
-    'bit': _('quantity of information'),
-    'bit / pixel': _('density of information'),
-    'ampere * meter ** 2': _('magnetic moment'),
-    'ampere * meter * second': _('electric moment'),
-    'gram * meter ** 2 / kelvin / second ** 2': _('energy'),
-    'ampere * meter ** 2 * second': _('magnetic moment'),
-    'candela': _('luminous intensity'),
-    'ampere ** 2 * second ** 4 / gram / meter ** 2': _('electrical capacitance'),
-    'gram * meter ** 3 / ampere ** 2 / second ** 4': _('electric force'),
-    'count / second': _('frequency'),
-    'gram * meter ** 2 / second': _('electromagnetic action'),
-    'gram * meter ** 4 / second ** 3': _('power per unit per wavelength interval'),
-    'gram ** 0.5 * meter ** 1.5 / second': _('electrostatic unit of charge'),
-    'gram ** 0.5 / meter ** 0.5 / second': _('magnetic induction'),
-    'radian': _('angle'),
-    'candela / meter ** 2': _('luminance'),
-    'gram / second ** 2': _('radiation'),
-    'candela * radian ** 2': _('luminous flux'),
-    'candela * radian ** 2 / meter ** 2': _('illuminance'),
-    'gram * meter ** 2 / ampere / second ** 2': _('magnetic flux quantum'),
-    'mole / meter ** 3': _('concentration'),
-    'gram * meter ** 2 / kelvin / mole / second ** 2': _('energy per temperature increment per mole'),
-    'neper': _('neper'),
-    'meter ** 3 / gram / second ** 2': _('newtonian constant of gravitation'),
-    'gram / meter / second': _('viscosity'),
-    'gram / meter / second ** 2': _('pressure'),
-    '1 / meter': _('reciprocal length'),
-    'radian / second': _('angular speed'),
-    'meter * second / gram': _('reciprocal viscosity'),
-    'ampere * second / gram': _('radiation exposure'),
-    'radian ** 2': _('solid degree'),
-    'gram * meter ** 2 / second ** 3': _('volumetric flow rate'),
-    'gram / ampere / second ** 2': _('magnetic field'),
-    'gram / meter ** 3': _('mass density')
+DIMENSIONS = {'[length]': {'name': _('length'), 'dimension': 'meter', 'symbol': 'L'},
+              '[time]': {'name': _('time'), 'dimension': 'second', 'symbol': 'T'},
+              '[current]': {'name': _('current'), 'dimension': 'ampere', 'symbol': 'I'},
+              '[luminosity]': {'name': _('luminosity'), 'dimension': 'candela * radian ** 2', 'symbol': 'J'},
+              '[mass]': {'name': _('mass'), 'dimension': 'kilogram', 'symbol': 'M'},
+              '[substance]': {'name': _('substance'), 'dimension': 'mole', 'symbol': 'N'},
+              '[temperature]': {'name': _('temperature'), 'dimension': 'kelvin', 'symbol': 'Θ'},
+              '[radiation]': {'name': _('radiation'), 'dimension': 'becquerel', 'symbol': 'Bq'},
+              '[]': {'name': _('constant'), 'dimension': 'bit', 'symbol': 'b'},
+              '[area]': {'name': _('area'), 'dimension': 'meter ** 2', 'symbol': 'L²'},
+              '[volume]': {'name': _('volume'), 'dimension': 'meter ** 3', 'symbol': 'L³'},
+              '[frequency]': {'name': _('frequency'), 'dimension': 'count / second', 'symbol': 'T⁻¹'},
+              '[wavenumber]': {'name': _('wavenumber'), 'dimension': '1 / meter', 'symbol': 'L⁻¹'},
+              '[velocity]': {'name': _('velocity'), 'dimension': 'meter / second', 'symbol': 'L.T⁻¹'},
+              '[acceleration]': {'name': _('acceleration'), 'dimension': 'meter / second ** 2', 'symbol': 'L.T⁻²'},
+              '[force]': {'name': _('force'), 'dimension': 'kilogram * meter / second ** 2', 'symbol': 'F'},
+              '[energy]': {'name': _('energy'), 'dimension': 'kilogram * meter ** 2 / second ** 2', 'symbol': 'E'},
+              '[power]': {'name': _('power'), 'dimension': 'kilogram * meter ** 2 / second ** 3', 'symbol': 'P'},
+              '[density]': {'name': _('density'), 'dimension': 'kilogram / meter ** 3', 'symbol': 'M.L⁻³'},
+              '[pressure]': {'name': _('pressure'), 'dimension': 'kilogram / meter / second ** 2', 'symbol': 'Pa'},
+              '[torque]': {'name': _('torque'), 'dimension': 'kilogram * meter ** 2 / second ** 2', 'symbol': 'F.L'},
+              '[viscosity]': {'name': _('viscosity'), 'dimension': 'kilogram / meter / second', 'symbol': 'M.L⁻¹.T⁻¹'},
+              '[kinematic_viscosity]': {'name': _('kinematic viscosity'), 'dimension': 'meter ** 2 / second',
+                                        'symbol': 'L².T⁻¹'},
+              '[fluidity]': {'name': _('fluidity'), 'dimension': 'meter * second / kilogram', 'symbol': 'L.T.M⁻¹'},
+              '[concentration]': {'name': _('concentration'), 'dimension': 'mole / meter ** 3', 'symbol': 'N.L⁻³'},
+              '[activity]': {'name': _('activity'), 'dimension': 'mole / second', 'symbol': 'N.T⁻¹'},
+              '[entropy]': {'name': _('entropy'), 'dimension': 'kilogram * meter ** 2 / kelvin / second ** 2',
+                            'symbol': ''},
+              '[molar_entropy]': {'name': _('molar entropy'),
+                                  'dimension': 'kilogram * meter ** 2 / kelvin / mole / second ** 2',
+                                  'symbol': 'M.L².Θ⁻¹.N⁻¹.T⁻²'
+                                  },
+              '[heat_transmission]': {'name': _('heat transmission'), 'dimension': 'kilogram / second ** 2',
+                                      'symbol': 'M.T⁻²'
+                                      },
+              '[luminance]': {'name': _('luminance'), 'dimension': 'candela * radian ** 2 / meter ** 2',
+                              'symbol': 'J.rad².L⁻²'
+                              },
+              '[luminous_flux]': {'name': _('luminous flux'),
+                                  'dimension': 'candela * radian ** 2', 'symbol': 'J.rad²'
+                                  },
+              '[illuminance]': {'name': _('illuminance'), 'dimension': 'candela * radian ** 2 / meter ** 2',
+                                'symbol': 'J.rad².L⁻²'
+                                },
+              '[intensity]': {'name': _('intensity'), 'dimension': 'kilogram / second ** 3', 'symbol': 'M.T⁻³'},
+              '[charge]': {'name': _('charge'), 'dimension': 'ampere * second', 'symbol': 'Q'},
+              '[electric_potential]': {'name': _('electric potential'),
+                                       'dimension': 'kilogram * meter ** 2 / ampere / second ** 3', 'symbol': 'V'
+                                       },
+              '[electric_field]': {'name': _('electric field'),
+                                   'dimension': 'kilogram * meter / ampere / second ** 3', 'symbol': ''
+                                   },
+              '[resistance]': {'name': _('resistance'),
+                               'dimension': 'kilogram * meter ** 2 / ampere ** 2 / second ** 3', 'symbol': 'Ω'
+                               },
+              '[conductance]': {'name': _('conductance'),
+                                'dimension': 'ampere ** 2 * second ** 3 / kilogram / meter ** 2', 'symbol': 'S'
+                                },
+              '[capacitance]': {'name': _('capacitance'),
+                                'dimension': 'ampere ** 2 * second ** 4 / kilogram / meter ** 2', 'symbol': 'F'
+                                },
+              '[inductance]': {'name': _('inductance'),
+                               'dimension': 'kilogram * meter ** 2 / ampere ** 2 / second ** 2', 'symbol': 'H'
+                               },
+              '[magnetic_flux]': {'name': _('magnetic flux'),
+                                  'dimension': 'kilogram * meter ** 2 / ampere / second ** 2', 'symbol': 'Wb'
+                                  },
+              '[magnetic_field]': {'name': _('magnetic field'), 'dimension': 'kilogram / ampere / second ** 2',
+                                   'symbol': ''
+                                   },
+              '[magnetomotive_force]': {'name': _('magnetomotive force'), 'dimension': 'ampere', 'symbol': 'I'
+                                        },
+              '[electric_dipole]': {'name': _('electric dipole'), 'dimension': 'ampere * meter * second',
+                                    'symbol': ''
+                                    },
+              '[electric_quadrupole]': {'name': _('electric quadrupole'), 'dimension': 'ampere * meter ** 2 * second',
+                                        'symbol': ''
+                                        },
+              '[magnetic_dipole]': {'name': _('magnetic dipole'), 'dimension': 'ampere * meter ** 2', 'symbol': ''
+                                    },
+              '[printing_unit]': {'name': _('printing unit'), 'dimension': 'pixel', 'symbol': 'pixel'
+                                  },
+              '[gaussian_charge]': {'name': _('gaussian charge'),
+                                    'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second', 'symbol': ''
+                                    },
+              '[gaussian_current]': {'name': _('gaussian current'),
+                                     'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second ** 2', 'symbol': ''
+                                     },
+              '[gaussian_electric_potential]': {'name': _('gaussian electric potential'),
+                                                'dimension': 'kilogram ** 0.5 * meter ** 0.5 / second', 'symbol': ''
+                                                },
+              '[gaussian_electric_field]': {'name': _('gaussian electric field'),
+                                            'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second', 'symbol': ''
+                                            },
+              '[gaussian_electric_displacement_field]': {'name': _('gaussian electric displacement field'),
+                                                         'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
+                                                         'symbol': ''
+                                                         },
+              '[gaussian_electric_flux]': {'name': _('gaussian electric flux'),
+                                           'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second', 'symbol': ''
+                                           },
+              '[gaussian_magnetic_field]': {'name': _('gaussian magnetic field'),
+                                            'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second', 'symbol': ''
+                                            },
+              '[gaussian_magnetic_field_strength]': {'name': _('gaussian magnetic field strength'),
+                                                     'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
+                                                     'symbol': ''
+                                                     },
+              '[gaussian_magnetic_flux]': {'name': _('gaussian magnetic flux'),
+                                           'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second', 'symbol': ''
+                                           },
+              '[gaussian_resistance]': {'name': _('gaussian resistance'), 'dimension': 'second / meter',
+                                        'symbol': ''
+                                        },
+              '[gaussian_resistivity]': {'name': _('gaussian resistivity'), 'dimension': 'second', 'symbol': ''
+                                         },
+              '[gaussian_capacitance]': {'name': _('gaussian capacitance'), 'dimension': 'meter', 'symbol': ''
+                                         },
+              '[gaussian_inductance]': {'name': _('gaussian inductance'), 'dimension': 'second ** 2 / meter',
+                                        'symbol': ''
+                                        },
+              '[gaussian_conductance]': {'name': _('gaussian conductance'), 'dimension': 'meter / second',
+                                         'symbol': ''
+                                         },
+              '[esu_charge]': {'name': _('esu charge'), 'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
+                               'symbol': ''
+                               },
+              '[esu_current]': {'name': _('esu current'), 'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second ** 2',
+                                'symbol': ''
+                                },
+              '[esu_electric_potential]': {'name': _('esu electric potential'),
+                                           'dimension': 'kilogram ** 0.5 * meter ** 0.5 / second',
+                                           'symbol': ''
+                                           },
+              '[esu_magnetic_flux]': {'name': _('esu magnetic flux'), 'dimension': 'kilogram ** 0.5 * meter ** 0.5',
+                                      'symbol': ''
+                                      },
+              '[esu_magnetic_field]': {'name': _('esu magnetic field'), 'dimension': 'kilogram ** 0.5 / meter ** 1.5',
+                                       'symbol': ''
+                                       }
+                                     }
+
+UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
+    'SI': {
+        '[]': 'count',
+        '[time]': 'second',
+        '[length]': 'meter',
+        '[mass]': 'kilogram',
+        '[current]': 'ampere',
+        '[temperature]': 'kelvin',
+        '[substance]': 'mole',
+        '[luminosity]': 'candela',
+        '[area]': 'square_meter',
+        '[volume]': 'cubic_meter',
+        '[frequency]': 'meter_per_second',
+        '[acceleration]': 'meter_per_square_second',
+        '[force]': 'newton',
+        '[energy]': 'joule',
+        '[electric_charge]': 'coulomb',
+        '[electric_potential]': 'volt',
+        '[capacitance]': 'farad',
+        '[resistance]': 'ohm',
+        '[conductance]': 'siemens',
+        '[magnetic_flux]': 'weber',
+        '[inductance]': 'henry',
+        '[luminous_flux]': 'lumen',
+        '[illuminance]': 'lux',
+        '[activity]': 'katal',
+    },
+    'Planck': {
+        '[length]': 'planck_length',
+        '[mass]': 'planck_mass',
+        '[time]': 'planck_time',
+        '[temperature]': 'planck_temperature',
+        '[current]': 'planck_current'
+    },
+    'US': {
+        '[length]': 'yard',
+        '[mass]': 'pound'
+    },
+    'atomic': {
+        '[length]': 'bohr',
+        '[mass]': 'electron_mass',
+        '[time]': 'atomic_unit_of_time',
+        '[current]': 'atomic_unit_of_current',
+        '[temperature]': 'atomic_unit_of_temperature'
+    },
+    'cgs': {
+        '[length]': 'centimeter',
+        '[mass]': 'gram',
+        '[time]': 'second',
+        '[velocity]': 'centimeter_per_second',
+        '[acceleration]': 'galileo',
+        '[force]': 'dyn',
+        '[energy]': 'erg',
+        '[power]': 'watt',
+        '[pressure]': 'barye',
+        '[dynamic_viscosity]': 'poise',
+        '[kinematic_viscosity]': 'stokes',
+        '[wavenumber]': 'reciprocal_centimeter'
+    },
+    'imperial': {
+        '[length]': 'yard',
+        '[mass]': 'pound'
+    },
+    'mks': {
+        '[acceleration]': 'meter_per_square_second',
+        '[capacitance]': 'farad',
+        '[charge]': 'coulomb',
+        '[current]': 'ampere',
+        '[electric_field]': 'volt_per_meter',
+        '[electric_potential]': 'volt',
+        '[energy]': 'joule',
+        '[power]': 'watt',
+        '[force]': 'newton',
+        '[inductance]': 'henry',
+        '[length]': 'meter',
+        '[magnetic_field]': 'tesla',
+        '[magnetic_flux]': 'weber',
+        '[mass]': 'kilogram',
+        '[pressure]': 'pascal',
+        '[resistance]': 'ohm',
+        '[temperature]': 'kelvin',
+        '[time]': 'second',
+        '[velocity]': 'meter_per_second'
+    }
 }
 
 UNIT_EXTENDED_DEFINITION = {
     'K_alpha_Cu_d_220': {
         'name': _('Copper Kα'),
         'symbol': 'Cu Kα',
-        'family': _('dimensionless')
     },
     'K_alpha_Mo_d_220': {
         'name': _('Molybdenum K-α'),
         'symbol': 'MO Kα',
-        'family': _('dimensionless')
     },
     'K_alpha_W_d_220': {
         'name': _('Tungsten K-α'),
-        'symbol': _('W Kα', ),
-        'family': _('dimensionless')
+        'symbol': _('W Kα'),
     },
     'RKM': {
         'name': _('RKM'),
         'symbol': 'RKM',
         'obsolete': True,
-        'family': _('absorption')
     },
     'UK_force_ton': {
         'name': _('long ton-force'),
         'symbol': 'long ton-force',
         'obsolete': True,
-        'family': _('force')
-
     },
     'UK_hundredweight': {
         'name': 'long hundredweight',
         'symbol': 'long hundredweight',
         'obsolete': True,
-        'family': _('mass')
     },
     'UK_ton': {
         'name': _('long ton'),
         'symbol': 'long ton',
         'obsolete': True,
-        'family': _('mass')
     },
     'US_force_ton': {
         'name': _('short ton force'),
         'symbol': 'short ton-force',
         'obsolete': True,
-        'family': _('force')
     },
     'US_hundredweight': {
         'name': _('short hundredweight'),
         'symbol': 'short hundredweight',
         'obsolete': True,
-        'family': _('mass')
     },
     'US_ton': {
         'name': _('short ton'),
         'symbol': 'short ton',
         'obsolete': True,
-        'family': _('mass')
     },
     'US_international_ampere': {
         'name': _('US International Ampere'),
         'symbol': 'US international A',
         'obsolete': True,
-        'family': _('electric current')
     },
     'US_international_ohm': {
         'name': _('US international Ohm'),
         'symbol': 'US international Ω',
         'obsolete': True,
-        'family': _('electric charge')
     },
     'US_international_volt': {
         'name': _('US international Volt'),
         'symbol': 'US international V',
         'obsolete': True,
-        'family': _('electric potential difference')
     },
     'US_therm': {
         'name': _('US therm'),
         'symbol': 'thm',
-        'family': _('heat energy')
     },
     'abampere': {
         'name': _('abampere'),
         'symbol': 'abA',
-        'family': _('electric current')
     },
     'abcoulomb': {
         'name': _('abcoulomb'),
         'symbol': 'abC',
-        'family': _('electromagnetic inductance')
     },
     'aberdeen': {
         'name': _('Aberdeen'),
         'symbol': 'aberdeen',
-        'family': _('linear mass density')
     },
     'abfarad': {
         'name': _('abfarad'),
         'symbol': 'abF',
-        'family': _('electrical capacitance')
     },
     'abhenry': {
         'name': _('abhenry'),
         'symbol': 'henry',
-        'family': _('electrical inductance'),
     },
     'abohm': {
         'name': _('abohm'),
         'symbol': 'abohm',
-        'family': _('electric charge')
     },
     'absiemens': {
         'name': _('absiemens'),
         'symbol': 'absiemens',
-        'family': _('electrical conductance')
     },
     'abvolt': {
         'name': _('abvolt'),
         'symbol': 'abV',
-        'family': _('electric potential difference')
     },
     'acre': {
         'name': _('acre'),
         'symbol': 'acre',
-        'family': _('surface')
     },
     'acre_foot': {
         'name': _('acre-foot'),
         'symbol': 'acre-foot',
-        'family': _('volume')
     },
     'ampere': {
         'name': _('ampere'),
         'symbol': 'A',
-        'family': _('electric current'),
     },
     'ampere_turn': {
         'name': _('ampere-turn'),
         'symbol': 'At',
-        'family': _('electric current'),
     },
     'angstrom': {
         'name': _('angstrom'),
         'symbol': 'Å',
-        'family': _('length')
     },
     'angstrom_star': {
         'name': _('angstrom star'),
         'symbol': 'Å*',
-        'family': _('length')
     },
     'apothecary_dram': {
         'name': _('apothecary dram'),
         'symbol': 'dr',
-        'family': _('mass')
     },
     'apothecary_ounce': {
         'name': _('apothecary ounce'),
         'symbol': 'oz',
-        'family': _('mass')
     },
     'apothecary_pound': {
         'name': _('apothecary pound'),
         'symbol': 'apothecary pound',
-        'family': _('mass')
-    }, 'arcminute': {
+    },
+    'arcminute': {
         'name': _('minute of arc'),
         'symbol': 'arcmin',
-        'family': _('dimensionless')
-    }, 'arcsecond': {
+    },
+    'arcsecond': {
         'name': _('second of arc'),
         'symbol': 'arcsec',
-        'family': _('dimensionless')
-    }, 'are': {
+    },
+    'are': {
         'name': _('are'),
         'symbol': 'are',
-        'family': _('surface')
-    }, 'astronomical_unit': {
+    },
+    'astronomical_unit': {
         'name': _('astronomical unit'),
         'symbol': 'AU',
-        'family': _('length')
-    }, 'atmosphere_liter': {
+    },
+    'atmosphere_liter': {
         'name': _('atmosphere liter'),
         'symbol': 'atmosphere liter',
-        'family': _('volume')
-    }, 'atomic_mass_constant': {
+    },
+    'atomic_mass_constant': {
         'name': _('atomic mass constant'),
         'symbol': 'Da',
-        'family': _('constant')
     },
     'atomic_unit_of_current': {
         'name': _('atomic unit of current'),
         'symbol': '',
-        'family': _('ampere')
     },
     'atomic_unit_of_electric_field': {
         'name': _('atomic unit of electric field'),
         'symbol': '',
-        'family': _('electric field')
-    }, 'atomic_unit_of_force': {
+    },
+    'atomic_unit_of_force': {
         'name': _('atomic unit of force'),
         'symbol': 'atomic unit of force',
-        'family': _('force')
-    }, 'atomic_unit_of_intensity': {
+    },
+    'atomic_unit_of_intensity': {
         'name': _('atomic unit of intensity'),
         'symbol': 'atomic unit of intensity',
-        'family': _('intensity')
-    }, 'atomic_unit_of_temperature': {
+    },
+    'atomic_unit_of_temperature': {
         'name': _('atomic unit of temperature'),
         'symbol': 'atomic unit of temperature',
-        'family': _('temperature')
-    }, 'atomic_unit_of_time': {
+    },
+    'atomic_unit_of_time': {
         'name': _('atomic unit of time'),
         'symbol': 'atomic unit of time',
-        'family': _('time')
-    }, 'avogadro_constant': {
+    },
+    'avogadro_constant': {
         'name': _('Avogadro constant'),
         'symbol': 'L',
-        'family': _('constant')
-    }, 'avogadro_number': {
+    },
+    'avogadro_number': {
         'name': _('Avogadro number'),
         'symbol': '',
-        'family': _('dimensionless'),
-    }, 'bag': {
+    },
+    'bag': {
         'name': _('bag'),
-        'symbol': 'bag',
-        'family': _('quantity')
-    }, 'bar': {
+        'symbol': 'bag'
+    },
+    'bar': {
         'name': _('bar'),
-        'symbol': 'bar',
-        'family': _('pressure')
-    }, 'barn': {
+        'symbol': 'bar'
+    },
+    'barn': {
         'name': _('barn'),
-        'symbol': 'b',
-        'family': _('surface')
-    }, 'barrel': {
+        'symbol': 'b'
+    },
+    'barrel': {
         'name': _('barrel'),
-        'symbol': 'barrel',
-        'family': 'volume'
-    }, 'barye': {
+        'symbol': 'barrel'
+    },
+    'barye': {
         'name': _('barrye'),
-        'symbol': 'Ba',
-        'family': _('pressure')
+        'symbol': 'Ba'
     },
     'baud': {
         'name': _('baud'),
-        'symbol': 'Bd',
-        'family': _('speed')
+        'symbol': 'Bd'
+
     },
     'becquerel': {
         'name': _('becquerel'),
         'symbol': 'Bq',
-        'family': _('radioactivity')
     },
     'beer_barrel': {
         'name': _('beer barrel'),
-        'symbol': 'beer barrel',
-        'family': _('volume')
+        'symbol': 'beer barrel'
     },
     'bel': {
         'name': _('bel'),
-        'symbol': 'B',
-        'family': _('field quantity')
+        'symbol': 'B'
     },
     'biot': {
         'name': _('biot'),
-        'symbol': 'biot',
-        'family': _('dimensionless')
+        'symbol': 'biot'
     },
     'biot_turn': {
         'name': _('biot turn'),
-        'symbol': 'biot-turn',
-        'family': _('dimensionless')
+        'symbol': 'biot-turn'
     },
     'bit': {
         'name': _('bit'),
-        'symbol': 'bit',
-        'family': _('quantity of information')
+        'symbol': 'bit'
     },
     'bits_per_pixel': {
         'name': _('bits per pixel'),
-        'symbol': 'bpp',
-        'family': _('density of information')
+        'symbol': 'bpp'
     },
     'board_foot': {
         'name': _('board foot'),
-        'symbol': 'board-foot',
-        'family': _('volume')
+        'symbol': 'board-foot'
     },
     'bohr': {
         'name': _('bohr'),
-        'symbol': 'bohr',
-        'family': _('length')
+        'symbol': 'bohr'
     },
     'bohr_magneton': {
         'name': _('bohr magneton'),
-        'symbol': 'μB',
-        'family': _('magnetic moment')
+        'symbol': 'μB'
     },
     'boiler_horsepower': {
         'name': _('boiler horsepower'),
-        'symbol': 'boiler hp',
-        'family': _('power')
+        'symbol': 'boiler hp'
     },
     'boltzmann_constant': {
         'name': _('boltzmann constant'),
-        'symbol': 'kB',
-        'family': _('constant')
+        'symbol': 'kB'
     },
     'british_thermal_unit': {
         'name': _('british thermal unit'),
-        'symbol': 'Btu',
-        'family': _('energy')
+        'symbol': 'Btu'
     },
     'buckingham': {
         'name': _('buckingham'),
-        'symbol': 'B',
-        'family': _('magnetic moment')
+        'symbol': 'B'
     },
     'bushel': {
         'name': _('bushel'),
-        'symbol': 'bsh',
-        'family': _('volume')
+        'symbol': 'bsh'
     },
     'byte': {
         'name': _('byte'),
-        'symbol': 'byte',
-        'family': _('quantity of information')
+        'symbol': 'byte'
     },
     'cables_length': {
         'name': _('cable length'),
-        'symbol': 'cable',
-        'family': _('length')
+        'symbol': 'cable'
     },
     'calorie': {
         'name': _('calorie'),
-        'symbol': 'calorie',
-        'family': _('energy')
+        'symbol': 'calorie'
     },
     'candela': {
         'name': _('candela'),
-        'symbol': 'cd',
-        'family': _('luminous intensity')
+        'symbol': 'cd'
     },
     'carat': {
         'name': _('carat'),
-        'symbol': 'ct',
-        'family': _('mass')
+        'symbol': 'ct'
     },
     'centimeter_H2O': {
         'name': _('centimeter H20'),
-        'symbol': 'cm H2O',
-        'family': _('pressure')
+        'symbol': 'cm H2O'
     },
     'centimeter_Hg': {
         'name': _('centimeter Hg'),
-        'symbol': 'cm Hg',
-        'family': _('pressure')
+        'symbol': 'cm Hg'
     },
     'century': {
         'name': _('century'),
-        'symbol': 'c.',
-        'family': _('time')
+        'symbol': 'c.'
     },
     'chain': {
         'name': _('chain'),
-        'symbol': 'chain',
-        'family': _('length')
+        'symbol': 'chain'
     },
     'cicero': {
         'name': _('cicero'),
-        'symbol': 'cicero',
-        'family': _('length')
+        'symbol': 'cicero'
     },
     'circular_mil': {
         'name': _('circular mil'),
-        'symbol': 'mils',
-        'family': _('surface')
+        'symbol': 'mils'
     },
     'classical_electron_radius': {
         'name': _('classical electron radius'),
-        'symbol': 're',
-        'family': _('length')
+        'symbol': 're'
     },
     'clausius': {
         'name': _('clausius'),
-        'symbol': 'clausius',
-        'family': _('energy')
+        'symbol': 'clausius'
     },
     'common_year': {
         'name': _('common year'),
-        'symbol': '',
-        'family': _('time')
+        'symbol': ''
     },
     'conductance_quantum': {
         'name': _('conductance quantum'),
-        'symbol': 'G0',
-        'family': _('electrical conductance')
+        'symbol': 'G0'
     },
     'conventional_ampere_90': {
         'name': _('conventional ampere'),
-        'symbol': 'A90',
-        'family': _('electric current')
+        'symbol': 'A90'
     },
     'conventional_coulomb_90': {
         'name': _('conventional coulomb'),
-        'symbol': 'C90',
-        'family': _('electromagnetic inductance')
+        'symbol': 'C90'
     },
     'conventional_farad_90': {
         'name': _('conventional farad'),
-        'symbol': 'F90',
-        'family': _('eletrical capacitance')
+        'symbol': 'F90'
     },
     'conventional_henry_90': {
         'name': _('conventional henry'),
         'symbol': 'H90',
-        'family': _('electrical inductance'),
     },
     'conventional_josephson_constant': {
         'name': _('conventional josephson constant'),
-        'symbol': 'KJ',
-        'family': _('constant'),
+        'symbol': 'KJ'
     },
     'conventional_ohm_90': {
         'name': _('conventional ohm'),
-        'symbol': 'Ω90',
-        'family': _('electric charge')
+        'symbol': 'Ω90'
     },
     'conventional_volt_90': {
         'name': _('conventional volt'),
-        'symbol': 'V90',
-        'family': _('electric potential difference')
+        'symbol': 'V90'
     },
     'conventional_von_klitzing_constant': {
         'name': _('conventional Von Klitzing constant'),
         'symbol': 'RK',
-        'family': _('constant'),
     },
     'conventional_watt_90': {
         'name': _('conventional Watt'),
         'symbol': 'W90',
-        'family': _('power'),
     },
     'coulomb': {
         'name': _('coulomb'),
-        'symbol': 'C',
-        'family': _('electromagnetic inductance')
-    }, 'coulomb_constant': {
+        'symbol': 'C'
+    },
+    'coulomb_constant': {
         'name': _('coulomb constant'),
-        'symbol': 'K',
-        'family': _('constant')
+        'symbol': 'K'
     },
     'count': {
         'name': _('count'),
-        'symbol': '',
-        'family': _('dimensionless')
+        'symbol': ''
     },
     'counts_per_second': {
         'name': _('counts per second'),
-        'symbol': 'counts/s',
-        'family': _('frequency')
+        'symbol': 'counts/s'
     },
     'css_pixel': {
         'name': _('CSS pixel'),
-        'symbol': 'px',
-        'family': _('length')
+        'symbol': 'px'
+    },
+    'cubic_meter': {
+        'name': _('cubic meter'),
+        'symbol': 'm³'
     },
     'cubic_centimeter': {
         'name': _('cubic centimeter'),
-        'symbol': 'cm³',
-        'family': _('volume')
+        'symbol': 'cm³'
+    },
+    'cubic_millimmeter': {
+        'name': _('cubic milliimeter'),
+        'symbol': 'mm³'
     },
     'cubic_foot': {
         'name': _('cubic foot'),
-        'symbol': 'cubic foot',
-        'family': _('volume')
+        'symbol': 'cubic foot'
     },
     'cubic_inch': {
         'name': _('cubic inch'),
-        'symbol': 'cubic inch',
-        'family': _('volume')
-    }, 'cubic_yard': {
+        'symbol': 'cubic inch'
+    },
+    'cubic_yard': {
         'name': _('cubic yard'),
-        'symbol': 'cubic yard',
-        'family': _('volume')
-    }, 'cup': {
+        'symbol': 'cubic yard'
+    },
+    'cup': {
         'name': _('cup'),
-        'symbol': 'cup',
-        'family': _('volume')
-    }, 'curie': {
+        'symbol': 'cup'
+    },
+    'curie': {
         'name': _('curie'),
-        'symbol': 'Ci',
-        'family': _('frequency')
-    }, 'dalton': {
+        'symbol': 'Ci'
+    },
+    'dalton': {
         'name': _('dalton'),
-        'symbol': 'Da',
-        'family': _('mass')
-    }, 'darcy': {
+        'symbol': 'Da'
+    },
+    'darcy': {
         'name': _('darcy'),
-        'symbol': 'D',
-        'family': _('permeability')
-    }, 'day': {
+        'symbol': 'D'
+    },
+    'day': {
         'name': _('day'),
-        'symbol': pgettext_lazy('unit', 'day'),
-        'family': _('time')
-    }, 'debye': {
+        'symbol': pgettext_lazy('unit', 'day')
+    },
+    'debye': {
         'name': _('debye'),
-        'symbol': 'D',
-        'family': _('electric moment')
-    }, 'decade': {
+        'symbol': 'D'
+    },
+    'decade': {
         'name': _('decade'),
-        'symbol': pgettext_lazy('symbol', 'decade'),
-        'family': _('time')
-    }, 'decibel': {
+        'symbol': pgettext_lazy('symbol', 'decade')
+    },
+    'decibel': {
         'name': _('decibel'),
-        'symbol': 'dB',
-        'family': _('field quantity')
-    },'degree': {
+        'symbol': 'dB'
+    },
+    'degree': {
         'name': _('degree'),
-        'symbol': '°',
-        'family': _('dimensionless')
-    }, 'degree_Celsius': {
+        'symbol': '°'
+    },
+    'degree_Celsius': {
         'name': _('degree Celsius'),
-        'symbol': '°C',
-        'family': _('temperature')
-    }, 'degree_Fahrenheit': {
+        'symbol': '°C'
+    },
+    'degree_Fahrenheit': {
         'name': _('degree Fahrenheit'),
-        'symbol': '°F',
-        'family': _('temperature')
-    }, 'degree_Rankine': {
+        'symbol': '°F'
+    },
+    'degree_Rankine': {
         'name': _('degree Rankine'),
-        'symbol': '°R',
-        'family': _('temperature')
-    }, 'degree_Reaumur': {
+        'symbol': '°R'
+    },
+    'degree_Reaumur': {
         'name': _('degree Reaumur'),
-        'symbol': '°Re',
-        'family': _('temperature')
-    }, 'denier': {
+        'symbol': '°Re'
+    },
+    'denier': {
         'name': _('denier'),
-        'symbol': 'D',
-        'family': _('linear mass density')
-    }, 'didot': {
+        'symbol': 'D'
+    },
+    'didot': {
         'name': _('didot'),
-        'symbol': 'didot',
-        'family': _('length')
-    }, 'dirac_constant': {
+        'symbol': 'didot'
+    },
+    'dirac_constant': {
         'name': _('Dirac constant'),
-        'symbol': 'ħ',
-        'family': _('constant')
-    }, 'dram': {
+        'symbol': 'ħ'
+    },
+    'dram': {
         'name': _('dram'),
-        'symbol': 'dr',
-        'family': _('mass')
-    }, 'dry_barrel': {
+        'symbol': 'dr'
+    },
+    'dry_barrel': {
         'name': _('dry barrel'),
-        'symbol': 'dry barrel',
-        'family': _('volume')
-    }, 'dry_gallon': {
+        'symbol': 'dry barrel'
+    },
+    'dry_gallon': {
         'name': _('dry gallon'),
-        'symbol': 'dry gallon',
-        'family': _('volume')
-    }, 'dry_pint': {
+        'symbol': 'dry gallon'
+    },
+    'dry_pint': {
         'name': _('dry pint'),
-        'symbol': 'dry pint',
-        'family': _('volume')
-    }, 'dry_quart': {
+        'symbol': 'dry pint'
+    },
+    'dry_quart': {
         'name': _('dry quart'),
-        'symbol': 'dry quart',
-        'family': _('volume')
-    }, 'dtex': {
+        'symbol': 'dry quart'
+    },
+    'dtex': {
         'name': _('decitex'),
-        'symbol': 'dtex',
-        'family': _('linear mass density')
-    }, 'dyne': {
+        'symbol': 'dtex'
+    },
+    'dyne': {
         'name': _('dyne'),
-        'symbol': 'dyn',
-        'family': _('force')
-    }, 'electrical_horsepower': {
+        'symbol': 'dyn'
+    },
+    'electrical_horsepower': {
         'name': _('eletcrical horsepower'),
-        'symbol': 'HP',
-        'family': _('power')
-    }, 'electron_g_factor': {
+        'symbol': 'HP'
+    },
+    'electron_g_factor': {
         'name': _('electron G-factor'),
-        'symbol': 'electron G-factor',
-        'family': _('dimensionless')
-    }, 'electron_mass': {
+        'symbol': 'electron G-factor'
+    },
+    'electron_mass': {
         'name': _('electron mass'),
-        'symbol': 'me',
-        'family': _('mass')
-    }, 'electron_volt': {
+        'symbol': 'me'
+    },
+    'electron_volt': {
         'name': _('electronvolt'),
-        'symbol': 'eV',
-        'family': _('electric potential difference')
-    }, 'elementary_charge': {
+        'symbol': 'eV'
+    },
+    'elementary_charge': {
         'name': _('elementary charge'),
-        'symbol': 'e',
-        'family': _('electromagnetic inductance')
-    }, 'entropy_unit': {
+        'symbol': 'e'
+    },
+    'entropy_unit': {
         'name': _('entropy unit'),
-        'symbol': 'S',
-        'family': _('energy by temperature')
-    }, 'enzyme_unit': {
+        'symbol': 'S'
+    },
+    'enzyme_unit': {
         'name': _('enzyme unit'),
-        'symbol': 'U',
-        'family': _('catalytic activity')
-    }, 'eon': {
+        'symbol': 'U'
+    },
+    'eon': {
         'name': _('eon'),
-        'symbol': 'eon',
-        'family': _('time')
-    }, 'erg': {
+        'symbol': 'eon'
+    },
+    'erg': {
         'name': _('erg'),
-        'symbol': 'erg',
-        'family': _('energy')
-    }, 'farad': {
+        'symbol': 'erg'
+    },
+    'farad': {
         'name': _('farad'),
-        'symbol': 'F',
-        'family': _('electrical capacitance')
-    }, 'faraday': {
+        'symbol': 'F'
+    },
+    'faraday': {
         'name': _('faraday'),
         'symbol': 'faraday',
-        'family': _('electric charge'),
-    }, 'faraday_constant': {
+    },
+    'faraday_constant': {
         'name': _('faraday constant'),
         'symbol': 'F',
-        'family': _('constant'),
-    }, 'fathom': {
+    },
+    'fathom': {
         'name': _('fathom'),
         'symbol': 'fathom',
-        'family': _('length'),
-    }, 'fermi': {
+    },
+    'fermi': {
         'name': _('fermi'),
         'symbol': 'fm',
-        'family': _('length'),
-    }, 'fifteen_degree_calorie': {
+    },
+    'fifteen_degree_calorie': {
         'name': _('fifteen degree calorie'),
         'symbol': 'fifteen degree calorie',
-        'family': _('energy'),
-    }, 'fifth': {
+    },
+    'fifth': {
         'name': _('fifth'),
         'symbol': 'fifth',
-        'family': _('volume'),
-    }, 'fine_structure_constant': {
+    },
+    'fine_structure_constant': {
         'name': _('fine structure constant'),
         'symbol': 'α',
-        'family': _('constant'),
-    }, 'first_radiation_constant': {
+    },
+    'first_radiation_constant': {
         'name': _('first radiation constant'),
         'symbol': 'c1',
-        'family': _('constant'),
-    }, 'fluid_dram': {
+    },
+    'fluid_dram': {
         'name': _('fluid dram'),
-        'symbol': 'fluid dr',
-        'family': _('mass')
-    }, 'fluid_ounce': {
+        'symbol': 'fluid dr'
+    },
+    'fluid_ounce': {
         'name': _('fluid ounce'),
-        'symbol': 'fluid ounce',
-        'family': _('mass')
-    }, 'foot': {
+        'symbol': 'fluid ounce'
+    },
+    'foot': {
         'name': _('foot'),
-        'symbol': 'foot',
-        'family': _('length')
-    }, 'foot_H2O': {
+        'symbol': 'foot'
+    },
+    'foot_H2O': {
         'name': _('foot H2O'),
-        'symbol': 'foot H2O',
-        'family': _('pressure')
-    }, 'foot_per_second': {
+        'symbol': 'foot H2O'
+    },
+    'foot_per_second': {
         'name': _('foot per second'),
-        'symbol': 'foot per second',
-        'family': _('speed')
-    }, 'foot_pound': {
+        'symbol': 'foot per second'
+    },
+    'foot_pound': {
         'name': _('foot pound'),
-        'symbol': 'foot pound',
-        'family': _('energy')
-    }, 'force_gram': {
+        'symbol': 'foot pound'
+    },
+    'force_gram': {
         'name': _('gram-force'),
         'symbol': 'gram-force',
         'obsolete': True,
-        'family': _('force')
-    }, 'force_kilogram': {
+    },
+    'force_kilogram': {
         'name': _('kilogram-force'),
         'symbol': 'kg-force',
         'obsolete': True,
-        'family': _('force')
-    }, 'force_long_ton': {
+    },
+    'force_long_ton': {
         'name': _('long ton-force'),
         'symbol': 'long ton-force',
-        'obsolete': True,
-        'family': _('force')
-    }, 'force_metric_ton': {
+        'obsolete': True},
+    'force_metric_ton': {
         'name': _('tonne-force'),
         'symbol': 'tf',
-        'obsolete': True,
-        'family': _('force')
-    }, 'force_ounce': {
+        'obsolete': True},
+    'force_ounce': {
         'name': _('ounce-force'),
         'symbol': 'ounce force',
-        'obsolete': True,
-        'family': _('force')
-    }, 'force_pound': {
+        'obsolete': True},
+    'force_pound': {
         'name': _('pound-force'),
         'symbol': 'pound force',
-        'obsolete': True,
-        'family': _('force')
-    }, 'force_ton': {
+        'obsolete': True},
+    'force_ton': {
         'name': _('tonne-force'),
         'symbol': 'tf',
-        'obsolete': True,
-        'family': _('force')
-    }, 'fortnight': {
+        'obsolete': True},
+    'fortnight': {
         'name': _('fortnight'),
-        'symbol': 'fortnight',
-        'family': _('time')
-    }, 'franklin': {
+        'symbol': 'fortnight'
+    },
+    'franklin': {
         'name': _('franklin'),
-        'symbol': 'Fr',
-        'family': _('electrostatic unit of charge')
-    }, 'furlong': {
+        'symbol': 'Fr'
+    },
+    'furlong': {
         'name': _('furlong'),
-        'symbol': 'furlong',
-        'family': _('length')
-    }, 'galileo': {
+        'symbol': 'furlong'
+    },
+    'galileo': {
         'name': _('galileo'),
-        'symbol': 'Gal',
-        'family': _('acceleration')
-    }, 'gallon': {
+        'symbol': 'Gal'
+    },
+    'gallon': {
         'name': _('gallon'),
-        'symbol': 'gal',
-        'family': _('volume')
-    }, 'gamma': {
+        'symbol': 'gal'
+    },
+    'gamma': {
         'name': _('gamma'),
-        'symbol': 'γ',
-        'family': _('constant')
-    }, 'gamma_mass': {
+        'symbol': 'γ'
+    },
+    'gamma_mass': {
         'name': _('gamma'),
-        'symbol': 'γ',
-        'family': _('mass')
-    }, 'gauss': {
+        'symbol': 'γ'
+    },
+    'gauss': {
         'name': _('gauss'),
-        'symbol': 'G',
-        'family': _('magnetic induction')
-    }, 'gilbert': {
+        'symbol': 'G'
+    },
+    'gilbert': {
         'name': _('gilbert'),
-        'symbol': 'Gb',
-        'family': _('electric current'),
-    }, 'gill': {
+        'symbol': 'Gb'
+    },
+    'gill': {
         'name': _('gill'),
         'symbol': 'gill',
-        'family': _('volume'),
-    }, 'grade': {
+    },
+    'grade': {
         'name': _('grade'),
         'symbol': 'gr',
-        'family': _('angle'),
-    }, 'grain': {
+    },
+    'grain': {
         'name': _('grain'),
         'symbol': 'grain',
-        'family': _('mass'),
-    }, 'gram': {
+    },
+    'gram': {
         'name': _('gram'),
         'symbol': 'g',
-        'family': _('mass'),
-    }, 'gray': {
+    },
+    'gray': {
         'name': _('gray'),
         'symbol': 'Gy',
-        'family': _('absorption'),
-    }, 'gregorian_year': {
+    },
+    'gregorian_year': {
         'name': _('gregorian year'),
         'symbol': pgettext_lazy('unit', 'gregorian year'),
-        'family': _('time')
-    }, 'hand': {
+    },
+    'hand': {
         'name': _('hand'),
         'symbol': 'hand',
-        'family': _('length'),
-    }, 'hartree': {
+    },
+    'hartree': {
         'name': _('hartree'),
         'symbol': 'Eh',
-        'family': _('energy'),
-    }, 'hectare': {
+    },
+    'hectare': {
         'name': _('hectare'),
         'symbol': 'ha',
-        'family': _('surface'),
-    }, 'henry': {
+    },
+    'henry': {
         'name': _('henry'),
         'symbol': 'henry',
-        'family': _('electrical inductance'),
-    }, 'hertz': {
+    },
+    'hertz': {
         'name': _('hertz'),
         'symbol': 'Hz',
-        'family': _('frequency'),
-    }, 'hogshead': {
+    },
+    'hogshead': {
         'name': _('hogshead'),
         'symbol': 'hhd',
-        'family': _('volume'),
-    }, 'horsepower': {
+    },
+    'horsepower': {
         'name': _('horsepower'),
         'symbol': 'HP',
-        'family': _('power'),
-    }, 'hour': {
+    },
+    'hour': {
         'name': _('hour'),
         'symbol': 'h',
-        'family': _('time'),
-    }, 'hundredweight': {
+    },
+    'hundredweight': {
         'name': _('hundredweight'),
         'symbol': 'cwt',
-        'family': _('mass'),
-    }, 'impedance_of_free_space': {
+    },
+    'impedance_of_free_space': {
         'name': _('impedance of free space'),
         'symbol': 'Z0',
-        'family': _('electromagnetic resistance'),
-    }, 'imperial_barrel': {
+    },
+    'imperial_barrel': {
         'name': _('imperial barrel'),
         'symbol': 'imperial barrel',
-        'family': _('volume'),
-    }, 'imperial_bushel': {
+    },
+    'imperial_bushel': {
         'name': _('imperial bushel'),
         'symbol': 'bsh',
-        'family': _('volume'),
-    }, 'imperial_cup': {
+    },
+    'imperial_cup': {
         'name': _('imperial cup'),
         'symbol': 'imperial cup',
-        'family': _('volume'),
-    }, 'imperial_fluid_drachm': {
+    },
+    'imperial_fluid_drachm': {
         'name': _('imperial fluid drachm'),
         'symbol': 'ʒ',
-        'family': _('mass'),
-    }, 'imperial_fluid_ounce': {
+    },
+    'imperial_fluid_ounce': {
         'name': _('imperial fluid ounce'),
         'symbol': 'fl oz',
-        'family': _('volume'),
-    }, 'imperial_fluid_scruple': {
+    },
+    'imperial_fluid_scruple': {
         'name': _('imperial fluid scruple'),
         'symbol': '℈',
-        'family': _('volume'),
-    }, 'imperial_gallon': {
+    },
+    'imperial_gallon': {
         'name': _('imperial gallon'),
         'symbol': 'imperial gallon',
-        'family': _('volume'),
-    }, 'imperial_gill': {
+    },
+    'imperial_gill': {
         'name': _('imperial gill'),
         'symbol': 'imperial gill',
-        'family': _('volume'),
-    }, 'imperial_minim': {
+    },
+    'imperial_minim': {
         'name': _('imperial minim'),
         'symbol': 'min',
-        'family': _('volume'),
-    }, 'imperial_peck': {
+    },
+    'imperial_peck': {
         'name': _('imperial peck'),
-        'symbol': 'peck',
-        'family': _('volume')
-    }, 'imperial_pint': {
+        'symbol': 'peck'
+    },
+    'imperial_pint': {
         'name': _('imperial pint'),
-        'symbol': 'imperial pint',
-        'family': _('volume')
-    }, 'imperial_quart': {
+        'symbol': 'imperial pint'
+    },
+    'imperial_quart': {
         'name': _('imperial quart'),
-        'symbol': 'imperial quart',
-        'family': _('volume')
-    }, 'inch': {
+        'symbol': 'imperial quart'
+    },
+    'inch': {
         'name': _('inch'),
-        'symbol': 'inch',
-        'family': _('length')
-    }, 'inch_H2O_39F': {
+        'symbol': 'inch'
+    },
+    'inch_H2O_39F': {
         'name': _('inch H20 39F'),
-        'symbol': 'inch H20 39F',
-        'family': _('pressure')
-    }, 'inch_H2O_60F': {
+        'symbol': 'inch H20 39F'
+    },
+    'inch_H2O_60F': {
         'name': _('inch H20 60F'),
-        'symbol': 'inch H20 60F',
-        'family': _('pressure')
-    }, 'inch_Hg': {
+        'symbol': 'inch H20 60F'
+    },
+    'inch_Hg': {
         'name': _('inch Hg'),
-        'symbol': 'inch Hg',
-        'family': _('pressure')
-    }, 'inch_Hg_60F': {
+        'symbol': 'inch Hg'
+    },
+    'inch_Hg_60F': {
         'name': _('inch Hg 60F'),
-        'symbol': 'inch Hg 60F',
-        'family': _('pressure')
-    }, 'international_british_thermal_unit': {
+        'symbol': 'inch Hg 60F'
+    },
+    'international_british_thermal_unit': {
         'name': _('international Btu'),
-        'symbol': 'international Btu',
-        'family': _('energy')
-    }, 'international_calorie': {
+        'symbol': 'international Btu'
+    },
+    'international_calorie': {
         'name': _('international calorie'),
-        'symbol': 'international calorie',
-        'family': _('energy')
-    }, 'josephson_constant': {
+        'symbol': 'international calorie'
+    },
+    'josephson_constant': {
         'name': _('Josephson constant'),
-        'symbol': 'KJ',
-        'family': _('constant'),
-    }, 'joule': {
+        'symbol': 'KJ'
+    },
+    'joule': {
         'name': _('Joule'),
-        'symbol': 'J',
-        'family': _('energy'),
-    }, 'jute': {
+        'symbol': 'J'
+    },
+    'jute': {
         'name': _('jute'),
-        'symbol': 'jute',
-        'family': _('volume'),
-    }, 'katal': {
+        'symbol': 'jute'
+    },
+    'katal': {
         'name': _('katal'),
-        'symbol': 'kat',
-        'family': _('catalytic activity'),
-    }, 'kelvin': {
+        'symbol': 'kat'
+    },
+    'kelvin': {
         'name': _('kelvin'),
-        'symbol': 'K',
-        'family': _('temperature'),
-    }, 'kilometer_per_hour': {
+        'symbol': 'K'
+    },
+    'kilometer_per_hour': {
         'name': _('kilometer per hour'),
-        'symbol': 'km/hour',
-        'family': _('speed'),
-    }, 'kilometer_per_second': {
+        'symbol': 'km/hour'
+    },
+    'kilometer_per_second': {
         'name': _('kilometer per second'),
-        'symbol': 'km/second',
-        'family': _('speed'),
-    }, 'kip': {
+        'symbol': 'km/second'
+    },
+    'kip': {
         'name': _('kip'),
-        'symbol': 'kip',
-        'family': _('force'),
-    }, 'kip_per_square_inch': {
+        'symbol': 'kip'
+    },
+    'kip_per_square_inch': {
         'name': _('kip per square inch'),
-        'symbol': 'kip / sq inch',
-        'family': _('pressure')
-    }, 'knot': {
+        'symbol': 'kip / sq inch'
+    },
+    'knot': {
         'name': _('knot'),
-        'symbol': 'kt',
-        'family': _('speed')
-    }, 'lambda': {
+        'symbol': 'kt'
+    },
+    'lambda': {
         'name': _('lambda'),
-        'symbol': 'λ',
-        'family': _('volume')
-    }, 'lambert': {
+        'symbol': 'λ'
+    },
+    'lambert': {
         'name': _('lambert'),
-        'symbol': 'L',
-        'family': _('luminance')
-    }, 'langley': {
+        'symbol': 'L'
+    },
+    'langley': {
         'name': _('langley'),
-        'symbol': 'Ly',
-        'family': _('radiation')
-    }, 'lattice_spacing_of_Si': {
+        'symbol': 'Ly'
+    },
+    'lattice_spacing_of_Si': {
         'name': _('lattice constant'),
-        'symbol': 'Ly',
-        'family': _('constant')
-    }, 'league': {
+        'symbol': 'Ly'
+    },
+    'league': {
         'name': _('league'),
         'symbol': 'league',
-        'obsolete': True,
-        'family': _('length')
-    }, 'leap_year': {
+        'obsolete': True},
+    'leap_year': {
         'name': _('leap year'),
-        'symbol': _('year'),
-        'family': _('time')
-    }, 'light_year': {
+        'symbol': _('year')
+    },
+    'light_year': {
         'name': _('light year'),
-        'symbol': _('ly'),
-        'family': _('length')
-    }, 'link': {
+        'symbol': _('ly')
+    },
+    'link': {
         'name': _('link'),
-        'symbol': _('li'),
-        'family': _('length')
-    }, 'liter': {
+        'symbol': _('li')
+    },
+    'liter': {
         'name': _('liter'),
-        'symbol': _('L'),
-        'family': _('volume')
-    }, 'ln10': {
+        'symbol': _('L')
+    },
+    'ln10': {
         'name': _('log 10'),
-        'symbol': _('ln10'),
-        'family': _('dimesionless')
-    }, 'long_hundredweight': {
+        'symbol': _('ln10')
+    },
+    'long_hundredweight': {
         'name': _('long hundredweight'),
         'symbol': 'long hundredweight',
-        'obsolete': True,
-        'family': _('mass')
-    }, 'long_ton': {
+        'obsolete': True},
+    'long_ton': {
         'name': _('long ton'),
         'symbol': 'long ton',
-        'obsolete': True,
-        'family': _('length')
-    }, 'lumen': {
+        'obsolete': True},
+    'lumen': {
         'name': _('lumen'),
-        'symbol': 'lm',
-        'family': _('luminous flux')
-    }, 'lux': {
+        'symbol': 'lm'
+    },
+    'lux': {
         'name': _('lux'),
-        'symbol': 'lx',
-        'family': _('illuminance')
-    }, 'magnetic_flux_quantum': {
+        'symbol': 'lx'
+    },
+    'magnetic_flux_quantum': {
         'name': _('magnetic flux quantum'),
-        'symbol': 'Φ',
-        'family': _('magnetic flux quantum')
-    }, 'maxwell': {
+        'symbol': 'Φ'
+    },
+    'maxwell': {
         'name': _('maxwell'),
-        'symbol': 'Mx',
-        'family': _('electrostatic unit of charge')
-    }, 'mean_international_ampere': {
+        'symbol': 'Mx'
+    },
+    'mean_international_ampere': {
         'name': _('mean international ampere'),
-        'symbol': 'mean international A',
-        'family': _('electric current')
-    }, 'mean_international_ohm': {
+        'symbol': 'mean international A'
+    },
+    'mean_international_ohm': {
         'name': _('mean international Ohm'),
-        'symbol': 'mean international Ω',
-        'family': _('electric charge')
-    }, 'mean_international_volt': {
+        'symbol': 'mean international Ω'
+    },
+    'mean_international_volt': {
         'name': _('mean international Volt'),
-        'symbol': 'mean international V',
-        'family': _('electric potential difference')
-    }, 'mercury': {
+        'symbol': 'mean international V'
+    },
+    'mercury': {
         'name': _('density of mercury'),
-        'symbol': '',
-        'family': _('constant')
-    }, 'mercury_60F': {
+        'symbol': ''
+    },
+    'mercury_60F': {
         'name': _('density of mercury 60F'),
-        'symbol': '',
-        'family': _('constant')
-    }, 'meter': {
+        'symbol': ''
+    },
+    'meter': {
         'name': _('meter'),
-        'symbol': 'm',
-        'family': _('length')
-    }, 'meter_per_second': {
+        'symbol': 'm'
+    },
+    'meter_per_second': {
         'name': _('meter per second'),
-        'symbol': 'm/s',
-        'family': _('speed')
-    }, 'metric_horsepower': {
+        'symbol': 'm/s'
+    },
+    'meter_per_square_second': {
+        'name': _('meter per square second'),
+        'symbol': 'm/s²',
+        'family': 'acceleration'
+    },
+    'metric_horsepower': {
         'name': _('metric horsepower'),
-        'symbol': 'hp',
-        'family': _('power')
-    }, 'metric_ton': {
+        'symbol': 'hp'
+    },
+    'metric_ton': {
         'name': _('metric ton'),
-        'symbol': 't',
-        'family': _('mass')
-    }, 'micron': {
+        'symbol': 't'
+    },
+    'micron': {
         'name': _('micron'),
-        'symbol': 'μm',
-        'family': _('length')
-    }, 'mil': {
+        'symbol': 'μm'
+    },
+    'mil': {
         'name': _('mil'),
-        'symbol': 'ml',
-        'family': _('volume')
-    }, 'mile': {
+        'symbol': 'ml'
+    },
+    'mile': {
         'name': _('mile'),
-        'symbol': 'mile',
-        'family': _('length')
-    }, 'mile_per_hour': {
+        'symbol': 'mile'
+    },
+    'mile_per_hour': {
         'name': _('mile per hour'),
-        'symbol': 'mph',
-        'family': _('speed')
-    }, 'millennium': {
+        'symbol': 'mph'
+    },
+    'millennium': {
         'name': _('millenium'),
-        'symbol': _('millenium'),
-        'family': _('time')
-    }, 'milliarcsecond': {
+        'symbol': _('millenium')
+    },
+    'milliarcsecond': {
         'name': _('milliarcsecond'),
-        'symbol': 'mas',
-        'family': _('angle')
-    }, 'millimeter_Hg': {
+        'symbol': 'mas'
+    },
+    'millimeter_Hg': {
         'name': _('Hg millimeter'),
-        'symbol': 'mmHg',
-        'family': _('pressure')
-    }, 'minim': {
+        'symbol': 'mmHg'
+    },
+    'minim': {
         'name': _('minim'),
-        'symbol': 'min',
-        'family': _('volume')
-    }, 'minute': {
+        'symbol': 'min'
+    },
+    'minute': {
         'name': _('minute'),
-        'symbol': 'min',
-        'family': _('time')
-    }, 'molar': {
+        'symbol': 'min'
+    },
+    'molar': {
         'name': _('molar'),
-        'symbol': 'M',
-        'family': _('concentration')
-    }, 'molar_gas_constant': {
+        'symbol': 'M'
+    },
+    'molar_gas_constant': {
         'name': _('molar gas constant'),
-        'symbol': 'R',
-        'family': _('constant')
-    }, 'mole': {
+        'symbol': 'R'
+    },
+    'mole': {
         'name': _('mole'),
-        'symbol': 'mol',
-        'family': _('amount of substance'),
-    }, 'month': {
+        'symbol': 'mol'
+    },
+    'month': {
         'name': _('month'),
-        'symbol': 'm',
-        'family': _('time')
-    }, 'nautical_mile': {
+        'symbol': 'm'
+    },
+    'nautical_mile': {
         'name': _('nautical mile'),
-        'symbol': _('nm'),
-        'family': _('length')
-    }, 'neper': {
+        'symbol': _('nm')
+    },
+    'neper': {
         'name': _('neper'),
-        'symbol': _('Np'),
-        'family': _('neper')
-    }, 'neutron_mass': {
+        'symbol': _('Np')
+    },
+    'neutron_mass': {
         'name': _('neutron mass'),
-        'symbol': 'mN',
-        'family': _('constant')
-    }, 'newton': {
+        'symbol': 'mN'
+    },
+    'newton': {
         'name': _('newton'),
-        'symbol': 'N',
-        'family': _('force')
-    }, 'newtonian_constant_of_gravitation': {
+        'symbol': 'N'
+    },
+    'newtonian_constant_of_gravitation': {
         'name': _('newtonian constant of gravitation'),
-        'symbol': 'N',
-        'family': _('constant')
-    }, 'nit': {
+        'symbol': 'N'
+    },
+    'nit': {
         'name': _('nit'),
-        'symbol': 'cd/m²',
-        'family': _('luminance')
-    }, 'nuclear_magneton': {
+        'symbol': 'cd/m²'
+    },
+    'nuclear_magneton': {
         'name': _('nuclear magneton'),
-        'symbol': 'μN',
-        'family': _('magnetic moment')
-    }, 'number_english': {
+        'symbol': 'μN'
+    },
+    'number_english': {
         'name': _('number english'),
-        'symbol': 'm/g',
-        'family': _('meter per gram')
-    }, 'number_meter': {
+        'symbol': 'm/g'
+    },
+    'number_meter': {
         'name': _('number meter'),
-        'symbol': 'm/g',
-        'family': _('meter per gram')
-    }, 'oersted': {
+        'symbol': 'm/g'
+    },
+    'oersted': {
         'name': _('oersted'),
-        'symbol': 'Oe',
-        'family': _('H-field')
-    }, 'ohm': {
+        'symbol': 'Oe'
+    },
+    'ohm': {
         'name': _('ohm'),
-        'symbol': 'Ω',
-        'family': _('electric charge')
-    }, 'oil_barrel': {
+        'symbol': 'Ω'
+    },
+    'oil_barrel': {
         'name': _('oil barrel'),
-        'symbol': 'oil barrel',
-        'family': 'volume'
-    }, 'ounce': {
+        'symbol': 'oil barrel'
+    },
+    'ounce': {
         'name': _('ounce'),
-        'symbol': 'oz t',
-        'family': _('mass')
-    }, 'parsec': {
+        'symbol': 'oz t'
+    },
+    'parsec': {
         'name': _('parsec'),
-        'symbol': 'pc',
-        'family': _('length')
-    }, 'particle': {
+        'symbol': 'pc'
+    },
+    'particle': {
         'name': _('particle'),
-        'symbol': 'particle',
-        'family': _('amount of substance')
-    }, 'pascal': {
+        'symbol': 'particle'
+    },
+    'pascal': {
         'name': _('pascal'),
-        'symbol': 'Pa',
-        'family': _('pressure')
-    }, 'peak_sun_hour': {
+        'symbol': 'Pa'
+    },
+    'peak_sun_hour': {
         'name': _('peak sun hour'),
-        'symbol': 'peak sun hour',
-        'family': _('time')
-    }, 'peck': {
+        'symbol': 'peak sun hour'
+    },
+    'peck': {
         'name': _('peck'),
-        'symbol': 'peck',
-        'family': _('volume')
-    }, 'pennyweight': {
+        'symbol': 'peck'
+    },
+    'pennyweight': {
         'name': _('pennyweight'),
-        'symbol': 'dwt',
-        'family': _('mass')
-    }, 'pi': {
+        'symbol': 'dwt'
+    },
+    'pi': {
         'name': 'pi',
-        'symbol': 'π',
-        'family': _('constant')
-    }, 'pica': {
+        'symbol': 'π'
+    },
+    'pica': {
         'name': _('pica'),
-        'symbol': 'pica',
-        'family': _('length')
-    }, 'pint': {
+        'symbol': 'pica'
+    },
+    'pint': {
         'name': _('pint'),
-        'symbol': 'pt',
-        'family': _('volume')
-    }, 'pixel': {
+        'symbol': 'pt'
+    },
+    'pixel': {
         'name': _('pixel'),
-        'symbol': 'px',
-        'family': _('unit')
-    }, 'pixels_per_centimeter': {
+        'symbol': 'px'
+    },
+    'pixels_per_centimeter': {
         'name': _('pixel per centimeter'),
-        'symbol': 'ppcm',
-        'family': _('density of information')
-    }, 'pixels_per_inch': {
+        'symbol': 'ppcm'
+    },
+    'pixels_per_inch': {
         'name': _('pixel per inch'),
-        'symbol': 'ppi',
-        'family': _('density of information')
-    }, 'planck_constant': {
+        'symbol': 'ppi'
+    },
+    'planck_constant': {
         'name': _('Planck constant'),
-        'symbol': 'h',
-        'family': _('constant')
-    }, 'planck_current': {
+        'symbol': 'h'
+    },
+    'planck_current': {
         'name': _('Planck current'),
-        'symbol': _('qP'),
-        'family': _('electric current')
-    }, 'planck_length': {
+        'symbol': _('qP')
+    },
+    'planck_length': {
         'name': _('Planck current'),
-        'symbol': _('lP'),
-        'family': _('length')
-    }, 'planck_mass': {
+        'symbol': _('lP')
+    },
+    'planck_mass': {
         'name': _('Planck mass'),
-        'symbol': _('mP'),
-        'family': _('mass')
-    }, 'planck_temperature': {
+        'symbol': _('mP')
+    },
+    'planck_temperature': {
         'name': _('Planck temperature'),
-        'symbol': _('TP'),
-        'family': _('temperature')
-    }, 'planck_time': {
+        'symbol': _('TP')
+    },
+    'planck_time': {
         'name': _('Planck time'),
-        'symbol': _('tP'),
-        'family': _('time')
-    }, 'point': {
+        'symbol': _('tP')
+    },
+    'point': {
         'name': _('point'),
-        'symbol': 'pt',
-        'family': _('length')
-    }, 'poise': {
+        'symbol': 'pt'
+    },
+    'poise': {
         'name': _('poise'),
-        'symbol': 'P',
-        'family': _('viscosity')
-    }, 'pound': {
+        'symbol': 'P'
+    },
+    'pound': {
         'name': _('pound'),
-        'symbol': 'lb',
-        'family': _('mass')
-    }, 'pound_force_per_square_inch': {
+        'symbol': 'lb'
+    },
+    'pound_force_per_square_inch': {
         'name': _('pound force per square inch'),
-        'symbol': 'lb-force/inch²',
-        'family': _('pressure')
-    }, 'poundal': {
+        'symbol': 'lb-force/inch²'
+    },
+    'poundal': {
         'name': _('poundal'),
-        'symbol': 'pdl',
-        'family': _('force')
-    }, 'proton_mass': {
+        'symbol': 'pdl'
+    },
+    'proton_mass': {
         'name': _('proton mass'),
-        'symbol': 'mP',
-        'family': _('constant')
-    }, 'quadrillion_Btu': {
+        'symbol': 'mP'
+    },
+    'quadrillion_Btu': {
         'name': _('quadrillion Btu'),
-        'symbol': 'quadrillion Btu',
-        'family': _('energy')
-    }, 'quart': {
+        'symbol': 'quadrillion Btu'
+    },
+    'quart': {
         'name': _('quart'),
-        'symbol': 'qt',
-        'family': _('volume')
-    }, 'quarter': {
+        'symbol': 'qt'
+    },
+    'quarter': {
         'name': _('quarter'),
-        'symbol': 'qr',
-        'family': _('length')
-    }, 'radian': {
+        'symbol': 'qr'
+    },
+    'radian': {
         'name': _('radian'),
-        'symbol': 'rad',
-        'family': _('angle')
-    }, 'rads': {
+        'symbol': 'rad'
+    },
+    'rads': {
         'name': _('rads'),
-        'symbol': 'rads',
-        'family': _('absorption')
-    }, 'reciprocal_centimeter': {
+        'symbol': 'rads'
+    },
+    'reciprocal_centimeter': {
         'name': _('reciprocal centimeter'),
-        'symbol': 'cm⁻¹',
-        'family': _('reciprocal length')
-    }, 'refrigeration_ton': {
+        'symbol': 'cm⁻¹'
+    },
+    'refrigeration_ton': {
         'name': _('refrigeration ton'),
-        'symbol': 'TR',
-        'family': _('power')
-    }, 'rem': {
+        'symbol': 'TR'
+    },
+    'rem': {
         'name': _('roentgen equivalent man'),
-        'symbol': 'rem',
-        'family': _('absorption')
-    }, 'revolutions_per_minute': {
+        'symbol': 'rem'
+    },
+    'revolutions_per_minute': {
         'name': _('revolutions per minute'),
-        'symbol': _('rpm'),
-        'family': _('angular speed')
-    }, 'revolutions_per_second': {
+        'symbol': _('rpm')
+    },
+    'revolutions_per_second': {
         'name': _('revolutions per second'),
-        'symbol': _('rps'),
-        'family': _('angular speed')
-    }, 'reyn': {
+        'symbol': _('rps')
+    },
+    'reyn': {
         'name': _('reyn'),
-        'symbol': _('reyn'),
-        'family': _('viscosity')
-    }, 'rhe': {
+        'symbol': _('reyn')
+    },
+    'rhe': {
         'name': _('reciprocal poise'),
-        'symbol': 'P⁻¹',
-        'family': _('reciprocal viscosity')
-    }, 'rod': {
+        'symbol': 'P⁻¹'
+    },
+    'rod': {
         'name': _('rod'),
-        'symbol': 'rod',
-        'family': _('length')
-    }, 'roentgen': {
+        'symbol': 'rod'
+    },
+    'roentgen': {
         'name': _('roentgen'),
-        'symbol': 'R',
-        'family': _('radiation exposure')
-    }, 'rutherford': {
+        'symbol': 'R'
+    },
+    'rutherford': {
         'name': _('rutherford'),
-        'symbol': 'Rd',
-        'family': _('frequency')
-    }, 'rydberg': {
+        'symbol': 'Rd'
+    },
+    'rydberg': {
         'name': _('rydberg'),
-        'symbol': 'Ry',
-        'family': _('energy')
-    }, 'rydberg_constant': {
+        'symbol': 'Ry'
+    },
+    'rydberg_constant': {
         'name': _('rydberg constant'),
-        'symbol': 'R∞',
-        'family': _('constant')
-    }, 'scaled_point': {
+        'symbol': 'R∞'
+    },
+    'scaled_point': {
         'name': _('scaled point'),
-        'symbol': 'Pt',
-        'family': _('length')
-    }, 'scruple': {
+        'symbol': 'Pt'
+    },
+    'scruple': {
         'name': _('scruple'),
-        'symbol': '℈',
-        'family': _('volume'),
-    }, 'second': {
+        'symbol': '℈'
+    },
+    'second': {
         'name': _('second'),
-        'symbol': 's',
-        'family': _('time'),
-    }, 'second_radiation_constant': {
+        'symbol': 's'
+    },
+    'second_radiation_constant': {
         'name': _('second radiation constant'),
-        'symbol': 'c2',
-        'family': _('constant'),
-    }, 'shake': {
+        'symbol': 'c2'
+    },
+    'shake': {
         'name': _('shake'),
-        'symbol': 'shake',
-        'family': _('time'),
-    }, 'shot': {
+        'symbol': 'shake'
+    },
+    'shot': {
         'name': _('shot'),
-        'symbol': 'shot',
-        'family': _('length'),
-    }, 'sidereal_day': {
+        'symbol': 'shot'
+    },
+    'sidereal_day': {
         'name': _('sidereal day'),
-        'symbol': pgettext_lazy('unit', 'sidereal day'),
-        'family': _('time')
-    }, 'sidereal_month': {
+        'symbol': pgettext_lazy('unit', 'sidereal day')
+    },
+    'sidereal_month': {
         'name': _('sidereal month'),
-        'symbol': pgettext_lazy('unit', 'sidereal month'),
-        'family': _('time')
-    }, 'sidereal_year': {
+        'symbol': pgettext_lazy('unit', 'sidereal month')
+    },
+    'sidereal_year': {
         'name': _('sidereal year'),
-        'symbol': pgettext_lazy('unit', 'sidereal year'),
-        'family': _('time')
-    }, 'siemens': {
+        'symbol': pgettext_lazy('unit', 'sidereal year')
+    },
+    'siemens': {
         'name': _('siemens'),
-        'symbol': 'S',
-        'family': _('electrical conductance')
-    }, 'sievert': {
+        'symbol': 'S'
+    },
+    'sievert': {
         'name': _('sievert'),
-        'symbol': 'Sv',
-        'family': _('absorption')
-    }, 'slinch': {
+        'symbol': 'Sv'
+    },
+    'slinch': {
         'name': _('slinch'),
-        'symbol': 'slinch',
-        'family': _('mass')
-    }, 'slug': {
+        'symbol': 'slinch'
+    },
+    'slug': {
         'name': _('slug'),
-        'symbol': 'slug',
-        'family': _('mass')
-    }, 'speed_of_light': {
+        'symbol': 'slug'
+    },
+    'speed_of_light': {
         'name': _('speed of light'),
-        'symbol': 'c',
-        'family': _('speed')
-    }, 'square_degree': {
+        'symbol': 'c'
+    },
+    'square_degree': {
         'name': _('square degree'),
-        'symbol': '(°)²',
-        'family': _('solid angle')
-    }, 'square_foot': {
+        'symbol': '(°)²'
+    },
+    'square_foot': {
         'name': _('square foot'),
-        'symbol': 'sq ft',
-        'family': _('surface')
-    }, 'square_inch': {
+        'symbol': 'sq ft'
+    },
+    'square_inch': {
         'name': _('square inch'),
-        'symbol': 'sq in',
-        'family': _('surface')
-    }, 'square_league': {
+        'symbol': 'sq in'
+    },
+    'square_league': {
         'name': _('square league'),
-        'symbol': 'sq league',
-        'family': _('surface')
-    }, 'square_mile': {
+        'symbol': 'sq league'
+    },
+    'square_meter': {
+        'name': _('square meter'),
+        'symbol': 'm²'
+    },
+    'square_centimeter': {
+        'name': _('square centimeter'),
+        'symbol': 'cm²'
+    },
+    'square_millimeter': {
+        'name': _('square millimeter'),
+        'symbol': 'mm²'
+    },
+    'square_mile': {
         'name': _('square mile'),
-        'symbol': 'sq mile',
-        'family': _('surface')
-    }, 'square_rod': {
+        'symbol': 'sq mile'
+    },
+    'square_rod': {
         'name': _('square rod'),
-        'symbol': 'sq rod',
-        'family': _('surface')
-    }, 'square_survey_mile': {
+        'symbol': 'sq rod'
+    },
+    'square_survey_mile': {
         'name': _('square survey mile'),
-        'symbol': 'sq survey mile',
-        'family': _('surface')
-    }, 'square_yard': {
+        'symbol': 'sq survey mile'
+    },
+    'square_yard': {
         'name': _('square yard'),
-        'symbol': 'sq yd',
-        'family': _('surface')
-    }, 'standard_atmosphere': {
+        'symbol': 'sq yd'
+    },
+    'standard_atmosphere': {
         'name': _('standard atmosphere'),
-        'symbol': 'atm',
-        'family': _('pressure')
-    }, 'standard_gravity': {
+        'symbol': 'atm'
+    },
+    'standard_gravity': {
         'name': _('standard gravity'),
-        'symbol': 'g0',
-        'family': _('constant')
-    }, 'standard_liter_per_minute': {
+        'symbol': 'g0'
+    },
+    'standard_liter_per_minute': {
         'name': _('standard liter per minute'),
-        'symbol': 'SLM',
-        'family': _('volumetric flow rate')
-    }, 'statampere': {
+        'symbol': 'SLM'
+    },
+    'statampere': {
         'name': 'statampere',
-        'symbol': 'statA',
-        'family': _('electric current')
-    }, 'statfarad': {
+        'symbol': 'statA'
+    },
+    'statfarad': {
         'name': 'statfarad',
-        'symbol': 'statF',
-        'family': _('electrical capacitance')
-    }, 'stathenry': {
+        'symbol': 'statF'
+    },
+    'stathenry': {
         'name': 'stathenry',
-        'symbol': 'stathenry',
-        'family': _('electrical inductance'),
-    }, 'statmho': {
+        'symbol': 'stathenry'
+    },
+    'statmho': {
         'name': 'statmho',
-        'symbol': 'statmho',
-        'family': _('electrical conductance')
-    }, 'statohm': {
+        'symbol': 'statmho'
+    },
+    'statohm': {
         'name': 'statohm',
-        'symbol': 'statohm',
-        'family': _('electrical resistance')
-    }, 'stattesla': {
+        'symbol': 'statohm'
+    },
+    'stattesla': {
         'name': 'stattesla',
-        'symbol': 'stattesla',
-        'family': _('magnetic field')
-    }, 'statvolt': {
+        'symbol': 'stattesla'
+    },
+    'statvolt': {
         'name': 'statvolt',
-        'symbol': 'statvolt',
-        'family': _('electric potential difference')
-    }, 'statweber': {
+        'symbol': 'statvolt'
+    },
+    'statweber': {
         'name': 'statweber',
-        'symbol': 'statweber',
-        'family': _('flux density')
-    }, 'stefan_boltzmann_constant': {
+        'symbol': 'statweber'
+    },
+    'stefan_boltzmann_constant': {
         'name': _('Stefan-Boltzmann constant'),
-        'symbol': 'σ',
-        'family': _('constant')
-    }, 'steradian': {
+        'symbol': 'σ'
+    },
+    'steradian': {
         'name': _('steradian'),
-        'symbol': 'sr',
-        'family': _('solid angle')
-    }, 'stere': {
+        'symbol': 'sr'
+    },
+    'stere': {
         'name': _('stere'),
-        'symbol': 'st',
-        'family': _('volume')
-    }, 'stilb': {
+        'symbol': 'st'
+    },
+    'stilb': {
         'name': _('stilb'),
-        'symbol': 'sb',
-        'family': _('luminance')
-    }, 'stokes': {
+        'symbol': 'sb'
+    },
+    'stokes': {
         'name': _('stokes'),
-        'symbol': 'St',
-        'family': _('viscosity')
-    }, 'stone': {
+        'symbol': 'St'
+    },
+    'stone': {
         'name': _('stone'),
-        'symbol': 'st.',
-        'family': _('mass')
-    }, 'survey_foot': {
+        'symbol': 'st.'
+    },
+    'survey_foot': {
         'name': _('survey foot'),
-        'symbol': 'survey ft',
-        'family': _('length')
-    }, 'survey_mile': {
+        'symbol': 'survey ft'
+    },
+    'survey_mile': {
         'name': _('survey mile'),
-        'symbol': 'survey mile',
-        'family': _('length')
-    }, 'svedberg': {
+        'symbol': 'survey mile'
+    },
+    'svedberg': {
         'name': 'svedberg',
-        'symbol': 'S',
-        'family': _('time')
-    }, 'synodic_month': {
+        'symbol': 'S'
+    },
+    'synodic_month': {
         'name': _('synodic month'),
-        'symbol': _('synodic month'),
-        'family': _('time')
-    }, 'tablespoon': {
+        'symbol': _('synodic month')
+    },
+    'tablespoon': {
         'name': _('tablespoon'),
-        'symbol': _('tablespoon'),
-        'family': _('volume')
-    }, 'tansec': {
+        'symbol': _('tablespoon')
+    },
+    'tansec': {
         'name': 'tansec',
-        'symbol': 'tansec',
-        'family': _('constant')
-    }, 'teaspoon': {
+        'symbol': 'tansec'
+    },
+    'teaspoon': {
         'name': _('teaspoon'),
-        'symbol': _('teaspoon'),
-        'family': _('volume')
-    }, 'technical_atmosphere': {
+        'symbol': _('teaspoon')
+    },
+    'technical_atmosphere': {
         'name': _('technical atmosphere'),
-        'symbol': 'at',
-        'family': _('pressure')
-    }, 'tesla': {
+        'symbol': 'at'
+    },
+    'tesla': {
         'name': 'tesla',
-        'symbol': 'T',
-        'family': _('magnetic field')
-    }, 'tex': {
+        'symbol': 'T'
+    },
+    'tex': {
         'name': 'tex',
-        'symbol': 'tex',
-        'family': _('linear mass density')
-    }, 'tex_cicero': {
+        'symbol': 'tex'
+    },
+    'tex_cicero': {
         'name': 'tex cicero',
-        'symbol': 'tex cicero',
-        'family': _('length')
-    }, 'tex_didot': {
+        'symbol': 'tex cicero'
+    },
+    'tex_didot': {
         'name': 'tex didot',
-        'symbol': 'tex didot',
-        'family': _('length')
-    }, 'tex_pica': {
+        'symbol': 'tex didot'
+    },
+    'tex_pica': {
         'name': 'tex pica',
-        'symbol': 'tex pica',
-        'family': _('length')
-    }, 'tex_point': {
+        'symbol': 'tex pica'
+    },
+    'tex_point': {
         'name': 'tex point',
-        'symbol': 'tex point',
-        'family': _('length')
-    }, 'therm': {
+        'symbol': 'tex point'
+    },
+    'therm': {
         'name': _('therm'),
-        'symbol': 'Thm',
-        'family': _('energy')
-    }, 'thermochemical_british_thermal_unit': {
+        'symbol': 'Thm'
+    },
+    'thermochemical_british_thermal_unit': {
         'name': _('thermochemical Btu'),
-        'symbol': 'thermochemical Btu',
-        'family': _('energy')
-    }, 'thomson_cross_section': {
+        'symbol': 'thermochemical Btu'
+    },
+    'thomson_cross_section': {
         'name': _('Thomson cross section'),
-        'symbol': 'Thomson cross section',
-        'family': _('surface')
-    }, 'thou': {
+        'symbol': 'Thomson cross section'
+    },
+    'thou': {
         'name': 'thou',
-        'symbol': 'thou',
-        'family': _('length')
-    }, 'ton': {
+        'symbol': 'thou'
+    },
+    'ton': {
         'name': _('ton'),
-        'symbol': 't',
-        'family': _('mass')
-    }, 'ton_TNT': {
+        'symbol': 't'
+    },
+    'ton_TNT': {
         'name': _('ton of TNT'),
-        'symbol': 'ton of TNT',
-        'family': _('energy')
-    }, 'tonne_of_oil_equivalent': {
+        'symbol': 'ton of TNT'
+    },
+    'tonne_of_oil_equivalent': {
         'name': _('ton of oil equivalent'),
-        'symbol': _('toe'),
-        'family': _('energy')
-    }, 'torr': {
+        'symbol': _('toe')
+    },
+    'torr': {
         'name': 'torr',
-        'symbol': 'torr',
-        'family': _('pressure')
-    }, 'tropical_month': {
+        'symbol': 'torr'
+    },
+    'tropical_month': {
         'name': _('tropical month'),
-        'symbol': _('tropical month'),
-        'family': _('time')
-    }, 'tropical_year': {
+        'symbol': _('tropical month')
+    },
+    'tropical_year': {
         'name': _('tropical year'),
-        'symbol': _('tropical year'),
-        'family': _('time')
-    }, 'troy_ounce': {
+        'symbol': _('tropical year')
+    },
+    'troy_ounce': {
         'name': _('troy ounce'),
-        'symbol': _('troy ounce'),
-        'family': _('mass')
-    }, 'troy_pound': {
+        'symbol': _('troy ounce')
+    },
+    'troy_pound': {
         'name': _('troy pound'),
-        'symbol': _('troy pound'),
-        'family': _('mass')
-    }, 'turn': {
+        'symbol': _('troy pound')
+    },
+    'turn': {
         'name': _('turn'),
-        'symbol': _('turn'),
-        'family': _('angle')
-    }, 'unified_atomic_mass_unit': {
+        'symbol': _('turn')
+    },
+    'unified_atomic_mass_unit': {
         'name': _('unified atomic mass unit'),
-        'symbol': _('unified atomic mass unit'),
-        'family': _('mass')
-    }, 'unit_pole': {
+        'symbol': _('unified atomic mass unit')
+    },
+    'unit_pole': {
         'name': _('unit pole'),
-        'symbol': 'pole',
-        'family': _('length')
-    }, 'vacuum_permeability': {
+        'symbol': 'pole'
+    },
+    'vacuum_permeability': {
         'name': _('vacuum permeability'),
-        'symbol': 'μ0',
-        'family': _('constant')
-    }, 'vacuum_permittivity': {
+        'symbol': 'μ0'
+    },
+    'vacuum_permittivity': {
         'name': _('vacuum permittivity'),
-        'symbol': 'ε0',
-        'family': _('constant')
-    }, 'volt': {
+        'symbol': 'ε0'
+    },
+    'volt': {
         'name': 'Volt',
-        'symbol': 'V',
-        'family': _('electric potential difference')
-    }, 'volt_ampere': {
+        'symbol': 'V'
+    },
+    'volt_ampere': {
         'name': 'Volt Ampere',
-        'symbol': 'VA',
-        'family': _('power')
-    }, 'von_klitzing_constant': {
+        'symbol': 'VA'
+    },
+    'von_klitzing_constant': {
         'name': _('Von Klitzing constant'),
-        'symbol': 'RK',
-        'family': _('constant'),
-    }, 'water': {
+        'symbol': 'RK'
+    },
+    'water': {
         'name': _('Water volumic mass'),
-        'symbol': 'g/m³',
-        'family': _('constant'),
-    }, 'water_39F': {
+        'symbol': 'g/m³'
+    },
+    'water_39F': {
         'name': _('Water volumic mass at 39F'),
-        'symbol': 'g/m³',
-        'family': _('constant'),
-    }, 'water_60F': {
+        'symbol': 'g/m³'
+    },
+    'water_60F': {
         'name': _('Water volumic mass at 60F'),
-        'symbol': 'g/m³',
-        'family': _('constant'),
-    }, 'watt': {
+        'symbol': 'g/m³'
+    },
+    'watt': {
         'name': 'Watt',
-        'symbol': 'W',
-        'family': _('power'),
-    }, 'watt_hour': {
+        'symbol': 'W'
+    },
+    'watt_hour': {
         'name': 'Watt',
-        'symbol': 'Wh',
-        'family': _('energy'),
-    }, 'weber': {
+        'symbol': 'Wh'
+    },
+    'weber': {
         'name': 'weber',
-        'symbol': 'weber',
-        'family': _('flux density')
-    }, 'week': {
+        'symbol': 'weber'
+    },
+    'week': {
         'name': 'week',
-        'symbol': 'w',
-        'family': _('time'),
-    }, 'wien_frequency_displacement_law_constant': {
+        'symbol': 'w'
+    },
+    'wien_frequency_displacement_law_constant': {
         'name': _('wien frequency displacement law constant'),
-        'symbol': 'vpeak',
-        'family': _('constant')
-    }, 'wien_u': {
+        'symbol': 'vpeak'
+    },
+    'wien_u': {
         'name': _('wien u'),
-        'symbol': '',
-        'family': _('constant')
-    }, 'wien_wavelength_displacement_law_constant': {
+        'symbol': ''
+    },
+    'wien_wavelength_displacement_law_constant': {
         'name': _('wien displacement law constant'),
-        'symbol': 'λpeak',
-        'family': _('constant')
-    }, 'wien_x': {
+        'symbol': 'λpeak'
+    },
+    'wien_x': {
         'name': _('wien x'),
-        'symbol': '',
-        'family': _('constant')
-    }, 'x_unit_Cu': {
+        'symbol': ''
+    },
+    'x_unit_Cu': {
         'name': _('Cu X-ray wavelength'),
-        'symbol': '',
-        'family': _('constant')
-    }, 'x_unit_Mo': {
+        'symbol': ''
+    },
+    'x_unit_Mo': {
         'name': _('Mo X-ray wavelength'),
-        'symbol': '',
-        'family': _('constant')
-    }, 'yard': {
-        'name': 'yard',
-        'symbol': 'yd',
-        'family': _('length')
-    }, 'year': {
+        'symbol': ''
+    },
+    'yard': {
+        'name': _('yard'),
+        'symbol': 'yd'
+    },
+    'year': {
         'name': _('year'),
-        'symbol': _('year'),
-        'family': _('time')
-    }, 'zeta': {
-        'name': 'zeta',
-        'symbol': '',
-        'family': _('constant')
+        'symbol': _('year')
+    },
+    'zeta': {
+        'name': _('zeta'),
+        'symbol': ''
+    },
+    'decibelmilliwatt': {
+        'name': _('decibelmilliwatt'),
+        'symbol': 'dBmW'
+    },
+    'decibelmicrowatt': {
+        'name': _('decibelmicrowatt'),
+        'symbol': 'dBμW'
+    },
+    'eulers_number':    {
+        'name': _('Euler‘s number'),
+        'symbol': 'e'
+    },
+    'octave':    {
+        'name': _('octave'),
+        'symbol': ''
+    },
+    'sound_pressure_level': {
+        'name': _('sound pressure level'),
+        'symbol': ''
     }
-
 }
