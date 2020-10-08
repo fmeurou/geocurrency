@@ -74,7 +74,7 @@ class DimensionSerializer(serializers.Serializer):
 
     @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_base_unit(self, obj):
-        return obj.base_unit()
+        return obj.base_unit
 
 
 class DimensionWithUnitsSerializer(DimensionSerializer):
