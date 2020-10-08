@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-08 17:07+0000\n"
-"PO-Revision-Date: 2020-09-16 12:48+0000\n"
-"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
-"Language-Team: Albanian <http://peabytes.me/projects/geocurrency/api/sq/>\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Albanian <http://translation.peabytes.me/projects/geocurrency/"
+"api/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -404,7 +405,7 @@ msgstr "Kineze Tradicionale"
 
 #: src/geocurrency/countries/viewsets.py:76
 msgid "Unknown country or no info for this country"
-msgstr ""
+msgstr "Vend i panjohur ose asnjë informacion për këtë vend"
 
 #: src/geocurrency/rates/models.py:384
 msgid "Rate could not be found"
@@ -420,26 +421,20 @@ msgid "time"
 msgstr "koha"
 
 #: src/geocurrency/units/__init__.py:5
-#, fuzzy
-#| msgid "Planck current"
 msgid "current"
-msgstr "Rryma e Planck"
+msgstr "aktual"
 
 #: src/geocurrency/units/__init__.py:6
-#, fuzzy
-#| msgid "luminous intensity"
 msgid "luminosity"
-msgstr "intensiteti i dritës"
+msgstr "shkëlqim"
 
 #: src/geocurrency/units/__init__.py:7
 msgid "mass"
 msgstr "masës"
 
 #: src/geocurrency/units/__init__.py:8
-#, fuzzy
-#| msgid "amount of substance"
 msgid "substance"
-msgstr "sasia e substancës"
+msgstr "substancë"
 
 #: src/geocurrency/units/__init__.py:9
 msgid "temperature"
@@ -451,7 +446,7 @@ msgstr "konstante"
 
 #: src/geocurrency/units/__init__.py:11
 msgid "area"
-msgstr ""
+msgstr "zonë"
 
 #: src/geocurrency/units/__init__.py:12
 msgid "volume"
@@ -463,11 +458,11 @@ msgstr "frekuenca"
 
 #: src/geocurrency/units/__init__.py:14
 msgid "wavenumber"
-msgstr ""
+msgstr "numër vale"
 
 #: src/geocurrency/units/__init__.py:15
 msgid "velocity"
-msgstr ""
+msgstr "shpejtësia"
 
 #: src/geocurrency/units/__init__.py:16
 msgid "acceleration"
@@ -486,10 +481,8 @@ msgid "power"
 msgstr "fuqinë"
 
 #: src/geocurrency/units/__init__.py:20
-#, fuzzy
-#| msgid "intensity"
 msgid "density"
-msgstr "intensiteti"
+msgstr "dendësia"
 
 #: src/geocurrency/units/__init__.py:21
 msgid "pressure"
@@ -497,45 +490,39 @@ msgstr "presion"
 
 #: src/geocurrency/units/__init__.py:22
 msgid "torque"
-msgstr ""
+msgstr "çift rrotullues"
 
 #: src/geocurrency/units/__init__.py:23
 msgid "viscosity"
 msgstr "viskoziteti"
 
 #: src/geocurrency/units/__init__.py:24
-#, fuzzy
-#| msgid "reciprocal viscosity"
 msgid "kinematic viscosity"
-msgstr "viskoziteti reciprok"
+msgstr "viskoziteti kinematik"
 
 #: src/geocurrency/units/__init__.py:26
 msgid "fluidity"
-msgstr ""
+msgstr "rrjedhshmëria"
 
 #: src/geocurrency/units/__init__.py:27
 msgid "concentration"
 msgstr "përqendrimi"
 
 #: src/geocurrency/units/__init__.py:28
-#, fuzzy
-#| msgid "radioactivity"
 msgid "activity"
-msgstr "radioaktiviteti"
+msgstr "aktiviteti"
 
 #: src/geocurrency/units/__init__.py:29
-#, fuzzy
-#| msgid "entropy unit"
 msgid "entropy"
-msgstr "njësia e entropisë"
+msgstr "entropi"
 
 #: src/geocurrency/units/__init__.py:31
 msgid "molar entropy"
-msgstr ""
+msgstr "entropi molare"
 
 #: src/geocurrency/units/__init__.py:35
 msgid "heat transmission"
-msgstr ""
+msgstr "transmetimi i nxehtësisë"
 
 #: src/geocurrency/units/__init__.py:38
 msgid "luminance"
@@ -555,187 +542,135 @@ msgstr "intensiteti"
 
 #: src/geocurrency/units/__init__.py:48
 msgid "charge"
-msgstr ""
+msgstr "ngarkuar"
 
 #: src/geocurrency/units/__init__.py:49
-#, fuzzy
-#| msgid "electric moment"
 msgid "electric potential"
-msgstr "moment elektrik"
+msgstr "potenciali elektrik"
 
 #: src/geocurrency/units/__init__.py:52
 msgid "electric field"
 msgstr "fushe elektrike"
 
 #: src/geocurrency/units/__init__.py:55
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "resistance"
-msgstr "rezistenca elektrike"
+msgstr "rezistenca"
 
 #: src/geocurrency/units/__init__.py:58
-#, fuzzy
-#| msgid "conductance quantum"
 msgid "conductance"
-msgstr "kuanti i përçueshmërisë"
+msgstr "sjellja"
 
 #: src/geocurrency/units/__init__.py:61
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "capacitance"
-msgstr "kapaciteti eletrik"
+msgstr "kapaciteti"
 
 #: src/geocurrency/units/__init__.py:64
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "inductance"
-msgstr "induktancë elektrike"
+msgstr "induktancë"
 
 #: src/geocurrency/units/__init__.py:67
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic flux"
-msgstr "fushë magnetike"
+msgstr "fluksi magnetik"
 
 #: src/geocurrency/units/__init__.py:70
 msgid "magnetic field"
 msgstr "fushë magnetike"
 
 #: src/geocurrency/units/__init__.py:73
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetomotive force"
-msgstr "fushë magnetike"
+msgstr "forca magnetomotive"
 
 #: src/geocurrency/units/__init__.py:75
-#, fuzzy
-#| msgid "electric field"
 msgid "electric dipole"
-msgstr "fushe elektrike"
+msgstr "dipol elektrik"
 
 #: src/geocurrency/units/__init__.py:78
-#, fuzzy
-#| msgid "electric charge"
 msgid "electric quadrupole"
-msgstr "ngarkesa elektrike"
+msgstr "katërkëmbësh elektrik"
 
 #: src/geocurrency/units/__init__.py:81
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic dipole"
-msgstr "fushë magnetike"
+msgstr "dipoli magnetik"
 
 #: src/geocurrency/units/__init__.py:83
 msgid "printing unit"
-msgstr ""
+msgstr "njësia e shtypjes"
 
 #: src/geocurrency/units/__init__.py:85
 msgid "gaussian charge"
-msgstr ""
+msgstr "ngarkesa Gausiane"
 
 #: src/geocurrency/units/__init__.py:88
-#, fuzzy
-#| msgid "Planck current"
 msgid "gaussian current"
-msgstr "Rryma e Planck"
+msgstr "rryma gausiane"
 
 #: src/geocurrency/units/__init__.py:91
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "gaussian electric potential"
-msgstr "ndryshimi i potencialit elektrik"
+msgstr "potenciali elektrik gaussian"
 
 #: src/geocurrency/units/__init__.py:94
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric field"
-msgstr "fushe elektrike"
+msgstr "fusha elektrike gausiane"
 
 #: src/geocurrency/units/__init__.py:97
 msgid "gaussian electric displacement field"
-msgstr ""
+msgstr "fusha e zhvendosjes elektrike të Gausit"
 
 #: src/geocurrency/units/__init__.py:101
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric flux"
-msgstr "fushe elektrike"
+msgstr "fluksi elektrik gausian"
 
 #: src/geocurrency/units/__init__.py:104
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field"
-msgstr "fushë magnetike"
+msgstr "fusha magnetike gausiane"
 
 #: src/geocurrency/units/__init__.py:107
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field strength"
-msgstr "fushë magnetike"
+msgstr "forca e fushës magnetike gausiane"
 
 #: src/geocurrency/units/__init__.py:111
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic flux"
-msgstr "fushë magnetike"
+msgstr "fluksi magnetik gausian"
 
 #: src/geocurrency/units/__init__.py:114
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "gaussian resistance"
-msgstr "rezistenca elektrike"
+msgstr "rezistenca gausiane"
 
 #: src/geocurrency/units/__init__.py:117
 msgid "gaussian resistivity"
-msgstr ""
+msgstr "rezistenca e gausit"
 
 #: src/geocurrency/units/__init__.py:119
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "gaussian capacitance"
-msgstr "kapaciteti eletrik"
+msgstr "kapaciteti gaussian"
 
 #: src/geocurrency/units/__init__.py:121
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "gaussian inductance"
-msgstr "induktancë elektrike"
+msgstr "induktanca gausiane"
 
 #: src/geocurrency/units/__init__.py:124
-#, fuzzy
-#| msgid "electrical conductance"
 msgid "gaussian conductance"
-msgstr "përçueshmëria elektrike"
+msgstr "sjellja gausiane"
 
 #: src/geocurrency/units/__init__.py:127
-#, fuzzy
-#| msgid "electric charge"
 msgid "esu charge"
-msgstr "ngarkesa elektrike"
+msgstr "ngarkesa esu"
 
 #: src/geocurrency/units/__init__.py:130
-#, fuzzy
-#| msgid "electric current"
 msgid "esu current"
-msgstr "rryme elektrike"
+msgstr "rryma esu"
 
 #: src/geocurrency/units/__init__.py:133
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "esu electric potential"
-msgstr "ndryshimi i potencialit elektrik"
+msgstr "potenciali elektrik esu"
 
 #: src/geocurrency/units/__init__.py:137
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic flux"
-msgstr "fushë magnetike"
+msgstr "fluksi magnetik esu"
 
 #: src/geocurrency/units/__init__.py:140
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic field"
-msgstr "fushë magnetike"
+msgstr "fusha magnetike esu"
 
 #: src/geocurrency/units/__init__.py:233
 msgid "Copper Kα"
@@ -1118,20 +1053,16 @@ msgid "CSS pixel"
 msgstr "Pixel CSS"
 
 #: src/geocurrency/units/__init__.py:624
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "cubic meter"
-msgstr "centimetër kub"
+msgstr "metër kub"
 
 #: src/geocurrency/units/__init__.py:628
 msgid "cubic centimeter"
 msgstr "centimetër kub"
 
 #: src/geocurrency/units/__init__.py:632
-#, fuzzy
-#| msgid "Hg millimeter"
 msgid "cubic milliimeter"
-msgstr "Milimetër Hg"
+msgstr "milimetër kub"
 
 #: src/geocurrency/units/__init__.py:636
 msgid "cubic foot"
@@ -1184,10 +1115,8 @@ msgid "decade"
 msgstr "dekadë"
 
 #: src/geocurrency/units/__init__.py:676
-#, fuzzy
-#| msgid "decitex"
 msgid "decibel"
-msgstr "decitex"
+msgstr "decibel"
 
 #: src/geocurrency/units/__init__.py:680
 msgid "degree"
@@ -1693,10 +1622,8 @@ msgid "meter per second"
 msgstr "metër në sekondë"
 
 #: src/geocurrency/units/__init__.py:1174
-#, fuzzy
-#| msgid "meter per second"
 msgid "meter per square second"
-msgstr "metër në sekondë"
+msgstr "metër për sekondë katrorë"
 
 #: src/geocurrency/units/__init__.py:1179
 msgid "metric horsepower"
@@ -2093,22 +2020,16 @@ msgid "square league"
 msgstr "liga katrore"
 
 #: src/geocurrency/units/__init__.py:1527
-#, fuzzy
-#| msgid "square mile"
 msgid "square meter"
-msgstr "milje katrore"
+msgstr "metër katror"
 
 #: src/geocurrency/units/__init__.py:1531
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "square centimeter"
-msgstr "centimetër kub"
+msgstr "centimetër katror"
 
 #: src/geocurrency/units/__init__.py:1535
-#, fuzzy
-#| msgid "square mile"
 msgid "square millimeter"
-msgstr "milje katrore"
+msgstr "milimetër katror"
 
 #: src/geocurrency/units/__init__.py:1539
 msgid "square mile"
@@ -2301,31 +2222,31 @@ msgstr "Mo gjatësi vale me rreze X"
 
 #: src/geocurrency/units/__init__.py:1811
 msgid "yard"
-msgstr ""
+msgstr "oborr"
 
 #: src/geocurrency/units/__init__.py:1819
 msgid "zeta"
-msgstr ""
+msgstr "zeta"
 
 #: src/geocurrency/units/__init__.py:1823
 msgid "decibelmilliwatt"
-msgstr ""
+msgstr "decibelmilliwatt"
 
 #: src/geocurrency/units/__init__.py:1827
 msgid "decibelmicrowatt"
-msgstr ""
+msgstr "decibelmicrowatt"
 
 #: src/geocurrency/units/__init__.py:1831
 msgid "Euler‘s number"
-msgstr ""
+msgstr "Numri i Euler"
 
 #: src/geocurrency/units/__init__.py:1835
 msgid "octave"
-msgstr ""
+msgstr "oktavë"
 
 #: src/geocurrency/units/__init__.py:1839
 msgid "sound pressure level"
-msgstr ""
+msgstr "niveli i presionit të zërit"
 
 #: src/geocurrency/units/models.py:369
 msgid "Incompatible units"
