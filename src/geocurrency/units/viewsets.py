@@ -1,3 +1,5 @@
+import logging
+
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
@@ -112,7 +114,8 @@ class UnitViewset(ViewSet):
             dimensions = [Dimension(unit_system=us, code=code) for code in DIMENSIONS.keys()]
             serializer = DimensionWithUnitsSerializer(dimensions, many=True, context={'request': request})
             return Response(serializer.data)
-        except KeyError:
+        except KeyError as e:
+            logging.warning(str(e))
             return Response('Invalid Unit System', status=status.HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))

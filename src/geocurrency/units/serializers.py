@@ -1,3 +1,4 @@
+import logging
 from datetime import date, datetime
 
 from drf_yasg.utils import swagger_serializer_method
@@ -82,7 +83,11 @@ class DimensionWithUnitsSerializer(DimensionSerializer):
 
     @swagger_serializer_method(serializer_or_field=UnitSerializer)
     def get_units(self, obj):
-        return obj.units
+        try:
+            return obj.units
+        except KeyError as e:
+            logging.error(str(e))
+            return None
 
 
 class UnitSystemSerializer(serializers.Serializer):

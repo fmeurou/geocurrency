@@ -7,7 +7,6 @@ DIMENSIONS = {'[length]': {'name': _('length'), 'dimension': 'meter', 'symbol': 
               '[mass]': {'name': _('mass'), 'dimension': 'kilogram', 'symbol': 'M'},
               '[substance]': {'name': _('substance'), 'dimension': 'mole', 'symbol': 'N'},
               '[temperature]': {'name': _('temperature'), 'dimension': 'kelvin', 'symbol': 'Θ'},
-              '[radiation]': {'name': _('radiation'), 'dimension': 'becquerel', 'symbol': 'Bq'},
               '[]': {'name': _('constant'), 'dimension': 'bit', 'symbol': 'b'},
               '[area]': {'name': _('area'), 'dimension': 'meter ** 2', 'symbol': 'L²'},
               '[volume]': {'name': _('volume'), 'dimension': 'meter ** 3', 'symbol': 'L³'},

@@ -56,6 +56,13 @@ class UnitTest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_list_per_dimension_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/per_dimension/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_list_with_dimension_request(self):
         client = APIClient()
         us = UnitSystem(system_name='mks')
