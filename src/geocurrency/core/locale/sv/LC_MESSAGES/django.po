@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-08 17:07+0000\n"
-"PO-Revision-Date: 2020-09-16 12:48+0000\n"
-"Last-Translator: Frédéric MEUROU <fm@peabytes.me>\n"
-"Language-Team: Swedish <http://peabytes.me/projects/geocurrency/api/sv/>\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Swedish <http://translation.peabytes.me/projects/geocurrency/"
+"api/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -404,7 +405,7 @@ msgstr "Traditionell kinesiska"
 
 #: src/geocurrency/countries/viewsets.py:76
 msgid "Unknown country or no info for this country"
-msgstr ""
+msgstr "Okänt land eller ingen info för detta land"
 
 #: src/geocurrency/rates/models.py:384
 msgid "Rate could not be found"
@@ -420,26 +421,20 @@ msgid "time"
 msgstr "tid"
 
 #: src/geocurrency/units/__init__.py:5
-#, fuzzy
-#| msgid "Planck current"
 msgid "current"
-msgstr "Planck ström"
+msgstr "nuvarande"
 
 #: src/geocurrency/units/__init__.py:6
-#, fuzzy
-#| msgid "luminous intensity"
 msgid "luminosity"
-msgstr "ljusintensitet"
+msgstr "ljusstyrka"
 
 #: src/geocurrency/units/__init__.py:7
 msgid "mass"
 msgstr "massa"
 
 #: src/geocurrency/units/__init__.py:8
-#, fuzzy
-#| msgid "amount of substance"
 msgid "substance"
-msgstr "mängd ämne"
+msgstr "ämne"
 
 #: src/geocurrency/units/__init__.py:9
 msgid "temperature"
@@ -451,7 +446,7 @@ msgstr "konstant"
 
 #: src/geocurrency/units/__init__.py:11
 msgid "area"
-msgstr ""
+msgstr "område"
 
 #: src/geocurrency/units/__init__.py:12
 msgid "volume"
@@ -463,11 +458,11 @@ msgstr "frekvens"
 
 #: src/geocurrency/units/__init__.py:14
 msgid "wavenumber"
-msgstr ""
+msgstr "vågnummer"
 
 #: src/geocurrency/units/__init__.py:15
 msgid "velocity"
-msgstr ""
+msgstr "hastighet"
 
 #: src/geocurrency/units/__init__.py:16
 msgid "acceleration"
@@ -486,10 +481,8 @@ msgid "power"
 msgstr "kraft"
 
 #: src/geocurrency/units/__init__.py:20
-#, fuzzy
-#| msgid "intensity"
 msgid "density"
-msgstr "intensitet"
+msgstr "densitet"
 
 #: src/geocurrency/units/__init__.py:21
 msgid "pressure"
@@ -497,45 +490,39 @@ msgstr "tryck"
 
 #: src/geocurrency/units/__init__.py:22
 msgid "torque"
-msgstr ""
+msgstr "vridmoment"
 
 #: src/geocurrency/units/__init__.py:23
 msgid "viscosity"
 msgstr "viskositet"
 
 #: src/geocurrency/units/__init__.py:24
-#, fuzzy
-#| msgid "reciprocal viscosity"
 msgid "kinematic viscosity"
-msgstr "ömsesidig viskositet"
+msgstr "kinematisk viskositet"
 
 #: src/geocurrency/units/__init__.py:26
 msgid "fluidity"
-msgstr ""
+msgstr "fluiditet"
 
 #: src/geocurrency/units/__init__.py:27
 msgid "concentration"
 msgstr "koncentration"
 
 #: src/geocurrency/units/__init__.py:28
-#, fuzzy
-#| msgid "radioactivity"
 msgid "activity"
-msgstr "radioaktivitet"
+msgstr "aktivitet"
 
 #: src/geocurrency/units/__init__.py:29
-#, fuzzy
-#| msgid "entropy unit"
 msgid "entropy"
-msgstr "entropienhet"
+msgstr "entropi"
 
 #: src/geocurrency/units/__init__.py:31
 msgid "molar entropy"
-msgstr ""
+msgstr "molär entropi"
 
 #: src/geocurrency/units/__init__.py:35
 msgid "heat transmission"
-msgstr ""
+msgstr "värmeöverföring"
 
 #: src/geocurrency/units/__init__.py:38
 msgid "luminance"
@@ -555,187 +542,135 @@ msgstr "intensitet"
 
 #: src/geocurrency/units/__init__.py:48
 msgid "charge"
-msgstr ""
+msgstr "avgift"
 
 #: src/geocurrency/units/__init__.py:49
-#, fuzzy
-#| msgid "electric moment"
 msgid "electric potential"
-msgstr "elektriska ögonblick"
+msgstr "elektrisk potential"
 
 #: src/geocurrency/units/__init__.py:52
 msgid "electric field"
 msgstr "elektriskt fält"
 
 #: src/geocurrency/units/__init__.py:55
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "resistance"
-msgstr "elektrisk resistans"
+msgstr "motstånd"
 
 #: src/geocurrency/units/__init__.py:58
-#, fuzzy
-#| msgid "conductance quantum"
 msgid "conductance"
-msgstr "konduktanskvantum"
+msgstr "ledningsförmåga"
 
 #: src/geocurrency/units/__init__.py:61
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "capacitance"
-msgstr "elkapacitet"
+msgstr "kapacitans"
 
 #: src/geocurrency/units/__init__.py:64
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "inductance"
-msgstr "elektrisk induktans"
+msgstr "induktans"
 
 #: src/geocurrency/units/__init__.py:67
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic flux"
-msgstr "magnetiskt fält"
+msgstr "magnetiskt flöde"
 
 #: src/geocurrency/units/__init__.py:70
 msgid "magnetic field"
 msgstr "magnetiskt fält"
 
 #: src/geocurrency/units/__init__.py:73
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetomotive force"
-msgstr "magnetiskt fält"
+msgstr "magnetkraft"
 
 #: src/geocurrency/units/__init__.py:75
-#, fuzzy
-#| msgid "electric field"
 msgid "electric dipole"
-msgstr "elektriskt fält"
+msgstr "elektrisk dipol"
 
 #: src/geocurrency/units/__init__.py:78
-#, fuzzy
-#| msgid "electric charge"
 msgid "electric quadrupole"
-msgstr "elektrisk laddning"
+msgstr "elektrisk fyrsula"
 
 #: src/geocurrency/units/__init__.py:81
-#, fuzzy
-#| msgid "magnetic field"
 msgid "magnetic dipole"
-msgstr "magnetiskt fält"
+msgstr "magnetisk dipol"
 
 #: src/geocurrency/units/__init__.py:83
 msgid "printing unit"
-msgstr ""
+msgstr "utskriftsenhet"
 
 #: src/geocurrency/units/__init__.py:85
 msgid "gaussian charge"
-msgstr ""
+msgstr "gaussisk laddning"
 
 #: src/geocurrency/units/__init__.py:88
-#, fuzzy
-#| msgid "Planck current"
 msgid "gaussian current"
-msgstr "Planck ström"
+msgstr "gaussisk ström"
 
 #: src/geocurrency/units/__init__.py:91
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "gaussian electric potential"
-msgstr "elektrisk potentialskillnad"
+msgstr "Gaussisk elektrisk potential"
 
 #: src/geocurrency/units/__init__.py:94
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric field"
-msgstr "elektriskt fält"
+msgstr "Gaussiska elektriska fält"
 
 #: src/geocurrency/units/__init__.py:97
 msgid "gaussian electric displacement field"
-msgstr ""
+msgstr "Gaussisk elektriskt förskjutningsfält"
 
 #: src/geocurrency/units/__init__.py:101
-#, fuzzy
-#| msgid "electric field"
 msgid "gaussian electric flux"
-msgstr "elektriskt fält"
+msgstr "Gaussiskt elektriskt flöde"
 
 #: src/geocurrency/units/__init__.py:104
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field"
-msgstr "magnetiskt fält"
+msgstr "gaussiskt magnetfält"
 
 #: src/geocurrency/units/__init__.py:107
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic field strength"
-msgstr "magnetiskt fält"
+msgstr "gaussisk magnetfältstyrka"
 
 #: src/geocurrency/units/__init__.py:111
-#, fuzzy
-#| msgid "magnetic field"
 msgid "gaussian magnetic flux"
-msgstr "magnetiskt fält"
+msgstr "gaussiskt magnetiskt flöde"
 
 #: src/geocurrency/units/__init__.py:114
-#, fuzzy
-#| msgid "electrical resistance"
 msgid "gaussian resistance"
-msgstr "elektrisk resistans"
+msgstr "gaussiskt motstånd"
 
 #: src/geocurrency/units/__init__.py:117
 msgid "gaussian resistivity"
-msgstr ""
+msgstr "gaussisk resistivitet"
 
 #: src/geocurrency/units/__init__.py:119
-#, fuzzy
-#| msgid "eletrical capacitance"
 msgid "gaussian capacitance"
-msgstr "elkapacitet"
+msgstr "gaussisk kapacitans"
 
 #: src/geocurrency/units/__init__.py:121
-#, fuzzy
-#| msgid "electrical inductance"
 msgid "gaussian inductance"
-msgstr "elektrisk induktans"
+msgstr "gaussisk induktans"
 
 #: src/geocurrency/units/__init__.py:124
-#, fuzzy
-#| msgid "electrical conductance"
 msgid "gaussian conductance"
-msgstr "elektrisk ledning"
+msgstr "gaussisk ledning"
 
 #: src/geocurrency/units/__init__.py:127
-#, fuzzy
-#| msgid "electric charge"
 msgid "esu charge"
-msgstr "elektrisk laddning"
+msgstr "esu-avgift"
 
 #: src/geocurrency/units/__init__.py:130
-#, fuzzy
-#| msgid "electric current"
 msgid "esu current"
-msgstr "elektrisk ström"
+msgstr "esu ström"
 
 #: src/geocurrency/units/__init__.py:133
-#, fuzzy
-#| msgid "electric potential difference"
 msgid "esu electric potential"
-msgstr "elektrisk potentialskillnad"
+msgstr "esu elektrisk potential"
 
 #: src/geocurrency/units/__init__.py:137
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic flux"
-msgstr "magnetiskt fält"
+msgstr "esu magnetiskt flöde"
 
 #: src/geocurrency/units/__init__.py:140
-#, fuzzy
-#| msgid "magnetic field"
 msgid "esu magnetic field"
-msgstr "magnetiskt fält"
+msgstr "esu magnetfält"
 
 #: src/geocurrency/units/__init__.py:233
 msgid "Copper Kα"
@@ -1118,20 +1053,16 @@ msgid "CSS pixel"
 msgstr "CSS-pixel"
 
 #: src/geocurrency/units/__init__.py:624
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "cubic meter"
-msgstr "kubikcentimeter"
+msgstr "kubikmeter"
 
 #: src/geocurrency/units/__init__.py:628
 msgid "cubic centimeter"
 msgstr "kubikcentimeter"
 
 #: src/geocurrency/units/__init__.py:632
-#, fuzzy
-#| msgid "Hg millimeter"
 msgid "cubic milliimeter"
-msgstr "Hg millimeter"
+msgstr "kubikmillimeter"
 
 #: src/geocurrency/units/__init__.py:636
 msgid "cubic foot"
@@ -1184,10 +1115,8 @@ msgid "decade"
 msgstr "årtionde"
 
 #: src/geocurrency/units/__init__.py:676
-#, fuzzy
-#| msgid "decitex"
 msgid "decibel"
-msgstr "decitex"
+msgstr "decibel"
 
 #: src/geocurrency/units/__init__.py:680
 msgid "degree"
@@ -1693,10 +1622,8 @@ msgid "meter per second"
 msgstr "meter per sekund"
 
 #: src/geocurrency/units/__init__.py:1174
-#, fuzzy
-#| msgid "meter per second"
 msgid "meter per square second"
-msgstr "meter per sekund"
+msgstr "meter per kvadrat sekund"
 
 #: src/geocurrency/units/__init__.py:1179
 msgid "metric horsepower"
@@ -2093,22 +2020,16 @@ msgid "square league"
 msgstr "fyrkantig liga"
 
 #: src/geocurrency/units/__init__.py:1527
-#, fuzzy
-#| msgid "square mile"
 msgid "square meter"
-msgstr "kvadratkilometer"
+msgstr "kvadratmeter"
 
 #: src/geocurrency/units/__init__.py:1531
-#, fuzzy
-#| msgid "cubic centimeter"
 msgid "square centimeter"
-msgstr "kubikcentimeter"
+msgstr "kvadratcentimeter"
 
 #: src/geocurrency/units/__init__.py:1535
-#, fuzzy
-#| msgid "square mile"
 msgid "square millimeter"
-msgstr "kvadratkilometer"
+msgstr "kvadratmillimeter"
 
 #: src/geocurrency/units/__init__.py:1539
 msgid "square mile"
@@ -2301,31 +2222,31 @@ msgstr "Mo röntgenvåglängd"
 
 #: src/geocurrency/units/__init__.py:1811
 msgid "yard"
-msgstr ""
+msgstr "gård"
 
 #: src/geocurrency/units/__init__.py:1819
 msgid "zeta"
-msgstr ""
+msgstr "zeta"
 
 #: src/geocurrency/units/__init__.py:1823
 msgid "decibelmilliwatt"
-msgstr ""
+msgstr "decibelmilliwatt"
 
 #: src/geocurrency/units/__init__.py:1827
 msgid "decibelmicrowatt"
-msgstr ""
+msgstr "decibelmicrowatt"
 
 #: src/geocurrency/units/__init__.py:1831
 msgid "Euler‘s number"
-msgstr ""
+msgstr "Eulers nummer"
 
 #: src/geocurrency/units/__init__.py:1835
 msgid "octave"
-msgstr ""
+msgstr "oktav"
 
 #: src/geocurrency/units/__init__.py:1839
 msgid "sound pressure level"
-msgstr ""
+msgstr "ljudtrycksnivå"
 
 #: src/geocurrency/units/models.py:369
 msgid "Incompatible units"
