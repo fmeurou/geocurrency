@@ -1,0 +1,2255 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-08 17:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api/settings.py:177 src/geocurrency/core/settings.example.py:154
+msgid "Afrikaans"
+msgstr ""
+
+#: api/settings.py:178 src/geocurrency/core/settings.example.py:155
+msgid "Arabic"
+msgstr ""
+
+#: api/settings.py:179 src/geocurrency/core/settings.example.py:156
+msgid "Algerian Arabic"
+msgstr ""
+
+#: api/settings.py:180 src/geocurrency/core/settings.example.py:157
+msgid "Asturian"
+msgstr ""
+
+#: api/settings.py:181 src/geocurrency/core/settings.example.py:158
+msgid "Azerbaijani"
+msgstr ""
+
+#: api/settings.py:182 src/geocurrency/core/settings.example.py:159
+msgid "Bulgarian"
+msgstr ""
+
+#: api/settings.py:183 src/geocurrency/core/settings.example.py:160
+msgid "Belarusian"
+msgstr ""
+
+#: api/settings.py:184 src/geocurrency/core/settings.example.py:161
+msgid "Bengali"
+msgstr ""
+
+#: api/settings.py:185 src/geocurrency/core/settings.example.py:162
+msgid "Breton"
+msgstr ""
+
+#: api/settings.py:186 src/geocurrency/core/settings.example.py:163
+msgid "Bosnian"
+msgstr ""
+
+#: api/settings.py:187 src/geocurrency/core/settings.example.py:164
+msgid "Catalan"
+msgstr ""
+
+#: api/settings.py:188 src/geocurrency/core/settings.example.py:165
+msgid "Czech"
+msgstr ""
+
+#: api/settings.py:189 src/geocurrency/core/settings.example.py:166
+msgid "Welsh"
+msgstr ""
+
+#: api/settings.py:190 src/geocurrency/core/settings.example.py:167
+msgid "Danish"
+msgstr ""
+
+#: api/settings.py:191 src/geocurrency/core/settings.example.py:168
+msgid "German"
+msgstr ""
+
+#: api/settings.py:192 src/geocurrency/core/settings.example.py:169
+msgid "Lower Sorbian"
+msgstr ""
+
+#: api/settings.py:193 src/geocurrency/core/settings.example.py:170
+msgid "Greek"
+msgstr ""
+
+#: api/settings.py:194 src/geocurrency/core/settings.example.py:171
+msgid "English"
+msgstr ""
+
+#: api/settings.py:195 src/geocurrency/core/settings.example.py:172
+msgid "Australian English"
+msgstr ""
+
+#: api/settings.py:196 src/geocurrency/core/settings.example.py:173
+msgid "British English"
+msgstr ""
+
+#: api/settings.py:197 src/geocurrency/core/settings.example.py:174
+msgid "Esperanto"
+msgstr ""
+
+#: api/settings.py:198 src/geocurrency/core/settings.example.py:175
+msgid "Spanish"
+msgstr ""
+
+#: api/settings.py:199 src/geocurrency/core/settings.example.py:176
+msgid "Argentinian Spanish"
+msgstr ""
+
+#: api/settings.py:200 src/geocurrency/core/settings.example.py:177
+msgid "Colombian Spanish"
+msgstr ""
+
+#: api/settings.py:201 src/geocurrency/core/settings.example.py:178
+msgid "Mexican Spanish"
+msgstr ""
+
+#: api/settings.py:202 src/geocurrency/core/settings.example.py:179
+msgid "Nicaraguan Spanish"
+msgstr ""
+
+#: api/settings.py:203 src/geocurrency/core/settings.example.py:180
+msgid "Venezuelan Spanish"
+msgstr ""
+
+#: api/settings.py:204 src/geocurrency/core/settings.example.py:181
+msgid "Estonian"
+msgstr ""
+
+#: api/settings.py:205 src/geocurrency/core/settings.example.py:182
+msgid "Basque"
+msgstr ""
+
+#: api/settings.py:206 src/geocurrency/core/settings.example.py:183
+msgid "Persian"
+msgstr ""
+
+#: api/settings.py:207 src/geocurrency/core/settings.example.py:184
+msgid "Finnish"
+msgstr ""
+
+#: api/settings.py:208 src/geocurrency/core/settings.example.py:185
+msgid "French"
+msgstr ""
+
+#: api/settings.py:209 src/geocurrency/core/settings.example.py:186
+msgid "Frisian"
+msgstr ""
+
+#: api/settings.py:210 src/geocurrency/core/settings.example.py:187
+msgid "Irish"
+msgstr ""
+
+#: api/settings.py:211 src/geocurrency/core/settings.example.py:188
+msgid "Scottish Gaelic"
+msgstr ""
+
+#: api/settings.py:212 src/geocurrency/core/settings.example.py:189
+msgid "Galician"
+msgstr ""
+
+#: api/settings.py:213 src/geocurrency/core/settings.example.py:190
+msgid "Hebrew"
+msgstr ""
+
+#: api/settings.py:214 src/geocurrency/core/settings.example.py:191
+msgid "Hindi"
+msgstr ""
+
+#: api/settings.py:215 src/geocurrency/core/settings.example.py:192
+msgid "Croatian"
+msgstr ""
+
+#: api/settings.py:216 src/geocurrency/core/settings.example.py:193
+msgid "Upper Sorbian"
+msgstr ""
+
+#: api/settings.py:217 src/geocurrency/core/settings.example.py:194
+msgid "Hungarian"
+msgstr ""
+
+#: api/settings.py:218 src/geocurrency/core/settings.example.py:195
+msgid "Armenian"
+msgstr ""
+
+#: api/settings.py:219 src/geocurrency/core/settings.example.py:196
+msgid "Interlingua"
+msgstr ""
+
+#: api/settings.py:220 src/geocurrency/core/settings.example.py:197
+msgid "Indonesian"
+msgstr ""
+
+#: api/settings.py:221 src/geocurrency/core/settings.example.py:198
+msgid "Igbo"
+msgstr ""
+
+#: api/settings.py:222 src/geocurrency/core/settings.example.py:199
+msgid "Ido"
+msgstr ""
+
+#: api/settings.py:223 src/geocurrency/core/settings.example.py:200
+msgid "Icelandic"
+msgstr ""
+
+#: api/settings.py:224 src/geocurrency/core/settings.example.py:201
+msgid "Italian"
+msgstr ""
+
+#: api/settings.py:225 src/geocurrency/core/settings.example.py:202
+msgid "Japanese"
+msgstr ""
+
+#: api/settings.py:226 src/geocurrency/core/settings.example.py:203
+msgid "Georgian"
+msgstr ""
+
+#: api/settings.py:227 src/geocurrency/core/settings.example.py:204
+msgid "Kabyle"
+msgstr ""
+
+#: api/settings.py:228 src/geocurrency/core/settings.example.py:205
+msgid "Kazakh"
+msgstr ""
+
+#: api/settings.py:229 src/geocurrency/core/settings.example.py:206
+msgid "Khmer"
+msgstr ""
+
+#: api/settings.py:230 src/geocurrency/core/settings.example.py:207
+msgid "Kannada"
+msgstr ""
+
+#: api/settings.py:231 src/geocurrency/core/settings.example.py:208
+msgid "Korean"
+msgstr ""
+
+#: api/settings.py:232 src/geocurrency/core/settings.example.py:209
+msgid "Kyrgyz"
+msgstr ""
+
+#: api/settings.py:233 src/geocurrency/core/settings.example.py:210
+msgid "Luxembourgish"
+msgstr ""
+
+#: api/settings.py:234 src/geocurrency/core/settings.example.py:211
+msgid "Lithuanian"
+msgstr ""
+
+#: api/settings.py:235 src/geocurrency/core/settings.example.py:212
+msgid "Latvian"
+msgstr ""
+
+#: api/settings.py:236 src/geocurrency/core/settings.example.py:213
+msgid "Macedonian"
+msgstr ""
+
+#: api/settings.py:237 src/geocurrency/core/settings.example.py:214
+msgid "Malayalam"
+msgstr ""
+
+#: api/settings.py:238 src/geocurrency/core/settings.example.py:215
+msgid "Mongolian"
+msgstr ""
+
+#: api/settings.py:239 src/geocurrency/core/settings.example.py:216
+msgid "Marathi"
+msgstr ""
+
+#: api/settings.py:240 src/geocurrency/core/settings.example.py:217
+msgid "Burmese"
+msgstr ""
+
+#: api/settings.py:241 src/geocurrency/core/settings.example.py:218
+msgid "Norwegian Bokmål"
+msgstr ""
+
+#: api/settings.py:242 src/geocurrency/core/settings.example.py:219
+msgid "Nepali"
+msgstr ""
+
+#: api/settings.py:243 src/geocurrency/core/settings.example.py:220
+msgid "Dutch"
+msgstr ""
+
+#: api/settings.py:244 src/geocurrency/core/settings.example.py:221
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: api/settings.py:245 src/geocurrency/core/settings.example.py:222
+msgid "Ossetic"
+msgstr ""
+
+#: api/settings.py:246 src/geocurrency/core/settings.example.py:223
+msgid "Punjabi"
+msgstr ""
+
+#: api/settings.py:247 src/geocurrency/core/settings.example.py:224
+msgid "Polish"
+msgstr ""
+
+#: api/settings.py:248 src/geocurrency/core/settings.example.py:225
+msgid "Portuguese"
+msgstr ""
+
+#: api/settings.py:249 src/geocurrency/core/settings.example.py:226
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: api/settings.py:250 src/geocurrency/core/settings.example.py:227
+msgid "Romanian"
+msgstr ""
+
+#: api/settings.py:251 src/geocurrency/core/settings.example.py:228
+msgid "Russian"
+msgstr ""
+
+#: api/settings.py:252 src/geocurrency/core/settings.example.py:229
+msgid "Slovak"
+msgstr ""
+
+#: api/settings.py:253 src/geocurrency/core/settings.example.py:230
+msgid "Slovenian"
+msgstr ""
+
+#: api/settings.py:254 src/geocurrency/core/settings.example.py:231
+msgid "Albanian"
+msgstr ""
+
+#: api/settings.py:255 src/geocurrency/core/settings.example.py:232
+msgid "Serbian"
+msgstr ""
+
+#: api/settings.py:256 src/geocurrency/core/settings.example.py:233
+msgid "Serbian Latin"
+msgstr ""
+
+#: api/settings.py:257 src/geocurrency/core/settings.example.py:234
+msgid "Swedish"
+msgstr ""
+
+#: api/settings.py:258 src/geocurrency/core/settings.example.py:235
+msgid "Swahili"
+msgstr ""
+
+#: api/settings.py:259 src/geocurrency/core/settings.example.py:236
+msgid "Tamil"
+msgstr ""
+
+#: api/settings.py:260 src/geocurrency/core/settings.example.py:237
+msgid "Telugu"
+msgstr ""
+
+#: api/settings.py:261 src/geocurrency/core/settings.example.py:238
+msgid "Tajik"
+msgstr ""
+
+#: api/settings.py:262 src/geocurrency/core/settings.example.py:239
+msgid "Thai"
+msgstr ""
+
+#: api/settings.py:263 src/geocurrency/core/settings.example.py:240
+msgid "Turkmen"
+msgstr ""
+
+#: api/settings.py:264 src/geocurrency/core/settings.example.py:241
+msgid "Turkish"
+msgstr ""
+
+#: api/settings.py:265 src/geocurrency/core/settings.example.py:242
+msgid "Tatar"
+msgstr ""
+
+#: api/settings.py:266 src/geocurrency/core/settings.example.py:243
+msgid "Udmurt"
+msgstr ""
+
+#: api/settings.py:267 src/geocurrency/core/settings.example.py:244
+msgid "Ukrainian"
+msgstr ""
+
+#: api/settings.py:268 src/geocurrency/core/settings.example.py:245
+msgid "Urdu"
+msgstr ""
+
+#: api/settings.py:269 src/geocurrency/core/settings.example.py:246
+msgid "Uzbek"
+msgstr ""
+
+#: api/settings.py:270 src/geocurrency/core/settings.example.py:247
+msgid "Vietnamese"
+msgstr ""
+
+#: api/settings.py:271 src/geocurrency/core/settings.example.py:248
+msgid "Simplified Chinese"
+msgstr ""
+
+#: api/settings.py:272 src/geocurrency/core/settings.example.py:249
+msgid "Traditional Chinese"
+msgstr ""
+
+#: src/geocurrency/countries/viewsets.py:76
+msgid "Unknown country or no info for this country"
+msgstr ""
+
+#: src/geocurrency/rates/models.py:384
+msgid "Rate could not be found"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:3 src/geocurrency/units/tests.py:48
+#: src/geocurrency/units/tests.py:129 src/geocurrency/units/tests.py:134
+msgid "length"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:4
+msgid "time"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:5
+msgid "current"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:6
+msgid "luminosity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:7
+msgid "mass"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:8
+msgid "substance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:9
+msgid "temperature"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:10
+msgid "constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:11
+msgid "area"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:12
+msgid "volume"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:13
+msgid "frequency"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:14
+msgid "wavenumber"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:15
+msgid "velocity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:16
+msgid "acceleration"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:17
+msgid "force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:18
+msgid "energy"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:19
+msgid "power"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:20
+msgid "density"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:21
+msgid "pressure"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:22
+msgid "torque"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:23
+msgid "viscosity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:24
+msgid "kinematic viscosity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:26
+msgid "fluidity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:27
+msgid "concentration"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:28
+msgid "activity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:29
+msgid "entropy"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:31
+msgid "molar entropy"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:35
+msgid "heat transmission"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:38
+msgid "luminance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:41
+msgid "luminous flux"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:44
+msgid "illuminance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:47
+msgid "intensity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:48
+msgid "charge"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:49
+msgid "electric potential"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:52
+msgid "electric field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:55
+msgid "resistance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:58
+msgid "conductance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:61
+msgid "capacitance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:64
+msgid "inductance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:67
+msgid "magnetic flux"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:70
+msgid "magnetic field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:73
+msgid "magnetomotive force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:75
+msgid "electric dipole"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:78
+msgid "electric quadrupole"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:81
+msgid "magnetic dipole"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:83
+msgid "printing unit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:85
+msgid "gaussian charge"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:88
+msgid "gaussian current"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:91
+msgid "gaussian electric potential"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:94
+msgid "gaussian electric field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:97
+msgid "gaussian electric displacement field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:101
+msgid "gaussian electric flux"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:104
+msgid "gaussian magnetic field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:107
+msgid "gaussian magnetic field strength"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:111
+msgid "gaussian magnetic flux"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:114
+msgid "gaussian resistance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:117
+msgid "gaussian resistivity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:119
+msgid "gaussian capacitance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:121
+msgid "gaussian inductance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:124
+msgid "gaussian conductance"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:127
+msgid "esu charge"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:130
+msgid "esu current"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:133
+msgid "esu electric potential"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:137
+msgid "esu magnetic flux"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:140
+msgid "esu magnetic field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:233
+msgid "Copper Kα"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:237
+msgid "Molybdenum K-α"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:241
+msgid "Tungsten K-α"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:242
+msgid "W Kα"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:245
+msgid "RKM"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:250 src/geocurrency/units/__init__.py:846
+msgid "long ton-force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:260 src/geocurrency/units/__init__.py:1126
+msgid "long ton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:265
+msgid "short ton force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:270
+msgid "short hundredweight"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:275
+msgid "short ton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:280
+msgid "US International Ampere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:285
+msgid "US international Ohm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:290
+msgid "US international Volt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:295
+msgid "US therm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:299
+msgid "abampere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:303
+msgid "abcoulomb"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:307
+msgid "Aberdeen"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:311
+msgid "abfarad"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:315
+msgid "abhenry"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:319
+msgid "abohm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:323
+msgid "absiemens"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:327
+msgid "abvolt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:331
+msgid "acre"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:335
+msgid "acre-foot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:339
+msgid "ampere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:343
+msgid "ampere-turn"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:347
+msgid "angstrom"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:351
+msgid "angstrom star"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:355
+msgid "apothecary dram"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:359
+msgid "apothecary ounce"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:363
+msgid "apothecary pound"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:367
+msgid "minute of arc"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:371
+msgid "second of arc"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:375
+msgid "are"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:379
+msgid "astronomical unit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:383
+msgid "atmosphere liter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:387
+msgid "atomic mass constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:391
+msgid "atomic unit of current"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:395
+msgid "atomic unit of electric field"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:399
+msgid "atomic unit of force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:403
+msgid "atomic unit of intensity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:407
+msgid "atomic unit of temperature"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:411
+msgid "atomic unit of time"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:415
+msgid "Avogadro constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:419
+msgid "Avogadro number"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:423
+msgid "bag"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:427
+msgid "bar"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:431
+msgid "barn"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:435
+msgid "barrel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:439
+msgid "barrye"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:443
+msgid "baud"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:448
+msgid "becquerel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:452
+msgid "beer barrel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:456
+msgid "bel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:460
+msgid "biot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:464
+msgid "biot turn"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:468
+msgid "bit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:472
+msgid "bits per pixel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:476
+msgid "board foot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:480
+msgid "bohr"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:484
+msgid "bohr magneton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:488
+msgid "boiler horsepower"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:492
+msgid "boltzmann constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:496
+msgid "british thermal unit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:500
+msgid "buckingham"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:504
+msgid "bushel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:508
+msgid "byte"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:512
+msgid "cable length"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:516
+msgid "calorie"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:520
+msgid "candela"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:524
+msgid "carat"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:528
+msgid "centimeter H20"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:532
+msgid "centimeter Hg"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:536
+msgid "century"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:540
+msgid "chain"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:544
+msgid "cicero"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:548
+msgid "circular mil"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:552
+msgid "classical electron radius"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:556
+msgid "clausius"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:560
+msgid "common year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:564
+msgid "conductance quantum"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:568
+msgid "conventional ampere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:572
+msgid "conventional coulomb"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:576
+msgid "conventional farad"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:580
+msgid "conventional henry"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:584
+msgid "conventional josephson constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:588
+msgid "conventional ohm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:592
+msgid "conventional volt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:596
+msgid "conventional Von Klitzing constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:600
+msgid "conventional Watt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:604
+msgid "coulomb"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:608
+msgid "coulomb constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:612
+msgid "count"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:616
+msgid "counts per second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:620
+msgid "CSS pixel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:624
+msgid "cubic meter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:628
+msgid "cubic centimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:632
+msgid "cubic milliimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:636
+msgid "cubic foot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:640
+msgid "cubic inch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:644
+msgid "cubic yard"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:648
+msgid "cup"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:652
+msgid "curie"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:656
+msgid "dalton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:660
+msgid "darcy"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:664
+msgid "day"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:665
+msgctxt "unit"
+msgid "day"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:668
+msgid "debye"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:672
+msgid "decade"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:673
+msgctxt "symbol"
+msgid "decade"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:676
+msgid "decibel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:680
+msgid "degree"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:684
+msgid "degree Celsius"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:688
+msgid "degree Fahrenheit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:692
+msgid "degree Rankine"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:696
+msgid "degree Reaumur"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:700
+msgid "denier"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:704
+msgid "didot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:708
+msgid "Dirac constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:712
+msgid "dram"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:716
+msgid "dry barrel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:720
+msgid "dry gallon"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:724
+msgid "dry pint"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:728
+msgid "dry quart"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:732
+msgid "decitex"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:736
+msgid "dyne"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:740
+msgid "eletcrical horsepower"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:744
+msgid "electron G-factor"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:748
+msgid "electron mass"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:752
+msgid "electronvolt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:756
+msgid "elementary charge"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:760
+msgid "entropy unit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:764
+msgid "enzyme unit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:768
+msgid "eon"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:772
+msgid "erg"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:776
+msgid "farad"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:780
+msgid "faraday"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:784
+msgid "faraday constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:788
+msgid "fathom"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:792
+msgid "fermi"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:796
+msgid "fifteen degree calorie"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:800
+msgid "fifth"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:804
+msgid "fine structure constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:808
+msgid "first radiation constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:812
+msgid "fluid dram"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:816
+msgid "fluid ounce"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:820
+msgid "foot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:824
+msgid "foot H2O"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:828
+msgid "foot per second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:832
+msgid "foot pound"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:836
+msgid "gram-force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:841
+msgid "kilogram-force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:850 src/geocurrency/units/__init__.py:862
+msgid "tonne-force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:854
+msgid "ounce-force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:858
+msgid "pound-force"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:866
+msgid "fortnight"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:870
+msgid "franklin"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:874
+msgid "furlong"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:878
+msgid "galileo"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:882
+msgid "gallon"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:886 src/geocurrency/units/__init__.py:890
+msgid "gamma"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:894
+msgid "gauss"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:898
+msgid "gilbert"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:902
+msgid "gill"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:906
+msgid "grade"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:910
+msgid "grain"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:914
+msgid "gram"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:918
+msgid "gray"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:922
+msgid "gregorian year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:923
+msgctxt "unit"
+msgid "gregorian year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:926
+msgid "hand"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:930
+msgid "hartree"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:934
+msgid "hectare"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:938
+msgid "henry"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:942
+msgid "hertz"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:946
+msgid "hogshead"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:950
+msgid "horsepower"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:954
+msgid "hour"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:958
+msgid "hundredweight"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:962
+msgid "impedance of free space"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:966
+msgid "imperial barrel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:970
+msgid "imperial bushel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:974
+msgid "imperial cup"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:978
+msgid "imperial fluid drachm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:982
+msgid "imperial fluid ounce"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:986
+msgid "imperial fluid scruple"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:990
+msgid "imperial gallon"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:994
+msgid "imperial gill"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:998
+msgid "imperial minim"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1002
+msgid "imperial peck"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1006
+msgid "imperial pint"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1010
+msgid "imperial quart"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1014
+msgid "inch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1018
+msgid "inch H20 39F"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1022
+msgid "inch H20 60F"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1026
+msgid "inch Hg"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1030
+msgid "inch Hg 60F"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1034
+msgid "international Btu"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1038
+msgid "international calorie"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1042
+msgid "Josephson constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1046
+msgid "Joule"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1050
+msgid "jute"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1054
+msgid "katal"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1058
+msgid "kelvin"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1062
+msgid "kilometer per hour"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1066
+msgid "kilometer per second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1070
+msgid "kip"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1074
+msgid "kip per square inch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1078
+msgid "knot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1082
+msgid "lambda"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1086
+msgid "lambert"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1090
+msgid "langley"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1094
+msgid "lattice constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1098
+msgid "league"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1102
+msgid "leap year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1103
+#: src/geocurrency/units/__init__.py:1815
+#: src/geocurrency/units/__init__.py:1816
+msgid "year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1106
+msgid "light year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1107
+msgid "ly"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1110
+msgid "link"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1111
+msgid "li"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1114
+msgid "liter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1115
+msgid "L"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1118
+msgid "log 10"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1119
+msgid "ln10"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1122
+msgid "long hundredweight"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1130
+msgid "lumen"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1134
+msgid "lux"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1138
+msgid "magnetic flux quantum"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1142
+msgid "maxwell"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1146
+msgid "mean international ampere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1150
+msgid "mean international Ohm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1154
+msgid "mean international Volt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1158
+msgid "density of mercury"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1162
+msgid "density of mercury 60F"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1166
+msgid "meter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1170
+msgid "meter per second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1174
+msgid "meter per square second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1179
+msgid "metric horsepower"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1183
+msgid "metric ton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1187
+msgid "micron"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1191
+msgid "mil"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1195
+msgid "mile"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1199
+msgid "mile per hour"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1203
+#: src/geocurrency/units/__init__.py:1204
+msgid "millenium"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1207
+msgid "milliarcsecond"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1211
+msgid "Hg millimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1215
+msgid "minim"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1219
+msgid "minute"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1223
+msgid "molar"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1227
+msgid "molar gas constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1231
+msgid "mole"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1235
+msgid "month"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1239
+msgid "nautical mile"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1240
+msgid "nm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1243
+msgid "neper"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1244
+msgid "Np"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1247
+msgid "neutron mass"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1251
+msgid "newton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1255
+msgid "newtonian constant of gravitation"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1259
+msgid "nit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1263
+msgid "nuclear magneton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1267
+msgid "number english"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1271
+msgid "number meter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1275
+msgid "oersted"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1279
+msgid "ohm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1283
+msgid "oil barrel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1287
+msgid "ounce"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1291
+msgid "parsec"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1295
+msgid "particle"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1299
+msgid "pascal"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1303
+msgid "peak sun hour"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1307
+msgid "peck"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1311
+msgid "pennyweight"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1319
+msgid "pica"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1323
+msgid "pint"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1327
+msgid "pixel"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1331
+msgid "pixel per centimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1335
+msgid "pixel per inch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1339
+msgid "Planck constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1343
+#: src/geocurrency/units/__init__.py:1347
+msgid "Planck current"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1344
+msgid "qP"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1348
+msgid "lP"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1351
+msgid "Planck mass"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1352
+msgid "mP"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1355
+msgid "Planck temperature"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1356
+msgid "TP"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1359
+msgid "Planck time"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1360
+msgid "tP"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1363
+msgid "point"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1367
+msgid "poise"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1371
+msgid "pound"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1375
+msgid "pound force per square inch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1379
+msgid "poundal"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1383
+msgid "proton mass"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1387
+msgid "quadrillion Btu"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1391
+msgid "quart"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1395
+msgid "quarter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1399
+msgid "radian"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1403
+msgid "rads"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1407
+msgid "reciprocal centimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1411
+msgid "refrigeration ton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1415
+msgid "roentgen equivalent man"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1419
+msgid "revolutions per minute"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1420
+msgid "rpm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1423
+msgid "revolutions per second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1424
+msgid "rps"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1427
+#: src/geocurrency/units/__init__.py:1428
+msgid "reyn"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1431
+msgid "reciprocal poise"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1435
+msgid "rod"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1439
+msgid "roentgen"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1443
+msgid "rutherford"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1447
+msgid "rydberg"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1451
+msgid "rydberg constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1455
+msgid "scaled point"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1459
+msgid "scruple"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1463
+msgid "second"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1467
+msgid "second radiation constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1471
+msgid "shake"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1475
+msgid "shot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1479
+msgid "sidereal day"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1480
+msgctxt "unit"
+msgid "sidereal day"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1483
+msgid "sidereal month"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1484
+msgctxt "unit"
+msgid "sidereal month"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1487
+msgid "sidereal year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1488
+msgctxt "unit"
+msgid "sidereal year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1491
+msgid "siemens"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1495
+msgid "sievert"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1499
+msgid "slinch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1503
+msgid "slug"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1507
+msgid "speed of light"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1511
+msgid "square degree"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1515
+msgid "square foot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1519
+msgid "square inch"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1523
+msgid "square league"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1527
+msgid "square meter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1531
+msgid "square centimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1535
+msgid "square millimeter"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1539
+msgid "square mile"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1543
+msgid "square rod"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1547
+msgid "square survey mile"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1551
+msgid "square yard"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1555
+msgid "standard atmosphere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1559
+msgid "standard gravity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1563
+msgid "standard liter per minute"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1599
+msgid "Stefan-Boltzmann constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1603
+msgid "steradian"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1607
+msgid "stere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1611
+msgid "stilb"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1615
+msgid "stokes"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1619
+msgid "stone"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1623
+msgid "survey foot"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1627
+msgid "survey mile"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1635
+#: src/geocurrency/units/__init__.py:1636
+msgid "synodic month"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1639
+#: src/geocurrency/units/__init__.py:1640
+msgid "tablespoon"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1647
+#: src/geocurrency/units/__init__.py:1648
+msgid "teaspoon"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1651
+msgid "technical atmosphere"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1679
+msgid "therm"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1683
+msgid "thermochemical Btu"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1687
+msgid "Thomson cross section"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1695
+msgid "ton"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1699
+msgid "ton of TNT"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1703
+msgid "ton of oil equivalent"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1704
+msgid "toe"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1711
+#: src/geocurrency/units/__init__.py:1712
+msgid "tropical month"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1715
+#: src/geocurrency/units/__init__.py:1716
+msgid "tropical year"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1719
+#: src/geocurrency/units/__init__.py:1720
+msgid "troy ounce"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1723
+#: src/geocurrency/units/__init__.py:1724
+msgid "troy pound"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1727
+#: src/geocurrency/units/__init__.py:1728
+msgid "turn"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1731
+#: src/geocurrency/units/__init__.py:1732
+msgid "unified atomic mass unit"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1735
+msgid "unit pole"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1739
+msgid "vacuum permeability"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1743
+msgid "vacuum permittivity"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1755
+msgid "Von Klitzing constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1759
+msgid "Water volumic mass"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1763
+msgid "Water volumic mass at 39F"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1767
+msgid "Water volumic mass at 60F"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1787
+msgid "wien frequency displacement law constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1791
+msgid "wien u"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1795
+msgid "wien displacement law constant"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1799
+msgid "wien x"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1803
+msgid "Cu X-ray wavelength"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1807
+msgid "Mo X-ray wavelength"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1811
+msgid "yard"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1819
+msgid "zeta"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1823
+msgid "decibelmilliwatt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1827
+msgid "decibelmicrowatt"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1831
+msgid "Euler‘s number"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1835
+msgid "octave"
+msgstr ""
+
+#: src/geocurrency/units/__init__.py:1839
+msgid "sound pressure level"
+msgstr ""
+
+#: src/geocurrency/units/models.py:369
+msgid "Incompatible units"
+msgstr ""
+
+#: src/geocurrency/units/models.py:390
+msgid "Undefined unit in the registry"
+msgstr ""
