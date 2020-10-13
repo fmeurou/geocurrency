@@ -5,9 +5,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
-from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
-
+from django.utils.translation import ugettext_lazy as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
 from geocurrency.core.helpers import service
 
@@ -79,10 +78,10 @@ class RateManager(models.Manager):
         # See here for process
         # https://app.lucidchart.com/documents/edit/cee5a97f-021f-4eab-8cf3-d66c88cf46f2/0_0?beaconFlowId=4B33C87C22AD8D63
         rate = self.find_direct_rate(
-                currency=currency,
-                key=key,
-                base_currency=base_currency,
-                date_obj=date_obj)
+            currency=currency,
+            key=key,
+            base_currency=base_currency,
+            date_obj=date_obj)
         if rate.pk:
             return rate
         rate = self.find_pivot_rate(currency=currency, key=key, base_currency=base_currency, date_obj=date_obj)
@@ -193,8 +192,8 @@ class Rate(BaseRate):
     key = models.CharField(max_length=255, default=None, db_index=True, null=True)
     value_date = models.DateField()
     value = models.FloatField(default=0)
-    currency = models.CharField(max_length=3)
-    base_currency = models.CharField(max_length=3, default='EUR')
+    currency = models.CharField(max_length=3, db_index=True)
+    base_currency = models.CharField(max_length=3, db_index=True, default='EUR')
     objects = RateManager()
 
     class Meta:
