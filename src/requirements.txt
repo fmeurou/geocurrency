@@ -1,0 +1,25 @@
+Django~=3.1.0
+django-cors-headers~=3.2.0
+django-cors-middleware~=1.5.0
+django-createsuperuser
+django-extensions~=3.0.0
+django-filter~=2.3.0
+django-redis~=4.12.0
+django-sendfile~=0.3.0
+djangorestframework~=3.11.0
+drf-yasg~=1.17.0
+markdown~=3.0
+lxml~=4.0
+django_redis~=4.0
+pysendfile~=2.0
+gunicorn
+# "psycopg2
+# "mysql
+pytz
+pycountry
+countryinfo~=0.1.0
+timezonefinder~=4.4.0
+iso4217
+forex-python~=1.0
+Babel~=2.8
+Pint~=0.15
