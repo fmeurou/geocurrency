@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import OuterRef, Subquery
+from django.db.models import OuterRef, Subquery, QuerySet
 from django_filters import rest_framework as filters
 
 from .models import Rate
@@ -37,27 +37,29 @@ class RateFilter(filters.FilterSet):
 
         ]
 
-    def user_filter(self, queryset, name, value):
+    def user_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         if self.request and self.request.user and self.request.user.is_authenticated:
             return queryset.filter(**{
                 'user': self.request.user,
             })
+        return queryset.filter(user__isnull=True)
 
-    def key_filter(self, queryset, name, value):
+    def key_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         if self.request and self.request.user and self.request.user.is_authenticated:
             return queryset.filter(**{
                 'user': self.request.user,
                 'key': value
             })
+        return queryset.filter(user__isnull=True)
 
-    def currency_latest_values_filter(self, queryset, name, value):
+    def currency_latest_values_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         queryset = queryset.filter(currency=value)
         latest = queryset.filter(currency=OuterRef('currency')).order_by('-value_date')
         return queryset.annotate(
             currency_latest=Subquery(latest.values('value_date')[:1])
         ).filter(value_date=models.F('currency_latest'))
 
-    def base_currency_latest_values_filter(self, queryset, name, value):
+    def base_currency_latest_values_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         queryset = queryset.filter(base_currency=value)
         latest = queryset.filter(base_currency=OuterRef('base_currency')).order_by('-value_date')
         return queryset.annotate(
