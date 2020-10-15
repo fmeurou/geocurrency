@@ -3,7 +3,8 @@ from datetime import date
 
 import pint
 from django.utils.translation import ugettext as _
-from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
+from geocurrency.converters.models import BaseConverter, ConverterResult, \
+    ConverterResultDetail, ConverterResultError, ConverterLoadError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS
 
@@ -24,6 +25,10 @@ class Amount:
         return f'{self.value} {self.unit} ({self.system})'
 
 
+class UnitSystemNotFound(Exception):
+    pass
+
+
 class Unit:
     pass
 
@@ -40,13 +45,13 @@ class UnitSystem:
                 system_name = available_system
                 found = True
         if not found:
-            raise ValueError("Invalid unit system")
+            raise UnitSystemNotFound("Invalid unit system")
         self.system_name = system_name
         try:
             self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
         except (FileNotFoundError, AttributeError):
-            raise ValueError("Invalid unit system")
+            raise UnitSystemNotFound("Invalid unit system")
 
     @classmethod
     def available_systems(cls) -> [str]:
@@ -201,6 +206,10 @@ class Dimension:
             return None
 
 
+class UnitNotFound(Exception):
+    pass
+
+
 class Unit:
     unit_system = None
     code = None
@@ -220,16 +229,19 @@ class Unit:
             try:
                 self.unit = getattr(unit_system.system, code)
             except pint.errors.UndefinedUnitError:
-                raise ValueError("invalid unit for system")
+                raise UnitNotFound("invalid unit for system")
         else:
-            raise ValueError("invalid unit for system")
+            raise UnitNotFound("invalid unit for system")
 
     def __repr__(self):
         return self.code
 
     @classmethod
     def is_valid(self, name):
-        us_si = UnitSystem(system_name='SI')
+        try:
+            us_si = UnitSystem(system_name='SI')
+        except UnitSystemNotFound:
+            return False
         all_units = []
         for us in us_si.available_systems():
             all_units.extend(dir(getattr(us_si.ureg.sys, us)))
@@ -281,11 +293,17 @@ class Unit:
 
     @property
     def dimensionality(self):
-        return self.unit_system.ureg.get_base_units(self.code)[1]
+        try:
+            return self.unit_system.ureg.get_base_units(self.code)[1]
+        except KeyError:
+            return ''
 
     @staticmethod
     def translated_name(unit_system: UnitSystem, unit_str: str) -> str:
-        return '{}'.format(unit_system.ureg[unit_str])
+        try:
+            return '{}'.format(unit_system.ureg[unit_str])
+        except KeyError:
+            return unit_str
 
     @property
     def readable_dimension(self):
@@ -293,6 +311,14 @@ class Unit:
         Wrapper around Unit.dimensionality_string
         """
         return Unit.dimensionality_string(unit_system=self.unit_system, unit_str=self.code)
+
+
+class UnitConverterInitError(Exception):
+    msg = 'Error during initialization of converter'
+
+
+class UnitConverterConvertError(Exception):
+    msg = 'Error converting values'
 
 
 class UnitConverter:
@@ -304,12 +330,15 @@ class UnitConverter(BaseConverter):
     base_unit = None
 
     def __init__(self, base_system: str, base_unit: str, id: str = None):
-        super(UnitConverter, self).__init__(id=id)
-        self.base_system = base_system
-        self.base_unit = base_unit
-        self.system = UnitSystem(system_name=base_system)
-        self.unit = Unit(unit_system=self.system, code=base_unit)
-        self.compatible_units = [str(u) for u in self.unit.unit.compatible_units()]
+        try:
+            super(UnitConverter, self).__init__(id=id)
+            self.base_system = base_system
+            self.base_unit = base_unit
+            self.system = UnitSystem(system_name=base_system)
+            self.unit = Unit(unit_system=self.system, code=base_unit)
+            self.compatible_units = [str(u) for u in self.unit.unit.compatible_units()]
+        except (UnitSystemNotFound, UnitNotFound):
+            raise UnitConverterInitError
 
     def add_data(self, data: []) -> []:
         """
@@ -338,10 +367,13 @@ class UnitConverter(BaseConverter):
 
     @classmethod
     def load(cls, id: str) -> UnitConverter:
-        uc = super(UnitConverter, cls).load(id)
-        uc.system = UnitSystem(system_name=uc.base_system)
-        uc.unit = Unit(unit_system=uc.system, code=uc.base_unit)
-        return uc
+        try:
+            uc = super(UnitConverter, cls).load(id)
+            uc.system = UnitSystem(system_name=uc.base_system)
+            uc.unit = Unit(unit_system=uc.system, code=uc.base_unit)
+            return uc
+        except (UnitSystemNotFound, UnitNotFound, KeyError) as e:
+            raise ConverterLoadError
 
     def save(self):
         system = self.system
@@ -358,7 +390,10 @@ class UnitConverter(BaseConverter):
         """
 
         result = ConverterResult(id=self.id, target=self.base_unit)
-        us = UnitSystem(system_name=self.base_system)
+        try:
+            us = UnitSystem(system_name=self.base_system)
+        except UnitSystemNotFound:
+            raise UnitConverterConvertError
         Q_ = us.ureg.Quantity
         for amount in self.data:
             if amount.unit not in self.compatible_units:

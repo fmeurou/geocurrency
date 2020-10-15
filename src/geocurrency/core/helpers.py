@@ -23,3 +23,9 @@ def service(service_type: str, service_name: str, *args, **kwargs):
     except (AttributeError, ImportError, KeyError) as e:
         logging.error(e)
         return None
+
+
+def validate_language(lang):
+    if lang in [l[0] for l in settings.LANGUAGES]:
+        return lang
+    return 'en'

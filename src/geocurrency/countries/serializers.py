@@ -6,6 +6,7 @@ from pycountry import countries
 from rest_framework import serializers
 
 from .models import Country
+from geocurrency.core.helpers import validate_language
 
 
 class CountrySerializer(serializers.Serializer):
@@ -37,7 +38,7 @@ class CountrySerializer(serializers.Serializer):
         request = self.context.get('request', None)
         if request:
             try:
-                language = request.GET.get('language', request.LANGUAGE_CODE)
+                language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
                 translation = gettext.translation('iso3166', pycountry.LOCALES_DIR, languages=[language])
                 translation.install()
                 return translation.gettext(obj.name)
@@ -87,7 +88,7 @@ class CountryDetailSerializer(serializers.Serializer):
         request = self.context.get('request', None)
         if request:
             try:
-                language = request.GET.get('language', request.LANGUAGE_CODE)
+                language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
                 translation = gettext.translation('iso3166', pycountry.LOCALES_DIR, languages=[language])
                 translation.install()
                 return translation.gettext(obj.name)
