@@ -5,6 +5,10 @@ import uuid
 from django.core.cache import cache
 
 
+class ConverterLoadError(Exception):
+    msg = 'Error while loading converter'
+
+
 class BaseConverter:
     INITIATED_STATUS = 'initiated'
     INSERTING_STATUS = 'inserting'

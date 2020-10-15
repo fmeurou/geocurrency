@@ -56,12 +56,50 @@ class UnitTest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_list_language_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/',
+            data={
+                'language': 'fr'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_list_bad_language_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/',
+            data={
+                'language': 'theta'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_list_per_dimension_request(self):
         client = APIClient()
         response = client.get(
             '/units/mks/units/per_dimension/'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_bad_list_per_dimension_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/hello/units/per_dimension/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_list_with_bad_dimension_request(self):
+        client = APIClient()
+        us = UnitSystem(system_name='mks')
+        response = client.get(
+            '/units/mks/units/',
+            data={
+                'dimension': '[hello]'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_list_with_dimension_request(self):
         client = APIClient()
@@ -93,6 +131,13 @@ class UnitTest(TestCase):
             '/units/mks/units/meter/'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_retrieve_bad_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/plouf/'
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_compatible_request(self):
         client = APIClient()
