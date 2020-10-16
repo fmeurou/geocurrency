@@ -7,7 +7,6 @@ from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
-from .settings import ADDITIONAL_UNITS
 from django.conf import settings
 
 
@@ -50,9 +49,14 @@ class UnitSystem:
             raise UnitSystemNotFound("Invalid unit system")
         self.system_name = system_name
         try:
+            additional_units_settings = settings.GEOCURRENCY_ADDITIONAL_UNITS
+        except AttributeError:
+            pass
+        try:
             self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
             self.load_additional_units(units=ADDITIONAL_BASE_UNITS)
+            self.load_additional_units(units=additional_units_settings)
         except (FileNotFoundError, AttributeError):
             raise UnitSystemNotFound("Invalid unit system")
 
@@ -76,7 +80,7 @@ class UnitSystem:
             return False
         for key in units[self.system_name].keys():
             try:
-                self.unit(key).dimensionality
+                return self.unit(key).dimensionality and True
             except pint.errors.UndefinedUnitError:
                 return False
         return True
@@ -109,16 +113,7 @@ class UnitSystem:
         List of available units for a given Unit system
         :return: Array of names of Unit systems
         """
-        try:
-            additional_units_settings = settings.GEOCURRENCY_ADDITIONAL_UNITS
-        except AttributeError:
-            pass
-        base_list = dir(self.system)
-        # Default units are not enough, kilogram, etc... are not present.
-        unit_system_bases = [v for v in UNIT_SYSTEM_BASE_AND_DERIVED_UNITS.get(self.system_name).values()]
-        # BYOU :)
-        additional_units = [k for k in additional_units_settings.get(self.system_name, {}).keys()]
-        return set(base_list + unit_system_bases + additional_units)
+        return dir(self.ureg)
 
     def unit_dimensionality(self, unit: str) -> str:
         """
