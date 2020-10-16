@@ -6,8 +6,8 @@ from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
-from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
-    ADDITIONAL_BASE_UNITS, ADDITIONAL_UNITS
+from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
+from .settings import ADDITIONAL_UNITS
 from django.conf import settings
 
 
