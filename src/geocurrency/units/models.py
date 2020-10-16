@@ -6,7 +6,8 @@ from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
-from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
+from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
+    ADDITIONAL_BASE_UNITS, ADDITIONAL_UNITS
 from django.conf import settings
 
 
@@ -51,7 +52,7 @@ class UnitSystem:
         try:
             additional_units_settings = settings.GEOCURRENCY_ADDITIONAL_UNITS
         except AttributeError:
-            pass
+            additional_units_settings = ADDITIONAL_UNITS
         try:
             self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
