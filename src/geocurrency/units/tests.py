@@ -1,12 +1,14 @@
 import uuid
 
 import pint
+from django.conf import settings
 from django.core.cache import cache
 from django.test import TestCase
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.test import APIClient
 
+from . import ADDITIONAL_BASE_UNITS
 from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound
 from .serializers import UnitAmountSerializer
 
@@ -149,6 +151,26 @@ class UnitTest(TestCase):
 
 class UnitSystemTest(TestCase):
 
+    def setUp(self):
+        self.old_setting = getattr(settings, 'ADDITIONAL_UNITS', {})
+        settings.GEOCURRENCY_ADDITIONAL_UNITS = {
+            'SI': {
+                'my_unit':  {
+                    'name': 'My Unit',
+                    'symbol': 'my²',
+                    'relation': '0.0001 meter / meter ** 2'
+                },
+                'bad_unit': {
+                    'name': 'Bad unit',
+                    'symbol': 'All hell loose',
+                    'relation': 'My tailor is rich'
+                }
+            }
+        }  # value tested against in the TestCase
+
+    def tearDown(self):
+        settings.GEOCURRENCY_ADDITIONAL_UNITS = self.old_setting
+
     def test_available_systems(self):
         us = UnitSystem()
         available_systems = us.available_systems()
@@ -158,6 +180,26 @@ class UnitSystemTest(TestCase):
         us = UnitSystem(system_name='imperial')
         available_units = us.available_unit_names()
         self.assertIn('UK_hundredweight', available_units)
+
+    def test_available_base_units(self):
+        us = UnitSystem(system_name='SI')
+        available_units = us.available_unit_names()
+        self.assertIn('kilogram', available_units)
+
+    def test_available_additional_units(self):
+        us = UnitSystem(system_name='SI')
+        available_units = us.available_unit_names()
+        self.assertIn('my_unit', available_units)
+
+    def test_test_additional_base_units(self):
+        us = UnitSystem(system_name='SI')
+        available_units = us.test_additional_units(ADDITIONAL_BASE_UNITS)
+        self.assertTrue(available_units)
+
+    def test_test_additional_units(self):
+        us = UnitSystem(system_name='SI')
+        available_units = us.test_additional_units(settings.GEOCURRENCY_ADDITIONAL_UNITS)
+        self.assertFalse(available_units)
 
     def test_available_units_different(self):
         us = UnitSystem(system_name='mks')

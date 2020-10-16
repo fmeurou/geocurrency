@@ -6,7 +6,9 @@ from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
-from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS
+from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
+from .settings import ADDITIONAL_UNITS
+from django.conf import settings
 
 
 class Amount:
@@ -50,8 +52,34 @@ class UnitSystem:
         try:
             self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
+            self.load_additional_units(units=ADDITIONAL_BASE_UNITS)
         except (FileNotFoundError, AttributeError):
             raise UnitSystemNotFound("Invalid unit system")
+
+    def load_additional_units(self, units: dict) -> bool:
+        """
+        Load additional base units in registry
+        """
+        try:
+            units[self.system_name]
+        except KeyError:
+            return False
+        for key, items in units[self.system_name].items():
+            self.ureg.define(f"{key} = {items['relation']} = {items['symbol']}")
+        return True
+
+    def test_additional_units(self,  units: dict) -> bool:
+        """
+        Load and check dimensionality of ADDITIONAL_BASE_UNITS values
+        """
+        if not self.load_additional_units(units=units):
+            return False
+        for key in units[self.system_name].keys():
+            try:
+                self.unit(key).dimensionality
+            except pint.errors.UndefinedUnitError:
+                return False
+        return True
 
     @classmethod
     def available_systems(cls) -> [str]:
@@ -81,7 +109,16 @@ class UnitSystem:
         List of available units for a given Unit system
         :return: Array of names of Unit systems
         """
-        return dir(self.system)
+        try:
+            additional_units_settings = settings.GEOCURRENCY_ADDITIONAL_UNITS
+        except AttributeError:
+            pass
+        base_list = dir(self.system)
+        # Default units are not enough, kilogram, etc... are not present.
+        unit_system_bases = [v for v in UNIT_SYSTEM_BASE_AND_DERIVED_UNITS.get(self.system_name).values()]
+        # BYOU :)
+        additional_units = [k for k in additional_units_settings.get(self.system_name, {}).keys()]
+        return set(base_list + unit_system_bases + additional_units)
 
     def unit_dimensionality(self, unit: str) -> str:
         """
@@ -194,6 +231,7 @@ class Dimension:
 
     @property
     def units(self):
+
         return [Unit(unit_system=self.unit_system, pint_unit=unit)
                 for unit in self.unit_system.ureg.get_compatible_units(self.code)]
 
@@ -237,26 +275,26 @@ class Unit:
         return self.code
 
     @classmethod
-    def is_valid(self, name):
+    def is_valid(cls, name: str) -> bool:
         try:
             us_si = UnitSystem(system_name='SI')
         except UnitSystemNotFound:
             return False
-        all_units = []
-        for us in us_si.available_systems():
-            all_units.extend(dir(getattr(us_si.ureg.sys, us)))
-        return name in set(all_units)
+        try:
+            return us_si.unit(unit_name=name) and True
+        except pint.errors.UndefinedUnitError:
+            return False
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self.unit_name(self.code)
 
     @property
-    def symbol(self):
+    def symbol(self) -> str:
         return self.unit_symbol(self.code)
 
     @property
-    def dimensions(self):
+    def dimensions(self) -> [Dimension]:
         return [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
                 if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
 

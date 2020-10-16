@@ -140,7 +140,7 @@ DIMENSIONS = {'[length]': {'name': _('length'), 'dimension': 'meter', 'symbol': 
               '[esu_magnetic_field]': {'name': _('esu magnetic field'), 'dimension': 'kilogram ** 0.5 / meter ** 1.5',
                                        'symbol': ''
                                        }
-                                     }
+              }
 
 UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
     'SI': {
@@ -152,7 +152,7 @@ UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
         '[temperature]': 'kelvin',
         '[substance]': 'mole',
         '[luminosity]': 'candela',
-        '[area]': 'square_meter',
+        '[area]': 'square meter',
         '[volume]': 'cubic_meter',
         '[frequency]': 'meter_per_second',
         '[acceleration]': 'meter_per_square_second',
@@ -206,11 +206,11 @@ UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
         '[mass]': 'pound'
     },
     'mks': {
-        '[acceleration]': 'meter_per_square_second',
+        '[acceleration]': 'meter per square second',
         '[capacitance]': 'farad',
         '[charge]': 'coulomb',
         '[current]': 'ampere',
-        '[electric_field]': 'volt_per_meter',
+        '[electric_field]': 'volt per meter',
         '[electric_potential]': 'volt',
         '[energy]': 'joule',
         '[power]': 'watt',
@@ -224,10 +224,51 @@ UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
         '[resistance]': 'ohm',
         '[temperature]': 'kelvin',
         '[time]': 'second',
-        '[velocity]': 'meter_per_second'
+        '[velocity]': 'meter per second'
     }
 }
 
+ADDITIONAL_BASE_UNITS = {
+    'SI': {
+        'meter_per_second': {
+            'name': _('meter per second'),
+            'symbol': 'm.s⁻¹',
+            'relation': '1 meter / second'
+        },
+        'meter_per_square_second': {
+            'name': _('meter per square second'),
+            'symbol': 'm.s⁻²',
+            'relation': '1 meter / second ** 2'
+        },
+        'square_meter': {
+            'name': _('square meter'),
+            'symbol': 'm²',
+            'relation': '1 meter ** 2'
+        },
+        'cubic_meter': {
+            'name': _('square meter'),
+            'symbol': 'm³',
+            'relation': '1 meter ** 3'
+        },
+        'kilogram': {
+            'name': _('kilogram'),
+            'symbol': 'kg',
+            'relation': '1000 gram'
+        },
+        'centimeter': {
+            'name': _('centimeter'),
+            'symbol': 'cm',
+            'relation': '0.01 meter'
+        },
+        'centimeter_per_second': {
+            'name': _('centimeter per second'),
+            'symbol': 'cm.s⁻¹',
+            'relation': '1 centimeter / second'
+        },
+    }
+}
+
+### Dictionnary with translations
 UNIT_EXTENDED_DEFINITION = {
     'K_alpha_Cu_d_220': {
         'name': _('Copper Kα'),
@@ -442,7 +483,6 @@ UNIT_EXTENDED_DEFINITION = {
     'baud': {
         'name': _('baud'),
         'symbol': 'Bd'
-
     },
     'becquerel': {
         'name': _('becquerel'),
@@ -620,15 +660,11 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('CSS pixel'),
         'symbol': 'px'
     },
-    'cubic_meter': {
-        'name': _('cubic meter'),
-        'symbol': 'm³'
-    },
-    'cubic_centimeter': {
+    'cubic centimeter': {
         'name': _('cubic centimeter'),
         'symbol': 'cm³'
     },
-    'cubic_millimmeter': {
+    'cubic millimmeter': {
         'name': _('cubic milliimeter'),
         'symbol': 'mm³'
     },
@@ -1166,15 +1202,6 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('meter'),
         'symbol': 'm'
     },
-    'meter_per_second': {
-        'name': _('meter per second'),
-        'symbol': 'm/s'
-    },
-    'meter_per_square_second': {
-        'name': _('meter per square second'),
-        'symbol': 'm/s²',
-        'family': 'acceleration'
-    },
     'metric_horsepower': {
         'name': _('metric horsepower'),
         'symbol': 'hp'
@@ -1523,18 +1550,6 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('square league'),
         'symbol': 'sq league'
     },
-    'square_meter': {
-        'name': _('square meter'),
-        'symbol': 'm²'
-    },
-    'square_centimeter': {
-        'name': _('square centimeter'),
-        'symbol': 'cm²'
-    },
-    'square_millimeter': {
-        'name': _('square millimeter'),
-        'symbol': 'mm²'
-    },
     'square_mile': {
         'name': _('square mile'),
         'symbol': 'sq mile'
@@ -1827,16 +1842,44 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('decibelmicrowatt'),
         'symbol': 'dBμW'
     },
-    'eulers_number':    {
+    'eulers_number': {
         'name': _('Euler‘s number'),
         'symbol': 'e'
     },
-    'octave':    {
+    'octave': {
         'name': _('octave'),
         'symbol': ''
     },
     'sound_pressure_level': {
         'name': _('sound pressure level'),
         'symbol': ''
-    }
+    },
+    'meter_per_second': {
+        'name': _('meter per second'),
+        'symbol': 'm.s⁻¹'
+    },
+    'meter_per_square_second': {
+        'name': _('meter per square second'),
+        'symbol': 'm.s⁻²'
+    },
+    'square_meter': {
+        'name': _('square meter'),
+        'symbol': 'm²'
+    },
+    'cubic_meter': {
+        'name': _('square meter'),
+        'symbol': 'm³'
+    },
+    'kilogram': {
+        'name': _('kilogram'),
+        'symbol': 'kg'
+    },
+    'centimeter': {
+        'name': _('centimeter'),
+        'symbol': 'cm'
+    },
+    'centimeter_per_second': {
+        'name': _('centimeter per second'),
+        'symbol': 'cm.s⁻¹'
+    },
 }
