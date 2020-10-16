@@ -18,8 +18,7 @@ services:
       - POSTGRES_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
       - POSTGRES_HOST_AUTH_METHOD=trust
   geocurrency:
-    build: geocurrency/
-    image: geocurrency
+    image: fmeurou/geocurrency:latest
     command: "/usr/bin/supervisord -c /etc/supervisor/conf.d/api.conf"
     environment:
       - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
@@ -41,7 +40,7 @@ services:
       - db
       - cache
   migration:
-    image: geocurrency
+    image: fmeurou/geocurrency:latest
     command: python /var/apps/api/manage.py migrate --noinput
     environment:
       - GEOCURRENCY_SERVICE_EMAIL=admin@peabytes.me
@@ -55,7 +54,7 @@ services:
     depends_on:
       - geocurrency
   superuser:
-    image: geocurrency
+    image: fmeurou/geocurrency:latest
     command: python /var/apps/api/manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'T3st2020.')"
     environment:
       - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
@@ -67,7 +66,7 @@ services:
     depends_on:
       - migration
   fetch_rates:
-    image: geocurrency
+    image: fmeurou/geocurrency:latest
     command: python /var/apps/api/manage.py fetch_rates
     environment:
       - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
