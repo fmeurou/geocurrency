@@ -246,7 +246,7 @@ ADDITIONAL_BASE_UNITS = {
             'relation': '1 meter ** 2'
         },
         'cubic_meter': {
-            'name': _('square meter'),
+            'name': _('cubic meter'),
             'symbol': 'm³',
             'relation': '1 meter ** 3'
         },
@@ -379,6 +379,10 @@ UNIT_EXTENDED_DEFINITION = {
     'ampere': {
         'name': _('ampere'),
         'symbol': 'A',
+    },
+    'milliampere': {
+        'name': _('milliampere'),
+        'symbol': 'mA',
     },
     'ampere_turn': {
         'name': _('ampere-turn'),
@@ -660,11 +664,11 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('CSS pixel'),
         'symbol': 'px'
     },
-    'cubic centimeter': {
+    'cubic_centimeter': {
         'name': _('cubic centimeter'),
         'symbol': 'cm³'
     },
-    'cubic millimmeter': {
+    'cubic_millimmeter': {
         'name': _('cubic milliimeter'),
         'symbol': 'mm³'
     },
@@ -1490,6 +1494,14 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('second'),
         'symbol': 's'
     },
+    'millisecond': {
+        'name': _('millisecond'),
+        'symbol': 'ms'
+    },
+    'microsecond': {
+        'name': _('microsecond'),
+        'symbol': 'μs'
+    },
     'second_radiation_constant': {
         'name': _('second radiation constant'),
         'symbol': 'c2'
@@ -1870,13 +1882,25 @@ UNIT_EXTENDED_DEFINITION = {
         'name': _('square meter'),
         'symbol': 'm³'
     },
+    'milligram': {
+        'name': _('milligram'),
+        'symbol': 'mg'
+    },
     'kilogram': {
         'name': _('kilogram'),
         'symbol': 'kg'
     },
+    'kilometer': {
+        'name': _('kilometer'),
+        'symbol': 'km'
+    },
     'centimeter': {
         'name': _('centimeter'),
         'symbol': 'cm'
+    },
+    'millimeter': {
+        'name': _('millimeter'),
+        'symbol': 'mm'
     },
     'centimeter_per_second': {
         'name': _('centimeter per second'),

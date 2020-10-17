@@ -7,7 +7,7 @@ from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
-from .settings import ADDITIONAL_UNITS
+from .settings import ADDITIONAL_UNITS, PREFIXED_UNITS_DISPLAY
 from django.conf import settings
 
 
@@ -122,7 +122,15 @@ class UnitSystem:
         List of available units for a given Unit system
         :return: Array of names of Unit systems
         """
-        return dir(self.ureg)
+        try:
+            prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
+        except AttributeError:
+            prefixed_units_display = PREFIXED_UNITS_DISPLAY
+        prefixed_units = []
+        for key, prefixes in prefixed_units_display.items():
+            for prefix in prefixes:
+                prefixed_units.append(key + prefix)
+        return sorted(prefixed_units + dir(self.ureg))
 
     def unit_dimensionality(self, unit: str) -> str:
         """
@@ -235,9 +243,26 @@ class Dimension:
 
     @property
     def units(self):
-
-        return [Unit(unit_system=self.unit_system, pint_unit=unit)
-                for unit in self.unit_system.ureg.get_compatible_units(self.code)]
+        unit_list = []
+        try:
+            unit_list.append(
+                self.unit_system.unit(
+                    UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
+                )
+            )
+        except (KeyError, UnitNotFound):
+            print("unable to find base unit for unit system and dimension")
+        unit_list.extend(
+            [
+                Unit(unit_system=self.unit_system, pint_unit=unit)
+                for unit in self.unit_system.ureg.get_compatible_units(self.code)
+            ])
+        unit_names = [str(u) for u in unit_list]
+        for unit, prefixes in PREFIXED_UNITS_DISPLAY.items():
+            if unit in unit_names:
+                unit_list.extend([self.unit_system.unit(unit_name=prefix+unit)
+                                  for prefix in prefixes if not prefix+unit in unit_names])
+        return set(sorted(unit_list, key=lambda x: x.name))
 
     @property
     def base_unit(self):
