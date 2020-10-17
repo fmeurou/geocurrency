@@ -56,12 +56,20 @@ class UnitSystem:
         try:
             self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
-            self.load_additional_units(units=ADDITIONAL_BASE_UNITS)
-            self.load_additional_units(units=additional_units_settings)
+            self._load_additional_units(units=ADDITIONAL_BASE_UNITS)
+            self._load_additional_units(units=additional_units_settings)
+            self._rebuild_cache()
         except (FileNotFoundError, AttributeError):
             raise UnitSystemNotFound("Invalid unit system")
 
-    def load_additional_units(self, units: dict) -> bool:
+    def _rebuild_cache(self):
+        """
+        Rebuild registry cache
+        It should be in the define method of the registry
+        """
+        self.ureg._build_cache()
+
+    def _load_additional_units(self, units: dict) -> bool:
         """
         Load additional base units in registry
         """
@@ -73,7 +81,7 @@ class UnitSystem:
             self.ureg.define(f"{key} = {items['relation']} = {items['symbol']}")
         return True
 
-    def test_additional_units(self,  units: dict) -> bool:
+    def _test_additional_units(self,  units: dict) -> bool:
         """
         Load and check dimensionality of ADDITIONAL_BASE_UNITS values
         """

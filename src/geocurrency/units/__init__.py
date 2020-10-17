@@ -152,7 +152,7 @@ UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
         '[temperature]': 'kelvin',
         '[substance]': 'mole',
         '[luminosity]': 'candela',
-        '[area]': 'square meter',
+        '[area]': 'square_meter',
         '[volume]': 'cubic_meter',
         '[frequency]': 'meter_per_second',
         '[acceleration]': 'meter_per_square_second',
@@ -206,11 +206,11 @@ UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
         '[mass]': 'pound'
     },
     'mks': {
-        '[acceleration]': 'meter per square second',
+        '[acceleration]': 'meter_per_square_second',
         '[capacitance]': 'farad',
         '[charge]': 'coulomb',
         '[current]': 'ampere',
-        '[electric_field]': 'volt per meter',
+        '[electric_field]': 'volt_per_meter',
         '[electric_potential]': 'volt',
         '[energy]': 'joule',
         '[power]': 'watt',
@@ -224,7 +224,7 @@ UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {
         '[resistance]': 'ohm',
         '[temperature]': 'kelvin',
         '[time]': 'second',
-        '[velocity]': 'meter per second'
+        '[velocity]': 'meter_per_second'
     }
 }
 
