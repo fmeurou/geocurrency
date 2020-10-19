@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'geocurrency.core',
     'geocurrency.rates',
+    'geocurrency.units',
 ]
 
 

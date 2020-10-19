@@ -31,7 +31,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact(email="fm@peabytes.me"),
         license=openapi.License(name="BSD License"),
     ),
-    url='https://api.geocurrency.me/',
+    url='http://127.0.0.1:8000/',
     public=True,
     permission_classes=(permissions.AllowAny,),
 )

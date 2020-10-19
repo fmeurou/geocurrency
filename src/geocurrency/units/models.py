@@ -2,13 +2,16 @@ import logging
 from datetime import date
 
 import pint
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.db import models
 from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
+from .exceptions import *
 from .settings import ADDITIONAL_UNITS, PREFIXED_UNITS_DISPLAY
-from django.conf import settings
 
 
 class Amount:
@@ -27,10 +30,6 @@ class Amount:
         return f'{self.value} {self.unit} ({self.system})'
 
 
-class UnitSystemNotFound(Exception):
-    pass
-
-
 class Unit:
     pass
 
@@ -40,7 +39,7 @@ class UnitSystem:
     system_name = None
     system = None
 
-    def __init__(self, system_name='SI', fmt_locale='en'):
+    def __init__(self, system_name: str = 'SI', fmt_locale: str = 'en', user: User = None, key: str = None):
         found = False
         for available_system in UnitSystem.available_systems():
             if system_name.lower() == available_system.lower():
@@ -58,6 +57,8 @@ class UnitSystem:
             self.system = getattr(self.ureg.sys, system_name)
             self._load_additional_units(units=ADDITIONAL_BASE_UNITS)
             self._load_additional_units(units=additional_units_settings)
+            if user:
+                self._load_custom_units(user=user, key=key)
             self._rebuild_cache()
         except (FileNotFoundError, AttributeError):
             raise UnitSystemNotFound("Invalid unit system")
@@ -73,26 +74,43 @@ class UnitSystem:
         """
         Load additional base units in registry
         """
-        try:
-            units[self.system_name]
-        except KeyError:
+        if not self.system_name in units:
+            logging.warning(f"error loading additional units for {self.system_name}")
             return False
         for key, items in units[self.system_name].items():
             self.ureg.define(f"{key} = {items['relation']} = {items['symbol']}")
         return True
 
-    def _test_additional_units(self,  units: dict) -> bool:
+    def _load_custom_units(self, user: User, key: str = None) -> bool:
+        """
+        Load custom units in registry
+        """
+        qs = CustomUnit.objects.filter(user=user)
+        if key:
+            qs = qs.filter(key=key)
+        for cu in qs:
+            self.ureg.define(f"{cu.code} = {cu.relation} = {cu.symbol} = {cu.alias}")
+        return True
+
+    def _test_additional_units(self, units: dict) -> bool:
         """
         Load and check dimensionality of ADDITIONAL_BASE_UNITS values
         """
-        if not self.load_additional_units(units=units):
+        if self.system_name not in units:
             return False
         for key in units[self.system_name].keys():
             try:
-                return self.unit(key).dimensionality and True
+                test = self.unit(key).dimensionality and True
             except pint.errors.UndefinedUnitError:
                 return False
         return True
+
+    def add_definition(self, code, relation, symbol, alias):
+        """
+        Add a new unit definition to a UnitSystem, and rebuild cache
+        """
+        self.ureg.define(f"{code} = {relation} = {symbol} = {alias}")
+        self._rebuild_cache()
 
     @classmethod
     def available_systems(cls) -> [str]:
@@ -129,8 +147,8 @@ class UnitSystem:
         prefixed_units = []
         for key, prefixes in prefixed_units_display.items():
             for prefix in prefixes:
-                prefixed_units.append(key + prefix)
-        return sorted(prefixed_units + dir(self.ureg))
+                prefixed_units.append(prefix + key)
+        return sorted(prefixed_units + dir(getattr(self.ureg.sys, self.system_name)))
 
     def unit_dimensionality(self, unit: str) -> str:
         """
@@ -215,10 +233,6 @@ class UnitSystem:
         return set([Unit.dimensionality_string(self, unit_str) for unit_str in dir(self.system)])
 
 
-class DimensionNotFound(Exception):
-    pass
-
-
 class Dimension:
     unit_system = None
     code = None
@@ -251,7 +265,7 @@ class Dimension:
                 )
             )
         except (KeyError, UnitNotFound):
-            print("unable to find base unit for unit system and dimension")
+            logging.warning("unable to find base unit for unit system and dimension")
         unit_list.extend(
             [
                 Unit(unit_system=self.unit_system, pint_unit=unit)
@@ -260,8 +274,8 @@ class Dimension:
         unit_names = [str(u) for u in unit_list]
         for unit, prefixes in PREFIXED_UNITS_DISPLAY.items():
             if unit in unit_names:
-                unit_list.extend([self.unit_system.unit(unit_name=prefix+unit)
-                                  for prefix in prefixes if not prefix+unit in unit_names])
+                unit_list.extend([self.unit_system.unit(unit_name=prefix + unit)
+                                  for prefix in prefixes if not prefix + unit in unit_names])
         return set(sorted(unit_list, key=lambda x: x.name))
 
     @property
@@ -271,10 +285,6 @@ class Dimension:
         except KeyError:
             logging.warning(f'dimension {self.dimension} is not part of unit system {self.unit_system.system_name}')
             return None
-
-
-class UnitNotFound(Exception):
-    pass
 
 
 class Unit:
@@ -380,18 +390,6 @@ class Unit:
         return Unit.dimensionality_string(unit_system=self.unit_system, unit_str=self.code)
 
 
-class UnitConverterInitError(Exception):
-    msg = 'Error during initialization of converter'
-
-
-class UnitConverterConvertError(Exception):
-    msg = 'Error converting values'
-
-
-class UnitConverter:
-    pass
-
-
 class UnitConverter(BaseConverter):
     base_system = None
     base_unit = None
@@ -433,7 +431,7 @@ class UnitConverter(BaseConverter):
         return errors
 
     @classmethod
-    def load(cls, id: str) -> UnitConverter:
+    def load(cls, id: str) -> BaseConverter:
         try:
             uc = super(UnitConverter, cls).load(id)
             uc.system = UnitSystem(system_name=uc.base_system)
@@ -511,3 +509,37 @@ class UnitConversionPayload:
         self.key = key
         self.batch_id = batch_id
         self.eob = eob
+
+
+class CustomUnit(models.Model):
+    AVAILABLE_SYSTEMS = (
+        ('Planck', 'Planck'),
+        ('SI', 'SI'),
+        ('US', 'US'),
+        ('atomic', 'atomic'),
+        ('cgs', 'CGS'),
+        ('imperial', 'imperial'),
+        ('mks', 'mks'),
+    )
+    user = models.ForeignKey(User, related_name='units', on_delete=models.PROTECT)
+    key = models.CharField(max_length=255, default=None, db_index=True, null=True)
+    unit_system = models.CharField(max_length=20, choices=AVAILABLE_SYSTEMS)
+    code = models.SlugField()
+    name = models.CharField("Human readable name", max_length=255)
+    relation = models.CharField("Relation to an existing unit", max_length=255)
+    symbol = models.CharField("Symbol", max_length=20)
+    alias = models.CharField("Alias", max_length=20, null=True, blank=True)
+
+    class Meta:
+        unique_together = ('user', 'key', 'code')
+
+    def save(self, *args, **kwargs):
+        us = UnitSystem(system_name=self.unit_system)
+        if self.code in us.available_unit_names():
+            raise UnitDuplicateError
+        us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol, alias=self.alias)
+        try:
+            us.unit(self.code).unit.dimensionality
+        except pint.errors.UndefinedUnitError:
+            raise UnitDimensionError
+        return super(CustomUnit, self).save(*args, **kwargs)

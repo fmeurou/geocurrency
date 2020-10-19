@@ -2,14 +2,17 @@ import uuid
 
 import pint
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.test import TestCase
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 
 from . import ADDITIONAL_BASE_UNITS
-from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound
+from .exceptions import UnitSystemNotFound, UnitDuplicateError, UnitDimensionError
+from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound, CustomUnit
 from .serializers import UnitAmountSerializer
 
 
@@ -155,7 +158,7 @@ class UnitSystemTest(TestCase):
         self.old_setting = getattr(settings, 'ADDITIONAL_UNITS', {})
         settings.GEOCURRENCY_ADDITIONAL_UNITS = {
             'SI': {
-                'my_unit':  {
+                'my_unit': {
                     'name': 'My Unit',
                     'symbol': 'my²',
                     'relation': '0.0001 meter / meter ** 2'
@@ -193,12 +196,12 @@ class UnitSystemTest(TestCase):
 
     def test_test_additional_base_units(self):
         us = UnitSystem(system_name='SI')
-        available_units = us.test_additional_units(ADDITIONAL_BASE_UNITS)
+        available_units = us._test_additional_units(ADDITIONAL_BASE_UNITS)
         self.assertTrue(available_units)
 
     def test_test_additional_units(self):
         us = UnitSystem(system_name='SI')
-        available_units = us.test_additional_units(settings.GEOCURRENCY_ADDITIONAL_UNITS)
+        available_units = us._test_additional_units(settings.GEOCURRENCY_ADDITIONAL_UNITS)
         self.assertFalse(available_units)
 
     def test_available_units_different(self):
@@ -399,3 +402,226 @@ class UnitConverterTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
+
+
+class CustomUnitTest(TestCase):
+
+    def setUp(self) -> None:
+        self.user, created = User.objects.get_or_create(
+            username='test',
+            email='test@ipd.com'
+        )
+        self.user.set_password('test')
+        self.user.save()
+        Token.objects.create(user=self.user)
+        self.key = uuid.uuid4()
+
+    def test_creation(self):
+        cu = CustomUnit.objects.create(
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='my_unit',
+            name='My Unit',
+            relation="1.5 meter",
+            symbol="myu",
+            alias="myu")
+        self.assertEqual(cu.user, self.user)
+        self.assertEqual(cu.key, self.key)
+        self.assertEqual(cu.unit_system, 'SI')
+        self.assertEqual(cu.code, 'my_unit')
+        self.assertEqual(cu.name, 'My Unit')
+        self.assertEqual(cu.relation, '1.5 meter')
+        self.assertEqual(cu.symbol, 'myu')
+        self.assertEqual(cu.alias, 'myu')
+        self.assertEqual(
+            CustomUnit.objects.filter(user=self.user, key=self.key, unit_system='SI', code='my_unit').count(),
+            1)
+
+    def test_invalid_creation_params(self):
+        self.assertRaises(
+            UnitSystemNotFound,
+            CustomUnit.objects.create,
+            user=self.user,
+            key=self.key,
+            unit_system='SO',
+            code='my_unit',
+            name='My Unit',
+            relation="1.5 meter",
+            symbol="myu",
+            alias="myu"
+        )
+
+    def test_duplicate_unit_params(self):
+        self.assertRaises(
+            UnitDuplicateError,
+            CustomUnit.objects.create,
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='meter',
+            name='My Unit',
+            relation="1.5 meter",
+            symbol="myu",
+            alias="myu"
+        )
+
+    def test_wrong_dimensionality_unit_params(self):
+        self.assertRaises(
+            UnitDimensionError,
+            CustomUnit.objects.create,
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='my_unit',
+            name='My Unit',
+            relation="1.5 brouzouf",
+            symbol="myu",
+            alias="myu"
+        )
+
+    def test_list_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/custom/',
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_connected_list_request(self):
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/units/SI/custom/',
+            data={
+                'key': self.key,
+                'code': 'my_unit',
+                'name': 'My Unit',
+                'relation': "1.5 meter",
+                'symbol': "myu",
+                'alias': "myu"
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        self.assertIn('code', post_response.json())
+        response = client.get(
+            '/units/SI/custom/',
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.json()), 1)
+        self.assertEqual(response.json()[0]['code'], 'my_unit')
+
+    def test_connected_unit_list_request(self):
+        cu = CustomUnit.objects.create(
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='ny_unit',
+            name='Ny Unit',
+            relation="1.5 meter",
+            symbol="nyu",
+            alias="nnyu")
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        response = client.get(
+            '/units/SI/units/',
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('ny_unit', [u['code'] for u in response.json()])
+
+    def test_connected_unit_list_2_request(self):
+        new_key = uuid.uuid4()
+        cu = CustomUnit.objects.create(
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='ny_unit',
+            name='Ny Unit',
+            relation="1.5 meter",
+            symbol="nyu",
+            alias="nnyu")
+        cu2 = CustomUnit.objects.create(
+            user=self.user,
+            key=new_key,
+            unit_system='SI',
+            code='py_unit',
+            name='Py Unit',
+            relation="1.5 meter",
+            symbol="pyu",
+            alias="pnyu")
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        response = client.get(
+            '/units/SI/units/',
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('ny_unit', [u['code'] for u in response.json()])
+        self.assertIn('py_unit', [u['code'] for u in response.json()])
+
+    def test_connected_unit_list_new_key_request(self):
+        new_key = uuid.uuid4()
+        cu = CustomUnit.objects.create(
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='ny_unit',
+            name='Ny Unit',
+            relation="1.5 meter",
+            symbol="nyu",
+            alias="nnyu")
+        cu2 = CustomUnit.objects.create(
+            user=self.user,
+            key=new_key,
+            unit_system='SI',
+            code='py_unit',
+            name='Py Unit',
+            relation="1.5 meter",
+            symbol="pyu",
+            alias="pnyu")
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        response = client.get(
+            '/units/SI/units/',
+            data={
+                'key': new_key
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotIn('ny_unit', [u['code'] for u in response.json()])
+        self.assertIn('py_unit', [u['code'] for u in response.json()])
+
+    def test_connected_unit_list_self_key_request(self):
+        new_key = uuid.uuid4()
+        cu = CustomUnit.objects.create(
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='ny_unit',
+            name='Ny Unit',
+            relation="1.5 meter",
+            symbol="nyu",
+            alias="nnyu")
+        cu2 = CustomUnit.objects.create(
+            user=self.user,
+            key=new_key,
+            unit_system='SI',
+            code='py_unit',
+            name='Py Unit',
+            relation="1.5 meter",
+            symbol="pyu",
+            alias="pnyu")
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        response = client.get(
+            '/units/SI/units/',
+            data={
+                'key': self.key
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('ny_unit', [u['code'] for u in response.json()])
+        self.assertNotIn('py_unit', [u['code'] for u in response.json()])

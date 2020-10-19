@@ -1,18 +1,15 @@
-from datetime import datetime, date, timedelta
 from django.db import models
 from django.http import HttpResponseForbidden
 from django_filters import rest_framework as filters
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from geocurrency.converters.serializers import ConverterResultSerializer
 from rest_framework import viewsets, status, mixins
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
-
-from geocurrency.converters.serializers import ConverterResultSerializer
-from geocurrency.currencies.models import Currency
 
 from .filters import RateFilter
 from .forms import RateForm
