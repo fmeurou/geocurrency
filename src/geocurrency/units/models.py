@@ -89,7 +89,13 @@ class UnitSystem:
         if key:
             qs = qs.filter(key=key)
         for cu in qs:
-            self.ureg.define(f"{cu.code} = {cu.relation} = {cu.symbol} = {cu.alias}")
+            props = [cu.code, cu.relation]
+            if cu.symbol:
+                props.append(cu.symbol)
+            if cu.alias:
+                props.append(cu.alias)
+            definition = " = ".join(props)
+            self.ureg.define(definition)
         return True
 
     def _test_additional_units(self, units: dict) -> bool:
@@ -522,12 +528,12 @@ class CustomUnit(models.Model):
         ('mks', 'mks'),
     )
     user = models.ForeignKey(User, related_name='units', on_delete=models.PROTECT)
-    key = models.CharField(max_length=255, default=None, db_index=True, null=True)
+    key = models.CharField(max_length=255, default=None, db_index=True, null=True, blank=True)
     unit_system = models.CharField(max_length=20, choices=AVAILABLE_SYSTEMS)
     code = models.SlugField()
     name = models.CharField("Human readable name", max_length=255)
     relation = models.CharField("Relation to an existing unit", max_length=255)
-    symbol = models.CharField("Symbol", max_length=20)
+    symbol = models.CharField("Symbol", max_length=20, blank=True, null=True)
     alias = models.CharField("Alias", max_length=20, null=True, blank=True)
 
     class Meta:

@@ -494,6 +494,28 @@ class CustomUnitTest(TestCase):
         post_response = client.post(
             '/units/SI/custom/',
             data={
+                'code': 'my_unit',
+                'name': 'My Unit',
+                'relation': "1.5 meter",
+                'symbol': "myu"
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        self.assertIn('code', post_response.json())
+        response = client.get(
+            '/units/SI/custom/',
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.json()), 1)
+        self.assertEqual(response.json()[0]['code'], 'my_unit')
+
+    def test_connected_list_key_request(self):
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/units/SI/custom/',
+            data={
                 'key': self.key,
                 'code': 'my_unit',
                 'name': 'My Unit',
