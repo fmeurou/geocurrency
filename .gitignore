@@ -11,3 +11,4 @@ dist
 .DS_Store
 *.db
 *.log
+geocurrency/__init__.py
