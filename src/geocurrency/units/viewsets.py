@@ -11,10 +11,10 @@ from drf_yasg.utils import swagger_auto_schema
 from geocurrency.converters.models import ConverterLoadError
 from geocurrency.converters.serializers import ConverterResultSerializer
 from geocurrency.core.helpers import validate_language
+from geocurrency.core.pagination import PageNumberPagination
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView

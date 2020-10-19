@@ -6,7 +6,7 @@ from drf_yasg.utils import swagger_auto_schema
 from geocurrency.converters.serializers import ConverterResultSerializer
 from rest_framework import viewsets, status, mixins
 from rest_framework.decorators import action
-from rest_framework.pagination import PageNumberPagination
+from geocurrency.core.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
