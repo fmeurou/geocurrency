@@ -64,8 +64,8 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         period = request.GET.get('period', 'month')
         if period not in ['week', 'month', 'year']:
             return Response("Invalid period", status=status.HTTP_400_BAD_REQUEST)
-        qs = self.queryset
-        qs = qs.values('currency', 'base_currency')
+        rate_filter = RateFilter(request.GET, queryset=self.queryset)
+        qs = rate_filter.qs.values('currency', 'base_currency')
         if period == 'month':
             qs = qs.annotate(month=Extract('value_date', 'month'))
         qs = qs.annotate(

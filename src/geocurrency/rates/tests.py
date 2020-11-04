@@ -321,7 +321,7 @@ class RateTest(TestCase):
             '/rates/stats/',
             data={'key': self.key, 'currency': 'EUR'},
             format='json')
-        self.assertEqual(post_response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_list_with_key_and_base_currency_request(self):
         client = APIClient()
