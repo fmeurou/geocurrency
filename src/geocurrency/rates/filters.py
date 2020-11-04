@@ -8,6 +8,8 @@ from .models import Rate
 class RateFilter(filters.FilterSet):
     user = filters.BooleanFilter(label="filter rate associated to connected user", method='user_filter')
     key = filters.CharFilter(label="filter rates with key", method='key_filter')
+    key_or_null = filters.CharFilter(label="filter rates with key or without key", method='key_or_null_filter')
+    key_isnull = filters.CharFilter(label="filter rates without key", method='key_isnull_filter')
     value_date = filters.DateFilter(label="filter rates at a specific date",
                                     field_name='value_date', lookup_expr='exact')
     from_obj = filters.DateFilter(label="filter rates after a specific date (included)",
@@ -50,6 +52,17 @@ class RateFilter(filters.FilterSet):
                 'user': self.request.user,
                 'key': value
             })
+        return queryset.filter(user__isnull=True)
+
+    def key_or_null_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
+        if self.request and self.request.user and self.request.user.is_authenticated:
+            return queryset.filter(models.Q(user=self.request.user) &
+                                   (models.Q(key=value) | models.Q(key__isnull=True)))
+        return queryset.filter(user__isnull=True)
+
+    def key_isnull_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
+        if self.request and self.request.user and self.request.user.is_authenticated:
+            return queryset.filter(user=self.request.user).filter(key__isnull=True)
         return queryset.filter(user__isnull=True)
 
     def currency_latest_values_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
