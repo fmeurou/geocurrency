@@ -68,6 +68,8 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         qs = rate_filter.qs.values('currency', 'base_currency')
         if period == 'month':
             qs = qs.annotate(month=Extract('value_date', 'month'))
+        if period == 'week':
+            qs = qs.annotate(week=Extract('value_date', 'week'))
         qs = qs.annotate(
             year=Extract('value_date', 'year'),
             avg=models.Avg('value'),
