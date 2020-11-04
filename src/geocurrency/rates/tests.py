@@ -215,7 +215,51 @@ class RateTest(TestCase):
             '/rates/',
             data={'key': self.key},
             format='json')
-        self.assertEqual(len(response.json()), 2)
+        self.assertEqual(response.json()[0]['key'], self.key)
+
+    def test_list_with_key_or_null_request(self):
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/rates/',
+            data={
+                'key': self.key,
+                'currency': 'USD',
+                'base_currency': 'EUR',
+                'value_date': '2020-01-01',
+                'value': 1.10,
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        response = client.get(
+            '/rates/',
+            data={'key_or_null': self.key},
+            format='json')
+        self.assertEqual(len(response.json()), 3)
+
+    def test_list_with_key_isnull_request(self):
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/rates/',
+            data={
+                'key': self.key,
+                'currency': 'USD',
+                'base_currency': 'EUR',
+                'value_date': '2020-01-01',
+                'value': 1.10,
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        response = client.get(
+            '/rates/',
+            data={'key_isnull': self.key},
+            format='json')
+        self.assertEqual(response.json()[0]['key'], None)
 
     def test_list_with_key_and_currency_request(self):
         client = APIClient()

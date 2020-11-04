@@ -56,14 +56,13 @@ class RateFilter(filters.FilterSet):
 
     def key_or_null_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         if self.request and self.request.user and self.request.user.is_authenticated:
-            return queryset.filter(models.Q(user=self.request.user) &
-                                   (models.Q(key=value) | models.Q(key__isnull=True)))
+            return queryset.filter(
+                (models.Q(user=self.request.user) & models.Q(key=value)) | models.Q(key__isnull=True)
+            )
         return queryset.filter(user__isnull=True)
 
     def key_isnull_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
-        if self.request and self.request.user and self.request.user.is_authenticated:
-            return queryset.filter(user=self.request.user).filter(key__isnull=True)
-        return queryset.filter(user__isnull=True)
+        return queryset.filter(key__isnull=True)
 
     def currency_latest_values_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         queryset = queryset.filter(currency=value)
