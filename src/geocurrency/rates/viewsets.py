@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Extract
 from django.http import HttpResponseForbidden
 from django_filters import rest_framework as filters
 from drf_yasg import openapi
@@ -15,7 +16,7 @@ from .filters import RateFilter
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSerializer
+from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSerializer, RateStatSerializer
 
 
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
@@ -45,10 +46,56 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         description="Base currency to filter on, limits results to latest values",
         type=openapi.TYPE_STRING)
 
+    period = openapi.Parameter('period', openapi.IN_QUERY,
+                                description="period to aggregate on: month, week, year, defaults to month",
+                                type=openapi.TYPE_STRING)
+
     @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values],
                          responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
+        qs = self.queryset
+        print(qs.query)
         return super(RateViewSet, self).list(request, *args, **kwargs)
+
+    @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values, period],
+                         responses={200: RateStatSerializer})
+    @action(['GET'], detail=False, url_path='stats', url_name='stats')
+    def stats(self, request, *args, **kwargs):
+        period = request.GET.get('period', 'month')
+        if period not in ['week', 'month', 'year']:
+            return Response("Invalid period", status=status.HTTP_400_BAD_REQUEST)
+        qs = self.queryset
+        qs = qs.values('currency', 'base_currency')
+        if period == 'month':
+            qs = qs.annotate(month=Extract('value_date', 'month'))
+        qs = qs.annotate(
+            year=Extract('value_date', 'year'),
+            avg=models.Avg('value'),
+            max=models.Max('value'),
+            min=models.Min('value'),
+            std_dev=models.StdDev('value')
+        ).order_by('-year', '-' + period)
+        results = [
+            {
+                'currency': result['currency'],
+                'base_currency': result['base_currency'],
+                'period': f"{result['year']}-{result[period]}" if period != 'year' else result['year'],
+                'avg': result['avg'],
+                'max': result['avg'],
+                'min': result['avg'],
+                'std_dev': result['avg'],
+            }
+            for result in qs
+        ]
+        data = {
+            'key': request.GET.get('key'),
+            'period': period,
+            'from_date': request.GET.get('from_date', ''),
+            'to_date': request.GET.get('to_date', ''),
+            'results': results
+        }
+        serializer = RateStatSerializer(data)
+        return Response(serializer.data, content_type="application/json")
 
     def create(self, request, *args, **kwargs):
         rate_form = RateForm(request.data)

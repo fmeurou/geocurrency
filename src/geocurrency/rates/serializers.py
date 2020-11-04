@@ -1,8 +1,7 @@
 from datetime import datetime, date
 
-from django.contrib.auth.models import User
-from rest_framework import serializers
 from geocurrency.core.serializers import UserSerializer
+from rest_framework import serializers
 
 from .models import Rate, Amount, BulkRate, RateConversionPayload
 
@@ -79,6 +78,24 @@ class RateSerializer(serializers.ModelSerializer):
         ]
 
 
+class RateStatItemSerializer(serializers.Serializer):
+    currency = serializers.CharField(read_only=True)
+    base_currency = serializers.CharField(read_only=True)
+    period = serializers.CharField(read_only=True)
+    avg = serializers.FloatField(read_only=True)
+    max = serializers.FloatField(read_only=True)
+    min = serializers.FloatField(read_only=True)
+    std_dev = serializers.FloatField(read_only=True)
+
+
+class RateStatSerializer(serializers.Serializer):
+    key = serializers.CharField(read_only=True)
+    period = serializers.CharField(read_only=True)
+    from_date = serializers.DateField(read_only=True)
+    to_date = serializers.DateField(read_only=True)
+    results = RateStatItemSerializer(many=True, read_only=True)
+
+
 class RateAmountSerializer(serializers.Serializer):
     currency = serializers.CharField()
     amount = serializers.FloatField()
@@ -152,6 +169,3 @@ class RateConversionPayloadSerializer(serializers.Serializer):
         self.key = validated_data.get('key', instance.key)
         self.eob = validated_data.get('eob', instance.eob)
         return instance
-
-
-
