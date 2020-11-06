@@ -81,7 +81,7 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             {
                 'currency': result['currency'],
                 'base_currency': result['base_currency'],
-                'period': f"{result['year']}-{result[period]}" if period != 'year' else result['year'],
+                'period': f"{result['year']}-{str(result[period]).zfill(2)}" if period != 'year' else result['year'],
                 'avg': result['avg'],
                 'max': result['max'],
                 'min': result['min'],
