@@ -265,6 +265,10 @@ class Dimension:
     def units(self):
         unit_list = []
         try:
+            prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
+        except AttributeError:
+            prefixed_units_display = PREFIXED_UNITS_DISPLAY
+        try:
             unit_list.append(
                 self.unit_system.unit(
                     UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
@@ -278,7 +282,7 @@ class Dimension:
                 for unit in self.unit_system.ureg.get_compatible_units(self.code)
             ])
         unit_names = [str(u) for u in unit_list]
-        for unit, prefixes in PREFIXED_UNITS_DISPLAY.items():
+        for unit, prefixes in prefixed_units_display.items():
             if unit in unit_names:
                 unit_list.extend([self.unit_system.unit(unit_name=prefix + unit)
                                   for prefix in prefixes if not prefix + unit in unit_names])
