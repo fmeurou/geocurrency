@@ -9,12 +9,16 @@ from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
 
-from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, ADDITIONAL_BASE_UNITS
+from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
+    ADDITIONAL_BASE_UNITS, PREFIX_SYMBOL
 from .exceptions import *
 from .settings import ADDITIONAL_UNITS, PREFIXED_UNITS_DISPLAY
 
 
 class Amount:
+    """
+    Quantity class
+    """
     system = None
     unit = None
     value = 0
@@ -35,11 +39,15 @@ class Unit:
 
 
 class UnitSystem:
+    """
+    Pint UnitRegistry wrapper
+    """
     ureg = None
     system_name = None
     system = None
 
-    def __init__(self, system_name: str = 'SI', fmt_locale: str = 'en', user: User = None, key: str = None):
+    def __init__(self, system_name: str = 'SI', fmt_locale: str = 'en', user: User = None,
+                 key: str = None):
         found = False
         for available_system in UnitSystem.available_systems():
             if system_name.lower() == available_system.lower():
@@ -240,6 +248,9 @@ class UnitSystem:
 
 
 class Dimension:
+    """
+    Dimenion of a Unit
+    """
     unit_system = None
     code = None
     name = None
@@ -263,6 +274,9 @@ class Dimension:
 
     @property
     def units(self):
+        """
+        List of units for this dimension
+        """
         unit_list = []
         try:
             prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
@@ -290,14 +304,21 @@ class Dimension:
 
     @property
     def base_unit(self):
+        """
+        Base unit for this dimension in this Unit System
+        """
         try:
             return UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
         except KeyError:
-            logging.warning(f'dimension {self.dimension} is not part of unit system {self.unit_system.system_name}')
+            logging.warning(
+                f'dimension {self.dimension} is not part of unit system {self.unit_system.system_name}')
             return None
 
 
 class Unit:
+    """
+    Pint Unit wrapper
+    """
     unit_system = None
     code = None
     unit = None
@@ -340,29 +361,65 @@ class Unit:
 
     @property
     def symbol(self) -> str:
+        """
+        Return symbol for Unit
+        """
         return self.unit_symbol(self.code)
 
     @property
     def dimensions(self) -> [Dimension]:
+        """
+        Return Dimensions of Unit
+        """
         return [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
                 if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
 
+    def base_unit(unit_str: str) -> (str, str):
+        """
+        Get base unit in case the unit is a prefixed unit
+        :param unit_str: name of unit to check
+        :return: base unit name, prefix
+        """
+        prefix = ''
+        base_str = unit_str
+        try:
+            prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
+        except AttributeError:
+            prefixed_units_display = PREFIXED_UNITS_DISPLAY
+        for base, prefixes in prefixed_units_display.items():
+            for _prefix in prefixes:
+                if unit_str == _prefix + base:
+                    prefix = _prefix
+                    base_str = base
+        return base_str, prefix
+
     @staticmethod
     def unit_name(unit_str: str) -> str:
+        """
+        Get translated name from unit string
+        :param unit_str: Name of unit
+        """
+        base_str, prefix = Unit.base_unit(unit_str=unit_str)
         try:
-            ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
-            return ext_unit['name']
+            ext_unit = UNIT_EXTENDED_DEFINITION.get(base_str)
+            return prefix + str(ext_unit['name'])
         except (KeyError, TypeError) as e:
-            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {unit_str}')
+            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {base_str}')
             return unit_str
 
     @staticmethod
     def unit_symbol(unit_str: str) -> str:
+        """
+        Static function to get symbol from unit string
+        :param unit_str: Name of unit
+        """
+        base_str, prefix = Unit.base_unit(unit_str=unit_str)
         try:
-            ext_unit = UNIT_EXTENDED_DEFINITION.get(unit_str)
-            return ext_unit['symbol']
+            prefix_symbol = PREFIX_SYMBOL[prefix]
+            ext_unit = UNIT_EXTENDED_DEFINITION.get(base_str)
+            return prefix_symbol + ext_unit['symbol']
         except (KeyError, TypeError) as e:
-            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {unit_str}')
+            logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {base_str}')
             return ''
 
     @staticmethod
@@ -373,7 +430,8 @@ class Unit:
         :param unit_str: Unit name
         :return: str
         """
-        ds = str(getattr(unit_system.ureg, unit_str).dimensionality).replace('[', '').replace(']', '')
+        ds = str(getattr(unit_system.ureg, unit_str).dimensionality).replace('[', '').replace(']',
+                                                                                              '')
         ds = ds.replace(' ** ', '^')
         ds = ds.split()
         return ' '.join([_(d) for d in ds])
@@ -401,6 +459,9 @@ class Unit:
 
 
 class UnitConverter(BaseConverter):
+    """
+    Conversion between units
+    """
     base_system = None
     base_unit = None
 
@@ -505,6 +566,9 @@ class UnitConverter(BaseConverter):
 
 
 class UnitConversionPayload:
+    """
+    Unit conversion payload
+    """
     data = None
     base_system = ''
     base_unit = ''
@@ -512,7 +576,8 @@ class UnitConversionPayload:
     batch_id = ''
     eob = False
 
-    def __init__(self, base_system, base_unit, data=None, key=None, batch_id=None, eob=False):
+    def __init__(self, base_system: UnitSystem, base_unit: Unit, data=None, key: str = None,
+                 batch_id: str = None, eob: bool = False):
         self.data = data
         self.base_system = base_system
         self.base_unit = base_unit
@@ -522,6 +587,9 @@ class UnitConversionPayload:
 
 
 class CustomUnit(models.Model):
+    """
+    Additional unit for a user
+    """
     AVAILABLE_SYSTEMS = (
         ('Planck', 'Planck'),
         ('SI', 'SI'),
@@ -544,10 +612,14 @@ class CustomUnit(models.Model):
         unique_together = ('user', 'key', 'code')
 
     def save(self, *args, **kwargs):
+        """
+        Save custom unit to database
+        """
         us = UnitSystem(system_name=self.unit_system)
         if self.code in us.available_unit_names():
             raise UnitDuplicateError
-        us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol, alias=self.alias)
+        us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol,
+                          alias=self.alias)
         try:
             us.unit(self.code).unit.dimensionality
         except pint.errors.UndefinedUnitError:
