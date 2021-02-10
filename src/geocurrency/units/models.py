@@ -277,6 +277,8 @@ class Dimension:
         """
         List of units for this dimension
         """
+        if self.code == '[compounded]':
+            return self.compounded_units
         unit_list = []
         try:
             prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
@@ -297,10 +299,31 @@ class Dimension:
             ])
         unit_names = [str(u) for u in unit_list]
         for unit, prefixes in prefixed_units_display.items():
+            print(unit_names, unit, prefixes)
             if unit in unit_names:
-                unit_list.extend([self.unit_system.unit(unit_name=prefix + unit)
-                                  for prefix in prefixes if not prefix + unit in unit_names])
+                for prefix in prefixes:
+                    print(prefix + unit)
+                    unit_list.append(self.unit_system.unit(unit_name=prefix + unit))
+                # unit_list.extend([self.unit_system.unit(unit_name=prefix + unit)
+                #                   for prefix in prefixes if not prefix + unit in unit_names])
         return set(sorted(unit_list, key=lambda x: x.name))
+
+    @property
+    def compounded_units(self):
+        """
+        List units that do not belong to a dimension
+        """
+        available_units = self.unit_system.available_unit_names()
+        dimensioned_units = []
+        for dimension in [d for d in DIMENSIONS.keys() if d != '[compounded]']:
+            dimensioned_units.extend(
+                [u for u in self.unit_system.ureg.get_compatible_units(dimension)])
+        output = []
+        print(set(available_units) - set([str(d) for d in dimensioned_units]))
+        for u in set(available_units) - set([str(d) for d in dimensioned_units]):
+            print(u)
+            output.append(self.unit_system.unit(u))
+        return output
 
     @property
     def base_unit(self):
@@ -371,8 +394,9 @@ class Unit:
         """
         Return Dimensions of Unit
         """
-        return [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
+        dimensions = [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
                 if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
+        return dimensions or '[compounded]'
 
     def base_unit(unit_str: str) -> (str, str):
         """
