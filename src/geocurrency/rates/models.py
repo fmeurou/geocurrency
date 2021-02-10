@@ -1,6 +1,7 @@
 import logging
 from datetime import date, timedelta
 
+import networkx as nx
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
@@ -88,6 +89,80 @@ class RateManager(models.Manager):
         if rate.pk:
             return rate
         return Rate()
+
+    @classmethod
+    def currency_shortest_path(cls, currency: str, base_currency: str, key: str = None,
+                               date_obj: date = date.today()) -> [str]:
+        """
+        Return the shortest path between 2 currencies for the given date
+        :param currency: source currency code
+        :param base_currency: base currency code
+        :param key: Key specific to a client
+        :param date_obj: Date to obtain the conversion rate for
+        :return List of currency codes to go from currency to base currency
+        """
+        rates = Rate.objects.filter(value_date=date_obj).filter(models.Q(user=None) | models.Q(key=key))
+        rates_couples = rates.values('currency', 'base_currency', 'value', 'key')
+        graph = nx.Graph()
+        for k in rates_couples:
+            weight = 0.5 if k['base_currency'] == 'EUR' or k['currency'] == 'EUR' else 1
+            weight *= (0.5 if k['key'] else 1)
+            graph.add_edge(u_of_edge=k['currency'], v_of_edge=k['base_currency'], weight=weight)
+        return nx.shortest_path(graph, currency, base_currency, weight='weight')
+
+    def nx_find_rate(self, currency: str,
+                     rate_service: str = None,
+                     key: str = None,
+                     base_currency: str = settings.BASE_CURRENCY,
+                     date_obj: date = date.today(),
+                     use_forex: bool = False) -> BaseRate:
+        """
+        Find rate based on Floyd Warshall algorithm
+        """
+        rates = self.currency_shortest_path(
+            currency=currency,
+            base_currency=base_currency,
+            key=key,
+            date_obj=date_obj
+        )
+        # Direct connection between rates
+        if len(rates) == 2:
+            try:
+                return Rate.objects.get(
+                    currency=currency,
+                    base_currency=base_currency,
+                    value_date=date_obj
+                ).filter(
+                    models.Q(key=key) | models.Q(user__isnull=True)
+                ).order_by('-key').first()
+            except Rate.DoesNotExist as e:
+                # TODO fetch conversion rate
+                logging.error(e)
+                return Rate()
+        # Indirect connection
+        else:
+            conv_value = 1
+            for i in range(len(rates) - 1):
+                from_cur, to_cur = rates[i:i + 1]
+                try:
+                    conv_value *= Rate.objects.get(
+                        currency=from_cur,
+                        base_currency=to_cur,
+                        value_date=date_obj
+                    ).filter(
+                        models.Q(key=key) | models.Q(user__isnull=True)
+                    ).order_by('-key').first().value
+                except Rate.DoesNotExist as e:
+                    logging.error(e)
+                    return Rate()
+                rate = Rate.objects.create(
+                    key=key,
+                    value_date=date_obj,
+                    currency=currency,
+                    base_currency=base_currency,
+                    value=conv_value
+                )
+            return rate
 
     def find_direct_rate(self,
                          currency: str,
