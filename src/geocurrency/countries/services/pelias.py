@@ -1,4 +1,5 @@
 import logging
+
 import requests
 from django.conf import settings
 from pycountry import countries
@@ -10,25 +11,33 @@ from ..settings import *
 class PeliasGeocoder(Geocoder):
     coder_type = 'pelias'
     server_url = None
+    key = None
 
-    def __init__(self, server_url=None, *args, **kwargs):
+    def __new__(cls, *args, **kwargs):
+        return super(Geocoder, cls).__new__(cls)
+
+    def __init__(self, server_url=None, key=None, *args, **kwargs):
         """
         Init pelias geocoder
-        :params server_url: Custom pelias URL, defaults to 'http://127.0.0.1:3100/v1'
+        Init: Geocoder('pelias', server_url='serveur URL', key='API key')
+        :params server_url: Custom pelias URL, defaults to 'https://api.geocode.earth/v1/search'
+        :param key: API key
         """
+        print("arg key", key)
+        self.key = key or settings.GEOCODER_PELIAS_KEY
         try:
-            pelias_url = settings.PELIAS_GEOCODER_URL
+            pelias_url = settings.GEOCODER_PELIAS_URL
         except AttributeError:
             pelias_url = GEOCODING_SERVICE_SETTINGS['pelias']['default_url']
         self.server_url = server_url or pelias_url
+        print(f'{self.server_url} with api key {self.key}')
 
     def search(self, address, language=None, bounds=None, region=None, components=""):
+        search_args = {'text': address}
+        if self.key:
+            search_args['api_key'] = self.key
         try:
-            response = requests.get('{}/{}'.format(
-                self.server_url,
-                'search'
-
-            ), {'text': address})
+            response = requests.get(f'{self.server_url}/search', search_args)
             data = response.json()
             if 'errors' in data:
                 logging.error("Invalid request")
@@ -44,23 +53,25 @@ class PeliasGeocoder(Geocoder):
         return None
 
     def reverse(self, lat, lng):
+        search_args = {
+            'point.lat': lat,
+            'point.lon': lng,
+        }
+        if self.key:
+            search_args['api_key'] = self.key
         try:
-            response = requests.get('{}/{}'.format(
-                self.server_url,
-                'reverse'
-            ),
-                {
-                    'point.lat': lat,
-                    'point.lon': lng,
-                })
+            print(f'{self.server_url}/reverse', search_args)
+            response = requests.get(f'{self.server_url}/reverse', search_args)
+            print(response.content)
             data = response.json()
             if 'errors' in data:
                 logging.error("ERROR - Invalid request")
                 logging.error(data.get('error'))
                 return None
             return data
-        except ValueError:
+        except ValueError as e:
             logging.error("Invalid API configuration")
+            logging.error(e)
         except IOError as e:
             logging.error("Invalid request", e)
         return None

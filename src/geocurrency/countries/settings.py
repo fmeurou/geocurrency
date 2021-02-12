@@ -4,7 +4,8 @@ FLAG_SOURCE = 'https://raw.githubusercontent.com/cristiroma/countries/master/dat
 GEOCODING_SERVICE = 'pelias'
 
 # put in global settings.py to override
-GEOCODER_PELIAS_URL = None
+GEOCODER_PELIAS_URL = 'https://api.geocode.earth/v1/search'
+GEOCODER_PELIAS_KEY = ''
 GEOCODER_GOOGLE_KEY = ''
 
 GEOCODING_SERVICE_SETTINGS = {

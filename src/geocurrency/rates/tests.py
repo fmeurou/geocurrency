@@ -224,7 +224,7 @@ class RateTest(TestCase):
             '/rates/',
             data={'key': self.key},
             format='json')
-        self.assertEqual(response.json()[0]['key'], self.key)
+        self.assertEqual(response.json()[0]['key'], str(self.key))
 
     def test_list_with_key_or_null_request(self):
         client = APIClient()

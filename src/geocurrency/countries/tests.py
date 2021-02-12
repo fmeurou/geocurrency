@@ -1,17 +1,17 @@
 import os
+
 from django.conf import settings
 from django.test import TestCase
+from geocurrency.core.helpers import service
 from pycountry import countries
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from geocurrency.core.helpers import service
-
 from .models import Country
 from .serializers import CountrySerializer
 
-PELIAS_TEST_URL = 'http://api.geocurrency.me:3100/v1'
-TEST_ADDRESS = "Avenue de la Division Leclerc, 92310 Sèvres"
+PELIAS_TEST_URL = 'https://api.geocode.earth/v1/search'
+TEST_ADDRESS = "Rue du Maine, 75014 Paris"
 TEST_LAT = 48.763434
 TEST_LNG = 2.308702
 
@@ -21,6 +21,7 @@ class CountryTestCase(TestCase):
     def setUp(self) -> None:
         settings.GEOCODING_SERVICE = 'google'
         settings.GEOCODER_GOOGLE_KEY = os.environ.get('GOOGLE_API_KEY')
+        settings.GEOCODER_PELIAS_KEY = os.environ.get('PELIAS_API_KEY')
 
     def test_all(self):
         """Numbers of countries is equal to number of countries in pycountry.countries"""
@@ -137,6 +138,7 @@ class GeocoderTestCase(TestCase):
 
     def setUp(self) -> None:
         settings.GEOCODER_GOOGLE_KEY = os.environ.get('GOOGLE_API_KEY')
+        settings.GEOCODER_PELIAS_KEY = os.environ.get('PELIAS_API_KEY')
         settings.PELIAS_GEOCODER_URL = PELIAS_TEST_URL
 
     def test_google(self) -> None:
@@ -148,7 +150,8 @@ class GeocoderTestCase(TestCase):
                 service(service_type='geocoding', service_name='google')
 
     def test_pelias(self):
-        geocoder = service(service_type='geocoding', service_name='pelias')
+        geocoder = service(service_type='geocoding', service_name='pelias',  server_url=PELIAS_TEST_URL,
+                           key=settings.GEOCODER_PELIAS_KEY)
         self.assertEqual(geocoder.coder_type, 'pelias')
 
     def test_google_search(self):
@@ -168,12 +171,16 @@ class GeocoderTestCase(TestCase):
             self.assertTrue(False)
 
     def test_pelias_search(self):
-        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL)
+        print(PELIAS_TEST_URL, settings.GEOCODER_PELIAS_KEY)
+        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
+                           key=settings.GEOCODER_PELIAS_KEY)
         data = geocoder.search(address=TEST_ADDRESS)
         self.assertIsNotNone(data)
 
     def test_pelias_reverse(self):
-        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL)
+        print("GEOCODER_PELIAS_KEY", settings.GEOCODER_PELIAS_KEY)
+        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
+                           key=settings.GEOCODER_PELIAS_KEY)
         data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
         self.assertIsNotNone(data)
 
@@ -181,7 +188,8 @@ class GeocoderTestCase(TestCase):
         """
         Test with pelias search
         """
-        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL)
+        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
+                           key=settings.GEOCODER_PELIAS_KEY)
         data = geocoder.search(address=TEST_ADDRESS)
         self.assertIsNotNone(data)
         self.assertIn("FR", geocoder.parse_countries(data))
@@ -190,7 +198,8 @@ class GeocoderTestCase(TestCase):
         """
         Test with pelias reverse
         """
-        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL)
+        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
+                           key=settings.GEOCODER_PELIAS_KEY)
         data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
         self.assertIsNotNone(data)
         if 'errors' in data:
