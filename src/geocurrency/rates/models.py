@@ -1,4 +1,3 @@
-import logging
 from datetime import date, timedelta
 
 import networkx as nx
@@ -17,6 +16,10 @@ except AttributeError:
     pass
 
 from .services import RatesNotAvailableError
+
+
+class NoRateFound(Exception):
+    pass
 
 
 class BaseRate(models.Model):
@@ -56,6 +59,7 @@ class RateManager(models.Manager):
         :param currency: currency to obtain rate for
         :param base_currency: base currency to get rate from
         :param date_obj: date to fetch rates at
+        :param to_obj: end of range
         :return: QuerySet of Rate
         """
         service_name = rate_service or settings.RATE_SERVICE
@@ -78,14 +82,11 @@ class RateManager(models.Manager):
                      date_obj: date = date.today()) -> BaseRate:
         # See here for process
         # https://app.lucidchart.com/documents/edit/cee5a97f-021f-4eab-8cf3-d66c88cf46f2/0_0?beaconFlowId=4B33C87C22AD8D63
-        rate = self.find_direct_rate(
+        rate = self.find_rate(
             currency=currency,
             key=key,
             base_currency=base_currency,
             date_obj=date_obj)
-        if rate.pk:
-            return rate
-        rate = self.find_pivot_rate(currency=currency, key=key, base_currency=base_currency, date_obj=date_obj)
         if rate.pk:
             return rate
         return Rate()
@@ -108,158 +109,73 @@ class RateManager(models.Manager):
             weight = 0.5 if k['base_currency'] == 'EUR' or k['currency'] == 'EUR' else 1
             weight *= (0.5 if k['key'] else 1)
             graph.add_edge(u_of_edge=k['currency'], v_of_edge=k['base_currency'], weight=weight)
-        return nx.shortest_path(graph, currency, base_currency, weight='weight')
+        try:
+            return nx.shortest_path(graph, currency, base_currency, weight='weight')
+        except nx.exception.NetworkXNoPath as exc:
+            raise NoRateFound(f"Rate {currency} to {base_currency} on key {key} at date {date_obj} does not exist") \
+                from exc
 
-    def nx_find_rate(self, currency: str,
-                     rate_service: str = None,
-                     key: str = None,
-                     base_currency: str = settings.BASE_CURRENCY,
-                     date_obj: date = date.today(),
-                     use_forex: bool = False) -> BaseRate:
+    def find_rate(self, currency: str,
+                  rate_service: str = None,
+                  key: str = None,
+                  base_currency: str = settings.BASE_CURRENCY,
+                  date_obj: date = date.today(),
+                  use_forex: bool = False) -> BaseRate:
         """
         Find rate based on Floyd Warshall algorithm
         """
-        rates = self.currency_shortest_path(
-            currency=currency,
-            base_currency=base_currency,
-            key=key,
-            date_obj=date_obj
-        )
-        # Direct connection between rates
-        if len(rates) == 2:
-            try:
-                return Rate.objects.get(
-                    currency=currency,
+        if use_forex:
+            if not self.fetch_rates(
                     base_currency=base_currency,
-                    value_date=date_obj
-                ).filter(
-                    models.Q(key=key) | models.Q(user__isnull=True)
-                ).order_by('-key').first()
-            except Rate.DoesNotExist as e:
-                # TODO fetch conversion rate
-                logging.error(e)
-                return Rate()
-        # Indirect connection
-        else:
-            conv_value = 1
-            for i in range(len(rates) - 1):
-                from_cur, to_cur = rates[i:i + 1]
-                try:
-                    conv_value *= Rate.objects.get(
-                        currency=from_cur,
-                        base_currency=to_cur,
-                        value_date=date_obj
-                    ).filter(
-                        models.Q(key=key) | models.Q(user__isnull=True)
-                    ).order_by('-key').first().value
-                except Rate.DoesNotExist as e:
-                    logging.error(e)
-                    return Rate()
-                rate = Rate.objects.create(
-                    key=key,
-                    value_date=date_obj,
                     currency=currency,
-                    base_currency=base_currency,
-                    value=conv_value
-                )
-            return rate
-
-    def find_direct_rate(self,
-                         currency: str,
-                         rate_service: str = None,
-                         key: str = None,
-                         base_currency: str = settings.BASE_CURRENCY,
-                         date_obj: date = date.today(),
-                         use_forex: bool = False) -> BaseRate:
-        """
-        Find base_currency / currency at date with the specific key
-        """
-        rates = Rate.objects.filter(
-            key=key,
-            currency=currency,
-            base_currency=base_currency,
-            value_date=date_obj
-        )
-        if rates:
-            return rates.latest('value_date')
-        elif use_forex:
-            try:
-                rates = self.fetch_rates(
                     rate_service=rate_service,
-                    base_currency=base_currency,
-                    currency=currency,
-                    date_obj=date_obj)
-                if not rates:
-                    return Rate()
-                return Rate.objects.get(
-                    key=key,
-                    currency=currency,
-                    base_currency=base_currency,
-                    value_date=date_obj
-                )
-            except RatesNotAvailableError as e:
-                logging.error(e)
+                    date_obj=date_obj):
                 return Rate()
-        return Rate()
-
-    def find_pivot_rate(self,
-                        currency: str,
-                        key: str = None,
-                        base_currency: str = 'EUR',
-                        date_obj: date = date.today()):
-        # We simplify the algorithm to only one pivot
-        # Most currencies convert to Euro or Dollar
-        # So there is an obvious path in finding only one pivot
-
-        rates = Rate.objects.filter(
-            key=key,
-            currency=currency,
-            value_date__lte=date_obj
-        )
-        pivot_rates = Rate.objects.filter(
-            key=key,
-            currency__in=rates.values_list('base_currency', flat=True),
-            base_currency=base_currency,
-            value_date=date_obj
-        )
-        if not rates:
-            # Can‘t find any rate for this client for this date, using standard rates
-            return self.find_direct_rate(
+        try:
+            rates = self.currency_shortest_path(
                 currency=currency,
                 base_currency=base_currency,
-                date_obj=date_obj,
-                use_forex=True)
-        if pivot_rates.exists():
-            pivot_rate = pivot_rates.latest('value_date')
-            rate = rates.filter(base_currency=pivot_rate.currency).latest('value_date')
-            # It exists! let‘s store it
-            rate = Rate.objects.create(
                 key=key,
-                value_date=date_obj,
-                currency=rate.currency,
-                base_currency=base_currency,
-                value=rate.value * pivot_rate.value
+                date_obj=date_obj
             )
-            return rate
-        else:
-            rate = rates.latest('value_date')
-            pivot_rate = self.find_direct_rate(
-                currency=rate.base_currency,
+        except NoRateFound:
+            # No relation found, try fetching rate
+            return self.find_rate(
+                currency=currency,
+                rate_service=rate_service,
+                key=key,
                 base_currency=base_currency,
                 date_obj=date_obj,
                 use_forex=True
             )
-            if pivot_rate:
-                # It exists! let‘s store it
-                rate = Rate.objects.create(
-                    key=key,
-                    value_date=date_obj,
-                    currency=rate.currency,
-                    base_currency=base_currency,
-                    value=rate.value * pivot_rate.value
-                )
-                return rate
-        return None
+        # Direct connection between rates
+        if len(rates) == 2:
+            return Rate.objects.filter(
+                currency=currency,
+                base_currency=base_currency,
+                value_date=date_obj
+            ).filter(
+                models.Q(key=key) | models.Q(user__isnull=True)
+            ).order_by('-key').first()
+        else:
+            conv_value = 1
+            for i in range(len(rates) - 1):
+                from_cur, to_cur = rates[i:i + 2]
+                conv_value *= Rate.objects.filter(
+                    currency=from_cur,
+                    base_currency=to_cur,
+                    value_date=date_obj
+                ).filter(
+                    models.Q(key=key) | models.Q(user__isnull=True)
+                ).order_by('-key').first().value
+            rate = Rate.objects.create(
+                key=key,
+                value_date=date_obj,
+                currency=currency,
+                base_currency=base_currency,
+                value=conv_value
+            )
+            return rate
 
 
 class Rate(BaseRate):

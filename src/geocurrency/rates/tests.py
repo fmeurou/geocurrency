@@ -10,7 +10,7 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 
-from .models import Rate, RateConverter
+from .models import Rate, RateConverter, NoRateFound
 from .serializers import RateAmountSerializer
 
 
@@ -77,24 +77,241 @@ class RateTest(TestCase):
         )
         self.assertIsNotNone(rate)
 
-    def test_find_direct_rate(self):
+    def test_find_rate(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        rate = Rate.objects.find_direct_rate(base_currency=self.base_currency, currency=self.currency)
-        self.assertIsNotNone(rate, msg="no direct rate found")
+        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency=self.currency)
+        self.assertIsNotNone(rate, msg="no rate found")
 
     def test_find_pivot_rate(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        rate = Rate.objects.find_pivot_rate(base_currency=self.base_currency, currency='AUD')
-        self.assertIsNotNone(rate, msg="no pivot rate found")
+        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency='AUD')
+        self.assertIsNotNone(rate, msg="no rate found")
 
     def test_rate_at_date(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        rate = Rate.objects.find_direct_rate(base_currency=self.base_currency, currency=self.currency)
+        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency=self.currency)
         self.assertIsNotNone(rate.pk, msg="no direct rate found")
-        rate = Rate.objects.find_pivot_rate(base_currency=self.base_currency, currency='AUD')
+        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency='AUD')
         self.assertIsNotNone(rate.pk, msg="no pivot rate found")
+
+    def test_custom_rate(self):
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AUD',
+            base_currency='AFN',
+            value=0.123,
+            value_date='2021-01-01'
+        )
+        self.assertIsNotNone(Rate.objects.filter(user=self.user, key=self.key, base_currency='AFN', currency='AUD'))
+
+    def test_find_rate_chain(self):
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AUD',
+            base_currency='AFN',
+            value=0.123,
+            value_date='2021-01-01'
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AFN',
+            base_currency='JPY',
+            value=200,
+            value_date='2021-01-01'
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='JPY',
+            base_currency='BND',
+            value=13,
+            value_date='2021-01-01'
+        )
+        rates = Rate.objects.currency_shortest_path(
+            currency='AUD', base_currency='BND', key=self.key, date_obj='2021-01-01')
+        print(rates)
+        self.assertEqual(rates, ['AUD', 'AFN', 'JPY', 'BND'])
+
+    def test_find_mixed_rate_chain(self):
+        Rate.objects.fetch_rates(base_currency=self.base_currency)
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='ARS',
+            base_currency='AFN',
+            value=0.123,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AFN',
+            base_currency='BND',
+            value=200,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='BND',
+            base_currency='JPY',
+            value=13,
+            value_date=datetime.date.today()
+        )
+        rates = Rate.objects.currency_shortest_path(
+            currency='ARS', base_currency='EUR', key=self.key, date_obj=datetime.date.today())
+        self.assertEqual(rates, ['ARS', 'AFN', 'BND', 'JPY', 'EUR'])
+
+    def test_no_rate_path(self):
+        Rate.objects.fetch_rates(base_currency=self.base_currency)
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='ARS',
+            base_currency='AFN',
+            value=0.123,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AFN',
+            base_currency='BND',
+            value=200,
+            value_date=datetime.date.today()
+        )
+        self.assertRaises(
+            NoRateFound,
+            Rate.objects.currency_shortest_path,
+            currency='ARS',
+            base_currency='EUR',
+            key=self.key,
+            date_obj=datetime.date.today()
+        )
+
+    def test_find_rate_custom(self):
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='ARS',
+            base_currency='AFN',
+            value=0.123,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AFN',
+            base_currency='BND',
+            value=200,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='BND',
+            base_currency='JPY',
+            value=13,
+            value_date=datetime.date.today()
+        )
+        rate = Rate.objects.find_rate(
+            base_currency='JPY',
+            currency='ARS',
+            date_obj=datetime.date.today(),
+            key=self.key)
+        self.assertEqual(rate.value, 0.123*200*13)
+
+    def test_find_rate_mixed(self):
+        Rate.objects.fetch_rates(base_currency=self.base_currency)
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='ARS',
+            base_currency='AFN',
+            value=0.123,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AFN',
+            base_currency='BND',
+            value=200,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='BND',
+            base_currency='JPY',
+            value=13,
+            value_date=datetime.date.today()
+        )
+        jpy_eur = Rate.objects.get(
+            base_currency='EUR',
+            currency='JPY',
+            value_date=datetime.date.today()
+        )
+        rate = Rate.objects.find_rate(
+            base_currency='EUR',
+            currency='ARS',
+            date_obj=datetime.date.today(),
+            key=self.key)
+        print(rate.value, 0.123*200*13*jpy_eur.value)
+        self.assertEqual(rate.value, 0.123*200*13*jpy_eur.value)
+
+    def test_find_rate_override(self):
+        Rate.objects.fetch_rates(base_currency=self.base_currency)
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='ARS',
+            base_currency='AFN',
+            value=0.123,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='AFN',
+            base_currency='BND',
+            value=200,
+            value_date=datetime.date.today()
+        )
+        Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='BND',
+            base_currency='JPY',
+            value=13,
+            value_date=datetime.date.today()
+        )
+        jpy_eur_custom = Rate.objects.create(
+            user=self.user,
+            key=self.key,
+            currency='JPY',
+            base_currency='EUR',
+            value=100,
+            value_date=datetime.date.today()
+        )
+        jpy_eur = Rate.objects.get(
+            base_currency='EUR',
+            currency='JPY',
+            user__isnull=True,
+            value_date=datetime.date.today()
+        )
+        rate = Rate.objects.find_rate(
+            base_currency='EUR',
+            currency='ARS',
+            date_obj=datetime.date.today(),
+            key=self.key)
+        print(rate.value, 0.123*200*13*jpy_eur_custom.value, 0.123*200*13*jpy_eur.value)
+        self.assertEqual(rate.value, 0.123*200*13*jpy_eur_custom.value)
 
     def test_post_rate(self):
         client = APIClient()
