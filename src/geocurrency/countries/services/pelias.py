@@ -23,14 +23,12 @@ class PeliasGeocoder(Geocoder):
         :params server_url: Custom pelias URL, defaults to 'https://api.geocode.earth/v1/search'
         :param key: API key
         """
-        print("arg key", key)
         self.key = key or settings.GEOCODER_PELIAS_KEY
         try:
             pelias_url = settings.GEOCODER_PELIAS_URL
         except AttributeError:
             pelias_url = GEOCODING_SERVICE_SETTINGS['pelias']['default_url']
         self.server_url = server_url or pelias_url
-        print(f'{self.server_url} with api key {self.key}')
 
     def search(self, address, language=None, bounds=None, region=None, components=""):
         search_args = {'text': address}
@@ -60,9 +58,7 @@ class PeliasGeocoder(Geocoder):
         if self.key:
             search_args['api_key'] = self.key
         try:
-            print(f'{self.server_url}/reverse', search_args)
             response = requests.get(f'{self.server_url}/reverse', search_args)
-            print(response.content)
             data = response.json()
             if 'errors' in data:
                 logging.error("ERROR - Invalid request")

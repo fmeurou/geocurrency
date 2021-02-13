@@ -10,7 +10,7 @@ from rest_framework.test import APIClient
 from .models import Country
 from .serializers import CountrySerializer
 
-PELIAS_TEST_URL = 'https://api.geocode.earth/v1/search'
+PELIAS_TEST_URL = 'https://api.geocode.earth/v1'
 TEST_ADDRESS = "Rue du Maine, 75014 Paris"
 TEST_LAT = 48.763434
 TEST_LNG = 2.308702
@@ -150,7 +150,7 @@ class GeocoderTestCase(TestCase):
                 service(service_type='geocoding', service_name='google')
 
     def test_pelias(self):
-        geocoder = service(service_type='geocoding', service_name='pelias',  server_url=PELIAS_TEST_URL,
+        geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
                            key=settings.GEOCODER_PELIAS_KEY)
         self.assertEqual(geocoder.coder_type, 'pelias')
 
@@ -171,14 +171,12 @@ class GeocoderTestCase(TestCase):
             self.assertTrue(False)
 
     def test_pelias_search(self):
-        print(PELIAS_TEST_URL, settings.GEOCODER_PELIAS_KEY)
         geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
                            key=settings.GEOCODER_PELIAS_KEY)
         data = geocoder.search(address=TEST_ADDRESS)
         self.assertIsNotNone(data)
 
     def test_pelias_reverse(self):
-        print("GEOCODER_PELIAS_KEY", settings.GEOCODER_PELIAS_KEY)
         geocoder = service(service_type='geocoding', service_name='pelias', server_url=PELIAS_TEST_URL,
                            key=settings.GEOCODER_PELIAS_KEY)
         data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
@@ -203,7 +201,7 @@ class GeocoderTestCase(TestCase):
         data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
         self.assertIsNotNone(data)
         if 'errors' in data:
-            print("ERROR - pelias-interpolation service is not working, avoiding test")
+            print("ERROR - Pelias service not available")
             return
         self.assertIn("FR", geocoder.parse_countries(data))
 
