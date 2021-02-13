@@ -85,7 +85,7 @@ class DimensionWithUnitsSerializer(DimensionSerializer):
     @swagger_serializer_method(serializer_or_field=UnitSerializer)
     def get_units(self, obj: Dimension):
         try:
-            return obj.units
+            return obj.units()
         except KeyError as e:
             logging.error(str(e))
             return None

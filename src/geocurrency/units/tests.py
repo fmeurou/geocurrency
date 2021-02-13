@@ -18,6 +18,37 @@ from .serializers import UnitAmountSerializer
 
 class DimensionTest(TestCase):
 
+    def setUp(self):
+        self.key = uuid.uuid4()
+        self.admin = User.objects.create(
+            username='admin',
+            email='admin@local.dev',
+            is_superuser=True
+        )
+        self.user = User.objects.create(
+            username='test',
+            email='test@local.dev'
+        )
+        CustomUnit.objects.create(
+            user=self.user,
+            unit_system='SI',
+            code='user_unit',
+            name='User Unit',
+            relation="1.5 meter",
+            symbol="uun",
+            alias="uun"
+        )
+        CustomUnit.objects.create(
+            user=self.user,
+            unit_system='SI',
+            key=self.key,
+            code='user_key_unit',
+            name='User Key Unit',
+            relation="1.5 meter",
+            symbol="ukun",
+            alias="ukun"
+        )
+
     def test_creation(self):
         us = UnitSystem()
         dimension = Dimension(unit_system=us, code='[length]')
@@ -30,8 +61,40 @@ class DimensionTest(TestCase):
     def test_dimension_units(self):
         us = UnitSystem()
         dimension = Dimension(unit_system=us, code='[length]')
-        unit_codes = [unit.code for unit in dimension.units]
+        unit_codes = [unit.code for unit in dimension.units()]
         self.assertIn('meter', unit_codes)
+
+    def test_compounded_dimension_units(self):
+        us = UnitSystem()
+        dimension = Dimension(unit_system=us, code='[compounded]')
+        unit_codes = [unit.code for unit in dimension.units()]
+        print(unit_codes)
+        self.assertIn('number_english', unit_codes)
+
+    def test_custom_dimension_superuser_units(self):
+        us = UnitSystem(user=self.admin)
+        dimension = Dimension(unit_system=us, code='[custom]')
+        self.assertEqual(len(dimension.units(user=self.admin)), 2)
+
+    def test_custom_dimension_superuser_key_units(self):
+        us = UnitSystem(user=self.admin, key=str(self.key))
+        dimension = Dimension(unit_system=us, code='[custom]')
+        self.assertEqual(len(dimension.units(user=self.admin, key=self.key)), 1)
+
+    def test_custom_dimension_user_units(self):
+        us = UnitSystem(user=self.user)
+        dimension = Dimension(unit_system=us, code='[custom]')
+        self.assertEqual(len(dimension.units(user=self.user)), 2)
+
+    def test_custom_dimension_user_key_units(self):
+        us = UnitSystem(user=self.user, key=str(self.key))
+        dimension = Dimension(unit_system=us, code='[custom]')
+        self.assertEqual(len(dimension.units(user=self.user, key=self.key)), 1)
+
+    def test_custom_dimension_no_user_units(self):
+        us = UnitSystem(user=self.user)
+        dimension = Dimension(unit_system=us, code='[custom]')
+        self.assertEqual(len(dimension.units()), 0)
 
 
 class UnitTest(TestCase):
@@ -116,7 +179,19 @@ class UnitTest(TestCase):
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[length]').units))
+        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[length]').units()))
+
+    def test_list_with_compounded_dimension_request(self):
+        client = APIClient()
+        us = UnitSystem()
+        response = client.get(
+            '/units/mks/units/',
+            data={
+                'dimension': '[compounded]'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[compounded]').units()))
 
     def test_list_with_dimension_2_request(self):
         client = APIClient()
@@ -128,7 +203,7 @@ class UnitTest(TestCase):
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[area]').units))
+        self.assertEqual(len(response.json()), len(Dimension(unit_system=us, code='[area]').units()))
 
     def test_retrieve_request(self):
         client = APIClient()

@@ -110,7 +110,7 @@ class UnitViewset(ViewSet):
             if dimension_param := request.GET.get('dimension'):
                 try:
                     dimension = Dimension(unit_system=us, code=dimension_param)
-                    units = dimension.units
+                    units = dimension.units(user=user, key=key)
                 except DimensionNotFound:
                     return Response('Invalid dimension filter', status=status.HTTP_400_BAD_REQUEST)
             else:
