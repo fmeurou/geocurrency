@@ -194,7 +194,8 @@ DIMENSIONS = {
     '[compounded]': {'name': _('Compound dimension'),
                      'dimension': 'undefined',
                      'symbol': ''
-                }
+                },
+    '[custom]': {'name': _('Custom dimension'), 'dimension': 'undefined', 'symbol': ''},
 }
 
 UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {

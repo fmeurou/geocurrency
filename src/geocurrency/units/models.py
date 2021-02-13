@@ -93,7 +93,11 @@ class UnitSystem:
         """
         Load custom units in registry
         """
-        qs = CustomUnit.objects.filter(user=user)
+        if user and user.is_authenticated:
+            if user.is_superuser:
+                qs = CustomUnit.objects.all()
+            else:
+                qs = CustomUnit.objects.filter(user=user)
         if key:
             qs = qs.filter(key=key)
         for cu in qs:
@@ -272,13 +276,16 @@ class Dimension:
     def __repr__(self):
         return self.code
 
-    @property
-    def units(self):
+    def units(self, user=None, key=None) -> [Unit]:
         """
         List of units for this dimension
+        :param user: optional user for custom units
+        :param key: optional key for custom units
         """
         if self.code == '[compounded]':
             return self._compounded_units
+        if self.code == '[custom]':
+            return self._custom_units(user=user, key=key)
         unit_list = []
         try:
             prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
@@ -302,8 +309,6 @@ class Dimension:
             if unit in unit_names:
                 for prefix in prefixes:
                     unit_list.append(self.unit_system.unit(unit_name=prefix + unit))
-                # unit_list.extend([self.unit_system.unit(unit_name=prefix + unit)
-                #                   for prefix in prefixes if not prefix + unit in unit_names])
         return set(sorted(unit_list, key=lambda x: x.name))
 
     @property
@@ -313,10 +318,27 @@ class Dimension:
         """
         available_units = self.unit_system.available_unit_names()
         dimensioned_units = []
-        for dimension_code in [d for d in DIMENSIONS.keys() if d != '[compounded]']:
+        for dimension_code in [d for d in DIMENSIONS.keys() if d != '[compounded]' and d != '[custom]']:
             dimension = Dimension(unit_system=self.unit_system, code=dimension_code)
-            dimensioned_units.extend([u.code for u in dimension.units])
+            dimensioned_units.extend([u.code for u in dimension.units()])
         return [self.unit_system.unit(au) for au in set(available_units) - set(dimensioned_units)]
+
+    def _custom_units(self, user: User, key: str = None) -> [Unit]:
+        """
+        Return list of custom units
+        :param user: User owning the units
+        :param key: optional unit key
+        """
+        if user and user.is_authenticated:
+            if user.is_superuser:
+                custom_units = CustomUnit.objects.all()
+            else:
+                custom_units = CustomUnit.objects.filter(user=user)
+            if key:
+                custom_units = custom_units.filter(key=key)
+            return [self.unit_system.unit(cu.code) for cu in custom_units]
+        else:
+            return []
 
     @property
     def base_unit(self):
@@ -329,6 +351,7 @@ class Dimension:
             logging.warning(
                 f'dimension {self.dimension} is not part of unit system {self.unit_system.system_name}')
             return None
+
 
 class Unit:
     """
@@ -387,7 +410,7 @@ class Unit:
         Return Dimensions of Unit
         """
         dimensions = [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
-                if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
+                      if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
         return dimensions or '[compounded]'
 
     def base_unit(unit_str: str) -> (str, str):
