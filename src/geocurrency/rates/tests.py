@@ -134,7 +134,6 @@ class RateTest(TestCase):
         )
         rates = Rate.objects.currency_shortest_path(
             currency='AUD', base_currency='BND', key=self.key, date_obj='2021-01-01')
-        print(rates)
         self.assertEqual(rates, ['AUD', 'AFN', 'JPY', 'BND'])
 
     def test_find_mixed_rate_chain(self):
@@ -262,7 +261,6 @@ class RateTest(TestCase):
             currency='ARS',
             date_obj=datetime.date.today(),
             key=self.key)
-        print(rate.value, 0.123*200*13*jpy_eur.value)
         self.assertEqual(rate.value, 0.123*200*13*jpy_eur.value)
 
     def test_find_rate_override(self):
@@ -310,7 +308,6 @@ class RateTest(TestCase):
             currency='ARS',
             date_obj=datetime.date.today(),
             key=self.key)
-        print(rate.value, 0.123*200*13*jpy_eur_custom.value, 0.123*200*13*jpy_eur.value)
         self.assertEqual(rate.value, 0.123*200*13*jpy_eur_custom.value)
 
     def test_post_rate(self):
@@ -618,6 +615,10 @@ class RateConverterTest(TestCase):
     currency = 'USD'
 
     def setUp(self) -> None:
+        settings.RATE_SERVICE = 'forex'
+        from_date = datetime.date(year=2020, month=7, day=20)
+        to_date = datetime.date(year=2020, month=7, day=25)
+        Rate.objects.fetch_rates(base_currency=self.base_currency, date_obj=from_date, to_obj=to_date)
         self.user, created = User.objects.get_or_create(
             username='test',
             email='test@ipd.com'
@@ -657,6 +658,7 @@ class RateConverterTest(TestCase):
         self.assertEqual(self.converter.status, self.converter.INITIATED_STATUS)
 
     def test_add_data(self):
+        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
         errors = self.converter.add_data(self.amounts)
         self.assertEqual(errors, [])
         self.assertEqual(self.converter.status, self.converter.INSERTING_STATUS)

@@ -161,13 +161,15 @@ class RateManager(models.Manager):
             conv_value = 1
             for i in range(len(rates) - 1):
                 from_cur, to_cur = rates[i:i + 2]
-                conv_value *= Rate.objects.filter(
-                    currency=from_cur,
-                    base_currency=to_cur,
-                    value_date=date_obj
-                ).filter(
-                    models.Q(key=key) | models.Q(user__isnull=True)
-                ).order_by('-key').first().value
+                if rate := self.find_rate(
+                        currency=from_cur,
+                        base_currency=to_cur,
+                        date_obj=date_obj,
+                        use_forex=True):
+                    conv_value *= rate.value
+                else:
+                    raise NoRateFound(
+                        f"rate {from_cur} -> {to_cur} for key {key} does not exist at date {date_obj}")
             rate = Rate.objects.create(
                 key=key,
                 value_date=date_obj,
