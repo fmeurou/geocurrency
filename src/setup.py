@@ -71,7 +71,8 @@ setup(
         "iso4217",
         "forex-python~=1.0",
         "Babel~=2.8",
-        "Pint~=0.15"
+        "Pint~=0.15",
+        "networkx~=2.5.0"
     ],
     packages=find_packages(),
     include_package_data=True,
