@@ -4,7 +4,7 @@ from datetime import date, datetime
 from drf_yasg.utils import swagger_serializer_method
 from rest_framework import serializers
 
-from .models import Amount, UnitConversionPayload, Dimension, CustomUnit
+from .models import Amount, UnitConversionPayload, Dimension, CustomUnit, Expression, Operand
 from geocurrency.core.serializers import UserSerializer
 
 
@@ -110,7 +110,7 @@ class UnitConversionPayloadSerializer(serializers.Serializer):
             raise serializers.ValidationError(
                 'data has to be provided if batch_id is not provided or batch_id is provided and eob is False'
             )
-        return super(UnitConversionPayloadSerializer, self).is_valid()
+        return super().is_valid(raise_exception=raise_exception)
 
     @staticmethod
     def validate_base_system(value: str):
@@ -146,3 +146,58 @@ class CustomUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUnit
         fields = ['user', 'key', 'unit_system', 'code', 'name', 'relation', 'symbol', 'alias']
+
+
+class ExpressionSerializer(serializers.Serializer):
+    operation = serializers.CharField(required=True)
+    first_term = OperandSerializer(required=True)
+    second_term = OperandSerializer(required=True)
+    expression = ExpressionSerializer()
+
+    def is_valid(self, raise_exception=False) -> bool:
+        if not self.initial_data.get('operation'):
+            raise serializers.ValidationError("Missing operation")
+        if not self.initial_data.get('first_term'):
+            raise serializers.ValidationError("Missing first term")
+        if not self.initial_data.get('second_term'):
+            raise serializers.ValidationError("Missing second term")
+        return super().is_valid(raise_exception=raise_exception)
+
+    @staticmethod
+    def validate_operation(value:str) ->str:
+        if value not in Expression.OPERATIONS.keys():
+            raise serializers.ValidationError(f"operation {value} not supported")
+        return value
+
+    @staticmethod
+    def validate_first_term(value: Operand) -> Operand:
+        if not value.validate():
+            raise serializers.ValidationError(f"Invalid operand")
+        return value
+
+    @staticmethod
+    def validate_second_term(value: Operand) -> Operand:
+        if not value.validate():
+            raise serializers.ValidationError(f"Invalid operand")
+        return value
+
+    @staticmethod
+    def validate_expression(value: Expression) -> Expression:
+        if not value.validate():
+            raise serializers.ValidationError("Invalid expression")
+        return value
+
+
+class OperandSerializer(serializers.Serializer):
+    value = serializers.CharField()
+    unit = serializers.CharField()
+    expression = ExpressionSerializer()
+
+    def is_valid(self, raise_exception=False) -> bool:
+        if 'value 'not in self.initial_data:
+            raise serializers.ValidationError("Value not set")
+        if not self.initial_data.get('unit'):
+            raise serializers.ValidationError("Unit not set")
+        return super().is_valid(raise_exception=raise_exception)
+
+

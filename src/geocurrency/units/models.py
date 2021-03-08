@@ -1,6 +1,6 @@
 import logging
 from datetime import date
-
+import operator
 import pint
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -664,3 +664,108 @@ class CustomUnit(models.Model):
         except pint.errors.UndefinedUnitError:
             raise UnitDimensionError
         return super(CustomUnit, self).save(*args, **kwargs)
+
+
+class Operand:
+    value = None
+    unit = None
+    expression = None
+
+    def __init__(self, value, unit, expression = None):
+        self.value = value
+        self.unit = unit
+        self.expression = expression
+
+    def validate(self):
+        if not self.expression:
+            if not self.value:
+                return False
+        return True
+
+
+class Expression:
+    operation = None
+    first_term = None
+    second_term = None
+    expression = None
+
+    OPERATIONS = {
+        '+': operator.add,
+        '-': operator.sub,
+        '*': operator.mul,
+        '/': operator.truediv,
+        '//': operator.floordiv,
+        '**': operator.pow
+    }
+
+    def validate(self):
+        if not self.operation:
+            return False, "missing operator"
+        if self.operation not in operations.keys():
+            return False, f"operation {self.operation} not supported"
+        if self.operation in ['**', '//'] and e.second_term.unit:
+            return False, "unit must be '' for second term on operations // and **"
+        if not 'first_term' in e or not 'second_term' in e:
+            return False, "missing operand"
+        for term in [self.first_term, self.second_term]:
+            if not term.validate:
+                return False, f'missing {term} value'
+        return True, ''
+
+    def validate_expression(e):
+        if not self.operation:
+            return False, "missing operator"
+        if self.operation not in operations.keys():
+            return False, f"operation {self.operation} not supported"
+        if self.operation in ['**', '//'] and self.second_term.unit:
+            return False, "unit must be '' for second term on operations // and **"
+        if not self.first_term or not self.second_term:
+            return False, "missing operand"
+        for term in [self.first_term, self.second_term]:
+            if not term.validate():
+                return False, f'missing {term} value'
+        return True, ''
+
+    def get_value_and_unit(term):
+        if term.expression:
+            is_valid, error = validate_expression(term.expression)
+            if is_valid:
+                expression = term.expression
+                value, unit_or_error = operation(
+                    expression.operation,
+                    expression.first_term,
+                    expression.second_term
+                )
+                if not value:
+                    return False, unit_or_error
+                unit = unit_or_error
+                return value, unit
+        else:
+            return term['value'], term['unit']
+
+    @classmethod
+    def operation(cls, operation, first_term, second_term):
+        first_value, first_unit = get_value_and_unit(first_term)
+        second_value, second_unit = get_value_and_unit(second_term)
+        if not first_value:
+            return False, first_unit
+        if not second_value:
+            return False, second_unit
+        try:
+            q = cls.OPERATIONS[operation](Q_(1, first_unit), Q_(1, second_unit))
+            return q.magnitude, q.units
+        except pint.DimensionalityError as e:
+            return False, e
+
+    def validate_dimensionality(e):
+        valid_expression, error = validate_expression(e)
+        if valid_expression:
+            valid_operation, units = operation(e['operation'], e['first_term'], e['second_term'])
+            if valid_operation:
+                print(units)
+                return units
+            else:
+                print(units)
+        else:
+            print("invalid expression", error)
+

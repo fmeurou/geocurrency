@@ -245,3 +245,23 @@ class CustomUnitViewSet(ModelViewSet):
                 return HttpResponseForbidden()
         else:
             return Response(cu_form.errors, status=status.HTTP_400_BAD_REQUEST, content_type="application/json")
+
+class OperationValidationViewSet(APIView):
+
+    # @swagger_auto_schema(request_body=UnitConversionPayloadSerializer,
+    #                      responses={200: ConverterResultSerializer})
+    @action(['POST'], detail=False, url_path='', url_name="validate")
+    def get(self, request, unit_system, *args, **kwargs):
+        """
+        Converts a list of amounts with currency and date to a reference currency
+        :param request: HTTP request
+        """
+        if request.user and request.user.is_authenticated:
+            us = UnitSystem(unit_system, user=request.user, key=kwargs.get('key', None))
+        else:
+            us = UnitSystem(unit_system)
+        # TODO: define a format to handle operations
+        Q_ = us.ureg.Quantity
+        expression = request.GET.get('expression')
+
+
