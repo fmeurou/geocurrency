@@ -1,5 +1,6 @@
-import logging
+import json
 
+import logging
 from django.db import models
 from django.http import HttpResponseForbidden, HttpRequest
 from django.utils.decorators import method_decorator
@@ -12,8 +13,7 @@ from geocurrency.converters.models import ConverterLoadError
 from geocurrency.converters.serializers import ConverterResultSerializer
 from geocurrency.core.helpers import validate_language
 from geocurrency.core.pagination import PageNumberPagination
-from rest_framework import permissions
-from rest_framework import status
+from rest_framework import permissions, serializers, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST
@@ -28,7 +28,7 @@ from .models import UnitSystem, UnitConverter, Dimension, CustomUnit
 from .permissions import CustomUnitObjectPermission
 from .serializers import UnitSerializer, UnitSystemSerializer, \
     UnitConversionPayloadSerializer, DimensionSerializer, \
-    DimensionWithUnitsSerializer, CustomUnitSerializer
+    DimensionWithUnitsSerializer, CustomUnitSerializer, ExpressionSerializer
 
 
 class UnitSystemViewset(ViewSet):
@@ -246,22 +246,34 @@ class CustomUnitViewSet(ModelViewSet):
         else:
             return Response(cu_form.errors, status=status.HTTP_400_BAD_REQUEST, content_type="application/json")
 
-class OperationValidationViewSet(APIView):
 
-    # @swagger_auto_schema(request_body=UnitConversionPayloadSerializer,
-    #                      responses={200: ConverterResultSerializer})
-    @action(['POST'], detail=False, url_path='', url_name="validate")
+class ValidateViewSet(APIView):
+    """
+    GET API View to validate formulas
+    """
+
+    @swagger_auto_schema(request_body=ExpressionSerializer)
+    @action(['GET'], detail=False, url_path='', url_name="validate")
     def get(self, request, unit_system, *args, **kwargs):
         """
-        Converts a list of amounts with currency and date to a reference currency
+        Validate a formula with parameters
         :param request: HTTP request
+        :param unit_system: Unit system to use for validation
         """
         if request.user and request.user.is_authenticated:
             us = UnitSystem(unit_system, user=request.user, key=kwargs.get('key', None))
         else:
             us = UnitSystem(unit_system)
-        # TODO: define a format to handle operations
-        Q_ = us.ureg.Quantity
-        expression = request.GET.get('expression')
-
-
+        data = {
+            'expression': request.GET.get('expression'),
+            'variables': json.loads(request.GET.get('variables'))
+        }
+        exp = ExpressionSerializer(
+            unit_system=us,
+            data=data
+        )
+        try:
+            exp.is_valid()
+            return Response("Valid expression")
+        except serializers.ValidationError as e:
+            return Response(f"Invalid expression: {e}", status=status.HTTP_406_NOT_ACCEPTABLE)

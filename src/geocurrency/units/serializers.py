@@ -1,10 +1,12 @@
 import logging
+import pint
+from sympy import sympify, SympifyError
 from datetime import date, datetime
 
 from drf_yasg.utils import swagger_serializer_method
 from rest_framework import serializers
 
-from .models import Amount, UnitConversionPayload, Dimension, CustomUnit, Expression, Operand
+from .models import Amount, UnitConversionPayload, Dimension, CustomUnit, Expression
 from geocurrency.core.serializers import UserSerializer
 
 
@@ -148,56 +150,71 @@ class CustomUnitSerializer(serializers.ModelSerializer):
         fields = ['user', 'key', 'unit_system', 'code', 'name', 'relation', 'symbol', 'alias']
 
 
-class ExpressionSerializer(serializers.Serializer):
-    operation = serializers.CharField(required=True)
-    first_term = OperandSerializer(required=True)
-    second_term = OperandSerializer(required=True)
-    expression = ExpressionSerializer()
-
-    def is_valid(self, raise_exception=False) -> bool:
-        if not self.initial_data.get('operation'):
-            raise serializers.ValidationError("Missing operation")
-        if not self.initial_data.get('first_term'):
-            raise serializers.ValidationError("Missing first term")
-        if not self.initial_data.get('second_term'):
-            raise serializers.ValidationError("Missing second term")
-        return super().is_valid(raise_exception=raise_exception)
-
-    @staticmethod
-    def validate_operation(value:str) ->str:
-        if value not in Expression.OPERATIONS.keys():
-            raise serializers.ValidationError(f"operation {value} not supported")
-        return value
-
-    @staticmethod
-    def validate_first_term(value: Operand) -> Operand:
-        if not value.validate():
-            raise serializers.ValidationError(f"Invalid operand")
-        return value
-
-    @staticmethod
-    def validate_second_term(value: Operand) -> Operand:
-        if not value.validate():
-            raise serializers.ValidationError(f"Invalid operand")
-        return value
-
-    @staticmethod
-    def validate_expression(value: Expression) -> Expression:
-        if not value.validate():
-            raise serializers.ValidationError("Invalid expression")
-        return value
-
-
-class OperandSerializer(serializers.Serializer):
+class VariableSerializer(serializers.Serializer):
+    name = serializers.CharField()
     value = serializers.CharField()
     unit = serializers.CharField()
-    expression = ExpressionSerializer()
 
     def is_valid(self, raise_exception=False) -> bool:
-        if 'value 'not in self.initial_data:
+        if not self.initial_data.get('name'):
+            raise serializers.ValidationError("Name not set")
+        if 'value' not in self.initial_data:
             raise serializers.ValidationError("Value not set")
-        if not self.initial_data.get('unit'):
+        if 'unit' not in self.initial_data:
             raise serializers.ValidationError("Unit not set")
         return super().is_valid(raise_exception=raise_exception)
 
+
+class ExpressionSerializer(serializers.Serializer):
+    unit_system = None
+    key = None
+    expression = serializers.CharField(required=True)
+    variables = VariableSerializer(many=True, required=True)
+
+    def __init__(self, unit_system, *args, **kwargs):
+        self.unit_system = unit_system
+        self.Q_ = unit_system.ureg.Quantity
+        super().__init__(*args, **kwargs)
+
+    def is_valid(self, raise_exception=False) -> bool:
+        if not self.initial_data.get('expression'):
+            raise serializers.ValidationError("Missing expression")
+        if not self.initial_data.get('variables'):
+            raise serializers.ValidationError("Missing variables")
+        if self.validate_variables(self.initial_data.get('variables')):
+            expression = self.initial_data.get('expression')
+            variables = self.initial_data.get('variables')
+            value_kwargs = {v['name']: v['value'] for v in variables}
+            try:
+                sympify(expression.format(**value_kwargs))
+            except (SympifyError, KeyError) as e:
+                raise serializers.ValidationError(f"Invalid operation") from e
+            units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in variables}
+            try:
+                self.Q_(expression.format(**units_kwargs))
+            except KeyError:
+                raise serializers.ValidationError("Missing variables")
+            except pint.errors.DimensionalityError:
+                raise serializers.ValidationError("Incoherent dimension")
+        return super().is_valid(raise_exception=raise_exception)
+
+    @staticmethod
+    def validate_variables(value):
+        for var in value:
+            vs = VariableSerializer(data=var)
+            if not vs.is_valid():
+                raise serializers.ValidationError(f"Invalid operand")
+        return value
+
+    def create(self, validated_data):
+        return Expression(
+            unit_system=self.unit_system,
+            expression=validated_data.get('expression'),
+            variables=validated_data.get('variables')
+        )
+
+    def update(self, instance, validated_data):
+        instance.expression = validated_data.get('expression')
+        instance.variables = validated_data.get('variables')
+        return instance
 

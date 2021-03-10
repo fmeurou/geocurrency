@@ -1,3 +1,5 @@
+import json
+
 import uuid
 
 import pint
@@ -9,11 +11,12 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
+from rest_framework import serializers
 
 from . import ADDITIONAL_BASE_UNITS
 from .exceptions import UnitSystemNotFound, UnitDuplicateError, UnitDimensionError
 from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound, CustomUnit
-from .serializers import UnitAmountSerializer
+from .serializers import UnitAmountSerializer, ExpressionSerializer
 
 
 class DimensionTest(TestCase):
@@ -68,7 +71,6 @@ class DimensionTest(TestCase):
         us = UnitSystem()
         dimension = Dimension(unit_system=us, code='[compounded]')
         unit_codes = [unit.code for unit in dimension.units()]
-        print(unit_codes)
         self.assertIn('number_english', unit_codes)
 
     def test_custom_dimension_superuser_units(self):
@@ -722,3 +724,188 @@ class CustomUnitTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('ny_unit', [u['code'] for u in response.json()])
         self.assertNotIn('py_unit', [u['code'] for u in response.json()])
+
+
+class ExpressionTest(TestCase):
+
+    def setUp(self):
+        self.us = UnitSystem(system_name='SI')
+
+    def test_valid_serializer_payload(self):
+        payload = {
+            'expression': '(3*{a}+15*{b})*6*{c}',
+            'variables': [
+                {
+                    'name': 'a',
+                    'value': 0.1,
+                    'unit': 'kg'
+                },
+                {
+                    'name': 'b',
+                    'value': 15,
+                    'unit': 'g'
+                },
+                {
+                    'name': 'c',
+                    'value': 12,
+                    'unit': 's'
+                }
+            ]
+        }
+        es = ExpressionSerializer(unit_system=self.us, data=payload)
+        self.assertTrue(es.is_valid())
+
+    def test_invalid_serializer_expression(self):
+        payload = {
+            'expression': '(3*{a}+15*{b}) -',
+            'variables': [
+                {
+                    'name': 'a',
+                    'value': 0.1,
+                    'unit': 'kg'
+                },
+                {
+                    'name': 'b',
+                    'value': 15,
+                    'unit': 'g'
+                },
+                {
+                    'name': 'c',
+                    'value': 12,
+                    'unit': 's'
+                }
+            ]
+        }
+        es = ExpressionSerializer(unit_system=self.us, data=payload)
+        self.assertRaises(serializers.ValidationError, es.is_valid)
+
+    def test_invalid_serializer_coherency(self):
+        payload = {
+            'expression': '(3*{a}+15*{b})-c',
+            'variables': [
+                {
+                    'name': 'a',
+                    'value': 0.1,
+                    'unit': 'kg'
+                },
+                {
+                    'name': 'b',
+                    'value': 15,
+                    'unit': 'g'
+                },
+                {
+                    'name': 'c',
+                    'value': 12,
+                    'unit': 's'
+                }
+            ]
+        }
+        es = ExpressionSerializer(unit_system=self.us, data=payload)
+        self.assertRaises(serializers.ValidationError, es.is_valid)
+
+    def test_invalid_serializer_parameters(self):
+        payload = {
+            'expression': '(3*{a}+15*{b})-c',
+            'variables': [
+                {
+                    'name': 'a',
+                    'value': 0.1,
+                    'unit': 'kg'
+                },
+                {
+                    'name': 'b',
+                    'value': 15,
+                    'unit': 'g'
+                }
+            ]
+        }
+        es = ExpressionSerializer(unit_system=self.us, data=payload)
+        self.assertRaises(serializers.ValidationError, es.is_valid)
+
+    def test_empty_serializer_expression(self):
+        payload = {
+            'expression': '',
+            'variables': [
+                {
+                    'name': 'a',
+                    'value': 0.1,
+                    'unit': 'kg'
+                },
+                {
+                    'name': 'b',
+                    'value': 15,
+                    'unit': 'g'
+                }
+            ]
+        }
+        es = ExpressionSerializer(unit_system=self.us, data=payload)
+        self.assertRaises(serializers.ValidationError, es.is_valid)
+
+    def test_empty_serializer_variables(self):
+        payload = {
+            'expression': '(3*{a}+15*{b})-c',
+            'variables': []
+        }
+        es = ExpressionSerializer(unit_system=self.us, data=payload)
+        self.assertRaises(serializers.ValidationError, es.is_valid)
+
+    def test_formula_validation_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/formulas/validate/',
+            data={
+                'expression': "3*{a}+15*{b}",
+                'variables': json.dumps([
+                    {
+                        "name": "a",
+                        "value": 0.1,
+                        "unit": "kg"
+                    },
+                    {
+                        "name": "b",
+                        "value": 15,
+                        "unit": "g"
+                    }
+                ])
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_formula_validation_variable_exception_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/formulas/validate/',
+            data={
+                'expression': "3*{a}+15*{b}",
+                'variables': json.dumps([
+                    {
+                        "name": "a",
+                        "value": 0.1,
+                        "unit": "kg"
+                    },
+                ])
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_406_NOT_ACCEPTABLE)
+
+    def test_formula_validation_expression_exception_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/formulas/validate/',
+            data={
+                'expression': "3*{a}+15*{b}+",
+                'variables': json.dumps([
+                    {
+                        "name": "a",
+                        "value": 0.1,
+                        "unit": "kg"
+                    },
+                    {
+                        "name": "b",
+                        "value": 15,
+                        "unit": "g"
+                    }
+                ])
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_406_NOT_ACCEPTABLE)

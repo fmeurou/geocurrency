@@ -1,13 +1,14 @@
 import logging
-from datetime import date
-import operator
 import pint
+from datetime import date
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
+from pint import Quantity
+from sympy import sympify, SympifyError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
     ADDITIONAL_BASE_UNITS, PREFIX_SYMBOL
@@ -667,105 +668,64 @@ class CustomUnit(models.Model):
 
 
 class Operand:
+    """
+    Operand in a formula
+    """
+    name = None
     value = None
     unit = None
-    expression = None
 
-    def __init__(self, value, unit, expression = None):
+    def __init__(self, name, value, unit, expression=None):
+        self.name = name
         self.value = value
         self.unit = unit
-        self.expression = expression
 
     def validate(self):
-        if not self.expression:
-            if not self.value:
-                return False
+        if not self.name or self.value is None or self.unit is None:
+            return False
         return True
 
 
+class ComputationError(Exception):
+    pass
+
+
 class Expression:
-    operation = None
-    first_term = None
-    second_term = None
+    """
+    Expression with variables
+    """
     expression = None
+    variables = None
 
-    OPERATIONS = {
-        '+': operator.add,
-        '-': operator.sub,
-        '*': operator.mul,
-        '/': operator.truediv,
-        '//': operator.floordiv,
-        '**': operator.pow
-    }
+    def __init__(self, unit_system: UnitSystem, expression: str, variables: [Operand]):
+        self.us = unit_system
+        self.Q_ = unit_system.ureg.Quantity
+        self.expression = expression
+        self.variables = variables
 
-    def validate(self):
-        if not self.operation:
-            return False, "missing operator"
-        if self.operation not in operations.keys():
-            return False, f"operation {self.operation} not supported"
-        if self.operation in ['**', '//'] and e.second_term.unit:
-            return False, "unit must be '' for second term on operations // and **"
-        if not 'first_term' in e or not 'second_term' in e:
-            return False, "missing operand"
-        for term in [self.first_term, self.second_term]:
-            if not term.validate:
-                return False, f'missing {term} value'
-        return True, ''
-
-    def validate_expression(e):
-        if not self.operation:
-            return False, "missing operator"
-        if self.operation not in operations.keys():
-            return False, f"operation {self.operation} not supported"
-        if self.operation in ['**', '//'] and self.second_term.unit:
-            return False, "unit must be '' for second term on operations // and **"
-        if not self.first_term or not self.second_term:
-            return False, "missing operand"
-        for term in [self.first_term, self.second_term]:
-            if not term.validate():
-                return False, f'missing {term} value'
-        return True, ''
-
-    def get_value_and_unit(term):
-        if term.expression:
-            is_valid, error = validate_expression(term.expression)
-            if is_valid:
-                expression = term.expression
-                value, unit_or_error = operation(
-                    expression.operation,
-                    expression.first_term,
-                    expression.second_term
-                )
-                if not value:
-                    return False, unit_or_error
-                unit = unit_or_error
-                return value, unit
-        else:
-            return term['value'], term['unit']
-
-    @classmethod
-    def operation(cls, operation, first_term, second_term):
-        first_value, first_unit = get_value_and_unit(first_term)
-        second_value, second_unit = get_value_and_unit(second_term)
-        if not first_value:
-            return False, first_unit
-        if not second_value:
-            return False, second_unit
+    def validate(self) -> (bool, str):
+        if not self.expression:
+            return False, "missing expression"
         try:
-            q = cls.OPERATIONS[operation](Q_(1, first_unit), Q_(1, second_unit))
-            return q.magnitude, q.units
-        except pint.DimensionalityError as e:
-            return False, e
+            sympify(self.expression.format(**{v['name']: v['value'] for v in self.variables}))
+        except SympifyError as e:
+            return False, "Improper expression"
+        for var in self.variables:
+            if not var.validate():
+                return False, "invalid operand"
+        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.variables}
+        try:
+            self.Q_(self.expression.format(**kwargs))
+        except KeyError:
+            return False, "Missing variable"
+        except pint.errors.DimensionalityError:
+            return False, "Incoherent dimensions"
+        return True, ''
 
-    def validate_dimensionality(e):
-        valid_expression, error = validate_expression(e)
-        if valid_expression:
-            valid_operation, units = operation(e['operation'], e['first_term'], e['second_term'])
-            if valid_operation:
-                print(units)
-                return units
-            else:
-                print(units)
+    def evaluate(self) -> Quantity:
+        is_valid, error = self.validate()
+        if is_valid:
+            kwargs = {v.name: f"{v.value} {v.unit}" for v in self.variables}
+            return self.Q_(self.expression.format(kwargs))
         else:
-            print("invalid expression", error)
-
+            raise ComputationError("Invalid formula")
