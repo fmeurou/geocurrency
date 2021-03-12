@@ -1,7 +1,7 @@
 import logging
 import pickle
 import uuid
-
+import pint
 from django.core.cache import cache
 
 
@@ -17,6 +17,53 @@ class BaseConverter:
     WITH_ERRORS = 'finished with errors'
 
 
+class CalculationResultDetail:
+    expression = None
+    operands = None
+    magnitude = None
+    units = None
+
+    def __init__(self, expression: str, operands: [], magnitude: float, units: str):
+        self.expression = expression
+        self.operands = operands
+        self.magnitude = magnitude
+        self.units = units
+
+
+class CalculationResultError:
+    expression = None
+    operands = None
+    date = None
+    error = None
+
+    def __init__(self, expression: str, operands: [], date: date):
+        self.expression = expression
+        self.operands = operands
+        self.date = date
+
+
+class CalculationResult:
+    id = None
+    detail = []
+    status = None
+    errors = []
+
+    def __init__(self, id: str = None, detail: [CalculationResultDetail] = None,
+                 status: str = BaseConverter.INITIATED_STATUS,
+                 errors: [CalculationResultError] = None):
+        self.id = id
+        self.detail = detail or []
+        self.status = status
+        self.errors = errors or []
+
+    def end_batch(self):
+        if self.errors:
+            self.status = BaseConverter.WITH_ERRORS
+        else:
+            self.status = BaseConverter.FINISHED
+        return self.status
+
+
 class ConverterResultDetail:
     unit = None
     original_value = 0
@@ -24,7 +71,8 @@ class ConverterResultDetail:
     conversion_rate = 0
     converted_value = 0
 
-    def __init__(self, unit: str, original_value: float, date: date, conversion_rate: float, converted_value: float):
+    def __init__(self, unit: str, original_value: float, date: date, conversion_rate: float,
+                 converted_value: float):
         self.unit = unit
         self.original_value = original_value
         self.date = date
@@ -54,7 +102,8 @@ class ConverterResult:
     errors = []
 
     def __init__(self, id: str = None, target: str = None, detail: [ConverterResultDetail] = None,
-                 sum: float = 0, status: str = BaseConverter.INITIATED_STATUS, errors: [ConverterResultError] = None):
+                 sum: float = 0, status: str = BaseConverter.INITIATED_STATUS,
+                 errors: [ConverterResultError] = None):
         self.id = id
         self.target = target
         self.detail = detail or []
@@ -101,6 +150,7 @@ class BaseConverter:
         raise KeyError(f"Converter with id {id} not found in cache")
 
     def save(self):
+        print(dir(self))
         cache.set(self.id, pickle.dumps(self))
 
     def add_data(self, data: []) -> []:

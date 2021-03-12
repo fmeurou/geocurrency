@@ -2,7 +2,8 @@ from django.conf.urls import url, include
 from django.urls import path
 from rest_framework import routers
 
-from .viewsets import UnitSystemViewset, UnitViewset, ConvertView, CustomUnitViewSet, ValidateViewSet
+from .viewsets import UnitSystemViewset, UnitViewset, ConvertView, CustomUnitViewSet, \
+    ValidateViewSet, CalculationView
 
 app_name = 'units'
 
@@ -14,5 +15,6 @@ router.register(r'(?P<system_name>\w+)/custom', CustomUnitViewSet, basename='cus
 urlpatterns = [
     path('convert/', ConvertView.as_view()),
     path('<str:unit_system>/formulas/validate/', ValidateViewSet.as_view()),
+    path('<str:unit_system>/formulas/calculate/', CalculationView.as_view()),
     url(r'^', include(router.urls)),
 ]

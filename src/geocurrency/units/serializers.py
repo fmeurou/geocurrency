@@ -1,16 +1,18 @@
+import json
 import logging
-import pint
-from sympy import sympify, SympifyError
 from datetime import date, datetime
 
+import pint
 from drf_yasg.utils import swagger_serializer_method
-from rest_framework import serializers
-
-from .models import Amount, UnitConversionPayload, Dimension, CustomUnit, Expression
 from geocurrency.core.serializers import UserSerializer
+from rest_framework import serializers
+from sympy import sympify, SympifyError
+
+from .models import Quantity, UnitConversionPayload, Dimension, \
+    CustomUnit, Expression, CalculationPayload, UnitSystem, Operand
 
 
-class UnitAmountSerializer(serializers.Serializer):
+class QuantitySerializer(serializers.Serializer):
     system = serializers.CharField()
     unit = serializers.CharField()
     value = serializers.FloatField()
@@ -40,7 +42,7 @@ class UnitAmountSerializer(serializers.Serializer):
         return value
 
     def create(self, validated_data):
-        return Amount(**validated_data)
+        return Quantity(**validated_data)
 
     def update(self, instance, validated_data):
         instance.system = validated_data.get('system', instance.system)
@@ -98,7 +100,7 @@ class UnitSystemSerializer(serializers.Serializer):
 
 
 class UnitConversionPayloadSerializer(serializers.Serializer):
-    data = UnitAmountSerializer(many=True, required=False)
+    data = QuantitySerializer(many=True, required=False)
     base_system = serializers.CharField(required=True)
     base_unit = serializers.CharField(required=True)
     batch_id = serializers.CharField(required=False)
@@ -106,13 +108,18 @@ class UnitConversionPayloadSerializer(serializers.Serializer):
     eob = serializers.BooleanField(default=False)
 
     def is_valid(self, raise_exception=False) -> bool:
+        super().is_valid(raise_exception=raise_exception)
         if not self.initial_data.get('data') and (not self.initial_data.get('batch_id')
                                                   or (self.initial_data.get('batch_id')
                                                       and not self.initial_data.get('eob'))):
-            raise serializers.ValidationError(
-                'data has to be provided if batch_id is not provided or batch_id is provided and eob is False'
-            )
-        return super().is_valid(raise_exception=raise_exception)
+            self._errors = {
+                'data': 'data has to be provided if batch_id is not provided'
+                        'or batch_id is provided and eob is False'
+            }
+
+        if self._errors and raise_exception:
+            raise ValidationError(self.errors)
+        return not bool(self._errors)
 
     @staticmethod
     def validate_base_system(value: str):
@@ -150,71 +157,126 @@ class CustomUnitSerializer(serializers.ModelSerializer):
         fields = ['user', 'key', 'unit_system', 'code', 'name', 'relation', 'symbol', 'alias']
 
 
-class VariableSerializer(serializers.Serializer):
+class OperandSerializer(serializers.Serializer):
     name = serializers.CharField()
     value = serializers.CharField()
     unit = serializers.CharField()
 
     def is_valid(self, raise_exception=False) -> bool:
         if not self.initial_data.get('name'):
-            raise serializers.ValidationError("Name not set")
+            raise serializers.ValidationError("variable Name not set")
         if 'value' not in self.initial_data:
-            raise serializers.ValidationError("Value not set")
+            raise serializers.ValidationError("variable Value not set")
         if 'unit' not in self.initial_data:
-            raise serializers.ValidationError("Unit not set")
+            raise serializers.ValidationError("variable Unit not set")
         return super().is_valid(raise_exception=raise_exception)
+
+    def create(self, validated_data):
+        return Operand(**validated_data)
+
+
+class ExpressionListSerializer(serializers.ListSerializer):
+
+    def is_valid(self, unit_system: UnitSystem, raise_exception=False):
+        super().is_valid(raise_exception=raise_exception)
+        for initial_exp in self.initial_data:
+            ec = ExpressionSerializer(data=initial_exp)
+            ec.is_valid(unit_system=unit_system)
+            if ec.errors:
+                self._errors.append(ec.errors)
+        return not bool(self._errors)
 
 
 class ExpressionSerializer(serializers.Serializer):
     unit_system = None
     key = None
     expression = serializers.CharField(required=True)
-    variables = VariableSerializer(many=True, required=True)
+    operands = OperandSerializer(many=True, required=True)
 
-    def __init__(self, unit_system, *args, **kwargs):
-        self.unit_system = unit_system
-        self.Q_ = unit_system.ureg.Quantity
-        super().__init__(*args, **kwargs)
+    class Meta:
+        list_serializer_class = ExpressionListSerializer
 
-    def is_valid(self, raise_exception=False) -> bool:
-        if not self.initial_data.get('expression'):
-            raise serializers.ValidationError("Missing expression")
-        if not self.initial_data.get('variables'):
-            raise serializers.ValidationError("Missing variables")
-        if self.validate_variables(self.initial_data.get('variables')):
-            expression = self.initial_data.get('expression')
-            variables = self.initial_data.get('variables')
-            value_kwargs = {v['name']: v['value'] for v in variables}
-            try:
-                sympify(expression.format(**value_kwargs))
-            except (SympifyError, KeyError) as e:
-                raise serializers.ValidationError(f"Invalid operation") from e
-            units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in variables}
-            try:
-                self.Q_(expression.format(**units_kwargs))
-            except KeyError:
-                raise serializers.ValidationError("Missing variables")
-            except pint.errors.DimensionalityError:
-                raise serializers.ValidationError("Incoherent dimension")
-        return super().is_valid(raise_exception=raise_exception)
+    def is_valid(self, unit_system: UnitSystem, raise_exception=False) -> bool:
+        Q_ = unit_system.ureg.Quantity
+        super().is_valid(raise_exception=raise_exception)
+        try:
+            operands = self.initial_data.get('operands')
+            if not self.validate_operands(operands):
+                self._errors['operands'] = "Invalid operands"
+        except json.JSONDecodeError as e:
+            self._errors['operands'] = f"Invalid operands json format: {e}"
+        expression = self.initial_data.get('expression')
+        value_kwargs = {v['name']: v['value'] for v in operands}
+        try:
+            sympify(expression.format(**value_kwargs))
+        except (SympifyError, KeyError) as e:
+            self._errors['expression'] = f"Invalid operation"
+        units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
+        try:
+            Q_(expression.format(**units_kwargs))
+        except KeyError as e:
+            self._errors['operands'] = "Missing operands"
+        except pint.errors.DimensionalityError as e:
+            self._errors['expression'] = "Incoherent dimension"
+        if self._errors and raise_exception:
+            raise ValidationError(self.errors)
+        return not bool(self._errors)
 
     @staticmethod
-    def validate_variables(value):
+    def validate_operands(value):
         for var in value:
-            vs = VariableSerializer(data=var)
-            if not vs.is_valid():
-                raise serializers.ValidationError(f"Invalid operand")
+            vs = OperandSerializer(data=var)
+            vs.is_valid()
         return value
 
     def create(self, validated_data):
+        operands = []
+        for var in validated_data.get('operands'):
+            vs = OperandSerializer(data=var)
+            if vs.is_valid():
+                operands.append(vs.create(vs.validated_data))
         return Expression(
-            unit_system=self.unit_system,
             expression=validated_data.get('expression'),
-            variables=validated_data.get('variables')
+            operands=operands
         )
 
     def update(self, instance, validated_data):
         instance.expression = validated_data.get('expression')
-        instance.variables = validated_data.get('variables')
+        instance.operands = validated_data.get('operands')
         return instance
 
+
+class CalculationPayloadSerializer(serializers.Serializer):
+    unit_system = serializers.CharField(required=True)
+    data = ExpressionSerializer(many=True, required=False)
+    batch_id = serializers.CharField(required=False)
+    key = serializers.CharField(required=False)
+    eob = serializers.BooleanField(default=False)
+
+    def is_valid(self, raise_exception=False) -> bool:
+        if not self.initial_data.get('data') and (not self.initial_data.get('batch_id')
+                                                  or (self.initial_data.get('batch_id')
+                                                      and not self.initial_data.get('eob'))):
+            raise serializers.ValidationError(
+                'data has to be provided if batch_id is not provided '
+                'or batch_id is provided and eob is False'
+            )
+        return super().is_valid(raise_exception=raise_exception)
+
+    @staticmethod
+    def validate_unit_system(value: str):
+        from geocurrency.units.models import UnitSystem
+        if not UnitSystem.is_valid(value):
+            raise serializers.ValidationError('Invalid unit system')
+        return value
+
+    def create(self, validated_data: {}):
+        return CalculationPayload(**validated_data)
+
+    def update(self, instance, validated_data: {}):
+        self.data = validated_data.get('data', instance.data)
+        self.unit_system = validated_data.get('unit_system', instance.unit_system)
+        self.batch_id = validated_data.get('batch_id', instance.batch_id)
+        self.key = validated_data.get('key', instance.key)
+        self.eob = validated_data.get('eob', instance.eob)
+        return instance

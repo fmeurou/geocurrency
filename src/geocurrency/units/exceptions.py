@@ -24,3 +24,6 @@ class UnitConverterInitError(Exception):
 
 class UnitConverterConvertError(Exception):
     message = 'Error converting values'
+
+class ExpressionCalculatorInitError(Exception):
+    message = "Error initializing Expression calculator"

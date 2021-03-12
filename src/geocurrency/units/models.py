@@ -1,13 +1,15 @@
 import logging
-import pint
 from datetime import date
+
+import pint
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
-    ConverterResultDetail, ConverterResultError, ConverterLoadError
-from pint import Quantity
+    ConverterResultDetail, ConverterResultError, ConverterLoadError, \
+    CalculationResultError, CalculationResultDetail, CalculationResult
+from rest_framework import serializers
 from sympy import sympify, SympifyError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
@@ -16,7 +18,7 @@ from .exceptions import *
 from .settings import ADDITIONAL_UNITS, PREFIXED_UNITS_DISPLAY
 
 
-class Amount:
+class Quantity:
     """
     Quantity class
     """
@@ -319,7 +321,8 @@ class Dimension:
         """
         available_units = self.unit_system.available_unit_names()
         dimensioned_units = []
-        for dimension_code in [d for d in DIMENSIONS.keys() if d != '[compounded]' and d != '[custom]']:
+        for dimension_code in [d for d in DIMENSIONS.keys() if
+                               d != '[compounded]' and d != '[custom]']:
             dimension = Dimension(unit_system=self.unit_system, code=dimension_code)
             dimensioned_units.extend([u.code for u in dimension.units()])
         return [self.unit_system.unit(au) for au in set(available_units) - set(dimensioned_units)]
@@ -410,7 +413,8 @@ class Unit:
         """
         Return Dimensions of Unit
         """
-        dimensions = [Dimension(unit_system=self.unit_system, code=code) for code in DIMENSIONS.keys()
+        dimensions = [Dimension(unit_system=self.unit_system, code=code) for code in
+                      DIMENSIONS.keys()
                       if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
         return dimensions or '[compounded]'
 
@@ -504,13 +508,18 @@ class UnitConverter(BaseConverter):
     """
     base_system = None
     base_unit = None
+    user = None
+    key = None
 
-    def __init__(self, base_system: str, base_unit: str, id: str = None):
+    def __init__(self, base_system: str, base_unit: str, user: User = None, key: key = None,
+                 id: str = None):
         try:
-            super(UnitConverter, self).__init__(id=id)
+            super().__init__(id=id)
             self.base_system = base_system
             self.base_unit = base_unit
-            self.system = UnitSystem(system_name=base_system)
+            self.user = user
+            self.key = key
+            self.system = UnitSystem(system_name=base_system, user=user, key=key)
             self.unit = Unit(unit_system=self.system, code=base_unit)
             self.compatible_units = [str(u) for u in self.unit.unit.compatible_units()]
         except (UnitSystemNotFound, UnitNotFound):
@@ -521,20 +530,21 @@ class UnitConverter(BaseConverter):
         Check data and add it to the dataset
         Return list of errors
         """
-        errors = super(UnitConverter, self).add_data(data)
+        errors = super().add_data(data)
         return errors
 
     def check_data(self, data):
         """
         Validates that the data contains
-        - currency (str)
-        - amount (float)
-        - date (YYYY-MM-DD)
+        system = str
+        unit = str
+        value = float
+        date_obj ('YYYY-MM-DD')
         """
-        from .serializers import UnitAmountSerializer
+        from .serializers import QuantitySerializer
         errors = []
         for line in data:
-            serializer = UnitAmountSerializer(data=line)
+            serializer = QuantitySerializer(data=line)
             if serializer.is_valid():
                 self.data.append(serializer.create(serializer.validated_data))
             else:
@@ -542,10 +552,10 @@ class UnitConverter(BaseConverter):
         return errors
 
     @classmethod
-    def load(cls, id: str) -> BaseConverter:
+    def load(cls, id: str, user: User = None, key: str = None) -> BaseConverter:
         try:
-            uc = super(UnitConverter, cls).load(id)
-            uc.system = UnitSystem(system_name=uc.base_system)
+            uc = super().load(id)
+            uc.system = UnitSystem(system_name=uc.base_system, user=user, key=key)
             uc.unit = Unit(unit_system=uc.system, code=uc.base_unit)
             return uc
         except (UnitSystemNotFound, UnitNotFound, KeyError) as e:
@@ -556,7 +566,7 @@ class UnitConverter(BaseConverter):
         unit = self.unit
         self.system = None
         self.unit = None
-        super(UnitConverter, self).save()
+        super().save()
         self.system = system
         self.unit = unit
 
@@ -566,38 +576,34 @@ class UnitConverter(BaseConverter):
         """
 
         result = ConverterResult(id=self.id, target=self.base_unit)
-        try:
-            us = UnitSystem(system_name=self.base_system)
-        except UnitSystemNotFound:
-            raise UnitConverterConvertError
-        Q_ = us.ureg.Quantity
-        for amount in self.data:
-            if amount.unit not in self.compatible_units:
+        Q_ = self.system.ureg.Quantity
+        for quantity in self.data:
+            if quantity.unit not in self.compatible_units:
                 error = ConverterResultError(
-                    unit=amount.unit,
-                    original_value=amount.value,
-                    date=amount.date_obj,
+                    unit=quantity.unit,
+                    original_value=quantity.value,
+                    date=quantity.date_obj,
                     error=_('Incompatible units')
                 )
                 result.errors.append(error)
                 continue
             try:
-                quantity = Q_(amount.value, amount.unit)
-                out = quantity.to(self.base_unit)
+                pint_quantity = Q_(quantity.value, quantity.unit)
+                out = pint_quantity.to(self.base_unit)
                 result.increment_sum(out.magnitude)
                 detail = ConverterResultDetail(
-                    unit=amount.unit,
-                    original_value=amount.value,
-                    date=amount.date_obj,
+                    unit=quantity.unit,
+                    original_value=quantity.value,
+                    date=quantity.date_obj,
                     conversion_rate=0,
                     converted_value=out.magnitude
                 )
                 result.detail.append(detail)
             except pint.UndefinedUnitError:
                 error = ConverterResultError(
-                    unit=amount.currency,
-                    original_value=amount.amount,
-                    date=amount.date_obj,
+                    unit=quantity.unit,
+                    original_value=quantity.value,
+                    date=quantity.date_obj,
                     error=_('Undefined unit in the registry')
                 )
                 result.errors.append(error)
@@ -675,7 +681,7 @@ class Operand:
     value = None
     unit = None
 
-    def __init__(self, name, value, unit, expression=None):
+    def __init__(self, name=None, value=None, unit=None):
         self.name = name
         self.value = value
         self.unit = unit
@@ -692,40 +698,168 @@ class ComputationError(Exception):
 
 class Expression:
     """
-    Expression with variables
+    Expression with operands
     """
     expression = None
-    variables = None
+    operands = None
 
-    def __init__(self, unit_system: UnitSystem, expression: str, variables: [Operand]):
-        self.us = unit_system
-        self.Q_ = unit_system.ureg.Quantity
+    def __init__(self, expression: str, operands: [Operand]):
         self.expression = expression
-        self.variables = variables
+        self.operands = operands
 
-    def validate(self) -> (bool, str):
+    def validate(self, unit_system: UnitSystem) -> (bool, str):
+        Q_ = unit_system.ureg.Quantity
         if not self.expression:
             return False, "missing expression"
         try:
-            sympify(self.expression.format(**{v['name']: v['value'] for v in self.variables}))
+            sympify(self.expression.format(**{v.name: v.value for v in self.operands}))
         except SympifyError as e:
             return False, "Improper expression"
-        for var in self.variables:
+        for var in self.operands:
             if not var.validate():
                 return False, "invalid operand"
-        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.variables}
+        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
         try:
-            self.Q_(self.expression.format(**kwargs))
+            Q_(self.expression.format(**kwargs))
         except KeyError:
-            return False, "Missing variable"
+            return False, "Missing operand"
         except pint.errors.DimensionalityError:
             return False, "Incoherent dimensions"
         return True, ''
 
-    def evaluate(self) -> Quantity:
+    def calculate(self, unit_system: UnitSystem) -> pint.Quantity:
+        Q_ = unit_system.ureg.Quantity
+        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
+        if self.validate(unit_system=unit_system):
+            return Q_(self.expression.format(**kwargs))
+        return None
+
+    def evaluate(self, unit_system) -> pint.Quantity:
+        Q_ = unit_system.ureg.Quantity
         is_valid, error = self.validate()
         if is_valid:
-            kwargs = {v.name: f"{v.value} {v.unit}" for v in self.variables}
-            return self.Q_(self.expression.format(kwargs))
+            kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
+            return Q_(self.expression.format(kwargs))
         else:
             raise ComputationError("Invalid formula")
+
+
+class CalculationPayload:
+    """
+    Calculation payload: caculate expressions
+    """
+    data = None
+    unit_system = ''
+    user = ''
+    key = ''
+    batch_id = ''
+    eob = False
+
+    def __init__(self, unit_system: UnitSystem, key: str = None, data: [] = None,
+                 batch_id: str = None, eob: bool = False):
+        self.data = data
+        self.unit_system = unit_system
+        self.key = key
+        self.batch_id = batch_id
+        self.eob = eob
+
+
+class ExpressionCalculator(BaseConverter):
+    """
+    Conversion between units
+    """
+    unit_system = None
+
+    def __init__(self, unit_system: str, user: User = None, key: str = '', id: str = None):
+        """
+        Initiate ExpressionCalculator
+        :param unit_system: unit system name
+        :param user: User
+        :param key: key of user
+        :param id: ID of the batch
+        """
+        try:
+            super().__init__(id=id)
+            self.unit_system = unit_system
+            self.user = user
+            self.key = key
+            self.system = UnitSystem(system_name=unit_system, user=self.user, key=self.key)
+        except (UnitSystemNotFound) as e:
+            raise ExpressionCalculatorInitError from e
+
+    def add_data(self, data: []) -> []:
+        """
+        Check data and add it to the dataset
+        Return list of errors
+        """
+        errors = super().add_data(data)
+        return errors
+
+    def check_data(self, data):
+        """
+        Validates that the data contains
+        - system (str)
+        - unit (str)
+        - value (float)
+        - date (YYYY-MM-DD)
+        """
+        from .serializers import ExpressionSerializer
+        errors = []
+        for line in data:
+            serializer = ExpressionSerializer(data=line)
+            if serializer.is_valid(unit_system=self.system):
+                self.data.append(serializer.create(serializer.validated_data))
+            else:
+                errors.append(serializer.errors)
+        return errors
+
+    @classmethod
+    def load(cls, id: str, user: User = None, key: str = None) -> BaseConverter:
+        """
+        Load converter from batch
+        :param id: ID of the batch
+        """
+        try:
+            uc = super().load(id)
+            uc.system = UnitSystem(system_name=uc.unit_system, user=user, key=key)
+            return uc
+        except (UnitSystemNotFound, KeyError) as e:
+            raise ConverterLoadError
+
+    def save(self):
+        """
+        Save converter to caching system
+        """
+        system = self.system
+        self.system = None
+        super(ExpressionCalculator, self).save()
+        self.system = system
+
+    def convert(self) -> CalculationResult:
+        """
+        Converts data to base unit in base system
+        """
+
+        result = CalculationResult(id=self.id)
+        Q_ = self.system.ureg.Quantity
+        for expression in self.data:
+            valid, exp_error = expression.validate(unit_system=self.system)
+            if not valid:
+                error = CalculationResultError(
+                    expression=amount.unit,
+                    original_value=amount.value,
+                    date=amount.date_obj,
+                    error=exp_error
+                )
+                result.errors.append(error)
+                continue
+            out = expression.calculate(unit_system=self.system)
+            detail = CalculationResultDetail(
+                expression=expression.expression,
+                operands=expression.operands,
+                magnitude=out.magnitude,
+                units=out.units
+            )
+            result.detail.append(detail)
+        self.end_batch(result.end_batch())
+        return result

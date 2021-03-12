@@ -6,12 +6,15 @@ from .models import CustomUnit
 
 
 class CustomUnitFilter(filters.FilterSet):
-    user = filters.BooleanFilter(label="filter rate associated to connected user", method='user_filter')
+    user = filters.BooleanFilter(label="filter rate associated to connected user",
+                                 method='user_filter')
     key = filters.CharFilter(label="filter rates with key", method='key_filter')
-    unit_system = filters.CharFilter(label="filter by unit system", field_name='unit_system', lookup_expr='iexact')
+    unit_system = filters.CharFilter(label="filter by unit system", field_name='unit_system',
+                                     lookup_expr='iexact')
     code = filters.CharFilter(label="filter by code", field_name='code', lookup_expr='iexact')
     name = filters.CharFilter(label="filter by name", field_name='name', lookup_expr='icontains')
-    relation = filters.CharFilter(label="filter by relation", field_name='relation', lookup_expr='icontains')
+    relation = filters.CharFilter(label="filter by relation", field_name='relation',
+                                  lookup_expr='icontains')
     symbol = filters.CharFilter(label="filter by symbol", field_name='symbol', lookup_expr='iexact')
     alias = models.CharField("Alias", max_length=20, null=True, blank=True)
 
