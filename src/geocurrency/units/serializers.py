@@ -206,11 +206,16 @@ class ExpressionSerializer(serializers.Serializer):
         except json.JSONDecodeError as e:
             self._errors['operands'] = f"Invalid operands json format: {e}"
         expression = self.initial_data.get('expression')
+        if not expression:
+            self._errors['expression'] = "Empty expression"
+            return not bool(self._errors)
+        # Validate syntax
         value_kwargs = {v['name']: v['value'] for v in operands}
         try:
             sympify(expression.format(**value_kwargs))
         except (SympifyError, KeyError) as e:
             self._errors['expression'] = f"Invalid operation"
+        # Validate units
         units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
         try:
             Q_(expression.format(**units_kwargs))

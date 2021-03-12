@@ -150,7 +150,6 @@ class BaseConverter:
         raise KeyError(f"Converter with id {id} not found in cache")
 
     def save(self):
-        print(dir(self))
         cache.set(self.id, pickle.dumps(self))
 
     def add_data(self, data: []) -> []:

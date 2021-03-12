@@ -280,34 +280,33 @@ class CustomUnitViewSet(ModelViewSet):
 
 class ValidateViewSet(APIView):
     """
-    GET API View to validate formulas
+    POST API View to validate formulas
     """
 
     @swagger_auto_schema(request_body=ExpressionSerializer)
-    @action(['GET'], detail=False, url_path='', url_name="validate")
-    def get(self, request, unit_system, *args, **kwargs):
+    @action(['POST'], detail=False, url_path='', url_name="validate")
+    def post(self, request, unit_system, *args, **kwargs):
         """
         Validate a formula with parameters
         :param request: HTTP request
         :param unit_system: Unit system to use for validation
         """
         if request.user and request.user.is_authenticated:
-            us = UnitSystem(unit_system, user=request.user, key=kwargs.get('key', None))
+            us = UnitSystem(unit_system, user=request.user, key=request.data.get('key', None))
         else:
             us = UnitSystem(unit_system)
         data = {
-            'expression': request.GET.get('expression'),
-            'variables': json.loads(request.GET.get('variables'))
+            'expression': request.data.get('expression'),
+            'operands': request.data.get('operands')
         }
-        exp = ExpressionSerializer(
-            unit_system=us,
-            data=data
-        )
-        try:
-            exp.is_valid()
+        print("POST data", data)
+        exp = ExpressionSerializer(data=data)
+        if exp.is_valid(unit_system=us):
             return Response("Valid expression")
-        except serializers.ValidationError as e:
-            return Response(f"Invalid expression: {e}", status=status.HTTP_406_NOT_ACCEPTABLE)
+        else:
+            return Response(json.dumps(exp.errors),
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            content_type="application/json")
 
 
 class CalculationView(APIView):

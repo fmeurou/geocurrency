@@ -1,10 +1,10 @@
 import datetime
 import uuid
-
 from datetime import date
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.cache import cache
-from django.conf import settings
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.authtoken.models import Token
@@ -63,7 +63,8 @@ class RateTest(TestCase):
         self.assertIsNotNone(rates)
 
     def test_fetch_rates_with_date(self):
-        rates = Rate.objects.fetch_rates(base_currency=self.base_currency, date_obj=date(year=2020, month=6, day=1))
+        rates = Rate.objects.fetch_rates(base_currency=self.base_currency,
+                                         date_obj=date(year=2020, month=6, day=1))
         self.assertIsNotNone(rates)
 
     def test_fetch_rate(self):
@@ -105,7 +106,8 @@ class RateTest(TestCase):
             value=0.123,
             value_date='2021-01-01'
         )
-        self.assertIsNotNone(Rate.objects.filter(user=self.user, key=self.key, base_currency='AFN', currency='AUD'))
+        self.assertIsNotNone(
+            Rate.objects.filter(user=self.user, key=self.key, base_currency='AFN', currency='AUD'))
 
     def test_find_rate_chain(self):
         Rate.objects.create(
@@ -223,7 +225,7 @@ class RateTest(TestCase):
             currency='ARS',
             date_obj=datetime.date.today(),
             key=self.key)
-        self.assertEqual(rate.value, 0.123*200*13)
+        self.assertEqual(rate.value, 0.123 * 200 * 13)
 
     def test_find_rate_mixed(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency)
@@ -261,7 +263,7 @@ class RateTest(TestCase):
             currency='ARS',
             date_obj=datetime.date.today(),
             key=self.key)
-        self.assertEqual(rate.value, 0.123*200*13*jpy_eur.value)
+        self.assertEqual(rate.value, 0.123 * 200 * 13 * jpy_eur.value)
 
     def test_find_rate_override(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency)
@@ -308,7 +310,7 @@ class RateTest(TestCase):
             currency='ARS',
             date_obj=datetime.date.today(),
             key=self.key)
-        self.assertEqual(rate.value, 0.123*200*13*jpy_eur_custom.value)
+        self.assertEqual(rate.value, 0.123 * 200 * 13 * jpy_eur_custom.value)
 
     def test_post_rate(self):
         client = APIClient()
@@ -582,7 +584,9 @@ class RateTest(TestCase):
         )
         self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(len(post_response.json()),
-                         (datetime.date(year=2020, month=9, day=1) - datetime.date(year=2020, month=1, day=1)).days + 1)
+                         (datetime.date(year=2020, month=9, day=1) - datetime.date(year=2020,
+                                                                                   month=1,
+                                                                                   day=1)).days + 1)
 
     def test_latest_currency_request(self):
         client = APIClient()
@@ -618,7 +622,8 @@ class RateConverterTest(TestCase):
         settings.RATE_SERVICE = 'forex'
         from_date = datetime.date(year=2020, month=7, day=20)
         to_date = datetime.date(year=2020, month=7, day=25)
-        Rate.objects.fetch_rates(base_currency=self.base_currency, date_obj=from_date, to_obj=to_date)
+        Rate.objects.fetch_rates(base_currency=self.base_currency, date_obj=from_date,
+                                 to_obj=to_date)
         self.user, created = User.objects.get_or_create(
             username='test',
             email='test@ipd.com'
@@ -685,6 +690,10 @@ class RateConverterTest(TestCase):
         self.assertEqual(result.sum, converted_sum)
 
     def test_convert_pivot(self):
+        Rate.objects.fetch_rates(base_currency='EUR', currency='AUD',
+                                 date_obj=datetime.date(year=2020, month=7, day=23))
+        Rate.objects.fetch_rates(base_currency='JPY', currency='EUR',
+                                 date_obj=datetime.date(year=2020, month=7, day=23))
         converter = RateConverter(self.user, base_currency='JPY')
         amounts = [
             {

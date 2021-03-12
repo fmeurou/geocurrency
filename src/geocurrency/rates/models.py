@@ -7,7 +7,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
-from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, ConverterResultError
+from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, \
+    ConverterResultError
 from geocurrency.core.helpers import service
 
 try:
@@ -40,7 +41,9 @@ class RateManager(models.Manager):
             _rate, created = Rate.objects.get_or_create(
                 base_currency=base_currency,
                 currency=rate.get('currency'),
-                value_date=rate.get('date')
+                value_date=rate.get('date'),
+                user=None,
+                key=None
             )
             _rate.value = rate.get('value')
             _rate.save()
@@ -73,7 +76,8 @@ class RateManager(models.Manager):
                 return False
         except RatesNotAvailableError:
             return False
-        return self.__sync_rates__(rates=rates, base_currency=base_currency, date_obj=date_obj, to_obj=to_obj)
+        return self.__sync_rates__(rates=rates, base_currency=base_currency,
+                                   date_obj=date_obj, to_obj=to_obj)
 
     def rate_at_date(self,
                      currency: str,
@@ -102,7 +106,8 @@ class RateManager(models.Manager):
         :param date_obj: Date to obtain the conversion rate for
         :return List of currency codes to go from currency to base currency
         """
-        rates = Rate.objects.filter(value_date=date_obj).filter(models.Q(user=None) | models.Q(key=key))
+        rates = Rate.objects.filter(value_date=date_obj).filter(
+            models.Q(user=None) | models.Q(key=key))
         rates_couples = rates.values('currency', 'base_currency', 'value', 'key')
         graph = nx.Graph()
         for k in rates_couples:
@@ -112,7 +117,8 @@ class RateManager(models.Manager):
         try:
             return nx.shortest_path(graph, currency, base_currency, weight='weight')
         except nx.exception.NetworkXNoPath as exc:
-            raise NoRateFound(f"Rate {currency} to {base_currency} on key {key} at date {date_obj} does not exist") \
+            raise NoRateFound(
+                f"Rate {currency} to {base_currency} on key {key} at date {date_obj} does not exist") \
                 from exc
 
     def find_rate(self, currency: str,
@@ -164,8 +170,9 @@ class RateManager(models.Manager):
                 if rate := self.find_rate(
                         currency=from_cur,
                         base_currency=to_cur,
+                        key=key,
                         date_obj=date_obj,
-                        use_forex=True):
+                        use_forex=False):
                     conv_value *= rate.value
                 else:
                     raise NoRateFound(
@@ -304,7 +311,8 @@ class RateConverter(BaseConverter):
     user = None
     key = None
 
-    def __init__(self, user: User, id: str = None, key: str = None, base_currency: str = settings.BASE_CURRENCY):
+    def __init__(self, user: User, id: str = None, key: str = None,
+                 base_currency: str = settings.BASE_CURRENCY):
         super(RateConverter, self).__init__(id=id)
         self.base_currency = base_currency
         self.user = user
