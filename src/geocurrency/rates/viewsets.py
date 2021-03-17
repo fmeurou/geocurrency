@@ -53,9 +53,7 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values],
                          responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
-        qs = self.queryset
-        print(qs.query)
-        return super(RateViewSet, self).list(request, *args, **kwargs)
+        return super().list(request, *args, **kwargs)
 
     @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values, period],
                          responses={200: RateStatSerializer})
