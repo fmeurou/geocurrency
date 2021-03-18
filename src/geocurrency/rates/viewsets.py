@@ -29,13 +29,6 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     pagination_class = PageNumberPagination
     permission_classes = [RateObjectPermission]
     display_page_controls = True
-    ordering_fields = [
-        'key',
-        'currency',
-        'base_currency',
-        'value_date',
-        'value',
-    ]
 
     def get_queryset(self):
         qs = super(RateViewSet, self).get_queryset()

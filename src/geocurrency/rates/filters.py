@@ -33,6 +33,7 @@ class RateFilter(filters.FilterSet):
         fields=(
             ('key', 'key'),
             ('value', 'value'),
+            ('value_date', 'value_date'),
             ('base_currency', 'base_currency'),
             ('currency', 'currency'),
         ),
