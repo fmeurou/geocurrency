@@ -9,7 +9,6 @@ from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError, \
     CalculationResultError, CalculationResultDetail, CalculationResult
-from rest_framework import serializers
 from sympy import sympify, SympifyError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
@@ -179,8 +178,11 @@ class UnitSystem:
         """
         return Unit.dimensionality_string(unit_system=self.system, unit_str=unit)
 
-    def available_dimensions(self) -> {}:
-        return [Dimension(unit_system=self, code=dim) for dim in DIMENSIONS.keys()]
+    def available_dimensions(self, ordering: str = 'name') -> {}:
+        if ordering not in ['name', 'code', 'dimension']:
+            ordering = 'name'
+        return sorted([Dimension(unit_system=self, code=dim) for dim in DIMENSIONS.keys()],
+                      key=lambda x: getattr(x, ordering, ''))
 
     @property
     def _ureg_dimensions(self):

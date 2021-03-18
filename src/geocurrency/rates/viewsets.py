@@ -5,9 +5,9 @@ from django_filters import rest_framework as filters
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from geocurrency.converters.serializers import ConverterResultSerializer
+from geocurrency.core.pagination import PageNumberPagination
 from rest_framework import viewsets, status, mixins
 from rest_framework.decorators import action
-from geocurrency.core.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
@@ -16,10 +16,12 @@ from .filters import RateFilter
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSerializer, RateStatSerializer
+from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSerializer, \
+    RateStatSerializer
 
 
-class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
+                  viewsets.GenericViewSet):
     queryset = Rate.objects.all()
     serializer_class = RateSerializer
     filter_backends = (filters.DjangoFilterBackend,)
@@ -27,6 +29,13 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     pagination_class = PageNumberPagination
     permission_classes = [RateObjectPermission]
     display_page_controls = True
+    ordering_fields = [
+        'key',
+        'currency',
+        'base_currency',
+        'value_date',
+        'value',
+    ]
 
     def get_queryset(self):
         qs = super(RateViewSet, self).get_queryset()
@@ -47,16 +56,17 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         type=openapi.TYPE_STRING)
 
     period = openapi.Parameter('period', openapi.IN_QUERY,
-                                description="period to aggregate on: month, week, year, defaults to month",
-                                type=openapi.TYPE_STRING)
+                               description="period to aggregate on: month, week, year, defaults to month",
+                               type=openapi.TYPE_STRING)
 
     @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values],
                          responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
-    @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values, period],
-                         responses={200: RateStatSerializer})
+    @swagger_auto_schema(
+        manual_parameters=[currency_latest_values, base_currency_latest_values, period],
+        responses={200: RateStatSerializer})
     @action(['GET'], detail=False, url_path='stats', url_name='stats')
     def stats(self, request, *args, **kwargs):
         period = request.GET.get('period', 'month')
@@ -79,7 +89,8 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             {
                 'currency': result['currency'],
                 'base_currency': result['base_currency'],
-                'period': f"{result['year']}-{str(result[period]).zfill(2)}" if period != 'year' else result['year'],
+                'period': f"{result['year']}-{str(result[period]).zfill(2)}" if period != 'year' else
+                result['year'],
                 'avg': result['avg'],
                 'max': result['max'],
                 'min': result['min'],
@@ -109,9 +120,11 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             else:
                 return HttpResponseForbidden()
         else:
-            return Response(rate_form.errors, status=status.HTTP_400_BAD_REQUEST, content_type="application/json")
+            return Response(rate_form.errors, status=status.HTTP_400_BAD_REQUEST,
+                            content_type="application/json")
 
-    @swagger_auto_schema(method='post', request_body=BulkSerializer, responses={201: RateSerializer})
+    @swagger_auto_schema(method='post', request_body=BulkSerializer,
+                         responses={201: RateSerializer})
     @action(['POST'], detail=False, url_path='bulk', url_name="bulk_create")
     def create_bulk(self, request):
         """
@@ -125,7 +138,8 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         bulk_rate = bs.create(validated_data=bs.validated_data)
         rates = bulk_rate.to_rates(user=request.user)
         serializer = RateSerializer(rates, many=True)
-        return Response(serializer.data, content_type="application/json", status=status.HTTP_201_CREATED)
+        return Response(serializer.data, content_type="application/json",
+                        status=status.HTTP_201_CREATED)
 
 
 class ConvertView(APIView):
@@ -140,7 +154,8 @@ class ConvertView(APIView):
         """
         cps = RateConversionPayloadSerializer(data=request.data)
         if not cps.is_valid():
-            return Response(cps.errors, status=HTTP_400_BAD_REQUEST, content_type="application/json")
+            return Response(cps.errors, status=HTTP_400_BAD_REQUEST,
+                            content_type="application/json")
         cp = cps.create(cps.validated_data)
         try:
             converter = RateConverter.load(cp.batch_id)
@@ -159,4 +174,5 @@ class ConvertView(APIView):
             serializer = ConverterResultSerializer(result)
             return Response(serializer.data, content_type="application/json")
         else:
-            return Response({'id': converter.id, 'status': converter.status}, content_type="application/json")
+            return Response({'id': converter.id, 'status': converter.status},
+                            content_type="application/json")

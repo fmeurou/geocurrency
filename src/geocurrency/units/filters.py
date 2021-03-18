@@ -18,6 +18,19 @@ class CustomUnitFilter(filters.FilterSet):
     symbol = filters.CharFilter(label="filter by symbol", field_name='symbol', lookup_expr='iexact')
     alias = models.CharField("Alias", max_length=20, null=True, blank=True)
 
+    ordering = filters.OrderingFilter(
+        # tuple-mapping retains order
+        fields=(
+            ('key', 'key'),
+            ('unit_system', 'unit_system'),
+            ('code', 'code'),
+            ('name', 'name'),
+            ('relation', 'relation'),
+            ('symbol', 'symbol'),
+            ('alias', 'alias'),
+        ),
+    )
+
     class Meta:
         model = CustomUnit
         fields = [

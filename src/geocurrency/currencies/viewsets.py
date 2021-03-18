@@ -26,15 +26,17 @@ class CurrencyViewset(ReadOnlyModelViewSet):
 
     currencies_response = openapi.Response('List of currencies', CurrencySerializer)
     currency_response = openapi.Response('Currency detail', CurrencySerializer)
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+                                 type=openapi.TYPE_STRING)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(responses={200: currencies_response})
+    @swagger_auto_schema(manual_parameters=[ordering,], responses={200: currencies_response})
     def list(self, request, *args, **kwargs):
         """
         List of currencies
         """
-        currencies = Currency.all_currencies()
+        currencies = Currency.all_currencies(ordering=request.GET.get('ordering', 'name'))
         serializer = CurrencySerializer(currencies, many=True, context={'request': request})
         return Response(serializer.data)
 

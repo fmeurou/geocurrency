@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.test import TestCase
 from django.utils.translation import ugettext_lazy as _
-from rest_framework import serializers
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
@@ -126,6 +125,17 @@ class UnitTest(TestCase):
             '/units/mks/units/'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_sorted_list_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/mks/units/',
+            data={
+                'ordering': 'code'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json()[0]['code'], 'K_alpha_Cu_d_220')
 
     def test_list_language_request(self):
         client = APIClient()
@@ -328,6 +338,18 @@ class UnitSystemTest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn("[length]", [r['code'] for r in response.json()])
+
+    def test_list_sorted_dimensions_request(self):
+        client = APIClient()
+        response = client.get(
+            '/units/SI/dimensions/',
+            data={
+                'ordering': 'dimension'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn("[length]", [r['code'] for r in response.json()])
+        self.assertEqual(response.json()[0]['code'], '[wavenumber]')
 
     def test_retrieve_request_not_found(self):
         client = APIClient()
@@ -589,8 +611,14 @@ class CustomUnitTest(TestCase):
             '/units/SI/custom/',
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json()), 1)
-        self.assertEqual(response.json()[0]['code'], 'my_unit')
+        if 'results' in response.json():
+            # Paginated results
+            self.assertEqual(len(response.json()['results']), 1)
+            self.assertEqual(response.json()['results'][0]['code'], 'my_unit')
+        else:
+            # Non paginated results
+            self.assertEqual(len(response.json()), 1)
+            self.assertEqual(response.json()[0]['code'], 'my_unit')
 
     def test_connected_list_key_request(self):
         client = APIClient()
@@ -613,8 +641,14 @@ class CustomUnitTest(TestCase):
             '/units/SI/custom/',
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json()), 1)
-        self.assertEqual(response.json()[0]['code'], 'my_unit')
+        if 'results' in response.json():
+            # Paginated results
+            self.assertEqual(len(response.json()['results']), 1)
+            self.assertEqual(response.json()['results'][0]['code'], 'my_unit')
+        else:
+            # Non paginated results
+            self.assertEqual(len(response.json()), 1)
+            self.assertEqual(response.json()[0]['code'], 'my_unit')
 
     def test_connected_unit_list_request(self):
         cu = CustomUnit.objects.create(
@@ -633,7 +667,10 @@ class CustomUnitTest(TestCase):
             '/units/SI/units/',
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('ny_unit', [u['code'] for u in response.json()])
+        if 'results' in response.json():
+            self.assertIn('ny_unit', [u['code'] for u in response.json()['results']])
+        else:
+            self.assertIn('ny_unit', [u['code'] for u in response.json()])
 
     def test_connected_unit_list_2_request(self):
         new_key = uuid.uuid4()
@@ -662,8 +699,12 @@ class CustomUnitTest(TestCase):
             '/units/SI/units/',
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('ny_unit', [u['code'] for u in response.json()])
-        self.assertIn('py_unit', [u['code'] for u in response.json()])
+        if 'results' in response.json():
+            self.assertIn('ny_unit', [u['code'] for u in response.json()['results']])
+            self.assertIn('py_unit', [u['code'] for u in response.json()['results']])
+        else:
+            self.assertIn('ny_unit', [u['code'] for u in response.json()])
+            self.assertIn('py_unit', [u['code'] for u in response.json()])
 
     def test_connected_unit_list_new_key_request(self):
         new_key = uuid.uuid4()
@@ -876,7 +917,6 @@ class ExpressionTest(TestCase):
             }),
             content_type="application/json"
         )
-        print(response.content)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_formula_validation_variable_exception_request(self):
@@ -895,7 +935,6 @@ class ExpressionTest(TestCase):
             }),
             content_type="application/json"
         )
-        print(response.content)
         self.assertEqual(response.status_code, status.HTTP_406_NOT_ACCEPTABLE)
 
     def test_formula_validation_expression_exception_request(self):
@@ -919,9 +958,7 @@ class ExpressionTest(TestCase):
             }),
             content_type="application/json"
         )
-        print(response.content)
         self.assertEqual(response.status_code, status.HTTP_406_NOT_ACCEPTABLE)
-
 
 
 class ExpressionCalculatorTest(TestCase):

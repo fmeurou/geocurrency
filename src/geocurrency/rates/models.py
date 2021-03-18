@@ -199,6 +199,8 @@ class Rate(BaseRate):
     class Meta:
         ordering = ['-value_date', ]
         indexes = [
+            models.Index(fields=['base_currency', 'value_date']),
+            models.Index(fields=['currency', 'value_date']),
             models.Index(fields=['currency', 'base_currency', 'value_date']),
             models.Index(fields=['key', 'currency', 'base_currency', 'value_date']),
         ]

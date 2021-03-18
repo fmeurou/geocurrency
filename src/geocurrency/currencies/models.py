@@ -50,11 +50,13 @@ class Currency:
             return False
 
     @classmethod
-    def all_currencies(cls) -> Iterator[Currency]:
+    def all_currencies(cls, ordering: str='name') -> Iterator[Currency]:
         """
         Returns an array of currencies
         """
-        return [Currency(c.code) for c in Iso4217]
+        if ordering not in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
+            ordering = 'name'
+        return sorted([Currency(c.code) for c in Iso4217], key=lambda x: getattr(x, ordering))
 
     @property
     def countries(self) -> Iterator[Country]:

@@ -26,15 +26,18 @@ class CountryViewset(ViewSet):
                                         type=openapi.TYPE_STRING)
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+                                 type=openapi.TYPE_STRING)
 
     countries_response = openapi.Response('List of countries', CountrySerializer)
     country_detail_response = openapi.Response('Country detail', CountryDetailSerializer)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: countries_response})
+    @swagger_auto_schema(manual_parameters=[language, language_header, ordering],
+                         responses={200: countries_response})
     def list(self, request):
-        countries = Country.all_countries()
+        countries = Country.all_countries(ordering=request.GET.get('ordering', 'name'))
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 

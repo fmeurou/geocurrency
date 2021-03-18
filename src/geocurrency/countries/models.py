@@ -61,11 +61,14 @@ class Country:
         self.numeric = country.numeric
 
     @classmethod
-    def all_countries(cls):
+    def all_countries(cls, ordering: str='name'):
         """
         List all countries, instanciate CountryInfo for each country in pycountry.countries
         """
-        return list(map(lambda x: cls(x.alpha_2), countries))
+        if ordering not in ['name', 'alpha_2', 'alpha_3', 'numeric']:
+            ordering = 'name'
+        return list(sorted(map(lambda x: cls(x.alpha_2), countries),
+                    key=lambda x: getattr(x, ordering)))
 
     def base(self):
         """

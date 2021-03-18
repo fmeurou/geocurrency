@@ -52,6 +52,9 @@ class UnitSystemViewset(ViewSet):
     unit_system_response = openapi.Response('Dimensions and units in a system',
                                             UnitSystemSerializer)
 
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+                                 type=openapi.TYPE_STRING)
+
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
     @swagger_auto_schema(manual_parameters=[language, language_header],
@@ -77,14 +80,16 @@ class UnitSystemViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[language, language_header],
+    @swagger_auto_schema(manual_parameters=[language, language_header, ordering],
                          responses={200: DimensionSerializer})
     @action(methods=['GET'], detail=True, name='dimensions', url_path='dimensions')
     def dimensions(self, request, system_name):
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
+        ordering = request.GET.get('ordering', 'name')
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
-            serializer = DimensionSerializer(us.available_dimensions(), many=True,
+            serializer = DimensionSerializer(us.available_dimensions(ordering=ordering),
+                                             many=True,
                                              context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except UnitSystemNotFound as e:
@@ -110,13 +115,20 @@ class UnitViewset(ViewSet):
     unit_response = openapi.Response('Detail of a unit', UnitSerializer)
     dimension_response = openapi.Response('List of units per dimension',
                                           DimensionWithUnitsSerializer)
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+                                 type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(manual_parameters=[dimension, key, language, language_header],
+    @swagger_auto_schema(manual_parameters=[dimension, key,
+                                            ordering,
+                                            language, language_header],
                          responses={200: units_response})
     def list(self, request: HttpRequest, system_name: str):
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         try:
             key = request.GET.get('key', None)
+            ordering = request.GET.get('ordering', '')
+            if ordering not in ['code', 'name']:
+                ordering = 'name'
             user = request.user if hasattr(request,
                                            'user') and request.user.is_authenticated else None
             us = UnitSystem(system_name=system_name, fmt_locale=language, user=user, key=key)
@@ -131,6 +143,7 @@ class UnitViewset(ViewSet):
                 available_units = us.available_unit_names()
                 if available_units:
                     units = [us.unit(unit_name=unit_name) for unit_name in available_units]
+            units = sorted(units, key=lambda x: getattr(x, ordering))
             serializer = UnitSerializer(units, many=True, context={'request': request})
             return Response(serializer.data)
         except UnitSystemNotFound:
@@ -299,7 +312,6 @@ class ValidateViewSet(APIView):
             'expression': request.data.get('expression'),
             'operands': request.data.get('operands')
         }
-        print("POST data", data)
         exp = ExpressionSerializer(data=data)
         if exp.is_valid(unit_system=us):
             return Response("Valid expression")

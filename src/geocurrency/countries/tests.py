@@ -28,6 +28,15 @@ class CountryTestCase(TestCase):
         all_countries = Country.all_countries()
         self.assertEqual(len(list(all_countries)), len(countries))
 
+    def test_sorted_all(self):
+        """Numbers of countries is equal to number of countries in pycountry.countries"""
+        self.assertEqual(len(list(Country.all_countries())), len(countries))
+        self.assertEqual(Country.all_countries(ordering='name')[-1].alpha_2, 'AX')
+        self.assertEqual(Country.all_countries(ordering='alpha_2')[-1].alpha_2, 'ZW')
+        self.assertEqual(Country.all_countries(ordering='alpha_3')[-1].alpha_2, 'ZW')
+        self.assertEqual(Country.all_countries(ordering='numeric')[-1].alpha_2, 'ZM')
+        self.assertEqual(Country.all_countries(ordering='brouzouf')[-1].alpha_2, 'AX')
+
     def test_base(self):
         """
         Basic representation contains name and iso codes
@@ -69,7 +78,21 @@ class CountryTestCase(TestCase):
         response = client.get('/countries/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(Country.all_countries()))
-        self.assertEqual(response.data[0].get('alpha_2'), 'AW')
+        self.assertEqual(response.data[0].get('alpha_2'), 'AF')
+
+    def test_list_sorted_name_request(self):
+        client = APIClient()
+        response = client.get('/countries/', data={'ordering': 'name'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), len(Country.all_countries()))
+        self.assertEqual(response.data[-1].get('alpha_2'), 'AX')
+
+    def test_list_sorted_numeric_request(self):
+        client = APIClient()
+        response = client.get('/countries/', data={'ordering': 'numeric'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), len(Country.all_countries()))
+        self.assertEqual(response.data[-1].get('alpha_2'), 'ZM')
 
     def test_retrieve_request(self):
         client = APIClient()

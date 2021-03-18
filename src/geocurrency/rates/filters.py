@@ -28,6 +28,15 @@ class RateFilter(filters.FilterSet):
                                                 method='currency_latest_values_filter')
     base_currency_latest_values = filters.CharFilter(label="Only output latest rates for currency",
                                                      method='base_currency_latest_values_filter')
+    ordering = filters.OrderingFilter(
+        # tuple-mapping retains order
+        fields=(
+            ('key', 'key'),
+            ('value', 'value'),
+            ('base_currency', 'base_currency'),
+            ('currency', 'currency'),
+        ),
+    )
 
     class Meta:
         model = Rate
@@ -36,7 +45,6 @@ class RateFilter(filters.FilterSet):
             'value_date', 'from_obj', 'to_obj',
             'value', 'lower_bound', 'higher_bound',
             'currency', 'base_currency'
-
         ]
 
     def user_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:

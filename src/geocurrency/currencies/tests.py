@@ -12,6 +12,14 @@ class CurrencyTestCase(TestCase):
     def test_all_currencies(self):
         self.assertEqual(len(Currency.all_currencies()), len(Iso4217))
 
+    def test_ordered_all_currencies(self):
+        self.assertEqual(Currency.all_currencies(ordering='code')[0].code, 'AED')
+        self.assertEqual(Currency.all_currencies(ordering='name')[0].code, 'AED')
+        self.assertEqual(Currency.all_currencies(ordering='currency_name')[0].code, 'AFN')
+        self.assertEqual(Currency.all_currencies(ordering='exponent')[0].code, 'XOF')
+        self.assertEqual(Currency.all_currencies(ordering='number')[0].code, 'ALL')
+        self.assertEqual(Currency.all_currencies(ordering='value')[0].code, 'AED')
+
     def test_creation(self):
         c = Currency('EUR')
         self.assertEqual(c.name, 'eur')
@@ -49,7 +57,14 @@ class CurrencyTestCase(TestCase):
         response = client.get('/currencies/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(Currency.all_currencies()))
-        self.assertEqual(response.data[0].get('code'), 'AFN')
+        self.assertEqual(response.data[0].get('code'), 'AED')
+
+    def test_list_ordered_request(self):
+        client = APIClient()
+        response = client.get('/currencies/', data={'ordering': 'code'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), len(Currency.all_currencies()))
+        self.assertEqual(response.data[0].get('code'), 'AED')
 
     def test_retrieve_request(self):
         client = APIClient()

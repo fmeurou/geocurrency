@@ -330,7 +330,10 @@ class RateTest(TestCase):
         response = client.get(
             '/rates/',
             format='json')
-        self.assertEqual(len(response.json()), 2)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), 2)
+        else:
+            self.assertEqual(len(response.json()), 2)
 
     def test_post_rate_without_key(self):
         client = APIClient()
@@ -391,7 +394,11 @@ class RateTest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(anon_response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json()), len(anon_response.json()) + 2)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']),
+                             len(anon_response.json()['results']) + 2)
+        else:
+            self.assertEqual(len(response.json()), len(anon_response.json()) + 2)
 
     def test_list_user_request(self):
         Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
@@ -419,7 +426,11 @@ class RateTest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(anon_response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json()), len(anon_response.json()) + 2)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), len(anon_response.json()['results']) + 2)
+        else:
+            self.assertEqual(len(response.json()), len(anon_response.json()) + 2)
+
 
     def test_list_with_key_request(self):
         client = APIClient()
@@ -440,7 +451,10 @@ class RateTest(TestCase):
             '/rates/',
             data={'key': self.key},
             format='json')
-        self.assertEqual(response.json()[0]['key'], str(self.key))
+        if 'results' in response.json():
+            self.assertEqual(response.json()['results'][0]['key'], str(self.key))
+        else:
+            self.assertEqual(response.json()[0]['key'], str(self.key))
 
     def test_list_with_key_or_null_request(self):
         client = APIClient()
@@ -462,7 +476,10 @@ class RateTest(TestCase):
             '/rates/',
             data={'key_or_null': self.key},
             format='json')
-        self.assertEqual(len(response.json()), 3)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), 3)
+        else:
+            self.assertEqual(len(response.json()), 3)
 
     def test_list_with_key_isnull_request(self):
         client = APIClient()
@@ -484,7 +501,10 @@ class RateTest(TestCase):
             '/rates/',
             data={'key_isnull': self.key},
             format='json')
-        self.assertEqual(response.json()[0]['key'], None)
+        if 'results' in response.json():
+            self.assertEqual(response.json()['results'][0]['key'], None)
+        else:
+            self.assertEqual(response.json()[0]['key'], None)
 
     def test_list_with_key_and_currency_request(self):
         client = APIClient()
@@ -505,7 +525,10 @@ class RateTest(TestCase):
             '/rates/',
             data={'key': self.key, 'currency': 'USD'},
             format='json')
-        self.assertEqual(len(response.json()), 1)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), 1)
+        else:
+            self.assertEqual(len(response.json()), 1)
 
     def test_stats_with_key_and_currency_request(self):
         client = APIClient()
@@ -558,7 +581,10 @@ class RateTest(TestCase):
             '/rates/',
             data={'key': self.key, 'base_currency': 'USD'},
             format='json')
-        self.assertEqual(len(response.json()), 1)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), 1)
+        else:
+            self.assertEqual(len(response.json()), 1)
 
     def test_retrieve_request(self):
         client = APIClient()
@@ -607,11 +633,17 @@ class RateTest(TestCase):
         response = client.get(
             '/rates/?currency_latest_values=USD'
         )
-        self.assertEqual(len(response.json()), 1)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), 1)
+        else:
+            self.assertEqual(len(response.json()), 1)
         response = client.get(
             '/rates/?base_currency_latest_values=EUR'
         )
-        self.assertEqual(len(response.json()), 1)
+        if 'results' in response.json():
+            self.assertEqual(len(response.json()['results']), 1)
+        else:
+            self.assertEqual(len(response.json()), 1)
 
 
 class RateConverterTest(TestCase):
