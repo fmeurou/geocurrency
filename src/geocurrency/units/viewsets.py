@@ -27,7 +27,7 @@ from rest_framework.viewsets import ViewSet, ModelViewSet
 
 from . import DIMENSIONS
 from .exceptions import UnitConverterInitError, UnitSystemNotFound, UnitNotFound, \
-    DimensionNotFound, ExpressionCalculatorInitError
+    DimensionNotFound, ExpressionCalculatorInitError, UnitValueError
 from .filters import CustomUnitFilter
 from .forms import CustomUnitForm
 from .models import UnitSystem, UnitConverter, Dimension, CustomUnit, ExpressionCalculator
@@ -317,7 +317,7 @@ class CustomUnitViewSet(ModelViewSet):
                 cu.unit_system = system_name
                 try:
                     cu.save()
-                except ValueError as e:
+                except UnitValueError as e:
                     return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
                 serializer = CustomUnitSerializer(cu)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
