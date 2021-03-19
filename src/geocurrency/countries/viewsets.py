@@ -1,3 +1,7 @@
+"""
+Country API viewsets
+"""
+
 from countryinfo import CountryInfo
 from django.conf import settings
 from django.utils.decorators import method_decorator
@@ -22,7 +26,8 @@ class CountryViewset(ViewSet):
     """
     lookup_field = 'alpha_2'
 
-    language_header = openapi.Parameter('Accept-Language', openapi.IN_HEADER, description="language",
+    language_header = openapi.Parameter('Accept-Language', openapi.IN_HEADER,
+                                        description="language",
                                         type=openapi.TYPE_STRING)
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
@@ -37,20 +42,28 @@ class CountryViewset(ViewSet):
     @swagger_auto_schema(manual_parameters=[language, language_header, ordering],
                          responses={200: countries_response})
     def list(self, request):
+        """
+        List countries. this view is not paginated
+        """
         countries = Country.all_countries(ordering=request.GET.get('ordering', 'name'))
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[language, language_header], responses={200: country_detail_response})
-    def retrieve(self, request, alpha_2):
+    @swagger_auto_schema(manual_parameters=[language, language_header],
+                         responses={200: country_detail_response})
+    def retrieve(self, request, alpha_2: str):
+        """
+        Retrieve a Country based on its alpha 2 code
+        """
         try:
             country = Country(alpha_2)
             serializer = CountryDetailSerializer(country, context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except CountryNotFoundError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response("Unknown country or no info for this country",
+                            status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -63,7 +76,8 @@ class CountryViewset(ViewSet):
             c = Country(alpha_2)
             return Response(c.timezones, content_type="application/json")
         except KeyError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response("Unknown country or no info for this country",
+                            status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -76,7 +90,8 @@ class CountryViewset(ViewSet):
             c = CountryInfo(alpha_2)
             return Response(c.currencies(), content_type="application/json")
         except KeyError:
-            return Response(_("Unknown country or no info for this country"), status=HTTP_404_NOT_FOUND)
+            return Response(_("Unknown country or no info for this country"),
+                            status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -89,7 +104,8 @@ class CountryViewset(ViewSet):
             c = CountryInfo(alpha_2)
             return Response(c.borders(), content_type="application/json")
         except KeyError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response("Unknown country or no info for this country",
+                            status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -102,7 +118,8 @@ class CountryViewset(ViewSet):
             c = CountryInfo(alpha_2)
             return Response(c.provinces(), content_type="application/json")
         except KeyError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response("Unknown country or no info for this country",
+                            status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -115,7 +132,8 @@ class CountryViewset(ViewSet):
             c = CountryInfo(alpha_2)
             return Response(c.languages(), content_type="application/json")
         except KeyError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response("Unknown country or no info for this country",
+                            status=HTTP_404_NOT_FOUND)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
@@ -128,10 +146,13 @@ class CountryViewset(ViewSet):
             c = Country(alpha_2=alpha_2)
             return Response(c.colors(), content_type="application/json")
         except CountryNotFoundError:
-            return Response("Unknown country or no info for this country", status=HTTP_404_NOT_FOUND)
+            return Response("Unknown country or no info for this country",
+                            status=HTTP_404_NOT_FOUND)
 
-    geocoder = openapi.Parameter('geocoder', openapi.IN_QUERY, description="Geocoder type", type=openapi.TYPE_STRING)
-    geocoder_api_key = openapi.Parameter('geocoder_api_key', openapi.IN_QUERY, description="Geocoder API key",
+    geocoder = openapi.Parameter('geocoder', openapi.IN_QUERY, description="Geocoder type",
+                                 type=openapi.TYPE_STRING)
+    geocoder_api_key = openapi.Parameter('geocoder_api_key', openapi.IN_QUERY,
+                                         description="Geocoder API key",
                                          type=openapi.TYPE_STRING)
     address = openapi.Parameter('address', openapi.IN_QUERY, description="Address to look for",
                                 type=openapi.TYPE_STRING)
@@ -146,7 +167,8 @@ class CountryViewset(ViewSet):
         """
         Return a list of available geocoders. As defined in settings.GEOCODING_SERVICE_SETTINGS
         """
-        return Response(settings.SERVICES.get('geocoding', {}).keys(), content_type="application/json")
+        return Response(settings.SERVICES.get('geocoding', {}).keys(),
+                        content_type="application/json")
 
     @swagger_auto_schema(method='get', manual_parameters=[address, geocoder, geocoder_api_key])
     @action(['GET'], detail=False, url_path='geocode', url_name='geocoding')

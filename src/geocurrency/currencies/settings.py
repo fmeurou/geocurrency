@@ -1,3 +1,7 @@
+"""
+Settings for Currencies module
+"""
+
 RATES = {
     'EUR': {
         'source': {

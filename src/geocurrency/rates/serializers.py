@@ -1,3 +1,6 @@
+"""
+Serializers for Rats module
+"""
 from datetime import datetime, date
 
 from geocurrency.core.serializers import UserSerializer
@@ -7,6 +10,9 @@ from .models import Rate, Amount, BulkRate, RateConversionPayload
 
 
 class BulkSerializer(serializers.Serializer):
+    """
+    Serializer for Bulk serializer
+    """
     base_currency = serializers.CharField(max_length=3, required=True)
     currency = serializers.CharField(max_length=3, required=True)
     value = serializers.FloatField(required=True)
@@ -15,9 +21,15 @@ class BulkSerializer(serializers.Serializer):
     to_date = serializers.DateField(required=False)
 
     def create(self, validated_data):
+        """
+        Create a BulkRate object
+        """
         return BulkRate(**validated_data)
 
     def update(self, instance, validated_data):
+        """
+        Update a BulkRate object
+        """
         instance.base_currency = validated_data.get('base_currency', instance.base_currency)
         instance.currency = validated_data.get('currency', instance.currency)
         instance.value = validated_data.get('value', instance.value)
@@ -28,6 +40,10 @@ class BulkSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_currency(value):
+        """
+        validate currency
+        :param value: Currency
+        """
         from geocurrency.currencies.models import Currency
         if not Currency.is_valid(value):
             raise serializers.ValidationError('Invalid currency')
@@ -35,6 +51,10 @@ class BulkSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_base_currency(value):
+        """
+        Validate base currency
+        :param value: Currency
+        """
         from geocurrency.currencies.models import Currency
         if not Currency.is_valid(value):
             raise serializers.ValidationError('Invalid currency')
@@ -42,6 +62,10 @@ class BulkSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_from_date(value):
+        """
+        Validate from_date
+        :param value: date
+        """
         if isinstance(value, date):
             return value
         try:
@@ -52,6 +76,10 @@ class BulkSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_to_date(value):
+        """
+        Validate to_date
+        :param value: date
+        """
         if isinstance(value, date):
             return value
         try:
@@ -79,6 +107,9 @@ class RateSerializer(serializers.ModelSerializer):
 
 
 class RateStatItemSerializer(serializers.Serializer):
+    """
+    Rate statistics item for conversion
+    """
     currency = serializers.CharField(read_only=True)
     base_currency = serializers.CharField(read_only=True)
     period = serializers.CharField(read_only=True)
@@ -89,6 +120,9 @@ class RateStatItemSerializer(serializers.Serializer):
 
 
 class RateStatSerializer(serializers.Serializer):
+    """
+    Rate statistics used in conversion
+    """
     key = serializers.CharField(read_only=True)
     period = serializers.CharField(read_only=True)
     from_date = serializers.DateField(read_only=True)
@@ -97,12 +131,19 @@ class RateStatSerializer(serializers.Serializer):
 
 
 class RateAmountSerializer(serializers.Serializer):
+    """
+    Rate amount used in conversion
+    """
     currency = serializers.CharField()
     amount = serializers.FloatField()
     date_obj = serializers.DateField()
 
     @staticmethod
     def validate_currency(value):
+        """
+        validate currency
+        :param value: Currency
+        """
         from geocurrency.currencies.models import Currency
         if not Currency.is_valid(value):
             raise serializers.ValidationError('Invalid currency')
@@ -110,6 +151,10 @@ class RateAmountSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_amount(value):
+        """
+        validate amount
+        :param value: Amount
+        """
         try:
             float(value)
         except ValueError:
@@ -118,6 +163,10 @@ class RateAmountSerializer(serializers.Serializer):
 
     @staticmethod
     def validate_date_obj(value):
+        """
+        Validate date
+        :param value: date
+        """
         if isinstance(value, date):
             return value
         try:
@@ -126,10 +175,19 @@ class RateAmountSerializer(serializers.Serializer):
             raise serializers.ValidationError('Invalid date format, use YYYY-MM-DD')
         return value
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict) -> Amount:
+        """
+        Create Amount object
+        :param validated_data: cleaned data
+        """
         return Amount(**validated_data)
 
-    def update(self, instance, validated_data):
+    def update(self, instance: Amount, validated_data: dict):
+        """
+        Update Amount object
+        :param instance: Amount
+        :param validated_data: cleaned date
+        """
         instance.currency = validated_data.get('currency', instance.email)
         instance.amount = validated_data.get('amount', instance.content)
         instance.date_obj = validated_data.get('date_obj', instance.created)
@@ -137,6 +195,9 @@ class RateAmountSerializer(serializers.Serializer):
 
 
 class RateConversionPayloadSerializer(serializers.Serializer):
+    """
+    Serialize a conversion payload
+    """
     data = RateAmountSerializer(many=True, required=False)
     target = serializers.CharField(required=True)
     batch_id = serializers.CharField(required=False)
@@ -144,6 +205,9 @@ class RateConversionPayloadSerializer(serializers.Serializer):
     eob = serializers.BooleanField(default=False)
 
     def is_valid(self, raise_exception=False):
+        """
+        Check validity of the payload
+        """
         if not self.initial_data.get('data') and (not self.initial_data.get('batch_id')
                                                   or (self.initial_data.get('batch_id')
                                                       and not self.initial_data.get('eob'))):
@@ -153,16 +217,29 @@ class RateConversionPayloadSerializer(serializers.Serializer):
         return super(RateConversionPayloadSerializer, self).is_valid()
 
     @staticmethod
-    def validate_target(value):
+    def validate_target(value: str):
+        """
+        Validate target currency
+        :param value: string
+        """
         from geocurrency.currencies.models import Currency
         if not Currency.is_valid(value):
             raise serializers.ValidationError('Invalid currency')
         return value
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict) -> RateConversionPayload:
+        """
+        Create a RateConversionPayload from serialized data
+        :param validated_data: cleaned data
+        """
         return RateConversionPayload(**validated_data)
 
     def update(self, instance, validated_data):
+        """
+        Update RateConversionPayload from serialized data
+        :param instance: RateConversionPayload object
+        :param validated_data: cleaned data
+        """
         self.data = validated_data.get('data', instance.data)
         self.target = validated_data.get('target', instance.target)
         self.batch_id = validated_data.get('batch_id', instance.batch_id)

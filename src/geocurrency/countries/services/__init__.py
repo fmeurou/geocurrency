@@ -1,3 +1,6 @@
+"""
+Country services
+"""
 from timezonefinder import TimezoneFinder
 
 from geocurrency.countries.models import Country, CountryNotFoundError
@@ -6,9 +9,13 @@ tf = TimezoneFinder(in_memory=True)
 
 
 class Geocoder:
+    """
+    Geocoder services
+    """
 
     def search(self, address, language=None, bounds=None, region=None, components=""):
         """
+        Search an address
         :params text: address to search for
         :params language: optional, language of result
         :params bounds: optional, limit results to bounds
@@ -20,6 +27,7 @@ class Geocoder:
 
     def reverse(self, lat, lng):
         """
+        Search from GPS coordinates
         :params lat: latitude
         :params lng: longitude
         """
@@ -27,6 +35,7 @@ class Geocoder:
 
     def parse_countries(self, data):
         """
+        Parse countries from result
         :params data: geocoding / reverse geocoding result
         :returns: Country instance
         """
@@ -34,6 +43,7 @@ class Geocoder:
 
     def countries(self, data):
         """
+        List countries
         :params data: json response from geocoding / reverse geocoding service
         """
         countries = []

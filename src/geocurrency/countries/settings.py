@@ -1,3 +1,7 @@
+"""
+Settings specific to Country module
+"""
+
 FLAG_SOURCE = 'https://raw.githubusercontent.com/cristiroma/countries/master/data/flags/SVG/{alpha_2}.svg?sanitize=true'
 
 # put in global settings.py to override

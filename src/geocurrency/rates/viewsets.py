@@ -1,3 +1,8 @@
+"""
+Rates modules API viewsets
+"""
+
+
 from django.db import models
 from django.db.models.functions import Extract
 from django.http import HttpResponseForbidden
@@ -22,6 +27,9 @@ from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSe
 
 class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
                   viewsets.GenericViewSet):
+    """
+    Rate API
+    """
     queryset = Rate.objects.all()
     serializer_class = RateSerializer
     filter_backends = (filters.DjangoFilterBackend,)
@@ -31,6 +39,9 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     display_page_controls = True
 
     def get_queryset(self):
+        """
+        Filter on connected user
+        """
         qs = super(RateViewSet, self).get_queryset()
         if self.request.user and self.request.user.is_authenticated:
             qs = qs.filter(
@@ -55,6 +66,9 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values],
                          responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
+        """
+        List rates
+        """
         return super().list(request, *args, **kwargs)
 
     @swagger_auto_schema(
@@ -62,6 +76,9 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         responses={200: RateStatSerializer})
     @action(['GET'], detail=False, url_path='stats', url_name='stats')
     def stats(self, request, *args, **kwargs):
+        """
+        stats on rates
+        """
         period = request.GET.get('period', 'month')
         if period not in ['week', 'month', 'year']:
             return Response("Invalid period", status=status.HTTP_400_BAD_REQUEST)
@@ -102,6 +119,9 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         return Response(serializer.data, content_type="application/json")
 
     def create(self, request, *args, **kwargs):
+        """
+        Create a new rate
+        """
         rate_form = RateForm(request.data)
         if rate_form.is_valid():
             rate = rate_form.save(commit=False)
@@ -136,6 +156,9 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
 
 
 class ConvertView(APIView):
+    """
+    Conversion API
+    """
 
     @swagger_auto_schema(request_body=RateConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})

@@ -1,3 +1,7 @@
+"""
+CurrencyLayer service
+"""
+
 import requests
 from datetime import date
 from django.conf import settings
@@ -19,8 +23,14 @@ except AttributeError:
 
 
 class CurrencyLayerService(RateService):
+    """
+    Currency layer service class
+    """
 
     def available_currencies(self) -> Iterator:
+        """
+        List availbale currencies for the service
+        """
         data = {
             'access_key': CURRENCYLAYER_API_KEY
         }
@@ -40,6 +50,13 @@ class CurrencyLayerService(RateService):
                     currency: str = None,
                     date_obj: date = date.today(),
                     to_obj: date = None) -> []:
+        """
+        Fetch rates
+        :param base_currency: base currency
+        :param currency: target currency
+        :param date_obj: date of the rate
+        :param to_obj: optional range parameter
+        """
         data = {
             'access_key': CURRENCYLAYER_API_KEY,
             'source': base_currency
@@ -68,6 +85,8 @@ class CurrencyLayerService(RateService):
     def parse_result(self, base_currency, data: dict) -> []:
         """
         Parse output from currencylayout services
+        :param base_currency: base currency
+        :param data: dictionnary of data
         """
         output = []
         if 'timeframe' in data:

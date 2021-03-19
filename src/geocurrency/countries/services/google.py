@@ -1,23 +1,32 @@
-import logging
+"""
+Google Geocoder service
+"""
 import json
-import requests
+import logging
 
-from . import Geocoder
-from ..settings import *
+import requests
 from django.conf import settings
 
+from . import Geocoder
 
 GEOCODER_GOOGLE_URL = 'https://maps.googleapis.com/maps/api'
 
 
 class GoogleGeocoder(Geocoder):
+    """
+    Google geocoder class
+    search and reverse from Google
+    """
     coder_type = 'google'
     key = None
 
     def __new__(cls, *args, **kwargs):
+        """
+        Initialize
+        """
         return super(Geocoder, cls).__new__(cls)
 
-    def __init__(self, key=None, *args, **kwargs):
+    def __init__(self, key:str = None, *args, **kwargs):
         """
         Google geocode engine
         Init: Geocoder('google', 'API key')
@@ -25,13 +34,16 @@ class GoogleGeocoder(Geocoder):
         try:
             if not key or not settings.GEOCODER_GOOGLE_KEY:
                 raise ValueError(
-                    "This geocoder needs an API key, please provide a key or set GEOCODER_GOOGLE_KEY in configuration")
+                    "This geocoder needs an API key, please provide a key"
+                    " or set GEOCODER_GOOGLE_KEY in configuration")
         except AttributeError:
             raise ValueError(
-                "This geocoder needs an API key, please provide a key or set GEOCODER_GOOGLE_KEY in configuration")
+                "This geocoder needs an API key, please provide a key "
+                "or set GEOCODER_GOOGLE_KEY in configuration")
         self.key = key or settings.GEOCODER_GOOGLE_KEY
 
-    def search(self, address, language=None, bounds=None, region=None, components=""):
+    def search(self, address: str, language: str = None, bounds=None,
+               region: str = None, components: str = "") -> dict:
         """
         Google geocoding search
         Retrieves coordinates based on address
@@ -47,7 +59,7 @@ class GoogleGeocoder(Geocoder):
             })
             data = response.json()
             if data.get('status') != "OK":
-                return None
+                return {}
             return data
         except json.JSONDecodeError as e:
             logging.error("Invalid response")
@@ -58,12 +70,13 @@ class GoogleGeocoder(Geocoder):
         except IOError as e:
             logging.error("Invalid request")
             logging.error(e)
+        return {}
 
-        return None
-
-    def reverse(self, lat, lng):
+    def reverse(self, lat:str, lng:str) -> dict:
         """
         Google geocoding reverse
+        :param lat: latitude
+        :param lng: longitude
         """
         try:
             response = requests.get('{}/{}'.format(
@@ -76,7 +89,7 @@ class GoogleGeocoder(Geocoder):
                 })
             data = response.json()
             if data.get('status') != "OK":
-                return None
+                return {}
             return data
         except json.JSONDecodeError as e:
             logging.error("Invalid response")
@@ -87,9 +100,9 @@ class GoogleGeocoder(Geocoder):
         except IOError as e:
             logging.error("Invalid request")
             logging.error(e)
-        return None
+        return {}
 
-    def parse_countries(self, data):
+    def parse_countries(self, data: dict) -> [str]:
         """
         parse response from google service
         :params data: geocoding / reverse geocoding json

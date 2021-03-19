@@ -1,7 +1,12 @@
+"""
+Initialize Currencies module
+"""
+
 BASE_CURRENCY = 'EUR'
 
 DEFAULT_SYMBOL = '¤'
 
+# Hard coded list of currency symbols
 CURRENCY_SYMBOLS = {
     'AFN': '؋',
     'MGA': 'Ar',

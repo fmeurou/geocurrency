@@ -1,3 +1,7 @@
+"""
+Units module
+"""
+
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 
 DIMENSIONS = {

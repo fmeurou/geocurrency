@@ -1,8 +1,12 @@
+"""
+Country URLs
+"""
+
 from django.conf.urls import url, include
 from rest_framework import routers
 
-from .viewsets import CountryViewset
 from .views import FlagView
+from .viewsets import CountryViewset
 
 app_name = 'countries'
 

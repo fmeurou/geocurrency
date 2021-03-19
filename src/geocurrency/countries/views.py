@@ -1,10 +1,15 @@
-import os
+"""
+Country views
+"""
+
 import logging
+import os
+
 import requests
 from django.conf import settings
 from django.http import HttpResponseBadRequest, HttpResponseNotFound
-from django.views import View
 from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from sendfile import sendfile
@@ -15,8 +20,8 @@ from .settings import *
 
 class FlagView(View):
     """
-        Try to get flag image from MEDIA_ROOT cache or download it from
-        """
+    Try to get flag image from MEDIA_ROOT cache or download it from FLAG_SOURCE
+    """
 
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)

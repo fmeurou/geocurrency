@@ -1,26 +1,35 @@
+"""
+Models for Country module
+"""
+
 import os
-import pytz
-from pytz import timezone
 import re
-import requests
 from datetime import datetime
-from pycountry import countries
+
+import pytz
+import requests
 from countryinfo import CountryInfo
-
-from django.core.cache import cache
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
-
+from pycountry import countries
+from pytz import timezone
 
 from .helpers import ColorProximity, hextorgb
 from .settings import *
 
 
 class CountryNotFoundError(Exception):
+    """
+    Exception when Country is not found
+    """
     msg = 'Country not found'
 
 
 class CountryManager(models.Manager):
+    """
+    Manager for country model
+    """
 
     def get_by_color(self, color, proximity=1):
         """
@@ -41,6 +50,10 @@ class CountryManager(models.Manager):
 
 
 class Country:
+    """
+    Country class
+    Wrapper around pycountry object
+    """
     # data extracted from pycountry as basic data if CountryInfo for this country does not exist
     alpha_2 = None
     alpha_3 = None
@@ -61,14 +74,15 @@ class Country:
         self.numeric = country.numeric
 
     @classmethod
-    def all_countries(cls, ordering: str='name'):
+    def all_countries(cls, ordering: str = 'name'):
         """
         List all countries, instanciate CountryInfo for each country in pycountry.countries
+        :param ordering: sort list
         """
         if ordering not in ['name', 'alpha_2', 'alpha_3', 'numeric']:
             ordering = 'name'
         return list(sorted(map(lambda x: cls(x.alpha_2), countries),
-                    key=lambda x: getattr(x, ordering)))
+                           key=lambda x: getattr(x, ordering)))
 
     def base(self):
         """
@@ -76,15 +90,24 @@ class Country:
         """
         return countries.get(alpha_2=self.alpha_2)._fields
 
-    def currencies(self):
+    def currencies(self) -> []:
+        """
+        Return a list of currencies used in this country
+        """
         ci = CountryInfo(self.alpha_2)
         return ci.currencies()
 
     def info(self):
+        """
+        Additional information on the country based on countryinfo module database
+        """
         return CountryInfo(self.alpha_2).info()
 
     @property
-    def unit_system(self):
+    def unit_system(self) -> str:
+        """
+        Return UnitSystem for country
+        """
         if self.alpha_2 == 'US':
             return 'US'
         if self.alpha_2 == 'LR':
@@ -94,7 +117,10 @@ class Country:
         return 'SI'
 
     @property
-    def timezones(self):
+    def timezones(self) -> []:
+        """
+        Returns a list of timezones for a country
+        """
         output = []
         fmt = '%z'
         base_time = datetime.utcnow()
@@ -170,16 +196,28 @@ class Country:
 
     @property
     def region(self) -> str:
+        """
+        Return country region
+        """
         return CountryInfo(self.alpha_2).region()
 
     @property
     def subregion(self) -> str:
+        """
+        Return country subregion
+        """
         return CountryInfo(self.alpha_2).subregion()
 
     @property
     def tld(self) -> str:
+        """
+        Return country TLD
+        """
         return CountryInfo(self.alpha_2).tld()
 
     @property
     def capital(self) -> str:
+        """
+        Return country capital
+        """
         return CountryInfo(self.alpha_2).capital()

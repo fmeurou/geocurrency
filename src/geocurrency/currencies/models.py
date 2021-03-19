@@ -1,3 +1,6 @@
+"""
+Currencies models
+"""
 import logging
 from datetime import date
 from typing import Iterator
@@ -5,21 +8,30 @@ from typing import Iterator
 from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.db import models
+from geocurrency.countries.models import Country
 from iso4217 import Currency as Iso4217
 
-from geocurrency.countries.models import Country
 from . import CURRENCY_SYMBOLS, DEFAULT_SYMBOL
 
 
 class CurrencyNotFoundError(Exception):
+    """
+    Exception for not found currency
+    """
     msg = 'Currency not found'
 
 
 class Currency:
+    """
+    Mock for hinting
+    """
     pass
 
 
 class Currency:
+    """
+    Currency class, wrapper for ISO-4217
+    """
     code = None
     name = None
     currency_name = None
@@ -29,7 +41,7 @@ class Currency:
 
     def __init__(self, code):
         """
-        Returns a iso4217.Currency instance
+        Initialize an iso4217.Currency instance
         """
         try:
             i = Iso4217(code)
@@ -50,9 +62,10 @@ class Currency:
             return False
 
     @classmethod
-    def all_currencies(cls, ordering: str='name') -> Iterator[Currency]:
+    def all_currencies(cls, ordering: str = 'name') -> Iterator[Currency]:
         """
-        Returns an array of currencies
+        Returns a sorted list of currencies
+        :param ordering: sort attribute
         """
         if ordering not in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
             ordering = 'name'
@@ -60,6 +73,10 @@ class Currency:
 
     @property
     def countries(self) -> Iterator[Country]:
+        """
+        List countries using this currency
+        :return: List of Country objects
+        """
         countries = []
         if cached_countries := cache.get(self.code + 'COUNTRIES'):
             return [Country(alpha_2) for alpha_2 in cached_countries]
@@ -87,7 +104,8 @@ class Currency:
             logging.error(e)
             return []
 
-    def get_rates(self, user: User = None, key: str = None, base_currency: str = None, start_date: date = None,
+    def get_rates(self, user: User = None, key: str = None, base_currency: str = None,
+                  start_date: date = None,
                   end_date: date = None) -> Iterator:
         """
         Return a list of rates for this currency and an optional base currency between two dates
@@ -112,5 +130,7 @@ class Currency:
 
     @property
     def symbol(self):
+        """
+        Returns the symbol for this currency based on __init__.CURRENCY_SYMBOLS
+        """
         return CURRENCY_SYMBOLS.get(self.code, DEFAULT_SYMBOL)
-

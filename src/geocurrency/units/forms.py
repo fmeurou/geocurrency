@@ -1,3 +1,7 @@
+"""
+Units module forms
+"""
+
 from django.forms import ModelForm, CharField
 
 from .models import CustomUnit

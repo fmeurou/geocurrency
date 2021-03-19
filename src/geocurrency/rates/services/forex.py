@@ -1,10 +1,13 @@
-# Python_forex based wrapper
-# uses ratesapi.io
+"""
+Python_forex based wrapper
+uses ratesapi.io
+"""
 import logging
 from datetime import date, timedelta
+from typing import Iterator
+
 from django.conf import settings
 from forex_python import converter
-from typing import Iterator
 
 from . import RateService, RatesNotAvailableError
 
@@ -21,7 +24,8 @@ class ForexService(RateService):
         rates = self.fetch_rates(base_currency='USD')
         return [r['currency'] for r in rates]
 
-    def _fetch_all_rates(self, provider: converter.CurrencyRates, base_currency: str, date_obj: date) -> []:
+    def _fetch_all_rates(self, provider: converter.CurrencyRates, base_currency: str,
+                         date_obj: date) -> []:
         """
         Fetch all rates for availbale currencies for this service
         :param provider: Currency rates
@@ -88,6 +92,7 @@ class ForexService(RateService):
                 rates.extend(_rates)
         else:
             for i in range(((to_obj or date_obj) - date_obj).days + 1):
-                _rates = self._fetch_all_rates(c, base_currency=base_currency, date_obj=date_obj + timedelta(i))
+                _rates = self._fetch_all_rates(c, base_currency=base_currency,
+                                               date_obj=date_obj + timedelta(i))
                 rates.extend(_rates)
         return rates

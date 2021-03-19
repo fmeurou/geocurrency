@@ -1,3 +1,7 @@
+"""
+Units module APIs viewsets
+"""
+
 import json
 import logging
 
@@ -60,6 +64,9 @@ class UnitSystemViewset(ViewSet):
     @swagger_auto_schema(manual_parameters=[language, language_header],
                          responses={200: unit_systems_response})
     def list(self, request):
+        """
+        List UnitSystems
+        """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         us = UnitSystem(fmt_locale=language)
         us = [{'system_name': s} for s in us.available_systems()]
@@ -70,6 +77,9 @@ class UnitSystemViewset(ViewSet):
     @swagger_auto_schema(manual_parameters=[language, language_header],
                          responses={200: unit_system_response})
     def retrieve(self, request, system_name):
+        """
+        Retrieve UnitSystem
+        """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         try:
             us = UnitSystem(system_name=system_name, fmt_locale=language)
@@ -84,6 +94,9 @@ class UnitSystemViewset(ViewSet):
                          responses={200: DimensionSerializer})
     @action(methods=['GET'], detail=True, name='dimensions', url_path='dimensions')
     def dimensions(self, request, system_name):
+        """
+        List Dimensions of a UnitSystem
+        """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         ordering = request.GET.get('ordering', 'name')
         try:
@@ -123,6 +136,9 @@ class UnitViewset(ViewSet):
                                             language, language_header],
                          responses={200: units_response})
     def list(self, request: HttpRequest, system_name: str):
+        """
+        List Units, ordered, filtered by key or dimension, translated in language
+        """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         try:
             key = request.GET.get('key', None)
@@ -153,6 +169,9 @@ class UnitViewset(ViewSet):
                          responses={200: dimension_response})
     @action(['GET'], detail=False, name='units per dimension', url_path='per_dimension')
     def list_per_dimension(self, request: HttpRequest, system_name: str):
+        """
+        List Units grouped by dimension, filter on key, translated
+        """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         try:
             key = request.GET.get('key', None)
@@ -191,6 +210,9 @@ class UnitViewset(ViewSet):
                          responses={200: units_response})
     @action(methods=['GET'], detail=True, url_path='compatible', url_name='compatible_units')
     def compatible_units(self, request: HttpRequest, system_name: str, unit_name: str):
+        """
+        List compatible Units
+        """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         try:
             key = request.GET.get('key', None)
@@ -207,6 +229,9 @@ class UnitViewset(ViewSet):
 
 
 class ConvertView(APIView):
+    """
+    Convert Units API
+    """
 
     @swagger_auto_schema(request_body=UnitConversionPayloadSerializer,
                          responses={200: ConverterResultSerializer})
@@ -250,6 +275,9 @@ class ConvertView(APIView):
 
 
 class CustomUnitViewSet(ModelViewSet):
+    """
+    Custom Units API
+    """
     queryset = CustomUnit.objects.all()
     serializer_class = CustomUnitSerializer
     filter_backends = (filters.DjangoFilterBackend,)
@@ -259,6 +287,9 @@ class CustomUnitViewSet(ModelViewSet):
     display_page_controls = True
 
     def get_queryset(self):
+        """
+        Filter units based on authenticated user
+        """
         qs = super(CustomUnitViewSet, self).get_queryset()
         if self.request.user and self.request.user.is_authenticated:
             qs = qs.filter(
@@ -271,6 +302,9 @@ class CustomUnitViewSet(ModelViewSet):
         return qs
 
     def create(self, request: HttpRequest, system_name: str, *args, **kwargs):
+        """
+        Create CustomUnit
+        """
         cu_form = CustomUnitForm(request.data)
         if cu_form.is_valid():
             cu = cu_form.save(commit=False)
@@ -281,7 +315,10 @@ class CustomUnitViewSet(ModelViewSet):
             if request.user and request.user.is_authenticated:
                 cu.user = request.user
                 cu.unit_system = system_name
-                cu.save()
+                try:
+                    cu.save()
+                except ValueError as e:
+                    return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
                 serializer = CustomUnitSerializer(cu)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
@@ -322,6 +359,9 @@ class ValidateViewSet(APIView):
 
 
 class CalculationView(APIView):
+    """
+    Calculate a batch of formulas
+    """
     renderer_classes = [UnitsRenderer]
 
     @swagger_auto_schema(request_body=CalculationPayloadSerializer,

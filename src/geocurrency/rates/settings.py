@@ -1,3 +1,7 @@
+"""
+Rates module settings
+"""
+
 import os
 
 BASE_CURRENCY = 'EUR'

@@ -1,3 +1,7 @@
+"""
+Units models
+"""
+
 import logging
 from datetime import date
 
@@ -27,16 +31,25 @@ class Quantity:
     date_obj = None
 
     def __init__(self, system: str, unit: str, value: float, date_obj: date = None):
+        """
+        Initialize quantity on unit system
+        """
         self.system = system
         self.unit = unit
         self.value = value
         self.date_obj = date_obj
 
     def __repr__(self):
+        """
+        Look beautiful
+        """
         return f'{self.value} {self.unit} ({self.system})'
 
 
 class Unit:
+    """
+    Unit mock for hinting
+    """
     pass
 
 
@@ -50,6 +63,9 @@ class UnitSystem:
 
     def __init__(self, system_name: str = 'SI', fmt_locale: str = 'en', user: User = None,
                  key: str = None):
+        """
+        Initialize UnitSystem from name and user / key information for loading custom units
+        """
         found = False
         for available_system in UnitSystem.available_systems():
             if system_name.lower() == available_system.lower():
@@ -128,6 +144,8 @@ class UnitSystem:
     def add_definition(self, code, relation, symbol, alias):
         """
         Add a new unit definition to a UnitSystem, and rebuild cache
+        :param code: code of the unit
+        :param relation: relation to other units (e.g.: 3 kg/m)
         """
         self.ureg.define(f"{code} = {relation} = {symbol} = {alias}")
         self._rebuild_cache()
@@ -143,6 +161,10 @@ class UnitSystem:
 
     @classmethod
     def is_valid(cls, system: str) -> bool:
+        """
+        Check validity of the UnitSystem
+        :param name: name of the unit system
+        """
         us = cls()
         return system in us.available_systems()
 
@@ -153,6 +175,10 @@ class UnitSystem:
         return self.ureg
 
     def unit(self, unit_name):
+        """
+        Create a Object in the UnitSystem
+        :param unit_name: name of the unit in the unit system
+        """
         return Unit(unit_system=self, code=unit_name)
 
     def available_unit_names(self) -> [str]:
@@ -179,6 +205,10 @@ class UnitSystem:
         return Unit.dimensionality_string(unit_system=self.system, unit_str=unit)
 
     def available_dimensions(self, ordering: str = 'name') -> {}:
+        """
+        Return available dimensions for the UnitSystem
+        :param ordering: sort result by attribute
+        """
         if ordering not in ['name', 'code', 'dimension']:
             ordering = 'name'
         return sorted([Dimension(unit_system=self, code=dim) for dim in DIMENSIONS.keys()],
@@ -221,6 +251,10 @@ class UnitSystem:
         return output
 
     def units_per_dimension(self, dimensions: [str]) -> {}:
+        """
+        Return units grouped by dimension
+        :param dimensions: restrict list of dimensions
+        """
         output = {}
         registry_dimensions = dimensions or DIMENSIONS.keys()
         for dim in registry_dimensions:
@@ -266,6 +300,9 @@ class Dimension:
     dimension = None
 
     def __init__(self, unit_system: UnitSystem, code: str):
+        """
+        Initialize a Dimension in a UnitSystem
+        """
         try:
             dimension = DIMENSIONS[code]
             self.unit_system = unit_system
@@ -279,6 +316,9 @@ class Dimension:
             raise DimensionNotFound
 
     def __repr__(self):
+        """
+        Look beautiful
+        """
         return self.code
 
     def units(self, user=None, key=None) -> [Unit]:
@@ -369,6 +409,7 @@ class Unit:
 
     def __init__(self, unit_system: UnitSystem, code: str = '', pint_unit: pint.Unit = None):
         """
+        Initialize a Unit in a UnitSystem
         :param unit_system: UnitSystem instance
         :param code: code of the pint.Unit
         """
@@ -390,6 +431,9 @@ class Unit:
 
     @classmethod
     def is_valid(cls, name: str) -> bool:
+        """
+        Check the validity of a unit in a UnitSystem
+        """
         try:
             us_si = UnitSystem(system_name='SI')
         except UnitSystemNotFound:
@@ -401,6 +445,9 @@ class Unit:
 
     @property
     def name(self) -> str:
+        """
+        Return name of the unit from table of units
+        """
         return self.unit_name(self.code)
 
     @property
@@ -484,6 +531,9 @@ class Unit:
 
     @property
     def dimensionality(self):
+        """
+        Return dimensionality of a unit in Pint universe
+        """
         try:
             return self.unit_system.ureg.get_base_units(self.code)[1]
         except KeyError:
@@ -491,6 +541,9 @@ class Unit:
 
     @staticmethod
     def translated_name(unit_system: UnitSystem, unit_str: str) -> str:
+        """
+        Translated name of the unit
+        """
         try:
             return '{}'.format(unit_system.ureg[unit_str])
         except KeyError:
@@ -515,6 +568,9 @@ class UnitConverter(BaseConverter):
 
     def __init__(self, base_system: str, base_unit: str, user: User = None, key: key = None,
                  id: str = None):
+        """
+        Initialize the converter. It converts a payload into a destination unit
+        """
         try:
             super().__init__(id=id)
             self.base_system = base_system
@@ -555,6 +611,9 @@ class UnitConverter(BaseConverter):
 
     @classmethod
     def load(cls, id: str, user: User = None, key: str = None) -> BaseConverter:
+        """
+        Load converter from ID
+        """
         try:
             uc = super().load(id)
             uc.system = UnitSystem(system_name=uc.base_system, user=user, key=key)
@@ -564,6 +623,9 @@ class UnitConverter(BaseConverter):
             raise ConverterLoadError
 
     def save(self):
+        """
+        Save the converter to cache
+        """
         system = self.system
         unit = self.unit
         self.system = None
@@ -626,6 +688,9 @@ class UnitConversionPayload:
 
     def __init__(self, base_system: UnitSystem, base_unit: Unit, data=None, key: str = None,
                  batch_id: str = None, eob: bool = False):
+        """
+        Initialize conversion payload
+        """
         self.data = data
         self.base_system = base_system
         self.base_unit = base_unit
@@ -657,6 +722,9 @@ class CustomUnit(models.Model):
     alias = models.CharField("Alias", max_length=20, null=True, blank=True)
 
     class Meta:
+        """
+        Meta
+        """
         unique_together = ('user', 'key', 'code')
 
     def save(self, *args, **kwargs):
@@ -666,8 +734,11 @@ class CustomUnit(models.Model):
         us = UnitSystem(system_name=self.unit_system)
         if self.code in us.available_unit_names():
             raise UnitDuplicateError
-        us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol,
+        try:
+            us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol,
                           alias=self.alias)
+        except ValueError as e:
+            raise UnitValueError(str(e)) from e
         try:
             us.unit(self.code).unit.dimensionality
         except pint.errors.UndefinedUnitError:
@@ -684,11 +755,20 @@ class Operand:
     unit = None
 
     def __init__(self, name=None, value=None, unit=None):
+        """
+        Initialize Operand
+        :param name: name of the operand that appears in the formula
+        :param value: float magnitude
+        :param unit: units
+        """
         self.name = name
         self.value = value
         self.unit = unit
 
     def validate(self):
+        """
+        Validate operand
+        """
         if not self.name or self.value is None or self.unit is None:
             return False
         return True
@@ -706,10 +786,19 @@ class Expression:
     operands = None
 
     def __init__(self, expression: str, operands: [Operand]):
+        """
+        Initialize Expression
+        :param expression: string expression with placeholders
+        :param operands: List of Operand corresponding to placeholders
+        """
         self.expression = expression
         self.operands = operands
 
     def validate(self, unit_system: UnitSystem) -> (bool, str):
+        """
+        Validate syntax and homogeneity
+        :param unit_system: UnitSystem
+        """
         Q_ = unit_system.ureg.Quantity
         if not self.expression:
             return False, "missing expression"
@@ -729,21 +818,17 @@ class Expression:
             return False, "Incoherent dimensions"
         return True, ''
 
-    def calculate(self, unit_system: UnitSystem) -> pint.Quantity:
+    def evaluate(self, unit_system: UnitSystem) -> pint.Quantity:
+        """
+        Validate formula
+        """
         Q_ = unit_system.ureg.Quantity
-        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
-        if self.validate(unit_system=unit_system):
-            return Q_(self.expression.format(**kwargs))
-        return None
-
-    def evaluate(self, unit_system) -> pint.Quantity:
-        Q_ = unit_system.ureg.Quantity
-        is_valid, error = self.validate()
+        is_valid, error = self.validate(unit_system=unit_system)
         if is_valid:
             kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
-            return Q_(self.expression.format(kwargs))
+            return Q_(self.expression.format(**kwargs))
         else:
-            raise ComputationError("Invalid formula")
+            raise ComputationError(f"Invalid formula: {error}")
 
 
 class CalculationPayload:
@@ -759,6 +844,9 @@ class CalculationPayload:
 
     def __init__(self, unit_system: UnitSystem, key: str = None, data: [] = None,
                  batch_id: str = None, eob: bool = False):
+        """
+        Initialize payload
+        """
         self.data = data
         self.unit_system = unit_system
         self.key = key
@@ -841,21 +929,29 @@ class ExpressionCalculator(BaseConverter):
         """
         Converts data to base unit in base system
         """
-
         result = CalculationResult(id=self.id)
-        Q_ = self.system.ureg.Quantity
         for expression in self.data:
             valid, exp_error = expression.validate(unit_system=self.system)
             if not valid:
                 error = CalculationResultError(
-                    expression=amount.unit,
-                    original_value=amount.value,
-                    date=amount.date_obj,
+                    expression=expression.unit,
+                    operands=expression.operands,
+                    date=date.today(),
                     error=exp_error
                 )
                 result.errors.append(error)
                 continue
-            out = expression.calculate(unit_system=self.system)
+            try:
+                out = expression.evaluate(unit_system=self.system)
+            except ComputationError as e:
+                error = CalculationResultError(
+                    expression=expression.unit,
+                    operands=expression.operands,
+                    date=date.today(),
+                    error=str(e)
+                )
+                result.errors.append(error)
+                continue
             detail = CalculationResultDetail(
                 expression=expression.expression,
                 operands=expression.operands,

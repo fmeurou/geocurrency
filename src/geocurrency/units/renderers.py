@@ -1,3 +1,7 @@
+"""
+Renderer for Units
+"""
+
 import json
 from rest_framework.renderers import JSONRenderer
 from rest_framework.settings import api_settings
@@ -7,6 +11,9 @@ from .models import Operand
 
 
 class UnitsEncoder(JSONEncoder):
+    """
+    Encoder for Custom Unit
+    """
 
     def default(self, obj):
         if isinstance(obj, Operand):

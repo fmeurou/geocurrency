@@ -1,3 +1,7 @@
+"""
+Viewsets for currencies module APIs
+"""
+
 import statistics
 
 import logging

@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.urls import path
+from geocurrency.converters.views import WatchView
 from geocurrency.countries import urls as country_urls
 from geocurrency.currencies import urls as currency_urls
 from geocurrency.rates import urls as rate_urls
 from geocurrency.units import urls as unit_urls
-from geocurrency.converters.views import WatchView
+
 from .views import index, tos, LanguageView
 
 urlpatterns = [

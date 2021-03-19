@@ -1,3 +1,7 @@
+"""
+Units module API filters
+"""
+
 from django.db import models
 from django.db.models import QuerySet
 from django_filters import rest_framework as filters
@@ -6,6 +10,9 @@ from .models import CustomUnit
 
 
 class CustomUnitFilter(filters.FilterSet):
+    """
+    Filter on custom units
+    """
     user = filters.BooleanFilter(label="filter rate associated to connected user",
                                  method='user_filter')
     key = filters.CharFilter(label="filter rates with key", method='key_filter')
@@ -32,6 +39,9 @@ class CustomUnitFilter(filters.FilterSet):
     )
 
     class Meta:
+        """
+        Meta
+        """
         model = CustomUnit
         fields = [
             'user', 'key',

@@ -1,3 +1,6 @@
+"""
+Models for Rates module
+"""
 from datetime import date, timedelta
 
 import networkx as nx
@@ -20,21 +23,36 @@ from .services import RatesNotAvailableError
 
 
 class NoRateFound(Exception):
+    """
+    Exception when no rate is found
+    """
     pass
 
 
 class BaseRate(models.Model):
+    """
+    Just an abstract for value and hinting
+    """
     value = None
 
     class Meta:
+        """
+        Yes, it is abstract
+        """
         abstract = True
 
 
 class RateManager(models.Manager):
+    """
+    Manager for Rate model
+    """
 
-    def __sync_rates__(self, rates: [], base_currency: str, date_obj: date, to_obj: date = None):
+    @staticmethod
+    def __sync_rates__(rates: [], base_currency: str):
         """
-        rates: array of dict of rates from service
+        Sync rates to the database
+        :param rates: array of dict of rates from service
+        :param base_currency: base currency to fetch
         """
         output = []
         for rate in rates:
@@ -76,16 +94,20 @@ class RateManager(models.Manager):
                 return False
         except RatesNotAvailableError:
             return False
-        return self.__sync_rates__(rates=rates, base_currency=base_currency,
-                                   date_obj=date_obj, to_obj=to_obj)
+        return self.__sync_rates__(rates=rates, base_currency=base_currency)
 
     def rate_at_date(self,
                      currency: str,
                      key: str = None,
                      base_currency: str = settings.BASE_CURRENCY,
                      date_obj: date = date.today()) -> BaseRate:
-        # See here for process
-        # https://app.lucidchart.com/documents/edit/cee5a97f-021f-4eab-8cf3-d66c88cf46f2/0_0?beaconFlowId=4B33C87C22AD8D63
+        """
+        Get a rate at a given date
+        :param currency: target currency
+        :param base_currency: destination currency
+        :param key: User key
+        :param date_obj: date at which to fetch the rate
+        """
         rate = self.find_rate(
             currency=currency,
             key=key,
@@ -118,7 +140,8 @@ class RateManager(models.Manager):
             return nx.shortest_path(graph, currency, base_currency, weight='weight')
         except nx.exception.NetworkXNoPath as exc:
             raise NoRateFound(
-                f"Rate {currency} to {base_currency} on key {key} at date {date_obj} does not exist") \
+                f"Rate {currency} to {base_currency} on "
+                f"key {key} at date {date_obj} does not exist") \
                 from exc
 
     def find_rate(self, currency: str,
@@ -129,6 +152,12 @@ class RateManager(models.Manager):
                   use_forex: bool = False) -> BaseRate:
         """
         Find rate based on Floyd Warshall algorithm
+        :param currency: source currency code
+        :param base_currency: base currency code
+        :param key: Key specific to a client
+        :param date_obj: Date to obtain the conversion rate for
+        :param rate_service: Rate service to use
+        :param use_forex: use rate service to fill the gaps
         """
         if use_forex:
             if not self.fetch_rates(
@@ -176,7 +205,8 @@ class RateManager(models.Manager):
                     conv_value *= rate.value
                 else:
                     raise NoRateFound(
-                        f"rate {from_cur} -> {to_cur} for key {key} does not exist at date {date_obj}")
+                        f"rate {from_cur} -> {to_cur} for key {key} "
+                        f"does not exist at date {date_obj}")
             rate = Rate.objects.create(
                 key=key,
                 value_date=date_obj,
@@ -188,6 +218,9 @@ class RateManager(models.Manager):
 
 
 class Rate(BaseRate):
+    """
+    Class Rate
+    """
     user = models.ForeignKey(User, related_name='rates', on_delete=models.PROTECT, null=True)
     key = models.CharField(max_length=255, default=None, db_index=True, null=True)
     value_date = models.DateField()
@@ -197,6 +230,9 @@ class Rate(BaseRate):
     objects = RateManager()
 
     class Meta:
+        """
+        Meta
+        """
         ordering = ['-value_date', ]
         indexes = [
             models.Index(fields=['base_currency', 'value_date']),
@@ -213,6 +249,15 @@ class Rate(BaseRate):
                 base_currency: str = 'EUR',
                 date_obj: date = date.today(),
                 amount: float = 0) -> ConverterResult:
+        """
+        Convert rate
+        :param user: Django User
+        :param key: key for user
+        :param base_currency: destination currency
+        :param currency: source currency
+        :param date_obj: date of the rate
+        :param amount: amount to convert
+        """
         converter = RateConverter(user=user, key=key, base_currency=base_currency)
         converter.add_data(
             {
@@ -227,6 +272,9 @@ class Rate(BaseRate):
 
 @receiver(post_save, sender=Rate)
 def create_reverse_rate(sender, instance, created, **kwargs):
+    """
+    Create the rate object to revert rate when create a rate
+    """
     if created and not Rate.objects.filter(
             user=instance.user,
             key=instance.key,
@@ -245,20 +293,32 @@ def create_reverse_rate(sender, instance, created, **kwargs):
 
 
 class Amount:
+    """
+    Amount with a currency, a value and a date
+    """
     currency = None
     amount = 0
     date_obj = None
 
     def __init__(self, currency: str, amount: float, date_obj: date):
+        """
+        Initialize amount
+        """
         self.currency = currency
         self.amount = amount
         self.date_obj = date_obj
 
     def __repr__(self):
+        """
+        How do I look like
+        """
         return f'{self.date_obj}: {self.currency} {self.amount}'
 
 
 class RateConversionPayload:
+    """
+    Payload for conversion of amounts
+    """
     data = None
     target = ''
     key = ''
@@ -266,6 +326,9 @@ class RateConversionPayload:
     eob = False
 
     def __init__(self, target, data=None, key=None, batch_id=None, eob=False):
+        """
+        Representation of the payload
+        """
         self.data = data
         self.target = target
         self.key = key
@@ -274,6 +337,9 @@ class RateConversionPayload:
 
 
 class BulkRate:
+    """
+    Rate that is applied to a range of dates
+    """
     base_currency = settings.BASE_CURRENCY
     currency = settings.BASE_CURRENCY
     value = 0
@@ -282,6 +348,12 @@ class BulkRate:
     to_date = None
 
     def __init__(self, base_currency, currency, value, key, from_date, to_date):
+        """
+        Initialize
+        :param key: key for user
+        :param base_currency: destination currency
+        :param currency: source currency
+        """
         self.base_currency = base_currency
         self.currency = currency
         self.value = value
@@ -290,6 +362,9 @@ class BulkRate:
         self.to_date = to_date
 
     def to_rates(self, user):
+        """
+        Create rates in the database
+        """
         if not self.to_date:
             self.to_date = date.today()
         rates = []
@@ -308,6 +383,9 @@ class BulkRate:
 
 
 class RateConverter(BaseConverter):
+    """
+    Converter of rates
+    """
     base_currency = settings.BASE_CURRENCY
     cached_currencies = {}
     user = None
@@ -315,6 +393,12 @@ class RateConverter(BaseConverter):
 
     def __init__(self, user: User, id: str = None, key: str = None,
                  base_currency: str = settings.BASE_CURRENCY):
+        """
+        Initialize
+        :param user: Django User
+        :param key: key for user
+        :param base_currency: destination currency
+        """
         super(RateConverter, self).__init__(id=id)
         self.base_currency = base_currency
         self.user = user

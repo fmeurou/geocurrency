@@ -1,3 +1,6 @@
+"""
+Rates services
+"""
 from collections import Iterator
 
 from datetime import date
@@ -5,16 +8,28 @@ from django.conf import settings
 
 
 class RateNotAvailableError(Exception):
+    """
+    Rate could not be found
+    """
     pass
 
 
 class RatesNotAvailableError(Exception):
+    """
+    Rates service is not available
+    """
     pass
 
 
 class RateService:
+    """
+    Rate service
+    """
 
     def serializer(self, base_currency, currency, date, value):
+        """
+        Serialize rate from service
+        """
         return {
             'base_currency': base_currency,
             'currency': currency,

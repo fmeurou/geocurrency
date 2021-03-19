@@ -1,3 +1,6 @@
+"""
+Pelias geocoder
+"""
 import logging
 
 import requests
@@ -9,14 +12,20 @@ from ..settings import *
 
 
 class PeliasGeocoder(Geocoder):
+    """
+    Pelias geocoder
+    """
     coder_type = 'pelias'
     server_url = None
     key = None
 
     def __new__(cls, *args, **kwargs):
+        """
+        Initialize
+        """
         return super(Geocoder, cls).__new__(cls)
 
-    def __init__(self, server_url=None, key=None, *args, **kwargs):
+    def __init__(self, server_url: str = None, key: str = None, *args, **kwargs):
         """
         Init pelias geocoder
         Init: Geocoder('pelias', server_url='serveur URL', key='API key')
@@ -30,7 +39,16 @@ class PeliasGeocoder(Geocoder):
             pelias_url = GEOCODING_SERVICE_SETTINGS['pelias']['default_url']
         self.server_url = server_url or pelias_url
 
-    def search(self, address, language=None, bounds=None, region=None, components=""):
+    def search(self, address: str, language: str = None, bounds: str = None, region: str = None,
+               components: str = "") -> dict:
+        """
+        Search address
+        :param address: Address to look for
+        :param language: language of the query
+        :param bounds: Unused at the moment
+        :param region: not used
+        :param components: not used
+        """
         search_args = {'text': address}
         if self.key:
             search_args['api_key'] = self.key
@@ -40,7 +58,7 @@ class PeliasGeocoder(Geocoder):
             if 'errors' in data:
                 logging.error("Invalid request")
                 logging.error(data.get('error'))
-                return None
+                return {}
             return data
         except ValueError as e:
             logging.error("Invalid API configuration")
@@ -48,9 +66,14 @@ class PeliasGeocoder(Geocoder):
         except IOError as e:
             logging.error("Invalid request")
             logging.error(e)
-        return None
+        return {}
 
-    def reverse(self, lat, lng):
+    def reverse(self, lat: str, lng: str) -> dict:
+        """
+        Reverse search by coordinates
+        :param lat: latitude
+        :param lng: longitude
+        """
         search_args = {
             'point.lat': lat,
             'point.lon': lng,
@@ -63,16 +86,16 @@ class PeliasGeocoder(Geocoder):
             if 'errors' in data:
                 logging.error("ERROR - Invalid request")
                 logging.error(data.get('error'))
-                return None
+                return {}
             return data
         except ValueError as e:
             logging.error("Invalid API configuration")
             logging.error(e)
         except IOError as e:
             logging.error("Invalid request", e)
-        return None
+        return {}
 
-    def parse_countries(self, data):
+    def parse_countries(self, data: dict) -> [str]:
         """
         parse response from google service
         :params data: geocoding / reverse geocoding json

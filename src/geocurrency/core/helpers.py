@@ -1,3 +1,6 @@
+"""
+Core helpers
+"""
 from importlib import import_module
 
 import logging
@@ -6,6 +9,10 @@ from django.conf import settings
 
 
 def service(service_type: str, service_name: str, *args, **kwargs):
+    """
+    Service wrapper
+    Services are used to abstract calls to external services
+    """
     service_path = settings.SERVICES[service_type][service_name]
     if not hasattr(apps, 'services'):
         setattr(apps, 'services', {})
@@ -26,6 +33,9 @@ def service(service_type: str, service_name: str, *args, **kwargs):
 
 
 def validate_language(lang):
+    """
+    Validate languages based on settings
+    """
     if lang in [l[0] for l in settings.LANGUAGES]:
         return lang
     return 'en'
