@@ -285,12 +285,14 @@ class CustomUnitViewSet(ModelViewSet):
     pagination_class = PageNumberPagination
     permission_classes = [CustomUnitObjectPermission, permissions.IsAuthenticated]
     display_page_controls = True
+    lookup_url_param = 'system_name'
 
     def get_queryset(self):
         """
         Filter units based on authenticated user
         """
         qs = super(CustomUnitViewSet, self).get_queryset()
+        system_name = self.kwargs.get(self.lookup_url_param, 'SI')
         if self.request.user and self.request.user.is_authenticated:
             qs = qs.filter(
                 models.Q(user=self.request.user) | models.Q(user__isnull=True)
@@ -299,6 +301,7 @@ class CustomUnitViewSet(ModelViewSet):
                 qs = qs.filter(key=self.request.GET.get('key'))
         else:
             qs = qs.filter(models.Q(user__isnull=True))
+        qs = qs.filter(unit_system__iexact=system_name.lower())
         return qs
 
     def create(self, request: HttpRequest, system_name: str, *args, **kwargs):
@@ -313,6 +316,8 @@ class CustomUnitViewSet(ModelViewSet):
             except UnitSystemNotFound:
                 return Response("Invalid unit system", status=status.HTTP_400_BAD_REQUEST)
             if request.user and request.user.is_authenticated:
+                if CustomUnit.objects.filter(code=cu.code, user=request.user, key=cu.key).exists():
+                    return Response("Custom unit already exists", status=status.HTTP_409_CONFLICT)
                 cu.user = request.user
                 cu.unit_system = system_name
                 try:

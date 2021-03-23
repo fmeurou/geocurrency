@@ -934,6 +934,76 @@ class CustomUnitTestAPI(TestCase):
             self.assertEqual(len(response.json()), 1)
             self.assertEqual(response.json()[0]['code'], 'my_unit')
 
+    def test_connected_duplicate_post(self):
+        """
+        Test list of custom units with connected user
+        """
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/units/SI/custom/',
+            data={
+                'code': 'my_unit',
+                'name': 'My Unit',
+                'relation': "1.5 meter",
+                'symbol': "myu"
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        self.assertIn('code', post_response.json())
+        post_response = client.post(
+            '/units/SI/custom/',
+            data={
+                'code': 'my_unit',
+                'name': 'My Unit',
+                'relation': "1.5 meter",
+                'symbol': "myu"
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_409_CONFLICT)
+
+    def test_connected_unit_system_request(self):
+        """
+        Test list of custom units with connected user
+        """
+        client = APIClient()
+        token = Token.objects.get(user__username=self.user.username)
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        post_response = client.post(
+            '/units/SI/custom/',
+            data={
+                'code': 'my_unit',
+                'name': 'My Unit',
+                'relation': "1.5 meter",
+                'symbol': "myu"
+            }
+        )
+        self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
+        self.assertIn('code', post_response.json())
+        response = client.get(
+            '/units/SI/custom/',
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        if 'results' in response.json():
+            # Paginated results
+            self.assertEqual(len(response.json()['results']), 1)
+            self.assertEqual(response.json()['results'][0]['code'], 'my_unit')
+        else:
+            # Non paginated results
+            self.assertEqual(len(response.json()), 1)
+            self.assertEqual(response.json()[0]['code'], 'my_unit')
+        response = client.get(
+            '/units/mks/custom/',
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        if 'results' in response.json():
+            # Paginated results
+            self.assertEqual(len(response.json()['results']), 0)
+        else:
+            # Non paginated results
+            self.assertEqual(len(response.json()), 0)
+
     def test_connected_list_key_request(self):
         """
         Test list of custom units with connected user and a key
@@ -1112,6 +1182,12 @@ class ExpressionTest(TestCase):
         Setup test environment
         """
         self.us = UnitSystem(system_name='SI')
+
+    def tearDown(self):
+        """
+        tear down environment
+        """
+        self.us = None
 
     def test_valid_serializer_payload(self):
         """
@@ -1422,6 +1498,12 @@ class ExpressionCalculatorTest(TestCase):
                 ]
             }
         ]
+
+    def tearDown(self):
+        """
+        tear down environment
+        """
+        self.unit_system = None
 
     def test_created(self):
         """

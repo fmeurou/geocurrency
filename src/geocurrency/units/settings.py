@@ -1,6 +1,7 @@
 """
 Settings for Units module
 """
+from django.conf import settings
 
 # This will display these units in the list of units
 ADDITIONAL_UNITS = {}

@@ -5,7 +5,7 @@ Units models
 import logging
 from datetime import date
 
-import pint
+import pint.systems
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
@@ -60,6 +60,7 @@ class UnitSystem:
     ureg = None
     system_name = None
     system = None
+    _additional_units = set()
 
     def __init__(self, system_name: str = 'SI', fmt_locale: str = 'en', user: User = None,
                  key: str = None):
@@ -96,18 +97,25 @@ class UnitSystem:
         """
         self.ureg._build_cache()
 
-    def _load_additional_units(self, units: dict) -> bool:
+    def _load_additional_units(self, units: dict, redefine: bool = False) -> bool:
         """
         Load additional base units in registry
         """
+        available_units = self.available_unit_names()
         if not self.system_name in units:
             logging.warning(f"error loading additional units for {self.system_name}")
             return False
+        added_units = []
         for key, items in units[self.system_name].items():
-            self.ureg.define(f"{key} = {items['relation']} = {items['symbol']}")
+            if key not in available_units:
+                self.ureg.define(f"{key} = {items['relation']} = {items['symbol']}")
+                added_units.append(key)
+            elif redefine:
+                self.ureg.redefine(f"{key} = {items['relation']} = {items['symbol']}")
+        self._additional_units = self._additional_units | set(added_units)
         return True
 
-    def _load_custom_units(self, user: User, key: str = None) -> bool:
+    def _load_custom_units(self, user: User, key: str = None, redefine: bool = False) -> bool:
         """
         Load custom units in registry
         """
@@ -118,6 +126,9 @@ class UnitSystem:
                 qs = CustomUnit.objects.filter(user=user)
         if key:
             qs = qs.filter(key=key)
+        qs = qs.filter(unit_system=self.system_name)
+        available_units = self.available_unit_names()
+        added_units = []
         for cu in qs:
             props = [cu.code, cu.relation]
             if cu.symbol:
@@ -125,7 +136,14 @@ class UnitSystem:
             if cu.alias:
                 props.append(cu.alias)
             definition = " = ".join(props)
-            self.ureg.define(definition)
+            if cu.code not in available_units:
+                self.ureg.define(definition)
+                added_units.append(cu.code)
+            elif redefine:
+                self.ureg.redefine(definition)
+            else:
+                logging.error(f"{cu.code} already defined in registry")
+        self._additional_units = self._additional_units | set(added_units)
         return True
 
     def _test_additional_units(self, units: dict) -> bool:
@@ -194,7 +212,8 @@ class UnitSystem:
         for key, prefixes in prefixed_units_display.items():
             for prefix in prefixes:
                 prefixed_units.append(prefix + key)
-        return sorted(prefixed_units + dir(getattr(self.ureg.sys, self.system_name)))
+        return sorted(prefixed_units + dir(getattr(self.ureg.sys, self.system_name))
+                      + list(self._additional_units))
 
     def unit_dimensionality(self, unit: str) -> str:
         """
@@ -343,7 +362,9 @@ class Dimension:
                 )
             )
         except (KeyError, UnitNotFound):
-            logging.warning("unable to find base unit for unit system and dimension")
+            logging.warning(f"unable to find base unit for"
+                            f"unit system {self.unit_system.system_name}"
+                            f" and dimension {self.code}")
         unit_list.extend(
             [
                 Unit(unit_system=self.unit_system, pint_unit=unit)
@@ -736,7 +757,7 @@ class CustomUnit(models.Model):
             raise UnitDuplicateError
         try:
             us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol,
-                          alias=self.alias)
+                              alias=self.alias)
         except ValueError as e:
             raise UnitValueError(str(e)) from e
         try:
