@@ -322,7 +322,7 @@ class CustomUnitViewSet(ModelViewSet):
                 cu.unit_system = system_name
                 try:
                     cu.save()
-                except UnitValueError as e:
+                except (UnitValueError, ValueError) as e:
                     return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
                 serializer = CustomUnitSerializer(cu)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
