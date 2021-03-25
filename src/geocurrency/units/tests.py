@@ -17,7 +17,7 @@ from rest_framework.test import APIClient
 from . import ADDITIONAL_BASE_UNITS
 from .exceptions import UnitSystemNotFound, UnitDuplicateError, UnitDimensionError, UnitValueError
 from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound, CustomUnit, \
-    ExpressionCalculator
+    ExpressionCalculator, Operand
 from .serializers import QuantitySerializer, ExpressionSerializer
 
 
@@ -1350,6 +1350,79 @@ class ExpressionTest(TestCase):
             content_type="application/json"
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+class OperandTest(TestCase):
+    """
+    Test Operand
+    """
+
+    def setUp(self):
+        self.us = UnitSystem(system_name='SI')
+
+    def test_validate(self):
+        op = Operand(
+            name='test',
+            value=0,
+            unit='m/s'
+        )
+        self.assertTrue(op.validate())
+        op = Operand(
+            name='',
+            value=1,
+            unit='m/s'
+        )
+        self.assertFalse(op.validate())
+        op = Operand(
+            name='test',
+            value=None,
+            unit='m/s'
+        )
+        self.assertFalse(op.validate())
+        op = Operand(
+            name='test',
+            value='a',
+            unit='m/s'
+        )
+        self.assertFalse(op.validate())
+
+    def test_get_unit_units(self):
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='m/s'
+        )
+        self.assertTrue(op.validate())
+        self.assertEqual(op.get_unit(self.us), 'm/s')
+
+    def test_get_unit_dimensions(self):
+        Q_ = self.us.ureg.Quantity
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='[mass]/[time]'
+        )
+        self.assertIsInstance(Q_(1, op.get_unit(self.us)), Q_)
+
+    def test_get_unit_mixed(self):
+        Q_ = self.us.ureg.Quantity
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='[mass]/[time]*L'
+        )
+        print(op.get_unit(self.us))
+        self.assertIsInstance(Q_(1, op.get_unit(self.us)), Q_)
+
+    def test_get_unit_mixed(self):
+        Q_ = self.us.ureg.Quantity
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='[mass]/[time]*L*plouf'
+        )
+        print(op.get_unit(self.us))
+        self.assertRaises(pint.errors.UndefinedUnitError, Q_, 1, op.get_unit(self.us))
 
 
 class ExpressionTest(TestCase):

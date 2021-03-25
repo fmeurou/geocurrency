@@ -3,6 +3,7 @@ Units models
 """
 
 import logging
+import re
 from datetime import date
 
 import pint.systems
@@ -792,7 +793,29 @@ class Operand:
         """
         if not self.name or self.value is None or self.unit is None:
             return False
+        try:
+            float(self.value)
+        except ValueError:
+            return False
         return True
+
+    def get_unit(self, unit_system: UnitSystem) -> str:
+        """
+        Transform unit if unit is a dimension
+        """
+        # Find dimensions
+        exp = r'(?P<dim>\[\w+\])'
+        replace_dict = {}
+        for dimension_name in re.findall(exp, self.unit):
+            try:
+                dim = Dimension(unit_system=unit_system, code=dimension_name)
+                replace_dict[dimension_name] = str(dim.units().pop())
+            except DimensionNotFound:
+                pass
+        # Replace in formula
+        for key, item in replace_dict.items():
+            self.unit = self.unit.replace(key, item)
+        return self.unit
 
 
 class ComputationError(Exception):
@@ -830,7 +853,7 @@ class Expression:
         for var in self.operands:
             if not var.validate():
                 return False, "invalid operand"
-        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
+        kwargs = {v.name: f"{v.value} {v.get_unit(unit_system)}" for v in self.operands}
         try:
             Q_(self.expression.format(**kwargs))
         except KeyError:
