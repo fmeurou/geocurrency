@@ -259,11 +259,15 @@ class OperandSerializer(serializers.Serializer):
         Check validity of the operand
         """
         if not self.initial_data.get('name'):
-            raise serializers.ValidationError("variable Name not set")
+            raise serializers.ValidationError("operand Name not set")
         if 'value' not in self.initial_data:
-            raise serializers.ValidationError("variable Value not set")
+            raise serializers.ValidationError("operand Value not set")
+        try:
+            float(self.initial_data['value'])
+        except ValueError as e:
+            raise serializers.ValidationError("invalid operand value") from e
         if 'unit' not in self.initial_data:
-            raise serializers.ValidationError("variable Unit not set")
+            raise serializers.ValidationError("operand Unit not set")
         return super().is_valid(raise_exception=raise_exception)
 
     def create(self, validated_data):
@@ -279,7 +283,7 @@ class ExpressionListSerializer(serializers.ListSerializer):
     Serialize a list of Expressions
     """
 
-    def is_valid(self, unit_system: UnitSystem, raise_exception=False):
+    def is_valid(self, unit_system: UnitSystem, dimensions_only=False, raise_exception=False):
         """
         Check validity of expression with a specific UnitSystem
         :param unit_system: UnitSystem instance
@@ -288,7 +292,7 @@ class ExpressionListSerializer(serializers.ListSerializer):
         super().is_valid(raise_exception=raise_exception)
         for initial_exp in self.initial_data:
             ec = ExpressionSerializer(data=initial_exp)
-            ec.is_valid(unit_system=unit_system)
+            ec.is_valid(unit_system=unit_system, dimensions_only=dimensions_only)
             if ec.errors:
                 self._errors.append(ec.errors)
         return not bool(self._errors)
@@ -309,52 +313,101 @@ class ExpressionSerializer(serializers.Serializer):
         """
         list_serializer_class = ExpressionListSerializer
 
-    def is_valid(self, unit_system: UnitSystem, raise_exception=False) -> bool:
+    def is_valid(self, unit_system: UnitSystem,
+                 raise_exception=False,
+                 dimensions_only=False) -> bool:
         """
         Check if expression is valid
         :param unit_system: UnitSystem instance
+        :param dimensions_only: Only test dimensions
         :param raise_exception: raise an exception instead of a list of errors
         """
-        Q_ = unit_system.ureg.Quantity
         super().is_valid(raise_exception=raise_exception)
+        operands = self.operands_validation(
+            operands=self.initial_data.get('operands')
+        )
+        expression = self.expression_validation(
+            expression=self.initial_data.get('expression'),
+            operands=operands
+        )
+        if expression:
+            if dimensions_only:
+                self.dimensions_validation(
+                    unit_system=unit_system,
+                    expression=expression,
+                    operands=operands
+                )
+            else:
+                self.units_validation(
+                    unit_system=unit_system,
+                    expression=expression,
+                    operands=operands
+                )
+        if self._errors and raise_exception:
+            raise serializers.ValidationError(self._errors)
+        return not bool(self._errors)
+
+    def units_validation(self, unit_system: UnitSystem, expression: str, operands: [Operand]):
+        """
+        Validate units based on the units of the operands
+        """
+        # Validate units
+        Q_ = unit_system.ureg.Quantity
+        units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
         try:
-            operands = self.initial_data.get('operands')
-            if not self.validate_operands(operands):
-                self._errors['operands'] = "Invalid operands"
-        except json.JSONDecodeError as e:
-            self._errors['operands'] = f"Invalid operands json format: {e}"
-        expression = self.initial_data.get('expression')
+            return Q_(expression.format(**units_kwargs))
+        except KeyError as e:
+            self._errors['operands'] = "Missing operands"
+        except pint.errors.DimensionalityError as e:
+            self._errors['expression'] = "Incoherent dimension"
+        return None
+
+    def dimensions_validation(self, unit_system: UnitSystem, expression: str, operands: [Operand]):
+        """
+        Validate units dimensions based on get_unit of the operands
+        """
+        Q_ = unit_system.ureg.Quantity
+        operand_objs = [Operand(name=v['name'], value=v['value'], unit=v['unit']) for v in operands]
+        units_kwargs = {v.name: f"{v.value} {v.get_unit(unit_system)}" for v in operand_objs}
+        try:
+            return Q_(expression.format(**units_kwargs))
+        except KeyError as e:
+            self._errors['operands'] = "Missing operands"
+        except pint.errors.DimensionalityError as e:
+            self._errors['expression'] = "Incoherent dimension"
+        return None
+
+    def expression_validation(self, expression: str, operands: [Operand]):
+        """
+        Check validity of expression
+        """
         if not expression:
             self._errors['expression'] = "Empty expression"
-            return not bool(self._errors)
         # Validate syntax
         value_kwargs = {v['name']: v['value'] for v in operands}
         try:
             sympify(expression.format(**value_kwargs))
         except (SympifyError, KeyError) as e:
             self._errors['expression'] = f"Invalid operation"
-        # Validate units
-        units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
-        try:
-            Q_(expression.format(**units_kwargs))
-        except KeyError as e:
-            self._errors['operands'] = "Missing operands"
-        except pint.errors.DimensionalityError as e:
-            self._errors['expression'] = "Incoherent dimension"
-        if self._errors and raise_exception:
-            raise ValidationError(self.errors)
-        return not bool(self._errors)
+        return expression
 
-    @staticmethod
-    def validate_operands(value):
+    def operands_validation(self, operands):
         """
         Validate Operand
-        :param value: Obperand
+        :param value: Operand
         """
-        for var in value:
-            vs = OperandSerializer(data=var)
-            vs.is_valid()
-        return value
+        errors = []
+        try:
+            for var in operands:
+                vs = OperandSerializer(data=var)
+                vs.is_valid()
+                if vs.errors:
+                    errors.append(vs.errors)
+            if errors:
+                self._errors['operands'] = errors
+        except json.JSONDecodeError as e:
+            self._errors['operands'] = f"Invalid operands json format: {e}"
+        return operands
 
     def create(self, validated_data):
         """

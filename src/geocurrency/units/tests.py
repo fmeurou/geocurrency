@@ -1411,7 +1411,6 @@ class OperandTest(TestCase):
             value=15,
             unit='[mass]/[time]*L'
         )
-        print(op.get_unit(self.us))
         self.assertIsInstance(Q_(1, op.get_unit(self.us)), Q_)
 
     def test_get_unit_mixed(self):
@@ -1421,11 +1420,10 @@ class OperandTest(TestCase):
             value=15,
             unit='[mass]/[time]*L*plouf'
         )
-        print(op.get_unit(self.us))
         self.assertRaises(pint.errors.UndefinedUnitError, Q_, 1, op.get_unit(self.us))
 
 
-class ExpressionTest(TestCase):
+class ExpressionAPITest(TestCase):
     """
     Test Expression API
     """

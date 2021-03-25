@@ -350,12 +350,8 @@ class ValidateViewSet(APIView):
             us = UnitSystem(unit_system, user=request.user, key=request.data.get('key', None))
         else:
             us = UnitSystem(unit_system)
-        data = {
-            'expression': request.data.get('expression'),
-            'operands': request.data.get('operands')
-        }
-        exp = ExpressionSerializer(data=data)
-        if exp.is_valid(unit_system=us):
+        exp = ExpressionSerializer(data=request.data)
+        if exp.is_valid(unit_system=us, dimensions_only=True):
             return Response("Valid expression")
         else:
             return Response(json.dumps(exp.errors),

@@ -853,7 +853,7 @@ class Expression:
         for var in self.operands:
             if not var.validate():
                 return False, "invalid operand"
-        kwargs = {v.name: f"{v.value} {v.get_unit(unit_system)}" for v in self.operands}
+        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
         try:
             Q_(self.expression.format(**kwargs))
         except KeyError:
