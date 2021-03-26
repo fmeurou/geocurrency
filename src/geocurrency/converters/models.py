@@ -35,9 +35,9 @@ class CalculationResultDetail:
     expression = None
     operands = None
     magnitude = None
-    units = None
+    unit = None
 
-    def __init__(self, expression: str, operands: [], magnitude: float, units: str):
+    def __init__(self, expression: str, operands: [], magnitude: float, unit: str):
         """
         Initialize detail
         :param expression: Expression in the form of a string e.g.: 3*{a} + 2 * {b}
@@ -48,7 +48,7 @@ class CalculationResultDetail:
         self.expression = expression
         self.operands = operands
         self.magnitude = magnitude
-        self.units = units
+        self.unit = unit
 
 
 class CalculationResultError:

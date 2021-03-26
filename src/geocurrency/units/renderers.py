@@ -17,7 +17,7 @@ class UnitsEncoder(JSONEncoder):
 
     def default(self, obj):
         if isinstance(obj, Operand):
-            return json.dumps({'name': obj.name, 'value': obj.value, 'unit': obj.value})
+            return json.dumps({'name': obj.name, 'value': obj.value, 'unit': obj.unit})
         else:
             return super().default(obj)
 

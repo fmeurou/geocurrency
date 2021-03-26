@@ -251,7 +251,7 @@ class OperandSerializer(serializers.Serializer):
     Serialize an Operand
     """
     name = serializers.CharField()
-    value = serializers.CharField()
+    value = serializers.FloatField()
     unit = serializers.CharField()
 
     def is_valid(self, raise_exception=False) -> bool:

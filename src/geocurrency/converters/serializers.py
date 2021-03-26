@@ -15,7 +15,7 @@ class CalculationResultDetailSerializer(serializers.Serializer):
     expression = serializers.CharField()
     operands = serializers.JSONField()
     magnitude = serializers.FloatField()
-    units = serializers.CharField()
+    unit = serializers.CharField()
 
     def create(self, validated_data):
         """
@@ -31,7 +31,7 @@ class CalculationResultDetailSerializer(serializers.Serializer):
         :param validated_data: cleaned data
         """
         instance.expression = validated_data.get('expression', instance.expression)
-        instance.operands = validated_data.get('operands', instance.variables)
+        instance.operands = validated_data.get('operands', instance.operands)
         instance.date = validated_data.get('date', instance.date)
         return instance
 
@@ -59,7 +59,7 @@ class CalculationResultErrorSerializer(serializers.Serializer):
         :param validated_data: cleaned data
         """
         instance.expression = validated_data.get('expression', instance.expression)
-        instance.operands = validated_data.get('operands', instance.variables)
+        instance.operands = validated_data.get('operands', instance.operands)
         instance.date = validated_data.get('date', instance.date)
         instance.error = validated_data.get('error', instance.error)
         return instance

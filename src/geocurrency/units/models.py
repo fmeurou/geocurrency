@@ -1000,7 +1000,7 @@ class ExpressionCalculator(BaseConverter):
                 expression=expression.expression,
                 operands=expression.operands,
                 magnitude=out.magnitude,
-                units=out.units
+                unit=out.units
             )
             result.detail.append(detail)
         self.end_batch(result.end_batch())
