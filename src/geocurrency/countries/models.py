@@ -5,7 +5,7 @@ Models for Country module
 import os
 import re
 from datetime import datetime
-
+import logging
 import pytz
 import requests
 from countryinfo import CountryInfo
@@ -30,8 +30,8 @@ class CountryManager(models.Manager):
     """
     Manager for country model
     """
-
-    def get_by_color(self, color, proximity=1):
+    @staticmethod
+    def get_by_color(color, proximity=1):
         """
         Take a hex color and finds near country based on flag and color proximity
         :param color: hex color (FFF, FFFFFF, FFFFFFFF, #FFF, #FFFFFF, #FFFFFFFF)
@@ -39,14 +39,14 @@ class CountryManager(models.Manager):
         """
         cp = ColorProximity()
         rgb_color = hextorgb(color)
-        countries = []
+        ctrs = []
         for country in Country.objects.filter(colors__isnull=False):
             for fc in country.colors.split(','):
                 flag_color = hextorgb(fc)
                 if cp.proximity(rgb_color, flag_color) < proximity:
-                    countries.append(country.pk)
+                    ctrs.append(country.pk)
                     break
-        return Country.objects.filter(pk__in=set(countries))
+        return Country.objects.filter(pk__in=set(ctrs))
 
 
 class Country:
@@ -79,10 +79,15 @@ class Country:
         List all countries, instanciate CountryInfo for each country in pycountry.countries
         :param ordering: sort list
         """
+        descending = False
+        if ordering and ordering[0] == '-':
+            ordering = ordering[1:]
+            descending = True
         if ordering not in ['name', 'alpha_2', 'alpha_3', 'numeric']:
             ordering = 'name'
         return list(sorted(map(lambda x: cls(x.alpha_2), countries),
-                           key=lambda x: getattr(x, ordering)))
+                           key=lambda x: getattr(x, ordering),
+                           reverse=descending))
 
     def base(self):
         """
@@ -165,7 +170,7 @@ class Country:
                 flag_file.close()
                 return self.flag_path
             except IOError:
-                print("unable to write file", self.flag_path)
+                logging.error(f"unable to write file {self.flag_path}")
                 return None
 
     def analyze_flag(self):
@@ -174,7 +179,8 @@ class Country:
         :returns: array, list of colors
         """
         flag_path = os.path.join(settings.MEDIA_ROOT, self.alpha_2 + '.svg')
-        # Checks if flag has been downloaded, downloads it otherwise, and return None if download failed
+        # Checks if flag has been downloaded, downloads it otherwise,
+        # and return None if download failed
         if not self.flag_exists() and not self.download_flag():
             return None
         with open(flag_path, 'r') as flag:

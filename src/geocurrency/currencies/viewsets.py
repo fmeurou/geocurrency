@@ -2,22 +2,22 @@
 Viewsets for currencies module APIs
 """
 
-import statistics
-
 import logging
+import statistics
 from datetime import date, timedelta
+
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from geocurrency.countries.serializers import CountrySerializer
+from geocurrency.rates.serializers import RateSerializer
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from geocurrency.countries.serializers import CountrySerializer
-from geocurrency.rates.serializers import RateSerializer
 from .models import Currency, CurrencyNotFoundError
 from .serializers import CurrencySerializer
 
@@ -30,12 +30,15 @@ class CurrencyViewset(ReadOnlyModelViewSet):
 
     currencies_response = openapi.Response('List of currencies', CurrencySerializer)
     currency_response = openapi.Response('Currency detail', CurrencySerializer)
-    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY,
+                                 description="Sort on code, name, currency_name, "
+                                             "exponent, number, value. "
+                                             "Prefix with - for descending sort",
                                  type=openapi.TYPE_STRING)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[ordering,], responses={200: currencies_response})
+    @swagger_auto_schema(manual_parameters=[ordering, ], responses={200: currencies_response})
     def list(self, request, *args, **kwargs):
         """
         List of currencies
@@ -79,15 +82,18 @@ class CurrencyViewset(ReadOnlyModelViewSet):
             logging.error(e)
             return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
-    from_date = openapi.Parameter('from_date', openapi.IN_QUERY, description="From date (YYYY-MM-DD)",
+    from_date = openapi.Parameter('from_date', openapi.IN_QUERY,
+                                  description="From date (YYYY-MM-DD)",
                                   type=openapi.TYPE_STRING)
     to_date = openapi.Parameter('to_date', openapi.IN_QUERY, description="To date (YYYY-MM-DD)",
                                 type=openapi.TYPE_STRING)
-    base_currency = openapi.Parameter('base', openapi.IN_QUERY, description="Base currency (defaults to EUR)",
+    base_currency = openapi.Parameter('base', openapi.IN_QUERY,
+                                      description="Base currency (defaults to EUR)",
                                       type=openapi.TYPE_STRING)
     currency = openapi.Parameter('base_currency', openapi.IN_QUERY, description="currency",
                                  type=openapi.TYPE_STRING)
-    key = openapi.Parameter('key', openapi.IN_QUERY, description="custom key", type=openapi.TYPE_STRING)
+    key = openapi.Parameter('key', openapi.IN_QUERY, description="custom key",
+                            type=openapi.TYPE_STRING)
 
     @swagger_auto_schema(method='get',
                          manual_parameters=[from_date, to_date, base_currency, key],
@@ -111,15 +117,25 @@ class CurrencyViewset(ReadOnlyModelViewSet):
             user = None
             if request.user and request.user.is_authenticated:
                 user = request.user
-            rates = c.get_rates(user=user, key=key, base_currency=base_currency, start_date=from_date, end_date=to_date)
+            rates = c.get_rates(user=user, key=key, base_currency=base_currency,
+                                start_date=from_date, end_date=to_date)
             serializer = RateSerializer(rates, many=True, context={'request': request})
             return Response(serializer.data)
         except CurrencyNotFoundError:
             return Response('Currency not found', status=status.HTTP_404_NOT_FOUND)
 
-    def _get_rates(self, base_currency: str, target_currency: str, from_date: date, to_date: date) -> dict:
+    @staticmethod
+    def _get_rates(
+            base_currency: str,
+            target_currency: str,
+            from_date: date,
+            to_date: date) -> dict:
         """
         Generates list of rates and stats
+        :param base_currency: rate to currency
+        :param target_currency: rate from currency
+        :param from_date: lower date range
+        :param to_date: higher date range
         """
         rates = []
         dates = []

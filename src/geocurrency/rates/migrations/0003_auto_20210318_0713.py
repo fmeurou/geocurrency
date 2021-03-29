@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('rates', '0002_auto_20201013_2244'),
     ]
@@ -12,10 +11,12 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddIndex(
             model_name='rate',
-            index=models.Index(fields=['base_currency', 'value_date'], name='rates_rate_base_cu_2508b5_idx'),
+            index=models.Index(fields=['base_currency', 'value_date'],
+                               name='rates_rate_base_cu_2508b5_idx'),
         ),
         migrations.AddIndex(
             model_name='rate',
-            index=models.Index(fields=['currency', 'value_date'], name='rates_rate_currenc_4d48ff_idx'),
+            index=models.Index(fields=['currency', 'value_date'],
+                               name='rates_rate_currenc_4d48ff_idx'),
         ),
     ]

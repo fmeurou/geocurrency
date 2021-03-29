@@ -31,7 +31,9 @@ class CountryViewset(ViewSet):
                                         type=openapi.TYPE_STRING)
     language = openapi.Parameter('language', openapi.IN_QUERY, description="language",
                                  type=openapi.TYPE_STRING)
-    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY,
+                                 description="Sort on name, alpha_2, alpha_3, numeric. "
+                                             "Prefix with - for descending sort",
                                  type=openapi.TYPE_STRING)
 
     countries_response = openapi.Response('List of countries', CountrySerializer)
@@ -67,6 +69,7 @@ class CountryViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=True, url_path='timezones', url_name='timezones')
     def timezones(self, request, alpha_2):
         """
@@ -81,6 +84,7 @@ class CountryViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=True, url_path='currencies', url_name='currencies')
     def currencies(self, request, alpha_2):
         """
@@ -95,6 +99,7 @@ class CountryViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=True, url_path='borders', url_name='borders')
     def borders(self, request, alpha_2):
         """
@@ -109,6 +114,7 @@ class CountryViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=True, url_path='provinces', url_name='provinces')
     def provinces(self, request, alpha_2):
         """
@@ -123,6 +129,7 @@ class CountryViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=True, url_path='languages', url_name='languages')
     def languages(self, request, alpha_2):
         """
@@ -137,6 +144,7 @@ class CountryViewset(ViewSet):
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
+    @swagger_auto_schema(method='get', responses={200: openapi.TYPE_ARRAY})
     @action(['GET'], detail=True, url_path='colors', url_name='colors')
     def colors(self, request, alpha_2):
         """
@@ -170,7 +178,8 @@ class CountryViewset(ViewSet):
         return Response(settings.SERVICES.get('geocoding', {}).keys(),
                         content_type="application/json")
 
-    @swagger_auto_schema(method='get', manual_parameters=[address, geocoder, geocoder_api_key])
+    @swagger_auto_schema(method='get', manual_parameters=[address, geocoder, geocoder_api_key],
+                         responses={200: CountrySerializer})
     @action(['GET'], detail=False, url_path='geocode', url_name='geocoding')
     def geocode(self, request):
         """
@@ -184,7 +193,8 @@ class CountryViewset(ViewSet):
         serializer = CountrySerializer(countries, many=True, context={'request': request})
         return Response(serializer.data)
 
-    @swagger_auto_schema(method='get', manual_parameters=[lat, lng, geocoder, geocoder_api_key])
+    @swagger_auto_schema(method='get', manual_parameters=[lat, lng, geocoder, geocoder_api_key],
+                         responses={200: CountrySerializer})
     @action(['GET'], detail=False, url_path='reverse', url_name='reverse_geocoding')
     def reverse_geocode(self, request):
         """

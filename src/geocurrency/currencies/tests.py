@@ -26,12 +26,12 @@ class CurrencyTestCase(TestCase):
         """
         Test sorting of list of currencies
         """
-        self.assertEqual(Currency.all_currencies(ordering='code')[0].code, 'AED')
-        self.assertEqual(Currency.all_currencies(ordering='name')[0].code, 'AED')
-        self.assertEqual(Currency.all_currencies(ordering='currency_name')[0].code, 'AFN')
-        self.assertEqual(Currency.all_currencies(ordering='exponent')[0].code, 'XOF')
-        self.assertEqual(Currency.all_currencies(ordering='number')[0].code, 'ALL')
-        self.assertEqual(Currency.all_currencies(ordering='value')[0].code, 'AED')
+        self.assertEqual(list(Currency.all_currencies(ordering='code'))[0].code, 'AED')
+        self.assertEqual(list(Currency.all_currencies(ordering='name'))[0].code, 'AED')
+        self.assertEqual(list(Currency.all_currencies(ordering='currency_name'))[0].code, 'AFN')
+        self.assertEqual(list(Currency.all_currencies(ordering='exponent'))[0].code, 'XOF')
+        self.assertEqual(list(Currency.all_currencies(ordering='number'))[0].code, 'ALL')
+        self.assertEqual(list(Currency.all_currencies(ordering='value'))[0].code, 'AED')
 
     def test_creation(self):
         """
@@ -58,7 +58,7 @@ class CurrencyTestCase(TestCase):
         """
         currencies = Currency.get_for_country('FR')
         self.assertIsNotNone(currencies)
-        c = currencies[0]
+        c = list(currencies)[0]
         self.assertEqual(c.name, 'eur')
         self.assertEqual(c.value, 'EUR')
         self.assertEqual(c.currency_name, 'Euro')

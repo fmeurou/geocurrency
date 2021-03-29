@@ -1396,31 +1396,31 @@ class OperandTest(TestCase):
         self.assertEqual(op.get_unit(self.us), 'm/s')
 
     def test_get_unit_dimensions(self):
-        Q_ = self.us.ureg.Quantity
+        q_ = self.us.ureg.Quantity
         op = Operand(
             name='toto',
             value=15,
             unit='[mass]/[time]'
         )
-        self.assertIsInstance(Q_(1, op.get_unit(self.us)), Q_)
+        self.assertIsInstance(q_(1, op.get_unit(self.us)), q_)
 
     def test_get_unit_mixed(self):
-        Q_ = self.us.ureg.Quantity
+        q_ = self.us.ureg.Quantity
         op = Operand(
             name='toto',
             value=15,
             unit='[mass]/[time]*L'
         )
-        self.assertIsInstance(Q_(1, op.get_unit(self.us)), Q_)
+        self.assertIsInstance(q_(1, op.get_unit(self.us)), q_)
 
-    def test_get_unit_mixed(self):
-        Q_ = self.us.ureg.Quantity
+    def test_get_unit_mixed_custom(self):
+        q_ = self.us.ureg.Quantity
         op = Operand(
             name='toto',
             value=15,
             unit='[mass]/[time]*L*plouf'
         )
-        self.assertRaises(pint.errors.UndefinedUnitError, Q_, 1, op.get_unit(self.us))
+        self.assertRaises(pint.errors.UndefinedUnitError, q_, 1, op.get_unit(self.us))
 
 
 class ExpressionAPITest(TestCase):

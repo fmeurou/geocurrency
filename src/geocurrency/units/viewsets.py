@@ -18,7 +18,7 @@ from geocurrency.converters.serializers import ConverterResultSerializer, \
     CalculationResultSerializer
 from geocurrency.core.helpers import validate_language
 from geocurrency.core.pagination import PageNumberPagination
-from rest_framework import permissions, serializers, status
+from rest_framework import permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST
@@ -32,11 +32,11 @@ from .filters import CustomUnitFilter
 from .forms import CustomUnitForm
 from .models import UnitSystem, UnitConverter, Dimension, CustomUnit, ExpressionCalculator
 from .permissions import CustomUnitObjectPermission
+from .renderers import UnitsRenderer
 from .serializers import UnitSerializer, UnitSystemSerializer, \
     UnitConversionPayloadSerializer, DimensionSerializer, \
     DimensionWithUnitsSerializer, CustomUnitSerializer, ExpressionSerializer, \
     CalculationPayloadSerializer
-from .renderers import UnitsRenderer
 
 
 class UnitSystemViewset(ViewSet):
@@ -56,20 +56,29 @@ class UnitSystemViewset(ViewSet):
     unit_system_response = openapi.Response('Dimensions and units in a system',
                                             UnitSystemSerializer)
 
-    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY,
+                                 description="Sort on name "
+                                             "Prefix with - for descending sort",
                                  type=openapi.TYPE_STRING)
 
     @method_decorator(cache_page(60 * 60 * 24))
     @method_decorator(vary_on_cookie)
-    @swagger_auto_schema(manual_parameters=[language, language_header],
+    @swagger_auto_schema(manual_parameters=[language, language_header, ordering],
                          responses={200: unit_systems_response})
     def list(self, request):
         """
         List UnitSystems
         """
+        ordering = request.GET.get('ordering', 'system_name')
+        descending = False
+        if ordering and ordering[0] == '-':
+            ordering = ordering[1:]
+            descending = True
+        if ordering not in ['system_name']:
+            ordering = 'system_name'
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
         us = UnitSystem(fmt_locale=language)
-        us = [{'system_name': s} for s in us.available_systems()]
+        us = [{'system_name': s} for s in sorted(us.available_systems(), reverse=descending)]
         return Response(us, content_type="application/json")
 
     @method_decorator(cache_page(60 * 60 * 24))
@@ -128,7 +137,9 @@ class UnitViewset(ViewSet):
     unit_response = openapi.Response('Detail of a unit', UnitSerializer)
     dimension_response = openapi.Response('List of units per dimension',
                                           DimensionWithUnitsSerializer)
-    ordering = openapi.Parameter('ordering', openapi.IN_QUERY, description="ordering",
+    ordering = openapi.Parameter('ordering', openapi.IN_QUERY,
+                                 description="Sort on fields name or code. "
+                                             "Prefix with - for descending sort",
                                  type=openapi.TYPE_STRING)
 
     @swagger_auto_schema(manual_parameters=[dimension, key,
@@ -140,16 +151,20 @@ class UnitViewset(ViewSet):
         List Units, ordered, filtered by key or dimension, translated in language
         """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
+        ordering = request.GET.get('ordering', 'name')
+        descending = False
+        if ordering and ordering[0] == '-':
+            ordering = ordering[1:]
+            descending = True
+        if ordering not in ['code', 'name']:
+            ordering = 'name'
         try:
             key = request.GET.get('key', None)
-            ordering = request.GET.get('ordering', '')
-            if ordering not in ['code', 'name']:
-                ordering = 'name'
             user = request.user if hasattr(request,
                                            'user') and request.user.is_authenticated else None
             us = UnitSystem(system_name=system_name, fmt_locale=language, user=user, key=key)
             units = []
-            if dimension_param := request.GET.get('dimension'):
+            if dimension_param := request.GET.get(key='dimension'):
                 try:
                     dimension = Dimension(unit_system=us, code=dimension_param)
                     units = dimension.units(user=user, key=key)
@@ -159,7 +174,7 @@ class UnitViewset(ViewSet):
                 available_units = us.available_unit_names()
                 if available_units:
                     units = [us.unit(unit_name=unit_name) for unit_name in available_units]
-            units = sorted(units, key=lambda x: getattr(x, ordering))
+            units = sorted(units, key=lambda x: getattr(x, ordering), reverse=descending)
             serializer = UnitSerializer(units, many=True, context={'request': request})
             return Response(serializer.data)
         except UnitSystemNotFound:
@@ -206,7 +221,7 @@ class UnitViewset(ViewSet):
         except (UnitSystemNotFound, UnitNotFound):
             return Response("Unknown unit", status=HTTP_404_NOT_FOUND)
 
-    @swagger_auto_schema(manual_parameters=[language, language_header],
+    @swagger_auto_schema(manual_parameters=[language, language_header, ordering],
                          responses={200: units_response})
     @action(methods=['GET'], detail=True, url_path='compatible', url_name='compatible_units')
     def compatible_units(self, request: HttpRequest, system_name: str, unit_name: str):
@@ -214,14 +229,23 @@ class UnitViewset(ViewSet):
         List compatible Units
         """
         language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
+        ordering = request.GET.get('ordering', 'name')
+        descending = False
+        if ordering and ordering[0] == '-':
+            ordering = ordering[1:]
+            descending = True
+        if ordering not in ['code', 'name']:
+            ordering = 'name'
         try:
             key = request.GET.get('key', None)
             user = request.user if hasattr(request,
                                            'user') and request.user.is_authenticated else None
             us = UnitSystem(system_name=system_name, fmt_locale=language, user=user, key=key)
             unit = us.unit(unit_name=unit_name)
-            compatible_units = [us.unit(unit_name=cunit) for cunit in
-                                map(str, unit.unit.compatible_units())]
+            compatible_units = sorted([us.unit(unit_name=cunit) for cunit in
+                                       map(str, unit.unit.compatible_units())],
+                                      key=lambda x: getattr(x, ordering),
+                                      reverse=descending)
             serializer = UnitSerializer(compatible_units, many=True, context={'request': request})
             return Response(serializer.data, content_type="application/json")
         except (UnitSystemNotFound, UnitNotFound):
@@ -287,6 +311,44 @@ class CustomUnitViewSet(ModelViewSet):
     display_page_controls = True
     lookup_url_param = 'system_name'
 
+    user = openapi.Parameter('user',
+                             openapi.IN_QUERY,
+                             description="Filter on user rates",
+                             type=openapi.TYPE_BOOLEAN)
+    key = openapi.Parameter('key',
+                            openapi.IN_QUERY,
+                            description="Filter on user defined category",
+                            type=openapi.TYPE_STRING)
+    unit_system = openapi.Parameter('unit_system',
+                                    openapi.IN_QUERY,
+                                    description="Filter on unit system",
+                                    type=openapi.TYPE_STRING)
+    code = openapi.Parameter('code',
+                             openapi.IN_QUERY,
+                             description="Filter on unit code",
+                             type=openapi.TYPE_STRING)
+    name = openapi.Parameter('name',
+                             openapi.IN_QUERY,
+                             description="Filter on unit name",
+                             type=openapi.TYPE_STRING)
+    relation = openapi.Parameter('relation',
+                                 openapi.IN_QUERY,
+                                 description="Filter on relation to base units",
+                                 type=openapi.TYPE_STRING)
+    symbol = openapi.Parameter('symbol',
+                               openapi.IN_QUERY,
+                               description="Filter on unit symbol",
+                               type=openapi.TYPE_STRING)
+    alias = openapi.Parameter('alias',
+                              openapi.IN_QUERY,
+                              description="Filter on unit alias",
+                              type=openapi.TYPE_STRING)
+    ordering = openapi.Parameter('ordering',
+                                 openapi.IN_QUERY,
+                                 description="Sort on code, name, relation, symbol, alias. "
+                                             "Prefix with - for descending sort",
+                                 type=openapi.TYPE_STRING)
+
     def get_queryset(self):
         """
         Filter units based on authenticated user
@@ -303,6 +365,15 @@ class CustomUnitViewSet(ModelViewSet):
             qs = qs.filter(models.Q(user__isnull=True))
         qs = qs.filter(unit_system__iexact=system_name.lower())
         return qs
+
+    @swagger_auto_schema(manual_parameters=[
+        user, key, unit_system, code, name, relation, symbol, alias, ordering],
+        responses={200: CustomUnitSerializer})
+    def list(self, request, *args, **kwargs):
+        """
+        List rates
+        """
+        return super().list(request, *args, **kwargs)
 
     def create(self, request: HttpRequest, system_name: str, *args, **kwargs):
         """

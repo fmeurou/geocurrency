@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import pycountry
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -253,8 +254,6 @@ LANGUAGES = [
 
 # Languages using BiDi (right-to-left) layout
 LANGUAGES_BIDI = ["he", "ar", "ar-dz", "fa", "ur"]
-
-import pycountry
 
 LOCALE_PATHS = [
     'src/geocurrency/core/locales',

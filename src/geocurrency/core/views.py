@@ -37,5 +37,6 @@ class LanguageView(APIView):
         GET handler
         :param request: HTTPRequest
         """
-        return Response([{'name': l[1], 'code': l[0]} for l in settings.LANGUAGES],
-                        content_type="application/json")
+        return Response(
+            [{'name': language[1], 'code': language[0]} for language in settings.LANGUAGES],
+            content_type="application/json")

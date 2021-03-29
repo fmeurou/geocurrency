@@ -103,7 +103,7 @@ class UnitSystem:
         Load additional base units in registry
         """
         available_units = self.available_unit_names()
-        if not self.system_name in units:
+        if self.system_name not in units:
             logging.warning(f"error loading additional units for {self.system_name}")
             return False
         added_units = []
@@ -125,8 +125,10 @@ class UnitSystem:
                 qs = CustomUnit.objects.all()
             else:
                 qs = CustomUnit.objects.filter(user=user)
-        if key:
-            qs = qs.filter(key=key)
+            if key:
+                qs = qs.filter(key=key)
+        else:
+            qs = CustomUnit.objects.filter(pk=-1)
         qs = qs.filter(unit_system=self.system_name)
         available_units = self.available_unit_names()
         added_units = []
@@ -165,6 +167,8 @@ class UnitSystem:
         Add a new unit definition to a UnitSystem, and rebuild cache
         :param code: code of the unit
         :param relation: relation to other units (e.g.: 3 kg/m)
+        :param symbol: short unit representation
+        :param alias: other name for unit
         """
         self.ureg.define(f"{code} = {relation} = {symbol} = {alias}")
         self._rebuild_cache()
@@ -182,7 +186,7 @@ class UnitSystem:
     def is_valid(cls, system: str) -> bool:
         """
         Check validity of the UnitSystem
-        :param name: name of the unit system
+        :param system: name of the unit system
         """
         us = cls()
         return system in us.available_systems()
@@ -229,10 +233,14 @@ class UnitSystem:
         Return available dimensions for the UnitSystem
         :param ordering: sort result by attribute
         """
-        if ordering not in ['name', 'code', 'dimension']:
+        descending = False
+        if ordering and ordering[0] == '-':
+            ordering = ordering[1:]
+            descending = True
+        if ordering not in ['code', 'name', 'dimension']:
             ordering = 'name'
         return sorted([Dimension(unit_system=self, code=dim) for dim in DIMENSIONS.keys()],
-                      key=lambda x: getattr(x, ordering, ''))
+                      key=lambda x: getattr(x, ordering, ''), reverse=descending)
 
     @property
     def _ureg_dimensions(self):
@@ -262,7 +270,7 @@ class UnitSystem:
         """
         output = {}
         for dim in self._ureg_dimensions:
-            if not dim in DIMENSIONS:
+            if dim not in DIMENSIONS:
                 output[dim] = {
                     'name': f'_({dim})',
                     'dimension': str(self._get_dimension_dimensionality(dim)),
@@ -417,7 +425,8 @@ class Dimension:
             return UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
         except KeyError:
             logging.warning(
-                f'dimension {self.dimension} is not part of unit system {self.unit_system.system_name}')
+                f'dimension {self.dimension} is not part of '
+                f'unit system {self.unit_system.system_name}')
             return None
 
 
@@ -489,6 +498,7 @@ class Unit:
                       if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
         return dimensions or '[compounded]'
 
+    @staticmethod
     def base_unit(unit_str: str) -> (str, str):
         """
         Get base unit in case the unit is a prefixed unit
@@ -662,7 +672,7 @@ class UnitConverter(BaseConverter):
         """
 
         result = ConverterResult(id=self.id, target=self.base_unit)
-        Q_ = self.system.ureg.Quantity
+        q_ = self.system.ureg.Quantity
         for quantity in self.data:
             if quantity.unit not in self.compatible_units:
                 error = ConverterResultError(
@@ -674,7 +684,7 @@ class UnitConverter(BaseConverter):
                 result.errors.append(error)
                 continue
             try:
-                pint_quantity = Q_(quantity.value, quantity.unit)
+                pint_quantity = q_(quantity.value, quantity.unit)
                 out = pint_quantity.to(self.base_unit)
                 result.increment_sum(out.magnitude)
                 detail = ConverterResultDetail(
@@ -735,13 +745,17 @@ class CustomUnit(models.Model):
         ('mks', 'mks'),
     )
     user = models.ForeignKey(User, related_name='units', on_delete=models.PROTECT)
-    key = models.CharField(max_length=255, default=None, db_index=True, null=True, blank=True)
-    unit_system = models.CharField(max_length=20, choices=AVAILABLE_SYSTEMS)
-    code = models.SlugField()
-    name = models.CharField("Human readable name", max_length=255)
-    relation = models.CharField("Relation to an existing unit", max_length=255)
-    symbol = models.CharField("Symbol", max_length=20, blank=True, null=True)
-    alias = models.CharField("Alias", max_length=20, null=True, blank=True)
+    key = models.CharField("Categorization field (e.g.: customer ID)",
+                           max_length=255, default=None, db_index=True, null=True, blank=True)
+    unit_system = models.CharField("Unit system to register the unit in", max_length=20,
+                                   choices=AVAILABLE_SYSTEMS)
+    code = models.SlugField("technical name of the unit (e.g.: myUnit)")
+    name = models.CharField("Human readable name (e.g.: My Unit)", max_length=255)
+    relation = models.CharField("Relation to an existing unit (e.g.: 12 kg*m/s)", max_length=255)
+    symbol = models.CharField("Symbol to use in a formula (e.g.: myu)", max_length=20, blank=True,
+                              null=True)
+    alias = models.CharField("Other code for this unit (e.g.: mybu)", max_length=20, null=True,
+                             blank=True)
 
     class Meta:
         """
@@ -843,7 +857,7 @@ class Expression:
         Validate syntax and homogeneity
         :param unit_system: UnitSystem
         """
-        Q_ = unit_system.ureg.Quantity
+        q_ = unit_system.ureg.Quantity
         if not self.expression:
             return False, "missing expression"
         try:
@@ -855,7 +869,7 @@ class Expression:
                 return False, "invalid operand"
         kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
         try:
-            Q_(self.expression.format(**kwargs))
+            q_(self.expression.format(**kwargs))
         except KeyError:
             return False, "Missing operand"
         except pint.errors.DimensionalityError:
@@ -866,11 +880,11 @@ class Expression:
         """
         Validate formula
         """
-        Q_ = unit_system.ureg.Quantity
+        q_ = unit_system.ureg.Quantity
         is_valid, error = self.validate(unit_system=unit_system)
         if is_valid:
             kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
-            return Q_(self.expression.format(**kwargs))
+            return q_(self.expression.format(**kwargs))
         else:
             raise ComputationError(f"Invalid formula: {error}")
 
@@ -918,7 +932,7 @@ class ExpressionCalculator(BaseConverter):
             self.user = user
             self.key = key
             self.system = UnitSystem(system_name=unit_system, user=self.user, key=self.key)
-        except (UnitSystemNotFound) as e:
+        except UnitSystemNotFound as e:
             raise ExpressionCalculatorInitError from e
 
     def add_data(self, data: []) -> []:
@@ -952,6 +966,8 @@ class ExpressionCalculator(BaseConverter):
         """
         Load converter from batch
         :param id: ID of the batch
+        :param user: Users object
+        :param key: User defined category
         """
         try:
             uc = super().load(id)

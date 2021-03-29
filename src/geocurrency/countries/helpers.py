@@ -7,11 +7,11 @@ from __future__ import division
 from math import sqrt, pow as poww
 
 
-def hextorgb(hex):
-    c = hex
+def hextorgb(hex_value):
+    c = hex_value
     r, g, b = 0, 0, 0
-    if '#' in hex:
-        c = hex[1:]
+    if '#' in hex_value:
+        c = hex_value[1:]
     if len(c) == 8:
         # alpha channel
         c = c[2:]

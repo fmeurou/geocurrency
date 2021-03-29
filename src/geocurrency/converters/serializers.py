@@ -12,10 +12,10 @@ class CalculationResultDetailSerializer(serializers.Serializer):
     """
     Serializer for the CalculationResultDetail class
     """
-    expression = serializers.CharField()
-    operands = serializers.JSONField()
-    magnitude = serializers.FloatField()
-    unit = serializers.CharField()
+    expression = serializers.CharField(label="Expression to evaluate")
+    operands = serializers.JSONField(label="Operands")
+    magnitude = serializers.FloatField(label="Magnitude of result")
+    unit = serializers.CharField(label="Units of result")
 
     def create(self, validated_data):
         """
@@ -38,12 +38,12 @@ class CalculationResultDetailSerializer(serializers.Serializer):
 
 class CalculationResultErrorSerializer(serializers.Serializer):
     """
-    Serialiwer for the CalculationResultError class
+    Serializer for the CalculationResultError class
     """
-    expression = serializers.CharField()
-    variables = serializers.JSONField()
-    date = serializers.DateField()
-    error = serializers.CharField()
+    expression = serializers.CharField(label="Expression to evaluate")
+    operands = serializers.JSONField(label="Operands")
+    date = serializers.DateField(label="Date of calculation")
+    error = serializers.CharField(label="Error during calculation")
 
     def create(self, validated_data):
         """
@@ -66,10 +66,10 @@ class CalculationResultErrorSerializer(serializers.Serializer):
 
 
 class CalculationResultSerializer(serializers.Serializer):
-    id = serializers.UUIDField()
-    detail = CalculationResultDetailSerializer(many=True)
-    status = serializers.CharField()
-    errors = CalculationResultErrorSerializer(many=True)
+    id = serializers.UUIDField(label="ID of the batch")
+    detail = CalculationResultDetailSerializer(label="Details of the calculation", many=True)
+    status = serializers.CharField(label="Status of the calculation")
+    errors = CalculationResultErrorSerializer(label="Errors during calculation", many=True)
 
     def create(self, validated_data):
         """
@@ -95,11 +95,11 @@ class ConverterResultDetailSerializer(serializers.Serializer):
     """
     Serialize a ConverterResultDetail class
     """
-    unit = serializers.CharField()
-    original_value = serializers.FloatField()
-    date = serializers.DateField()
-    conversion_rate = serializers.FloatField()
-    converted_value = serializers.FloatField()
+    unit = serializers.CharField(label="Unit of conversion")
+    original_value = serializers.FloatField(label="Original value to convert")
+    date = serializers.DateField(label="Date of conversion")
+    conversion_rate = serializers.FloatField(label="Conversion rate")
+    converted_value = serializers.FloatField(label="Resulting value")
 
     def create(self, validated_data):
         """
@@ -124,10 +124,10 @@ class ConverterResultErrorSerializer(serializers.Serializer):
     """
     Serializer for ConverterResultError
     """
-    unit = serializers.CharField()
-    original_value = serializers.FloatField()
-    date = serializers.DateField()
-    error = serializers.CharField()
+    unit = serializers.CharField(label="Unit of conversion")
+    original_value = serializers.FloatField(label="Original value")
+    date = serializers.DateField(label="Date of conversion")
+    error = serializers.CharField(label="Error during conversion")
 
     def create(self, validated_data):
         """
@@ -153,12 +153,12 @@ class ConverterResultSerializer(serializers.Serializer):
     """
     Serializer for a ConverterResult
     """
-    id = serializers.UUIDField()
-    target = serializers.CharField()
-    detail = ConverterResultDetailSerializer(many=True)
-    sum = serializers.FloatField()
-    status = serializers.CharField()
-    errors = ConverterResultErrorSerializer(many=True)
+    id = serializers.UUIDField(label="ID of the batch")
+    target = serializers.CharField(label="Target conversion")
+    detail = ConverterResultDetailSerializer(label="Details of conversion", many=True)
+    sum = serializers.FloatField(label="Sum of conversions")
+    status = serializers.CharField(label="Status of the conversion")
+    errors = ConverterResultErrorSerializer(label="Errors during conversions", many=True)
 
     def create(self, validated_data):
         """
@@ -186,8 +186,8 @@ class BatchSerializer(serializers.Serializer):
     """
     Serializer for Batch
     """
-    id = serializers.CharField()
-    status = serializers.CharField()
+    id = serializers.CharField(label="Batch unique identifier")
+    status = serializers.CharField(label="Status of the batch")
 
     def create(self, validated_data):
         """

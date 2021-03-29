@@ -67,9 +67,15 @@ class Currency:
         Returns a sorted list of currencies
         :param ordering: sort attribute
         """
+        descending = False
+        if ordering and ordering[0] == '-':
+            ordering = ordering[1:]
+            descending = True
         if ordering not in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
             ordering = 'name'
-        return sorted([Currency(c.code) for c in Iso4217], key=lambda x: getattr(x, ordering))
+        return sorted([Currency(c.code) for c in Iso4217],
+                      key=lambda x: getattr(x, ordering),
+                      reverse=descending)
 
     @property
     def countries(self) -> Iterator[Country]:

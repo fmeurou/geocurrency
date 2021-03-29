@@ -83,7 +83,7 @@ CURRENCY_SYMBOLS = {
     'LAK': '₭',
     'CZK': 'Kč',
     'DKK': 'kr',
-    'NOK':'kr',
+    'NOK': 'kr',
     'SEK': 'kr',
     'ISK': 'kr',
     'FOK': 'kr',

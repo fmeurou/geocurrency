@@ -2,20 +2,23 @@
 import os
 import subprocess
 from datetime import date
+
 from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 
-def get_version(module):
+def get_version(app):
     version = date.today().strftime('%Y-%m')
     git_tag = "0.0"
     git_commits = "0"
     suffix = "dev"
     try:
-        branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).rstrip().decode('utf8')
-        git_describe = subprocess.check_output(["git", "describe", "--long"]).rstrip().decode('utf8')
+        branch = subprocess.check_output(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"]).rstrip().decode('utf8')
+        git_describe = subprocess.check_output(["git", "describe", "--long"]).rstrip().decode(
+            'utf8')
         git_tag = git_describe.split('-')[0]
         git_commits = git_describe.split('-')[1]
         if branch == 'master':
@@ -27,12 +30,14 @@ def get_version(module):
     except (subprocess.CalledProcessError, OSError) as e:
         print('git not installed', e)
     try:
-        fp = open('{}/__init__.py'.format(module), 'w')
-        fp.write('__version__ = [{}, {}, "{}"]'.format(git_tag.replace('.', ','), git_commits, suffix))
+        fp = open('{}/__init__.py'.format(app), 'w')
+        fp.write(
+            '__version__ = [{}, {}, "{}"]'.format(git_tag.replace('.', ','), git_commits, suffix))
         fp.close()
     except Exception:
-        print('ERROR opening {}/__init__.py'.format(module), os.curdir)
+        print('ERROR opening {}/__init__.py'.format(app), os.curdir)
     return version
+
 
 module = 'geocurrency'
 

@@ -2,7 +2,6 @@
 Rates modules API viewsets
 """
 
-
 from django.db import models
 from django.db.models.functions import Extract
 from django.http import HttpResponseForbidden
@@ -51,20 +50,95 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             qs = qs.filter(models.Q(user__isnull=True))
         return qs
 
-    currency_latest_values = openapi.Parameter('currency_latest_values', openapi.IN_QUERY,
-                                               description="Currency to filter on, limits results to latest values",
-                                               type=openapi.TYPE_STRING)
+    user = openapi.Parameter(
+        'user',
+        openapi.IN_QUERY,
+        description="Filter on user rates",
+        type=openapi.TYPE_BOOLEAN)
+    key = openapi.Parameter(
+        'key',
+        openapi.IN_QUERY,
+        description="Filter on user defined category",
+        type=openapi.TYPE_STRING)
+    key_or_null = openapi.Parameter(
+        'key_or_null',
+        openapi.IN_QUERY,
+        description="Show rates with defined category or no category",
+        type=openapi.TYPE_STRING)
+    key_isnull = openapi.Parameter(
+        'key_isnull',
+        openapi.IN_QUERY,
+        description="ONly show results with no category",
+        type=openapi.TYPE_STRING)
+    value_date = openapi.Parameter(
+        'value_date',
+        openapi.IN_QUERY,
+        description="Filter on date of the rate",
+        type=openapi.TYPE_STRING)
+    from_obj = openapi.Parameter(
+        'from_obj',
+        openapi.IN_QUERY,
+        description="Filter rates with value date after date",
+        type=openapi.TYPE_STRING)
+    to_obj = openapi.Parameter(
+        'to_obj',
+        openapi.IN_QUERY,
+        description="Filter rates with value date before date",
+        type=openapi.TYPE_STRING)
+    value = openapi.Parameter(
+        'value',
+        openapi.IN_QUERY,
+        description="Filter rates with a specific value",
+        type=openapi.TYPE_NUMBER)
+    lower_bound = openapi.Parameter(
+        'lower_bound',
+        openapi.IN_QUERY,
+        description="Filter rates with a value higher than value",
+        type=openapi.TYPE_NUMBER)
+    higher_bound = openapi.Parameter(
+        'higher_bound',
+        openapi.IN_QUERY,
+        description="Filter rates with a value lower than value",
+        type=openapi.TYPE_NUMBER)
+    currency = openapi.Parameter(
+        'currency',
+        openapi.IN_QUERY,
+        description="Filter by currency",
+        type=openapi.TYPE_STRING)
+    base_currency = openapi.Parameter(
+        'base_currency',
+        openapi.IN_QUERY,
+        description="Filter by base currency",
+        type=openapi.TYPE_STRING)
+
+    currency_latest_values = openapi.Parameter(
+        'currency_latest_values',
+        openapi.IN_QUERY,
+        description="Currency to filter on, limits results to latest values",
+        type=openapi.TYPE_STRING)
     base_currency_latest_values = openapi.Parameter(
-        'base_currency_latest_values', openapi.IN_QUERY,
+        'base_currency_latest_values',
+        openapi.IN_QUERY,
         description="Base currency to filter on, limits results to latest values",
         type=openapi.TYPE_STRING)
 
-    period = openapi.Parameter('period', openapi.IN_QUERY,
-                               description="period to aggregate on: month, week, year, defaults to month",
-                               type=openapi.TYPE_STRING)
+    period = openapi.Parameter(
+        'period',
+        openapi.IN_QUERY,
+        description="period to aggregate on: month, week, year, defaults to month",
+        type=openapi.TYPE_STRING)
 
-    @swagger_auto_schema(manual_parameters=[currency_latest_values, base_currency_latest_values],
-                         responses={200: RateSerializer})
+    ordering = openapi.Parameter('ordering',
+                                 openapi.IN_QUERY,
+                                 description="Sort on currency, base_currency, value_date, value. "
+                                             "Prefix with - for descending sort",
+                                 type=openapi.TYPE_STRING)
+
+    @swagger_auto_schema(manual_parameters=[
+        user, key, key_or_null, key_isnull, value_date, from_obj, to_obj, value,
+        lower_bound, higher_bound, currency, base_currency,
+        currency_latest_values, base_currency_latest_values, ordering],
+        responses={200: RateSerializer})
     def list(self, request, *args, **kwargs):
         """
         List rates
@@ -72,7 +146,10 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         return super().list(request, *args, **kwargs)
 
     @swagger_auto_schema(
-        manual_parameters=[currency_latest_values, base_currency_latest_values, period],
+        manual_parameters=[
+            user, key, key_or_null, key_isnull, value_date, from_obj, to_obj, value,
+            lower_bound, higher_bound, currency, base_currency,
+            currency_latest_values, base_currency_latest_values, period],
         responses={200: RateStatSerializer})
     @action(['GET'], detail=False, url_path='stats', url_name='stats')
     def stats(self, request, *args, **kwargs):
@@ -99,8 +176,9 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
             {
                 'currency': result['currency'],
                 'base_currency': result['base_currency'],
-                'period': f"{result['year']}-{str(result[period]).zfill(2)}" if period != 'year' else
-                result['year'],
+                'period': f"{result['year']}-{str(result[period]).zfill(2)}"
+                if period != 'year'
+                else result['year'],
                 'avg': result['avg'],
                 'max': result['max'],
                 'min': result['min'],

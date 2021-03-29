@@ -222,11 +222,13 @@ class Rate(BaseRate):
     Class Rate
     """
     user = models.ForeignKey(User, related_name='rates', on_delete=models.PROTECT, null=True)
-    key = models.CharField(max_length=255, default=None, db_index=True, null=True)
-    value_date = models.DateField()
-    value = models.FloatField(default=0)
-    currency = models.CharField(max_length=3, db_index=True)
-    base_currency = models.CharField(max_length=3, db_index=True, default='EUR')
+    key = models.CharField("User defined categorization key",
+                           max_length=255, default=None, db_index=True, null=True)
+    value_date = models.DateField("Date of value")
+    value = models.FloatField("Rate conversion factor", default=0)
+    currency = models.CharField("Currency to convert from", max_length=3, db_index=True)
+    base_currency = models.CharField("Currency to convert to", max_length=3, db_index=True,
+                                     default='EUR')
     objects = RateManager()
 
     class Meta:

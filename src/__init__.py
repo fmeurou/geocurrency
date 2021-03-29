@@ -5,6 +5,9 @@ from datetime import date
 
 def get_version(module):
     version = date.today().strftime('%Y-%m')
+    git_tag = '0.0'
+    git_commits = 0
+    sep = 'dev'
     try:
         branch = subprocess.check_output(
             ["git", "rev-parse", "--abbrev-ref", "HEAD"]).rstrip().decode('utf8')

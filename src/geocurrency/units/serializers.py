@@ -20,10 +20,10 @@ class QuantitySerializer(serializers.Serializer):
     """
     Serialize a Quantity
     """
-    system = serializers.CharField()
-    unit = serializers.CharField()
-    value = serializers.FloatField()
-    date_obj = serializers.DateField()
+    system = serializers.CharField(label="Unit system of the Quantity")
+    unit = serializers.CharField(label="Units of the quantity")
+    value = serializers.FloatField(label="Magnitude of the quantity")
+    date_obj = serializers.DateField(label="date of conversion")
 
     @staticmethod
     def validate_system(system):
@@ -83,9 +83,9 @@ class UnitSerializer(serializers.Serializer):
     """
     Unit class serializer
     """
-    code = serializers.CharField()
-    name = serializers.CharField()
-    dimensions = serializers.SerializerMethodField()
+    code = serializers.CharField(label="Technical name of the unit")
+    name = serializers.CharField(label="Human readable name of the unit")
+    dimensions = serializers.SerializerMethodField(label="Dimensions the unit belongs to")
 
     @swagger_serializer_method(serializer_or_field=serializers.ListField)
     def get_dimensions(self, obj):
@@ -100,10 +100,10 @@ class DimensionSerializer(serializers.Serializer):
     """
     Dimension class serializer
     """
-    code = serializers.CharField()
-    name = serializers.CharField()
-    dimension = serializers.CharField()
-    base_unit = serializers.SerializerMethodField()
+    code = serializers.CharField(label="technical name of the unit (enclosed in brackets)")
+    name = serializers.CharField(label="Human readable name of the unit")
+    dimension = serializers.CharField(label="Mathematical expression of the dimension")
+    base_unit = serializers.SerializerMethodField(label="Name of the base unit")
 
     def create(self, validated_data):
         """
@@ -137,7 +137,7 @@ class DimensionWithUnitsSerializer(DimensionSerializer):
     """
     Serialize a Dimension including associated units
     """
-    units = UnitSerializer(many=True)
+    units = UnitSerializer(label="Units of this dimension", many=True)
 
     @swagger_serializer_method(serializer_or_field=UnitSerializer)
     def get_units(self, obj: Dimension) -> [Unit]:
@@ -162,12 +162,13 @@ class UnitConversionPayloadSerializer(serializers.Serializer):
     """
     Serialize a UnitConversionPayload
     """
-    data = QuantitySerializer(many=True, required=False)
-    base_system = serializers.CharField(required=True)
-    base_unit = serializers.CharField(required=True)
-    batch_id = serializers.CharField(required=False)
-    key = serializers.CharField(required=False)
-    eob = serializers.BooleanField(default=False)
+    data = QuantitySerializer(label="List of unit conversions", many=True, required=False)
+    base_system = serializers.CharField(label="Unit system used for conversion", required=True)
+    base_unit = serializers.CharField(label="Unit to express the result in", required=True)
+    batch_id = serializers.CharField(label="User defined batch ID", required=False)
+    key = serializers.CharField(label="User defined categorization key", required=False)
+    eob = serializers.BooleanField(label="End of batch ? triggers the conversion", default=False)
+    _errors = {}
 
     def is_valid(self, raise_exception=False) -> bool:
         """
@@ -234,9 +235,9 @@ class CustomUnitSerializer(serializers.ModelSerializer):
     """
     Serialize a custom unit
     """
-    id = serializers.CharField(read_only=True)
-    user = UserSerializer(read_only=True)
-    unit_system = serializers.CharField(read_only=True)
+    id = serializers.CharField(label="ID of the CustomUnit", read_only=True)
+    user = UserSerializer(label="Owner of the unit", read_only=True)
+    unit_system = serializers.CharField(label="Unit system of the unit", read_only=True)
 
     class Meta:
         """
@@ -250,9 +251,10 @@ class OperandSerializer(serializers.Serializer):
     """
     Serialize an Operand
     """
-    name = serializers.CharField()
-    value = serializers.FloatField()
-    unit = serializers.CharField()
+    name = serializers.CharField(label="Name of the operand in the expression",
+                                 help_text="{a} in an expression should have an operand named 'a'")
+    value = serializers.FloatField(label="Value of the operand as a float")
+    unit = serializers.CharField(label="Units of the operand as a string")
 
     def is_valid(self, raise_exception=False) -> bool:
         """
@@ -287,6 +289,7 @@ class ExpressionListSerializer(serializers.ListSerializer):
         """
         Check validity of expression with a specific UnitSystem
         :param unit_system: UnitSystem instance
+        :param dimensions_only: Only check dimensionality, not actual units
         :param raise_exception: raise an exception instead of a list of errors
         """
         super().is_valid(raise_exception=raise_exception)
@@ -304,8 +307,11 @@ class ExpressionSerializer(serializers.Serializer):
     """
     unit_system = None
     key = None
-    expression = serializers.CharField(required=True)
-    operands = OperandSerializer(many=True, required=True)
+    expression = serializers.CharField(label="Mathematical expression to evaluate", required=True,
+                                       help_text="Operands must be placed between curly braces."
+                                                 "A recommended expression format "
+                                                 "would be '{a}+{b}*{c}'")
+    operands = OperandSerializer(label="List of operands", many=True, required=True)
 
     class Meta:
         """
@@ -352,10 +358,10 @@ class ExpressionSerializer(serializers.Serializer):
         Validate units based on the units of the operands
         """
         # Validate units
-        Q_ = unit_system.ureg.Quantity
+        q_ = unit_system.ureg.Quantity
         units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
         try:
-            return Q_(expression.format(**units_kwargs))
+            return q_(expression.format(**units_kwargs))
         except KeyError as e:
             self._errors['operands'] = "Missing operands"
         except pint.errors.DimensionalityError as e:
@@ -394,7 +400,7 @@ class ExpressionSerializer(serializers.Serializer):
     def operands_validation(self, operands):
         """
         Validate Operand
-        :param value: Operand
+        :param operands: Operand
         """
         errors = []
         try:
@@ -439,11 +445,12 @@ class CalculationPayloadSerializer(serializers.Serializer):
     """
     Serializer for CalculationPayload
     """
-    unit_system = serializers.CharField(required=True)
-    data = ExpressionSerializer(many=True, required=False)
-    batch_id = serializers.CharField(required=False)
-    key = serializers.CharField(required=False)
-    eob = serializers.BooleanField(default=False)
+    unit_system = serializers.CharField(label="Unit system to evaluate in", required=True)
+    data = ExpressionSerializer(label="Payload of expressions", many=True, required=False)
+    batch_id = serializers.CharField(label="User defined ID of the batch of evaluations",
+                                     required=False)
+    key = serializers.CharField(label="User defined categorization key", required=False)
+    eob = serializers.BooleanField(label="End of batch ? triggers the evaluation", default=False)
 
     def is_valid(self, raise_exception=False) -> bool:
         """

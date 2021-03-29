@@ -13,12 +13,13 @@ class BulkSerializer(serializers.Serializer):
     """
     Serializer for Bulk serializer
     """
-    base_currency = serializers.CharField(max_length=3, required=True)
-    currency = serializers.CharField(max_length=3, required=True)
-    value = serializers.FloatField(required=True)
-    key = serializers.CharField(required=True)
-    from_date = serializers.DateField(required=True)
-    to_date = serializers.DateField(required=False)
+    base_currency = serializers.CharField(label="Currency to convert to", max_length=3,
+                                          required=True)
+    currency = serializers.CharField(label="Currency to convert from", max_length=3, required=True)
+    value = serializers.FloatField(label="rate value", required=True)
+    key = serializers.CharField(label="User defined categorization ID", required=True)
+    from_date = serializers.DateField(label="Date to create the rate from", required=True)
+    to_date = serializers.DateField(label="Date to create the rate to", required=False)
 
     def create(self, validated_data):
         """
@@ -90,8 +91,8 @@ class BulkSerializer(serializers.Serializer):
 
 
 class RateSerializer(serializers.ModelSerializer):
-    id = serializers.ReadOnlyField()
-    user = UserSerializer(read_only=True)
+    id = serializers.ReadOnlyField(label="ID of the rate")
+    user = UserSerializer(label="Owner of the rate", read_only=True)
 
     class Meta:
         model = Rate
@@ -110,33 +111,33 @@ class RateStatItemSerializer(serializers.Serializer):
     """
     Rate statistics item for conversion
     """
-    currency = serializers.CharField(read_only=True)
-    base_currency = serializers.CharField(read_only=True)
-    period = serializers.CharField(read_only=True)
-    avg = serializers.FloatField(read_only=True)
-    max = serializers.FloatField(read_only=True)
-    min = serializers.FloatField(read_only=True)
-    std_dev = serializers.FloatField(read_only=True)
+    currency = serializers.CharField(label="Currency to convert from", read_only=True)
+    base_currency = serializers.CharField(label="Currency to convert to", read_only=True)
+    period = serializers.CharField(label="Period over which to aggregate", read_only=True)
+    avg = serializers.FloatField(label="Average value", read_only=True)
+    max = serializers.FloatField(label="Max value", read_only=True)
+    min = serializers.FloatField(label="Min value", read_only=True)
+    std_dev = serializers.FloatField(label="Standard deviation", read_only=True)
 
 
 class RateStatSerializer(serializers.Serializer):
     """
     Rate statistics used in conversion
     """
-    key = serializers.CharField(read_only=True)
-    period = serializers.CharField(read_only=True)
-    from_date = serializers.DateField(read_only=True)
-    to_date = serializers.DateField(read_only=True)
-    results = RateStatItemSerializer(many=True, read_only=True)
+    key = serializers.CharField(label="User defined categorization key", read_only=True)
+    period = serializers.CharField(label="Period over which to aggregate", read_only=True)
+    from_date = serializers.DateField(label="start aggregation date", read_only=True)
+    to_date = serializers.DateField(label="end aggregation date", read_only=True)
+    results = RateStatItemSerializer(label="List of results", many=True, read_only=True)
 
 
 class RateAmountSerializer(serializers.Serializer):
     """
     Rate amount used in conversion
     """
-    currency = serializers.CharField()
-    amount = serializers.FloatField()
-    date_obj = serializers.DateField()
+    currency = serializers.CharField(label="Currency of the amount")
+    amount = serializers.FloatField(label="Value to convert")
+    date_obj = serializers.DateField(label="Date of conversion")
 
     @staticmethod
     def validate_currency(value):
@@ -198,11 +199,11 @@ class RateConversionPayloadSerializer(serializers.Serializer):
     """
     Serialize a conversion payload
     """
-    data = RateAmountSerializer(many=True, required=False)
-    target = serializers.CharField(required=True)
-    batch_id = serializers.CharField(required=False)
-    key = serializers.CharField(required=False)
-    eob = serializers.BooleanField(default=False)
+    data = RateAmountSerializer(label="Amounts to convert", many=True, required=False)
+    target = serializers.CharField(label="Target currency", required=True)
+    batch_id = serializers.CharField(label="User defined batch ID", required=False)
+    key = serializers.CharField(label="User defined categorization key", required=False)
+    eob = serializers.BooleanField(label="End of batch? Triggers the conversion", default=False)
 
     def is_valid(self, raise_exception=False):
         """

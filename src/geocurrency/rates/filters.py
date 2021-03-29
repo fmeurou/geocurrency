@@ -57,12 +57,7 @@ class RateFilter(filters.FilterSet):
         Meta
         """
         model = Rate
-        fields = [
-            'user', 'key',
-            'value_date', 'from_obj', 'to_obj',
-            'value', 'lower_bound', 'higher_bound',
-            'currency', 'base_currency'
-        ]
+        exclude = ['pk', ]
 
     def user_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
         """
@@ -96,13 +91,15 @@ class RateFilter(filters.FilterSet):
             )
         return queryset.filter(user__isnull=True)
 
-    def key_isnull_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
+    @staticmethod
+    def key_isnull_filter(queryset: QuerySet, name: str, value: str) -> QuerySet:
         """
         Filter on records without key
         """
         return queryset.filter(key__isnull=True)
 
-    def currency_latest_values_filter(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
+    @staticmethod
+    def currency_latest_values_filter(queryset: QuerySet, name: str, value: str) -> QuerySet:
         """
         Returns a queryset of latest values fos a currency
         """
@@ -112,8 +109,8 @@ class RateFilter(filters.FilterSet):
             currency_latest=Subquery(latest.values('value_date')[:1])
         ).filter(value_date=models.F('currency_latest'))
 
-    def base_currency_latest_values_filter(self, queryset: QuerySet, name: str,
-                                           value: str) -> QuerySet:
+    @staticmethod
+    def base_currency_latest_values_filter(queryset: QuerySet, name: str, value: str) -> QuerySet:
         """
         Returns a queryset of latest valeus for a base currency
         """

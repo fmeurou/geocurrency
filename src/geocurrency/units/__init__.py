@@ -198,7 +198,7 @@ DIMENSIONS = {
     '[compounded]': {'name': _('Compound dimension'),
                      'dimension': 'undefined',
                      'symbol': ''
-                },
+                     },
     '[custom]': {'name': _('Custom dimension'), 'dimension': 'undefined', 'symbol': ''},
 }
 
@@ -336,7 +336,7 @@ ADDITIONAL_BASE_UNITS = {
     }
 }
 
-### Dictionnary with translations
+# Dictionnary with translations
 UNIT_EXTENDED_DEFINITION = {
     'K_alpha_Cu_d_220': {
         'name': _('Copper Kα'),

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import pycountry
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,9 +76,6 @@ INSTALLED_APPS = [
     'geocurrency.units',
     'apistats'
 ]
-
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,12 +166,15 @@ REST_FRAMEWORK = {
 
 FILTERS_DEFAULT_LOOKUP_EXPR = 'icontains'
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 # This is defined here as a do-nothing function because we can't import
 # django.utils.translation -- that module depends on the settings.
 def gettext_noop(s):
     return s
+
+
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = [
     ('af', gettext_noop('Afrikaans')),
@@ -277,7 +278,6 @@ LANGUAGES = [
 # Languages using BiDi (right-to-left) layout
 LANGUAGES_BIDI = ["he", "ar", "ar-dz", "fa", "ur"]
 
-import pycountry
 LOCALE_PATHS = [
     'modules/core/geocurrency/core/locales',
     pycountry.LOCALES_DIR,
@@ -301,8 +301,6 @@ MEDIA_ROOT = '/var/www/geocurrencies/media'
 SENDFILE_BACKEND = 'sendfile.backends.nginx'
 SENDFILE_ROOT = '/var/www/geocurrencies/media'
 SENDFILE_URL = '/media'
-
-
 
 LOGGING = {
     'version': 1,
@@ -328,26 +326,21 @@ SERVICES = {
         'pelias': 'geocurrency.countries.services.pelias.PeliasGeocoder',
         'google': 'geocurrency.countries.services.google.GoogleGeocoder',
     },
-    'rates':  {
+    'rates': {
         'forex': 'geocurrency.rates.services.forex.ForexService',
         'currencylayer': 'geocurrency.rates.services.currencylayer.CurrencyLayerService'
     }
 }
 
 SWAGGER_SETTINGS = {
-   'SECURITY_DEFINITIONS': {
-      'Token': {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header'
-      }
-   }
+        }
+    }
 }
-
-from geocurrency.countries.settings import *
-from geocurrency.currencies.settings import *
-from geocurrency.rates.settings import *
-from geocurrency.units.settings import *
 
 try:
     from .local import *

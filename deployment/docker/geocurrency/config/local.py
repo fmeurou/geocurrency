@@ -8,7 +8,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'geocurrency-apis',
-    os.environ.get('GEOCURRENCY_API_DOMAIN', 'api.geocurrency.me',),
+    os.environ.get('GEOCURRENCY_API_DOMAIN', 'api.geocurrency.me', ),
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
@@ -40,7 +40,6 @@ CACHES = {
     }
 }
 
-
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_THROTTLE_CLASSES': [
@@ -60,7 +59,6 @@ REST_FRAMEWORK = {
 ROOT_URLCONF = 'api.urls'
 
 WSGI_APPLICATION = 'api.wsgi.application'
-
 
 LOGGING = {
     'version': 1,

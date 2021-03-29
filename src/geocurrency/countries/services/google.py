@@ -26,7 +26,7 @@ class GoogleGeocoder(Geocoder):
         """
         return super(Geocoder, cls).__new__(cls)
 
-    def __init__(self, key:str = None, *args, **kwargs):
+    def __init__(self, key: str = None, *args, **kwargs):
         """
         Google geocode engine
         Init: Geocoder('google', 'API key')
@@ -72,7 +72,7 @@ class GoogleGeocoder(Geocoder):
             logging.error(e)
         return {}
 
-    def reverse(self, lat:str, lng:str) -> dict:
+    def reverse(self, lat: str, lng: str) -> dict:
         """
         Google geocoding reverse
         :param lat: latitude
