@@ -806,6 +806,32 @@ class CustomUnitTest(TestCase):
                                       code='my_unit').count(),
             1)
 
+    def test_creation_with_dash(self):
+        """
+        Test creation of a CustomUnit with - in code, symbol and alias
+        """
+        cu = CustomUnit.objects.create(
+            user=self.user,
+            key=self.key,
+            unit_system='SI',
+            code='my-unit',
+            name='My Unit',
+            relation="1.5 meter",
+            symbol="m-yu",
+            alias="m-yu")
+        self.assertEqual(cu.user, self.user)
+        self.assertEqual(cu.key, self.key)
+        self.assertEqual(cu.unit_system, 'SI')
+        self.assertEqual(cu.code, 'my_unit')
+        self.assertEqual(cu.name, 'My Unit')
+        self.assertEqual(cu.relation, '1.5 meter')
+        self.assertEqual(cu.symbol, 'm_yu')
+        self.assertEqual(cu.alias, 'm_yu')
+        self.assertEqual(
+            CustomUnit.objects.filter(user=self.user, key=self.key, unit_system='SI',
+                                      code='my_unit').count(),
+            1)
+
     def test_invalid_creation_params(self):
         """
         Test invalid creation params

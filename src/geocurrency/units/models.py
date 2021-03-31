@@ -768,6 +768,9 @@ class CustomUnit(models.Model):
         Save custom unit to database
         """
         us = UnitSystem(system_name=self.unit_system)
+        self.code = self.code.replace('-', '_')
+        self.symbol = self.symbol.replace('-', '_')
+        self.alias = self.alias.replace('-', '_')
         if self.code in us.available_unit_names():
             raise UnitDuplicateError
         try:
