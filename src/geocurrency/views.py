@@ -9,13 +9,19 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .currencies.models import Currency
+from .units.models import UnitSystem
 
 @require_safe
 def index(request):
     """
     Base page
     """
-    return render(request, 'index.html')
+
+    return render(request, 'index.html', context={
+        'currencies': Currency.all_currencies(ordering='name'),
+        'unit_systems': UnitSystem.available_systems()
+    })
 
 
 @require_safe

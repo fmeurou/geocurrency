@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-push-2 text-center">
+                    <h1>Geocurrency</h1>
+                    <p class="lead">
+
+                        Online units and currency conversion system.
+
+                    </p>
+
+                    <p>Geocurrency aggregates different services around countries, currencies and units.<br>
+                        It provides query, conversion and calculation APIs.<br>
+                        Connected users also get access to customizable units and conversion rates.
+                    </p>
+                    <br>
+
+                    Get a free account to access advanced functionalities :
+                    <form class="form-inline" role="form">
+                        <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2"
+                                                       placeholder="Your Name"></div>
+                        <div class="form-group"><input type="text" class="form-control input-lg"
+                                                       id="exampleInputPassword2" placeholder="Your Email"></div>
+                        <button type="submit" class="btn btn-lg btn-default">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="illustration">
+                        <img src="assets/images/ap-screenshot.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /Header -->
+
+
+    <!-- Content -->
+    <main class="content">
+
+        <!-- Lead -->
+        <section class="container space-before space-after">
+            <div class="row">
+                <div class="col-sm-10 col-sm-push-1">
+                    <h1 class="text-center">Countries and Currencies</h1>
+                    <p class="lead text-center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nam mi odio, gravida at turpis et, porta bibendum justo.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- /Lead -->
+
+
+        <!-- Features -->
+        <section class="container space-before">
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-sm-6 col-md-push-1 ">
+                    <div class="space-before "><input type="text" class="form-control input-lg" id="country_info"
+                                                      placeholder="Show me a country"></div>
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Countries</h2>
+                    <p>Get a list of countries based on ISO-3166 additional information like flags, capital, flag
+                        colors, or borders</p>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Currencies</h2>
+                    <p>Get a list of currencies based on ISO-4217</p>
+                </div>
+                <div class="col-md-5 col-sm-6 col-md-push-1 ">
+                    <div class="space-before"><input type="text" class="form-control input-lg" id="currency_info"
+                                                     placeholder="Search for currency"></div>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+
+                <div class="col-md-5 col-sm-6 col-md-push-1 ">
+                    <div class="space-before ">
+                        From <select id="currency">
+                        {% for currency in currencies %}
+                            <option value="{{ currency.code }}">{{ currency.name }}</option>
+                        {% endfor %}
+                    </select> to
+                        <select id="currency">
+                            {% for currency in currencies %}
+                                <option value="{{ currency.code }}">{{ currency.name }}</option>
+                            {% endfor %}
+                        </select> at
+                        <input type="text" class="form-control input-lg" id="rate_date" placeholder="date of value">
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Currency rates</h2>
+                    <p>Find currency rates from CEB rates, with statistics on rates. Members can define custom
+                        rates.</p>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Units</h2>
+                    <p>Get a list of countries based on ISO-3166 additional information like flags, capital, flag
+                        colors, or borders</p>
+                </div>
+                <div class="space-before col-md-5 col-sm-6 col-md-push-1 ">
+                    <div class="col-md-5">
+                        <select id="unit_system" class="form-control">
+                            {% for us in unit_systems %}
+                            <option value="{{ us }}" {% if us == 'SI' %}selected{% endif %}>{{ us }}</option>
+                            {%  endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="unit_info" placeholder="Find units">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-sm-6 col-sm-push-6">
+                    <img class="img-feature img-responsive" src="assets/images/screen2.png" alt="Sample image">
+                </div>
+                <div class="col-md-5 col-sm-6 col-md-pull-4 col-sm-pull-6">
+                    <h2 class="space-before">Yes, I love cool backgrounds, <span class="text-muted">like the one used here</span>
+                    </h2>
+                    <p>There are 2 more color themes inside this template. You'll just need to uncomment
+                        few lines in the CSS file to activate any of them. </p>
+                    <p>Now, continue with our lipsum :)
+                        This is the ak-47 assault rifle, The preferred weapon of your enemy; and it makes a distinctive
+                        sound when
+                        fired at you, so remember it. When a naked man's chasing a woman through an alley with a butcher
+                        knife and a hard-on, I figure he's not out collecting for the red cross. well, do you have
+                        anything to say for yourself? </p>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-sm-6 col-md-push-1 col-sm-6">
+                    <img class="img-feature img-responsive" src="assets/images/screen3.png" alt="Sample image">
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2 class="space-before">Violet does look good too!</span></h2>
+                    <p>Here. Put that in your report! And "I may have found a way out of here. you want a guarantee, buy
+                        a toaster. are you feeling lucky punk dyin' ain't much of a livin', boy. what you have to ask
+                        yourself is, Do I feel lucky. Well do ya' punk? You see, in this world there's two kinds of
+                        people, my friend: those with loaded guns and those who dig. you dig.</p>
+                </div>
+            </div>
+        </section>
+        <!-- /Features -->
+
+    </main>
+
+
+    <footer id="footer" class="jumbotron">
+        <section class="container">
+            <div class="row">
+                <div class="col-md-5 col-md-push-1">
+                    <h2>Got your interest?</h2>
+                    <p>Please tell your friends about SuperAwesome!</p>
+                </div>
+                <div class="col-md-5 col-md-push-1">
+                    <h2>Need help?</h2>
+                    <p>For help with this or another template you've downloaded from GetTemplate, please email me at
+                        gt@gettemplate.com. </p>
+                    <p>If you'd like to report a bug or suggest an improvement, please post and issue on <a
+                            href="https://github.com/pozh/">GitHub</a></p>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <p class="small text-muted text-center">Copyright &copy; 2014, Your name. Design by: <a
+            href="http://gettemplate.com/" rel="designer" title="Free Bootstrap templates">GetTemplate</a></p>
+    <br>
+
+
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static '/js/template.js' %}"></script>
+
+{% endblock %}

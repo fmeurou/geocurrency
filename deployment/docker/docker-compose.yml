@@ -21,18 +21,18 @@ services:
     image: fmeurou/geocurrency:latest
     command: "/usr/bin/supervisord -c /etc/supervisor/conf.d/api.conf"
     environment:
-      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
-      - GEOCURRENCY_DB_HOST=db
-      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_ENGINE=${GEOCURRENCY_DB_ENGINE}
+      - GEOCURRENCY_DB_HOST=${GEOCURRENCY_DB_HOST}
+      - GEOCURRENCY_DB_PORT=${GEOCURRENCY_DB_PORT}
       - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
       - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
       - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
       - GEOCURRENCY_SECRET_KEY=${GEOCURRENCY_SECRET_KEY}
-      - GEOCURRENCY_URL=http://127.0.0.1/
+      - GEOCURRENCY_URL=${GEOCURRENCY_HOST}
       - GEOCURRENCY_ENV=Docker
-      - GEOCURRENCY_CONTACT_EMAIL=fm@peabytes.me
+      - GEOCURRENCY_CONTACT_EMAIL=${GEOCURRENCY_CONTACT_EMAIL}
     volumes:
-      - logs:/var/log/supervisor
+      - logs:/var/log
       - static:/var/apps/static
     ports:
       - "8000:8000"
@@ -43,23 +43,23 @@ services:
     image: fmeurou/geocurrency:latest
     command: python /var/apps/api/manage.py migrate --noinput
     environment:
-      - GEOCURRENCY_SERVICE_EMAIL=admin@peabytes.me
-      - GEOCURRENCY_SERVICE_URL=127.0.0.1
-      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
-      - GEOCURRENCY_DB_HOST=db
-      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_ENGINE=${GEOCURRENCY_DB_ENGINE}
+      - GEOCURRENCY_DB_HOST=${GEOCURRENCY_DB_HOST}
+      - GEOCURRENCY_DB_PORT=${GEOCURRENCY_DB_PORT}
       - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
       - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
       - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
+      - GEOCURRENCY_SERVICE_EMAIL=${GEOCURRENCY_ADMIN_EMAIL}
+      - GEOCURRENCY_SERVICE_URL=${GEOCURRENCY_HOST}
     depends_on:
       - geocurrency
   superuser:
     image: fmeurou/geocurrency:latest
     command: python /var/apps/api/manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'T3st2020.')"
     environment:
-      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
-      - GEOCURRENCY_DB_HOST=db
-      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_ENGINE=${GEOCURRENCY_DB_ENGINE}
+      - GEOCURRENCY_DB_HOST=${GEOCURRENCY_DB_HOST}
+      - GEOCURRENCY_DB_PORT=${GEOCURRENCY_DB_PORT}
       - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
       - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
       - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
@@ -69,9 +69,9 @@ services:
     image: fmeurou/geocurrency:latest
     command: python /var/apps/api/manage.py fetch_rates
     environment:
-      - GEOCURRENCY_DB_ENGINE=django.db.backends.postgresql
-      - GEOCURRENCY_DB_HOST=db
-      - GEOCURRENCY_DB_PORT=5432
+      - GEOCURRENCY_DB_ENGINE=${GEOCURRENCY_DB_ENGINE}
+      - GEOCURRENCY_DB_HOST=${GEOCURRENCY_DB_HOST}
+      - GEOCURRENCY_DB_PORT=${GEOCURRENCY_DB_PORT}
       - GEOCURRENCY_DB_NAME=${GEOCURRENCY_DB_NAME}
       - GEOCURRENCY_DB_USERNAME=${GEOCURRENCY_DB_USERNAME}
       - GEOCURRENCY_DB_PASSWORD=${GEOCURRENCY_DB_PASSWORD}
