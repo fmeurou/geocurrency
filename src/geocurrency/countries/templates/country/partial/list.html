@@ -1,0 +1,30 @@
+<turbo-frame id="countries">
+    <form action="/countries/search/">
+        <input type="hidden" name="cachebust" value="{{ timestamp }}">
+        <input type="text" class="input-lg col-md-8" id="country_search"
+               placeholder="Show me a country" name="search"/>&nbsp;
+        <input type="submit"/>
+    </form>
+    <div id="countries_list">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Alpha2</th>
+                <th>Alpha3</th>
+                <th>Numeric</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for country in countries %}
+                <tr>
+                    <td>{{ country.name }}</td>
+                    <td>{{ country.alpha_2 }}</td>
+                    <td>{{ country.alpha_3 }}</td>
+                    <td>{{ country.numeric }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</turbo-frame>

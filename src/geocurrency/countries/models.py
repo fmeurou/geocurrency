@@ -74,6 +74,20 @@ class Country:
         self.numeric = country.numeric
 
     @classmethod
+    def search(cls, term):
+        """
+        Search for Contruy by name, alpha_2, alpha_3, or numeric value
+        :param term: Search term
+        """
+        result = []
+        for attr in ['alpha_2', 'alpha_3', 'name', 'numeric']:
+            result.extend(
+                [Country(getattr(c, 'alpha_2')) for c in countries if term.lower() in getattr(c, attr).lower()]
+            )
+        return sorted(list(set(result)), key=lambda x: x.name)
+
+
+    @classmethod
     def all_countries(cls, ordering: str = 'name'):
         """
         List all countries, instanciate CountryInfo for each country in pycountry.countries

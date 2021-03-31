@@ -1,7 +1,7 @@
 """
 Core views
 """
-
+import datetime
 from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.http import require_safe
@@ -20,7 +20,8 @@ def index(request):
 
     return render(request, 'index.html', context={
         'currencies': Currency.all_currencies(ordering='name'),
-        'unit_systems': UnitSystem.available_systems()
+        'unit_systems': UnitSystem.available_systems(),
+        'cachebust': datetime.datetime.now().timestamp()
     })
 
 
