@@ -1,3 +1,10 @@
+recursive-include geocurrency/templates *.html
+recursive-include geocurrency/static *.css
+recursive-include geocurrency/static *.js
+recursive-include geocurrency/static *.jpg
 recursive-include geocurrency/core/locale *.mo
-recursive-include geocurrency/core/templates *.html
+recursive-include geocurrency/*/templates *.html
+recursive-include geocurrency/*/static *.css
+recursive-include geocurrency/*/static *.js
+recursive-include geocurrency/*/static *.jpg
 recursive-include geocurrency/core/fixtures *.json
