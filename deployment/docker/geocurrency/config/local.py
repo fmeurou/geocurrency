@@ -67,7 +67,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/var/apps/logs/api-debug.log',
+            'filename': '/var/log/geocurrency/api.log',
         },
     },
     'loggers': {

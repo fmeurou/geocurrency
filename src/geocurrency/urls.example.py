@@ -15,14 +15,15 @@ Including another URLconf
 """
 import os
 
-import geocurrency
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from geocurrency.core import urls as geocurrency_urls
 from rest_framework import permissions
+
+import geocurrency
+from geocurrency import urls as geocurrency_urls
 
 environment = os.environ.get('GEOCURRENCY_ENV', 'dev')
 contact_email = os.environ.get('GEOCURRENCY_CONTACT', 'fm@peabytes.me')

@@ -2,21 +2,38 @@
 Models for Country module
 """
 
+import logging
 import os
 import re
 from datetime import datetime
-import logging
+
 import pytz
 import requests
 from countryinfo import CountryInfo
 from django.conf import settings
-from django.core.cache import cache
+from django.core.cache import caches, cache
 from django.db import models
 from pycountry import countries
 from pytz import timezone
 
 from .helpers import ColorProximity, hextorgb
 from .settings import *
+
+
+def load_cache():
+    try:
+        ccache = caches['countries']
+    except KeyError:
+        ccache = cache
+    for country in countries:
+        if not ccache.get(country.alpha_2):
+            logging.warning(f"Cache miss, loading {country.alpha_2}")
+            try:
+                ccache.set(country.alpha_2, CountryInfo(country.alpha_2).info())
+            except KeyError:
+                pass
+
+load_cache()
 
 
 class CountryNotFoundError(Exception):
@@ -30,6 +47,7 @@ class CountryManager(models.Manager):
     """
     Manager for country model
     """
+
     @staticmethod
     def get_by_color(color, proximity=1):
         """
@@ -72,6 +90,20 @@ class Country:
         self.alpha_3 = country.alpha_3
         self.name = country.name
         self.numeric = country.numeric
+
+    @classmethod
+    def search(cls, term):
+        """
+        Search for Contruy by name, alpha_2, alpha_3, or numeric value
+        :param term: Search term
+        """
+        result = []
+        for attr in ['alpha_2', 'alpha_3', 'name', 'numeric']:
+            result.extend(
+                [getattr(c, 'alpha_2') for c in countries
+                 if term.lower() in getattr(c, attr).lower()]
+            )
+        return sorted([Country(r) for r in set(result)], key=lambda x: x.name)
 
     @classmethod
     def all_countries(cls, ordering: str = 'name'):
@@ -201,29 +233,47 @@ class Country:
             return self.analyze_flag()
 
     @property
+    def info(self) -> str:
+        """
+        Return country region
+        """
+        try:
+            ccache = caches['countries']
+        except KeyError:
+            ccache = cache
+        return ccache.get(self.alpha_2, {})
+
+    @property
     def region(self) -> str:
         """
         Return country region
         """
-        return CountryInfo(self.alpha_2).region()
+        return self.info.get('region', '')
 
     @property
     def subregion(self) -> str:
         """
         Return country subregion
         """
-        return CountryInfo(self.alpha_2).subregion()
+        return self.info.get('subregion', '')
 
     @property
     def tld(self) -> str:
         """
         Return country TLD
         """
-        return CountryInfo(self.alpha_2).tld()
+        return self.info.get('tld', '')
 
     @property
     def capital(self) -> str:
         """
         Return country capital
         """
-        return CountryInfo(self.alpha_2).capital()
+        return self.info.get('capital', '')
+
+    @property
+    def population(self) -> str:
+        """
+        Return country population
+        """
+        return self.info.get('population', '')

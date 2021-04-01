@@ -2,12 +2,14 @@
 Country views
 """
 
+import datetime
 import logging
 import os
 
 import requests
 from django.conf import settings
 from django.http import HttpResponseBadRequest, HttpResponseNotFound
+from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.cache import cache_page
@@ -44,3 +46,17 @@ class FlagView(View):
             logging.error("Error fetching country")
             logging.error(e)
             return HttpResponseNotFound("Invalid country")
+
+
+class TurboCountryListView(View):
+
+    def get(self, request, *args, **kwargs):
+        countries = Country.search(term=request.GET.get('search', ''))
+        return render(
+            request,
+            'country/partial/list.html',
+            context={
+                'countries': countries,
+                'timestamp': datetime.datetime.now().timestamp()
+            }
+        )

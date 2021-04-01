@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
 import pycountry
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -335,13 +336,13 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
+    },
+    "countries": {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'countries',
+        'TIMEOUT': None
     }
 }
-
-from geocurrency.countries.settings import *
-from geocurrency.currencies.settings import *
-from geocurrency.rates.settings import *
-from geocurrency.units.settings import *
 
 try:
     from .local import *
