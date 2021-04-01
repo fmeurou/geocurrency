@@ -1,0 +1,41 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load tz %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Geocurrency</title>
+
+	<link rel="shortcut icon" href="{% static '/images/gt_favicon.png' %}">
+	
+	<!-- Bootstrap itself -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!-- Icons -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="{% static '/css/styles.css' %}">
+
+	<!--[if lt IE 9]> <script src="{% static '/js/html5shiv.js' %}"></script> <![endif]-->
+    <script
+      src="https://unpkg.com/@hotwired/turbo@7.0.0-beta.4/dist/turbo.es2017-umd.js"
+      defer
+      data-turbo-track="reload"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

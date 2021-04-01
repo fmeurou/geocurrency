@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-push-2 text-center">
+                    <h1>Geocurrency</h1>
+                    <p class="lead">
+
+                        Online units and currency conversion system.
+
+                    </p>
+
+                    <p>Geocurrency aggregates different services around countries, currencies and units.<br>
+                        It provides query, conversion and calculation APIs.<br>
+                        Connected users also get access to customizable units and conversion rates.
+                    </p>
+                    <br>
+
+                    Request an account to access advanced functionalities :
+                    <form class="form-inline" role="form" action="/requestaccont/">
+                        <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2"
+                                                       placeholder="Your Name"></div>
+                        <div class="form-group"><input type="text" class="form-control input-lg"
+                                                       id="exampleInputPassword2" placeholder="Your Email"></div>
+                        <button type="submit" class="btn btn-lg btn-default">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="illustration">
+                        <img src="{% static 'images/ap-screenshot.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /Header -->
+
+
+    <!-- Content -->
+    <main class="content">
+
+        <!-- Lead -->
+        <section class="container space-before space-after">
+            <div class="row">
+                <div class="col-sm-10 col-sm-push-1">
+                    <h1 class="text-center">Countries - Currencies - Rates - Units</h1>
+                    <p class="lead text-center">
+                        Access our <a href="/swagger/">OpenAPI interface</a> to test our APIs and integrate the service into your application.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- /Lead -->
+
+
+        <!-- Features -->
+        <section class="container space-before">
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Countries</h2>
+                    <p>Get a list of countries based on ISO-3166 additional information like flags, capital, flag
+                        colors, or borders</p>
+                </div>
+                <div class="col-md-5 col-sm-6 col-md-push-1">
+                    <div class="space-before ">
+                        <turbo-frame id="countries" src="/countries/search/?search=empty&cachebust={{ timestamp }}">
+                        </turbo-frame>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-sm-6 col-md-push-1 ">
+                    <turbo-frame id="currencies" src="/currencies/search/?search=empty&cachebust={{ timestamp }}">
+                    </turbo-frame>
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Currencies</h2>
+                    <p>Get a list of currencies based on ISO-4217</p>
+                </div>
+
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-10 col-md-push-1 col-sm-6">
+                    <h2>Currency rates</h2>
+                    <p>Find currency rates from CEB rates, with statistics on rates. Members can define custom
+                        rates.</p>
+                </div>
+                <div class="col-md-10 col-sm-6 col-md-push-1 ">
+                    <turbo-frame id="rates" src="/rates/search/?from_rate=&cachebust={{ timestamp }}">
+                    </turbo-frame>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2>Units</h2>
+                    <p>Get units from unit systems, and convert between units.</p>
+                </div>
+                <div class="space-before col-md-10 col-sm-6 col-md-push-1 ">
+                    <turbo-frame id="units" src="/units/search/?search=empty&cachebust={{ timestamp }}">
+                    </turbo-frame>
+                </div>
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-sm-6 col-sm-push-6">
+                    <img class="img-feature img-responsive" src="{% static 'images/screen2.png' %}"
+                         alt="Sample image">
+                </div>
+                <div class="col-md-5 col-sm-6 col-md-pull-4 col-sm-pull-6">
+                    <h2 class="space-before">I want to use my own rates, <span
+                            class="text-muted">to convert my data</span>
+                    </h2>
+                    <p>There is more to it. </p>
+                    <p>Registered users can define their own rates. Custom rates can be segmented by category, and
+                        the conversion engine
+                        can prioritize categorized rates over CEB rates.<br/>
+                        Custom rates can also be applied over periods of time.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="row featurelist space-after">
+                <div class="col-md-5 col-sm-6 col-md-push-1 col-sm-6">
+                    <img class="img-feature img-responsive" src="{% static 'images/screen3.png' %}"
+                         alt="Sample image">
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-6">
+                    <h2 class="space-before">You don't have this unit in your conversion engine !</span></h2>
+                    <p>Our system is extensible. A registered user can define its own units to convert value.
+                        These units can be categorized too.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- /Features -->
+    </main>
+
+
+    <footer id="footer" class="jumbotron">
+        <section class="container">
+            <div class="row">
+                <div class="col-md-5 col-md-push-1">
+                    <h2>Got your interest?</h2>
+                    <p>Please tell your friends about SuperAwesome!</p>
+                </div>
+                <div class="col-md-5 col-md-push-1">
+                    <h2>Need help?</h2>
+                    For help with this, please email <a mailto="fm@peabytes.me">me</a>. </p>
+                    <p>If you'd like to report a bug or suggest an improvement, please post and issue on <a
+                            href="https://github.com/fmeurou/geocurrency">GitHub</a></p>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <p class="small text-muted text-center">Copyright &copy; 2021, Peabytes. Design by: <a
+            href="http://gettemplate.com/" rel="designer" title="Free Bootstrap templates">GetTemplate</a></p>
+    <br>
+
+
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static '/js/template.js' %}"></script>
+
+{% endblock %}

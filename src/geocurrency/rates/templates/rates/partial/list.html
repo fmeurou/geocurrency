@@ -1,0 +1,42 @@
+<turbo-frame id="rates">
+    <form action="/rates/search/">
+        <input type="hidden" name="cachebust" value="{{ timestamp }}">
+        <input type="text" class="col-md-2" list="curs" value="{{ from_currency }}"
+               placeholder="From currency" name="from_currency"/>&nbsp;
+        <input type="text" class="col-md-2" list="curs" value="{{ to_currency }}"
+               placeholder="To currency" name="to_currency"/>&nbsp;
+        <datalist id="curs">
+            {%  for currency in currencies %}
+                <option value="{{ currency.code }}">{{ currency.code }}</option>
+            {% endfor %}
+        </datalist>
+        <input type="date" class="col-md-3" id="rates_from_date"
+               placeholder="From date" name="from_date" value="{{ from_date|date:"Y-m-d" }}"/>&nbsp;
+        <input type="date" class="col-md-3" id="rates_to_date"
+               placeholder="To date" name="to_date" value="{{ to_date|date:"Y-m-d" }}"/>&nbsp;
+        &nbsp;&nbsp;
+        <input type="submit" class="btn" value="Get rates"/>
+    </form>
+    <div id="currencies_list" style="height:150px; width:100%;overflow:hidden;">
+        <table class="table" style="overflow-y: scroll;">
+            <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th>Rate</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for rate in rates %}
+                <tr>
+                    <td>{{ rate.currency }}</td>
+                    <td>{{ rate.base_currency }}</td>
+                    <td>{{ rate.value_date }}</td>
+                    <td>{{ rate.value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</turbo-frame>
