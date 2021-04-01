@@ -1,0 +1,33 @@
+<turbo-frame id="units">
+    <form action="/units/search/">
+        <input type="hidden" name="cachebust" value="{{ timestamp }}">
+        <input type="text" value="{{ value }}"
+               placeholder="Value to convert" name="value"/>
+        <input type="text" list="units_list" value="{{ unit.code }}"
+               placeholder="from unit" name="unit"/>
+        <label for="to_unit">&nbsp;to&nbsp;</label>
+        <input type="text" list="units_list" value="{{ dest_unit.code }}"
+               placeholder="to unit" name="dest_unit"/>
+        <datalist id="units_list">
+            {%  for unit_item in units %}
+                <option value="{{ unit_item.code }}">{{ unit_item.name }}</option>
+            {% endfor %}
+        </datalist>
+
+        <input type="submit" class="btn"/>
+    </form>
+    <div id="unit_table" style="height:150px; width:100%;overflow:hidden;">
+        <table class="table" style="overflow-y: scroll;">
+            <thead>
+            <tr>
+                <th>Result</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ result.magnitude }} {{ result.units }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</turbo-frame>

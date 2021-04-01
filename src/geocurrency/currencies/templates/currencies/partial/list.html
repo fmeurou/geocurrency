@@ -1,0 +1,31 @@
+<turbo-frame id="currencies">
+    <form action="/currencies/search/">
+        <input type="hidden" name="cachebust" value="{{ timestamp }}">
+        <input type="text" class="col-md-8" id="country_search"
+               placeholder="Search for currencies" name="search"/>&nbsp
+        &nbsp;
+        <input class="btn" type="submit" value="Search"/>
+    </form>
+    <div id="currencies_list" style="height:150px; width:100%;overflow:hidden;">
+        <table class="table" style="overflow-y: scroll;">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Symbol</th>
+                <th>Exponent</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for currency in currencies %}
+                <tr>
+                    <td>{{ currency.currency_name }}</td>
+                    <td>{{ currency.code }}</td>
+                    <td>{{ currency.symbol }}</td>
+                    <td>{{ currency.exponent }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</turbo-frame>

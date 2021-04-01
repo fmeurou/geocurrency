@@ -20,8 +20,8 @@
                     </p>
                     <br>
 
-                    Get a free account to access advanced functionalities :
-                    <form class="form-inline" role="form">
+                    Request an account to access advanced functionalities :
+                    <form class="form-inline" role="form" action="/requestaccont/">
                         <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2"
                                                        placeholder="Your Name"></div>
                         <div class="form-group"><input type="text" class="form-control input-lg"
@@ -51,8 +51,7 @@
                 <div class="col-sm-10 col-sm-push-1">
                     <h1 class="text-center">Countries - Currencies - Rates - Units</h1>
                     <p class="lead text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nam mi odio, gravida at turpis et, porta bibendum justo.
+                        Access our <a href="/swagger/">OpenAPI interface</a> to test our APIs and integrate the service into your application.
                     </p>
                 </div>
             </div>
@@ -70,17 +69,17 @@
                         colors, or borders</p>
                 </div>
                 <div class="col-md-5 col-sm-6 col-md-push-1">
-                        <div class="space-before ">
-                            <turbo-frame id="countries" src="/countries/search/?search=empty&cachebust={{ timestamp }}">
-                            </turbo-frame>
-                        </div>
+                    <div class="space-before ">
+                        <turbo-frame id="countries" src="/countries/search/?search=empty&cachebust={{ timestamp }}">
+                        </turbo-frame>
+                    </div>
                 </div>
             </div>
 
             <div class="row featurelist space-after">
                 <div class="col-md-5 col-sm-6 col-md-push-1 ">
-                    <div class="space-before"><input type="text" class="form-control input-lg" id="currency_info"
-                                                     placeholder="Search for currency"></div>
+                    <turbo-frame id="currencies" src="/currencies/search/?search=empty&cachebust={{ timestamp }}">
+                    </turbo-frame>
                 </div>
                 <div class="col-md-5 col-md-push-1 col-sm-6">
                     <h2>Currencies</h2>
@@ -90,59 +89,42 @@
             </div>
 
             <div class="row featurelist space-after">
-                <div class="col-md-5 col-md-push-1 col-sm-6">
+                <div class="col-md-10 col-md-push-1 col-sm-6">
                     <h2>Currency rates</h2>
                     <p>Find currency rates from CEB rates, with statistics on rates. Members can define custom
                         rates.</p>
                 </div>
-                <div class="col-md-5 col-sm-6 col-md-push-1 ">
-                    <div class="space-before ">
-                        From <select id="currency">
-                        {% for currency in currencies %}
-                            <option value="{{ currency.code }}">{{ currency.name }}</option>
-                        {% endfor %}
-                    </select> to
-                        <select id="currency">
-                            {% for currency in currencies %}
-                                <option value="{{ currency.code }}">{{ currency.name }}</option>
-                            {% endfor %}
-                        </select> at
-                        <input type="text" class="form-control input-lg" id="rate_date" placeholder="date of value">
-                    </div>
+                <div class="col-md-10 col-sm-6 col-md-push-1 ">
+                    <turbo-frame id="rates" src="/rates/search/?from_rate=&cachebust={{ timestamp }}">
+                    </turbo-frame>
                 </div>
             </div>
 
             <div class="row featurelist space-after">
-                <div class="space-before col-md-5 col-sm-6 col-md-push-1 ">
-                    <div class="col-md-5">
-                        <select id="unit_system" class="form-control">
-                            {% for us in unit_systems %}
-                            <option value="{{ us }}" {% if us == 'SI' %}selected{% endif %}>{{ us }}</option>
-                            {%  endfor %}
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" id="unit_info" placeholder="Find units">
-                    </div>
-                </div>
                 <div class="col-md-5 col-md-push-1 col-sm-6">
                     <h2>Units</h2>
-                    <p>Get a list of countries based on ISO-3166 additional information like flags, capital, flag
-                        colors, or borders</p>
+                    <p>Get units from unit systems, and convert between units.</p>
+                </div>
+                <div class="space-before col-md-10 col-sm-6 col-md-push-1 ">
+                    <turbo-frame id="units" src="/units/search/?search=empty&cachebust={{ timestamp }}">
+                    </turbo-frame>
                 </div>
             </div>
 
             <div class="row featurelist space-after">
                 <div class="col-md-5 col-sm-6 col-sm-push-6">
-                    <img class="img-feature img-responsive" src="{% static 'images/screen2.png' %}" alt="Sample image">
+                    <img class="img-feature img-responsive" src="{% static 'images/screen2.png' %}"
+                         alt="Sample image">
                 </div>
                 <div class="col-md-5 col-sm-6 col-md-pull-4 col-sm-pull-6">
-                    <h2 class="space-before">I want to use my own rates, <span class="text-muted">to convert my data</span>
+                    <h2 class="space-before">I want to use my own rates, <span
+                            class="text-muted">to convert my data</span>
                     </h2>
-                    <p>There is more to it.  </p>
-                    <p>Registered users can define their own rates. Custom rates can be segmented by category, and the conversion engine
-                    can prioritize categorized rates over CEB rates.<br/>
-                    Custom rates can also be applied over periods of time.
+                    <p>There is more to it. </p>
+                    <p>Registered users can define their own rates. Custom rates can be segmented by category, and
+                        the conversion engine
+                        can prioritize categorized rates over CEB rates.<br/>
+                        Custom rates can also be applied over periods of time.
                     </p>
                 </div>
 
@@ -150,7 +132,8 @@
 
             <div class="row featurelist space-after">
                 <div class="col-md-5 col-sm-6 col-md-push-1 col-sm-6">
-                    <img class="img-feature img-responsive" src="{% static 'images/screen3.png' %}" alt="Sample image">
+                    <img class="img-feature img-responsive" src="{% static 'images/screen3.png' %}"
+                         alt="Sample image">
                 </div>
                 <div class="col-md-5 col-md-push-1 col-sm-6">
                     <h2 class="space-before">You don't have this unit in your conversion engine !</span></h2>

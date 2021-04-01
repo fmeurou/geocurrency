@@ -51,6 +51,20 @@ class Currency:
             raise CurrencyNotFoundError('Invalid currency code')
 
     @classmethod
+    def search(cls, term):
+        """
+        Search for Contruy by name, alpha_2, alpha_3, or numeric value
+        :param term: Search term
+        """
+        result = []
+        for attr in ['code', 'name', 'currency_name', 'number', 'value']:
+            result.extend(
+                [getattr(c, 'code') for c in Iso4217
+                 if term.lower() in str(getattr(c, attr)).lower()]
+            )
+        return sorted([Currency(r) for r in set(result)], key=lambda x: x.name)
+
+    @classmethod
     def is_valid(cls, cur: str) -> bool:
         """
         Checks if currency is part of iso4217
