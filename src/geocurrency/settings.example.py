@@ -72,7 +72,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'corsheaders',
+    'geocurrency',
     'geocurrency.core',
+    'geocurrency.countries',
+    'geocurrency.currencies',
     'geocurrency.rates',
     'geocurrency.units',
 ]
