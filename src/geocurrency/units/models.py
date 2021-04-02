@@ -870,7 +870,7 @@ class Expression:
         for var in self.operands:
             if not var.validate():
                 return False, "invalid operand"
-        kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
+        kwargs = {v.name: f"({v.value}*{v.unit})" for v in self.operands}
         try:
             q_(self.expression.format(**kwargs))
         except KeyError:
@@ -886,7 +886,7 @@ class Expression:
         q_ = unit_system.ureg.Quantity
         is_valid, error = self.validate(unit_system=unit_system)
         if is_valid:
-            kwargs = {v.name: f"{v.value} {v.unit}" for v in self.operands}
+            kwargs = {v.name: f"({v.value}*{v.unit})" for v in self.operands}
             return q_(self.expression.format(**kwargs))
         else:
             raise ComputationError(f"Invalid formula: {error}")
