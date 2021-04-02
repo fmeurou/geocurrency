@@ -1,7 +1,7 @@
 <turbo-frame id="units">
     <form action="/units/search/">
         <input type="hidden" name="cachebust" value="{{ timestamp }}">
-        <input type="text" value="{{ value }}"
+        <input type="number" step="0.01" value="{{ value }}"
                placeholder="Value to convert" name="value"/>
         <input type="text" list="units_list" value="{{ unit.code }}"
                placeholder="from unit" name="unit"/>
@@ -13,7 +13,6 @@
                 <option value="{{ unit_item.code }}">{{ unit_item.name }}</option>
             {% endfor %}
         </datalist>
-
         <input type="submit" class="btn"/>
     </form>
     <div id="unit_table" style="height:150px; width:100%;overflow:hidden;">
