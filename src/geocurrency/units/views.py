@@ -7,8 +7,7 @@ import datetime
 from django.shortcuts import render
 from django.views import View
 
-from geocurrency.currencies.models import Currency
-from .models import Unit, UnitSystem, UnitNotFound
+from .models import UnitSystem, UnitNotFound
 
 
 class ListFragment(View):
@@ -29,9 +28,7 @@ class ListFragment(View):
         except ValueError:
             value = 0
         q_ = unit_system.ureg.Quantity
-        print(dest_unit)
         result = q_(value, unit.code).to(dest_unit.code)
-        print(result.magnitude)
         return render(
             request,
             'units/partial/list.html',
