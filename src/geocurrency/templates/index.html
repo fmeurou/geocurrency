@@ -49,7 +49,11 @@
         <section class="container space-before space-after">
             <div class="row">
                 <div class="col-sm-10 col-sm-push-1">
-                    <h1 class="text-center">Countries - Currencies - Rates - Units</h1>
+                    <h1 class="text-center"><a href="#countries_anchor">Countries</a> -
+                        <a href="#currencies_anchor">Currencies</a> -
+                        <a href="#rates_anchor">Rates</a> -
+                        <a href="#units_anchor">Units</a> -
+                        <a href="#more_anchor">And more...</a></h1>
                     <p class="lead text-center">
                         Access our <a href="/swagger/">OpenAPI interface</a> to test our APIs and integrate the service into your application.
                     </p>
@@ -64,7 +68,7 @@
 
             <div class="row featurelist space-after">
                 <div class="col-md-5 col-md-push-1 col-sm-6">
-                    <h2>Countries</h2>
+                    <h2 id="countries_anchor">Countries</h2>
                     <p>Get a list of countries based on ISO-3166 additional information like flags, capital, flag
                         colors, or borders</p>
                 </div>
@@ -82,7 +86,7 @@
                     </turbo-frame>
                 </div>
                 <div class="col-md-5 col-md-push-1 col-sm-6">
-                    <h2>Currencies</h2>
+                    <h2 id="currencies_anchor">Currencies</h2>
                     <p>Get a list of currencies based on ISO-4217</p>
                 </div>
 
@@ -90,7 +94,7 @@
 
             <div class="row featurelist space-after">
                 <div class="col-md-10 col-md-push-1 col-sm-6">
-                    <h2>Currency rates</h2>
+                    <h2 id="rates_anchor">Currency rates</h2>
                     <p>Find currency rates from CEB rates, with statistics on rates. Members can define custom
                         rates.</p>
                 </div>
@@ -102,7 +106,7 @@
 
             <div class="row featurelist space-after">
                 <div class="col-md-5 col-md-push-1 col-sm-6">
-                    <h2>Units</h2>
+                    <h2 id="units_anchor">Units</h2>
                     <p>Get units from unit systems, and convert between units.</p>
                 </div>
                 <div class="space-before col-md-10 col-sm-6 col-md-push-1 ">
@@ -111,7 +115,7 @@
                 </div>
             </div>
 
-            <div class="row featurelist space-after">
+            <div class="row featurelist space-after" id="more_anchor">
                 <div class="col-md-5 col-sm-6 col-sm-push-6">
                     <img class="img-feature img-responsive" src="{% static 'images/screen2.png' %}"
                          alt="Sample image">
