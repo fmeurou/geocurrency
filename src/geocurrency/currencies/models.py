@@ -62,6 +62,8 @@ class Currency:
                 [getattr(c, 'code') for c in Iso4217
                  if term.lower() in str(getattr(c, attr)).lower()]
             )
+        # search for symbol
+        result.extend([c.code for c in Iso4217 if term in cls.get_symbol(c.code)])
         return sorted([Currency(r) for r in set(result)], key=lambda x: x.name)
 
     @classmethod
@@ -153,4 +155,12 @@ class Currency:
         """
         Returns the symbol for this currency based on __init__.CURRENCY_SYMBOLS
         """
-        return CURRENCY_SYMBOLS.get(self.code, DEFAULT_SYMBOL)
+        return self.get_symbol(self.code)
+
+    @staticmethod
+    def get_symbol(code: str) -> str:
+        """
+        Get symbol for currency
+        :param code: Currency code
+        """
+        return CURRENCY_SYMBOLS.get(code, DEFAULT_SYMBOL)

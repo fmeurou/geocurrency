@@ -26,11 +26,16 @@
 	<!--[if lt IE 9]> <script src="{% static '/js/html5shiv.js' %}"></script> <![endif]-->
     <script
       src="//unpkg.com/@hotwired/turbo@7.0.0-beta.4/dist/turbo.es2017-umd.js"
-      defer
-      data-turbo-track="reload"
     ></script>
-    <script
-      src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    Turbo.connectStreamSource(new WebSocket("ws://" + document.location.host + "/"));
+    </script>
+    <script src="//unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+    <script src="{% static "js/controllers/countries_controller.js" %}"></script>
+    <script src="{% static "js/controllers/currencies_controller.js" %}"></script>
+    <script src="{% static "js/controllers/units_controller.js" %}"></script>
+    <!-- <script
+      src="//code.jquery.com/jquery-3.6.0.min.js"></script> -->
 </head>
 
 <body>

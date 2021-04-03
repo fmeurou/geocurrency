@@ -28,6 +28,9 @@ class FlagView(View):
     @method_decorator(cache_page(60 * 60 * 2))
     @method_decorator(vary_on_cookie)
     def get(self, request, pk, *args, **kwargs):
+        """
+        Handle GET request
+        """
         try:
             country = Country(alpha_2=pk)
             flag_path = os.path.join(settings.MEDIA_ROOT, country.alpha_2 + '.svg')
@@ -49,13 +52,33 @@ class FlagView(View):
 
 
 class TurboCountryListView(View):
+    """
+    Country list fragment for turbo frame
+    """
 
     def get(self, request, *args, **kwargs):
+        """
+        Handle GET request
+        """
+        return self._handle(request, request.GET)
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST request
+        """
+        return self._handle(request, request.POST)
+
+    def _handle(self, request, data):
+        """
+        Handle request not depending on the method
+        """
         countries = Country.search(term=request.GET.get('search', ''))
         return render(
             request,
-            'country/partial/list.html',
+            'frame.html',
             context={
+                'dom_id': 'countries',
+                'model_template': 'countries/partial/list_and_form.html',
                 'countries': countries,
                 'timestamp': datetime.datetime.now().timestamp()
             }

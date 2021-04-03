@@ -20,22 +20,6 @@ from .helpers import ColorProximity, hextorgb
 from .settings import *
 
 
-def load_cache():
-    try:
-        ccache = caches['countries']
-    except KeyError:
-        ccache = cache
-    for country in countries:
-        if not ccache.get(country.alpha_2):
-            logging.warning(f"Cache miss, loading {country.alpha_2}")
-            try:
-                ccache.set(country.alpha_2, CountryInfo(country.alpha_2).info())
-            except KeyError:
-                pass
-
-load_cache()
-
-
 class CountryNotFoundError(Exception):
     """
     Exception when Country is not found
@@ -92,7 +76,7 @@ class Country:
         self.numeric = country.numeric
 
     @classmethod
-    def search(cls, term):
+    def search(cls, term:str) -> []:
         """
         Search for Contruy by name, alpha_2, alpha_3, or numeric value
         :param term: Search term
@@ -241,6 +225,12 @@ class Country:
             ccache = caches['countries']
         except KeyError:
             ccache = cache
+        if not ccache.get(self.alpha_2, {}):
+            try:
+                info = CountryInfo(self.alpha_2).info()
+            except KeyError:
+                info = {}
+            ccache.set(self.alpha_2, info)
         return ccache.get(self.alpha_2, {})
 
     @property
