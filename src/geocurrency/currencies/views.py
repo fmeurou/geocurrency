@@ -2,32 +2,30 @@
 Currencies views
 """
 
-import logging
-import os
 import datetime
 
-import requests
-from django.conf import settings
-from django.http import HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import render
-from django.utils.decorators import method_decorator
 from django.views import View
-from django.views.generic import ListView
-from django.views.decorators.cache import cache_page
-from django.views.decorators.vary import vary_on_cookie
-from sendfile import sendfile
 
 from .models import Currency
 
 
 class TurboCurrencyListView(View):
+    """
+    List fragment for turbo frame
+    """
 
     def get(self, request, *args, **kwargs):
+        """
+        Get a list of currencies
+        """
         currencies = Currency.search(term=request.GET.get('search', ''))
         return render(
             request,
-            'currencies/partial/list.html',
+            'frame.html',
             context={
+                'dom_id': 'currencies',
+                'model_template': 'currencies/partial/list.html',
                 'currencies': currencies,
                 'timestamp': datetime.datetime.now().timestamp()
             }

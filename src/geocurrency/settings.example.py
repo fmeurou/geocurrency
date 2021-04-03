@@ -60,6 +60,7 @@ CORS_ALLOW_HEADERS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -326,6 +327,7 @@ SENDFILE_ROOT = '/var/www/geocurrencies/media'
 STATIC_ROOT = '/var/www/geocurrencies/static'
 MEDIA_ROOT = '/var/www/geocurrencies/media'
 WSGI_APPLICATION = 'api.wsgi.application'
+ASGI_APPLICATION = 'api.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
