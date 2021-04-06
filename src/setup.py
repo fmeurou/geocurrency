@@ -67,6 +67,7 @@ setup(
         "django_redis~=4.0",
         "pysendfile~=2.0",
         "gunicorn",
+        "requests",
         # "psycopg2",
         # "mysql",
         "pytz",
