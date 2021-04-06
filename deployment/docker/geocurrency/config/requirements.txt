@@ -1,3 +1,0 @@
-django-createsuperuser
-psycopg2
-mysql
