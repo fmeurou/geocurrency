@@ -79,7 +79,8 @@ setup(
         "Babel~=2.8",
         "Pint~=0.15",
         "networkx~=2.5.0",
-        "sympy~=1.7.0"
+        "sympy~=1.7.0",
+        "channels~=3.0.0"
     ],
     packages=find_packages(),
     include_package_data=True,
