@@ -349,6 +349,12 @@ CACHES = {
     }
 }
 
+from geocurrency.core.settings import *
+from geocurrency.countries.settings import *
+from geocurrency.currencies.settings import *
+from geocurrency.rates.settings import *
+from geocurrency.units.settings import *
+
 try:
     from .local import *
 except ImportError:
