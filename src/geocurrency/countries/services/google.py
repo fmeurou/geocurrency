@@ -32,7 +32,7 @@ class GoogleGeocoder(Geocoder):
         Init: Geocoder('google', 'API key')
         """
         try:
-            if not key or not settings.GEOCODER_GOOGLE_KEY:
+            if not key and not settings.GEOCODER_GOOGLE_KEY:
                 raise ValueError(
                     "This geocoder needs an API key, please provide a key"
                     " or set GEOCODER_GOOGLE_KEY in configuration")
