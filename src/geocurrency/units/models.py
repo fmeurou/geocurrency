@@ -12,8 +12,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
-    ConverterResultDetail, ConverterResultError, ConverterLoadError, \
-    CalculationResultError, CalculationResultDetail, CalculationResult
+    ConverterResultDetail, ConverterResultError, ConverterLoadError
 from sympy import sympify, SympifyError
 
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
@@ -913,6 +912,87 @@ class CalculationPayload:
         self.key = key
         self.batch_id = batch_id
         self.eob = eob
+
+
+class CalculationResultDetail:
+    """
+    Details of an evaluation
+    """
+    expression = None
+    operands = None
+    magnitude = None
+    unit = None
+
+    def __init__(self, expression: str, operands: [], magnitude: float, unit: str):
+        """
+        Initialize detail
+        :param expression: Expression in the form of a string e.g.: 3*{a} + 2 * {b}
+        :param operands: List of Operands
+        :param magnitude: result of the calculation
+        :param units: dimension of the result
+        """
+        self.expression = expression
+        self.operands = operands
+        self.magnitude = magnitude
+        self.unit = unit
+
+
+class CalculationResultError:
+    """
+    Error details of a wrong calculation
+    """
+    expression = None
+    operands = None
+    date = None
+    error = None
+
+    def __init__(self, expression: str, operands: [], date: date, error: str):
+        """
+        Initialize error detail
+        :param expression: Expression in the form of a string
+        :param operands: List of Operands
+        :param date: date of the evaluation
+        :param error: Error description
+        """
+        self.expression = expression
+        self.operands = operands
+        self.date = date
+        self.error = error
+
+
+class CalculationResult:
+    """
+    Result of a batch of evaluations
+    """
+    id = None
+    detail = []
+    status = None
+    errors = []
+
+    def __init__(self, id: str = None, detail: [CalculationResultDetail] = None,
+                 status: str = BaseConverter.INITIATED_STATUS,
+                 errors: [CalculationResultError] = None):
+        """
+        Initialize result
+        :param id: ID of the batch
+        :param detail: List of CalculationResultDetail
+        :param status: status of the batch
+        :param errors: List of CalculationResultErrors
+        """
+        self.id = id
+        self.detail = detail or []
+        self.status = status
+        self.errors = errors or []
+
+    def end_batch(self):
+        """
+        Puts a finall status on the batch
+        """
+        if self.errors:
+            self.status = BaseConverter.WITH_ERRORS
+        else:
+            self.status = BaseConverter.FINISHED
+        return self.status
 
 
 class ExpressionCalculator(BaseConverter):
