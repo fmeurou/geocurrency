@@ -764,6 +764,7 @@ class CustomUnit(models.Model):
         Meta
         """
         unique_together = ('user', 'key', 'code')
+        ordering = ['name', 'code']
 
     def save(self, *args, **kwargs):
         """
