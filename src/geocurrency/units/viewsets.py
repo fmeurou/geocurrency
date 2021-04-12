@@ -14,8 +14,7 @@ from django_filters import rest_framework as filters
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from geocurrency.converters.models import ConverterLoadError
-from geocurrency.converters.serializers import ConverterResultSerializer, \
-    CalculationResultSerializer
+from geocurrency.converters.serializers import ConverterResultSerializer
 from geocurrency.core.helpers import validate_language
 from geocurrency.core.pagination import PageNumberPagination
 from rest_framework import permissions, status
@@ -36,7 +35,7 @@ from .renderers import UnitsRenderer
 from .serializers import UnitSerializer, UnitSystemSerializer, \
     UnitConversionPayloadSerializer, DimensionSerializer, \
     DimensionWithUnitsSerializer, CustomUnitSerializer, ExpressionSerializer, \
-    CalculationPayloadSerializer
+    CalculationPayloadSerializer, CalculationResultSerializer
 
 
 class UnitSystemViewset(ViewSet):

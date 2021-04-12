@@ -13,7 +13,8 @@ from rest_framework import serializers
 from sympy import sympify, SympifyError
 
 from .models import Quantity, UnitConversionPayload, Dimension, \
-    CustomUnit, Expression, CalculationPayload, UnitSystem, Operand, Unit
+    CustomUnit, Expression, CalculationPayload, UnitSystem, Operand, Unit, \
+    CalculationResult, CalculationResultError, CalculationResultDetail
 
 
 class QuantitySerializer(serializers.Serializer):
@@ -439,6 +440,90 @@ class ExpressionSerializer(serializers.Serializer):
         instance.expression = validated_data.get('expression')
         instance.operands = validated_data.get('operands')
         return instance
+
+
+class CalculationResultDetailSerializer(serializers.Serializer):
+    """
+    Serializer for the CalculationResultDetail class
+    """
+    expression = serializers.CharField(label="Expression to evaluate")
+    operands = OperandSerializer(many=True)
+    magnitude = serializers.FloatField(label="Magnitude of result")
+    unit = serializers.CharField(label="Units of result")
+
+    def create(self, validated_data):
+        """
+        Create a CalculationResultDetail object
+        :param validated_data: cleaned data
+        """
+        return CalculationResultDetail(**validated_data)
+
+    def update(self, instance, validated_data):
+        """
+        Update a CalculationResultDetail object
+        :param instance: CalculationResultDetail object
+        :param validated_data: cleaned data
+        """
+        instance.expression = validated_data.get('expression', instance.expression)
+        instance.operands = validated_data.get('operands', instance.operands)
+        instance.date = validated_data.get('date', instance.date)
+        return instance
+
+
+class CalculationResultErrorSerializer(serializers.Serializer):
+    """
+    Serializer for the CalculationResultError class
+    """
+    expression = serializers.CharField(label="Expression to evaluate")
+    operands = OperandSerializer(many=True)
+    date = serializers.DateField(label="Date of calculation")
+    error = serializers.CharField(label="Error during calculation")
+
+    def create(self, validated_data):
+        """
+        Create a CalculationResultError object
+        :param validated_data: cleaned data
+        """
+        return CalculationResultError(**validated_data)
+
+    def update(self, instance, validated_data):
+        """
+        Update a CalculationResultError object
+        :param instance: CalculationResultError object
+        :param validated_data: cleaned data
+        """
+        instance.expression = validated_data.get('expression', instance.expression)
+        instance.operands = validated_data.get('operands', instance.operands)
+        instance.date = validated_data.get('date', instance.date)
+        instance.error = validated_data.get('error', instance.error)
+        return instance
+
+
+class CalculationResultSerializer(serializers.Serializer):
+    id = serializers.UUIDField(label="ID of the batch")
+    detail = CalculationResultDetailSerializer(label="Details of the calculation", many=True)
+    status = serializers.CharField(label="Status of the calculation")
+    errors = CalculationResultErrorSerializer(label="Errors during calculation", many=True)
+
+    def create(self, validated_data):
+        """
+        Create a CalculationResult object
+        :param validated_data: cleaned data
+        """
+        return CalculationResult(**validated_data)
+
+    def update(self, instance, validated_data):
+        """
+        Update a CalculationResult object
+        :param instance: CalculationResult object
+        :param validated_data: cleaned data
+        """
+        instance.id = validated_data.get('id', instance.id)
+        instance.detail = validated_data.get('detail', instance.detail)
+        instance.status = validated_data.get('status', instance.status)
+        instance.errors = validated_data.get('errors', instance.errors)
+        return instance
+
 
 
 class CalculationPayloadSerializer(serializers.Serializer):
