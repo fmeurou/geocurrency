@@ -1,0 +1,2417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 12:18+0200\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Lithuanian <http://translation.peabytes.me/projects/"
+"geocurrency/api/lt/>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+"X-Generator: Weblate 4.2.2\n"
+
+#: countries/viewsets.py:97
+msgid "Unknown country or no info for this country"
+msgstr "Nežinoma šalis arba nėra šios šalies informacijos"
+
+#: rates/models.py:472
+msgid "Rate could not be found"
+msgstr "Įvertinimo rasti nepavyko"
+
+#: settings.example.py:162
+msgid "Afrikaans"
+msgstr "Afrikanų kalba"
+
+#: settings.example.py:163
+msgid "Arabic"
+msgstr "arabiškas"
+
+#: settings.example.py:164
+msgid "Algerian Arabic"
+msgstr "Alžyro arabų"
+
+#: settings.example.py:165
+msgid "Asturian"
+msgstr "Astūriškas"
+
+#: settings.example.py:166
+msgid "Azerbaijani"
+msgstr "Azerbaidžanietis"
+
+#: settings.example.py:167
+msgid "Bulgarian"
+msgstr "Bulgarų"
+
+#: settings.example.py:168
+msgid "Belarusian"
+msgstr "Baltarusių"
+
+#: settings.example.py:169
+msgid "Bengali"
+msgstr "Bengalų k"
+
+#: settings.example.py:170
+msgid "Breton"
+msgstr "Bretonų"
+
+#: settings.example.py:171
+msgid "Bosnian"
+msgstr "Bosnių"
+
+#: settings.example.py:172
+msgid "Catalan"
+msgstr "Katalonų"
+
+#: settings.example.py:173
+msgid "Czech"
+msgstr "Čekų"
+
+#: settings.example.py:174
+msgid "Welsh"
+msgstr "Valų kalba"
+
+#: settings.example.py:175
+msgid "Danish"
+msgstr "Danų"
+
+#: settings.example.py:176
+msgid "German"
+msgstr "Vokiečių kalba"
+
+#: settings.example.py:177
+msgid "Lower Sorbian"
+msgstr "Žemutinė sorbų kalba"
+
+#: settings.example.py:178
+msgid "Greek"
+msgstr "Graikų"
+
+#: settings.example.py:179
+msgid "English"
+msgstr "Anglų"
+
+#: settings.example.py:180
+msgid "Australian English"
+msgstr "Australijos anglų kalba"
+
+#: settings.example.py:181
+msgid "British English"
+msgstr "Britų anglų kalba"
+
+#: settings.example.py:182
+msgid "Esperanto"
+msgstr "Esperanto k"
+
+#: settings.example.py:183
+msgid "Spanish"
+msgstr "Ispanų"
+
+#: settings.example.py:184
+msgid "Argentinian Spanish"
+msgstr "Argentiniečių ispanų"
+
+#: settings.example.py:185
+msgid "Colombian Spanish"
+msgstr "Kolumbijos ispanas"
+
+#: settings.example.py:186
+msgid "Mexican Spanish"
+msgstr "Meksikos ispanų"
+
+#: settings.example.py:187
+msgid "Nicaraguan Spanish"
+msgstr "Nikaragvos ispanas"
+
+#: settings.example.py:188
+msgid "Venezuelan Spanish"
+msgstr "Venesuelos ispanas"
+
+#: settings.example.py:189
+msgid "Estonian"
+msgstr "Estų"
+
+#: settings.example.py:190
+msgid "Basque"
+msgstr "Baskų kalba"
+
+#: settings.example.py:191
+msgid "Persian"
+msgstr "Persų"
+
+#: settings.example.py:192
+msgid "Finnish"
+msgstr "Suomių"
+
+#: settings.example.py:193
+msgid "French"
+msgstr "Prancūzų kalba"
+
+#: settings.example.py:194
+msgid "Frisian"
+msgstr "Frizas"
+
+#: settings.example.py:195
+msgid "Irish"
+msgstr "Airių"
+
+#: settings.example.py:196
+msgid "Scottish Gaelic"
+msgstr "Škotų gėlų"
+
+#: settings.example.py:197
+msgid "Galician"
+msgstr "Galisų"
+
+#: settings.example.py:198
+msgid "Hebrew"
+msgstr "Hebrajų kalba"
+
+#: settings.example.py:199
+msgid "Hindi"
+msgstr "Hindi k"
+
+#: settings.example.py:200
+msgid "Croatian"
+msgstr "Kroatų"
+
+#: settings.example.py:201
+msgid "Upper Sorbian"
+msgstr "Viršutinė sorbė"
+
+#: settings.example.py:202
+msgid "Hungarian"
+msgstr "Vengrų"
+
+#: settings.example.py:203
+msgid "Armenian"
+msgstr "Armėnų"
+
+#: settings.example.py:204
+msgid "Interlingua"
+msgstr "Interlingva"
+
+#: settings.example.py:205
+msgid "Indonesian"
+msgstr "Indoneziečių"
+
+#: settings.example.py:206
+msgid "Igbo"
+msgstr "Igbo"
+
+#: settings.example.py:207
+msgid "Ido"
+msgstr "Aš darau"
+
+#: settings.example.py:208
+msgid "Icelandic"
+msgstr "Islandų"
+
+#: settings.example.py:209
+msgid "Italian"
+msgstr "Italų"
+
+#: settings.example.py:210
+msgid "Japanese"
+msgstr "Japonų"
+
+#: settings.example.py:211
+msgid "Georgian"
+msgstr "Gruzinas"
+
+#: settings.example.py:212
+msgid "Kabyle"
+msgstr "Kabyle"
+
+#: settings.example.py:213
+msgid "Kazakh"
+msgstr "Kazachas"
+
+#: settings.example.py:214
+msgid "Khmer"
+msgstr "Khmerai"
+
+#: settings.example.py:215
+msgid "Kannada"
+msgstr "Kannada"
+
+#: settings.example.py:216
+msgid "Korean"
+msgstr "Korėjiečių"
+
+#: settings.example.py:217
+msgid "Kyrgyz"
+msgstr "Kirgizai"
+
+#: settings.example.py:218
+msgid "Luxembourgish"
+msgstr "Liuksemburgiečių"
+
+#: settings.example.py:219
+msgid "Lithuanian"
+msgstr "Lietuvis"
+
+#: settings.example.py:220
+msgid "Latvian"
+msgstr "Latvių"
+
+#: settings.example.py:221
+msgid "Macedonian"
+msgstr "Makedonų"
+
+#: settings.example.py:222
+msgid "Malayalam"
+msgstr "Malajalam"
+
+#: settings.example.py:223
+msgid "Mongolian"
+msgstr "Mongolų"
+
+#: settings.example.py:224
+msgid "Marathi"
+msgstr "Maratų kalba"
+
+#: settings.example.py:225
+msgid "Burmese"
+msgstr "Birmiečių"
+
+#: settings.example.py:226
+msgid "Norwegian Bokmål"
+msgstr "Norvegų bokmål"
+
+#: settings.example.py:227
+msgid "Nepali"
+msgstr "Nepalo kalba"
+
+#: settings.example.py:228
+msgid "Dutch"
+msgstr "Olandų"
+
+#: settings.example.py:229
+msgid "Norwegian Nynorsk"
+msgstr "Norvegų Nynorskas"
+
+#: settings.example.py:230
+msgid "Ossetic"
+msgstr "Osetinė"
+
+#: settings.example.py:231
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: settings.example.py:232
+msgid "Polish"
+msgstr "lenkas"
+
+#: settings.example.py:233
+msgid "Portuguese"
+msgstr "Portugalų"
+
+#: settings.example.py:234
+msgid "Brazilian Portuguese"
+msgstr "Brazilijos portugalas"
+
+#: settings.example.py:235
+msgid "Romanian"
+msgstr "Rumunų"
+
+#: settings.example.py:236
+msgid "Russian"
+msgstr "Rusų"
+
+#: settings.example.py:237
+msgid "Slovak"
+msgstr "Slovakų"
+
+#: settings.example.py:238
+msgid "Slovenian"
+msgstr "Slovėnų"
+
+#: settings.example.py:239
+msgid "Albanian"
+msgstr "Albanų"
+
+#: settings.example.py:240
+msgid "Serbian"
+msgstr "Serbų"
+
+#: settings.example.py:241
+msgid "Serbian Latin"
+msgstr "Serbų lotynų"
+
+#: settings.example.py:242
+msgid "Swedish"
+msgstr "Švedų"
+
+#: settings.example.py:243
+msgid "Swahili"
+msgstr "Svahili kalba"
+
+#: settings.example.py:244
+msgid "Tamil"
+msgstr "Tamilų"
+
+#: settings.example.py:245
+msgid "Telugu"
+msgstr "Telugų k"
+
+#: settings.example.py:246
+msgid "Tajik"
+msgstr "Tadžikų kalba"
+
+#: settings.example.py:247
+msgid "Thai"
+msgstr "Tajų"
+
+#: settings.example.py:248
+msgid "Turkmen"
+msgstr "Turkmėnų"
+
+#: settings.example.py:249
+msgid "Turkish"
+msgstr "Turkų"
+
+#: settings.example.py:250
+msgid "Tatar"
+msgstr "Totorius"
+
+#: settings.example.py:251
+msgid "Udmurt"
+msgstr "Udmurtas"
+
+#: settings.example.py:252
+msgid "Ukrainian"
+msgstr "Ukrainietis"
+
+#: settings.example.py:253
+msgid "Urdu"
+msgstr "Urdu kalba"
+
+#: settings.example.py:254
+msgid "Uzbek"
+msgstr "Uzbekų"
+
+#: settings.example.py:255
+msgid "Vietnamese"
+msgstr "Vietnamiečių"
+
+#: settings.example.py:256
+msgid "Simplified Chinese"
+msgstr "Supaprastinta kinų kalba"
+
+#: settings.example.py:257
+msgid "Traditional Chinese"
+msgstr "Tradicinis kinietiškas"
+
+#: units/__init__.py:8 units/tests.py:165 units/tests.py:437 units/tests.py:445
+msgid "length"
+msgstr "ilgio"
+
+#: units/__init__.py:9
+msgid "time"
+msgstr "laikas"
+
+#: units/__init__.py:10
+msgid "current"
+msgstr "srovė"
+
+#: units/__init__.py:11
+msgid "luminosity"
+msgstr "šviesumas"
+
+#: units/__init__.py:13
+msgid "mass"
+msgstr "masės"
+
+#: units/__init__.py:14
+msgid "substance"
+msgstr "medžiaga"
+
+#: units/__init__.py:15
+msgid "temperature"
+msgstr "temperatūra"
+
+#: units/__init__.py:16
+msgid "constant"
+msgstr "pastovus"
+
+#: units/__init__.py:17
+msgid "area"
+msgstr "srityje"
+
+#: units/__init__.py:18
+msgid "volume"
+msgstr "apimtis"
+
+#: units/__init__.py:19
+msgid "frequency"
+msgstr "dažnis"
+
+#: units/__init__.py:21
+msgid "wavenumber"
+msgstr "bangos numeris"
+
+#: units/__init__.py:22
+msgid "velocity"
+msgstr "greitis"
+
+#: units/__init__.py:24
+msgid "acceleration"
+msgstr "pagreitis"
+
+#: units/__init__.py:26
+msgid "force"
+msgstr "jėga"
+
+#: units/__init__.py:28
+msgid "energy"
+msgstr "energijos"
+
+#: units/__init__.py:30
+msgid "power"
+msgstr "galia"
+
+#: units/__init__.py:32
+msgid "density"
+msgstr "tankis"
+
+#: units/__init__.py:34
+msgid "pressure"
+msgstr "spaudimas"
+
+#: units/__init__.py:36
+msgid "torque"
+msgstr "sukimo momentas"
+
+#: units/__init__.py:38
+msgid "viscosity"
+msgstr "klampumas"
+
+#: units/__init__.py:40
+msgid "kinematic viscosity"
+msgstr "kinematinis klampumas"
+
+#: units/__init__.py:43
+msgid "fluidity"
+msgstr "sklandumas"
+
+#: units/__init__.py:45
+msgid "concentration"
+msgstr "susikaupimas"
+
+#: units/__init__.py:47
+msgid "activity"
+msgstr "veikla"
+
+#: units/__init__.py:49
+msgid "entropy"
+msgstr "entropija"
+
+#: units/__init__.py:52
+msgid "molar entropy"
+msgstr "krūminė entropija"
+
+#: units/__init__.py:56
+msgid "heat transmission"
+msgstr "šilumos perdavimas"
+
+#: units/__init__.py:60
+msgid "luminance"
+msgstr "skaistis"
+
+#: units/__init__.py:64
+msgid "luminous flux"
+msgstr "šviesos srautas"
+
+#: units/__init__.py:67
+msgid "illuminance"
+msgstr "apšvietimas"
+
+#: units/__init__.py:71
+msgid "intensity"
+msgstr "intensyvumas"
+
+#: units/__init__.py:73
+msgid "charge"
+msgstr "mokestis"
+
+#: units/__init__.py:74
+msgid "electric potential"
+msgstr "elektrinis potencialas"
+
+#: units/__init__.py:78
+msgid "electric field"
+msgstr "elektrinis laukas"
+
+#: units/__init__.py:82
+msgid "resistance"
+msgstr "pasipriešinimas"
+
+#: units/__init__.py:86
+msgid "conductance"
+msgstr "laidumas"
+
+#: units/__init__.py:90
+msgid "capacitance"
+msgstr "talpa"
+
+#: units/__init__.py:94
+msgid "inductance"
+msgstr "induktyvumas"
+
+#: units/__init__.py:98
+msgid "magnetic flux"
+msgstr "magnetinis srautas"
+
+#: units/__init__.py:102
+msgid "magnetic field"
+msgstr "magnetinis laukas"
+
+#: units/__init__.py:106
+msgid "magnetomotive force"
+msgstr "magnetomotyvo jėga"
+
+#: units/__init__.py:109
+msgid "electric dipole"
+msgstr "elektrinis dipolis"
+
+#: units/__init__.py:113
+msgid "electric quadrupole"
+msgstr "elektrinis kvadrupolis"
+
+#: units/__init__.py:117
+msgid "magnetic dipole"
+msgstr "magnetinis dipolis"
+
+#: units/__init__.py:120
+msgid "printing unit"
+msgstr "spausdinimo blokas"
+
+#: units/__init__.py:123
+msgid "gaussian charge"
+msgstr "gausso krūvį"
+
+#: units/__init__.py:127
+msgid "gaussian current"
+msgstr "gaussian srovė"
+
+#: units/__init__.py:131
+msgid "gaussian electric potential"
+msgstr "gaussian elektrinis potencialas"
+
+#: units/__init__.py:135
+msgid "gaussian electric field"
+msgstr "gaussian elektrinis laukas"
+
+#: units/__init__.py:140
+msgid "gaussian electric displacement field"
+msgstr "gaussian elektrinis poslinkio laukas"
+
+#: units/__init__.py:144
+msgid "gaussian electric flux"
+msgstr "gausso elektrinis srautas"
+
+#: units/__init__.py:148
+msgid "gaussian magnetic field"
+msgstr "gaussinio magnetinio lauko"
+
+#: units/__init__.py:152
+msgid "gaussian magnetic field strength"
+msgstr "gaussinio magnetinio lauko stipris"
+
+#: units/__init__.py:156
+msgid "gaussian magnetic flux"
+msgstr "gausso magnetinis srautas"
+
+#: units/__init__.py:160
+msgid "gaussian resistance"
+msgstr "gaussian atsparumas"
+
+#: units/__init__.py:164
+msgid "gaussian resistivity"
+msgstr "gauso varžą"
+
+#: units/__init__.py:167
+msgid "gaussian capacitance"
+msgstr "gauso talpa"
+
+#: units/__init__.py:170
+msgid "gaussian inductance"
+msgstr "gauso induktyvumas"
+
+#: units/__init__.py:174
+msgid "gaussian conductance"
+msgstr "gaussinis laidumas"
+
+#: units/__init__.py:178
+msgid "esu charge"
+msgstr "esu mokestis"
+
+#: units/__init__.py:182
+msgid "esu current"
+msgstr "esu dabartinis"
+
+#: units/__init__.py:186
+msgid "esu electric potential"
+msgstr "esu elektrinis potencialas"
+
+#: units/__init__.py:190
+msgid "esu magnetic flux"
+msgstr "esu magnetinis srautas"
+
+#: units/__init__.py:194
+msgid "esu magnetic field"
+msgstr "esu magnetinis laukas"
+
+#: units/__init__.py:198
+msgid "Compound dimension"
+msgstr ""
+
+#: units/__init__.py:202
+#, fuzzy
+#| msgid "dimensionless"
+msgid "Custom dimension"
+msgstr "be matmenų"
+
+#: units/__init__.py:317 units/__init__.py:1938
+msgid "meter per second"
+msgstr "metras per sekundę"
+
+#: units/__init__.py:322 units/__init__.py:1942
+msgid "meter per square second"
+msgstr "metras per kvadratinę sekundę"
+
+#: units/__init__.py:327 units/__init__.py:1946 units/__init__.py:1950
+msgid "square meter"
+msgstr "kvadratinis metras"
+
+#: units/__init__.py:332
+msgid "cubic meter"
+msgstr "kubinis metras"
+
+#: units/__init__.py:342
+msgid "Copper Kα"
+msgstr "Varis Kα"
+
+#: units/__init__.py:346
+msgid "Molybdenum K-α"
+msgstr "Molibdenas K-α"
+
+#: units/__init__.py:350
+msgid "Tungsten K-α"
+msgstr "Volframas K-α"
+
+#: units/__init__.py:351
+msgid "W Kα"
+msgstr "W Kα"
+
+#: units/__init__.py:354
+msgid "RKM"
+msgstr "RKM"
+
+#: units/__init__.py:359 units/__init__.py:954
+msgid "long ton-force"
+msgstr "ilga tona jėga"
+
+#: units/__init__.py:369 units/__init__.py:1234
+msgid "long ton"
+msgstr "ilga tona"
+
+#: units/__init__.py:374
+msgid "short ton force"
+msgstr "trumpa tonos jėga"
+
+#: units/__init__.py:379
+msgid "short hundredweight"
+msgstr "trumpas šimtas svorio"
+
+#: units/__init__.py:384
+msgid "short ton"
+msgstr "trumpa tona"
+
+#: units/__init__.py:389
+msgid "US International Ampere"
+msgstr "JAV tarptautinis amperas"
+
+#: units/__init__.py:394
+msgid "US international Ohm"
+msgstr "JAV tarptautinis omas"
+
+#: units/__init__.py:399
+msgid "US international Volt"
+msgstr "JAV tarptautinis „Volt“"
+
+#: units/__init__.py:404
+msgid "US therm"
+msgstr "JAV term"
+
+#: units/__init__.py:408
+msgid "abampere"
+msgstr "abampere"
+
+#: units/__init__.py:412
+msgid "abcoulomb"
+msgstr "abcoulomb"
+
+#: units/__init__.py:416
+msgid "Aberdeen"
+msgstr "Aberdynas"
+
+#: units/__init__.py:420
+msgid "abfarad"
+msgstr "abfaradas"
+
+#: units/__init__.py:424
+msgid "abhenry"
+msgstr "abenrija"
+
+#: units/__init__.py:428
+msgid "abohm"
+msgstr "abohm"
+
+#: units/__init__.py:432
+msgid "absiemens"
+msgstr "absiemens"
+
+#: units/__init__.py:436
+msgid "abvolt"
+msgstr "abvoltas"
+
+#: units/__init__.py:440
+msgid "acre"
+msgstr "akras"
+
+#: units/__init__.py:444
+msgid "acre-foot"
+msgstr "arų pėda"
+
+#: units/__init__.py:448
+msgid "ampere"
+msgstr "amperų"
+
+#: units/__init__.py:452
+#, fuzzy
+#| msgid "ampere"
+msgid "milliampere"
+msgstr "amperų"
+
+#: units/__init__.py:456
+msgid "ampere-turn"
+msgstr "ampero posūkis"
+
+#: units/__init__.py:460
+msgid "angstrom"
+msgstr "angstremas"
+
+#: units/__init__.py:464
+msgid "angstrom star"
+msgstr "angstremo žvaigždė"
+
+#: units/__init__.py:468
+msgid "apothecary dram"
+msgstr "vaistininkų dramas"
+
+#: units/__init__.py:472
+msgid "apothecary ounce"
+msgstr "vaistininko uncija"
+
+#: units/__init__.py:476
+msgid "apothecary pound"
+msgstr "vaistininko svaras"
+
+#: units/__init__.py:480
+msgid "minute of arc"
+msgstr "lanko minutė"
+
+#: units/__init__.py:484
+msgid "second of arc"
+msgstr "sekundės lanko"
+
+#: units/__init__.py:488
+msgid "are"
+msgstr "yra"
+
+#: units/__init__.py:492
+msgid "astronomical unit"
+msgstr "astronominis vienetas"
+
+#: units/__init__.py:496
+msgid "atmosphere liter"
+msgstr "atmosferos litras"
+
+#: units/__init__.py:500
+msgid "atomic mass constant"
+msgstr "atominės masės konstanta"
+
+#: units/__init__.py:504
+msgid "atomic unit of current"
+msgstr "atominis srovės vienetas"
+
+#: units/__init__.py:508
+msgid "atomic unit of electric field"
+msgstr "atominis elektrinio lauko vienetas"
+
+#: units/__init__.py:512
+msgid "atomic unit of force"
+msgstr "atominis jėgos vienetas"
+
+#: units/__init__.py:516
+msgid "atomic unit of intensity"
+msgstr "atominis intensyvumo vienetas"
+
+#: units/__init__.py:520
+msgid "atomic unit of temperature"
+msgstr "atominis temperatūros vienetas"
+
+#: units/__init__.py:524
+msgid "atomic unit of time"
+msgstr "atominis laiko vienetas"
+
+#: units/__init__.py:528
+msgid "Avogadro constant"
+msgstr "Avogadro konstanta"
+
+#: units/__init__.py:532
+msgid "Avogadro number"
+msgstr "„Avogadro“ numeris"
+
+#: units/__init__.py:536
+msgid "bag"
+msgstr "maišas"
+
+#: units/__init__.py:540
+msgid "bar"
+msgstr "baras"
+
+#: units/__init__.py:544
+msgid "barn"
+msgstr "tvartas"
+
+#: units/__init__.py:548
+msgid "barrel"
+msgstr "statinė"
+
+#: units/__init__.py:552
+msgid "barrye"
+msgstr "barrye"
+
+#: units/__init__.py:556
+msgid "baud"
+msgstr "baud"
+
+#: units/__init__.py:560
+msgid "becquerel"
+msgstr "bekerelis"
+
+#: units/__init__.py:564
+msgid "beer barrel"
+msgstr "alaus statinė"
+
+#: units/__init__.py:568
+msgid "bel"
+msgstr "bel"
+
+#: units/__init__.py:572
+msgid "biot"
+msgstr "biotas"
+
+#: units/__init__.py:576
+msgid "biot turn"
+msgstr "biot posūkis"
+
+#: units/__init__.py:580
+msgid "bit"
+msgstr "šiek tiek"
+
+#: units/__init__.py:584
+msgid "bits per pixel"
+msgstr "bitų pikselyje"
+
+#: units/__init__.py:588
+msgid "board foot"
+msgstr "lentos koja"
+
+#: units/__init__.py:592
+msgid "bohr"
+msgstr "bohr"
+
+#: units/__init__.py:596
+msgid "bohr magneton"
+msgstr "bohr magnetonas"
+
+#: units/__init__.py:600
+msgid "boiler horsepower"
+msgstr "katilo arklio galia"
+
+#: units/__init__.py:604
+msgid "boltzmann constant"
+msgstr "boltzmann konstanta"
+
+#: units/__init__.py:608
+msgid "british thermal unit"
+msgstr "britiškas terminis blokas"
+
+#: units/__init__.py:612
+msgid "buckingham"
+msgstr "buckingham"
+
+#: units/__init__.py:616
+msgid "bushel"
+msgstr "bušelis"
+
+#: units/__init__.py:620
+msgid "byte"
+msgstr "baitas"
+
+#: units/__init__.py:624
+msgid "cable length"
+msgstr "laido ilgis"
+
+#: units/__init__.py:628
+msgid "calorie"
+msgstr "kalorijų"
+
+#: units/__init__.py:632
+msgid "candela"
+msgstr "kandela"
+
+#: units/__init__.py:636
+msgid "carat"
+msgstr "karatų"
+
+#: units/__init__.py:640
+msgid "centimeter H20"
+msgstr "centimetras H20"
+
+#: units/__init__.py:644
+msgid "centimeter Hg"
+msgstr "centimetras Hg"
+
+#: units/__init__.py:648
+msgid "century"
+msgstr "amžiaus"
+
+#: units/__init__.py:652
+msgid "chain"
+msgstr "grandinė"
+
+#: units/__init__.py:656
+msgid "cicero"
+msgstr "ciceronas"
+
+#: units/__init__.py:660
+msgid "circular mil"
+msgstr "žiedinis mil"
+
+#: units/__init__.py:664
+msgid "classical electron radius"
+msgstr "klasikinis elektronų spindulys"
+
+#: units/__init__.py:668
+msgid "clausius"
+msgstr "clausius"
+
+#: units/__init__.py:672
+msgid "common year"
+msgstr "bendri metai"
+
+#: units/__init__.py:676
+msgid "conductance quantum"
+msgstr "laidumo kvantas"
+
+#: units/__init__.py:680
+msgid "conventional ampere"
+msgstr "įprastas amperas"
+
+#: units/__init__.py:684
+msgid "conventional coulomb"
+msgstr "įprastas kulonas"
+
+#: units/__init__.py:688
+msgid "conventional farad"
+msgstr "įprastinis faradas"
+
+#: units/__init__.py:692
+msgid "conventional henry"
+msgstr "įprastas Henry"
+
+#: units/__init__.py:696
+msgid "conventional josephson constant"
+msgstr "įprasta josephson konstanta"
+
+#: units/__init__.py:700
+msgid "conventional ohm"
+msgstr "įprastas omas"
+
+#: units/__init__.py:704
+msgid "conventional volt"
+msgstr "įprastas voltas"
+
+#: units/__init__.py:708
+msgid "conventional Von Klitzing constant"
+msgstr "įprasta Von Klitzingo konstanta"
+
+#: units/__init__.py:712
+msgid "conventional Watt"
+msgstr "įprastas vatas"
+
+#: units/__init__.py:716
+msgid "coulomb"
+msgstr "kulona"
+
+#: units/__init__.py:720
+msgid "coulomb constant"
+msgstr "kulono konstanta"
+
+#: units/__init__.py:724
+msgid "count"
+msgstr "suskaičiuoti"
+
+#: units/__init__.py:728
+msgid "counts per second"
+msgstr "skaičiuojama per sekundę"
+
+#: units/__init__.py:732
+msgid "CSS pixel"
+msgstr "CSS taškas"
+
+#: units/__init__.py:736
+msgid "cubic centimeter"
+msgstr "kubinis centimetras"
+
+#: units/__init__.py:740
+msgid "cubic milliimeter"
+msgstr "kubinis milimetras"
+
+#: units/__init__.py:744
+msgid "cubic foot"
+msgstr "kubinė pėda"
+
+#: units/__init__.py:748
+msgid "cubic inch"
+msgstr "kubinis colis"
+
+#: units/__init__.py:752
+msgid "cubic yard"
+msgstr "kubinis kiemas"
+
+#: units/__init__.py:756
+msgid "cup"
+msgstr "puodelis"
+
+#: units/__init__.py:760
+msgid "curie"
+msgstr "curie"
+
+#: units/__init__.py:764
+msgid "dalton"
+msgstr "daltonas"
+
+#: units/__init__.py:768
+msgid "darcy"
+msgstr "darcy"
+
+#: units/__init__.py:772
+msgid "day"
+msgstr "diena"
+
+#: units/__init__.py:773
+msgctxt "unit"
+msgid "day"
+msgstr "diena"
+
+#: units/__init__.py:776
+msgid "debye"
+msgstr "debye"
+
+#: units/__init__.py:780
+msgid "decade"
+msgstr "dešimtmetis"
+
+#: units/__init__.py:781
+msgctxt "symbol"
+msgid "decade"
+msgstr "dešimtmetis"
+
+#: units/__init__.py:784
+msgid "decibel"
+msgstr "decibelais"
+
+#: units/__init__.py:788
+msgid "degree"
+msgstr "laipsnį"
+
+#: units/__init__.py:792
+msgid "degree Celsius"
+msgstr "laipsnio Celsijaus"
+
+#: units/__init__.py:796
+msgid "degree Fahrenheit"
+msgstr "laipsnis pagal Farenheitą"
+
+#: units/__init__.py:800
+msgid "degree Rankine"
+msgstr "laipsnio Rankine"
+
+#: units/__init__.py:804
+msgid "degree Reaumur"
+msgstr "laipsnio Reaumur"
+
+#: units/__init__.py:808
+msgid "denier"
+msgstr "neigėjas"
+
+#: units/__init__.py:812
+msgid "didot"
+msgstr "didot"
+
+#: units/__init__.py:816
+msgid "Dirac constant"
+msgstr "Dirac konstanta"
+
+#: units/__init__.py:820
+msgid "dram"
+msgstr "dramas"
+
+#: units/__init__.py:824
+msgid "dry barrel"
+msgstr "sausa statinė"
+
+#: units/__init__.py:828
+msgid "dry gallon"
+msgstr "sausas galonas"
+
+#: units/__init__.py:832
+msgid "dry pint"
+msgstr "sausas pintas"
+
+#: units/__init__.py:836
+msgid "dry quart"
+msgstr "sausas litras"
+
+#: units/__init__.py:840
+msgid "decitex"
+msgstr "deciteksas"
+
+#: units/__init__.py:844
+msgid "dyne"
+msgstr "dyne"
+
+#: units/__init__.py:848
+msgid "eletcrical horsepower"
+msgstr "eletrinė arklio galia"
+
+#: units/__init__.py:852
+msgid "electron G-factor"
+msgstr "elektronų G faktorius"
+
+#: units/__init__.py:856
+msgid "electron mass"
+msgstr "elektronų masė"
+
+#: units/__init__.py:860
+msgid "electronvolt"
+msgstr "elektronvoltas"
+
+#: units/__init__.py:864
+msgid "elementary charge"
+msgstr "elementarusis krūvis"
+
+#: units/__init__.py:868
+msgid "entropy unit"
+msgstr "entropijos vienetas"
+
+#: units/__init__.py:872
+msgid "enzyme unit"
+msgstr "fermento vienetas"
+
+#: units/__init__.py:876
+msgid "eon"
+msgstr "eon"
+
+#: units/__init__.py:880
+msgid "erg"
+msgstr "erg"
+
+#: units/__init__.py:884
+msgid "farad"
+msgstr "faradas"
+
+#: units/__init__.py:888
+msgid "faraday"
+msgstr "faraday"
+
+#: units/__init__.py:892
+msgid "faraday constant"
+msgstr "faraday konstanta"
+
+#: units/__init__.py:896
+msgid "fathom"
+msgstr "supratimas"
+
+#: units/__init__.py:900
+msgid "fermi"
+msgstr "fermi"
+
+#: units/__init__.py:904
+msgid "fifteen degree calorie"
+msgstr "penkiolikos laipsnių kalorijų"
+
+#: units/__init__.py:908
+msgid "fifth"
+msgstr "penkta"
+
+#: units/__init__.py:912
+msgid "fine structure constant"
+msgstr "smulkios struktūros pastovi"
+
+#: units/__init__.py:916
+msgid "first radiation constant"
+msgstr "pirmoji radiacijos konstanta"
+
+#: units/__init__.py:920
+msgid "fluid dram"
+msgstr "skystas dramas"
+
+#: units/__init__.py:924
+msgid "fluid ounce"
+msgstr "skysčio uncija"
+
+#: units/__init__.py:928
+msgid "foot"
+msgstr "pėda"
+
+#: units/__init__.py:932
+msgid "foot H2O"
+msgstr "pėda H2O"
+
+#: units/__init__.py:936
+msgid "foot per second"
+msgstr "pėda per sekundę"
+
+#: units/__init__.py:940
+msgid "foot pound"
+msgstr "pėdos svaras"
+
+#: units/__init__.py:944
+msgid "gram-force"
+msgstr "gramo jėga"
+
+#: units/__init__.py:949
+msgid "kilogram-force"
+msgstr "kilogramo jėga"
+
+#: units/__init__.py:958 units/__init__.py:970
+msgid "tonne-force"
+msgstr "tonos jėga"
+
+#: units/__init__.py:962
+msgid "ounce-force"
+msgstr "uncijos jėga"
+
+#: units/__init__.py:966
+msgid "pound-force"
+msgstr "svaro jėga"
+
+#: units/__init__.py:974
+msgid "fortnight"
+msgstr "dvi savaites"
+
+#: units/__init__.py:978
+msgid "franklin"
+msgstr "Franklinas"
+
+#: units/__init__.py:982
+msgid "furlong"
+msgstr "ilgas"
+
+#: units/__init__.py:986
+msgid "galileo"
+msgstr "galileo"
+
+#: units/__init__.py:990
+msgid "gallon"
+msgstr "galonas"
+
+#: units/__init__.py:994 units/__init__.py:998
+msgid "gamma"
+msgstr "gama"
+
+#: units/__init__.py:1002
+msgid "gauss"
+msgstr "gauss"
+
+#: units/__init__.py:1006
+msgid "gilbert"
+msgstr "gilbertas"
+
+#: units/__init__.py:1010
+msgid "gill"
+msgstr "žiaunos"
+
+#: units/__init__.py:1014
+msgid "grade"
+msgstr "laipsnio"
+
+#: units/__init__.py:1018
+msgid "grain"
+msgstr "grūdai"
+
+#: units/__init__.py:1022
+msgid "gram"
+msgstr "gramas"
+
+#: units/__init__.py:1026
+msgid "gray"
+msgstr "pilka"
+
+#: units/__init__.py:1030
+msgid "gregorian year"
+msgstr "grigaliaus metais"
+
+#: units/__init__.py:1031
+msgctxt "unit"
+msgid "gregorian year"
+msgstr "grigaliaus metais"
+
+#: units/__init__.py:1034
+msgid "hand"
+msgstr "ranka"
+
+#: units/__init__.py:1038
+msgid "hartree"
+msgstr "hartree"
+
+#: units/__init__.py:1042
+msgid "hectare"
+msgstr "hektaro"
+
+#: units/__init__.py:1046
+msgid "henry"
+msgstr "Henry"
+
+#: units/__init__.py:1050
+msgid "hertz"
+msgstr "hercas"
+
+#: units/__init__.py:1054
+msgid "hogshead"
+msgstr "kiaulytė"
+
+#: units/__init__.py:1058
+msgid "horsepower"
+msgstr "arklio galių"
+
+#: units/__init__.py:1062
+msgid "hour"
+msgstr "valandą"
+
+#: units/__init__.py:1066
+msgid "hundredweight"
+msgstr "šimtas svorio"
+
+#: units/__init__.py:1070
+msgid "impedance of free space"
+msgstr "laisvos vietos varža"
+
+#: units/__init__.py:1074
+msgid "imperial barrel"
+msgstr "imperijos statinė"
+
+#: units/__init__.py:1078
+msgid "imperial bushel"
+msgstr "imperijos bušelis"
+
+#: units/__init__.py:1082
+msgid "imperial cup"
+msgstr "imperijos taurė"
+
+#: units/__init__.py:1086
+msgid "imperial fluid drachm"
+msgstr "imperijos skysčio drachmas"
+
+#: units/__init__.py:1090
+msgid "imperial fluid ounce"
+msgstr "imperijos skysčio uncija"
+
+#: units/__init__.py:1094
+msgid "imperial fluid scruple"
+msgstr "imperijos skysčio skrupulas"
+
+#: units/__init__.py:1098
+msgid "imperial gallon"
+msgstr "imperijos galonas"
+
+#: units/__init__.py:1102
+msgid "imperial gill"
+msgstr "imperijos žiaunos"
+
+#: units/__init__.py:1106
+msgid "imperial minim"
+msgstr "imperinis minimumas"
+
+#: units/__init__.py:1110
+msgid "imperial peck"
+msgstr "imperatoriškasis peckas"
+
+#: units/__init__.py:1114
+msgid "imperial pint"
+msgstr "imperijos pinta"
+
+#: units/__init__.py:1118
+msgid "imperial quart"
+msgstr "imperijos kvarta"
+
+#: units/__init__.py:1122
+msgid "inch"
+msgstr "colio"
+
+#: units/__init__.py:1126
+msgid "inch H20 39F"
+msgstr "colių H20 39F"
+
+#: units/__init__.py:1130
+msgid "inch H20 60F"
+msgstr "colių H20 60F"
+
+#: units/__init__.py:1134
+msgid "inch Hg"
+msgstr "colio Hg"
+
+#: units/__init__.py:1138
+msgid "inch Hg 60F"
+msgstr "colių Hg 60F"
+
+#: units/__init__.py:1142
+msgid "international Btu"
+msgstr "tarptautinis Btu"
+
+#: units/__init__.py:1146
+msgid "international calorie"
+msgstr "tarptautinė kalorija"
+
+#: units/__init__.py:1150
+msgid "Josephson constant"
+msgstr "Džozefsono pastovus"
+
+#: units/__init__.py:1154
+msgid "Joule"
+msgstr "Džoulis"
+
+#: units/__init__.py:1158
+msgid "jute"
+msgstr "džiutas"
+
+#: units/__init__.py:1162
+msgid "katal"
+msgstr "katal"
+
+#: units/__init__.py:1166
+msgid "kelvin"
+msgstr "kelvinas"
+
+#: units/__init__.py:1170
+msgid "kilometer per hour"
+msgstr "kilometras per valandą"
+
+#: units/__init__.py:1174
+msgid "kilometer per second"
+msgstr "kilometras per sekundę"
+
+#: units/__init__.py:1178
+msgid "kip"
+msgstr "kip"
+
+#: units/__init__.py:1182
+msgid "kip per square inch"
+msgstr "kip už kvadratinį colį"
+
+#: units/__init__.py:1186
+msgid "knot"
+msgstr "mazgas"
+
+#: units/__init__.py:1190
+msgid "lambda"
+msgstr "lambda"
+
+#: units/__init__.py:1194
+msgid "lambert"
+msgstr "lambert"
+
+#: units/__init__.py:1198
+msgid "langley"
+msgstr "langley"
+
+#: units/__init__.py:1202
+msgid "lattice constant"
+msgstr "grotelių konstanta"
+
+#: units/__init__.py:1206
+msgid "league"
+msgstr "lyga"
+
+#: units/__init__.py:1210
+msgid "leap year"
+msgstr "keliamaisiais metais"
+
+#: units/__init__.py:1211 units/__init__.py:1910 units/__init__.py:1911
+msgid "year"
+msgstr "metus"
+
+#: units/__init__.py:1214
+msgid "light year"
+msgstr "Šviesmetis"
+
+#: units/__init__.py:1215
+msgid "ly"
+msgstr "ly"
+
+#: units/__init__.py:1218
+msgid "link"
+msgstr "nuoroda"
+
+#: units/__init__.py:1219
+msgid "li"
+msgstr "li"
+
+#: units/__init__.py:1222
+msgid "liter"
+msgstr "litro"
+
+#: units/__init__.py:1223
+msgid "L"
+msgstr "L"
+
+#: units/__init__.py:1226
+msgid "log 10"
+msgstr "žurnalas 10"
+
+#: units/__init__.py:1227
+msgid "ln10"
+msgstr "ln10"
+
+#: units/__init__.py:1230
+msgid "long hundredweight"
+msgstr "ilgas šimtas"
+
+#: units/__init__.py:1238
+msgid "lumen"
+msgstr "spindis"
+
+#: units/__init__.py:1242
+msgid "lux"
+msgstr "liukso"
+
+#: units/__init__.py:1246
+msgid "magnetic flux quantum"
+msgstr "magnetinio srauto kvantas"
+
+#: units/__init__.py:1250
+msgid "maxwell"
+msgstr "Maksvelas"
+
+#: units/__init__.py:1254
+msgid "mean international ampere"
+msgstr "reiškia tarptautinę amperą"
+
+#: units/__init__.py:1258
+msgid "mean international Ohm"
+msgstr "reiškia tarptautinį omą"
+
+#: units/__init__.py:1262
+msgid "mean international Volt"
+msgstr "reiškia tarptautinį Voltą"
+
+#: units/__init__.py:1266
+msgid "density of mercury"
+msgstr "gyvsidabrio tankis"
+
+#: units/__init__.py:1270
+msgid "density of mercury 60F"
+msgstr "gyvsidabrio tankis 60F"
+
+#: units/__init__.py:1274
+msgid "meter"
+msgstr "metras"
+
+#: units/__init__.py:1278
+msgid "metric horsepower"
+msgstr "metrinė arklio galia"
+
+#: units/__init__.py:1282
+msgid "metric ton"
+msgstr "metrinės tonos"
+
+#: units/__init__.py:1286
+msgid "micron"
+msgstr "mikrono"
+
+#: units/__init__.py:1290
+msgid "mil"
+msgstr "mil"
+
+#: units/__init__.py:1294
+msgid "mile"
+msgstr "mylios"
+
+#: units/__init__.py:1298
+msgid "mile per hour"
+msgstr "mylios per valandą"
+
+#: units/__init__.py:1302 units/__init__.py:1303
+msgid "millenium"
+msgstr "tūkstantmetis"
+
+#: units/__init__.py:1306
+msgid "milliarcsecond"
+msgstr "miliarksekundė"
+
+#: units/__init__.py:1310
+msgid "Hg millimeter"
+msgstr "Hg milimetras"
+
+#: units/__init__.py:1314
+msgid "minim"
+msgstr "minimalus"
+
+#: units/__init__.py:1318
+msgid "minute"
+msgstr "minutė"
+
+#: units/__init__.py:1322
+msgid "molar"
+msgstr "krūminis"
+
+#: units/__init__.py:1326
+msgid "molar gas constant"
+msgstr "molinė dujų konstanta"
+
+#: units/__init__.py:1330
+msgid "mole"
+msgstr "apgamas"
+
+#: units/__init__.py:1334
+msgid "month"
+msgstr "mėnesį"
+
+#: units/__init__.py:1338
+msgid "nautical mile"
+msgstr "jūrmylė"
+
+#: units/__init__.py:1339
+msgid "nm"
+msgstr "nm"
+
+#: units/__init__.py:1342
+msgid "neper"
+msgstr "neperis"
+
+#: units/__init__.py:1343
+msgid "Np"
+msgstr "Np"
+
+#: units/__init__.py:1346
+msgid "neutron mass"
+msgstr "neutronų masė"
+
+#: units/__init__.py:1350
+msgid "newton"
+msgstr "niutonas"
+
+#: units/__init__.py:1354
+msgid "newtonian constant of gravitation"
+msgstr "niutono gravitacijos konstanta"
+
+#: units/__init__.py:1358
+msgid "nit"
+msgstr "nit"
+
+#: units/__init__.py:1362
+msgid "nuclear magneton"
+msgstr "branduolio magnetonas"
+
+#: units/__init__.py:1366
+msgid "number english"
+msgstr "numeris angliškai"
+
+#: units/__init__.py:1370
+msgid "number meter"
+msgstr "skaičių matuoklis"
+
+#: units/__init__.py:1374
+msgid "oersted"
+msgstr "išmestas"
+
+#: units/__init__.py:1378
+msgid "ohm"
+msgstr "omas"
+
+#: units/__init__.py:1382
+msgid "oil barrel"
+msgstr "naftos statinė"
+
+#: units/__init__.py:1386
+msgid "ounce"
+msgstr "uncija"
+
+#: units/__init__.py:1390
+msgid "parsec"
+msgstr "parsek"
+
+#: units/__init__.py:1394
+msgid "particle"
+msgstr "dalelė"
+
+#: units/__init__.py:1398
+msgid "pascal"
+msgstr "pascal"
+
+#: units/__init__.py:1402
+msgid "peak sun hour"
+msgstr "piko saulės valandą"
+
+#: units/__init__.py:1406
+msgid "peck"
+msgstr "knarkti"
+
+#: units/__init__.py:1410
+msgid "pennyweight"
+msgstr "centų svoris"
+
+#: units/__init__.py:1418
+msgid "pica"
+msgstr "pica"
+
+#: units/__init__.py:1422
+msgid "pint"
+msgstr "pinta"
+
+#: units/__init__.py:1426
+msgid "pixel"
+msgstr "pikselių"
+
+#: units/__init__.py:1430
+msgid "pixel per centimeter"
+msgstr "pikselių centimetre"
+
+#: units/__init__.py:1434
+msgid "pixel per inch"
+msgstr "pikselių colyje"
+
+#: units/__init__.py:1438
+msgid "Planck constant"
+msgstr "Planko konstanta"
+
+#: units/__init__.py:1442 units/__init__.py:1446
+msgid "Planck current"
+msgstr "Planko srovė"
+
+#: units/__init__.py:1443
+msgid "qP"
+msgstr "qP"
+
+#: units/__init__.py:1447
+msgid "lP"
+msgstr "l"
+
+#: units/__init__.py:1450
+msgid "Planck mass"
+msgstr "Planko masė"
+
+#: units/__init__.py:1451
+msgid "mP"
+msgstr "mP"
+
+#: units/__init__.py:1454
+msgid "Planck temperature"
+msgstr "Planko temperatūra"
+
+#: units/__init__.py:1455
+msgid "TP"
+msgstr "TP"
+
+#: units/__init__.py:1458
+msgid "Planck time"
+msgstr "Planko laikas"
+
+#: units/__init__.py:1459
+msgid "tP"
+msgstr "tP"
+
+#: units/__init__.py:1462
+msgid "point"
+msgstr "taškas"
+
+#: units/__init__.py:1466
+msgid "poise"
+msgstr "nusiteikimas"
+
+#: units/__init__.py:1470
+msgid "pound"
+msgstr "svaras"
+
+#: units/__init__.py:1474
+msgid "pound force per square inch"
+msgstr "svaro jėgos kvadratiniam coliui"
+
+#: units/__init__.py:1478
+msgid "poundal"
+msgstr "svaras"
+
+#: units/__init__.py:1482
+msgid "proton mass"
+msgstr "protonų masė"
+
+#: units/__init__.py:1486
+msgid "quadrillion Btu"
+msgstr "kvadrilijonas Btu"
+
+#: units/__init__.py:1490
+msgid "quart"
+msgstr "kv"
+
+#: units/__init__.py:1494
+msgid "quarter"
+msgstr "ketvirtį"
+
+#: units/__init__.py:1498
+msgid "radian"
+msgstr "radianas"
+
+#: units/__init__.py:1502
+msgid "rads"
+msgstr "rads"
+
+#: units/__init__.py:1506
+msgid "reciprocal centimeter"
+msgstr "abipusis centimetras"
+
+#: units/__init__.py:1510
+msgid "refrigeration ton"
+msgstr "šaldymo toną"
+
+#: units/__init__.py:1514
+msgid "roentgen equivalent man"
+msgstr "roentgenas lygiavertis žmogus"
+
+#: units/__init__.py:1518
+msgid "revolutions per minute"
+msgstr "apsisukimai per minutę"
+
+#: units/__init__.py:1519
+msgid "rpm"
+msgstr "aps./min"
+
+#: units/__init__.py:1522
+msgid "revolutions per second"
+msgstr "apsisukimų per sekundę"
+
+#: units/__init__.py:1523
+msgid "rps"
+msgstr "rps"
+
+#: units/__init__.py:1526 units/__init__.py:1527
+msgid "reyn"
+msgstr "Reyn"
+
+#: units/__init__.py:1530
+msgid "reciprocal poise"
+msgstr "abipusis nusistatymas"
+
+#: units/__init__.py:1534
+msgid "rod"
+msgstr "lazdele"
+
+#: units/__init__.py:1538
+msgid "roentgen"
+msgstr "roentgenas"
+
+#: units/__init__.py:1542
+msgid "rutherford"
+msgstr "rutherfordas"
+
+#: units/__init__.py:1546
+msgid "rydberg"
+msgstr "Rydbergas"
+
+#: units/__init__.py:1550
+msgid "rydberg constant"
+msgstr "rydbergo konstanta"
+
+#: units/__init__.py:1554
+msgid "scaled point"
+msgstr "mastelio taškas"
+
+#: units/__init__.py:1558
+msgid "scruple"
+msgstr "skrupulas"
+
+#: units/__init__.py:1562
+msgid "second"
+msgstr "antra"
+
+#: units/__init__.py:1566
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "millisecond"
+msgstr "miliarksekundė"
+
+#: units/__init__.py:1570
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "microsecond"
+msgstr "miliarksekundė"
+
+#: units/__init__.py:1574
+msgid "second radiation constant"
+msgstr "antroji radiacijos konstanta"
+
+#: units/__init__.py:1578
+msgid "shake"
+msgstr "papurtyti"
+
+#: units/__init__.py:1582
+msgid "shot"
+msgstr "nušautas"
+
+#: units/__init__.py:1586
+msgid "sidereal day"
+msgstr "sideralinė diena"
+
+#: units/__init__.py:1587
+msgctxt "unit"
+msgid "sidereal day"
+msgstr "sideralinė diena"
+
+#: units/__init__.py:1590
+msgid "sidereal month"
+msgstr "šalutinis mėnuo"
+
+#: units/__init__.py:1591
+msgctxt "unit"
+msgid "sidereal month"
+msgstr "šalutinis mėnuo"
+
+#: units/__init__.py:1594
+msgid "sidereal year"
+msgstr "sideriniai metai"
+
+#: units/__init__.py:1595
+msgctxt "unit"
+msgid "sidereal year"
+msgstr "sideriniai metai"
+
+#: units/__init__.py:1598
+msgid "siemens"
+msgstr "siemens"
+
+#: units/__init__.py:1602
+msgid "sievert"
+msgstr "sievert"
+
+#: units/__init__.py:1606
+msgid "slinch"
+msgstr "slinkti"
+
+#: units/__init__.py:1610
+msgid "slug"
+msgstr "šliužas"
+
+#: units/__init__.py:1614
+msgid "speed of light"
+msgstr "šviesos greitis"
+
+#: units/__init__.py:1618
+msgid "square degree"
+msgstr "kvadrato laipsnis"
+
+#: units/__init__.py:1622
+msgid "square foot"
+msgstr "kvadratinė pėda"
+
+#: units/__init__.py:1626
+msgid "square inch"
+msgstr "kvadratinis colis"
+
+#: units/__init__.py:1630
+msgid "square league"
+msgstr "kvadrato lyga"
+
+#: units/__init__.py:1634
+msgid "square mile"
+msgstr "kvadratinė mylia"
+
+#: units/__init__.py:1638
+msgid "square rod"
+msgstr "kvadratinis strypas"
+
+#: units/__init__.py:1642
+msgid "square survey mile"
+msgstr "kvadrato matavimo mylia"
+
+#: units/__init__.py:1646
+msgid "square yard"
+msgstr "kvadratinis kiemas"
+
+#: units/__init__.py:1650
+msgid "standard atmosphere"
+msgstr "standartinė atmosfera"
+
+#: units/__init__.py:1654
+msgid "standard gravity"
+msgstr "standartinis sunkis"
+
+#: units/__init__.py:1658
+msgid "standard liter per minute"
+msgstr "standartinis litras per minutę"
+
+#: units/__init__.py:1694
+msgid "Stefan-Boltzmann constant"
+msgstr "Stefano-Boltzmanno konstanta"
+
+#: units/__init__.py:1698
+msgid "steradian"
+msgstr "steradianas"
+
+#: units/__init__.py:1702
+msgid "stere"
+msgstr "stereas"
+
+#: units/__init__.py:1706
+msgid "stilb"
+msgstr "stilb"
+
+#: units/__init__.py:1710
+msgid "stokes"
+msgstr "stokai"
+
+#: units/__init__.py:1714
+msgid "stone"
+msgstr "akmuo"
+
+#: units/__init__.py:1718
+msgid "survey foot"
+msgstr "apklausos pėda"
+
+#: units/__init__.py:1722
+msgid "survey mile"
+msgstr "apklausos mylia"
+
+#: units/__init__.py:1730 units/__init__.py:1731
+msgid "synodic month"
+msgstr "sinodinis mėnuo"
+
+#: units/__init__.py:1734 units/__init__.py:1735
+msgid "tablespoon"
+msgstr "šaukštas"
+
+#: units/__init__.py:1742 units/__init__.py:1743
+msgid "teaspoon"
+msgstr "šaukštelio"
+
+#: units/__init__.py:1746
+msgid "technical atmosphere"
+msgstr "techninė atmosfera"
+
+#: units/__init__.py:1774
+msgid "therm"
+msgstr "term"
+
+#: units/__init__.py:1778
+msgid "thermochemical Btu"
+msgstr "termocheminis Btu"
+
+#: units/__init__.py:1782
+msgid "Thomson cross section"
+msgstr "„Thomson“ skerspjūvis"
+
+#: units/__init__.py:1790
+msgid "ton"
+msgstr "tonos"
+
+#: units/__init__.py:1794
+msgid "ton of TNT"
+msgstr "tonos TNT"
+
+#: units/__init__.py:1798
+msgid "ton of oil equivalent"
+msgstr "tonos naftos ekvivalento"
+
+#: units/__init__.py:1799
+msgid "toe"
+msgstr "pirštas"
+
+#: units/__init__.py:1806 units/__init__.py:1807
+msgid "tropical month"
+msgstr "atogrąžų mėnuo"
+
+#: units/__init__.py:1810 units/__init__.py:1811
+msgid "tropical year"
+msgstr "tropiniai metai"
+
+#: units/__init__.py:1814 units/__init__.py:1815
+msgid "troy ounce"
+msgstr "Trojos uncija"
+
+#: units/__init__.py:1818 units/__init__.py:1819
+msgid "troy pound"
+msgstr "Trojos svaras"
+
+#: units/__init__.py:1822 units/__init__.py:1823
+msgid "turn"
+msgstr "posūkis"
+
+#: units/__init__.py:1826 units/__init__.py:1827
+msgid "unified atomic mass unit"
+msgstr "vieningas atominės masės vienetas"
+
+#: units/__init__.py:1830
+msgid "unit pole"
+msgstr "vieneto stulpas"
+
+#: units/__init__.py:1834
+msgid "vacuum permeability"
+msgstr "vakuuminis pralaidumas"
+
+#: units/__init__.py:1838
+msgid "vacuum permittivity"
+msgstr "vakuuminis laidumas"
+
+#: units/__init__.py:1850
+msgid "Von Klitzing constant"
+msgstr "Von Klitzing pastovus"
+
+#: units/__init__.py:1854
+msgid "Water volumic mass"
+msgstr "Vandens tūrinė masė"
+
+#: units/__init__.py:1858
+msgid "Water volumic mass at 39F"
+msgstr "Vandens tūrinė masė esant 39F"
+
+#: units/__init__.py:1862
+msgid "Water volumic mass at 60F"
+msgstr "Vandens tūrinė masė esant 60F"
+
+#: units/__init__.py:1882
+msgid "wien frequency displacement law constant"
+msgstr "wien dažnio poslinkio dėsnio konstanta"
+
+#: units/__init__.py:1886
+msgid "wien u"
+msgstr "wien u"
+
+#: units/__init__.py:1890
+msgid "wien displacement law constant"
+msgstr "wien poslinkio dėsnio konstanta"
+
+#: units/__init__.py:1894
+msgid "wien x"
+msgstr "wien x"
+
+#: units/__init__.py:1898
+msgid "Cu X-ray wavelength"
+msgstr "Cu rentgeno bangos ilgis"
+
+#: units/__init__.py:1902
+msgid "Mo X-ray wavelength"
+msgstr "Mo rentgeno bangos ilgis"
+
+#: units/__init__.py:1906
+msgid "yard"
+msgstr "kiemas"
+
+#: units/__init__.py:1914
+msgid "zeta"
+msgstr "zeta"
+
+#: units/__init__.py:1918
+msgid "decibelmilliwatt"
+msgstr "decibelmilliwatt"
+
+#: units/__init__.py:1922
+msgid "decibelmicrowatt"
+msgstr "decibelmicrowatt"
+
+#: units/__init__.py:1926
+msgid "Euler‘s number"
+msgstr "Eulerio numeris"
+
+#: units/__init__.py:1930
+msgid "octave"
+msgstr "oktava"
+
+#: units/__init__.py:1934
+msgid "sound pressure level"
+msgstr "garso slėgio lygis"
+
+#: units/__init__.py:1954
+#, fuzzy
+#| msgid "millenium"
+msgid "milligram"
+msgstr "tūkstantmetis"
+
+#: units/__init__.py:1958
+#, fuzzy
+#| msgid "kilogram-force"
+msgid "kilogram"
+msgstr "kilogramo jėga"
+
+#: units/__init__.py:1962
+#, fuzzy
+#| msgid "meter"
+msgid "kilometer"
+msgstr "metras"
+
+#: units/__init__.py:1966
+#, fuzzy
+#| msgid "centimeter Hg"
+msgid "centimeter"
+msgstr "centimetras Hg"
+
+#: units/__init__.py:1970
+#, fuzzy
+#| msgid "Hg millimeter"
+msgid "millimeter"
+msgstr "Hg milimetras"
+
+#: units/__init__.py:1974
+#, fuzzy
+#| msgid "meter per second"
+msgid "centimeter per second"
+msgstr "metras per sekundę"
+
+#: units/models.py:684
+msgid "Incompatible units"
+msgstr "Nesuderinami vienetai"
+
+#: units/models.py:705
+msgid "Undefined unit in the registry"
+msgstr "Nenustatytas vienetas registre"
+
+#~ msgid "square centimeter"
+#~ msgstr "kvadratinis centimetras"
+
+#~ msgid "square millimeter"
+#~ msgstr "kvadratinis milimetras"
+
+#~ msgid "surface"
+#~ msgstr "paviršius"
+
+#~ msgid "speed"
+#~ msgstr "greičiu"
+
+#~ msgid "meter per gram"
+#~ msgstr "metras už gramą"
+
+#~ msgid "absorption"
+#~ msgstr "absorbcija"
+
+#~ msgid "electromagnetic inductance"
+#~ msgstr "elektromagnetinis induktyvumas"
+
+#~ msgid "electromagnetic resistance"
+#~ msgstr "elektromagnetinė varža"
+
+#~ msgid "linear mass density"
+#~ msgstr "linijinis masės tankis"
+
+#~ msgid "density of particle"
+#~ msgstr "dalelės tankis"
+
+#~ msgid "catalytic activity"
+#~ msgstr "katalizinis aktyvumas"
+
+#~ msgid "quantity of information"
+#~ msgstr "informacijos kiekis"
+
+#~ msgid "density of information"
+#~ msgstr "informacijos tankumas"
+
+#~ msgid "magnetic moment"
+#~ msgstr "magnetinis momentas"
+
+#~ msgid "electrical capacitance"
+#~ msgstr "elektrinė talpa"
+
+#~ msgid "electric force"
+#~ msgstr "elektros jėga"
+
+#~ msgid "electromagnetic action"
+#~ msgstr "elektromagnetinis veikimas"
+
+#~ msgid "power per unit per wavelength interval"
+#~ msgstr "galia vienetui bangos ilgio intervale"
+
+#~ msgid "electrostatic unit of charge"
+#~ msgstr "elektrostatinis įkrovos vienetas"
+
+#~ msgid "magnetic induction"
+#~ msgstr "magnetinė indukcija"
+
+#~ msgid "angle"
+#~ msgstr "kampu"
+
+#~ msgid "radiation"
+#~ msgstr "radiacija"
+
+#~ msgid "energy per temperature increment per mole"
+#~ msgstr "energijos, tenkančios temperatūros prieaugiui moliui"
+
+#~ msgid "reciprocal length"
+#~ msgstr "abipusis ilgis"
+
+#~ msgid "angular speed"
+#~ msgstr "kampinis greitis"
+
+#~ msgid "radiation exposure"
+#~ msgstr "radiacijos poveikis"
+
+#~ msgid "solid degree"
+#~ msgstr "tvirtas laipsnis"
+
+#~ msgid "volumetric flow rate"
+#~ msgstr "tūrinis srautas"
+
+#~ msgid "mass density"
+#~ msgstr "masės tankis"
+
+#~ msgid "heat energy"
+#~ msgstr "šilumos energija"
+
+#~ msgid "quantity"
+#~ msgstr "kiekis"
+
+#~ msgid "field quantity"
+#~ msgstr "lauko kiekis"
+
+#~ msgid "permeability"
+#~ msgstr "pralaidumas"
+
+#~ msgid "energy by temperature"
+#~ msgstr "energija pagal temperatūrą"
+
+#~ msgid "dimesionless"
+#~ msgstr "bešimtis"
+
+#~ msgid "H-field"
+#~ msgstr "H laukas"
+
+#~ msgid "unit"
+#~ msgstr "vienetas"
+
+#~ msgid "solid angle"
+#~ msgstr "vientisas kampas"
+
+#~ msgid "flux density"
+#~ msgstr "srauto tankis"

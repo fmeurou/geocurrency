@@ -1,0 +1,2415 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 12:18+0200\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Korean <http://translation.peabytes.me/projects/geocurrency/"
+"api/ko/>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.2.2\n"
+
+#: countries/viewsets.py:97
+msgid "Unknown country or no info for this country"
+msgstr "알 수없는 국가 또는이 국가에 대한 정보 없음"
+
+#: rates/models.py:472
+msgid "Rate could not be found"
+msgstr "요금을 찾을 수 없습니다."
+
+#: settings.example.py:162
+msgid "Afrikaans"
+msgstr "아프리카 어"
+
+#: settings.example.py:163
+msgid "Arabic"
+msgstr "아라비아 말"
+
+#: settings.example.py:164
+msgid "Algerian Arabic"
+msgstr "알제리 아랍어"
+
+#: settings.example.py:165
+msgid "Asturian"
+msgstr "아스투리아스"
+
+#: settings.example.py:166
+msgid "Azerbaijani"
+msgstr "아제르바이잔"
+
+#: settings.example.py:167
+msgid "Bulgarian"
+msgstr "불가리아 사람"
+
+#: settings.example.py:168
+msgid "Belarusian"
+msgstr "벨라루스 어"
+
+#: settings.example.py:169
+msgid "Bengali"
+msgstr "벵골 사람"
+
+#: settings.example.py:170
+msgid "Breton"
+msgstr "브르타뉴 어"
+
+#: settings.example.py:171
+msgid "Bosnian"
+msgstr "보스니아 어"
+
+#: settings.example.py:172
+msgid "Catalan"
+msgstr "카탈로니아 사람"
+
+#: settings.example.py:173
+msgid "Czech"
+msgstr "체코 사람"
+
+#: settings.example.py:174
+msgid "Welsh"
+msgstr "웨일스 말"
+
+#: settings.example.py:175
+msgid "Danish"
+msgstr "덴마크 말"
+
+#: settings.example.py:176
+msgid "German"
+msgstr "독일 사람"
+
+#: settings.example.py:177
+msgid "Lower Sorbian"
+msgstr "낮은 소르 비아 어"
+
+#: settings.example.py:178
+msgid "Greek"
+msgstr "그리스 어"
+
+#: settings.example.py:179
+msgid "English"
+msgstr "영어"
+
+#: settings.example.py:180
+msgid "Australian English"
+msgstr "호주 영어"
+
+#: settings.example.py:181
+msgid "British English"
+msgstr "영국 영어"
+
+#: settings.example.py:182
+msgid "Esperanto"
+msgstr "에스페란토 말"
+
+#: settings.example.py:183
+msgid "Spanish"
+msgstr "스페인의"
+
+#: settings.example.py:184
+msgid "Argentinian Spanish"
+msgstr "아르헨티나 스페인어"
+
+#: settings.example.py:185
+msgid "Colombian Spanish"
+msgstr "콜롬비아 스페인어"
+
+#: settings.example.py:186
+msgid "Mexican Spanish"
+msgstr "멕시코 스페인어"
+
+#: settings.example.py:187
+msgid "Nicaraguan Spanish"
+msgstr "니카라과 스페인어"
+
+#: settings.example.py:188
+msgid "Venezuelan Spanish"
+msgstr "베네수엘라 스페인어"
+
+#: settings.example.py:189
+msgid "Estonian"
+msgstr "에스토니아 사람"
+
+#: settings.example.py:190
+msgid "Basque"
+msgstr "바스크 사람"
+
+#: settings.example.py:191
+msgid "Persian"
+msgstr "페르시아 인"
+
+#: settings.example.py:192
+msgid "Finnish"
+msgstr "핀란드어"
+
+#: settings.example.py:193
+msgid "French"
+msgstr "프랑스 국민"
+
+#: settings.example.py:194
+msgid "Frisian"
+msgstr "프리지아 어"
+
+#: settings.example.py:195
+msgid "Irish"
+msgstr "아일랜드의"
+
+#: settings.example.py:196
+msgid "Scottish Gaelic"
+msgstr "스코틀랜드 게 일어"
+
+#: settings.example.py:197
+msgid "Galician"
+msgstr "갈리시아어"
+
+#: settings.example.py:198
+msgid "Hebrew"
+msgstr "헤브라이 사람"
+
+#: settings.example.py:199
+msgid "Hindi"
+msgstr "힌디 어"
+
+#: settings.example.py:200
+msgid "Croatian"
+msgstr "크로아티아어"
+
+#: settings.example.py:201
+msgid "Upper Sorbian"
+msgstr "소르 비아 어"
+
+#: settings.example.py:202
+msgid "Hungarian"
+msgstr "헝가리 인"
+
+#: settings.example.py:203
+msgid "Armenian"
+msgstr "아르메니아 사람"
+
+#: settings.example.py:204
+msgid "Interlingua"
+msgstr "인터 링구아"
+
+#: settings.example.py:205
+msgid "Indonesian"
+msgstr "인도네시아 인"
+
+#: settings.example.py:206
+msgid "Igbo"
+msgstr "Igbo"
+
+#: settings.example.py:207
+msgid "Ido"
+msgstr "나는한다"
+
+#: settings.example.py:208
+msgid "Icelandic"
+msgstr "아이슬란드 어"
+
+#: settings.example.py:209
+msgid "Italian"
+msgstr "이탈리아 사람"
+
+#: settings.example.py:210
+msgid "Japanese"
+msgstr "일본어"
+
+#: settings.example.py:211
+msgid "Georgian"
+msgstr "조르지아 주 사람"
+
+#: settings.example.py:212
+msgid "Kabyle"
+msgstr "Kabyle"
+
+#: settings.example.py:213
+msgid "Kazakh"
+msgstr "카자흐어"
+
+#: settings.example.py:214
+msgid "Khmer"
+msgstr "크메르"
+
+#: settings.example.py:215
+msgid "Kannada"
+msgstr "칸나다어"
+
+#: settings.example.py:216
+msgid "Korean"
+msgstr "한국어"
+
+#: settings.example.py:217
+msgid "Kyrgyz"
+msgstr "키르기스"
+
+#: settings.example.py:218
+msgid "Luxembourgish"
+msgstr "룩셈부르크 어"
+
+#: settings.example.py:219
+msgid "Lithuanian"
+msgstr "리투아니아 사람"
+
+#: settings.example.py:220
+msgid "Latvian"
+msgstr "라트비아 사람"
+
+#: settings.example.py:221
+msgid "Macedonian"
+msgstr "마케도니아 어"
+
+#: settings.example.py:222
+msgid "Malayalam"
+msgstr "말라 얄 람어"
+
+#: settings.example.py:223
+msgid "Mongolian"
+msgstr "몽고 어"
+
+#: settings.example.py:224
+msgid "Marathi"
+msgstr "마라 티어"
+
+#: settings.example.py:225
+msgid "Burmese"
+msgstr "버마 사람"
+
+#: settings.example.py:226
+msgid "Norwegian Bokmål"
+msgstr "노르웨이 보크 몰"
+
+#: settings.example.py:227
+msgid "Nepali"
+msgstr "네팔어"
+
+#: settings.example.py:228
+msgid "Dutch"
+msgstr "네덜란드 사람"
+
+#: settings.example.py:229
+msgid "Norwegian Nynorsk"
+msgstr "노르웨이 뉘 노르 스크"
+
+#: settings.example.py:230
+msgid "Ossetic"
+msgstr "골조"
+
+#: settings.example.py:231
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: settings.example.py:232
+msgid "Polish"
+msgstr "광택"
+
+#: settings.example.py:233
+msgid "Portuguese"
+msgstr "포르투갈 인"
+
+#: settings.example.py:234
+msgid "Brazilian Portuguese"
+msgstr "브라질 포르투갈어"
+
+#: settings.example.py:235
+msgid "Romanian"
+msgstr "루마니아 사람"
+
+#: settings.example.py:236
+msgid "Russian"
+msgstr "러시아인"
+
+#: settings.example.py:237
+msgid "Slovak"
+msgstr "슬로바키아 사람"
+
+#: settings.example.py:238
+msgid "Slovenian"
+msgstr "슬로베니아"
+
+#: settings.example.py:239
+msgid "Albanian"
+msgstr "알바니아"
+
+#: settings.example.py:240
+msgid "Serbian"
+msgstr "세르비아 사람"
+
+#: settings.example.py:241
+msgid "Serbian Latin"
+msgstr "세르비아어 라틴어"
+
+#: settings.example.py:242
+msgid "Swedish"
+msgstr "스웨덴어"
+
+#: settings.example.py:243
+msgid "Swahili"
+msgstr "스와힐리어"
+
+#: settings.example.py:244
+msgid "Tamil"
+msgstr "타밀 사람"
+
+#: settings.example.py:245
+msgid "Telugu"
+msgstr "텔루구 어"
+
+#: settings.example.py:246
+msgid "Tajik"
+msgstr "타직"
+
+#: settings.example.py:247
+msgid "Thai"
+msgstr "태국어"
+
+#: settings.example.py:248
+msgid "Turkmen"
+msgstr "투르크멘 말"
+
+#: settings.example.py:249
+msgid "Turkish"
+msgstr "터키어"
+
+#: settings.example.py:250
+msgid "Tatar"
+msgstr "타타르"
+
+#: settings.example.py:251
+msgid "Udmurt"
+msgstr "우드 무 르트"
+
+#: settings.example.py:252
+msgid "Ukrainian"
+msgstr "우크라이나 인"
+
+#: settings.example.py:253
+msgid "Urdu"
+msgstr "우르두어"
+
+#: settings.example.py:254
+msgid "Uzbek"
+msgstr "우즈벡"
+
+#: settings.example.py:255
+msgid "Vietnamese"
+msgstr "베트남어"
+
+#: settings.example.py:256
+msgid "Simplified Chinese"
+msgstr "중국어 간체"
+
+#: settings.example.py:257
+msgid "Traditional Chinese"
+msgstr "중국어 번체"
+
+#: units/__init__.py:8 units/tests.py:165 units/tests.py:437 units/tests.py:445
+msgid "length"
+msgstr "길이"
+
+#: units/__init__.py:9
+msgid "time"
+msgstr "시각"
+
+#: units/__init__.py:10
+msgid "current"
+msgstr "흐름"
+
+#: units/__init__.py:11
+msgid "luminosity"
+msgstr "밝기"
+
+#: units/__init__.py:13
+msgid "mass"
+msgstr "질량"
+
+#: units/__init__.py:14
+msgid "substance"
+msgstr "물질"
+
+#: units/__init__.py:15
+msgid "temperature"
+msgstr "온도"
+
+#: units/__init__.py:16
+msgid "constant"
+msgstr "일정한"
+
+#: units/__init__.py:17
+msgid "area"
+msgstr "지역"
+
+#: units/__init__.py:18
+msgid "volume"
+msgstr "음량"
+
+#: units/__init__.py:19
+msgid "frequency"
+msgstr "회수"
+
+#: units/__init__.py:21
+msgid "wavenumber"
+msgstr "파수"
+
+#: units/__init__.py:22
+msgid "velocity"
+msgstr "속도"
+
+#: units/__init__.py:24
+msgid "acceleration"
+msgstr "가속"
+
+#: units/__init__.py:26
+msgid "force"
+msgstr "힘"
+
+#: units/__init__.py:28
+msgid "energy"
+msgstr "에너지"
+
+#: units/__init__.py:30
+msgid "power"
+msgstr "힘"
+
+#: units/__init__.py:32
+msgid "density"
+msgstr "밀도"
+
+#: units/__init__.py:34
+msgid "pressure"
+msgstr "압력"
+
+#: units/__init__.py:36
+msgid "torque"
+msgstr "토크"
+
+#: units/__init__.py:38
+msgid "viscosity"
+msgstr "점도"
+
+#: units/__init__.py:40
+msgid "kinematic viscosity"
+msgstr "동점도"
+
+#: units/__init__.py:43
+msgid "fluidity"
+msgstr "유동성"
+
+#: units/__init__.py:45
+msgid "concentration"
+msgstr "집중"
+
+#: units/__init__.py:47
+msgid "activity"
+msgstr "활동"
+
+#: units/__init__.py:49
+msgid "entropy"
+msgstr "엔트로피"
+
+#: units/__init__.py:52
+msgid "molar entropy"
+msgstr "몰 엔트로피"
+
+#: units/__init__.py:56
+msgid "heat transmission"
+msgstr "열전달"
+
+#: units/__init__.py:60
+msgid "luminance"
+msgstr "휘도"
+
+#: units/__init__.py:64
+msgid "luminous flux"
+msgstr "광속"
+
+#: units/__init__.py:67
+msgid "illuminance"
+msgstr "조도"
+
+#: units/__init__.py:71
+msgid "intensity"
+msgstr "강렬"
+
+#: units/__init__.py:73
+msgid "charge"
+msgstr "요금"
+
+#: units/__init__.py:74
+msgid "electric potential"
+msgstr "전위"
+
+#: units/__init__.py:78
+msgid "electric field"
+msgstr "전기장"
+
+#: units/__init__.py:82
+msgid "resistance"
+msgstr "저항"
+
+#: units/__init__.py:86
+msgid "conductance"
+msgstr "컨덕턴스"
+
+#: units/__init__.py:90
+msgid "capacitance"
+msgstr "정전 용량"
+
+#: units/__init__.py:94
+msgid "inductance"
+msgstr "인덕턴스"
+
+#: units/__init__.py:98
+msgid "magnetic flux"
+msgstr "자속"
+
+#: units/__init__.py:102
+msgid "magnetic field"
+msgstr "자기장"
+
+#: units/__init__.py:106
+msgid "magnetomotive force"
+msgstr "자기력"
+
+#: units/__init__.py:109
+msgid "electric dipole"
+msgstr "전기 쌍극자"
+
+#: units/__init__.py:113
+msgid "electric quadrupole"
+msgstr "전기 사중 극자"
+
+#: units/__init__.py:117
+msgid "magnetic dipole"
+msgstr "자기 쌍극자"
+
+#: units/__init__.py:120
+msgid "printing unit"
+msgstr "인쇄 장치"
+
+#: units/__init__.py:123
+msgid "gaussian charge"
+msgstr "가우스 전하"
+
+#: units/__init__.py:127
+msgid "gaussian current"
+msgstr "가우스 전류"
+
+#: units/__init__.py:131
+msgid "gaussian electric potential"
+msgstr "가우스 전위"
+
+#: units/__init__.py:135
+msgid "gaussian electric field"
+msgstr "가우스 전기장"
+
+#: units/__init__.py:140
+msgid "gaussian electric displacement field"
+msgstr "가우스 전기 변위 장"
+
+#: units/__init__.py:144
+msgid "gaussian electric flux"
+msgstr "가우스 전기 플럭스"
+
+#: units/__init__.py:148
+msgid "gaussian magnetic field"
+msgstr "가우스 자기장"
+
+#: units/__init__.py:152
+msgid "gaussian magnetic field strength"
+msgstr "가우스 자기장 강도"
+
+#: units/__init__.py:156
+msgid "gaussian magnetic flux"
+msgstr "가우스 자속"
+
+#: units/__init__.py:160
+msgid "gaussian resistance"
+msgstr "가우스 저항"
+
+#: units/__init__.py:164
+msgid "gaussian resistivity"
+msgstr "가우스 저항률"
+
+#: units/__init__.py:167
+msgid "gaussian capacitance"
+msgstr "가우스 커패시턴스"
+
+#: units/__init__.py:170
+msgid "gaussian inductance"
+msgstr "가우스 인덕턴스"
+
+#: units/__init__.py:174
+msgid "gaussian conductance"
+msgstr "가우시안 컨덕턴스"
+
+#: units/__init__.py:178
+msgid "esu charge"
+msgstr "esu 요금"
+
+#: units/__init__.py:182
+msgid "esu current"
+msgstr "esu 현재"
+
+#: units/__init__.py:186
+msgid "esu electric potential"
+msgstr "esu 전위"
+
+#: units/__init__.py:190
+msgid "esu magnetic flux"
+msgstr "esu 자속"
+
+#: units/__init__.py:194
+msgid "esu magnetic field"
+msgstr "esu 자기장"
+
+#: units/__init__.py:198
+msgid "Compound dimension"
+msgstr ""
+
+#: units/__init__.py:202
+#, fuzzy
+#| msgid "dimensionless"
+msgid "Custom dimension"
+msgstr "무 차원"
+
+#: units/__init__.py:317 units/__init__.py:1938
+msgid "meter per second"
+msgstr "초당 미터"
+
+#: units/__init__.py:322 units/__init__.py:1942
+msgid "meter per square second"
+msgstr "평방 초당 미터"
+
+#: units/__init__.py:327 units/__init__.py:1946 units/__init__.py:1950
+msgid "square meter"
+msgstr "평방 미터"
+
+#: units/__init__.py:332
+msgid "cubic meter"
+msgstr "입방 미터"
+
+#: units/__init__.py:342
+msgid "Copper Kα"
+msgstr "구리 Kα"
+
+#: units/__init__.py:346
+msgid "Molybdenum K-α"
+msgstr "몰리브덴 K-α"
+
+#: units/__init__.py:350
+msgid "Tungsten K-α"
+msgstr "텅스텐 K-α"
+
+#: units/__init__.py:351
+msgid "W Kα"
+msgstr "W Kα"
+
+#: units/__init__.py:354
+msgid "RKM"
+msgstr "RKM"
+
+#: units/__init__.py:359 units/__init__.py:954
+msgid "long ton-force"
+msgstr "긴 톤 힘"
+
+#: units/__init__.py:369 units/__init__.py:1234
+msgid "long ton"
+msgstr "영국 톤"
+
+#: units/__init__.py:374
+msgid "short ton force"
+msgstr "짧은 톤 힘"
+
+#: units/__init__.py:379
+msgid "short hundredweight"
+msgstr "짧은 백"
+
+#: units/__init__.py:384
+msgid "short ton"
+msgstr "짧은 톤"
+
+#: units/__init__.py:389
+msgid "US International Ampere"
+msgstr "미국 국제 암페어"
+
+#: units/__init__.py:394
+msgid "US international Ohm"
+msgstr "미국 국제 옴"
+
+#: units/__init__.py:399
+msgid "US international Volt"
+msgstr "미국 국제 볼트"
+
+#: units/__init__.py:404
+msgid "US therm"
+msgstr "미국 열"
+
+#: units/__init__.py:408
+msgid "abampere"
+msgstr "Abampere"
+
+#: units/__init__.py:412
+msgid "abcoulomb"
+msgstr "abcoulomb"
+
+#: units/__init__.py:416
+msgid "Aberdeen"
+msgstr "애버딘"
+
+#: units/__init__.py:420
+msgid "abfarad"
+msgstr "Abfarad"
+
+#: units/__init__.py:424
+msgid "abhenry"
+msgstr "Abhenry"
+
+#: units/__init__.py:428
+msgid "abohm"
+msgstr "Abohm"
+
+#: units/__init__.py:432
+msgid "absiemens"
+msgstr "absiemens"
+
+#: units/__init__.py:436
+msgid "abvolt"
+msgstr "Abvolt"
+
+#: units/__init__.py:440
+msgid "acre"
+msgstr "에이커"
+
+#: units/__init__.py:444
+msgid "acre-foot"
+msgstr "에이커 피트"
+
+#: units/__init__.py:448
+msgid "ampere"
+msgstr "암페어"
+
+#: units/__init__.py:452
+#, fuzzy
+#| msgid "ampere"
+msgid "milliampere"
+msgstr "암페어"
+
+#: units/__init__.py:456
+msgid "ampere-turn"
+msgstr "암페어 턴"
+
+#: units/__init__.py:460
+msgid "angstrom"
+msgstr "옹스트롬"
+
+#: units/__init__.py:464
+msgid "angstrom star"
+msgstr "옹스트롬 별"
+
+#: units/__init__.py:468
+msgid "apothecary dram"
+msgstr "약종상 드람"
+
+#: units/__init__.py:472
+msgid "apothecary ounce"
+msgstr "약종상 온스"
+
+#: units/__init__.py:476
+msgid "apothecary pound"
+msgstr "약종상 파운드"
+
+#: units/__init__.py:480
+msgid "minute of arc"
+msgstr "호의 분"
+
+#: units/__init__.py:484
+msgid "second of arc"
+msgstr "두 번째 호"
+
+#: units/__init__.py:488
+msgid "are"
+msgstr "아르"
+
+#: units/__init__.py:492
+msgid "astronomical unit"
+msgstr "천문 단위"
+
+#: units/__init__.py:496
+msgid "atmosphere liter"
+msgstr "대기 리터"
+
+#: units/__init__.py:500
+msgid "atomic mass constant"
+msgstr "원자 질량 상수"
+
+#: units/__init__.py:504
+msgid "atomic unit of current"
+msgstr "전류의 원자 단위"
+
+#: units/__init__.py:508
+msgid "atomic unit of electric field"
+msgstr "전기장의 원자 단위"
+
+#: units/__init__.py:512
+msgid "atomic unit of force"
+msgstr "힘의 원자 단위"
+
+#: units/__init__.py:516
+msgid "atomic unit of intensity"
+msgstr "강도의 원자 단위"
+
+#: units/__init__.py:520
+msgid "atomic unit of temperature"
+msgstr "온도의 원자 단위"
+
+#: units/__init__.py:524
+msgid "atomic unit of time"
+msgstr "시간의 원자 단위"
+
+#: units/__init__.py:528
+msgid "Avogadro constant"
+msgstr "Avogadro 상수"
+
+#: units/__init__.py:532
+msgid "Avogadro number"
+msgstr "Avogadro 번호"
+
+#: units/__init__.py:536
+msgid "bag"
+msgstr "가방"
+
+#: units/__init__.py:540
+msgid "bar"
+msgstr "바"
+
+#: units/__init__.py:544
+msgid "barn"
+msgstr "외양간"
+
+#: units/__init__.py:548
+msgid "barrel"
+msgstr "통"
+
+#: units/__init__.py:552
+msgid "barrye"
+msgstr "Barrye"
+
+#: units/__init__.py:556
+msgid "baud"
+msgstr "보오드"
+
+#: units/__init__.py:560
+msgid "becquerel"
+msgstr "베크렐"
+
+#: units/__init__.py:564
+msgid "beer barrel"
+msgstr "맥주 통"
+
+#: units/__init__.py:568
+msgid "bel"
+msgstr "벨"
+
+#: units/__init__.py:572
+msgid "biot"
+msgstr "비오"
+
+#: units/__init__.py:576
+msgid "biot turn"
+msgstr "비오 턴"
+
+#: units/__init__.py:580
+msgid "bit"
+msgstr "비트"
+
+#: units/__init__.py:584
+msgid "bits per pixel"
+msgstr "픽셀 당 비트"
+
+#: units/__init__.py:588
+msgid "board foot"
+msgstr "보드 발"
+
+#: units/__init__.py:592
+msgid "bohr"
+msgstr "보어"
+
+#: units/__init__.py:596
+msgid "bohr magneton"
+msgstr "보어 마그네 톤"
+
+#: units/__init__.py:600
+msgid "boiler horsepower"
+msgstr "보일러 마력"
+
+#: units/__init__.py:604
+msgid "boltzmann constant"
+msgstr "볼츠만 상수"
+
+#: units/__init__.py:608
+msgid "british thermal unit"
+msgstr "영국 열 단위"
+
+#: units/__init__.py:612
+msgid "buckingham"
+msgstr "Buckingham"
+
+#: units/__init__.py:616
+msgid "bushel"
+msgstr "부셸"
+
+#: units/__init__.py:620
+msgid "byte"
+msgstr "바이트"
+
+#: units/__init__.py:624
+msgid "cable length"
+msgstr "케이블 길이"
+
+#: units/__init__.py:628
+msgid "calorie"
+msgstr "칼로리"
+
+#: units/__init__.py:632
+msgid "candela"
+msgstr "칸델라"
+
+#: units/__init__.py:636
+msgid "carat"
+msgstr "캐럿"
+
+#: units/__init__.py:640
+msgid "centimeter H20"
+msgstr "센티미터 H20"
+
+#: units/__init__.py:644
+msgid "centimeter Hg"
+msgstr "센티미터 Hg"
+
+#: units/__init__.py:648
+msgid "century"
+msgstr "세기"
+
+#: units/__init__.py:652
+msgid "chain"
+msgstr "체인"
+
+#: units/__init__.py:656
+msgid "cicero"
+msgstr "키케로"
+
+#: units/__init__.py:660
+msgid "circular mil"
+msgstr "원형 밀"
+
+#: units/__init__.py:664
+msgid "classical electron radius"
+msgstr "고전적인 전자 반경"
+
+#: units/__init__.py:668
+msgid "clausius"
+msgstr "클라우스"
+
+#: units/__init__.py:672
+msgid "common year"
+msgstr "평년"
+
+#: units/__init__.py:676
+msgid "conductance quantum"
+msgstr "전도도 양자"
+
+#: units/__init__.py:680
+msgid "conventional ampere"
+msgstr "기존 암페어"
+
+#: units/__init__.py:684
+msgid "conventional coulomb"
+msgstr "기존의 쿨롱"
+
+#: units/__init__.py:688
+msgid "conventional farad"
+msgstr "재래식 패러 드"
+
+#: units/__init__.py:692
+msgid "conventional henry"
+msgstr "기존의 헨리"
+
+#: units/__init__.py:696
+msgid "conventional josephson constant"
+msgstr "기존의 조셉슨 상수"
+
+#: units/__init__.py:700
+msgid "conventional ohm"
+msgstr "기존 옴"
+
+#: units/__init__.py:704
+msgid "conventional volt"
+msgstr "기존 볼트"
+
+#: units/__init__.py:708
+msgid "conventional Von Klitzing constant"
+msgstr "기존 Von Klitzing 상수"
+
+#: units/__init__.py:712
+msgid "conventional Watt"
+msgstr "기존 와트"
+
+#: units/__init__.py:716
+msgid "coulomb"
+msgstr "쿨롱"
+
+#: units/__init__.py:720
+msgid "coulomb constant"
+msgstr "쿨롱 상수"
+
+#: units/__init__.py:724
+msgid "count"
+msgstr "카운트"
+
+#: units/__init__.py:728
+msgid "counts per second"
+msgstr "초당 카운트"
+
+#: units/__init__.py:732
+msgid "CSS pixel"
+msgstr "CSS 픽셀"
+
+#: units/__init__.py:736
+msgid "cubic centimeter"
+msgstr "입방 센티미터"
+
+#: units/__init__.py:740
+msgid "cubic milliimeter"
+msgstr "입방 밀리미터"
+
+#: units/__init__.py:744
+msgid "cubic foot"
+msgstr "입방 피트"
+
+#: units/__init__.py:748
+msgid "cubic inch"
+msgstr "입방 인치"
+
+#: units/__init__.py:752
+msgid "cubic yard"
+msgstr "입방 야드"
+
+#: units/__init__.py:756
+msgid "cup"
+msgstr "컵"
+
+#: units/__init__.py:760
+msgid "curie"
+msgstr "로마 교황청"
+
+#: units/__init__.py:764
+msgid "dalton"
+msgstr "Dalton"
+
+#: units/__init__.py:768
+msgid "darcy"
+msgstr "Darcy"
+
+#: units/__init__.py:772
+msgid "day"
+msgstr "일"
+
+#: units/__init__.py:773
+msgctxt "unit"
+msgid "day"
+msgstr "일"
+
+#: units/__init__.py:776
+msgid "debye"
+msgstr "디바이"
+
+#: units/__init__.py:780
+msgid "decade"
+msgstr "열개의"
+
+#: units/__init__.py:781
+msgctxt "symbol"
+msgid "decade"
+msgstr "열개의"
+
+#: units/__init__.py:784
+msgid "decibel"
+msgstr "데시벨"
+
+#: units/__init__.py:788
+msgid "degree"
+msgstr "정도"
+
+#: units/__init__.py:792
+msgid "degree Celsius"
+msgstr "섭씨 온도"
+
+#: units/__init__.py:796
+msgid "degree Fahrenheit"
+msgstr "화씨"
+
+#: units/__init__.py:800
+msgid "degree Rankine"
+msgstr "학위 Rankine"
+
+#: units/__init__.py:804
+msgid "degree Reaumur"
+msgstr "학위 Reaumur"
+
+#: units/__init__.py:808
+msgid "denier"
+msgstr "부인"
+
+#: units/__init__.py:812
+msgid "didot"
+msgstr "디돗"
+
+#: units/__init__.py:816
+msgid "Dirac constant"
+msgstr "Dirac 상수"
+
+#: units/__init__.py:820
+msgid "dram"
+msgstr "음주"
+
+#: units/__init__.py:824
+msgid "dry barrel"
+msgstr "드라이 배럴"
+
+#: units/__init__.py:828
+msgid "dry gallon"
+msgstr "마른 갤런"
+
+#: units/__init__.py:832
+msgid "dry pint"
+msgstr "드라이 파인트"
+
+#: units/__init__.py:836
+msgid "dry quart"
+msgstr "드라이 쿼트"
+
+#: units/__init__.py:840
+msgid "decitex"
+msgstr "데시 텍스"
+
+#: units/__init__.py:844
+msgid "dyne"
+msgstr "다인"
+
+#: units/__init__.py:848
+msgid "eletcrical horsepower"
+msgstr "eletcrical 마력"
+
+#: units/__init__.py:852
+msgid "electron G-factor"
+msgstr "전자 G 인자"
+
+#: units/__init__.py:856
+msgid "electron mass"
+msgstr "전자 질량"
+
+#: units/__init__.py:860
+msgid "electronvolt"
+msgstr "전자 볼트"
+
+#: units/__init__.py:864
+msgid "elementary charge"
+msgstr "기본 요금"
+
+#: units/__init__.py:868
+msgid "entropy unit"
+msgstr "엔트로피 단위"
+
+#: units/__init__.py:872
+msgid "enzyme unit"
+msgstr "효소 단위"
+
+#: units/__init__.py:876
+msgid "eon"
+msgstr "영겁"
+
+#: units/__init__.py:880
+msgid "erg"
+msgstr "에르그"
+
+#: units/__init__.py:884
+msgid "farad"
+msgstr "패러 드"
+
+#: units/__init__.py:888
+msgid "faraday"
+msgstr "패러데이"
+
+#: units/__init__.py:892
+msgid "faraday constant"
+msgstr "패러데이 상수"
+
+#: units/__init__.py:896
+msgid "fathom"
+msgstr "길"
+
+#: units/__init__.py:900
+msgid "fermi"
+msgstr "페르미"
+
+#: units/__init__.py:904
+msgid "fifteen degree calorie"
+msgstr "15도 칼로리"
+
+#: units/__init__.py:908
+msgid "fifth"
+msgstr "다섯째"
+
+#: units/__init__.py:912
+msgid "fine structure constant"
+msgstr "미세 구조 상수"
+
+#: units/__init__.py:916
+msgid "first radiation constant"
+msgstr "첫 번째 방사 상수"
+
+#: units/__init__.py:920
+msgid "fluid dram"
+msgstr "유체 드람"
+
+#: units/__init__.py:924
+msgid "fluid ounce"
+msgstr "액량 온스"
+
+#: units/__init__.py:928
+msgid "foot"
+msgstr "발"
+
+#: units/__init__.py:932
+msgid "foot H2O"
+msgstr "발 H2O"
+
+#: units/__init__.py:936
+msgid "foot per second"
+msgstr "초당 피트"
+
+#: units/__init__.py:940
+msgid "foot pound"
+msgstr "피트 파운드"
+
+#: units/__init__.py:944
+msgid "gram-force"
+msgstr "그램 힘"
+
+#: units/__init__.py:949
+msgid "kilogram-force"
+msgstr "킬로그램 힘"
+
+#: units/__init__.py:958 units/__init__.py:970
+msgid "tonne-force"
+msgstr "톤 힘"
+
+#: units/__init__.py:962
+msgid "ounce-force"
+msgstr "온스 힘"
+
+#: units/__init__.py:966
+msgid "pound-force"
+msgstr "파운드 힘"
+
+#: units/__init__.py:974
+msgid "fortnight"
+msgstr "이주일"
+
+#: units/__init__.py:978
+msgid "franklin"
+msgstr "프랭클린"
+
+#: units/__init__.py:982
+msgid "furlong"
+msgstr "펄롱"
+
+#: units/__init__.py:986
+msgid "galileo"
+msgstr "갈릴레오"
+
+#: units/__init__.py:990
+msgid "gallon"
+msgstr "갤런"
+
+#: units/__init__.py:994 units/__init__.py:998
+msgid "gamma"
+msgstr "감마"
+
+#: units/__init__.py:1002
+msgid "gauss"
+msgstr "가우스"
+
+#: units/__init__.py:1006
+msgid "gilbert"
+msgstr "길버트"
+
+#: units/__init__.py:1010
+msgid "gill"
+msgstr "아가미"
+
+#: units/__init__.py:1014
+msgid "grade"
+msgstr "등급"
+
+#: units/__init__.py:1018
+msgid "grain"
+msgstr "곡물"
+
+#: units/__init__.py:1022
+msgid "gram"
+msgstr "그램"
+
+#: units/__init__.py:1026
+msgid "gray"
+msgstr "회색"
+
+#: units/__init__.py:1030
+msgid "gregorian year"
+msgstr "그레고리오 년"
+
+#: units/__init__.py:1031
+msgctxt "unit"
+msgid "gregorian year"
+msgstr "그레고리오 년"
+
+#: units/__init__.py:1034
+msgid "hand"
+msgstr "손"
+
+#: units/__init__.py:1038
+msgid "hartree"
+msgstr "Hartree"
+
+#: units/__init__.py:1042
+msgid "hectare"
+msgstr "헥타르"
+
+#: units/__init__.py:1046
+msgid "henry"
+msgstr "헨리"
+
+#: units/__init__.py:1050
+msgid "hertz"
+msgstr "헤르츠"
+
+#: units/__init__.py:1054
+msgid "hogshead"
+msgstr "큰 통"
+
+#: units/__init__.py:1058
+msgid "horsepower"
+msgstr "마력"
+
+#: units/__init__.py:1062
+msgid "hour"
+msgstr "시"
+
+#: units/__init__.py:1066
+msgid "hundredweight"
+msgstr "백 중량"
+
+#: units/__init__.py:1070
+msgid "impedance of free space"
+msgstr "여유 공간의 임피던스"
+
+#: units/__init__.py:1074
+msgid "imperial barrel"
+msgstr "제국 배럴"
+
+#: units/__init__.py:1078
+msgid "imperial bushel"
+msgstr "제국 부셸"
+
+#: units/__init__.py:1082
+msgid "imperial cup"
+msgstr "제국 컵"
+
+#: units/__init__.py:1086
+msgid "imperial fluid drachm"
+msgstr "황실 유체 드라 크"
+
+#: units/__init__.py:1090
+msgid "imperial fluid ounce"
+msgstr "제국 유체 온스"
+
+#: units/__init__.py:1094
+msgid "imperial fluid scruple"
+msgstr "황실 유체 스크 러플"
+
+#: units/__init__.py:1098
+msgid "imperial gallon"
+msgstr "제국 갤런"
+
+#: units/__init__.py:1102
+msgid "imperial gill"
+msgstr "황실 아가미"
+
+#: units/__init__.py:1106
+msgid "imperial minim"
+msgstr "제국 최소"
+
+#: units/__init__.py:1110
+msgid "imperial peck"
+msgstr "제국 펙"
+
+#: units/__init__.py:1114
+msgid "imperial pint"
+msgstr "제국 파인트"
+
+#: units/__init__.py:1118
+msgid "imperial quart"
+msgstr "제국 쿼트"
+
+#: units/__init__.py:1122
+msgid "inch"
+msgstr "인치"
+
+#: units/__init__.py:1126
+msgid "inch H20 39F"
+msgstr "인치 H20 39F"
+
+#: units/__init__.py:1130
+msgid "inch H20 60F"
+msgstr "인치 H20 60F"
+
+#: units/__init__.py:1134
+msgid "inch Hg"
+msgstr "인치 Hg"
+
+#: units/__init__.py:1138
+msgid "inch Hg 60F"
+msgstr "인치 Hg 60F"
+
+#: units/__init__.py:1142
+msgid "international Btu"
+msgstr "국제 Btu"
+
+#: units/__init__.py:1146
+msgid "international calorie"
+msgstr "국제 칼로리"
+
+#: units/__init__.py:1150
+msgid "Josephson constant"
+msgstr "조셉슨 상수"
+
+#: units/__init__.py:1154
+msgid "Joule"
+msgstr "줄"
+
+#: units/__init__.py:1158
+msgid "jute"
+msgstr "주트 사람"
+
+#: units/__init__.py:1162
+msgid "katal"
+msgstr "카탈"
+
+#: units/__init__.py:1166
+msgid "kelvin"
+msgstr "켈빈"
+
+#: units/__init__.py:1170
+msgid "kilometer per hour"
+msgstr "시간당 킬로미터"
+
+#: units/__init__.py:1174
+msgid "kilometer per second"
+msgstr "초당 킬로미터"
+
+#: units/__init__.py:1178
+msgid "kip"
+msgstr "자다"
+
+#: units/__init__.py:1182
+msgid "kip per square inch"
+msgstr "평방 인치당 kip"
+
+#: units/__init__.py:1186
+msgid "knot"
+msgstr "매듭"
+
+#: units/__init__.py:1190
+msgid "lambda"
+msgstr "람다"
+
+#: units/__init__.py:1194
+msgid "lambert"
+msgstr "램버트"
+
+#: units/__init__.py:1198
+msgid "langley"
+msgstr "랭글리"
+
+#: units/__init__.py:1202
+msgid "lattice constant"
+msgstr "격자 상수"
+
+#: units/__init__.py:1206
+msgid "league"
+msgstr "리그"
+
+#: units/__init__.py:1210
+msgid "leap year"
+msgstr "윤년"
+
+#: units/__init__.py:1211 units/__init__.py:1910 units/__init__.py:1911
+msgid "year"
+msgstr "년"
+
+#: units/__init__.py:1214
+msgid "light year"
+msgstr "광년"
+
+#: units/__init__.py:1215
+msgid "ly"
+msgstr "ly"
+
+#: units/__init__.py:1218
+msgid "link"
+msgstr "링크"
+
+#: units/__init__.py:1219
+msgid "li"
+msgstr "리"
+
+#: units/__init__.py:1222
+msgid "liter"
+msgstr "리터"
+
+#: units/__init__.py:1223
+msgid "L"
+msgstr "엘"
+
+#: units/__init__.py:1226
+msgid "log 10"
+msgstr "로그 10"
+
+#: units/__init__.py:1227
+msgid "ln10"
+msgstr "ln10"
+
+#: units/__init__.py:1230
+msgid "long hundredweight"
+msgstr "롱 백 웨이트"
+
+#: units/__init__.py:1238
+msgid "lumen"
+msgstr "루멘"
+
+#: units/__init__.py:1242
+msgid "lux"
+msgstr "럭스"
+
+#: units/__init__.py:1246
+msgid "magnetic flux quantum"
+msgstr "자속 양자"
+
+#: units/__init__.py:1250
+msgid "maxwell"
+msgstr "Maxwell"
+
+#: units/__init__.py:1254
+msgid "mean international ampere"
+msgstr "국제 암페어를 의미"
+
+#: units/__init__.py:1258
+msgid "mean international Ohm"
+msgstr "의미 국제 옴"
+
+#: units/__init__.py:1262
+msgid "mean international Volt"
+msgstr "국제 볼트를 의미"
+
+#: units/__init__.py:1266
+msgid "density of mercury"
+msgstr "수은의 밀도"
+
+#: units/__init__.py:1270
+msgid "density of mercury 60F"
+msgstr "수은 밀도 60F"
+
+#: units/__init__.py:1274
+msgid "meter"
+msgstr "미터"
+
+#: units/__init__.py:1278
+msgid "metric horsepower"
+msgstr "미터 마력"
+
+#: units/__init__.py:1282
+msgid "metric ton"
+msgstr "미터 톤"
+
+#: units/__init__.py:1286
+msgid "micron"
+msgstr "미크론"
+
+#: units/__init__.py:1290
+msgid "mil"
+msgstr "밀"
+
+#: units/__init__.py:1294
+msgid "mile"
+msgstr "마일"
+
+#: units/__init__.py:1298
+msgid "mile per hour"
+msgstr "시간당 마일"
+
+#: units/__init__.py:1302 units/__init__.py:1303
+msgid "millenium"
+msgstr "밀레니엄"
+
+#: units/__init__.py:1306
+msgid "milliarcsecond"
+msgstr "밀리 초"
+
+#: units/__init__.py:1310
+msgid "Hg millimeter"
+msgstr "Hg 밀리미터"
+
+#: units/__init__.py:1314
+msgid "minim"
+msgstr "미소"
+
+#: units/__init__.py:1318
+msgid "minute"
+msgstr "분"
+
+#: units/__init__.py:1322
+msgid "molar"
+msgstr "어금니"
+
+#: units/__init__.py:1326
+msgid "molar gas constant"
+msgstr "몰 가스 상수"
+
+#: units/__init__.py:1330
+msgid "mole"
+msgstr "몰"
+
+#: units/__init__.py:1334
+msgid "month"
+msgstr "달"
+
+#: units/__init__.py:1338
+msgid "nautical mile"
+msgstr "해리"
+
+#: units/__init__.py:1339
+msgid "nm"
+msgstr "nm"
+
+#: units/__init__.py:1342
+msgid "neper"
+msgstr "네 페르"
+
+#: units/__init__.py:1343
+msgid "Np"
+msgstr "Np"
+
+#: units/__init__.py:1346
+msgid "neutron mass"
+msgstr "중성자 질량"
+
+#: units/__init__.py:1350
+msgid "newton"
+msgstr "뉴턴"
+
+#: units/__init__.py:1354
+msgid "newtonian constant of gravitation"
+msgstr "뉴턴 중력 상수"
+
+#: units/__init__.py:1358
+msgid "nit"
+msgstr "알"
+
+#: units/__init__.py:1362
+msgid "nuclear magneton"
+msgstr "핵 자기"
+
+#: units/__init__.py:1366
+msgid "number english"
+msgstr "숫자 영어"
+
+#: units/__init__.py:1370
+msgid "number meter"
+msgstr "숫자 미터"
+
+#: units/__init__.py:1374
+msgid "oersted"
+msgstr "에르스텟"
+
+#: units/__init__.py:1378
+msgid "ohm"
+msgstr "옴"
+
+#: units/__init__.py:1382
+msgid "oil barrel"
+msgstr "기름 통"
+
+#: units/__init__.py:1386
+msgid "ounce"
+msgstr "온스"
+
+#: units/__init__.py:1390
+msgid "parsec"
+msgstr "파섹"
+
+#: units/__init__.py:1394
+msgid "particle"
+msgstr "입자"
+
+#: units/__init__.py:1398
+msgid "pascal"
+msgstr "파스칼"
+
+#: units/__init__.py:1402
+msgid "peak sun hour"
+msgstr "태양 피크 시간"
+
+#: units/__init__.py:1406
+msgid "peck"
+msgstr "펙"
+
+#: units/__init__.py:1410
+msgid "pennyweight"
+msgstr "페니 급"
+
+#: units/__init__.py:1418
+msgid "pica"
+msgstr "법규집"
+
+#: units/__init__.py:1422
+msgid "pint"
+msgstr "파인트"
+
+#: units/__init__.py:1426
+msgid "pixel"
+msgstr "픽셀"
+
+#: units/__init__.py:1430
+msgid "pixel per centimeter"
+msgstr "센티미터 당 픽셀"
+
+#: units/__init__.py:1434
+msgid "pixel per inch"
+msgstr "인치당 픽셀"
+
+#: units/__init__.py:1438
+msgid "Planck constant"
+msgstr "플랑크 상수"
+
+#: units/__init__.py:1442 units/__init__.py:1446
+msgid "Planck current"
+msgstr "플랑크 전류"
+
+#: units/__init__.py:1443
+msgid "qP"
+msgstr "qP"
+
+#: units/__init__.py:1447
+msgid "lP"
+msgstr "lP"
+
+#: units/__init__.py:1450
+msgid "Planck mass"
+msgstr "플랑크 질량"
+
+#: units/__init__.py:1451
+msgid "mP"
+msgstr "mP"
+
+#: units/__init__.py:1454
+msgid "Planck temperature"
+msgstr "플랑크 온도"
+
+#: units/__init__.py:1455
+msgid "TP"
+msgstr "TP"
+
+#: units/__init__.py:1458
+msgid "Planck time"
+msgstr "플랑크 시간"
+
+#: units/__init__.py:1459
+msgid "tP"
+msgstr "tP"
+
+#: units/__init__.py:1462
+msgid "point"
+msgstr "포인트"
+
+#: units/__init__.py:1466
+msgid "poise"
+msgstr "평정"
+
+#: units/__init__.py:1470
+msgid "pound"
+msgstr "파운드"
+
+#: units/__init__.py:1474
+msgid "pound force per square inch"
+msgstr "평방 인치당 파운드 힘"
+
+#: units/__init__.py:1478
+msgid "poundal"
+msgstr "파운드"
+
+#: units/__init__.py:1482
+msgid "proton mass"
+msgstr "양성자 질량"
+
+#: units/__init__.py:1486
+msgid "quadrillion Btu"
+msgstr "천조 Btu"
+
+#: units/__init__.py:1490
+msgid "quart"
+msgstr "쿼트"
+
+#: units/__init__.py:1494
+msgid "quarter"
+msgstr "쿼터"
+
+#: units/__init__.py:1498
+msgid "radian"
+msgstr "라디안"
+
+#: units/__init__.py:1502
+msgid "rads"
+msgstr "rads"
+
+#: units/__init__.py:1506
+msgid "reciprocal centimeter"
+msgstr "역 센티미터"
+
+#: units/__init__.py:1510
+msgid "refrigeration ton"
+msgstr "냉장 톤"
+
+#: units/__init__.py:1514
+msgid "roentgen equivalent man"
+msgstr "뢴트겐 동등한 남자"
+
+#: units/__init__.py:1518
+msgid "revolutions per minute"
+msgstr "분당 회전"
+
+#: units/__init__.py:1519
+msgid "rpm"
+msgstr "rpm"
+
+#: units/__init__.py:1522
+msgid "revolutions per second"
+msgstr "초당 회전"
+
+#: units/__init__.py:1523
+msgid "rps"
+msgstr "rps"
+
+#: units/__init__.py:1526 units/__init__.py:1527
+msgid "reyn"
+msgstr "레이"
+
+#: units/__init__.py:1530
+msgid "reciprocal poise"
+msgstr "상호 균형"
+
+#: units/__init__.py:1534
+msgid "rod"
+msgstr "막대"
+
+#: units/__init__.py:1538
+msgid "roentgen"
+msgstr "뢴트겐"
+
+#: units/__init__.py:1542
+msgid "rutherford"
+msgstr "Rutherford"
+
+#: units/__init__.py:1546
+msgid "rydberg"
+msgstr "Rydberg"
+
+#: units/__init__.py:1550
+msgid "rydberg constant"
+msgstr "리드 버그 상수"
+
+#: units/__init__.py:1554
+msgid "scaled point"
+msgstr "축척 된 포인트"
+
+#: units/__init__.py:1558
+msgid "scruple"
+msgstr "망설임"
+
+#: units/__init__.py:1562
+msgid "second"
+msgstr "둘째"
+
+#: units/__init__.py:1566
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "millisecond"
+msgstr "밀리 초"
+
+#: units/__init__.py:1570
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "microsecond"
+msgstr "밀리 초"
+
+#: units/__init__.py:1574
+msgid "second radiation constant"
+msgstr "두 번째 방사 상수"
+
+#: units/__init__.py:1578
+msgid "shake"
+msgstr "떨림"
+
+#: units/__init__.py:1582
+msgid "shot"
+msgstr "사격"
+
+#: units/__init__.py:1586
+msgid "sidereal day"
+msgstr "항성일"
+
+#: units/__init__.py:1587
+msgctxt "unit"
+msgid "sidereal day"
+msgstr "항성일"
+
+#: units/__init__.py:1590
+msgid "sidereal month"
+msgstr "항성월"
+
+#: units/__init__.py:1591
+msgctxt "unit"
+msgid "sidereal month"
+msgstr "항성월"
+
+#: units/__init__.py:1594
+msgid "sidereal year"
+msgstr "항성 연도"
+
+#: units/__init__.py:1595
+msgctxt "unit"
+msgid "sidereal year"
+msgstr "항성 연도"
+
+#: units/__init__.py:1598
+msgid "siemens"
+msgstr "지멘스"
+
+#: units/__init__.py:1602
+msgid "sievert"
+msgstr "시버트"
+
+#: units/__init__.py:1606
+msgid "slinch"
+msgstr "날씬한"
+
+#: units/__init__.py:1610
+msgid "slug"
+msgstr "강타"
+
+#: units/__init__.py:1614
+msgid "speed of light"
+msgstr "빛의 속도"
+
+#: units/__init__.py:1618
+msgid "square degree"
+msgstr "제곱도"
+
+#: units/__init__.py:1622
+msgid "square foot"
+msgstr "평방 피트"
+
+#: units/__init__.py:1626
+msgid "square inch"
+msgstr "제곱 인치"
+
+#: units/__init__.py:1630
+msgid "square league"
+msgstr "스퀘어 리그"
+
+#: units/__init__.py:1634
+msgid "square mile"
+msgstr "평방 마일"
+
+#: units/__init__.py:1638
+msgid "square rod"
+msgstr "사각 봉"
+
+#: units/__init__.py:1642
+msgid "square survey mile"
+msgstr "평방 조사 마일"
+
+#: units/__init__.py:1646
+msgid "square yard"
+msgstr "평방 야드"
+
+#: units/__init__.py:1650
+msgid "standard atmosphere"
+msgstr "표준 분위기"
+
+#: units/__init__.py:1654
+msgid "standard gravity"
+msgstr "표준 중력"
+
+#: units/__init__.py:1658
+msgid "standard liter per minute"
+msgstr "분당 표준 리터"
+
+#: units/__init__.py:1694
+msgid "Stefan-Boltzmann constant"
+msgstr "Stefan-Boltzmann 상수"
+
+#: units/__init__.py:1698
+msgid "steradian"
+msgstr "스테 라디안"
+
+#: units/__init__.py:1702
+msgid "stere"
+msgstr "stere"
+
+#: units/__init__.py:1706
+msgid "stilb"
+msgstr "장다리"
+
+#: units/__init__.py:1710
+msgid "stokes"
+msgstr "스톡스"
+
+#: units/__init__.py:1714
+msgid "stone"
+msgstr "결석"
+
+#: units/__init__.py:1718
+msgid "survey foot"
+msgstr "측량 발"
+
+#: units/__init__.py:1722
+msgid "survey mile"
+msgstr "측량 마일"
+
+#: units/__init__.py:1730 units/__init__.py:1731
+msgid "synodic month"
+msgstr "결의의 달"
+
+#: units/__init__.py:1734 units/__init__.py:1735
+msgid "tablespoon"
+msgstr "큰 스푼"
+
+#: units/__init__.py:1742 units/__init__.py:1743
+msgid "teaspoon"
+msgstr "티스푼"
+
+#: units/__init__.py:1746
+msgid "technical atmosphere"
+msgstr "기술적 분위기"
+
+#: units/__init__.py:1774
+msgid "therm"
+msgstr "영국 열량 단위"
+
+#: units/__init__.py:1778
+msgid "thermochemical Btu"
+msgstr "열화학 Btu"
+
+#: units/__init__.py:1782
+msgid "Thomson cross section"
+msgstr "Thomson 단면"
+
+#: units/__init__.py:1790
+msgid "ton"
+msgstr "톤"
+
+#: units/__init__.py:1794
+msgid "ton of TNT"
+msgstr "TNT 톤"
+
+#: units/__init__.py:1798
+msgid "ton of oil equivalent"
+msgstr "석유 환산 톤"
+
+#: units/__init__.py:1799
+msgid "toe"
+msgstr "발가락"
+
+#: units/__init__.py:1806 units/__init__.py:1807
+msgid "tropical month"
+msgstr "열대의 달"
+
+#: units/__init__.py:1810 units/__init__.py:1811
+msgid "tropical year"
+msgstr "열대의 해"
+
+#: units/__init__.py:1814 units/__init__.py:1815
+msgid "troy ounce"
+msgstr "트로이 온스"
+
+#: units/__init__.py:1818 units/__init__.py:1819
+msgid "troy pound"
+msgstr "트로이 파운드"
+
+#: units/__init__.py:1822 units/__init__.py:1823
+msgid "turn"
+msgstr "회전"
+
+#: units/__init__.py:1826 units/__init__.py:1827
+msgid "unified atomic mass unit"
+msgstr "통합 원자 질량 단위"
+
+#: units/__init__.py:1830
+msgid "unit pole"
+msgstr "단위 극"
+
+#: units/__init__.py:1834
+msgid "vacuum permeability"
+msgstr "진공 투과성"
+
+#: units/__init__.py:1838
+msgid "vacuum permittivity"
+msgstr "진공 유전율"
+
+#: units/__init__.py:1850
+msgid "Von Klitzing constant"
+msgstr "폰 클리 칭 상수"
+
+#: units/__init__.py:1854
+msgid "Water volumic mass"
+msgstr "물 부피 질량"
+
+#: units/__init__.py:1858
+msgid "Water volumic mass at 39F"
+msgstr "39F의 물 부피 질량"
+
+#: units/__init__.py:1862
+msgid "Water volumic mass at 60F"
+msgstr "60F의 물 부피 질량"
+
+#: units/__init__.py:1882
+msgid "wien frequency displacement law constant"
+msgstr "빈 주파수 변위 법칙 상수"
+
+#: units/__init__.py:1886
+msgid "wien u"
+msgstr "빈 유"
+
+#: units/__init__.py:1890
+msgid "wien displacement law constant"
+msgstr "빈 변위 법칙 상수"
+
+#: units/__init__.py:1894
+msgid "wien x"
+msgstr "빈 x"
+
+#: units/__init__.py:1898
+msgid "Cu X-ray wavelength"
+msgstr "Cu X- 선 파장"
+
+#: units/__init__.py:1902
+msgid "Mo X-ray wavelength"
+msgstr "Mo X-ray 파장"
+
+#: units/__init__.py:1906
+msgid "yard"
+msgstr "마당"
+
+#: units/__init__.py:1914
+msgid "zeta"
+msgstr "제타"
+
+#: units/__init__.py:1918
+msgid "decibelmilliwatt"
+msgstr "데시벨 밀리 와트"
+
+#: units/__init__.py:1922
+msgid "decibelmicrowatt"
+msgstr "데시벨"
+
+#: units/__init__.py:1926
+msgid "Euler‘s number"
+msgstr "오일러의 수"
+
+#: units/__init__.py:1930
+msgid "octave"
+msgstr "옥타브"
+
+#: units/__init__.py:1934
+msgid "sound pressure level"
+msgstr "음압 레벨"
+
+#: units/__init__.py:1954
+#, fuzzy
+#| msgid "millenium"
+msgid "milligram"
+msgstr "밀레니엄"
+
+#: units/__init__.py:1958
+#, fuzzy
+#| msgid "kilogram-force"
+msgid "kilogram"
+msgstr "킬로그램 힘"
+
+#: units/__init__.py:1962
+#, fuzzy
+#| msgid "meter"
+msgid "kilometer"
+msgstr "미터"
+
+#: units/__init__.py:1966
+#, fuzzy
+#| msgid "centimeter Hg"
+msgid "centimeter"
+msgstr "센티미터 Hg"
+
+#: units/__init__.py:1970
+#, fuzzy
+#| msgid "Hg millimeter"
+msgid "millimeter"
+msgstr "Hg 밀리미터"
+
+#: units/__init__.py:1974
+#, fuzzy
+#| msgid "meter per second"
+msgid "centimeter per second"
+msgstr "초당 미터"
+
+#: units/models.py:684
+msgid "Incompatible units"
+msgstr "호환되지 않는 단위"
+
+#: units/models.py:705
+msgid "Undefined unit in the registry"
+msgstr "레지스트리에 정의되지 않은 단위"
+
+#~ msgid "square centimeter"
+#~ msgstr "제곱 센티미터"
+
+#~ msgid "square millimeter"
+#~ msgstr "제곱 밀리미터"
+
+#~ msgid "surface"
+#~ msgstr "표면"
+
+#~ msgid "speed"
+#~ msgstr "속도"
+
+#~ msgid "meter per gram"
+#~ msgstr "그램 당 미터"
+
+#~ msgid "absorption"
+#~ msgstr "흡수"
+
+#~ msgid "electromagnetic inductance"
+#~ msgstr "전자기 인덕턴스"
+
+#~ msgid "electromagnetic resistance"
+#~ msgstr "전자기 저항"
+
+#~ msgid "linear mass density"
+#~ msgstr "선형 질량 밀도"
+
+#~ msgid "density of particle"
+#~ msgstr "입자 밀도"
+
+#~ msgid "catalytic activity"
+#~ msgstr "촉매 활성"
+
+#~ msgid "quantity of information"
+#~ msgstr "정보의 양"
+
+#~ msgid "density of information"
+#~ msgstr "정보의 밀도"
+
+#~ msgid "magnetic moment"
+#~ msgstr "자기 모멘트"
+
+#~ msgid "electrical capacitance"
+#~ msgstr "전기 용량"
+
+#~ msgid "electric force"
+#~ msgstr "전기력"
+
+#~ msgid "electromagnetic action"
+#~ msgstr "전자기 작용"
+
+#~ msgid "power per unit per wavelength interval"
+#~ msgstr "파장 간격 당 단위당 전력"
+
+#~ msgid "electrostatic unit of charge"
+#~ msgstr "정전기 충전 단위"
+
+#~ msgid "magnetic induction"
+#~ msgstr "자기 유도"
+
+#~ msgid "angle"
+#~ msgstr "각도"
+
+#~ msgid "radiation"
+#~ msgstr "방사능"
+
+#~ msgid "energy per temperature increment per mole"
+#~ msgstr "몰당 온도 증가 당 에너지"
+
+#~ msgid "reciprocal length"
+#~ msgstr "역수"
+
+#~ msgid "angular speed"
+#~ msgstr "각속도"
+
+#~ msgid "radiation exposure"
+#~ msgstr "방사선 노출"
+
+#~ msgid "solid degree"
+#~ msgstr "단단한 정도"
+
+#~ msgid "volumetric flow rate"
+#~ msgstr "체적 유량"
+
+#~ msgid "mass density"
+#~ msgstr "질량 밀도"
+
+#~ msgid "heat energy"
+#~ msgstr "열 에너지"
+
+#~ msgid "quantity"
+#~ msgstr "수량"
+
+#~ msgid "field quantity"
+#~ msgstr "필드 수량"
+
+#~ msgid "permeability"
+#~ msgstr "침투성"
+
+#~ msgid "energy by temperature"
+#~ msgstr "온도 별 에너지"
+
+#~ msgid "dimesionless"
+#~ msgstr "다량의"
+
+#~ msgid "H-field"
+#~ msgstr "H- 필드"
+
+#~ msgid "unit"
+#~ msgstr "단위"
+
+#~ msgid "solid angle"
+#~ msgstr "입체각"
+
+#~ msgid "flux density"
+#~ msgstr "자속 밀도"

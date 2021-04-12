@@ -1,0 +1,2415 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 12:18+0200\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Hungarian <http://translation.peabytes.me/projects/"
+"geocurrency/api/hu/>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.2.2\n"
+
+#: countries/viewsets.py:97
+msgid "Unknown country or no info for this country"
+msgstr "Ismeretlen ország, vagy nincs információ az országról"
+
+#: rates/models.py:472
+msgid "Rate could not be found"
+msgstr "Az arány nem található"
+
+#: settings.example.py:162
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: settings.example.py:163
+msgid "Arabic"
+msgstr "arab"
+
+#: settings.example.py:164
+msgid "Algerian Arabic"
+msgstr "Algériai arab"
+
+#: settings.example.py:165
+msgid "Asturian"
+msgstr "Asztriai"
+
+#: settings.example.py:166
+msgid "Azerbaijani"
+msgstr "azerbajdzsáni"
+
+#: settings.example.py:167
+msgid "Bulgarian"
+msgstr "bolgár"
+
+#: settings.example.py:168
+msgid "Belarusian"
+msgstr "Belorusz"
+
+#: settings.example.py:169
+msgid "Bengali"
+msgstr "bengáli"
+
+#: settings.example.py:170
+msgid "Breton"
+msgstr "Breton"
+
+#: settings.example.py:171
+msgid "Bosnian"
+msgstr "Bosnyák"
+
+#: settings.example.py:172
+msgid "Catalan"
+msgstr "katalán"
+
+#: settings.example.py:173
+msgid "Czech"
+msgstr "cseh"
+
+#: settings.example.py:174
+msgid "Welsh"
+msgstr "walesi"
+
+#: settings.example.py:175
+msgid "Danish"
+msgstr "dán"
+
+#: settings.example.py:176
+msgid "German"
+msgstr "német"
+
+#: settings.example.py:177
+msgid "Lower Sorbian"
+msgstr "Alsó szorb"
+
+#: settings.example.py:178
+msgid "Greek"
+msgstr "görög"
+
+#: settings.example.py:179
+msgid "English"
+msgstr "angol"
+
+#: settings.example.py:180
+msgid "Australian English"
+msgstr "Ausztrál angol"
+
+#: settings.example.py:181
+msgid "British English"
+msgstr "brit angol"
+
+#: settings.example.py:182
+msgid "Esperanto"
+msgstr "eszperantó"
+
+#: settings.example.py:183
+msgid "Spanish"
+msgstr "spanyol"
+
+#: settings.example.py:184
+msgid "Argentinian Spanish"
+msgstr "Argentin spanyol"
+
+#: settings.example.py:185
+msgid "Colombian Spanish"
+msgstr "Kolumbiai spanyol"
+
+#: settings.example.py:186
+msgid "Mexican Spanish"
+msgstr "Mexikói spanyol"
+
+#: settings.example.py:187
+msgid "Nicaraguan Spanish"
+msgstr "Nicaraguai spanyol"
+
+#: settings.example.py:188
+msgid "Venezuelan Spanish"
+msgstr "Venezuelai spanyol"
+
+#: settings.example.py:189
+msgid "Estonian"
+msgstr "észt"
+
+#: settings.example.py:190
+msgid "Basque"
+msgstr "baszk"
+
+#: settings.example.py:191
+msgid "Persian"
+msgstr "perzsa"
+
+#: settings.example.py:192
+msgid "Finnish"
+msgstr "finn"
+
+#: settings.example.py:193
+msgid "French"
+msgstr "Francia"
+
+#: settings.example.py:194
+msgid "Frisian"
+msgstr "fríz"
+
+#: settings.example.py:195
+msgid "Irish"
+msgstr "ír"
+
+#: settings.example.py:196
+msgid "Scottish Gaelic"
+msgstr "Skót gael"
+
+#: settings.example.py:197
+msgid "Galician"
+msgstr "Galíciai"
+
+#: settings.example.py:198
+msgid "Hebrew"
+msgstr "héber"
+
+#: settings.example.py:199
+msgid "Hindi"
+msgstr "hindi"
+
+#: settings.example.py:200
+msgid "Croatian"
+msgstr "horvát"
+
+#: settings.example.py:201
+msgid "Upper Sorbian"
+msgstr "Felső szorb"
+
+#: settings.example.py:202
+msgid "Hungarian"
+msgstr "Magyar"
+
+#: settings.example.py:203
+msgid "Armenian"
+msgstr "örmény"
+
+#: settings.example.py:204
+msgid "Interlingua"
+msgstr "Interlingva"
+
+#: settings.example.py:205
+msgid "Indonesian"
+msgstr "indonéz"
+
+#: settings.example.py:206
+msgid "Igbo"
+msgstr "Igbo"
+
+#: settings.example.py:207
+msgid "Ido"
+msgstr "Ido"
+
+#: settings.example.py:208
+msgid "Icelandic"
+msgstr "izlandi"
+
+#: settings.example.py:209
+msgid "Italian"
+msgstr "olasz"
+
+#: settings.example.py:210
+msgid "Japanese"
+msgstr "japán"
+
+#: settings.example.py:211
+msgid "Georgian"
+msgstr "grúz"
+
+#: settings.example.py:212
+msgid "Kabyle"
+msgstr "Kabyle"
+
+#: settings.example.py:213
+msgid "Kazakh"
+msgstr "kazah"
+
+#: settings.example.py:214
+msgid "Khmer"
+msgstr "Khmer"
+
+#: settings.example.py:215
+msgid "Kannada"
+msgstr "Kannada"
+
+#: settings.example.py:216
+msgid "Korean"
+msgstr "koreai"
+
+#: settings.example.py:217
+msgid "Kyrgyz"
+msgstr "Kirgiz"
+
+#: settings.example.py:218
+msgid "Luxembourgish"
+msgstr "Luxemburgi"
+
+#: settings.example.py:219
+msgid "Lithuanian"
+msgstr "litván"
+
+#: settings.example.py:220
+msgid "Latvian"
+msgstr "lett"
+
+#: settings.example.py:221
+msgid "Macedonian"
+msgstr "Macedón"
+
+#: settings.example.py:222
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: settings.example.py:223
+msgid "Mongolian"
+msgstr "mongol"
+
+#: settings.example.py:224
+msgid "Marathi"
+msgstr "Marathi"
+
+#: settings.example.py:225
+msgid "Burmese"
+msgstr "burmai"
+
+#: settings.example.py:226
+msgid "Norwegian Bokmål"
+msgstr "Norvég bokmål"
+
+#: settings.example.py:227
+msgid "Nepali"
+msgstr "nepáli"
+
+#: settings.example.py:228
+msgid "Dutch"
+msgstr "holland"
+
+#: settings.example.py:229
+msgid "Norwegian Nynorsk"
+msgstr "Norvég Nynorsk"
+
+#: settings.example.py:230
+msgid "Ossetic"
+msgstr "Oszét"
+
+#: settings.example.py:231
+msgid "Punjabi"
+msgstr "pandzsábi"
+
+#: settings.example.py:232
+msgid "Polish"
+msgstr "fényesít"
+
+#: settings.example.py:233
+msgid "Portuguese"
+msgstr "portugál"
+
+#: settings.example.py:234
+msgid "Brazilian Portuguese"
+msgstr "Brazil-Portugál"
+
+#: settings.example.py:235
+msgid "Romanian"
+msgstr "román"
+
+#: settings.example.py:236
+msgid "Russian"
+msgstr "orosz"
+
+#: settings.example.py:237
+msgid "Slovak"
+msgstr "szlovák"
+
+#: settings.example.py:238
+msgid "Slovenian"
+msgstr "szlovén"
+
+#: settings.example.py:239
+msgid "Albanian"
+msgstr "albán"
+
+#: settings.example.py:240
+msgid "Serbian"
+msgstr "szerb"
+
+#: settings.example.py:241
+msgid "Serbian Latin"
+msgstr "Szerb latin"
+
+#: settings.example.py:242
+msgid "Swedish"
+msgstr "svéd"
+
+#: settings.example.py:243
+msgid "Swahili"
+msgstr "Szuahéli"
+
+#: settings.example.py:244
+msgid "Tamil"
+msgstr "tamil"
+
+#: settings.example.py:245
+msgid "Telugu"
+msgstr "Telugu"
+
+#: settings.example.py:246
+msgid "Tajik"
+msgstr "Tadzsik"
+
+#: settings.example.py:247
+msgid "Thai"
+msgstr "Thai"
+
+#: settings.example.py:248
+msgid "Turkmen"
+msgstr "Türkmén"
+
+#: settings.example.py:249
+msgid "Turkish"
+msgstr "török"
+
+#: settings.example.py:250
+msgid "Tatar"
+msgstr "tatár"
+
+#: settings.example.py:251
+msgid "Udmurt"
+msgstr "Udmurt"
+
+#: settings.example.py:252
+msgid "Ukrainian"
+msgstr "ukrán"
+
+#: settings.example.py:253
+msgid "Urdu"
+msgstr "urdu"
+
+#: settings.example.py:254
+msgid "Uzbek"
+msgstr "üzbég"
+
+#: settings.example.py:255
+msgid "Vietnamese"
+msgstr "vietnami"
+
+#: settings.example.py:256
+msgid "Simplified Chinese"
+msgstr "Egyszerűsített kínai"
+
+#: settings.example.py:257
+msgid "Traditional Chinese"
+msgstr "Tradicionális kínai"
+
+#: units/__init__.py:8 units/tests.py:165 units/tests.py:437 units/tests.py:445
+msgid "length"
+msgstr "hossz"
+
+#: units/__init__.py:9
+msgid "time"
+msgstr "idő"
+
+#: units/__init__.py:10
+msgid "current"
+msgstr "jelenlegi"
+
+#: units/__init__.py:11
+msgid "luminosity"
+msgstr "fényesség"
+
+#: units/__init__.py:13
+msgid "mass"
+msgstr "tömeg"
+
+#: units/__init__.py:14
+msgid "substance"
+msgstr "anyag"
+
+#: units/__init__.py:15
+msgid "temperature"
+msgstr "hőfok"
+
+#: units/__init__.py:16
+msgid "constant"
+msgstr "állandó"
+
+#: units/__init__.py:17
+msgid "area"
+msgstr "terület"
+
+#: units/__init__.py:18
+msgid "volume"
+msgstr "hangerő"
+
+#: units/__init__.py:19
+msgid "frequency"
+msgstr "frekvencia"
+
+#: units/__init__.py:21
+msgid "wavenumber"
+msgstr "hullámszám"
+
+#: units/__init__.py:22
+msgid "velocity"
+msgstr "sebesség"
+
+#: units/__init__.py:24
+msgid "acceleration"
+msgstr "gyorsulás"
+
+#: units/__init__.py:26
+msgid "force"
+msgstr "Kényszerítés"
+
+#: units/__init__.py:28
+msgid "energy"
+msgstr "energia"
+
+#: units/__init__.py:30
+msgid "power"
+msgstr "erő"
+
+#: units/__init__.py:32
+msgid "density"
+msgstr "sűrűség"
+
+#: units/__init__.py:34
+msgid "pressure"
+msgstr "nyomás"
+
+#: units/__init__.py:36
+msgid "torque"
+msgstr "nyomaték"
+
+#: units/__init__.py:38
+msgid "viscosity"
+msgstr "viszkozitás"
+
+#: units/__init__.py:40
+msgid "kinematic viscosity"
+msgstr "kinematikai viszkozitás"
+
+#: units/__init__.py:43
+msgid "fluidity"
+msgstr "folyékonyság"
+
+#: units/__init__.py:45
+msgid "concentration"
+msgstr "koncentráció"
+
+#: units/__init__.py:47
+msgid "activity"
+msgstr "tevékenység"
+
+#: units/__init__.py:49
+msgid "entropy"
+msgstr "entrópia"
+
+#: units/__init__.py:52
+msgid "molar entropy"
+msgstr "moláris entrópia"
+
+#: units/__init__.py:56
+msgid "heat transmission"
+msgstr "hőátadás"
+
+#: units/__init__.py:60
+msgid "luminance"
+msgstr "fényerő"
+
+#: units/__init__.py:64
+msgid "luminous flux"
+msgstr "fényáram"
+
+#: units/__init__.py:67
+msgid "illuminance"
+msgstr "megvilágítás"
+
+#: units/__init__.py:71
+msgid "intensity"
+msgstr "intenzitás"
+
+#: units/__init__.py:73
+msgid "charge"
+msgstr "díj"
+
+#: units/__init__.py:74
+msgid "electric potential"
+msgstr "elektromos potenciál"
+
+#: units/__init__.py:78
+msgid "electric field"
+msgstr "elektromos mező"
+
+#: units/__init__.py:82
+msgid "resistance"
+msgstr "ellenállás"
+
+#: units/__init__.py:86
+msgid "conductance"
+msgstr "vezetőképesség"
+
+#: units/__init__.py:90
+msgid "capacitance"
+msgstr "kapacitancia"
+
+#: units/__init__.py:94
+msgid "inductance"
+msgstr "induktivitás"
+
+#: units/__init__.py:98
+msgid "magnetic flux"
+msgstr "mágneses fluxus"
+
+#: units/__init__.py:102
+msgid "magnetic field"
+msgstr "mágneses mező"
+
+#: units/__init__.py:106
+msgid "magnetomotive force"
+msgstr "magnetomotoros erő"
+
+#: units/__init__.py:109
+msgid "electric dipole"
+msgstr "elektromos dipólus"
+
+#: units/__init__.py:113
+msgid "electric quadrupole"
+msgstr "elektromos kvadrupol"
+
+#: units/__init__.py:117
+msgid "magnetic dipole"
+msgstr "mágneses dipólus"
+
+#: units/__init__.py:120
+msgid "printing unit"
+msgstr "nyomtató egység"
+
+#: units/__init__.py:123
+msgid "gaussian charge"
+msgstr "gaussian töltés"
+
+#: units/__init__.py:127
+msgid "gaussian current"
+msgstr "gaussian áram"
+
+#: units/__init__.py:131
+msgid "gaussian electric potential"
+msgstr "gaussian elektromos potenciál"
+
+#: units/__init__.py:135
+msgid "gaussian electric field"
+msgstr "gaussian elektromos mező"
+
+#: units/__init__.py:140
+msgid "gaussian electric displacement field"
+msgstr "gaussian elektromos elmozdulási mező"
+
+#: units/__init__.py:144
+msgid "gaussian electric flux"
+msgstr "gaussian elektromos fluxus"
+
+#: units/__init__.py:148
+msgid "gaussian magnetic field"
+msgstr "gauss mágneses mező"
+
+#: units/__init__.py:152
+msgid "gaussian magnetic field strength"
+msgstr "gauss mágneses térerősség"
+
+#: units/__init__.py:156
+msgid "gaussian magnetic flux"
+msgstr "gaussian mágneses fluxus"
+
+#: units/__init__.py:160
+msgid "gaussian resistance"
+msgstr "gaussian ellenállás"
+
+#: units/__init__.py:164
+msgid "gaussian resistivity"
+msgstr "gaussian ellenállás"
+
+#: units/__init__.py:167
+msgid "gaussian capacitance"
+msgstr "gaussian kapacitás"
+
+#: units/__init__.py:170
+msgid "gaussian inductance"
+msgstr "gauss induktivitás"
+
+#: units/__init__.py:174
+msgid "gaussian conductance"
+msgstr "gaussian vezetőképesség"
+
+#: units/__init__.py:178
+msgid "esu charge"
+msgstr "esu töltés"
+
+#: units/__init__.py:182
+msgid "esu current"
+msgstr "vagyok aktuális"
+
+#: units/__init__.py:186
+msgid "esu electric potential"
+msgstr "vagyok elektromos potenciál"
+
+#: units/__init__.py:190
+msgid "esu magnetic flux"
+msgstr "esu mágneses fluxus"
+
+#: units/__init__.py:194
+msgid "esu magnetic field"
+msgstr "esu mágneses mező"
+
+#: units/__init__.py:198
+msgid "Compound dimension"
+msgstr ""
+
+#: units/__init__.py:202
+#, fuzzy
+#| msgid "dimensionless"
+msgid "Custom dimension"
+msgstr "dimenzió nélküli"
+
+#: units/__init__.py:317 units/__init__.py:1938
+msgid "meter per second"
+msgstr "méter másodpercenként"
+
+#: units/__init__.py:322 units/__init__.py:1942
+msgid "meter per square second"
+msgstr "méter négyzetmásodpercenként"
+
+#: units/__init__.py:327 units/__init__.py:1946 units/__init__.py:1950
+msgid "square meter"
+msgstr "négyzetméter"
+
+#: units/__init__.py:332
+msgid "cubic meter"
+msgstr "köbméter"
+
+#: units/__init__.py:342
+msgid "Copper Kα"
+msgstr "Réz Kα"
+
+#: units/__init__.py:346
+msgid "Molybdenum K-α"
+msgstr "Molibdén K-a"
+
+#: units/__init__.py:350
+msgid "Tungsten K-α"
+msgstr "Volfrám K-α"
+
+#: units/__init__.py:351
+msgid "W Kα"
+msgstr "W Kα"
+
+#: units/__init__.py:354
+msgid "RKM"
+msgstr "RKM"
+
+#: units/__init__.py:359 units/__init__.py:954
+msgid "long ton-force"
+msgstr "hosszú tonnaerő"
+
+#: units/__init__.py:369 units/__init__.py:1234
+msgid "long ton"
+msgstr "hosszú tonna"
+
+#: units/__init__.py:374
+msgid "short ton force"
+msgstr "rövid tonna erő"
+
+#: units/__init__.py:379
+msgid "short hundredweight"
+msgstr "rövid százsúlyú"
+
+#: units/__init__.py:384
+msgid "short ton"
+msgstr "rövid tonna"
+
+#: units/__init__.py:389
+msgid "US International Ampere"
+msgstr "USA Nemzetközi Ampere"
+
+#: units/__init__.py:394
+msgid "US international Ohm"
+msgstr "USA nemzetközi Ohm"
+
+#: units/__init__.py:399
+msgid "US international Volt"
+msgstr "Amerikai nemzetközi Volt"
+
+#: units/__init__.py:404
+msgid "US therm"
+msgstr "USA term"
+
+#: units/__init__.py:408
+msgid "abampere"
+msgstr "abampere"
+
+#: units/__init__.py:412
+msgid "abcoulomb"
+msgstr "abcoulomb"
+
+#: units/__init__.py:416
+msgid "Aberdeen"
+msgstr "Aberdeen"
+
+#: units/__init__.py:420
+msgid "abfarad"
+msgstr "abfarad"
+
+#: units/__init__.py:424
+msgid "abhenry"
+msgstr "abhenry"
+
+#: units/__init__.py:428
+msgid "abohm"
+msgstr "abohm"
+
+#: units/__init__.py:432
+msgid "absiemens"
+msgstr "absiemens"
+
+#: units/__init__.py:436
+msgid "abvolt"
+msgstr "abvolt"
+
+#: units/__init__.py:440
+msgid "acre"
+msgstr "hold"
+
+#: units/__init__.py:444
+msgid "acre-foot"
+msgstr "hektáros"
+
+#: units/__init__.py:448
+msgid "ampere"
+msgstr "amper"
+
+#: units/__init__.py:452
+#, fuzzy
+#| msgid "ampere"
+msgid "milliampere"
+msgstr "amper"
+
+#: units/__init__.py:456
+msgid "ampere-turn"
+msgstr "amperfordulat"
+
+#: units/__init__.py:460
+msgid "angstrom"
+msgstr "angström"
+
+#: units/__init__.py:464
+msgid "angstrom star"
+msgstr "angström csillag"
+
+#: units/__init__.py:468
+msgid "apothecary dram"
+msgstr "patikus dram"
+
+#: units/__init__.py:472
+msgid "apothecary ounce"
+msgstr "patikus uncia"
+
+#: units/__init__.py:476
+msgid "apothecary pound"
+msgstr "patikus font"
+
+#: units/__init__.py:480
+msgid "minute of arc"
+msgstr "ívperc"
+
+#: units/__init__.py:484
+msgid "second of arc"
+msgstr "ív másodperc"
+
+#: units/__init__.py:488
+msgid "are"
+msgstr "vannak"
+
+#: units/__init__.py:492
+msgid "astronomical unit"
+msgstr "csillagászati egység"
+
+#: units/__init__.py:496
+msgid "atmosphere liter"
+msgstr "légkör liter"
+
+#: units/__init__.py:500
+msgid "atomic mass constant"
+msgstr "atomi tömegállandó"
+
+#: units/__init__.py:504
+msgid "atomic unit of current"
+msgstr "atomi áramegység"
+
+#: units/__init__.py:508
+msgid "atomic unit of electric field"
+msgstr "az elektromos tér atomi egysége"
+
+#: units/__init__.py:512
+msgid "atomic unit of force"
+msgstr "atomi erőegység"
+
+#: units/__init__.py:516
+msgid "atomic unit of intensity"
+msgstr "atomi intenzitási egység"
+
+#: units/__init__.py:520
+msgid "atomic unit of temperature"
+msgstr "atomi hőmérsékleti egység"
+
+#: units/__init__.py:524
+msgid "atomic unit of time"
+msgstr "atomi időegység"
+
+#: units/__init__.py:528
+msgid "Avogadro constant"
+msgstr "Avogadro állandó"
+
+#: units/__init__.py:532
+msgid "Avogadro number"
+msgstr "Avogadro szám"
+
+#: units/__init__.py:536
+msgid "bag"
+msgstr "táska"
+
+#: units/__init__.py:540
+msgid "bar"
+msgstr "rúd"
+
+#: units/__init__.py:544
+msgid "barn"
+msgstr "istálló"
+
+#: units/__init__.py:548
+msgid "barrel"
+msgstr "hordó"
+
+#: units/__init__.py:552
+msgid "barrye"
+msgstr "barrye"
+
+#: units/__init__.py:556
+msgid "baud"
+msgstr "baud"
+
+#: units/__init__.py:560
+msgid "becquerel"
+msgstr "becquerel"
+
+#: units/__init__.py:564
+msgid "beer barrel"
+msgstr "sörös hordó"
+
+#: units/__init__.py:568
+msgid "bel"
+msgstr "bel"
+
+#: units/__init__.py:572
+msgid "biot"
+msgstr "biot"
+
+#: units/__init__.py:576
+msgid "biot turn"
+msgstr "biot fordul"
+
+#: units/__init__.py:580
+msgid "bit"
+msgstr "bit"
+
+#: units/__init__.py:584
+msgid "bits per pixel"
+msgstr "bit / pixel"
+
+#: units/__init__.py:588
+msgid "board foot"
+msgstr "deszkaláb"
+
+#: units/__init__.py:592
+msgid "bohr"
+msgstr "bohr"
+
+#: units/__init__.py:596
+msgid "bohr magneton"
+msgstr "bohr magneton"
+
+#: units/__init__.py:600
+msgid "boiler horsepower"
+msgstr "kazán lóerő"
+
+#: units/__init__.py:604
+msgid "boltzmann constant"
+msgstr "boltzmann állandó"
+
+#: units/__init__.py:608
+msgid "british thermal unit"
+msgstr "brit termikus egység"
+
+#: units/__init__.py:612
+msgid "buckingham"
+msgstr "buckingham"
+
+#: units/__init__.py:616
+msgid "bushel"
+msgstr "véka"
+
+#: units/__init__.py:620
+msgid "byte"
+msgstr "byte"
+
+#: units/__init__.py:624
+msgid "cable length"
+msgstr "kábelhosszúság"
+
+#: units/__init__.py:628
+msgid "calorie"
+msgstr "kalória"
+
+#: units/__init__.py:632
+msgid "candela"
+msgstr "kandela"
+
+#: units/__init__.py:636
+msgid "carat"
+msgstr "karát"
+
+#: units/__init__.py:640
+msgid "centimeter H20"
+msgstr "centiméter H20"
+
+#: units/__init__.py:644
+msgid "centimeter Hg"
+msgstr "centiméter Hg"
+
+#: units/__init__.py:648
+msgid "century"
+msgstr "század"
+
+#: units/__init__.py:652
+msgid "chain"
+msgstr "lánc"
+
+#: units/__init__.py:656
+msgid "cicero"
+msgstr "cicero"
+
+#: units/__init__.py:660
+msgid "circular mil"
+msgstr "körkörös mil"
+
+#: units/__init__.py:664
+msgid "classical electron radius"
+msgstr "klasszikus elektron sugara"
+
+#: units/__init__.py:668
+msgid "clausius"
+msgstr "clausius"
+
+#: units/__init__.py:672
+msgid "common year"
+msgstr "közös év"
+
+#: units/__init__.py:676
+msgid "conductance quantum"
+msgstr "vezetőképességi kvantum"
+
+#: units/__init__.py:680
+msgid "conventional ampere"
+msgstr "hagyományos amper"
+
+#: units/__init__.py:684
+msgid "conventional coulomb"
+msgstr "hagyományos coulomb"
+
+#: units/__init__.py:688
+msgid "conventional farad"
+msgstr "konvencionális farad"
+
+#: units/__init__.py:692
+msgid "conventional henry"
+msgstr "konvencionális Henry"
+
+#: units/__init__.py:696
+msgid "conventional josephson constant"
+msgstr "hagyományos josephson állandó"
+
+#: units/__init__.py:700
+msgid "conventional ohm"
+msgstr "hagyományos ohm"
+
+#: units/__init__.py:704
+msgid "conventional volt"
+msgstr "hagyományos volt"
+
+#: units/__init__.py:708
+msgid "conventional Von Klitzing constant"
+msgstr "hagyományos Von Klitzing-állandó"
+
+#: units/__init__.py:712
+msgid "conventional Watt"
+msgstr "hagyományos watt"
+
+#: units/__init__.py:716
+msgid "coulomb"
+msgstr "coulomb"
+
+#: units/__init__.py:720
+msgid "coulomb constant"
+msgstr "coulomb állandó"
+
+#: units/__init__.py:724
+msgid "count"
+msgstr "számol"
+
+#: units/__init__.py:728
+msgid "counts per second"
+msgstr "másodpercenként számít"
+
+#: units/__init__.py:732
+msgid "CSS pixel"
+msgstr "CSS pixel"
+
+#: units/__init__.py:736
+msgid "cubic centimeter"
+msgstr "köbcentiméter"
+
+#: units/__init__.py:740
+msgid "cubic milliimeter"
+msgstr "köbmilliométer"
+
+#: units/__init__.py:744
+msgid "cubic foot"
+msgstr "köbméter"
+
+#: units/__init__.py:748
+msgid "cubic inch"
+msgstr "köbcenti"
+
+#: units/__init__.py:752
+msgid "cubic yard"
+msgstr "köbméter udvar"
+
+#: units/__init__.py:756
+msgid "cup"
+msgstr "csésze"
+
+#: units/__init__.py:760
+msgid "curie"
+msgstr "curie"
+
+#: units/__init__.py:764
+msgid "dalton"
+msgstr "dalton"
+
+#: units/__init__.py:768
+msgid "darcy"
+msgstr "darcy"
+
+#: units/__init__.py:772
+msgid "day"
+msgstr "nap"
+
+#: units/__init__.py:773
+msgctxt "unit"
+msgid "day"
+msgstr "nap"
+
+#: units/__init__.py:776
+msgid "debye"
+msgstr "debye"
+
+#: units/__init__.py:780
+msgid "decade"
+msgstr "évtized"
+
+#: units/__init__.py:781
+msgctxt "symbol"
+msgid "decade"
+msgstr "évtized"
+
+#: units/__init__.py:784
+msgid "decibel"
+msgstr "decibel"
+
+#: units/__init__.py:788
+msgid "degree"
+msgstr "fokozat"
+
+#: units/__init__.py:792
+msgid "degree Celsius"
+msgstr "Celsius fok"
+
+#: units/__init__.py:796
+msgid "degree Fahrenheit"
+msgstr "fok Fahrenheit"
+
+#: units/__init__.py:800
+msgid "degree Rankine"
+msgstr "fokozatú Rankine"
+
+#: units/__init__.py:804
+msgid "degree Reaumur"
+msgstr "fokú Reaumur"
+
+#: units/__init__.py:808
+msgid "denier"
+msgstr "tagadó"
+
+#: units/__init__.py:812
+msgid "didot"
+msgstr "didot"
+
+#: units/__init__.py:816
+msgid "Dirac constant"
+msgstr "Dirac állandó"
+
+#: units/__init__.py:820
+msgid "dram"
+msgstr "dram"
+
+#: units/__init__.py:824
+msgid "dry barrel"
+msgstr "száraz hordó"
+
+#: units/__init__.py:828
+msgid "dry gallon"
+msgstr "száraz gallon"
+
+#: units/__init__.py:832
+msgid "dry pint"
+msgstr "száraz pint"
+
+#: units/__init__.py:836
+msgid "dry quart"
+msgstr "száraz liter"
+
+#: units/__init__.py:840
+msgid "decitex"
+msgstr "decitex"
+
+#: units/__init__.py:844
+msgid "dyne"
+msgstr "din"
+
+#: units/__init__.py:848
+msgid "eletcrical horsepower"
+msgstr "eletrikus lóerő"
+
+#: units/__init__.py:852
+msgid "electron G-factor"
+msgstr "elektron G-faktor"
+
+#: units/__init__.py:856
+msgid "electron mass"
+msgstr "elektrontömeg"
+
+#: units/__init__.py:860
+msgid "electronvolt"
+msgstr "elektronvolt"
+
+#: units/__init__.py:864
+msgid "elementary charge"
+msgstr "elemi töltés"
+
+#: units/__init__.py:868
+msgid "entropy unit"
+msgstr "entrópia egység"
+
+#: units/__init__.py:872
+msgid "enzyme unit"
+msgstr "enzim egység"
+
+#: units/__init__.py:876
+msgid "eon"
+msgstr "eon"
+
+#: units/__init__.py:880
+msgid "erg"
+msgstr "erg"
+
+#: units/__init__.py:884
+msgid "farad"
+msgstr "farad"
+
+#: units/__init__.py:888
+msgid "faraday"
+msgstr "faraday"
+
+#: units/__init__.py:892
+msgid "faraday constant"
+msgstr "faraday állandó"
+
+#: units/__init__.py:896
+msgid "fathom"
+msgstr "felfog"
+
+#: units/__init__.py:900
+msgid "fermi"
+msgstr "fermi"
+
+#: units/__init__.py:904
+msgid "fifteen degree calorie"
+msgstr "tizenöt fokos kalória"
+
+#: units/__init__.py:908
+msgid "fifth"
+msgstr "ötödik"
+
+#: units/__init__.py:912
+msgid "fine structure constant"
+msgstr "finom szerkezet állandó"
+
+#: units/__init__.py:916
+msgid "first radiation constant"
+msgstr "első sugárzási állandó"
+
+#: units/__init__.py:920
+msgid "fluid dram"
+msgstr "folyékony dram"
+
+#: units/__init__.py:924
+msgid "fluid ounce"
+msgstr "folyadék uncia"
+
+#: units/__init__.py:928
+msgid "foot"
+msgstr "láb"
+
+#: units/__init__.py:932
+msgid "foot H2O"
+msgstr "láb H2O"
+
+#: units/__init__.py:936
+msgid "foot per second"
+msgstr "láb másodpercenként"
+
+#: units/__init__.py:940
+msgid "foot pound"
+msgstr "láb font"
+
+#: units/__init__.py:944
+msgid "gram-force"
+msgstr "gramm-erő"
+
+#: units/__init__.py:949
+msgid "kilogram-force"
+msgstr "kilogramm-erő"
+
+#: units/__init__.py:958 units/__init__.py:970
+msgid "tonne-force"
+msgstr "tonna-erő"
+
+#: units/__init__.py:962
+msgid "ounce-force"
+msgstr "uncia-erő"
+
+#: units/__init__.py:966
+msgid "pound-force"
+msgstr "font-erő"
+
+#: units/__init__.py:974
+msgid "fortnight"
+msgstr "két hét"
+
+#: units/__init__.py:978
+msgid "franklin"
+msgstr "franklin"
+
+#: units/__init__.py:982
+msgid "furlong"
+msgstr "távolságmérték"
+
+#: units/__init__.py:986
+msgid "galileo"
+msgstr "galileo"
+
+#: units/__init__.py:990
+msgid "gallon"
+msgstr "gallon"
+
+#: units/__init__.py:994 units/__init__.py:998
+msgid "gamma"
+msgstr "gamma"
+
+#: units/__init__.py:1002
+msgid "gauss"
+msgstr "gauss"
+
+#: units/__init__.py:1006
+msgid "gilbert"
+msgstr "Gilbert"
+
+#: units/__init__.py:1010
+msgid "gill"
+msgstr "kopoltyú"
+
+#: units/__init__.py:1014
+msgid "grade"
+msgstr "fokozat"
+
+#: units/__init__.py:1018
+msgid "grain"
+msgstr "gabona"
+
+#: units/__init__.py:1022
+msgid "gram"
+msgstr "gramm"
+
+#: units/__init__.py:1026
+msgid "gray"
+msgstr "szürke"
+
+#: units/__init__.py:1030
+msgid "gregorian year"
+msgstr "gregorián év"
+
+#: units/__init__.py:1031
+msgctxt "unit"
+msgid "gregorian year"
+msgstr "gregorián év"
+
+#: units/__init__.py:1034
+msgid "hand"
+msgstr "kéz"
+
+#: units/__init__.py:1038
+msgid "hartree"
+msgstr "hartree"
+
+#: units/__init__.py:1042
+msgid "hectare"
+msgstr "hektár"
+
+#: units/__init__.py:1046
+msgid "henry"
+msgstr "Henrik"
+
+#: units/__init__.py:1050
+msgid "hertz"
+msgstr "hertz"
+
+#: units/__init__.py:1054
+msgid "hogshead"
+msgstr "nagy hordó"
+
+#: units/__init__.py:1058
+msgid "horsepower"
+msgstr "lóerő"
+
+#: units/__init__.py:1062
+msgid "hour"
+msgstr "óra"
+
+#: units/__init__.py:1066
+msgid "hundredweight"
+msgstr "százas"
+
+#: units/__init__.py:1070
+msgid "impedance of free space"
+msgstr "a szabad tér impedanciája"
+
+#: units/__init__.py:1074
+msgid "imperial barrel"
+msgstr "császári hordó"
+
+#: units/__init__.py:1078
+msgid "imperial bushel"
+msgstr "császári bokor"
+
+#: units/__init__.py:1082
+msgid "imperial cup"
+msgstr "császári csésze"
+
+#: units/__init__.py:1086
+msgid "imperial fluid drachm"
+msgstr "császári folyadék drachm"
+
+#: units/__init__.py:1090
+msgid "imperial fluid ounce"
+msgstr "császári folyadék uncia"
+
+#: units/__init__.py:1094
+msgid "imperial fluid scruple"
+msgstr "császári folyadék lepény"
+
+#: units/__init__.py:1098
+msgid "imperial gallon"
+msgstr "angol gallon"
+
+#: units/__init__.py:1102
+msgid "imperial gill"
+msgstr "császári kopoltyú"
+
+#: units/__init__.py:1106
+msgid "imperial minim"
+msgstr "birodalmi minim"
+
+#: units/__init__.py:1110
+msgid "imperial peck"
+msgstr "császári peck"
+
+#: units/__init__.py:1114
+msgid "imperial pint"
+msgstr "császári pint"
+
+#: units/__init__.py:1118
+msgid "imperial quart"
+msgstr "császári quart"
+
+#: units/__init__.py:1122
+msgid "inch"
+msgstr "hüvelyk"
+
+#: units/__init__.py:1126
+msgid "inch H20 39F"
+msgstr "hüvelykes H20 39F"
+
+#: units/__init__.py:1130
+msgid "inch H20 60F"
+msgstr "hüvelykes H20 60F"
+
+#: units/__init__.py:1134
+msgid "inch Hg"
+msgstr "hüvelyk Hg"
+
+#: units/__init__.py:1138
+msgid "inch Hg 60F"
+msgstr "hüvelyk Hg 60F"
+
+#: units/__init__.py:1142
+msgid "international Btu"
+msgstr "nemzetközi Btu"
+
+#: units/__init__.py:1146
+msgid "international calorie"
+msgstr "nemzetközi kalória"
+
+#: units/__init__.py:1150
+msgid "Josephson constant"
+msgstr "Josephson állandó"
+
+#: units/__init__.py:1154
+msgid "Joule"
+msgstr "Joule"
+
+#: units/__init__.py:1158
+msgid "jute"
+msgstr "juta"
+
+#: units/__init__.py:1162
+msgid "katal"
+msgstr "katal"
+
+#: units/__init__.py:1166
+msgid "kelvin"
+msgstr "kelvin"
+
+#: units/__init__.py:1170
+msgid "kilometer per hour"
+msgstr "kilométer óránként"
+
+#: units/__init__.py:1174
+msgid "kilometer per second"
+msgstr "kilométer másodpercenként"
+
+#: units/__init__.py:1178
+msgid "kip"
+msgstr "kip"
+
+#: units/__init__.py:1182
+msgid "kip per square inch"
+msgstr "kip per négyzet hüvelyk"
+
+#: units/__init__.py:1186
+msgid "knot"
+msgstr "csomó"
+
+#: units/__init__.py:1190
+msgid "lambda"
+msgstr "lambda"
+
+#: units/__init__.py:1194
+msgid "lambert"
+msgstr "lambert"
+
+#: units/__init__.py:1198
+msgid "langley"
+msgstr "langley"
+
+#: units/__init__.py:1202
+msgid "lattice constant"
+msgstr "rácsállandó"
+
+#: units/__init__.py:1206
+msgid "league"
+msgstr "liga"
+
+#: units/__init__.py:1210
+msgid "leap year"
+msgstr "szökőév"
+
+#: units/__init__.py:1211 units/__init__.py:1910 units/__init__.py:1911
+msgid "year"
+msgstr "év"
+
+#: units/__init__.py:1214
+msgid "light year"
+msgstr "fényév"
+
+#: units/__init__.py:1215
+msgid "ly"
+msgstr "ly"
+
+#: units/__init__.py:1218
+msgid "link"
+msgstr "link"
+
+#: units/__init__.py:1219
+msgid "li"
+msgstr "li"
+
+#: units/__init__.py:1222
+msgid "liter"
+msgstr "liter"
+
+#: units/__init__.py:1223
+msgid "L"
+msgstr "L"
+
+#: units/__init__.py:1226
+msgid "log 10"
+msgstr "log 10"
+
+#: units/__init__.py:1227
+msgid "ln10"
+msgstr "ln10"
+
+#: units/__init__.py:1230
+msgid "long hundredweight"
+msgstr "hosszú százsúlyú"
+
+#: units/__init__.py:1238
+msgid "lumen"
+msgstr "lumen"
+
+#: units/__init__.py:1242
+msgid "lux"
+msgstr "lux"
+
+#: units/__init__.py:1246
+msgid "magnetic flux quantum"
+msgstr "mágneses fluxus kvantum"
+
+#: units/__init__.py:1250
+msgid "maxwell"
+msgstr "maxwell"
+
+#: units/__init__.py:1254
+msgid "mean international ampere"
+msgstr "jelenti a nemzetközi ampert"
+
+#: units/__init__.py:1258
+msgid "mean international Ohm"
+msgstr "jelenti a nemzetközi Ohm-ot"
+
+#: units/__init__.py:1262
+msgid "mean international Volt"
+msgstr "jelentése nemzetközi Volt"
+
+#: units/__init__.py:1266
+msgid "density of mercury"
+msgstr "a higany sűrűsége"
+
+#: units/__init__.py:1270
+msgid "density of mercury 60F"
+msgstr "higany sűrűsége 60F"
+
+#: units/__init__.py:1274
+msgid "meter"
+msgstr "méter"
+
+#: units/__init__.py:1278
+msgid "metric horsepower"
+msgstr "metrikus lóerő"
+
+#: units/__init__.py:1282
+msgid "metric ton"
+msgstr "metrikus tonna"
+
+#: units/__init__.py:1286
+msgid "micron"
+msgstr "mikron"
+
+#: units/__init__.py:1290
+msgid "mil"
+msgstr "katonai"
+
+#: units/__init__.py:1294
+msgid "mile"
+msgstr "mérföld"
+
+#: units/__init__.py:1298
+msgid "mile per hour"
+msgstr "mérföld óránként"
+
+#: units/__init__.py:1302 units/__init__.py:1303
+msgid "millenium"
+msgstr "évezred"
+
+#: units/__init__.py:1306
+msgid "milliarcsecond"
+msgstr "milliarcecond"
+
+#: units/__init__.py:1310
+msgid "Hg millimeter"
+msgstr "Hg milliméter"
+
+#: units/__init__.py:1314
+msgid "minim"
+msgstr "parányi dolog"
+
+#: units/__init__.py:1318
+msgid "minute"
+msgstr "perc"
+
+#: units/__init__.py:1322
+msgid "molar"
+msgstr "mól-"
+
+#: units/__init__.py:1326
+msgid "molar gas constant"
+msgstr "moláris gázállandó"
+
+#: units/__init__.py:1330
+msgid "mole"
+msgstr "anyajegy"
+
+#: units/__init__.py:1334
+msgid "month"
+msgstr "hónap"
+
+#: units/__init__.py:1338
+msgid "nautical mile"
+msgstr "tengeri mérföld"
+
+#: units/__init__.py:1339
+msgid "nm"
+msgstr "nm"
+
+#: units/__init__.py:1342
+msgid "neper"
+msgstr "neper"
+
+#: units/__init__.py:1343
+msgid "Np"
+msgstr "Np"
+
+#: units/__init__.py:1346
+msgid "neutron mass"
+msgstr "neutron tömeg"
+
+#: units/__init__.py:1350
+msgid "newton"
+msgstr "newton"
+
+#: units/__init__.py:1354
+msgid "newtonian constant of gravitation"
+msgstr "newtoni állandó gravitáció"
+
+#: units/__init__.py:1358
+msgid "nit"
+msgstr "serke"
+
+#: units/__init__.py:1362
+msgid "nuclear magneton"
+msgstr "magmagneton"
+
+#: units/__init__.py:1366
+msgid "number english"
+msgstr "szám angol"
+
+#: units/__init__.py:1370
+msgid "number meter"
+msgstr "számmérő"
+
+#: units/__init__.py:1374
+msgid "oersted"
+msgstr "oersted"
+
+#: units/__init__.py:1378
+msgid "ohm"
+msgstr "ohm"
+
+#: units/__init__.py:1382
+msgid "oil barrel"
+msgstr "olajos hordó"
+
+#: units/__init__.py:1386
+msgid "ounce"
+msgstr "uncia"
+
+#: units/__init__.py:1390
+msgid "parsec"
+msgstr "parsec"
+
+#: units/__init__.py:1394
+msgid "particle"
+msgstr "részecske"
+
+#: units/__init__.py:1398
+msgid "pascal"
+msgstr "pascal"
+
+#: units/__init__.py:1402
+msgid "peak sun hour"
+msgstr "csúcs nap óra"
+
+#: units/__init__.py:1406
+msgid "peck"
+msgstr "csípés"
+
+#: units/__init__.py:1410
+msgid "pennyweight"
+msgstr "filléres"
+
+#: units/__init__.py:1418
+msgid "pica"
+msgstr "ciceró"
+
+#: units/__init__.py:1422
+msgid "pint"
+msgstr "pint"
+
+#: units/__init__.py:1426
+msgid "pixel"
+msgstr "pixel"
+
+#: units/__init__.py:1430
+msgid "pixel per centimeter"
+msgstr "pixel / centiméter"
+
+#: units/__init__.py:1434
+msgid "pixel per inch"
+msgstr "pixel / hüvelyk"
+
+#: units/__init__.py:1438
+msgid "Planck constant"
+msgstr "Planck állandó"
+
+#: units/__init__.py:1442 units/__init__.py:1446
+msgid "Planck current"
+msgstr "Planck áram"
+
+#: units/__init__.py:1443
+msgid "qP"
+msgstr "qP"
+
+#: units/__init__.py:1447
+msgid "lP"
+msgstr "l"
+
+#: units/__init__.py:1450
+msgid "Planck mass"
+msgstr "Planck-tömeg"
+
+#: units/__init__.py:1451
+msgid "mP"
+msgstr "mP"
+
+#: units/__init__.py:1454
+msgid "Planck temperature"
+msgstr "Planck hőmérséklete"
+
+#: units/__init__.py:1455
+msgid "TP"
+msgstr "TP"
+
+#: units/__init__.py:1458
+msgid "Planck time"
+msgstr "Planck ideje"
+
+#: units/__init__.py:1459
+msgid "tP"
+msgstr "tP"
+
+#: units/__init__.py:1462
+msgid "point"
+msgstr "pont"
+
+#: units/__init__.py:1466
+msgid "poise"
+msgstr "egyensúly"
+
+#: units/__init__.py:1470
+msgid "pound"
+msgstr "font"
+
+#: units/__init__.py:1474
+msgid "pound force per square inch"
+msgstr "font erő négyzet hüvelykenként"
+
+#: units/__init__.py:1478
+msgid "poundal"
+msgstr "font"
+
+#: units/__init__.py:1482
+msgid "proton mass"
+msgstr "proton tömeg"
+
+#: units/__init__.py:1486
+msgid "quadrillion Btu"
+msgstr "kvadrillió Btu"
+
+#: units/__init__.py:1490
+msgid "quart"
+msgstr "kvart"
+
+#: units/__init__.py:1494
+msgid "quarter"
+msgstr "negyed"
+
+#: units/__init__.py:1498
+msgid "radian"
+msgstr "radián"
+
+#: units/__init__.py:1502
+msgid "rads"
+msgstr "rads"
+
+#: units/__init__.py:1506
+msgid "reciprocal centimeter"
+msgstr "kölcsönös centiméter"
+
+#: units/__init__.py:1510
+msgid "refrigeration ton"
+msgstr "hűtő tonna"
+
+#: units/__init__.py:1514
+msgid "roentgen equivalent man"
+msgstr "roentgen egyenértékű ember"
+
+#: units/__init__.py:1518
+msgid "revolutions per minute"
+msgstr "percenkénti fordulatszám"
+
+#: units/__init__.py:1519
+msgid "rpm"
+msgstr "fordulat"
+
+#: units/__init__.py:1522
+msgid "revolutions per second"
+msgstr "fordulat / másodperc"
+
+#: units/__init__.py:1523
+msgid "rps"
+msgstr "rps"
+
+#: units/__init__.py:1526 units/__init__.py:1527
+msgid "reyn"
+msgstr "reyn"
+
+#: units/__init__.py:1530
+msgid "reciprocal poise"
+msgstr "kölcsönös tartás"
+
+#: units/__init__.py:1534
+msgid "rod"
+msgstr "rúd"
+
+#: units/__init__.py:1538
+msgid "roentgen"
+msgstr "roentgen"
+
+#: units/__init__.py:1542
+msgid "rutherford"
+msgstr "rutherford"
+
+#: units/__init__.py:1546
+msgid "rydberg"
+msgstr "rydberg"
+
+#: units/__init__.py:1550
+msgid "rydberg constant"
+msgstr "rydberg állandó"
+
+#: units/__init__.py:1554
+msgid "scaled point"
+msgstr "méretarányos pont"
+
+#: units/__init__.py:1558
+msgid "scruple"
+msgstr "kétség"
+
+#: units/__init__.py:1562
+msgid "second"
+msgstr "második"
+
+#: units/__init__.py:1566
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "millisecond"
+msgstr "milliarcecond"
+
+#: units/__init__.py:1570
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "microsecond"
+msgstr "milliarcecond"
+
+#: units/__init__.py:1574
+msgid "second radiation constant"
+msgstr "második sugárzási állandó"
+
+#: units/__init__.py:1578
+msgid "shake"
+msgstr "ráz"
+
+#: units/__init__.py:1582
+msgid "shot"
+msgstr "lövés"
+
+#: units/__init__.py:1586
+msgid "sidereal day"
+msgstr "sziderális nap"
+
+#: units/__init__.py:1587
+msgctxt "unit"
+msgid "sidereal day"
+msgstr "sziderális nap"
+
+#: units/__init__.py:1590
+msgid "sidereal month"
+msgstr "sziderális hónap"
+
+#: units/__init__.py:1591
+msgctxt "unit"
+msgid "sidereal month"
+msgstr "sziderális hónap"
+
+#: units/__init__.py:1594
+msgid "sidereal year"
+msgstr "sziderális év"
+
+#: units/__init__.py:1595
+msgctxt "unit"
+msgid "sidereal year"
+msgstr "sziderális év"
+
+#: units/__init__.py:1598
+msgid "siemens"
+msgstr "siemens"
+
+#: units/__init__.py:1602
+msgid "sievert"
+msgstr "sievert"
+
+#: units/__init__.py:1606
+msgid "slinch"
+msgstr "slinch"
+
+#: units/__init__.py:1610
+msgid "slug"
+msgstr "meztelen csiga"
+
+#: units/__init__.py:1614
+msgid "speed of light"
+msgstr "fénysebesség"
+
+#: units/__init__.py:1618
+msgid "square degree"
+msgstr "négyzet fok"
+
+#: units/__init__.py:1622
+msgid "square foot"
+msgstr "négyzetméteres"
+
+#: units/__init__.py:1626
+msgid "square inch"
+msgstr "négyzet hüvelyk"
+
+#: units/__init__.py:1630
+msgid "square league"
+msgstr "négyzet bajnokság"
+
+#: units/__init__.py:1634
+msgid "square mile"
+msgstr "négyzetmérföld"
+
+#: units/__init__.py:1638
+msgid "square rod"
+msgstr "szögletes rúd"
+
+#: units/__init__.py:1642
+msgid "square survey mile"
+msgstr "négyzetmérő mérföld"
+
+#: units/__init__.py:1646
+msgid "square yard"
+msgstr "négyzetméteres udvar"
+
+#: units/__init__.py:1650
+msgid "standard atmosphere"
+msgstr "egyezményes légkör"
+
+#: units/__init__.py:1654
+msgid "standard gravity"
+msgstr "standard gravitáció"
+
+#: units/__init__.py:1658
+msgid "standard liter per minute"
+msgstr "normál liter percenként"
+
+#: units/__init__.py:1694
+msgid "Stefan-Boltzmann constant"
+msgstr "Stefan-Boltzmann állandó"
+
+#: units/__init__.py:1698
+msgid "steradian"
+msgstr "szteradián"
+
+#: units/__init__.py:1702
+msgid "stere"
+msgstr "sztereó"
+
+#: units/__init__.py:1706
+msgid "stilb"
+msgstr "stilb"
+
+#: units/__init__.py:1710
+msgid "stokes"
+msgstr "stokes"
+
+#: units/__init__.py:1714
+msgid "stone"
+msgstr "kő"
+
+#: units/__init__.py:1718
+msgid "survey foot"
+msgstr "felmérési láb"
+
+#: units/__init__.py:1722
+msgid "survey mile"
+msgstr "felmérési mérföld"
+
+#: units/__init__.py:1730 units/__init__.py:1731
+msgid "synodic month"
+msgstr "zsinati hónap"
+
+#: units/__init__.py:1734 units/__init__.py:1735
+msgid "tablespoon"
+msgstr "evőkanál"
+
+#: units/__init__.py:1742 units/__init__.py:1743
+msgid "teaspoon"
+msgstr "teáskanál"
+
+#: units/__init__.py:1746
+msgid "technical atmosphere"
+msgstr "technikai légkör"
+
+#: units/__init__.py:1774
+msgid "therm"
+msgstr "term"
+
+#: units/__init__.py:1778
+msgid "thermochemical Btu"
+msgstr "termokémiai Btu"
+
+#: units/__init__.py:1782
+msgid "Thomson cross section"
+msgstr "Thomson keresztmetszete"
+
+#: units/__init__.py:1790
+msgid "ton"
+msgstr "tonna"
+
+#: units/__init__.py:1794
+msgid "ton of TNT"
+msgstr "tonna TNT"
+
+#: units/__init__.py:1798
+msgid "ton of oil equivalent"
+msgstr "tonna olajegyenérték"
+
+#: units/__init__.py:1799
+msgid "toe"
+msgstr "lábujj"
+
+#: units/__init__.py:1806 units/__init__.py:1807
+msgid "tropical month"
+msgstr "trópusi hónap"
+
+#: units/__init__.py:1810 units/__init__.py:1811
+msgid "tropical year"
+msgstr "trópusi évben"
+
+#: units/__init__.py:1814 units/__init__.py:1815
+msgid "troy ounce"
+msgstr "troy uncia"
+
+#: units/__init__.py:1818 units/__init__.py:1819
+msgid "troy pound"
+msgstr "troy font"
+
+#: units/__init__.py:1822 units/__init__.py:1823
+msgid "turn"
+msgstr "fordulat"
+
+#: units/__init__.py:1826 units/__init__.py:1827
+msgid "unified atomic mass unit"
+msgstr "egységes atomtömeg-egység"
+
+#: units/__init__.py:1830
+msgid "unit pole"
+msgstr "egységoszlop"
+
+#: units/__init__.py:1834
+msgid "vacuum permeability"
+msgstr "vákuumáteresztő képesség"
+
+#: units/__init__.py:1838
+msgid "vacuum permittivity"
+msgstr "vákuum permittivitás"
+
+#: units/__init__.py:1850
+msgid "Von Klitzing constant"
+msgstr "Von Klitzing állandó"
+
+#: units/__init__.py:1854
+msgid "Water volumic mass"
+msgstr "Víz térfogati tömege"
+
+#: units/__init__.py:1858
+msgid "Water volumic mass at 39F"
+msgstr "A víz térfogati tömege 39F-on"
+
+#: units/__init__.py:1862
+msgid "Water volumic mass at 60F"
+msgstr "A víz térfogati tömege 60F-on"
+
+#: units/__init__.py:1882
+msgid "wien frequency displacement law constant"
+msgstr "wien frekvencia elmozdulás törvény állandó"
+
+#: units/__init__.py:1886
+msgid "wien u"
+msgstr "wien u"
+
+#: units/__init__.py:1890
+msgid "wien displacement law constant"
+msgstr "wien elmozdulási törvény állandó"
+
+#: units/__init__.py:1894
+msgid "wien x"
+msgstr "wien x"
+
+#: units/__init__.py:1898
+msgid "Cu X-ray wavelength"
+msgstr "Cu röntgen hullámhossz"
+
+#: units/__init__.py:1902
+msgid "Mo X-ray wavelength"
+msgstr "Mo röntgen hullámhossz"
+
+#: units/__init__.py:1906
+msgid "yard"
+msgstr "udvar"
+
+#: units/__init__.py:1914
+msgid "zeta"
+msgstr "zeta"
+
+#: units/__init__.py:1918
+msgid "decibelmilliwatt"
+msgstr "decibelmilliwatt"
+
+#: units/__init__.py:1922
+msgid "decibelmicrowatt"
+msgstr "decibelmicrowatt"
+
+#: units/__init__.py:1926
+msgid "Euler‘s number"
+msgstr "Euler száma"
+
+#: units/__init__.py:1930
+msgid "octave"
+msgstr "oktáv"
+
+#: units/__init__.py:1934
+msgid "sound pressure level"
+msgstr "hangnyomás szint"
+
+#: units/__init__.py:1954
+#, fuzzy
+#| msgid "millenium"
+msgid "milligram"
+msgstr "évezred"
+
+#: units/__init__.py:1958
+#, fuzzy
+#| msgid "kilogram-force"
+msgid "kilogram"
+msgstr "kilogramm-erő"
+
+#: units/__init__.py:1962
+#, fuzzy
+#| msgid "meter"
+msgid "kilometer"
+msgstr "méter"
+
+#: units/__init__.py:1966
+#, fuzzy
+#| msgid "centimeter Hg"
+msgid "centimeter"
+msgstr "centiméter Hg"
+
+#: units/__init__.py:1970
+#, fuzzy
+#| msgid "Hg millimeter"
+msgid "millimeter"
+msgstr "Hg milliméter"
+
+#: units/__init__.py:1974
+#, fuzzy
+#| msgid "meter per second"
+msgid "centimeter per second"
+msgstr "méter másodpercenként"
+
+#: units/models.py:684
+msgid "Incompatible units"
+msgstr "Nem kompatibilis egységek"
+
+#: units/models.py:705
+msgid "Undefined unit in the registry"
+msgstr "Meghatározatlan egység a nyilvántartásban"
+
+#~ msgid "square centimeter"
+#~ msgstr "négyzetcentiméter"
+
+#~ msgid "square millimeter"
+#~ msgstr "négyzetmilliméter"
+
+#~ msgid "surface"
+#~ msgstr "felület"
+
+#~ msgid "speed"
+#~ msgstr "sebesség"
+
+#~ msgid "meter per gram"
+#~ msgstr "méter / gramm"
+
+#~ msgid "absorption"
+#~ msgstr "abszorpció"
+
+#~ msgid "electromagnetic inductance"
+#~ msgstr "elektromágneses induktivitás"
+
+#~ msgid "electromagnetic resistance"
+#~ msgstr "elektromágneses ellenállás"
+
+#~ msgid "linear mass density"
+#~ msgstr "lineáris tömegsűrűség"
+
+#~ msgid "density of particle"
+#~ msgstr "részecske sűrűsége"
+
+#~ msgid "catalytic activity"
+#~ msgstr "katalitikus aktivitás"
+
+#~ msgid "quantity of information"
+#~ msgstr "információ mennyisége"
+
+#~ msgid "density of information"
+#~ msgstr "információsűrűség"
+
+#~ msgid "magnetic moment"
+#~ msgstr "mágneses pillanat"
+
+#~ msgid "electrical capacitance"
+#~ msgstr "elektromos kapacitás"
+
+#~ msgid "electric force"
+#~ msgstr "elektromos erő"
+
+#~ msgid "electromagnetic action"
+#~ msgstr "elektromágneses működés"
+
+#~ msgid "power per unit per wavelength interval"
+#~ msgstr "egységnyi teljesítmény hullámhossz-intervallumonként"
+
+#~ msgid "electrostatic unit of charge"
+#~ msgstr "elektrosztatikus töltési egység"
+
+#~ msgid "magnetic induction"
+#~ msgstr "mágneses indukció"
+
+#~ msgid "angle"
+#~ msgstr "szög"
+
+#~ msgid "radiation"
+#~ msgstr "sugárzás"
+
+#~ msgid "energy per temperature increment per mole"
+#~ msgstr "energia / hőmérséklet növekmény / mol"
+
+#~ msgid "reciprocal length"
+#~ msgstr "kölcsönös hosszúságú"
+
+#~ msgid "angular speed"
+#~ msgstr "szögsebesség"
+
+#~ msgid "radiation exposure"
+#~ msgstr "sugárterhelés"
+
+#~ msgid "solid degree"
+#~ msgstr "szilárd fokozat"
+
+#~ msgid "volumetric flow rate"
+#~ msgstr "térfogatáram"
+
+#~ msgid "mass density"
+#~ msgstr "tömegsűrűség"
+
+#~ msgid "heat energy"
+#~ msgstr "hőenergia"
+
+#~ msgid "quantity"
+#~ msgstr "Mennyiség"
+
+#~ msgid "field quantity"
+#~ msgstr "mezőmennyiség"
+
+#~ msgid "permeability"
+#~ msgstr "áteresztőképesség"
+
+#~ msgid "energy by temperature"
+#~ msgstr "energia hőmérséklet szerint"
+
+#~ msgid "dimesionless"
+#~ msgstr "dimesionless"
+
+#~ msgid "H-field"
+#~ msgstr "H-mező"
+
+#~ msgid "unit"
+#~ msgstr "Mértékegység"
+
+#~ msgid "solid angle"
+#~ msgstr "szilárd szög"
+
+#~ msgid "flux density"
+#~ msgstr "fluxus sűrűsége"
