@@ -373,11 +373,14 @@ class Dimension:
             logging.warning(f"unable to find base unit for"
                             f"unit system {self.unit_system.system_name}"
                             f" and dimension {self.code}")
-        unit_list.extend(
-            [
-                Unit(unit_system=self.unit_system, pint_unit=unit)
-                for unit in self.unit_system.ureg.get_compatible_units(self.code)
-            ])
+        try:
+            unit_list.extend(
+                [
+                    Unit(unit_system=self.unit_system, pint_unit=unit)
+                    for unit in self.unit_system.ureg.get_compatible_units(self.code)
+                ])
+        except KeyError as e:
+            logging.warning(f"Cannot find compatible units for this dimension {self.code}")
         unit_names = [str(u) for u in unit_list]
         for unit, prefixes in prefixed_units_display.items():
             if unit in unit_names:
