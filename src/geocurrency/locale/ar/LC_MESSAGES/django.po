@@ -1,0 +1,2416 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 12:18+0200\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Arabic <http://translation.peabytes.me/projects/geocurrency/"
+"api/ar/>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 4.2.2\n"
+
+#: countries/viewsets.py:97
+msgid "Unknown country or no info for this country"
+msgstr "بلد غير معروف أو لا توجد معلومات عن هذا البلد"
+
+#: rates/models.py:472
+msgid "Rate could not be found"
+msgstr "لا يمكن العثور على المعدل"
+
+#: settings.example.py:162
+msgid "Afrikaans"
+msgstr "الأفريكانية"
+
+#: settings.example.py:163
+msgid "Arabic"
+msgstr "عربى"
+
+#: settings.example.py:164
+msgid "Algerian Arabic"
+msgstr "عربي جزائري"
+
+#: settings.example.py:165
+msgid "Asturian"
+msgstr "أستوريان"
+
+#: settings.example.py:166
+msgid "Azerbaijani"
+msgstr "أذربيجان"
+
+#: settings.example.py:167
+msgid "Bulgarian"
+msgstr "البلغارية"
+
+#: settings.example.py:168
+msgid "Belarusian"
+msgstr "البيلاروسية"
+
+#: settings.example.py:169
+msgid "Bengali"
+msgstr "البنغالية"
+
+#: settings.example.py:170
+msgid "Breton"
+msgstr "بريتون"
+
+#: settings.example.py:171
+msgid "Bosnian"
+msgstr "البوسنية"
+
+#: settings.example.py:172
+msgid "Catalan"
+msgstr "الكاتالونية"
+
+#: settings.example.py:173
+msgid "Czech"
+msgstr "التشيكية"
+
+#: settings.example.py:174
+msgid "Welsh"
+msgstr "تهرب من دفع الرهان"
+
+#: settings.example.py:175
+msgid "Danish"
+msgstr "دانماركي"
+
+#: settings.example.py:176
+msgid "German"
+msgstr "ألمانية"
+
+#: settings.example.py:177
+msgid "Lower Sorbian"
+msgstr "الصوربية السفلى"
+
+#: settings.example.py:178
+msgid "Greek"
+msgstr "اليونانية"
+
+#: settings.example.py:179
+msgid "English"
+msgstr "الإنجليزية"
+
+#: settings.example.py:180
+msgid "Australian English"
+msgstr "الإنجليزية الأسترالية"
+
+#: settings.example.py:181
+msgid "British English"
+msgstr "الإنجليزية البريطانية"
+
+#: settings.example.py:182
+msgid "Esperanto"
+msgstr "اسبرانتو"
+
+#: settings.example.py:183
+msgid "Spanish"
+msgstr "الأسبانية"
+
+#: settings.example.py:184
+msgid "Argentinian Spanish"
+msgstr "الأرجنتيني الاسباني"
+
+#: settings.example.py:185
+msgid "Colombian Spanish"
+msgstr "الأسبانية الكولومبية"
+
+#: settings.example.py:186
+msgid "Mexican Spanish"
+msgstr "الاسبانية المكسيكية"
+
+#: settings.example.py:187
+msgid "Nicaraguan Spanish"
+msgstr "نيكاراغوا الإسبانية"
+
+#: settings.example.py:188
+msgid "Venezuelan Spanish"
+msgstr "الأسبانية الفنزويلية"
+
+#: settings.example.py:189
+msgid "Estonian"
+msgstr "الإستونية"
+
+#: settings.example.py:190
+msgid "Basque"
+msgstr "الباسك"
+
+#: settings.example.py:191
+msgid "Persian"
+msgstr "اللغة الفارسية"
+
+#: settings.example.py:192
+msgid "Finnish"
+msgstr "الفنلندية"
+
+#: settings.example.py:193
+msgid "French"
+msgstr "فرنسي"
+
+#: settings.example.py:194
+msgid "Frisian"
+msgstr "الفريزيان"
+
+#: settings.example.py:195
+msgid "Irish"
+msgstr "ايرلندية"
+
+#: settings.example.py:196
+msgid "Scottish Gaelic"
+msgstr "الغيلية الاسكتلندية"
+
+#: settings.example.py:197
+msgid "Galician"
+msgstr "الجاليكية"
+
+#: settings.example.py:198
+msgid "Hebrew"
+msgstr "اللغة العبرية"
+
+#: settings.example.py:199
+msgid "Hindi"
+msgstr "هندي"
+
+#: settings.example.py:200
+msgid "Croatian"
+msgstr "الكرواتية"
+
+#: settings.example.py:201
+msgid "Upper Sorbian"
+msgstr "الصربية العليا"
+
+#: settings.example.py:202
+msgid "Hungarian"
+msgstr "المجرية"
+
+#: settings.example.py:203
+msgid "Armenian"
+msgstr "أرميني"
+
+#: settings.example.py:204
+msgid "Interlingua"
+msgstr "إنترلينجوا"
+
+#: settings.example.py:205
+msgid "Indonesian"
+msgstr "الأندونيسية"
+
+#: settings.example.py:206
+msgid "Igbo"
+msgstr "الإيغبو"
+
+#: settings.example.py:207
+msgid "Ido"
+msgstr "أنا افعل"
+
+#: settings.example.py:208
+msgid "Icelandic"
+msgstr "آيسلندي"
+
+#: settings.example.py:209
+msgid "Italian"
+msgstr "إيطالي"
+
+#: settings.example.py:210
+msgid "Japanese"
+msgstr "اليابانية"
+
+#: settings.example.py:211
+msgid "Georgian"
+msgstr "الجورجية"
+
+#: settings.example.py:212
+msgid "Kabyle"
+msgstr "منطقة القبائل"
+
+#: settings.example.py:213
+msgid "Kazakh"
+msgstr "الكازاخستانية"
+
+#: settings.example.py:214
+msgid "Khmer"
+msgstr "الخمير"
+
+#: settings.example.py:215
+msgid "Kannada"
+msgstr "الكانادا"
+
+#: settings.example.py:216
+msgid "Korean"
+msgstr "الكورية"
+
+#: settings.example.py:217
+msgid "Kyrgyz"
+msgstr "قيرغيزستان"
+
+#: settings.example.py:218
+msgid "Luxembourgish"
+msgstr "اللوكسمبرجية"
+
+#: settings.example.py:219
+msgid "Lithuanian"
+msgstr "الليتوانية"
+
+#: settings.example.py:220
+msgid "Latvian"
+msgstr "لاتفيا"
+
+#: settings.example.py:221
+msgid "Macedonian"
+msgstr "المقدونية"
+
+#: settings.example.py:222
+msgid "Malayalam"
+msgstr "المالايالامية"
+
+#: settings.example.py:223
+msgid "Mongolian"
+msgstr "المنغولية"
+
+#: settings.example.py:224
+msgid "Marathi"
+msgstr "الماراثى"
+
+#: settings.example.py:225
+msgid "Burmese"
+msgstr "البورمية"
+
+#: settings.example.py:226
+msgid "Norwegian Bokmål"
+msgstr "النرويجية بوكمال"
+
+#: settings.example.py:227
+msgid "Nepali"
+msgstr "النيبالية"
+
+#: settings.example.py:228
+msgid "Dutch"
+msgstr "هولندي"
+
+#: settings.example.py:229
+msgid "Norwegian Nynorsk"
+msgstr "نينورسك النرويجي"
+
+#: settings.example.py:230
+msgid "Ossetic"
+msgstr "الأوسيتيك"
+
+#: settings.example.py:231
+msgid "Punjabi"
+msgstr "البنجابية"
+
+#: settings.example.py:232
+msgid "Polish"
+msgstr "تلميع"
+
+#: settings.example.py:233
+msgid "Portuguese"
+msgstr "البرتغالية"
+
+#: settings.example.py:234
+msgid "Brazilian Portuguese"
+msgstr "البرتغالية البرازيلية"
+
+#: settings.example.py:235
+msgid "Romanian"
+msgstr "روماني"
+
+#: settings.example.py:236
+msgid "Russian"
+msgstr "الروسية"
+
+#: settings.example.py:237
+msgid "Slovak"
+msgstr "السلوفاكية"
+
+#: settings.example.py:238
+msgid "Slovenian"
+msgstr "السلوفينية"
+
+#: settings.example.py:239
+msgid "Albanian"
+msgstr "الألبانية"
+
+#: settings.example.py:240
+msgid "Serbian"
+msgstr "الصربية"
+
+#: settings.example.py:241
+msgid "Serbian Latin"
+msgstr "الصربية اللاتينية"
+
+#: settings.example.py:242
+msgid "Swedish"
+msgstr "السويدية"
+
+#: settings.example.py:243
+msgid "Swahili"
+msgstr "السواحيلية"
+
+#: settings.example.py:244
+msgid "Tamil"
+msgstr "التاميل"
+
+#: settings.example.py:245
+msgid "Telugu"
+msgstr "التيلجو"
+
+#: settings.example.py:246
+msgid "Tajik"
+msgstr "طاجيك"
+
+#: settings.example.py:247
+msgid "Thai"
+msgstr "التايلاندية"
+
+#: settings.example.py:248
+msgid "Turkmen"
+msgstr "التركمان"
+
+#: settings.example.py:249
+msgid "Turkish"
+msgstr "اللغة التركية"
+
+#: settings.example.py:250
+msgid "Tatar"
+msgstr "التتار"
+
+#: settings.example.py:251
+msgid "Udmurt"
+msgstr "الأدمرت"
+
+#: settings.example.py:252
+msgid "Ukrainian"
+msgstr "الأوكرانية"
+
+#: settings.example.py:253
+msgid "Urdu"
+msgstr "الأردية"
+
+#: settings.example.py:254
+msgid "Uzbek"
+msgstr "أوزبكي"
+
+#: settings.example.py:255
+msgid "Vietnamese"
+msgstr "فيتنامي"
+
+#: settings.example.py:256
+msgid "Simplified Chinese"
+msgstr "الصينية المبسطة"
+
+#: settings.example.py:257
+msgid "Traditional Chinese"
+msgstr "الصينية التقليدية"
+
+#: units/__init__.py:8 units/tests.py:165 units/tests.py:437 units/tests.py:445
+msgid "length"
+msgstr "الطول"
+
+#: units/__init__.py:9
+msgid "time"
+msgstr "زمن"
+
+#: units/__init__.py:10
+msgid "current"
+msgstr "تيار"
+
+#: units/__init__.py:11
+msgid "luminosity"
+msgstr "لمعان"
+
+#: units/__init__.py:13
+msgid "mass"
+msgstr "كتلة"
+
+#: units/__init__.py:14
+msgid "substance"
+msgstr "مستوى"
+
+#: units/__init__.py:15
+msgid "temperature"
+msgstr "درجة الحرارة"
+
+#: units/__init__.py:16
+msgid "constant"
+msgstr "ثابت"
+
+#: units/__init__.py:17
+msgid "area"
+msgstr "منطقة"
+
+#: units/__init__.py:18
+msgid "volume"
+msgstr "الصوت"
+
+#: units/__init__.py:19
+msgid "frequency"
+msgstr "تكرر"
+
+#: units/__init__.py:21
+msgid "wavenumber"
+msgstr "موجة"
+
+#: units/__init__.py:22
+msgid "velocity"
+msgstr "● السرعة"
+
+#: units/__init__.py:24
+msgid "acceleration"
+msgstr "التسريع"
+
+#: units/__init__.py:26
+msgid "force"
+msgstr "فرض"
+
+#: units/__init__.py:28
+msgid "energy"
+msgstr "الطاقة"
+
+#: units/__init__.py:30
+msgid "power"
+msgstr "قوة"
+
+#: units/__init__.py:32
+msgid "density"
+msgstr "كثافة"
+
+#: units/__init__.py:34
+msgid "pressure"
+msgstr "الضغط"
+
+#: units/__init__.py:36
+msgid "torque"
+msgstr "عزم الدوران"
+
+#: units/__init__.py:38
+msgid "viscosity"
+msgstr "اللزوجة"
+
+#: units/__init__.py:40
+msgid "kinematic viscosity"
+msgstr "اللزوجة الحركية"
+
+#: units/__init__.py:43
+msgid "fluidity"
+msgstr "سيولة"
+
+#: units/__init__.py:45
+msgid "concentration"
+msgstr "تركيز"
+
+#: units/__init__.py:47
+msgid "activity"
+msgstr "نشاط"
+
+#: units/__init__.py:49
+msgid "entropy"
+msgstr "غير قادر علي"
+
+#: units/__init__.py:52
+msgid "molar entropy"
+msgstr "الإنتروبيا المولية"
+
+#: units/__init__.py:56
+msgid "heat transmission"
+msgstr "انتقال الحرارة"
+
+#: units/__init__.py:60
+msgid "luminance"
+msgstr "الانارة"
+
+#: units/__init__.py:64
+msgid "luminous flux"
+msgstr "تدفق مضيئة"
+
+#: units/__init__.py:67
+msgid "illuminance"
+msgstr "إضاءة"
+
+#: units/__init__.py:71
+msgid "intensity"
+msgstr "الشدة"
+
+#: units/__init__.py:73
+msgid "charge"
+msgstr "الشحنة"
+
+#: units/__init__.py:74
+msgid "electric potential"
+msgstr "الجهد الكهربائي"
+
+#: units/__init__.py:78
+msgid "electric field"
+msgstr "الحقل الكهربائي"
+
+#: units/__init__.py:82
+msgid "resistance"
+msgstr "مقاومة"
+
+#: units/__init__.py:86
+msgid "conductance"
+msgstr "تصرف"
+
+#: units/__init__.py:90
+msgid "capacitance"
+msgstr "السعة"
+
+#: units/__init__.py:94
+msgid "inductance"
+msgstr "الحث"
+
+#: units/__init__.py:98
+msgid "magnetic flux"
+msgstr "الفيض المغناطيسي"
+
+#: units/__init__.py:102
+msgid "magnetic field"
+msgstr "حقل مغناطيسي"
+
+#: units/__init__.py:106
+msgid "magnetomotive force"
+msgstr "قوة المغناطيسية"
+
+#: units/__init__.py:109
+msgid "electric dipole"
+msgstr "ثنائي القطب الكهربائي"
+
+#: units/__init__.py:113
+msgid "electric quadrupole"
+msgstr "رباعي كهربائي"
+
+#: units/__init__.py:117
+msgid "magnetic dipole"
+msgstr "ثنائي القطب المغناطيسي"
+
+#: units/__init__.py:120
+msgid "printing unit"
+msgstr "وحدة الطباعة"
+
+#: units/__init__.py:123
+msgid "gaussian charge"
+msgstr "تهمة gaussian"
+
+#: units/__init__.py:127
+msgid "gaussian current"
+msgstr "تيار غاوسي"
+
+#: units/__init__.py:131
+msgid "gaussian electric potential"
+msgstr "الجهد الكهربائي الغاوسي"
+
+#: units/__init__.py:135
+msgid "gaussian electric field"
+msgstr "المجال الكهربائي gaussian"
+
+#: units/__init__.py:140
+msgid "gaussian electric displacement field"
+msgstr "مجال الإزاحة الكهربائية الغاوسية"
+
+#: units/__init__.py:144
+msgid "gaussian electric flux"
+msgstr "التدفق الكهربائي الغاوسي"
+
+#: units/__init__.py:148
+msgid "gaussian magnetic field"
+msgstr "المجال المغناطيسي gaussian"
+
+#: units/__init__.py:152
+msgid "gaussian magnetic field strength"
+msgstr "شدة المجال المغناطيسي الغاوسي"
+
+#: units/__init__.py:156
+msgid "gaussian magnetic flux"
+msgstr "التدفق المغناطيسي الغاوسي"
+
+#: units/__init__.py:160
+msgid "gaussian resistance"
+msgstr "المقاومة الغاوسية"
+
+#: units/__init__.py:164
+msgid "gaussian resistivity"
+msgstr "المقاومة الغاوسية"
+
+#: units/__init__.py:167
+msgid "gaussian capacitance"
+msgstr "السعة الغاوسية"
+
+#: units/__init__.py:170
+msgid "gaussian inductance"
+msgstr "الحث الغاوسي"
+
+#: units/__init__.py:174
+msgid "gaussian conductance"
+msgstr "المواصلة الغاوسية"
+
+#: units/__init__.py:178
+msgid "esu charge"
+msgstr "تهمة esu"
+
+#: units/__init__.py:182
+msgid "esu current"
+msgstr "esu الحالي"
+
+#: units/__init__.py:186
+msgid "esu electric potential"
+msgstr "الجهد الكهربائي esu"
+
+#: units/__init__.py:190
+msgid "esu magnetic flux"
+msgstr "تدفق مغناطيسي esu"
+
+#: units/__init__.py:194
+msgid "esu magnetic field"
+msgstr "المجال المغناطيسي esu"
+
+#: units/__init__.py:198
+msgid "Compound dimension"
+msgstr ""
+
+#: units/__init__.py:202
+#, fuzzy
+#| msgid "dimensionless"
+msgid "Custom dimension"
+msgstr "بلا أبعاد"
+
+#: units/__init__.py:317 units/__init__.py:1938
+msgid "meter per second"
+msgstr "متر في الثانية"
+
+#: units/__init__.py:322 units/__init__.py:1942
+msgid "meter per square second"
+msgstr "متر في الثانية المربعة"
+
+#: units/__init__.py:327 units/__init__.py:1946 units/__init__.py:1950
+msgid "square meter"
+msgstr "متر مربع"
+
+#: units/__init__.py:332
+msgid "cubic meter"
+msgstr "متر مكعب"
+
+#: units/__init__.py:342
+msgid "Copper Kα"
+msgstr "النحاس Kα"
+
+#: units/__init__.py:346
+msgid "Molybdenum K-α"
+msgstr "الموليبدينوم K-α"
+
+#: units/__init__.py:350
+msgid "Tungsten K-α"
+msgstr "التنغستن K-α"
+
+#: units/__init__.py:351
+msgid "W Kα"
+msgstr "W Kα"
+
+#: units/__init__.py:354
+msgid "RKM"
+msgstr "RKM"
+
+#: units/__init__.py:359 units/__init__.py:954
+msgid "long ton-force"
+msgstr "قوة طن طويلة"
+
+#: units/__init__.py:369 units/__init__.py:1234
+msgid "long ton"
+msgstr "طن طويل"
+
+#: units/__init__.py:374
+msgid "short ton force"
+msgstr "قوة طن قصيرة"
+
+#: units/__init__.py:379
+msgid "short hundredweight"
+msgstr "مائة وزن قصير"
+
+#: units/__init__.py:384
+msgid "short ton"
+msgstr "طن قصير"
+
+#: units/__init__.py:389
+msgid "US International Ampere"
+msgstr "الولايات المتحدة الدولية أمبير"
+
+#: units/__init__.py:394
+msgid "US international Ohm"
+msgstr "أوم الدولية الأمريكية"
+
+#: units/__init__.py:399
+msgid "US international Volt"
+msgstr "الولايات المتحدة الدولية فولت"
+
+#: units/__init__.py:404
+msgid "US therm"
+msgstr "الولايات المتحدة ثيرم"
+
+#: units/__init__.py:408
+msgid "abampere"
+msgstr "أبامبير"
+
+#: units/__init__.py:412
+msgid "abcoulomb"
+msgstr "أب كولوم"
+
+#: units/__init__.py:416
+msgid "Aberdeen"
+msgstr "أبردين"
+
+#: units/__init__.py:420
+msgid "abfarad"
+msgstr "أبفراد"
+
+#: units/__init__.py:424
+msgid "abhenry"
+msgstr "أبهنري"
+
+#: units/__init__.py:428
+msgid "abohm"
+msgstr "ابوم"
+
+#: units/__init__.py:432
+msgid "absiemens"
+msgstr "أبسيمنس"
+
+#: units/__init__.py:436
+msgid "abvolt"
+msgstr "أبفولت"
+
+#: units/__init__.py:440
+msgid "acre"
+msgstr "فدان"
+
+#: units/__init__.py:444
+msgid "acre-foot"
+msgstr "فدان"
+
+#: units/__init__.py:448
+msgid "ampere"
+msgstr "أمبير"
+
+#: units/__init__.py:452
+#, fuzzy
+#| msgid "ampere"
+msgid "milliampere"
+msgstr "أمبير"
+
+#: units/__init__.py:456
+msgid "ampere-turn"
+msgstr "أمبير"
+
+#: units/__init__.py:460
+msgid "angstrom"
+msgstr "انجستروم"
+
+#: units/__init__.py:464
+msgid "angstrom star"
+msgstr "نجم انجستروم"
+
+#: units/__init__.py:468
+msgid "apothecary dram"
+msgstr "درام الصيدلانية"
+
+#: units/__init__.py:472
+msgid "apothecary ounce"
+msgstr "أوقية صيدلية"
+
+#: units/__init__.py:476
+msgid "apothecary pound"
+msgstr "الجنيه الصيدلانية"
+
+#: units/__init__.py:480
+msgid "minute of arc"
+msgstr "دقيقة قوس"
+
+#: units/__init__.py:484
+msgid "second of arc"
+msgstr "الثاني من القوس"
+
+#: units/__init__.py:488
+msgid "are"
+msgstr "هي"
+
+#: units/__init__.py:492
+msgid "astronomical unit"
+msgstr "وحدة فلكية"
+
+#: units/__init__.py:496
+msgid "atmosphere liter"
+msgstr "لتر الغلاف الجوي"
+
+#: units/__init__.py:500
+msgid "atomic mass constant"
+msgstr "ثابت الكتلة الذرية"
+
+#: units/__init__.py:504
+msgid "atomic unit of current"
+msgstr "الوحدة الذرية للتيار"
+
+#: units/__init__.py:508
+msgid "atomic unit of electric field"
+msgstr "الوحدة الذرية للمجال الكهربائي"
+
+#: units/__init__.py:512
+msgid "atomic unit of force"
+msgstr "الوحدة الذرية للقوة"
+
+#: units/__init__.py:516
+msgid "atomic unit of intensity"
+msgstr "الوحدة الذرية للكثافة"
+
+#: units/__init__.py:520
+msgid "atomic unit of temperature"
+msgstr "الوحدة الذرية لدرجة الحرارة"
+
+#: units/__init__.py:524
+msgid "atomic unit of time"
+msgstr "الوحدة الذرية للوقت"
+
+#: units/__init__.py:528
+msgid "Avogadro constant"
+msgstr "ثابت أفوجادرو"
+
+#: units/__init__.py:532
+msgid "Avogadro number"
+msgstr "رقم أفوجادرو"
+
+#: units/__init__.py:536
+msgid "bag"
+msgstr "كيس"
+
+#: units/__init__.py:540
+msgid "bar"
+msgstr "شريط"
+
+#: units/__init__.py:544
+msgid "barn"
+msgstr "إسطبل"
+
+#: units/__init__.py:548
+msgid "barrel"
+msgstr "برميل"
+
+#: units/__init__.py:552
+msgid "barrye"
+msgstr "باري"
+
+#: units/__init__.py:556
+msgid "baud"
+msgstr "الباود"
+
+#: units/__init__.py:560
+msgid "becquerel"
+msgstr "بيكريل"
+
+#: units/__init__.py:564
+msgid "beer barrel"
+msgstr "برميل البيرة"
+
+#: units/__init__.py:568
+msgid "bel"
+msgstr "بيل"
+
+#: units/__init__.py:572
+msgid "biot"
+msgstr "بيوت"
+
+#: units/__init__.py:576
+msgid "biot turn"
+msgstr "دور البيوت"
+
+#: units/__init__.py:580
+msgid "bit"
+msgstr "قليلا"
+
+#: units/__init__.py:584
+msgid "bits per pixel"
+msgstr "بت لكل بكسل"
+
+#: units/__init__.py:588
+msgid "board foot"
+msgstr "قدم المجلس"
+
+#: units/__init__.py:592
+msgid "bohr"
+msgstr "بوهر"
+
+#: units/__init__.py:596
+msgid "bohr magneton"
+msgstr "مغنيتون بوهر"
+
+#: units/__init__.py:600
+msgid "boiler horsepower"
+msgstr "قوة حصانا المرجل"
+
+#: units/__init__.py:604
+msgid "boltzmann constant"
+msgstr "ثابت بولتزمان"
+
+#: units/__init__.py:608
+msgid "british thermal unit"
+msgstr "وحدة حرارية بريطانية"
+
+#: units/__init__.py:612
+msgid "buckingham"
+msgstr "باكنغهام"
+
+#: units/__init__.py:616
+msgid "bushel"
+msgstr "بوشل"
+
+#: units/__init__.py:620
+msgid "byte"
+msgstr "بايت"
+
+#: units/__init__.py:624
+msgid "cable length"
+msgstr "طول السلك"
+
+#: units/__init__.py:628
+msgid "calorie"
+msgstr "السعرات الحرارية"
+
+#: units/__init__.py:632
+msgid "candela"
+msgstr "كانديلا"
+
+#: units/__init__.py:636
+msgid "carat"
+msgstr "قيراط"
+
+#: units/__init__.py:640
+msgid "centimeter H20"
+msgstr "سنتيمتر H20"
+
+#: units/__init__.py:644
+msgid "centimeter Hg"
+msgstr "سنتيمتر زئبق"
+
+#: units/__init__.py:648
+msgid "century"
+msgstr "مئة عام"
+
+#: units/__init__.py:652
+msgid "chain"
+msgstr "سلسلة"
+
+#: units/__init__.py:656
+msgid "cicero"
+msgstr "شيشرون"
+
+#: units/__init__.py:660
+msgid "circular mil"
+msgstr "دائري ميل"
+
+#: units/__init__.py:664
+msgid "classical electron radius"
+msgstr "نصف قطر الإلكترون الكلاسيكي"
+
+#: units/__init__.py:668
+msgid "clausius"
+msgstr "كلوزيوس"
+
+#: units/__init__.py:672
+msgid "common year"
+msgstr "عام مشترك"
+
+#: units/__init__.py:676
+msgid "conductance quantum"
+msgstr "كمية التوصيل"
+
+#: units/__init__.py:680
+msgid "conventional ampere"
+msgstr "الأمبير التقليدي"
+
+#: units/__init__.py:684
+msgid "conventional coulomb"
+msgstr "كولوم التقليدي"
+
+#: units/__init__.py:688
+msgid "conventional farad"
+msgstr "فاراد التقليدي"
+
+#: units/__init__.py:692
+msgid "conventional henry"
+msgstr "هنري التقليدي"
+
+#: units/__init__.py:696
+msgid "conventional josephson constant"
+msgstr "ثابت جوزيفسون التقليدي"
+
+#: units/__init__.py:700
+msgid "conventional ohm"
+msgstr "أوم التقليدية"
+
+#: units/__init__.py:704
+msgid "conventional volt"
+msgstr "تقليدي فولت"
+
+#: units/__init__.py:708
+msgid "conventional Von Klitzing constant"
+msgstr "ثابت فون كليتزينج التقليدي"
+
+#: units/__init__.py:712
+msgid "conventional Watt"
+msgstr "واط التقليدي"
+
+#: units/__init__.py:716
+msgid "coulomb"
+msgstr "كولوم"
+
+#: units/__init__.py:720
+msgid "coulomb constant"
+msgstr "ثابت كولوم"
+
+#: units/__init__.py:724
+msgid "count"
+msgstr "العد"
+
+#: units/__init__.py:728
+msgid "counts per second"
+msgstr "تحسب في الثانية"
+
+#: units/__init__.py:732
+msgid "CSS pixel"
+msgstr "بكسل CSS"
+
+#: units/__init__.py:736
+msgid "cubic centimeter"
+msgstr "سنتيمتر مكعب"
+
+#: units/__init__.py:740
+msgid "cubic milliimeter"
+msgstr "ملليمتر مكعب"
+
+#: units/__init__.py:744
+msgid "cubic foot"
+msgstr "قدم مكعب"
+
+#: units/__init__.py:748
+msgid "cubic inch"
+msgstr "بوصة مكعبة"
+
+#: units/__init__.py:752
+msgid "cubic yard"
+msgstr "ياردة مكعبة"
+
+#: units/__init__.py:756
+msgid "cup"
+msgstr "كوب"
+
+#: units/__init__.py:760
+msgid "curie"
+msgstr "كوري"
+
+#: units/__init__.py:764
+msgid "dalton"
+msgstr "دالتون"
+
+#: units/__init__.py:768
+msgid "darcy"
+msgstr "دارسي"
+
+#: units/__init__.py:772
+msgid "day"
+msgstr "يوم"
+
+#: units/__init__.py:773
+msgctxt "unit"
+msgid "day"
+msgstr "يوم"
+
+#: units/__init__.py:776
+msgid "debye"
+msgstr "ديبي"
+
+#: units/__init__.py:780
+msgid "decade"
+msgstr "عقد"
+
+#: units/__init__.py:781
+msgctxt "symbol"
+msgid "decade"
+msgstr "عقد"
+
+#: units/__init__.py:784
+msgid "decibel"
+msgstr "ديسيبل"
+
+#: units/__init__.py:788
+msgid "degree"
+msgstr "الدرجة العلمية"
+
+#: units/__init__.py:792
+msgid "degree Celsius"
+msgstr "درجة مئوية"
+
+#: units/__init__.py:796
+msgid "degree Fahrenheit"
+msgstr "درجة فهرنهايت"
+
+#: units/__init__.py:800
+msgid "degree Rankine"
+msgstr "درجة رانكين"
+
+#: units/__init__.py:804
+msgid "degree Reaumur"
+msgstr "درجة ريومور"
+
+#: units/__init__.py:808
+msgid "denier"
+msgstr "منكر"
+
+#: units/__init__.py:812
+msgid "didot"
+msgstr "ديدو"
+
+#: units/__init__.py:816
+msgid "Dirac constant"
+msgstr "ثابت ديراك"
+
+#: units/__init__.py:820
+msgid "dram"
+msgstr "درهم"
+
+#: units/__init__.py:824
+msgid "dry barrel"
+msgstr "برميل جاف"
+
+#: units/__init__.py:828
+msgid "dry gallon"
+msgstr "جالون جاف"
+
+#: units/__init__.py:832
+msgid "dry pint"
+msgstr "باينت جاف"
+
+#: units/__init__.py:836
+msgid "dry quart"
+msgstr "ربع جاف"
+
+#: units/__init__.py:840
+msgid "decitex"
+msgstr "ديسيتكس"
+
+#: units/__init__.py:844
+msgid "dyne"
+msgstr "داين"
+
+#: units/__init__.py:848
+msgid "eletcrical horsepower"
+msgstr "حصانا كهربائي"
+
+#: units/__init__.py:852
+msgid "electron G-factor"
+msgstr "عامل جي الإلكترون"
+
+#: units/__init__.py:856
+msgid "electron mass"
+msgstr "كتلة الإلكترون"
+
+#: units/__init__.py:860
+msgid "electronvolt"
+msgstr "الكترون فولت"
+
+#: units/__init__.py:864
+msgid "elementary charge"
+msgstr "شحنة أولية"
+
+#: units/__init__.py:868
+msgid "entropy unit"
+msgstr "وحدة الانتروبيا"
+
+#: units/__init__.py:872
+msgid "enzyme unit"
+msgstr "وحدة الانزيم"
+
+#: units/__init__.py:876
+msgid "eon"
+msgstr "دهر"
+
+#: units/__init__.py:880
+msgid "erg"
+msgstr "إرغ"
+
+#: units/__init__.py:884
+msgid "farad"
+msgstr "فاراد"
+
+#: units/__init__.py:888
+msgid "faraday"
+msgstr "فاراداي"
+
+#: units/__init__.py:892
+msgid "faraday constant"
+msgstr "ثابت فاراداي"
+
+#: units/__init__.py:896
+msgid "fathom"
+msgstr "فهم"
+
+#: units/__init__.py:900
+msgid "fermi"
+msgstr "فيرمي"
+
+#: units/__init__.py:904
+msgid "fifteen degree calorie"
+msgstr "خمسة عشر درجة من السعرات الحرارية"
+
+#: units/__init__.py:908
+msgid "fifth"
+msgstr "الخامس"
+
+#: units/__init__.py:912
+msgid "fine structure constant"
+msgstr "ثابت الهيكل الدقيق"
+
+#: units/__init__.py:916
+msgid "first radiation constant"
+msgstr "ثابت الإشعاع الأول"
+
+#: units/__init__.py:920
+msgid "fluid dram"
+msgstr "درام السائل"
+
+#: units/__init__.py:924
+msgid "fluid ounce"
+msgstr "أونصة سائلة"
+
+#: units/__init__.py:928
+msgid "foot"
+msgstr "قدم"
+
+#: units/__init__.py:932
+msgid "foot H2O"
+msgstr "قدم H2O"
+
+#: units/__init__.py:936
+msgid "foot per second"
+msgstr "قدم في الثانية"
+
+#: units/__init__.py:940
+msgid "foot pound"
+msgstr "جنيه القدم"
+
+#: units/__init__.py:944
+msgid "gram-force"
+msgstr "غرام القوة"
+
+#: units/__init__.py:949
+msgid "kilogram-force"
+msgstr "كيلوغرام قوة"
+
+#: units/__init__.py:958 units/__init__.py:970
+msgid "tonne-force"
+msgstr "طن القوة"
+
+#: units/__init__.py:962
+msgid "ounce-force"
+msgstr "أونصة القوة"
+
+#: units/__init__.py:966
+msgid "pound-force"
+msgstr "قوة الجنيه"
+
+#: units/__init__.py:974
+msgid "fortnight"
+msgstr "خمسة عشر يوما"
+
+#: units/__init__.py:978
+msgid "franklin"
+msgstr "فرانكلين"
+
+#: units/__init__.py:982
+msgid "furlong"
+msgstr "فورلونج"
+
+#: units/__init__.py:986
+msgid "galileo"
+msgstr "جاليليو"
+
+#: units/__init__.py:990
+msgid "gallon"
+msgstr "جالون"
+
+#: units/__init__.py:994 units/__init__.py:998
+msgid "gamma"
+msgstr "جاما"
+
+#: units/__init__.py:1002
+msgid "gauss"
+msgstr "جاوس"
+
+#: units/__init__.py:1006
+msgid "gilbert"
+msgstr "جيلبرت"
+
+#: units/__init__.py:1010
+msgid "gill"
+msgstr "الخيشومية"
+
+#: units/__init__.py:1014
+msgid "grade"
+msgstr "درجة"
+
+#: units/__init__.py:1018
+msgid "grain"
+msgstr "الحبوب"
+
+#: units/__init__.py:1022
+msgid "gram"
+msgstr "غرام"
+
+#: units/__init__.py:1026
+msgid "gray"
+msgstr "اللون الرمادي"
+
+#: units/__init__.py:1030
+msgid "gregorian year"
+msgstr "سنة ميلادية"
+
+#: units/__init__.py:1031
+msgctxt "unit"
+msgid "gregorian year"
+msgstr "سنة ميلادية"
+
+#: units/__init__.py:1034
+msgid "hand"
+msgstr "كف"
+
+#: units/__init__.py:1038
+msgid "hartree"
+msgstr "هارتري"
+
+#: units/__init__.py:1042
+msgid "hectare"
+msgstr "هكتار"
+
+#: units/__init__.py:1046
+msgid "henry"
+msgstr "هنري"
+
+#: units/__init__.py:1050
+msgid "hertz"
+msgstr "هيرتز"
+
+#: units/__init__.py:1054
+msgid "hogshead"
+msgstr "برميل كبير"
+
+#: units/__init__.py:1058
+msgid "horsepower"
+msgstr "قوة حصان"
+
+#: units/__init__.py:1062
+msgid "hour"
+msgstr "ساعة"
+
+#: units/__init__.py:1066
+msgid "hundredweight"
+msgstr "مائة وزن"
+
+#: units/__init__.py:1070
+msgid "impedance of free space"
+msgstr "مقاومة الفضاء الحر"
+
+#: units/__init__.py:1074
+msgid "imperial barrel"
+msgstr "برميل إمبراطوري"
+
+#: units/__init__.py:1078
+msgid "imperial bushel"
+msgstr "بوشل إمبراطوري"
+
+#: units/__init__.py:1082
+msgid "imperial cup"
+msgstr "كأس إمبراطوري"
+
+#: units/__init__.py:1086
+msgid "imperial fluid drachm"
+msgstr "دراكم السائل الإمبراطوري"
+
+#: units/__init__.py:1090
+msgid "imperial fluid ounce"
+msgstr "اوقية السوائل الامبراطورية"
+
+#: units/__init__.py:1094
+msgid "imperial fluid scruple"
+msgstr "التورع السائل الإمبراطوري"
+
+#: units/__init__.py:1098
+msgid "imperial gallon"
+msgstr "جالون إمبراطوري"
+
+#: units/__init__.py:1102
+msgid "imperial gill"
+msgstr "الخيشوم الإمبراطوري"
+
+#: units/__init__.py:1106
+msgid "imperial minim"
+msgstr "الحد الأدنى الإمبراطوري"
+
+#: units/__init__.py:1110
+msgid "imperial peck"
+msgstr "بيك الإمبراطوري"
+
+#: units/__init__.py:1114
+msgid "imperial pint"
+msgstr "نصف لتر إمبراطوري"
+
+#: units/__init__.py:1118
+msgid "imperial quart"
+msgstr "ربع جالون إمبراطوري"
+
+#: units/__init__.py:1122
+msgid "inch"
+msgstr "بوصة"
+
+#: units/__init__.py:1126
+msgid "inch H20 39F"
+msgstr "بوصة H20 39F"
+
+#: units/__init__.py:1130
+msgid "inch H20 60F"
+msgstr "بوصة H20 60F"
+
+#: units/__init__.py:1134
+msgid "inch Hg"
+msgstr "بوصة زئبق"
+
+#: units/__init__.py:1138
+msgid "inch Hg 60F"
+msgstr "بوصة Hg 60F"
+
+#: units/__init__.py:1142
+msgid "international Btu"
+msgstr "الدولية Btu"
+
+#: units/__init__.py:1146
+msgid "international calorie"
+msgstr "السعرات الحرارية الدولية"
+
+#: units/__init__.py:1150
+msgid "Josephson constant"
+msgstr "ثابت جوزيفسون"
+
+#: units/__init__.py:1154
+msgid "Joule"
+msgstr "جول"
+
+#: units/__init__.py:1158
+msgid "jute"
+msgstr "الجوت"
+
+#: units/__init__.py:1162
+msgid "katal"
+msgstr "كاتال"
+
+#: units/__init__.py:1166
+msgid "kelvin"
+msgstr "كلفن"
+
+#: units/__init__.py:1170
+msgid "kilometer per hour"
+msgstr "كيلومتر في الساعة"
+
+#: units/__init__.py:1174
+msgid "kilometer per second"
+msgstr "كيلومتر في الثانية"
+
+#: units/__init__.py:1178
+msgid "kip"
+msgstr "كيب"
+
+#: units/__init__.py:1182
+msgid "kip per square inch"
+msgstr "كيب لكل بوصة مربعة"
+
+#: units/__init__.py:1186
+msgid "knot"
+msgstr "عقدة"
+
+#: units/__init__.py:1190
+msgid "lambda"
+msgstr "لامدا"
+
+#: units/__init__.py:1194
+msgid "lambert"
+msgstr "لامبرت"
+
+#: units/__init__.py:1198
+msgid "langley"
+msgstr "لانجلي"
+
+#: units/__init__.py:1202
+msgid "lattice constant"
+msgstr "ثابت شعرية"
+
+#: units/__init__.py:1206
+msgid "league"
+msgstr "الدوري"
+
+#: units/__init__.py:1210
+msgid "leap year"
+msgstr "سنة كبيسة"
+
+#: units/__init__.py:1211 units/__init__.py:1910 units/__init__.py:1911
+msgid "year"
+msgstr "عام"
+
+#: units/__init__.py:1214
+msgid "light year"
+msgstr "سنة ضوئية"
+
+#: units/__init__.py:1215
+msgid "ly"
+msgstr "لاي"
+
+#: units/__init__.py:1218
+msgid "link"
+msgstr "حلقة الوصل"
+
+#: units/__init__.py:1219
+msgid "li"
+msgstr "لي"
+
+#: units/__init__.py:1222
+msgid "liter"
+msgstr "لتر"
+
+#: units/__init__.py:1223
+msgid "L"
+msgstr "إل"
+
+#: units/__init__.py:1226
+msgid "log 10"
+msgstr "سجل 10"
+
+#: units/__init__.py:1227
+msgid "ln10"
+msgstr "ln10"
+
+#: units/__init__.py:1230
+msgid "long hundredweight"
+msgstr "مائة وزن طويل"
+
+#: units/__init__.py:1238
+msgid "lumen"
+msgstr "لومن"
+
+#: units/__init__.py:1242
+msgid "lux"
+msgstr "لوكس"
+
+#: units/__init__.py:1246
+msgid "magnetic flux quantum"
+msgstr "كمية التدفق المغناطيسي"
+
+#: units/__init__.py:1250
+msgid "maxwell"
+msgstr "ماكسويل"
+
+#: units/__init__.py:1254
+msgid "mean international ampere"
+msgstr "يعني الأمبير الدولي"
+
+#: units/__init__.py:1258
+msgid "mean international Ohm"
+msgstr "يعني أوم الدولية"
+
+#: units/__init__.py:1262
+msgid "mean international Volt"
+msgstr "يعني فولت الدولية"
+
+#: units/__init__.py:1266
+msgid "density of mercury"
+msgstr "كثافة الزئبق"
+
+#: units/__init__.py:1270
+msgid "density of mercury 60F"
+msgstr "كثافة الزئبق 60F"
+
+#: units/__init__.py:1274
+msgid "meter"
+msgstr "متر"
+
+#: units/__init__.py:1278
+msgid "metric horsepower"
+msgstr "متري حصانا"
+
+#: units/__init__.py:1282
+msgid "metric ton"
+msgstr "طن متري"
+
+#: units/__init__.py:1286
+msgid "micron"
+msgstr "ميكرون"
+
+#: units/__init__.py:1290
+msgid "mil"
+msgstr "ميل"
+
+#: units/__init__.py:1294
+msgid "mile"
+msgstr "ميل"
+
+#: units/__init__.py:1298
+msgid "mile per hour"
+msgstr "ميل في الساعة"
+
+#: units/__init__.py:1302 units/__init__.py:1303
+msgid "millenium"
+msgstr "الألفية"
+
+#: units/__init__.py:1306
+msgid "milliarcsecond"
+msgstr "ميلي ثانية"
+
+#: units/__init__.py:1310
+msgid "Hg millimeter"
+msgstr "مليمتر زئبق"
+
+#: units/__init__.py:1314
+msgid "minim"
+msgstr "أدنى"
+
+#: units/__init__.py:1318
+msgid "minute"
+msgstr "دقيقة"
+
+#: units/__init__.py:1322
+msgid "molar"
+msgstr "الضرس"
+
+#: units/__init__.py:1326
+msgid "molar gas constant"
+msgstr "ثابت الغاز المولي"
+
+#: units/__init__.py:1330
+msgid "mole"
+msgstr "خلد"
+
+#: units/__init__.py:1334
+msgid "month"
+msgstr "شهر"
+
+#: units/__init__.py:1338
+msgid "nautical mile"
+msgstr "ميل بحري"
+
+#: units/__init__.py:1339
+msgid "nm"
+msgstr "نانومتر"
+
+#: units/__init__.py:1342
+msgid "neper"
+msgstr "نيبر"
+
+#: units/__init__.py:1343
+msgid "Np"
+msgstr "Np"
+
+#: units/__init__.py:1346
+msgid "neutron mass"
+msgstr "كتلة النيوترون"
+
+#: units/__init__.py:1350
+msgid "newton"
+msgstr "نيوتن"
+
+#: units/__init__.py:1354
+msgid "newtonian constant of gravitation"
+msgstr "ثابت نيوتن في الجاذبية"
+
+#: units/__init__.py:1358
+msgid "nit"
+msgstr "أحمق"
+
+#: units/__init__.py:1362
+msgid "nuclear magneton"
+msgstr "مغناطيسي نووي"
+
+#: units/__init__.py:1366
+msgid "number english"
+msgstr "عدد الانجليزية"
+
+#: units/__init__.py:1370
+msgid "number meter"
+msgstr "متر عدد"
+
+#: units/__init__.py:1374
+msgid "oersted"
+msgstr "أيرستد"
+
+#: units/__init__.py:1378
+msgid "ohm"
+msgstr "أوم"
+
+#: units/__init__.py:1382
+msgid "oil barrel"
+msgstr "برميل زيت"
+
+#: units/__init__.py:1386
+msgid "ounce"
+msgstr "أوقية"
+
+#: units/__init__.py:1390
+msgid "parsec"
+msgstr "فرسخ"
+
+#: units/__init__.py:1394
+msgid "particle"
+msgstr "الجسيم"
+
+#: units/__init__.py:1398
+msgid "pascal"
+msgstr "باسكال"
+
+#: units/__init__.py:1402
+msgid "peak sun hour"
+msgstr "ساعة ذروة الشمس"
+
+#: units/__init__.py:1406
+msgid "peck"
+msgstr "بيك"
+
+#: units/__init__.py:1410
+msgid "pennyweight"
+msgstr "بنس"
+
+#: units/__init__.py:1418
+msgid "pica"
+msgstr "بيكا"
+
+#: units/__init__.py:1422
+msgid "pint"
+msgstr "نصف لتر"
+
+#: units/__init__.py:1426
+msgid "pixel"
+msgstr "بكسل"
+
+#: units/__init__.py:1430
+msgid "pixel per centimeter"
+msgstr "بكسل لكل سنتيمتر"
+
+#: units/__init__.py:1434
+msgid "pixel per inch"
+msgstr "بكسل لكل بوصة"
+
+#: units/__init__.py:1438
+msgid "Planck constant"
+msgstr "ثابت بلانك"
+
+#: units/__init__.py:1442 units/__init__.py:1446
+msgid "Planck current"
+msgstr "تيار بلانك"
+
+#: units/__init__.py:1443
+msgid "qP"
+msgstr "qP"
+
+#: units/__init__.py:1447
+msgid "lP"
+msgstr "ليرة لبنانية"
+
+#: units/__init__.py:1450
+msgid "Planck mass"
+msgstr "كتلة بلانك"
+
+#: units/__init__.py:1451
+msgid "mP"
+msgstr "النائب"
+
+#: units/__init__.py:1454
+msgid "Planck temperature"
+msgstr "درجة حرارة بلانك"
+
+#: units/__init__.py:1455
+msgid "TP"
+msgstr "TP"
+
+#: units/__init__.py:1458
+msgid "Planck time"
+msgstr "وقت بلانك"
+
+#: units/__init__.py:1459
+msgid "tP"
+msgstr "tP"
+
+#: units/__init__.py:1462
+msgid "point"
+msgstr "نقطة"
+
+#: units/__init__.py:1466
+msgid "poise"
+msgstr "اتزان"
+
+#: units/__init__.py:1470
+msgid "pound"
+msgstr "جنيه"
+
+#: units/__init__.py:1474
+msgid "pound force per square inch"
+msgstr "قوة الجنيه لكل بوصة مربعة"
+
+#: units/__init__.py:1478
+msgid "poundal"
+msgstr "باوندال"
+
+#: units/__init__.py:1482
+msgid "proton mass"
+msgstr "كتلة البروتون"
+
+#: units/__init__.py:1486
+msgid "quadrillion Btu"
+msgstr "كوادريليون وحدة حرارية بريطانية"
+
+#: units/__init__.py:1490
+msgid "quart"
+msgstr "ربع"
+
+#: units/__init__.py:1494
+msgid "quarter"
+msgstr "ربع"
+
+#: units/__init__.py:1498
+msgid "radian"
+msgstr "راديان"
+
+#: units/__init__.py:1502
+msgid "rads"
+msgstr "راد"
+
+#: units/__init__.py:1506
+msgid "reciprocal centimeter"
+msgstr "سنتيمتر متبادل"
+
+#: units/__init__.py:1510
+msgid "refrigeration ton"
+msgstr "طن التبريد"
+
+#: units/__init__.py:1514
+msgid "roentgen equivalent man"
+msgstr "رونتجن ما يعادل الرجل"
+
+#: units/__init__.py:1518
+msgid "revolutions per minute"
+msgstr "ثورة كل دقيقة"
+
+#: units/__init__.py:1519
+msgid "rpm"
+msgstr "دورة في الدقيقة"
+
+#: units/__init__.py:1522
+msgid "revolutions per second"
+msgstr "عدد الثورات في الثانية"
+
+#: units/__init__.py:1523
+msgid "rps"
+msgstr "ربس"
+
+#: units/__init__.py:1526 units/__init__.py:1527
+msgid "reyn"
+msgstr "رين"
+
+#: units/__init__.py:1530
+msgid "reciprocal poise"
+msgstr "اتزان متبادل"
+
+#: units/__init__.py:1534
+msgid "rod"
+msgstr "قضيب"
+
+#: units/__init__.py:1538
+msgid "roentgen"
+msgstr "رونتجن"
+
+#: units/__init__.py:1542
+msgid "rutherford"
+msgstr "رذرفورد"
+
+#: units/__init__.py:1546
+msgid "rydberg"
+msgstr "ريدبيرج"
+
+#: units/__init__.py:1550
+msgid "rydberg constant"
+msgstr "ثابت ريدبيرج"
+
+#: units/__init__.py:1554
+msgid "scaled point"
+msgstr "نقطة تحجيم"
+
+#: units/__init__.py:1558
+msgid "scruple"
+msgstr "التورع"
+
+#: units/__init__.py:1562
+msgid "second"
+msgstr "ثانيا"
+
+#: units/__init__.py:1566
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "millisecond"
+msgstr "ميلي ثانية"
+
+#: units/__init__.py:1570
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "microsecond"
+msgstr "ميلي ثانية"
+
+#: units/__init__.py:1574
+msgid "second radiation constant"
+msgstr "ثابت الإشعاع الثاني"
+
+#: units/__init__.py:1578
+msgid "shake"
+msgstr "هزة"
+
+#: units/__init__.py:1582
+msgid "shot"
+msgstr "اطلاق النار"
+
+#: units/__init__.py:1586
+msgid "sidereal day"
+msgstr "يوم فلكي"
+
+#: units/__init__.py:1587
+msgctxt "unit"
+msgid "sidereal day"
+msgstr "يوم فلكي"
+
+#: units/__init__.py:1590
+msgid "sidereal month"
+msgstr "شهر فلكي"
+
+#: units/__init__.py:1591
+msgctxt "unit"
+msgid "sidereal month"
+msgstr "شهر فلكي"
+
+#: units/__init__.py:1594
+msgid "sidereal year"
+msgstr "سنة فلكية"
+
+#: units/__init__.py:1595
+msgctxt "unit"
+msgid "sidereal year"
+msgstr "سنة فلكية"
+
+#: units/__init__.py:1598
+msgid "siemens"
+msgstr "سيمنز"
+
+#: units/__init__.py:1602
+msgid "sievert"
+msgstr "سيفرت"
+
+#: units/__init__.py:1606
+msgid "slinch"
+msgstr "سلينش"
+
+#: units/__init__.py:1610
+msgid "slug"
+msgstr "سبيكة"
+
+#: units/__init__.py:1614
+msgid "speed of light"
+msgstr "سرعة الضوء"
+
+#: units/__init__.py:1618
+msgid "square degree"
+msgstr "درجة مربعة"
+
+#: units/__init__.py:1622
+msgid "square foot"
+msgstr "قدم مربع"
+
+#: units/__init__.py:1626
+msgid "square inch"
+msgstr "بوصة مربعة"
+
+#: units/__init__.py:1630
+msgid "square league"
+msgstr "الدوري المربع"
+
+#: units/__init__.py:1634
+msgid "square mile"
+msgstr "ميل مربع"
+
+#: units/__init__.py:1638
+msgid "square rod"
+msgstr "قضيب مربع"
+
+#: units/__init__.py:1642
+msgid "square survey mile"
+msgstr "مساحة ميل مربع"
+
+#: units/__init__.py:1646
+msgid "square yard"
+msgstr "فناء مربع"
+
+#: units/__init__.py:1650
+msgid "standard atmosphere"
+msgstr "جو قياسي"
+
+#: units/__init__.py:1654
+msgid "standard gravity"
+msgstr "الجاذبية القياسية"
+
+#: units/__init__.py:1658
+msgid "standard liter per minute"
+msgstr "لتر قياسي في الدقيقة"
+
+#: units/__init__.py:1694
+msgid "Stefan-Boltzmann constant"
+msgstr "ثابت ستيفان بولتزمان"
+
+#: units/__init__.py:1698
+msgid "steradian"
+msgstr "ستيراديان"
+
+#: units/__init__.py:1702
+msgid "stere"
+msgstr "الستير متر مكعب"
+
+#: units/__init__.py:1706
+msgid "stilb"
+msgstr "ستيلب"
+
+#: units/__init__.py:1710
+msgid "stokes"
+msgstr "ستوكس"
+
+#: units/__init__.py:1714
+msgid "stone"
+msgstr "حصاة"
+
+#: units/__init__.py:1718
+msgid "survey foot"
+msgstr "قدم المسح"
+
+#: units/__init__.py:1722
+msgid "survey mile"
+msgstr "ميل المسح"
+
+#: units/__init__.py:1730 units/__init__.py:1731
+msgid "synodic month"
+msgstr "الشهر المجمعي"
+
+#: units/__init__.py:1734 units/__init__.py:1735
+msgid "tablespoon"
+msgstr "ملعقة طعام"
+
+#: units/__init__.py:1742 units/__init__.py:1743
+msgid "teaspoon"
+msgstr "ملعقة صغيرة"
+
+#: units/__init__.py:1746
+msgid "technical atmosphere"
+msgstr "الجو الفني"
+
+#: units/__init__.py:1774
+msgid "therm"
+msgstr "الحرارة"
+
+#: units/__init__.py:1778
+msgid "thermochemical Btu"
+msgstr "الحرارية الكيميائية وحدة حرارية بريطانية"
+
+#: units/__init__.py:1782
+msgid "Thomson cross section"
+msgstr "مقطع طومسون"
+
+#: units/__init__.py:1790
+msgid "ton"
+msgstr "طن"
+
+#: units/__init__.py:1794
+msgid "ton of TNT"
+msgstr "طن من مادة تي إن تي"
+
+#: units/__init__.py:1798
+msgid "ton of oil equivalent"
+msgstr "طن من مكافئ النفط"
+
+#: units/__init__.py:1799
+msgid "toe"
+msgstr "إصبع قدم"
+
+#: units/__init__.py:1806 units/__init__.py:1807
+msgid "tropical month"
+msgstr "شهر استوائي"
+
+#: units/__init__.py:1810 units/__init__.py:1811
+msgid "tropical year"
+msgstr "السنة الاستوائية"
+
+#: units/__init__.py:1814 units/__init__.py:1815
+msgid "troy ounce"
+msgstr "أونصة"
+
+#: units/__init__.py:1818 units/__init__.py:1819
+msgid "troy pound"
+msgstr "تروي جنيه"
+
+#: units/__init__.py:1822 units/__init__.py:1823
+msgid "turn"
+msgstr "منعطف أو دور"
+
+#: units/__init__.py:1826 units/__init__.py:1827
+msgid "unified atomic mass unit"
+msgstr "وحدة الكتلة الذرية الموحدة"
+
+#: units/__init__.py:1830
+msgid "unit pole"
+msgstr "عمود الوحدة"
+
+#: units/__init__.py:1834
+msgid "vacuum permeability"
+msgstr "نفاذية الفراغ"
+
+#: units/__init__.py:1838
+msgid "vacuum permittivity"
+msgstr "سماحية الفراغ"
+
+#: units/__init__.py:1850
+msgid "Von Klitzing constant"
+msgstr "ثابت فون كليتزينج"
+
+#: units/__init__.py:1854
+msgid "Water volumic mass"
+msgstr "الكتلة المائية الحجمية"
+
+#: units/__init__.py:1858
+msgid "Water volumic mass at 39F"
+msgstr "كتلة حجم الماء عند 39F"
+
+#: units/__init__.py:1862
+msgid "Water volumic mass at 60F"
+msgstr "الكتلة الحجمية المائية عند 60 درجة فهرنهايت"
+
+#: units/__init__.py:1882
+msgid "wien frequency displacement law constant"
+msgstr "ثابت قانون الإزاحة التردد"
+
+#: units/__init__.py:1886
+msgid "wien u"
+msgstr "وين ش"
+
+#: units/__init__.py:1890
+msgid "wien displacement law constant"
+msgstr "ثابت قانون الإزاحة"
+
+#: units/__init__.py:1894
+msgid "wien x"
+msgstr "wien x"
+
+#: units/__init__.py:1898
+msgid "Cu X-ray wavelength"
+msgstr "الطول الموجي للأشعة السينية للنحاس"
+
+#: units/__init__.py:1902
+msgid "Mo X-ray wavelength"
+msgstr "الطول الموجي للأشعة السينية مو"
+
+#: units/__init__.py:1906
+msgid "yard"
+msgstr "حديقة منزل"
+
+#: units/__init__.py:1914
+msgid "zeta"
+msgstr "زيتا"
+
+#: units/__init__.py:1918
+msgid "decibelmilliwatt"
+msgstr "ديسيبلميليوات"
+
+#: units/__init__.py:1922
+msgid "decibelmicrowatt"
+msgstr "ديسيبل ميكرووات"
+
+#: units/__init__.py:1926
+msgid "Euler‘s number"
+msgstr "رقم أويلر"
+
+#: units/__init__.py:1930
+msgid "octave"
+msgstr "اوكتاف"
+
+#: units/__init__.py:1934
+msgid "sound pressure level"
+msgstr "مستوى ضغط الصوت"
+
+#: units/__init__.py:1954
+#, fuzzy
+#| msgid "millenium"
+msgid "milligram"
+msgstr "الألفية"
+
+#: units/__init__.py:1958
+#, fuzzy
+#| msgid "kilogram-force"
+msgid "kilogram"
+msgstr "كيلوغرام قوة"
+
+#: units/__init__.py:1962
+#, fuzzy
+#| msgid "meter"
+msgid "kilometer"
+msgstr "متر"
+
+#: units/__init__.py:1966
+#, fuzzy
+#| msgid "centimeter Hg"
+msgid "centimeter"
+msgstr "سنتيمتر زئبق"
+
+#: units/__init__.py:1970
+#, fuzzy
+#| msgid "Hg millimeter"
+msgid "millimeter"
+msgstr "مليمتر زئبق"
+
+#: units/__init__.py:1974
+#, fuzzy
+#| msgid "meter per second"
+msgid "centimeter per second"
+msgstr "متر في الثانية"
+
+#: units/models.py:684
+msgid "Incompatible units"
+msgstr "الوحدات غير المتوافقة"
+
+#: units/models.py:705
+msgid "Undefined unit in the registry"
+msgstr "وحدة غير محددة في التسجيل"
+
+#~ msgid "square centimeter"
+#~ msgstr "سنتيمتر مربع"
+
+#~ msgid "square millimeter"
+#~ msgstr "ملليمتر مربع"
+
+#~ msgid "surface"
+#~ msgstr "سطح - المظهر الخارجي"
+
+#~ msgid "speed"
+#~ msgstr "سرعة"
+
+#~ msgid "meter per gram"
+#~ msgstr "متر لكل جرام"
+
+#~ msgid "absorption"
+#~ msgstr "استيعاب"
+
+#~ msgid "electromagnetic inductance"
+#~ msgstr "الحث الكهرومغناطيسي"
+
+#~ msgid "electromagnetic resistance"
+#~ msgstr "المقاومة الكهرومغناطيسية"
+
+#~ msgid "linear mass density"
+#~ msgstr "كثافة الكتلة الخطية"
+
+#~ msgid "density of particle"
+#~ msgstr "كثافة الجسيمات"
+
+#~ msgid "catalytic activity"
+#~ msgstr "النشاط التحفيزي"
+
+#~ msgid "quantity of information"
+#~ msgstr "كمية المعلومات"
+
+#~ msgid "density of information"
+#~ msgstr "كثافة المعلومات"
+
+#~ msgid "magnetic moment"
+#~ msgstr "لحظة جاذبة"
+
+#~ msgid "electrical capacitance"
+#~ msgstr "السعة الكهربائية"
+
+#~ msgid "electric force"
+#~ msgstr "قوة كهربائية"
+
+#~ msgid "electromagnetic action"
+#~ msgstr "العمل الكهرومغناطيسي"
+
+#~ msgid "power per unit per wavelength interval"
+#~ msgstr "القدرة لكل وحدة في فاصل الطول الموجي"
+
+#~ msgid "electrostatic unit of charge"
+#~ msgstr "وحدة الشحن الكهروستاتيكية"
+
+#~ msgid "magnetic induction"
+#~ msgstr "الحث المغناطيسي"
+
+#~ msgid "angle"
+#~ msgstr "زاوية"
+
+#~ msgid "radiation"
+#~ msgstr "إشعاع"
+
+#~ msgid "energy per temperature increment per mole"
+#~ msgstr "الطاقة لكل زيادة درجة الحرارة لكل مول"
+
+#~ msgid "reciprocal length"
+#~ msgstr "طول متبادل"
+
+#~ msgid "angular speed"
+#~ msgstr "سرعة الزاوي"
+
+#~ msgid "radiation exposure"
+#~ msgstr "التعرض للإشعاع"
+
+#~ msgid "solid degree"
+#~ msgstr "درجة صلبة"
+
+#~ msgid "volumetric flow rate"
+#~ msgstr "معدل التدفق الحجمي"
+
+#~ msgid "mass density"
+#~ msgstr "كثافة الكتلة"
+
+#~ msgid "heat energy"
+#~ msgstr "طاقة حرارية"
+
+#~ msgid "quantity"
+#~ msgstr "كمية"
+
+#~ msgid "field quantity"
+#~ msgstr "كمية الحقل"
+
+#~ msgid "permeability"
+#~ msgstr "نفاذية"
+
+#~ msgid "energy by temperature"
+#~ msgstr "الطاقة حسب درجة الحرارة"
+
+#~ msgid "dimesionless"
+#~ msgstr "عديم الرائحة"
+
+#~ msgid "H-field"
+#~ msgstr "H- المجال"
+
+#~ msgid "unit"
+#~ msgstr "وحدة"
+
+#~ msgid "solid angle"
+#~ msgstr "زاوية صلبة"
+
+#~ msgid "flux density"
+#~ msgstr "كثافة التدفق"

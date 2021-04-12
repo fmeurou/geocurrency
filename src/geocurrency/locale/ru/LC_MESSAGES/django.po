@@ -1,0 +1,2417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 12:18+0200\n"
+"PO-Revision-Date: 2020-10-08 19:42+0000\n"
+"Last-Translator: Weblate Admin <fm@peabytes.me>\n"
+"Language-Team: Russian <http://translation.peabytes.me/projects/geocurrency/"
+"api/ru/>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Weblate 4.2.2\n"
+
+#: countries/viewsets.py:97
+msgid "Unknown country or no info for this country"
+msgstr "Неизвестная страна или информация об этой стране отсутствует"
+
+#: rates/models.py:472
+msgid "Rate could not be found"
+msgstr "Оценить не удалось"
+
+#: settings.example.py:162
+msgid "Afrikaans"
+msgstr "африкаанс"
+
+#: settings.example.py:163
+msgid "Arabic"
+msgstr "арабский"
+
+#: settings.example.py:164
+msgid "Algerian Arabic"
+msgstr "Алжирский арабский"
+
+#: settings.example.py:165
+msgid "Asturian"
+msgstr "Астурийский"
+
+#: settings.example.py:166
+msgid "Azerbaijani"
+msgstr "Азербайджанский"
+
+#: settings.example.py:167
+msgid "Bulgarian"
+msgstr "болгарский"
+
+#: settings.example.py:168
+msgid "Belarusian"
+msgstr "Белорусский"
+
+#: settings.example.py:169
+msgid "Bengali"
+msgstr "Бенгальский"
+
+#: settings.example.py:170
+msgid "Breton"
+msgstr "Бретонский"
+
+#: settings.example.py:171
+msgid "Bosnian"
+msgstr "Боснийский"
+
+#: settings.example.py:172
+msgid "Catalan"
+msgstr "Каталонский"
+
+#: settings.example.py:173
+msgid "Czech"
+msgstr "Чешский"
+
+#: settings.example.py:174
+msgid "Welsh"
+msgstr "валлийский"
+
+#: settings.example.py:175
+msgid "Danish"
+msgstr "Датский"
+
+#: settings.example.py:176
+msgid "German"
+msgstr "Немецкий"
+
+#: settings.example.py:177
+msgid "Lower Sorbian"
+msgstr "Нижнесорбский"
+
+#: settings.example.py:178
+msgid "Greek"
+msgstr "Греческий"
+
+#: settings.example.py:179
+msgid "English"
+msgstr "английский"
+
+#: settings.example.py:180
+msgid "Australian English"
+msgstr "Австралийский английский"
+
+#: settings.example.py:181
+msgid "British English"
+msgstr "Британский английский"
+
+#: settings.example.py:182
+msgid "Esperanto"
+msgstr "эсперанто"
+
+#: settings.example.py:183
+msgid "Spanish"
+msgstr "испанский"
+
+#: settings.example.py:184
+msgid "Argentinian Spanish"
+msgstr "Аргентинский испанский"
+
+#: settings.example.py:185
+msgid "Colombian Spanish"
+msgstr "Колумбийский испанский"
+
+#: settings.example.py:186
+msgid "Mexican Spanish"
+msgstr "Мексиканский испанский"
+
+#: settings.example.py:187
+msgid "Nicaraguan Spanish"
+msgstr "Никарагуанский испанский"
+
+#: settings.example.py:188
+msgid "Venezuelan Spanish"
+msgstr "Венесуэльский испанский"
+
+#: settings.example.py:189
+msgid "Estonian"
+msgstr "эстонский"
+
+#: settings.example.py:190
+msgid "Basque"
+msgstr "Баскский"
+
+#: settings.example.py:191
+msgid "Persian"
+msgstr "Персидский"
+
+#: settings.example.py:192
+msgid "Finnish"
+msgstr "Финский"
+
+#: settings.example.py:193
+msgid "French"
+msgstr "французский язык"
+
+#: settings.example.py:194
+msgid "Frisian"
+msgstr "фризский"
+
+#: settings.example.py:195
+msgid "Irish"
+msgstr "Ирландский"
+
+#: settings.example.py:196
+msgid "Scottish Gaelic"
+msgstr "Шотландский гэльский"
+
+#: settings.example.py:197
+msgid "Galician"
+msgstr "Галицкий"
+
+#: settings.example.py:198
+msgid "Hebrew"
+msgstr "иврит"
+
+#: settings.example.py:199
+msgid "Hindi"
+msgstr "хинди"
+
+#: settings.example.py:200
+msgid "Croatian"
+msgstr "хорватский"
+
+#: settings.example.py:201
+msgid "Upper Sorbian"
+msgstr "Верхнесорбский"
+
+#: settings.example.py:202
+msgid "Hungarian"
+msgstr "венгерский язык"
+
+#: settings.example.py:203
+msgid "Armenian"
+msgstr "Армянский"
+
+#: settings.example.py:204
+msgid "Interlingua"
+msgstr "Интерлингва"
+
+#: settings.example.py:205
+msgid "Indonesian"
+msgstr "индонезийский"
+
+#: settings.example.py:206
+msgid "Igbo"
+msgstr "Игбо"
+
+#: settings.example.py:207
+msgid "Ido"
+msgstr "Я делаю"
+
+#: settings.example.py:208
+msgid "Icelandic"
+msgstr "исландский"
+
+#: settings.example.py:209
+msgid "Italian"
+msgstr "Итальянский"
+
+#: settings.example.py:210
+msgid "Japanese"
+msgstr "японский язык"
+
+#: settings.example.py:211
+msgid "Georgian"
+msgstr "Грузинский"
+
+#: settings.example.py:212
+msgid "Kabyle"
+msgstr "Kabyle"
+
+#: settings.example.py:213
+msgid "Kazakh"
+msgstr "Казахский"
+
+#: settings.example.py:214
+msgid "Khmer"
+msgstr "Кхмерский"
+
+#: settings.example.py:215
+msgid "Kannada"
+msgstr "Каннада"
+
+#: settings.example.py:216
+msgid "Korean"
+msgstr "корейский язык"
+
+#: settings.example.py:217
+msgid "Kyrgyz"
+msgstr "Кыргызский"
+
+#: settings.example.py:218
+msgid "Luxembourgish"
+msgstr "Люксембургский"
+
+#: settings.example.py:219
+msgid "Lithuanian"
+msgstr "Литовский"
+
+#: settings.example.py:220
+msgid "Latvian"
+msgstr "Латышский"
+
+#: settings.example.py:221
+msgid "Macedonian"
+msgstr "македонский"
+
+#: settings.example.py:222
+msgid "Malayalam"
+msgstr "Малаялам"
+
+#: settings.example.py:223
+msgid "Mongolian"
+msgstr "Монгольский"
+
+#: settings.example.py:224
+msgid "Marathi"
+msgstr "Маратхи"
+
+#: settings.example.py:225
+msgid "Burmese"
+msgstr "Бирманский"
+
+#: settings.example.py:226
+msgid "Norwegian Bokmål"
+msgstr "Норвежский букмол"
+
+#: settings.example.py:227
+msgid "Nepali"
+msgstr "Непальский"
+
+#: settings.example.py:228
+msgid "Dutch"
+msgstr "нидерландский язык"
+
+#: settings.example.py:229
+msgid "Norwegian Nynorsk"
+msgstr "Норвежский нюнорск"
+
+#: settings.example.py:230
+msgid "Ossetic"
+msgstr "Осетинский"
+
+#: settings.example.py:231
+msgid "Punjabi"
+msgstr "Пенджаби"
+
+#: settings.example.py:232
+msgid "Polish"
+msgstr "Польский"
+
+#: settings.example.py:233
+msgid "Portuguese"
+msgstr "португальский"
+
+#: settings.example.py:234
+msgid "Brazilian Portuguese"
+msgstr "бразильский португальский"
+
+#: settings.example.py:235
+msgid "Romanian"
+msgstr "румынский"
+
+#: settings.example.py:236
+msgid "Russian"
+msgstr "русский"
+
+#: settings.example.py:237
+msgid "Slovak"
+msgstr "словацкий"
+
+#: settings.example.py:238
+msgid "Slovenian"
+msgstr "словенский"
+
+#: settings.example.py:239
+msgid "Albanian"
+msgstr "албанский"
+
+#: settings.example.py:240
+msgid "Serbian"
+msgstr "сербский"
+
+#: settings.example.py:241
+msgid "Serbian Latin"
+msgstr "Сербский латынь"
+
+#: settings.example.py:242
+msgid "Swedish"
+msgstr "Шведский"
+
+#: settings.example.py:243
+msgid "Swahili"
+msgstr "суахили"
+
+#: settings.example.py:244
+msgid "Tamil"
+msgstr "Тамильский"
+
+#: settings.example.py:245
+msgid "Telugu"
+msgstr "телугу"
+
+#: settings.example.py:246
+msgid "Tajik"
+msgstr "Таджикский"
+
+#: settings.example.py:247
+msgid "Thai"
+msgstr "Тайский"
+
+#: settings.example.py:248
+msgid "Turkmen"
+msgstr "туркменский"
+
+#: settings.example.py:249
+msgid "Turkish"
+msgstr "турецкий"
+
+#: settings.example.py:250
+msgid "Tatar"
+msgstr "Татарский"
+
+#: settings.example.py:251
+msgid "Udmurt"
+msgstr "Удмуртский"
+
+#: settings.example.py:252
+msgid "Ukrainian"
+msgstr "украинец"
+
+#: settings.example.py:253
+msgid "Urdu"
+msgstr "Урду"
+
+#: settings.example.py:254
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: settings.example.py:255
+msgid "Vietnamese"
+msgstr "вьетнамский"
+
+#: settings.example.py:256
+msgid "Simplified Chinese"
+msgstr "Упрощенный китайский"
+
+#: settings.example.py:257
+msgid "Traditional Chinese"
+msgstr "Традиционный китайский"
+
+#: units/__init__.py:8 units/tests.py:165 units/tests.py:437 units/tests.py:445
+msgid "length"
+msgstr "длина"
+
+#: units/__init__.py:9
+msgid "time"
+msgstr "время"
+
+#: units/__init__.py:10
+msgid "current"
+msgstr "текущий"
+
+#: units/__init__.py:11
+msgid "luminosity"
+msgstr "яркость"
+
+#: units/__init__.py:13
+msgid "mass"
+msgstr "масса"
+
+#: units/__init__.py:14
+msgid "substance"
+msgstr "вещество"
+
+#: units/__init__.py:15
+msgid "temperature"
+msgstr "температура"
+
+#: units/__init__.py:16
+msgid "constant"
+msgstr "постоянный"
+
+#: units/__init__.py:17
+msgid "area"
+msgstr "площадь"
+
+#: units/__init__.py:18
+msgid "volume"
+msgstr "объем"
+
+#: units/__init__.py:19
+msgid "frequency"
+msgstr "частота"
+
+#: units/__init__.py:21
+msgid "wavenumber"
+msgstr "волновое число"
+
+#: units/__init__.py:22
+msgid "velocity"
+msgstr "скорость"
+
+#: units/__init__.py:24
+msgid "acceleration"
+msgstr "ускорение"
+
+#: units/__init__.py:26
+msgid "force"
+msgstr "сила"
+
+#: units/__init__.py:28
+msgid "energy"
+msgstr "энергия"
+
+#: units/__init__.py:30
+msgid "power"
+msgstr "мощность"
+
+#: units/__init__.py:32
+msgid "density"
+msgstr "плотность"
+
+#: units/__init__.py:34
+msgid "pressure"
+msgstr "давление"
+
+#: units/__init__.py:36
+msgid "torque"
+msgstr "крутящий момент"
+
+#: units/__init__.py:38
+msgid "viscosity"
+msgstr "вязкость"
+
+#: units/__init__.py:40
+msgid "kinematic viscosity"
+msgstr "кинематическая вязкость"
+
+#: units/__init__.py:43
+msgid "fluidity"
+msgstr "текучесть"
+
+#: units/__init__.py:45
+msgid "concentration"
+msgstr "концентрация"
+
+#: units/__init__.py:47
+msgid "activity"
+msgstr "деятельность"
+
+#: units/__init__.py:49
+msgid "entropy"
+msgstr "энтропия"
+
+#: units/__init__.py:52
+msgid "molar entropy"
+msgstr "молярная энтропия"
+
+#: units/__init__.py:56
+msgid "heat transmission"
+msgstr "передача тепла"
+
+#: units/__init__.py:60
+msgid "luminance"
+msgstr "яркость"
+
+#: units/__init__.py:64
+msgid "luminous flux"
+msgstr "световой поток"
+
+#: units/__init__.py:67
+msgid "illuminance"
+msgstr "освещенность"
+
+#: units/__init__.py:71
+msgid "intensity"
+msgstr "интенсивность"
+
+#: units/__init__.py:73
+msgid "charge"
+msgstr "обвинять"
+
+#: units/__init__.py:74
+msgid "electric potential"
+msgstr "электрический потенциал"
+
+#: units/__init__.py:78
+msgid "electric field"
+msgstr "электрическое поле"
+
+#: units/__init__.py:82
+msgid "resistance"
+msgstr "сопротивление"
+
+#: units/__init__.py:86
+msgid "conductance"
+msgstr "проводимость"
+
+#: units/__init__.py:90
+msgid "capacitance"
+msgstr "емкость"
+
+#: units/__init__.py:94
+msgid "inductance"
+msgstr "индуктивность"
+
+#: units/__init__.py:98
+msgid "magnetic flux"
+msgstr "магнитный поток"
+
+#: units/__init__.py:102
+msgid "magnetic field"
+msgstr "магнитное поле"
+
+#: units/__init__.py:106
+msgid "magnetomotive force"
+msgstr "магнитодвижущая сила"
+
+#: units/__init__.py:109
+msgid "electric dipole"
+msgstr "электрический диполь"
+
+#: units/__init__.py:113
+msgid "electric quadrupole"
+msgstr "электрический квадруполь"
+
+#: units/__init__.py:117
+msgid "magnetic dipole"
+msgstr "магнитный диполь"
+
+#: units/__init__.py:120
+msgid "printing unit"
+msgstr "типография"
+
+#: units/__init__.py:123
+msgid "gaussian charge"
+msgstr "гауссовский заряд"
+
+#: units/__init__.py:127
+msgid "gaussian current"
+msgstr "гауссовское течение"
+
+#: units/__init__.py:131
+msgid "gaussian electric potential"
+msgstr "гауссов электрический потенциал"
+
+#: units/__init__.py:135
+msgid "gaussian electric field"
+msgstr "гауссово электрическое поле"
+
+#: units/__init__.py:140
+msgid "gaussian electric displacement field"
+msgstr "гауссово электрическое поле смещения"
+
+#: units/__init__.py:144
+msgid "gaussian electric flux"
+msgstr "гауссов электрический поток"
+
+#: units/__init__.py:148
+msgid "gaussian magnetic field"
+msgstr "гауссово магнитное поле"
+
+#: units/__init__.py:152
+msgid "gaussian magnetic field strength"
+msgstr "напряженность гауссова магнитного поля"
+
+#: units/__init__.py:156
+msgid "gaussian magnetic flux"
+msgstr "гауссов магнитный поток"
+
+#: units/__init__.py:160
+msgid "gaussian resistance"
+msgstr "гауссовское сопротивление"
+
+#: units/__init__.py:164
+msgid "gaussian resistivity"
+msgstr "гауссово удельное сопротивление"
+
+#: units/__init__.py:167
+msgid "gaussian capacitance"
+msgstr "гауссова емкость"
+
+#: units/__init__.py:170
+msgid "gaussian inductance"
+msgstr "гауссова индуктивность"
+
+#: units/__init__.py:174
+msgid "gaussian conductance"
+msgstr "гауссовская проводимость"
+
+#: units/__init__.py:178
+msgid "esu charge"
+msgstr "обвинение ESU"
+
+#: units/__init__.py:182
+msgid "esu current"
+msgstr "ESU текущий"
+
+#: units/__init__.py:186
+msgid "esu electric potential"
+msgstr "электрический потенциал ESU"
+
+#: units/__init__.py:190
+msgid "esu magnetic flux"
+msgstr "магнитный поток esu"
+
+#: units/__init__.py:194
+msgid "esu magnetic field"
+msgstr "магнитное поле esu"
+
+#: units/__init__.py:198
+msgid "Compound dimension"
+msgstr ""
+
+#: units/__init__.py:202
+#, fuzzy
+#| msgid "dimensionless"
+msgid "Custom dimension"
+msgstr "безразмерный"
+
+#: units/__init__.py:317 units/__init__.py:1938
+msgid "meter per second"
+msgstr "метр в секунду"
+
+#: units/__init__.py:322 units/__init__.py:1942
+msgid "meter per square second"
+msgstr "метр в секунду в квадрате"
+
+#: units/__init__.py:327 units/__init__.py:1946 units/__init__.py:1950
+msgid "square meter"
+msgstr "квадратный метр"
+
+#: units/__init__.py:332
+msgid "cubic meter"
+msgstr "кубический метр"
+
+#: units/__init__.py:342
+msgid "Copper Kα"
+msgstr "Медь Kα"
+
+#: units/__init__.py:346
+msgid "Molybdenum K-α"
+msgstr "Молибден К-α"
+
+#: units/__init__.py:350
+msgid "Tungsten K-α"
+msgstr "Вольфрам K-α"
+
+#: units/__init__.py:351
+msgid "W Kα"
+msgstr "W Kα"
+
+#: units/__init__.py:354
+msgid "RKM"
+msgstr "РКМ"
+
+#: units/__init__.py:359 units/__init__.py:954
+msgid "long ton-force"
+msgstr "длинная тонна сила"
+
+#: units/__init__.py:369 units/__init__.py:1234
+msgid "long ton"
+msgstr "длинная тонна"
+
+#: units/__init__.py:374
+msgid "short ton force"
+msgstr "короткая тонна сила"
+
+#: units/__init__.py:379
+msgid "short hundredweight"
+msgstr "короткий центнер"
+
+#: units/__init__.py:384
+msgid "short ton"
+msgstr "короткая тонна"
+
+#: units/__init__.py:389
+msgid "US International Ampere"
+msgstr "США международный ампер"
+
+#: units/__init__.py:394
+msgid "US international Ohm"
+msgstr "США международный Ом"
+
+#: units/__init__.py:399
+msgid "US international Volt"
+msgstr "США международный Volt"
+
+#: units/__init__.py:404
+msgid "US therm"
+msgstr "Термины США"
+
+#: units/__init__.py:408
+msgid "abampere"
+msgstr "буйствовать"
+
+#: units/__init__.py:412
+msgid "abcoulomb"
+msgstr "абкулон"
+
+#: units/__init__.py:416
+msgid "Aberdeen"
+msgstr "Абердин"
+
+#: units/__init__.py:420
+msgid "abfarad"
+msgstr "абфарад"
+
+#: units/__init__.py:424
+msgid "abhenry"
+msgstr "Abhenry"
+
+#: units/__init__.py:428
+msgid "abohm"
+msgstr "abohm"
+
+#: units/__init__.py:432
+msgid "absiemens"
+msgstr "абсименс"
+
+#: units/__init__.py:436
+msgid "abvolt"
+msgstr "упасть"
+
+#: units/__init__.py:440
+msgid "acre"
+msgstr "акр"
+
+#: units/__init__.py:444
+msgid "acre-foot"
+msgstr "акр-фут"
+
+#: units/__init__.py:448
+msgid "ampere"
+msgstr "ампер"
+
+#: units/__init__.py:452
+#, fuzzy
+#| msgid "ampere"
+msgid "milliampere"
+msgstr "ампер"
+
+#: units/__init__.py:456
+msgid "ampere-turn"
+msgstr "ампер-виток"
+
+#: units/__init__.py:460
+msgid "angstrom"
+msgstr "ангстрем"
+
+#: units/__init__.py:464
+msgid "angstrom star"
+msgstr "Ангстремская звезда"
+
+#: units/__init__.py:468
+msgid "apothecary dram"
+msgstr "аптекарский драм"
+
+#: units/__init__.py:472
+msgid "apothecary ounce"
+msgstr "аптекарская унция"
+
+#: units/__init__.py:476
+msgid "apothecary pound"
+msgstr "аптекарский фунт"
+
+#: units/__init__.py:480
+msgid "minute of arc"
+msgstr "угловая минута"
+
+#: units/__init__.py:484
+msgid "second of arc"
+msgstr "секунда дуги"
+
+#: units/__init__.py:488
+msgid "are"
+msgstr "являются"
+
+#: units/__init__.py:492
+msgid "astronomical unit"
+msgstr "астрономическая единица"
+
+#: units/__init__.py:496
+msgid "atmosphere liter"
+msgstr "литр атмосферы"
+
+#: units/__init__.py:500
+msgid "atomic mass constant"
+msgstr "постоянная атомной массы"
+
+#: units/__init__.py:504
+msgid "atomic unit of current"
+msgstr "атомная единица тока"
+
+#: units/__init__.py:508
+msgid "atomic unit of electric field"
+msgstr "атомная единица электрического поля"
+
+#: units/__init__.py:512
+msgid "atomic unit of force"
+msgstr "атомная единица силы"
+
+#: units/__init__.py:516
+msgid "atomic unit of intensity"
+msgstr "атомная единица интенсивности"
+
+#: units/__init__.py:520
+msgid "atomic unit of temperature"
+msgstr "атомная единица температуры"
+
+#: units/__init__.py:524
+msgid "atomic unit of time"
+msgstr "атомная единица времени"
+
+#: units/__init__.py:528
+msgid "Avogadro constant"
+msgstr "Константа Авогадро"
+
+#: units/__init__.py:532
+msgid "Avogadro number"
+msgstr "Число Авогадро"
+
+#: units/__init__.py:536
+msgid "bag"
+msgstr "мешок"
+
+#: units/__init__.py:540
+msgid "bar"
+msgstr "бар"
+
+#: units/__init__.py:544
+msgid "barn"
+msgstr "сарай"
+
+#: units/__init__.py:548
+msgid "barrel"
+msgstr "бочка"
+
+#: units/__init__.py:552
+msgid "barrye"
+msgstr "Барри"
+
+#: units/__init__.py:556
+msgid "baud"
+msgstr "бод"
+
+#: units/__init__.py:560
+msgid "becquerel"
+msgstr "беккерель"
+
+#: units/__init__.py:564
+msgid "beer barrel"
+msgstr "пивная бочка"
+
+#: units/__init__.py:568
+msgid "bel"
+msgstr "Bel"
+
+#: units/__init__.py:572
+msgid "biot"
+msgstr "биот"
+
+#: units/__init__.py:576
+msgid "biot turn"
+msgstr "биот поворот"
+
+#: units/__init__.py:580
+msgid "bit"
+msgstr "немного"
+
+#: units/__init__.py:584
+msgid "bits per pixel"
+msgstr "бит на пиксель"
+
+#: units/__init__.py:588
+msgid "board foot"
+msgstr "доска ноги"
+
+#: units/__init__.py:592
+msgid "bohr"
+msgstr "Бор"
+
+#: units/__init__.py:596
+msgid "bohr magneton"
+msgstr "магнетон Бора"
+
+#: units/__init__.py:600
+msgid "boiler horsepower"
+msgstr "котельная мощность"
+
+#: units/__init__.py:604
+msgid "boltzmann constant"
+msgstr "постоянная Больцмана"
+
+#: units/__init__.py:608
+msgid "british thermal unit"
+msgstr "британская тепловая единица"
+
+#: units/__init__.py:612
+msgid "buckingham"
+msgstr "Buckingham"
+
+#: units/__init__.py:616
+msgid "bushel"
+msgstr "бушель"
+
+#: units/__init__.py:620
+msgid "byte"
+msgstr "байт"
+
+#: units/__init__.py:624
+msgid "cable length"
+msgstr "Длина кабеля"
+
+#: units/__init__.py:628
+msgid "calorie"
+msgstr "калорийность"
+
+#: units/__init__.py:632
+msgid "candela"
+msgstr "кандела"
+
+#: units/__init__.py:636
+msgid "carat"
+msgstr "карат"
+
+#: units/__init__.py:640
+msgid "centimeter H20"
+msgstr "сантиметр H20"
+
+#: units/__init__.py:644
+msgid "centimeter Hg"
+msgstr "сантиметр рт. ст."
+
+#: units/__init__.py:648
+msgid "century"
+msgstr "век"
+
+#: units/__init__.py:652
+msgid "chain"
+msgstr "цепь"
+
+#: units/__init__.py:656
+msgid "cicero"
+msgstr "Цицерон"
+
+#: units/__init__.py:660
+msgid "circular mil"
+msgstr "круговой мил"
+
+#: units/__init__.py:664
+msgid "classical electron radius"
+msgstr "классический радиус электрона"
+
+#: units/__init__.py:668
+msgid "clausius"
+msgstr "Клаузиус"
+
+#: units/__init__.py:672
+msgid "common year"
+msgstr "общий год"
+
+#: units/__init__.py:676
+msgid "conductance quantum"
+msgstr "квант проводимости"
+
+#: units/__init__.py:680
+msgid "conventional ampere"
+msgstr "обычный ампер"
+
+#: units/__init__.py:684
+msgid "conventional coulomb"
+msgstr "обычный кулон"
+
+#: units/__init__.py:688
+msgid "conventional farad"
+msgstr "условный фарад"
+
+#: units/__init__.py:692
+msgid "conventional henry"
+msgstr "обычный генри"
+
+#: units/__init__.py:696
+msgid "conventional josephson constant"
+msgstr "обычная постоянная Джозефсона"
+
+#: units/__init__.py:700
+msgid "conventional ohm"
+msgstr "условный ом"
+
+#: units/__init__.py:704
+msgid "conventional volt"
+msgstr "условный вольт"
+
+#: units/__init__.py:708
+msgid "conventional Von Klitzing constant"
+msgstr "условная постоянная фон Клитцинга"
+
+#: units/__init__.py:712
+msgid "conventional Watt"
+msgstr "обычный ватт"
+
+#: units/__init__.py:716
+msgid "coulomb"
+msgstr "кулон"
+
+#: units/__init__.py:720
+msgid "coulomb constant"
+msgstr "кулоновская постоянная"
+
+#: units/__init__.py:724
+msgid "count"
+msgstr "считать"
+
+#: units/__init__.py:728
+msgid "counts per second"
+msgstr "отсчетов в секунду"
+
+#: units/__init__.py:732
+msgid "CSS pixel"
+msgstr "CSS пиксель"
+
+#: units/__init__.py:736
+msgid "cubic centimeter"
+msgstr "кубический сантиметр"
+
+#: units/__init__.py:740
+msgid "cubic milliimeter"
+msgstr "кубический миллиметр"
+
+#: units/__init__.py:744
+msgid "cubic foot"
+msgstr "кубический фут"
+
+#: units/__init__.py:748
+msgid "cubic inch"
+msgstr "кубический дюйм"
+
+#: units/__init__.py:752
+msgid "cubic yard"
+msgstr "кубический ярд"
+
+#: units/__init__.py:756
+msgid "cup"
+msgstr "кружка"
+
+#: units/__init__.py:760
+msgid "curie"
+msgstr "кюри"
+
+#: units/__init__.py:764
+msgid "dalton"
+msgstr "Далтон"
+
+#: units/__init__.py:768
+msgid "darcy"
+msgstr "Дарси"
+
+#: units/__init__.py:772
+msgid "day"
+msgstr "день"
+
+#: units/__init__.py:773
+msgctxt "unit"
+msgid "day"
+msgstr "день"
+
+#: units/__init__.py:776
+msgid "debye"
+msgstr "дебай"
+
+#: units/__init__.py:780
+msgid "decade"
+msgstr "десятилетие"
+
+#: units/__init__.py:781
+msgctxt "symbol"
+msgid "decade"
+msgstr "десятилетие"
+
+#: units/__init__.py:784
+msgid "decibel"
+msgstr "децибел"
+
+#: units/__init__.py:788
+msgid "degree"
+msgstr "степень"
+
+#: units/__init__.py:792
+msgid "degree Celsius"
+msgstr "градус Цельсия"
+
+#: units/__init__.py:796
+msgid "degree Fahrenheit"
+msgstr "градус Фаренгейта"
+
+#: units/__init__.py:800
+msgid "degree Rankine"
+msgstr "степень Ренкина"
+
+#: units/__init__.py:804
+msgid "degree Reaumur"
+msgstr "степень Реомюра"
+
+#: units/__init__.py:808
+msgid "denier"
+msgstr "денье"
+
+#: units/__init__.py:812
+msgid "didot"
+msgstr "дидот"
+
+#: units/__init__.py:816
+msgid "Dirac constant"
+msgstr "Постоянная Дирака"
+
+#: units/__init__.py:820
+msgid "dram"
+msgstr "драм"
+
+#: units/__init__.py:824
+msgid "dry barrel"
+msgstr "сухая бочка"
+
+#: units/__init__.py:828
+msgid "dry gallon"
+msgstr "сухой галлон"
+
+#: units/__init__.py:832
+msgid "dry pint"
+msgstr "сухая пинта"
+
+#: units/__init__.py:836
+msgid "dry quart"
+msgstr "сухая кварта"
+
+#: units/__init__.py:840
+msgid "decitex"
+msgstr "децитекс"
+
+#: units/__init__.py:844
+msgid "dyne"
+msgstr "Дайн"
+
+#: units/__init__.py:848
+msgid "eletcrical horsepower"
+msgstr "электрическая мощность"
+
+#: units/__init__.py:852
+msgid "electron G-factor"
+msgstr "электронный G-фактор"
+
+#: units/__init__.py:856
+msgid "electron mass"
+msgstr "масса электрона"
+
+#: units/__init__.py:860
+msgid "electronvolt"
+msgstr "электронвольт"
+
+#: units/__init__.py:864
+msgid "elementary charge"
+msgstr "элементарный заряд"
+
+#: units/__init__.py:868
+msgid "entropy unit"
+msgstr "единица энтропии"
+
+#: units/__init__.py:872
+msgid "enzyme unit"
+msgstr "ферментный блок"
+
+#: units/__init__.py:876
+msgid "eon"
+msgstr "эон"
+
+#: units/__init__.py:880
+msgid "erg"
+msgstr "эрг"
+
+#: units/__init__.py:884
+msgid "farad"
+msgstr "фарад"
+
+#: units/__init__.py:888
+msgid "faraday"
+msgstr "фарадей"
+
+#: units/__init__.py:892
+msgid "faraday constant"
+msgstr "постоянная Фарадея"
+
+#: units/__init__.py:896
+msgid "fathom"
+msgstr "вникать"
+
+#: units/__init__.py:900
+msgid "fermi"
+msgstr "ферми"
+
+#: units/__init__.py:904
+msgid "fifteen degree calorie"
+msgstr "пятнадцать градусов калорий"
+
+#: units/__init__.py:908
+msgid "fifth"
+msgstr "пятый"
+
+#: units/__init__.py:912
+msgid "fine structure constant"
+msgstr "постоянная тонкой структуры"
+
+#: units/__init__.py:916
+msgid "first radiation constant"
+msgstr "первая радиационная постоянная"
+
+#: units/__init__.py:920
+msgid "fluid dram"
+msgstr "жидкий драм"
+
+#: units/__init__.py:924
+msgid "fluid ounce"
+msgstr "жидкая унция"
+
+#: units/__init__.py:928
+msgid "foot"
+msgstr "нога"
+
+#: units/__init__.py:932
+msgid "foot H2O"
+msgstr "фут H2O"
+
+#: units/__init__.py:936
+msgid "foot per second"
+msgstr "фут в секунду"
+
+#: units/__init__.py:940
+msgid "foot pound"
+msgstr "фут фунт"
+
+#: units/__init__.py:944
+msgid "gram-force"
+msgstr "грамм-сила"
+
+#: units/__init__.py:949
+msgid "kilogram-force"
+msgstr "килограмм-сила"
+
+#: units/__init__.py:958 units/__init__.py:970
+msgid "tonne-force"
+msgstr "тонна-сила"
+
+#: units/__init__.py:962
+msgid "ounce-force"
+msgstr "унция-сила"
+
+#: units/__init__.py:966
+msgid "pound-force"
+msgstr "фунт-сила"
+
+#: units/__init__.py:974
+msgid "fortnight"
+msgstr "две недели"
+
+#: units/__init__.py:978
+msgid "franklin"
+msgstr "Франклин"
+
+#: units/__init__.py:982
+msgid "furlong"
+msgstr "фарлонг"
+
+#: units/__init__.py:986
+msgid "galileo"
+msgstr "Галилео"
+
+#: units/__init__.py:990
+msgid "gallon"
+msgstr "галлон"
+
+#: units/__init__.py:994 units/__init__.py:998
+msgid "gamma"
+msgstr "гамма"
+
+#: units/__init__.py:1002
+msgid "gauss"
+msgstr "гаусс"
+
+#: units/__init__.py:1006
+msgid "gilbert"
+msgstr "Гилберт"
+
+#: units/__init__.py:1010
+msgid "gill"
+msgstr "жабры"
+
+#: units/__init__.py:1014
+msgid "grade"
+msgstr "оценка"
+
+#: units/__init__.py:1018
+msgid "grain"
+msgstr "зерно"
+
+#: units/__init__.py:1022
+msgid "gram"
+msgstr "грамм"
+
+#: units/__init__.py:1026
+msgid "gray"
+msgstr "серый"
+
+#: units/__init__.py:1030
+msgid "gregorian year"
+msgstr "григорианский год"
+
+#: units/__init__.py:1031
+msgctxt "unit"
+msgid "gregorian year"
+msgstr "григорианский год"
+
+#: units/__init__.py:1034
+msgid "hand"
+msgstr "рука"
+
+#: units/__init__.py:1038
+msgid "hartree"
+msgstr "Хартри"
+
+#: units/__init__.py:1042
+msgid "hectare"
+msgstr "га"
+
+#: units/__init__.py:1046
+msgid "henry"
+msgstr "Генри"
+
+#: units/__init__.py:1050
+msgid "hertz"
+msgstr "герц"
+
+#: units/__init__.py:1054
+msgid "hogshead"
+msgstr "бочка"
+
+#: units/__init__.py:1058
+msgid "horsepower"
+msgstr "лошадиных сил"
+
+#: units/__init__.py:1062
+msgid "hour"
+msgstr "час"
+
+#: units/__init__.py:1066
+msgid "hundredweight"
+msgstr "центнер"
+
+#: units/__init__.py:1070
+msgid "impedance of free space"
+msgstr "импеданс свободного пространства"
+
+#: units/__init__.py:1074
+msgid "imperial barrel"
+msgstr "имперская бочка"
+
+#: units/__init__.py:1078
+msgid "imperial bushel"
+msgstr "имперский бушель"
+
+#: units/__init__.py:1082
+msgid "imperial cup"
+msgstr "императорский кубок"
+
+#: units/__init__.py:1086
+msgid "imperial fluid drachm"
+msgstr "имперская флюидная драхма"
+
+#: units/__init__.py:1090
+msgid "imperial fluid ounce"
+msgstr "имперская жидкая унция"
+
+#: units/__init__.py:1094
+msgid "imperial fluid scruple"
+msgstr "императорское жидкое сознание"
+
+#: units/__init__.py:1098
+msgid "imperial gallon"
+msgstr "имперский галлон"
+
+#: units/__init__.py:1102
+msgid "imperial gill"
+msgstr "императорская жабра"
+
+#: units/__init__.py:1106
+msgid "imperial minim"
+msgstr "имперский минимум"
+
+#: units/__init__.py:1110
+msgid "imperial peck"
+msgstr "императорский клев"
+
+#: units/__init__.py:1114
+msgid "imperial pint"
+msgstr "имперская пинта"
+
+#: units/__init__.py:1118
+msgid "imperial quart"
+msgstr "имперская кварта"
+
+#: units/__init__.py:1122
+msgid "inch"
+msgstr "дюйм"
+
+#: units/__init__.py:1126
+msgid "inch H20 39F"
+msgstr "дюйм H20 39F"
+
+#: units/__init__.py:1130
+msgid "inch H20 60F"
+msgstr "дюйм H20 60F"
+
+#: units/__init__.py:1134
+msgid "inch Hg"
+msgstr "дюйм рт. ст."
+
+#: units/__init__.py:1138
+msgid "inch Hg 60F"
+msgstr "дюйм Hg 60F"
+
+#: units/__init__.py:1142
+msgid "international Btu"
+msgstr "международный BTU"
+
+#: units/__init__.py:1146
+msgid "international calorie"
+msgstr "международная калория"
+
+#: units/__init__.py:1150
+msgid "Josephson constant"
+msgstr "Постоянная Джозефсона"
+
+#: units/__init__.py:1154
+msgid "Joule"
+msgstr "Джоуль"
+
+#: units/__init__.py:1158
+msgid "jute"
+msgstr "джут"
+
+#: units/__init__.py:1162
+msgid "katal"
+msgstr "Катал"
+
+#: units/__init__.py:1166
+msgid "kelvin"
+msgstr "кельвин"
+
+#: units/__init__.py:1170
+msgid "kilometer per hour"
+msgstr "километр в час"
+
+#: units/__init__.py:1174
+msgid "kilometer per second"
+msgstr "километр в секунду"
+
+#: units/__init__.py:1178
+msgid "kip"
+msgstr "кип"
+
+#: units/__init__.py:1182
+msgid "kip per square inch"
+msgstr "тысяч фунтов на квадратный дюйм"
+
+#: units/__init__.py:1186
+msgid "knot"
+msgstr "морской узел"
+
+#: units/__init__.py:1190
+msgid "lambda"
+msgstr "лямбда"
+
+#: units/__init__.py:1194
+msgid "lambert"
+msgstr "Ламберт"
+
+#: units/__init__.py:1198
+msgid "langley"
+msgstr "Лэнгли"
+
+#: units/__init__.py:1202
+msgid "lattice constant"
+msgstr "постоянная решетки"
+
+#: units/__init__.py:1206
+msgid "league"
+msgstr "лига"
+
+#: units/__init__.py:1210
+msgid "leap year"
+msgstr "високосный год"
+
+#: units/__init__.py:1211 units/__init__.py:1910 units/__init__.py:1911
+msgid "year"
+msgstr "год"
+
+#: units/__init__.py:1214
+msgid "light year"
+msgstr "световой год"
+
+#: units/__init__.py:1215
+msgid "ly"
+msgstr "лы"
+
+#: units/__init__.py:1218
+msgid "link"
+msgstr "ссылка на сайт"
+
+#: units/__init__.py:1219
+msgid "li"
+msgstr "Ли"
+
+#: units/__init__.py:1222
+msgid "liter"
+msgstr "литр"
+
+#: units/__init__.py:1223
+msgid "L"
+msgstr "L"
+
+#: units/__init__.py:1226
+msgid "log 10"
+msgstr "журнал 10"
+
+#: units/__init__.py:1227
+msgid "ln10"
+msgstr "ln10"
+
+#: units/__init__.py:1230
+msgid "long hundredweight"
+msgstr "длинный центнер"
+
+#: units/__init__.py:1238
+msgid "lumen"
+msgstr "просвет"
+
+#: units/__init__.py:1242
+msgid "lux"
+msgstr "люкс"
+
+#: units/__init__.py:1246
+msgid "magnetic flux quantum"
+msgstr "квант магнитного потока"
+
+#: units/__init__.py:1250
+msgid "maxwell"
+msgstr "Максвелл"
+
+#: units/__init__.py:1254
+msgid "mean international ampere"
+msgstr "средний международный ампер"
+
+#: units/__init__.py:1258
+msgid "mean international Ohm"
+msgstr "средний международный Ом"
+
+#: units/__init__.py:1262
+msgid "mean international Volt"
+msgstr "средний международный вольт"
+
+#: units/__init__.py:1266
+msgid "density of mercury"
+msgstr "плотность ртути"
+
+#: units/__init__.py:1270
+msgid "density of mercury 60F"
+msgstr "плотность ртути 60F"
+
+#: units/__init__.py:1274
+msgid "meter"
+msgstr "метр"
+
+#: units/__init__.py:1278
+msgid "metric horsepower"
+msgstr "метрическая мощность"
+
+#: units/__init__.py:1282
+msgid "metric ton"
+msgstr "метрическая тонна"
+
+#: units/__init__.py:1286
+msgid "micron"
+msgstr "микрон"
+
+#: units/__init__.py:1290
+msgid "mil"
+msgstr "мил"
+
+#: units/__init__.py:1294
+msgid "mile"
+msgstr "миля"
+
+#: units/__init__.py:1298
+msgid "mile per hour"
+msgstr "миля в час"
+
+#: units/__init__.py:1302 units/__init__.py:1303
+msgid "millenium"
+msgstr "тысячелетие"
+
+#: units/__init__.py:1306
+msgid "milliarcsecond"
+msgstr "миллисекунда дуги"
+
+#: units/__init__.py:1310
+msgid "Hg millimeter"
+msgstr "Миллиметр рт. Ст."
+
+#: units/__init__.py:1314
+msgid "minim"
+msgstr "минимум"
+
+#: units/__init__.py:1318
+msgid "minute"
+msgstr "минута"
+
+#: units/__init__.py:1322
+msgid "molar"
+msgstr "коренной зуб"
+
+#: units/__init__.py:1326
+msgid "molar gas constant"
+msgstr "молярная газовая постоянная"
+
+#: units/__init__.py:1330
+msgid "mole"
+msgstr "моль"
+
+#: units/__init__.py:1334
+msgid "month"
+msgstr "месяц"
+
+#: units/__init__.py:1338
+msgid "nautical mile"
+msgstr "морская миля"
+
+#: units/__init__.py:1339
+msgid "nm"
+msgstr "нм"
+
+#: units/__init__.py:1342
+msgid "neper"
+msgstr "непер"
+
+#: units/__init__.py:1343
+msgid "Np"
+msgstr "Np"
+
+#: units/__init__.py:1346
+msgid "neutron mass"
+msgstr "масса нейтрона"
+
+#: units/__init__.py:1350
+msgid "newton"
+msgstr "ньютон"
+
+#: units/__init__.py:1354
+msgid "newtonian constant of gravitation"
+msgstr "ньютоновская гравитационная постоянная"
+
+#: units/__init__.py:1358
+msgid "nit"
+msgstr "гнида"
+
+#: units/__init__.py:1362
+msgid "nuclear magneton"
+msgstr "ядерный магнетон"
+
+#: units/__init__.py:1366
+msgid "number english"
+msgstr "номер английский"
+
+#: units/__init__.py:1370
+msgid "number meter"
+msgstr "счетчик чисел"
+
+#: units/__init__.py:1374
+msgid "oersted"
+msgstr "эрстед"
+
+#: units/__init__.py:1378
+msgid "ohm"
+msgstr "ом"
+
+#: units/__init__.py:1382
+msgid "oil barrel"
+msgstr "баррель нефти"
+
+#: units/__init__.py:1386
+msgid "ounce"
+msgstr "унция"
+
+#: units/__init__.py:1390
+msgid "parsec"
+msgstr "парсек"
+
+#: units/__init__.py:1394
+msgid "particle"
+msgstr "частица"
+
+#: units/__init__.py:1398
+msgid "pascal"
+msgstr "паскаль"
+
+#: units/__init__.py:1402
+msgid "peak sun hour"
+msgstr "пик солнечного часа"
+
+#: units/__init__.py:1406
+msgid "peck"
+msgstr "клевать"
+
+#: units/__init__.py:1410
+msgid "pennyweight"
+msgstr "пеннивейт"
+
+#: units/__init__.py:1418
+msgid "pica"
+msgstr "пика"
+
+#: units/__init__.py:1422
+msgid "pint"
+msgstr "пинта"
+
+#: units/__init__.py:1426
+msgid "pixel"
+msgstr "пиксель"
+
+#: units/__init__.py:1430
+msgid "pixel per centimeter"
+msgstr "пиксель на сантиметр"
+
+#: units/__init__.py:1434
+msgid "pixel per inch"
+msgstr "пиксель на дюйм"
+
+#: units/__init__.py:1438
+msgid "Planck constant"
+msgstr "Постоянная Планка"
+
+#: units/__init__.py:1442 units/__init__.py:1446
+msgid "Planck current"
+msgstr "Планковский ток"
+
+#: units/__init__.py:1443
+msgid "qP"
+msgstr "qP"
+
+#: units/__init__.py:1447
+msgid "lP"
+msgstr "LP"
+
+#: units/__init__.py:1450
+msgid "Planck mass"
+msgstr "Планковская масса"
+
+#: units/__init__.py:1451
+msgid "mP"
+msgstr "mP"
+
+#: units/__init__.py:1454
+msgid "Planck temperature"
+msgstr "Планковская температура"
+
+#: units/__init__.py:1455
+msgid "TP"
+msgstr "TP"
+
+#: units/__init__.py:1458
+msgid "Planck time"
+msgstr "Планковское время"
+
+#: units/__init__.py:1459
+msgid "tP"
+msgstr "tP"
+
+#: units/__init__.py:1462
+msgid "point"
+msgstr "точка"
+
+#: units/__init__.py:1466
+msgid "poise"
+msgstr "равновесие"
+
+#: units/__init__.py:1470
+msgid "pound"
+msgstr "фунт"
+
+#: units/__init__.py:1474
+msgid "pound force per square inch"
+msgstr "фунт силы на квадратный дюйм"
+
+#: units/__init__.py:1478
+msgid "poundal"
+msgstr "фунтал"
+
+#: units/__init__.py:1482
+msgid "proton mass"
+msgstr "масса протона"
+
+#: units/__init__.py:1486
+msgid "quadrillion Btu"
+msgstr "квадриллион британских тепловых единиц"
+
+#: units/__init__.py:1490
+msgid "quart"
+msgstr "кварта"
+
+#: units/__init__.py:1494
+msgid "quarter"
+msgstr "четверть"
+
+#: units/__init__.py:1498
+msgid "radian"
+msgstr "радиан"
+
+#: units/__init__.py:1502
+msgid "rads"
+msgstr "рад"
+
+#: units/__init__.py:1506
+msgid "reciprocal centimeter"
+msgstr "обратный сантиметр"
+
+#: units/__init__.py:1510
+msgid "refrigeration ton"
+msgstr "тонна охлаждения"
+
+#: units/__init__.py:1514
+msgid "roentgen equivalent man"
+msgstr "рентгеновский эквивалент человека"
+
+#: units/__init__.py:1518
+msgid "revolutions per minute"
+msgstr "число оборотов в минуту"
+
+#: units/__init__.py:1519
+msgid "rpm"
+msgstr "об / мин"
+
+#: units/__init__.py:1522
+msgid "revolutions per second"
+msgstr "оборотов в секунду"
+
+#: units/__init__.py:1523
+msgid "rps"
+msgstr "rps"
+
+#: units/__init__.py:1526 units/__init__.py:1527
+msgid "reyn"
+msgstr "Рейн"
+
+#: units/__init__.py:1530
+msgid "reciprocal poise"
+msgstr "взаимное равновесие"
+
+#: units/__init__.py:1534
+msgid "rod"
+msgstr "стержень"
+
+#: units/__init__.py:1538
+msgid "roentgen"
+msgstr "рентген"
+
+#: units/__init__.py:1542
+msgid "rutherford"
+msgstr "Резерфорд"
+
+#: units/__init__.py:1546
+msgid "rydberg"
+msgstr "Rydberg"
+
+#: units/__init__.py:1550
+msgid "rydberg constant"
+msgstr "постоянная ридберга"
+
+#: units/__init__.py:1554
+msgid "scaled point"
+msgstr "масштабированная точка"
+
+#: units/__init__.py:1558
+msgid "scruple"
+msgstr "стеснение"
+
+#: units/__init__.py:1562
+msgid "second"
+msgstr "второй"
+
+#: units/__init__.py:1566
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "millisecond"
+msgstr "миллисекунда дуги"
+
+#: units/__init__.py:1570
+#, fuzzy
+#| msgid "milliarcsecond"
+msgid "microsecond"
+msgstr "миллисекунда дуги"
+
+#: units/__init__.py:1574
+msgid "second radiation constant"
+msgstr "вторая радиационная постоянная"
+
+#: units/__init__.py:1578
+msgid "shake"
+msgstr "встряхнуть"
+
+#: units/__init__.py:1582
+msgid "shot"
+msgstr "выстрел"
+
+#: units/__init__.py:1586
+msgid "sidereal day"
+msgstr "звездный день"
+
+#: units/__init__.py:1587
+msgctxt "unit"
+msgid "sidereal day"
+msgstr "звездный день"
+
+#: units/__init__.py:1590
+msgid "sidereal month"
+msgstr "сидерический месяц"
+
+#: units/__init__.py:1591
+msgctxt "unit"
+msgid "sidereal month"
+msgstr "сидерический месяц"
+
+#: units/__init__.py:1594
+msgid "sidereal year"
+msgstr "звездный год"
+
+#: units/__init__.py:1595
+msgctxt "unit"
+msgid "sidereal year"
+msgstr "звездный год"
+
+#: units/__init__.py:1598
+msgid "siemens"
+msgstr "Сименс"
+
+#: units/__init__.py:1602
+msgid "sievert"
+msgstr "зиверт"
+
+#: units/__init__.py:1606
+msgid "slinch"
+msgstr "уклоняться"
+
+#: units/__init__.py:1610
+msgid "slug"
+msgstr "слизняк"
+
+#: units/__init__.py:1614
+msgid "speed of light"
+msgstr "скорость света"
+
+#: units/__init__.py:1618
+msgid "square degree"
+msgstr "квадратный градус"
+
+#: units/__init__.py:1622
+msgid "square foot"
+msgstr "квадратный фут"
+
+#: units/__init__.py:1626
+msgid "square inch"
+msgstr "квадратный дюйм"
+
+#: units/__init__.py:1630
+msgid "square league"
+msgstr "квадратная лига"
+
+#: units/__init__.py:1634
+msgid "square mile"
+msgstr "квадратная миля"
+
+#: units/__init__.py:1638
+msgid "square rod"
+msgstr "квадратный стержень"
+
+#: units/__init__.py:1642
+msgid "square survey mile"
+msgstr "квадратная миля"
+
+#: units/__init__.py:1646
+msgid "square yard"
+msgstr "квадратный ярд"
+
+#: units/__init__.py:1650
+msgid "standard atmosphere"
+msgstr "стандартная атмосфера"
+
+#: units/__init__.py:1654
+msgid "standard gravity"
+msgstr "стандартная сила тяжести"
+
+#: units/__init__.py:1658
+msgid "standard liter per minute"
+msgstr "стандартный литр в минуту"
+
+#: units/__init__.py:1694
+msgid "Stefan-Boltzmann constant"
+msgstr "Постоянная Стефана-Больцмана"
+
+#: units/__init__.py:1698
+msgid "steradian"
+msgstr "стерадиан"
+
+#: units/__init__.py:1702
+msgid "stere"
+msgstr "стере"
+
+#: units/__init__.py:1706
+msgid "stilb"
+msgstr "стильб"
+
+#: units/__init__.py:1710
+msgid "stokes"
+msgstr "топки"
+
+#: units/__init__.py:1714
+msgid "stone"
+msgstr "камень"
+
+#: units/__init__.py:1718
+msgid "survey foot"
+msgstr "обследование стопы"
+
+#: units/__init__.py:1722
+msgid "survey mile"
+msgstr "миля обследования"
+
+#: units/__init__.py:1730 units/__init__.py:1731
+msgid "synodic month"
+msgstr "синодический месяц"
+
+#: units/__init__.py:1734 units/__init__.py:1735
+msgid "tablespoon"
+msgstr "столовая ложка"
+
+#: units/__init__.py:1742 units/__init__.py:1743
+msgid "teaspoon"
+msgstr "чайная ложка"
+
+#: units/__init__.py:1746
+msgid "technical atmosphere"
+msgstr "техническая атмосфера"
+
+#: units/__init__.py:1774
+msgid "therm"
+msgstr "терм"
+
+#: units/__init__.py:1778
+msgid "thermochemical Btu"
+msgstr "термохимический Btu"
+
+#: units/__init__.py:1782
+msgid "Thomson cross section"
+msgstr "Поперечное сечение Томсона"
+
+#: units/__init__.py:1790
+msgid "ton"
+msgstr "тонна"
+
+#: units/__init__.py:1794
+msgid "ton of TNT"
+msgstr "тонна тротила"
+
+#: units/__init__.py:1798
+msgid "ton of oil equivalent"
+msgstr "тонна нефтяного эквивалента"
+
+#: units/__init__.py:1799
+msgid "toe"
+msgstr "палец"
+
+#: units/__init__.py:1806 units/__init__.py:1807
+msgid "tropical month"
+msgstr "тропический месяц"
+
+#: units/__init__.py:1810 units/__init__.py:1811
+msgid "tropical year"
+msgstr "тропический год"
+
+#: units/__init__.py:1814 units/__init__.py:1815
+msgid "troy ounce"
+msgstr "тройская унция"
+
+#: units/__init__.py:1818 units/__init__.py:1819
+msgid "troy pound"
+msgstr "тройской фунт"
+
+#: units/__init__.py:1822 units/__init__.py:1823
+msgid "turn"
+msgstr "перемена"
+
+#: units/__init__.py:1826 units/__init__.py:1827
+msgid "unified atomic mass unit"
+msgstr "единая атомная единица массы"
+
+#: units/__init__.py:1830
+msgid "unit pole"
+msgstr "единичный полюс"
+
+#: units/__init__.py:1834
+msgid "vacuum permeability"
+msgstr "вакуумная проницаемость"
+
+#: units/__init__.py:1838
+msgid "vacuum permittivity"
+msgstr "диэлектрическая проницаемость вакуума"
+
+#: units/__init__.py:1850
+msgid "Von Klitzing constant"
+msgstr "Постоянная фон Клитцинга"
+
+#: units/__init__.py:1854
+msgid "Water volumic mass"
+msgstr "Объемная масса воды"
+
+#: units/__init__.py:1858
+msgid "Water volumic mass at 39F"
+msgstr "Объемная масса воды при 39F"
+
+#: units/__init__.py:1862
+msgid "Water volumic mass at 60F"
+msgstr "Объемная масса воды при 60F"
+
+#: units/__init__.py:1882
+msgid "wien frequency displacement law constant"
+msgstr "Закон смещения частоты Вина постоянная"
+
+#: units/__init__.py:1886
+msgid "wien u"
+msgstr "вена ты"
+
+#: units/__init__.py:1890
+msgid "wien displacement law constant"
+msgstr "постоянная закона смещения Вина"
+
+#: units/__init__.py:1894
+msgid "wien x"
+msgstr "Wien x"
+
+#: units/__init__.py:1898
+msgid "Cu X-ray wavelength"
+msgstr "Длина волны рентгеновского излучения Cu"
+
+#: units/__init__.py:1902
+msgid "Mo X-ray wavelength"
+msgstr "Mo длина волны рентгеновского излучения"
+
+#: units/__init__.py:1906
+msgid "yard"
+msgstr "двор"
+
+#: units/__init__.py:1914
+msgid "zeta"
+msgstr "Зета"
+
+#: units/__init__.py:1918
+msgid "decibelmilliwatt"
+msgstr "децибельмилливатт"
+
+#: units/__init__.py:1922
+msgid "decibelmicrowatt"
+msgstr "децибелмикроватт"
+
+#: units/__init__.py:1926
+msgid "Euler‘s number"
+msgstr "Число Эйлера"
+
+#: units/__init__.py:1930
+msgid "octave"
+msgstr "октава"
+
+#: units/__init__.py:1934
+msgid "sound pressure level"
+msgstr "уровень звукового давления"
+
+#: units/__init__.py:1954
+#, fuzzy
+#| msgid "millenium"
+msgid "milligram"
+msgstr "тысячелетие"
+
+#: units/__init__.py:1958
+#, fuzzy
+#| msgid "kilogram-force"
+msgid "kilogram"
+msgstr "килограмм-сила"
+
+#: units/__init__.py:1962
+#, fuzzy
+#| msgid "meter"
+msgid "kilometer"
+msgstr "метр"
+
+#: units/__init__.py:1966
+#, fuzzy
+#| msgid "centimeter Hg"
+msgid "centimeter"
+msgstr "сантиметр рт. ст."
+
+#: units/__init__.py:1970
+#, fuzzy
+#| msgid "Hg millimeter"
+msgid "millimeter"
+msgstr "Миллиметр рт. Ст."
+
+#: units/__init__.py:1974
+#, fuzzy
+#| msgid "meter per second"
+msgid "centimeter per second"
+msgstr "метр в секунду"
+
+#: units/models.py:684
+msgid "Incompatible units"
+msgstr "Несовместимые устройства"
+
+#: units/models.py:705
+msgid "Undefined unit in the registry"
+msgstr "Неопределенный блок в реестре"
+
+#~ msgid "square centimeter"
+#~ msgstr "квадратный сантиметр"
+
+#~ msgid "square millimeter"
+#~ msgstr "квадратный миллиметр"
+
+#~ msgid "surface"
+#~ msgstr "поверхность"
+
+#~ msgid "speed"
+#~ msgstr "скорость"
+
+#~ msgid "meter per gram"
+#~ msgstr "метр на грамм"
+
+#~ msgid "absorption"
+#~ msgstr "поглощение"
+
+#~ msgid "electromagnetic inductance"
+#~ msgstr "электромагнитная индуктивность"
+
+#~ msgid "electromagnetic resistance"
+#~ msgstr "электромагнитное сопротивление"
+
+#~ msgid "linear mass density"
+#~ msgstr "линейная массовая плотность"
+
+#~ msgid "density of particle"
+#~ msgstr "плотность частицы"
+
+#~ msgid "catalytic activity"
+#~ msgstr "каталитическая активность"
+
+#~ msgid "quantity of information"
+#~ msgstr "количество информации"
+
+#~ msgid "density of information"
+#~ msgstr "плотность информации"
+
+#~ msgid "magnetic moment"
+#~ msgstr "магнитный момент"
+
+#~ msgid "electrical capacitance"
+#~ msgstr "электрическая емкость"
+
+#~ msgid "electric force"
+#~ msgstr "электрическая сила"
+
+#~ msgid "electromagnetic action"
+#~ msgstr "электромагнитное воздействие"
+
+#~ msgid "power per unit per wavelength interval"
+#~ msgstr "мощность на единицу на интервал длин волн"
+
+#~ msgid "electrostatic unit of charge"
+#~ msgstr "электростатическая единица заряда"
+
+#~ msgid "magnetic induction"
+#~ msgstr "магнитная индукция"
+
+#~ msgid "angle"
+#~ msgstr "угол"
+
+#~ msgid "radiation"
+#~ msgstr "радиация"
+
+#~ msgid "energy per temperature increment per mole"
+#~ msgstr "энергия на приращение температуры на моль"
+
+#~ msgid "reciprocal length"
+#~ msgstr "обратная длина"
+
+#~ msgid "angular speed"
+#~ msgstr "угловая скорость"
+
+#~ msgid "radiation exposure"
+#~ msgstr "облучение"
+
+#~ msgid "solid degree"
+#~ msgstr "солидная степень"
+
+#~ msgid "volumetric flow rate"
+#~ msgstr "объемный расход"
+
+#~ msgid "mass density"
+#~ msgstr "плотность вещества"
+
+#~ msgid "heat energy"
+#~ msgstr "тепловая энергия"
+
+#~ msgid "quantity"
+#~ msgstr "количество"
+
+#~ msgid "field quantity"
+#~ msgstr "количество полей"
+
+#~ msgid "permeability"
+#~ msgstr "проницаемость"
+
+#~ msgid "energy by temperature"
+#~ msgstr "энергия по температуре"
+
+#~ msgid "dimesionless"
+#~ msgstr "безразмерный"
+
+#~ msgid "H-field"
+#~ msgstr "H-поле"
+
+#~ msgid "unit"
+#~ msgstr "Ед. изм"
+
+#~ msgid "solid angle"
+#~ msgstr "телесный угол"
+
+#~ msgid "flux density"
+#~ msgstr "плотность потока"

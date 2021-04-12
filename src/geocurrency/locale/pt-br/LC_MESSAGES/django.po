@@ -1,0 +1,2276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 12:18+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: countries/viewsets.py:97
+msgid "Unknown country or no info for this country"
+msgstr ""
+
+#: rates/models.py:472
+msgid "Rate could not be found"
+msgstr ""
+
+#: settings.example.py:162
+msgid "Afrikaans"
+msgstr ""
+
+#: settings.example.py:163
+msgid "Arabic"
+msgstr ""
+
+#: settings.example.py:164
+msgid "Algerian Arabic"
+msgstr ""
+
+#: settings.example.py:165
+msgid "Asturian"
+msgstr ""
+
+#: settings.example.py:166
+msgid "Azerbaijani"
+msgstr ""
+
+#: settings.example.py:167
+msgid "Bulgarian"
+msgstr ""
+
+#: settings.example.py:168
+msgid "Belarusian"
+msgstr ""
+
+#: settings.example.py:169
+msgid "Bengali"
+msgstr ""
+
+#: settings.example.py:170
+msgid "Breton"
+msgstr ""
+
+#: settings.example.py:171
+msgid "Bosnian"
+msgstr ""
+
+#: settings.example.py:172
+msgid "Catalan"
+msgstr ""
+
+#: settings.example.py:173
+msgid "Czech"
+msgstr ""
+
+#: settings.example.py:174
+msgid "Welsh"
+msgstr ""
+
+#: settings.example.py:175
+msgid "Danish"
+msgstr ""
+
+#: settings.example.py:176
+msgid "German"
+msgstr ""
+
+#: settings.example.py:177
+msgid "Lower Sorbian"
+msgstr ""
+
+#: settings.example.py:178
+msgid "Greek"
+msgstr ""
+
+#: settings.example.py:179
+msgid "English"
+msgstr ""
+
+#: settings.example.py:180
+msgid "Australian English"
+msgstr ""
+
+#: settings.example.py:181
+msgid "British English"
+msgstr ""
+
+#: settings.example.py:182
+msgid "Esperanto"
+msgstr ""
+
+#: settings.example.py:183
+msgid "Spanish"
+msgstr ""
+
+#: settings.example.py:184
+msgid "Argentinian Spanish"
+msgstr ""
+
+#: settings.example.py:185
+msgid "Colombian Spanish"
+msgstr ""
+
+#: settings.example.py:186
+msgid "Mexican Spanish"
+msgstr ""
+
+#: settings.example.py:187
+msgid "Nicaraguan Spanish"
+msgstr ""
+
+#: settings.example.py:188
+msgid "Venezuelan Spanish"
+msgstr ""
+
+#: settings.example.py:189
+msgid "Estonian"
+msgstr ""
+
+#: settings.example.py:190
+msgid "Basque"
+msgstr ""
+
+#: settings.example.py:191
+msgid "Persian"
+msgstr ""
+
+#: settings.example.py:192
+msgid "Finnish"
+msgstr ""
+
+#: settings.example.py:193
+msgid "French"
+msgstr ""
+
+#: settings.example.py:194
+msgid "Frisian"
+msgstr ""
+
+#: settings.example.py:195
+msgid "Irish"
+msgstr ""
+
+#: settings.example.py:196
+msgid "Scottish Gaelic"
+msgstr ""
+
+#: settings.example.py:197
+msgid "Galician"
+msgstr ""
+
+#: settings.example.py:198
+msgid "Hebrew"
+msgstr ""
+
+#: settings.example.py:199
+msgid "Hindi"
+msgstr ""
+
+#: settings.example.py:200
+msgid "Croatian"
+msgstr ""
+
+#: settings.example.py:201
+msgid "Upper Sorbian"
+msgstr ""
+
+#: settings.example.py:202
+msgid "Hungarian"
+msgstr ""
+
+#: settings.example.py:203
+msgid "Armenian"
+msgstr ""
+
+#: settings.example.py:204
+msgid "Interlingua"
+msgstr ""
+
+#: settings.example.py:205
+msgid "Indonesian"
+msgstr ""
+
+#: settings.example.py:206
+msgid "Igbo"
+msgstr ""
+
+#: settings.example.py:207
+msgid "Ido"
+msgstr ""
+
+#: settings.example.py:208
+msgid "Icelandic"
+msgstr ""
+
+#: settings.example.py:209
+msgid "Italian"
+msgstr ""
+
+#: settings.example.py:210
+msgid "Japanese"
+msgstr ""
+
+#: settings.example.py:211
+msgid "Georgian"
+msgstr ""
+
+#: settings.example.py:212
+msgid "Kabyle"
+msgstr ""
+
+#: settings.example.py:213
+msgid "Kazakh"
+msgstr ""
+
+#: settings.example.py:214
+msgid "Khmer"
+msgstr ""
+
+#: settings.example.py:215
+msgid "Kannada"
+msgstr ""
+
+#: settings.example.py:216
+msgid "Korean"
+msgstr ""
+
+#: settings.example.py:217
+msgid "Kyrgyz"
+msgstr ""
+
+#: settings.example.py:218
+msgid "Luxembourgish"
+msgstr ""
+
+#: settings.example.py:219
+msgid "Lithuanian"
+msgstr ""
+
+#: settings.example.py:220
+msgid "Latvian"
+msgstr ""
+
+#: settings.example.py:221
+msgid "Macedonian"
+msgstr ""
+
+#: settings.example.py:222
+msgid "Malayalam"
+msgstr ""
+
+#: settings.example.py:223
+msgid "Mongolian"
+msgstr ""
+
+#: settings.example.py:224
+msgid "Marathi"
+msgstr ""
+
+#: settings.example.py:225
+msgid "Burmese"
+msgstr ""
+
+#: settings.example.py:226
+msgid "Norwegian Bokmål"
+msgstr ""
+
+#: settings.example.py:227
+msgid "Nepali"
+msgstr ""
+
+#: settings.example.py:228
+msgid "Dutch"
+msgstr ""
+
+#: settings.example.py:229
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: settings.example.py:230
+msgid "Ossetic"
+msgstr ""
+
+#: settings.example.py:231
+msgid "Punjabi"
+msgstr ""
+
+#: settings.example.py:232
+msgid "Polish"
+msgstr ""
+
+#: settings.example.py:233
+msgid "Portuguese"
+msgstr ""
+
+#: settings.example.py:234
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: settings.example.py:235
+msgid "Romanian"
+msgstr ""
+
+#: settings.example.py:236
+msgid "Russian"
+msgstr ""
+
+#: settings.example.py:237
+msgid "Slovak"
+msgstr ""
+
+#: settings.example.py:238
+msgid "Slovenian"
+msgstr ""
+
+#: settings.example.py:239
+msgid "Albanian"
+msgstr ""
+
+#: settings.example.py:240
+msgid "Serbian"
+msgstr ""
+
+#: settings.example.py:241
+msgid "Serbian Latin"
+msgstr ""
+
+#: settings.example.py:242
+msgid "Swedish"
+msgstr ""
+
+#: settings.example.py:243
+msgid "Swahili"
+msgstr ""
+
+#: settings.example.py:244
+msgid "Tamil"
+msgstr ""
+
+#: settings.example.py:245
+msgid "Telugu"
+msgstr ""
+
+#: settings.example.py:246
+msgid "Tajik"
+msgstr ""
+
+#: settings.example.py:247
+msgid "Thai"
+msgstr ""
+
+#: settings.example.py:248
+msgid "Turkmen"
+msgstr ""
+
+#: settings.example.py:249
+msgid "Turkish"
+msgstr ""
+
+#: settings.example.py:250
+msgid "Tatar"
+msgstr ""
+
+#: settings.example.py:251
+msgid "Udmurt"
+msgstr ""
+
+#: settings.example.py:252
+msgid "Ukrainian"
+msgstr ""
+
+#: settings.example.py:253
+msgid "Urdu"
+msgstr ""
+
+#: settings.example.py:254
+msgid "Uzbek"
+msgstr ""
+
+#: settings.example.py:255
+msgid "Vietnamese"
+msgstr ""
+
+#: settings.example.py:256
+msgid "Simplified Chinese"
+msgstr ""
+
+#: settings.example.py:257
+msgid "Traditional Chinese"
+msgstr ""
+
+#: units/__init__.py:8 units/tests.py:165 units/tests.py:437 units/tests.py:445
+msgid "length"
+msgstr ""
+
+#: units/__init__.py:9
+msgid "time"
+msgstr ""
+
+#: units/__init__.py:10
+msgid "current"
+msgstr ""
+
+#: units/__init__.py:11
+msgid "luminosity"
+msgstr ""
+
+#: units/__init__.py:13
+msgid "mass"
+msgstr ""
+
+#: units/__init__.py:14
+msgid "substance"
+msgstr ""
+
+#: units/__init__.py:15
+msgid "temperature"
+msgstr ""
+
+#: units/__init__.py:16
+msgid "constant"
+msgstr ""
+
+#: units/__init__.py:17
+msgid "area"
+msgstr ""
+
+#: units/__init__.py:18
+msgid "volume"
+msgstr ""
+
+#: units/__init__.py:19
+msgid "frequency"
+msgstr ""
+
+#: units/__init__.py:21
+msgid "wavenumber"
+msgstr ""
+
+#: units/__init__.py:22
+msgid "velocity"
+msgstr ""
+
+#: units/__init__.py:24
+msgid "acceleration"
+msgstr ""
+
+#: units/__init__.py:26
+msgid "force"
+msgstr ""
+
+#: units/__init__.py:28
+msgid "energy"
+msgstr ""
+
+#: units/__init__.py:30
+msgid "power"
+msgstr ""
+
+#: units/__init__.py:32
+msgid "density"
+msgstr ""
+
+#: units/__init__.py:34
+msgid "pressure"
+msgstr ""
+
+#: units/__init__.py:36
+msgid "torque"
+msgstr ""
+
+#: units/__init__.py:38
+msgid "viscosity"
+msgstr ""
+
+#: units/__init__.py:40
+msgid "kinematic viscosity"
+msgstr ""
+
+#: units/__init__.py:43
+msgid "fluidity"
+msgstr ""
+
+#: units/__init__.py:45
+msgid "concentration"
+msgstr ""
+
+#: units/__init__.py:47
+msgid "activity"
+msgstr ""
+
+#: units/__init__.py:49
+msgid "entropy"
+msgstr ""
+
+#: units/__init__.py:52
+msgid "molar entropy"
+msgstr ""
+
+#: units/__init__.py:56
+msgid "heat transmission"
+msgstr ""
+
+#: units/__init__.py:60
+msgid "luminance"
+msgstr ""
+
+#: units/__init__.py:64
+msgid "luminous flux"
+msgstr ""
+
+#: units/__init__.py:67
+msgid "illuminance"
+msgstr ""
+
+#: units/__init__.py:71
+msgid "intensity"
+msgstr ""
+
+#: units/__init__.py:73
+msgid "charge"
+msgstr ""
+
+#: units/__init__.py:74
+msgid "electric potential"
+msgstr ""
+
+#: units/__init__.py:78
+msgid "electric field"
+msgstr ""
+
+#: units/__init__.py:82
+msgid "resistance"
+msgstr ""
+
+#: units/__init__.py:86
+msgid "conductance"
+msgstr ""
+
+#: units/__init__.py:90
+msgid "capacitance"
+msgstr ""
+
+#: units/__init__.py:94
+msgid "inductance"
+msgstr ""
+
+#: units/__init__.py:98
+msgid "magnetic flux"
+msgstr ""
+
+#: units/__init__.py:102
+msgid "magnetic field"
+msgstr ""
+
+#: units/__init__.py:106
+msgid "magnetomotive force"
+msgstr ""
+
+#: units/__init__.py:109
+msgid "electric dipole"
+msgstr ""
+
+#: units/__init__.py:113
+msgid "electric quadrupole"
+msgstr ""
+
+#: units/__init__.py:117
+msgid "magnetic dipole"
+msgstr ""
+
+#: units/__init__.py:120
+msgid "printing unit"
+msgstr ""
+
+#: units/__init__.py:123
+msgid "gaussian charge"
+msgstr ""
+
+#: units/__init__.py:127
+msgid "gaussian current"
+msgstr ""
+
+#: units/__init__.py:131
+msgid "gaussian electric potential"
+msgstr ""
+
+#: units/__init__.py:135
+msgid "gaussian electric field"
+msgstr ""
+
+#: units/__init__.py:140
+msgid "gaussian electric displacement field"
+msgstr ""
+
+#: units/__init__.py:144
+msgid "gaussian electric flux"
+msgstr ""
+
+#: units/__init__.py:148
+msgid "gaussian magnetic field"
+msgstr ""
+
+#: units/__init__.py:152
+msgid "gaussian magnetic field strength"
+msgstr ""
+
+#: units/__init__.py:156
+msgid "gaussian magnetic flux"
+msgstr ""
+
+#: units/__init__.py:160
+msgid "gaussian resistance"
+msgstr ""
+
+#: units/__init__.py:164
+msgid "gaussian resistivity"
+msgstr ""
+
+#: units/__init__.py:167
+msgid "gaussian capacitance"
+msgstr ""
+
+#: units/__init__.py:170
+msgid "gaussian inductance"
+msgstr ""
+
+#: units/__init__.py:174
+msgid "gaussian conductance"
+msgstr ""
+
+#: units/__init__.py:178
+msgid "esu charge"
+msgstr ""
+
+#: units/__init__.py:182
+msgid "esu current"
+msgstr ""
+
+#: units/__init__.py:186
+msgid "esu electric potential"
+msgstr ""
+
+#: units/__init__.py:190
+msgid "esu magnetic flux"
+msgstr ""
+
+#: units/__init__.py:194
+msgid "esu magnetic field"
+msgstr ""
+
+#: units/__init__.py:198
+msgid "Compound dimension"
+msgstr ""
+
+#: units/__init__.py:202
+msgid "Custom dimension"
+msgstr ""
+
+#: units/__init__.py:317 units/__init__.py:1938
+msgid "meter per second"
+msgstr ""
+
+#: units/__init__.py:322 units/__init__.py:1942
+msgid "meter per square second"
+msgstr ""
+
+#: units/__init__.py:327 units/__init__.py:1946 units/__init__.py:1950
+msgid "square meter"
+msgstr ""
+
+#: units/__init__.py:332
+msgid "cubic meter"
+msgstr ""
+
+#: units/__init__.py:342
+msgid "Copper Kα"
+msgstr ""
+
+#: units/__init__.py:346
+msgid "Molybdenum K-α"
+msgstr ""
+
+#: units/__init__.py:350
+msgid "Tungsten K-α"
+msgstr ""
+
+#: units/__init__.py:351
+msgid "W Kα"
+msgstr ""
+
+#: units/__init__.py:354
+msgid "RKM"
+msgstr ""
+
+#: units/__init__.py:359 units/__init__.py:954
+msgid "long ton-force"
+msgstr ""
+
+#: units/__init__.py:369 units/__init__.py:1234
+msgid "long ton"
+msgstr ""
+
+#: units/__init__.py:374
+msgid "short ton force"
+msgstr ""
+
+#: units/__init__.py:379
+msgid "short hundredweight"
+msgstr ""
+
+#: units/__init__.py:384
+msgid "short ton"
+msgstr ""
+
+#: units/__init__.py:389
+msgid "US International Ampere"
+msgstr ""
+
+#: units/__init__.py:394
+msgid "US international Ohm"
+msgstr ""
+
+#: units/__init__.py:399
+msgid "US international Volt"
+msgstr ""
+
+#: units/__init__.py:404
+msgid "US therm"
+msgstr ""
+
+#: units/__init__.py:408
+msgid "abampere"
+msgstr ""
+
+#: units/__init__.py:412
+msgid "abcoulomb"
+msgstr ""
+
+#: units/__init__.py:416
+msgid "Aberdeen"
+msgstr ""
+
+#: units/__init__.py:420
+msgid "abfarad"
+msgstr ""
+
+#: units/__init__.py:424
+msgid "abhenry"
+msgstr ""
+
+#: units/__init__.py:428
+msgid "abohm"
+msgstr ""
+
+#: units/__init__.py:432
+msgid "absiemens"
+msgstr ""
+
+#: units/__init__.py:436
+msgid "abvolt"
+msgstr ""
+
+#: units/__init__.py:440
+msgid "acre"
+msgstr ""
+
+#: units/__init__.py:444
+msgid "acre-foot"
+msgstr ""
+
+#: units/__init__.py:448
+msgid "ampere"
+msgstr ""
+
+#: units/__init__.py:452
+msgid "milliampere"
+msgstr ""
+
+#: units/__init__.py:456
+msgid "ampere-turn"
+msgstr ""
+
+#: units/__init__.py:460
+msgid "angstrom"
+msgstr ""
+
+#: units/__init__.py:464
+msgid "angstrom star"
+msgstr ""
+
+#: units/__init__.py:468
+msgid "apothecary dram"
+msgstr ""
+
+#: units/__init__.py:472
+msgid "apothecary ounce"
+msgstr ""
+
+#: units/__init__.py:476
+msgid "apothecary pound"
+msgstr ""
+
+#: units/__init__.py:480
+msgid "minute of arc"
+msgstr ""
+
+#: units/__init__.py:484
+msgid "second of arc"
+msgstr ""
+
+#: units/__init__.py:488
+msgid "are"
+msgstr ""
+
+#: units/__init__.py:492
+msgid "astronomical unit"
+msgstr ""
+
+#: units/__init__.py:496
+msgid "atmosphere liter"
+msgstr ""
+
+#: units/__init__.py:500
+msgid "atomic mass constant"
+msgstr ""
+
+#: units/__init__.py:504
+msgid "atomic unit of current"
+msgstr ""
+
+#: units/__init__.py:508
+msgid "atomic unit of electric field"
+msgstr ""
+
+#: units/__init__.py:512
+msgid "atomic unit of force"
+msgstr ""
+
+#: units/__init__.py:516
+msgid "atomic unit of intensity"
+msgstr ""
+
+#: units/__init__.py:520
+msgid "atomic unit of temperature"
+msgstr ""
+
+#: units/__init__.py:524
+msgid "atomic unit of time"
+msgstr ""
+
+#: units/__init__.py:528
+msgid "Avogadro constant"
+msgstr ""
+
+#: units/__init__.py:532
+msgid "Avogadro number"
+msgstr ""
+
+#: units/__init__.py:536
+msgid "bag"
+msgstr ""
+
+#: units/__init__.py:540
+msgid "bar"
+msgstr ""
+
+#: units/__init__.py:544
+msgid "barn"
+msgstr ""
+
+#: units/__init__.py:548
+msgid "barrel"
+msgstr ""
+
+#: units/__init__.py:552
+msgid "barrye"
+msgstr ""
+
+#: units/__init__.py:556
+msgid "baud"
+msgstr ""
+
+#: units/__init__.py:560
+msgid "becquerel"
+msgstr ""
+
+#: units/__init__.py:564
+msgid "beer barrel"
+msgstr ""
+
+#: units/__init__.py:568
+msgid "bel"
+msgstr ""
+
+#: units/__init__.py:572
+msgid "biot"
+msgstr ""
+
+#: units/__init__.py:576
+msgid "biot turn"
+msgstr ""
+
+#: units/__init__.py:580
+msgid "bit"
+msgstr ""
+
+#: units/__init__.py:584
+msgid "bits per pixel"
+msgstr ""
+
+#: units/__init__.py:588
+msgid "board foot"
+msgstr ""
+
+#: units/__init__.py:592
+msgid "bohr"
+msgstr ""
+
+#: units/__init__.py:596
+msgid "bohr magneton"
+msgstr ""
+
+#: units/__init__.py:600
+msgid "boiler horsepower"
+msgstr ""
+
+#: units/__init__.py:604
+msgid "boltzmann constant"
+msgstr ""
+
+#: units/__init__.py:608
+msgid "british thermal unit"
+msgstr ""
+
+#: units/__init__.py:612
+msgid "buckingham"
+msgstr ""
+
+#: units/__init__.py:616
+msgid "bushel"
+msgstr ""
+
+#: units/__init__.py:620
+msgid "byte"
+msgstr ""
+
+#: units/__init__.py:624
+msgid "cable length"
+msgstr ""
+
+#: units/__init__.py:628
+msgid "calorie"
+msgstr ""
+
+#: units/__init__.py:632
+msgid "candela"
+msgstr ""
+
+#: units/__init__.py:636
+msgid "carat"
+msgstr ""
+
+#: units/__init__.py:640
+msgid "centimeter H20"
+msgstr ""
+
+#: units/__init__.py:644
+msgid "centimeter Hg"
+msgstr ""
+
+#: units/__init__.py:648
+msgid "century"
+msgstr ""
+
+#: units/__init__.py:652
+msgid "chain"
+msgstr ""
+
+#: units/__init__.py:656
+msgid "cicero"
+msgstr ""
+
+#: units/__init__.py:660
+msgid "circular mil"
+msgstr ""
+
+#: units/__init__.py:664
+msgid "classical electron radius"
+msgstr ""
+
+#: units/__init__.py:668
+msgid "clausius"
+msgstr ""
+
+#: units/__init__.py:672
+msgid "common year"
+msgstr ""
+
+#: units/__init__.py:676
+msgid "conductance quantum"
+msgstr ""
+
+#: units/__init__.py:680
+msgid "conventional ampere"
+msgstr ""
+
+#: units/__init__.py:684
+msgid "conventional coulomb"
+msgstr ""
+
+#: units/__init__.py:688
+msgid "conventional farad"
+msgstr ""
+
+#: units/__init__.py:692
+msgid "conventional henry"
+msgstr ""
+
+#: units/__init__.py:696
+msgid "conventional josephson constant"
+msgstr ""
+
+#: units/__init__.py:700
+msgid "conventional ohm"
+msgstr ""
+
+#: units/__init__.py:704
+msgid "conventional volt"
+msgstr ""
+
+#: units/__init__.py:708
+msgid "conventional Von Klitzing constant"
+msgstr ""
+
+#: units/__init__.py:712
+msgid "conventional Watt"
+msgstr ""
+
+#: units/__init__.py:716
+msgid "coulomb"
+msgstr ""
+
+#: units/__init__.py:720
+msgid "coulomb constant"
+msgstr ""
+
+#: units/__init__.py:724
+msgid "count"
+msgstr ""
+
+#: units/__init__.py:728
+msgid "counts per second"
+msgstr ""
+
+#: units/__init__.py:732
+msgid "CSS pixel"
+msgstr ""
+
+#: units/__init__.py:736
+msgid "cubic centimeter"
+msgstr ""
+
+#: units/__init__.py:740
+msgid "cubic milliimeter"
+msgstr ""
+
+#: units/__init__.py:744
+msgid "cubic foot"
+msgstr ""
+
+#: units/__init__.py:748
+msgid "cubic inch"
+msgstr ""
+
+#: units/__init__.py:752
+msgid "cubic yard"
+msgstr ""
+
+#: units/__init__.py:756
+msgid "cup"
+msgstr ""
+
+#: units/__init__.py:760
+msgid "curie"
+msgstr ""
+
+#: units/__init__.py:764
+msgid "dalton"
+msgstr ""
+
+#: units/__init__.py:768
+msgid "darcy"
+msgstr ""
+
+#: units/__init__.py:772
+msgid "day"
+msgstr ""
+
+#: units/__init__.py:773
+msgctxt "unit"
+msgid "day"
+msgstr ""
+
+#: units/__init__.py:776
+msgid "debye"
+msgstr ""
+
+#: units/__init__.py:780
+msgid "decade"
+msgstr ""
+
+#: units/__init__.py:781
+msgctxt "symbol"
+msgid "decade"
+msgstr ""
+
+#: units/__init__.py:784
+msgid "decibel"
+msgstr ""
+
+#: units/__init__.py:788
+msgid "degree"
+msgstr ""
+
+#: units/__init__.py:792
+msgid "degree Celsius"
+msgstr ""
+
+#: units/__init__.py:796
+msgid "degree Fahrenheit"
+msgstr ""
+
+#: units/__init__.py:800
+msgid "degree Rankine"
+msgstr ""
+
+#: units/__init__.py:804
+msgid "degree Reaumur"
+msgstr ""
+
+#: units/__init__.py:808
+msgid "denier"
+msgstr ""
+
+#: units/__init__.py:812
+msgid "didot"
+msgstr ""
+
+#: units/__init__.py:816
+msgid "Dirac constant"
+msgstr ""
+
+#: units/__init__.py:820
+msgid "dram"
+msgstr ""
+
+#: units/__init__.py:824
+msgid "dry barrel"
+msgstr ""
+
+#: units/__init__.py:828
+msgid "dry gallon"
+msgstr ""
+
+#: units/__init__.py:832
+msgid "dry pint"
+msgstr ""
+
+#: units/__init__.py:836
+msgid "dry quart"
+msgstr ""
+
+#: units/__init__.py:840
+msgid "decitex"
+msgstr ""
+
+#: units/__init__.py:844
+msgid "dyne"
+msgstr ""
+
+#: units/__init__.py:848
+msgid "eletcrical horsepower"
+msgstr ""
+
+#: units/__init__.py:852
+msgid "electron G-factor"
+msgstr ""
+
+#: units/__init__.py:856
+msgid "electron mass"
+msgstr ""
+
+#: units/__init__.py:860
+msgid "electronvolt"
+msgstr ""
+
+#: units/__init__.py:864
+msgid "elementary charge"
+msgstr ""
+
+#: units/__init__.py:868
+msgid "entropy unit"
+msgstr ""
+
+#: units/__init__.py:872
+msgid "enzyme unit"
+msgstr ""
+
+#: units/__init__.py:876
+msgid "eon"
+msgstr ""
+
+#: units/__init__.py:880
+msgid "erg"
+msgstr ""
+
+#: units/__init__.py:884
+msgid "farad"
+msgstr ""
+
+#: units/__init__.py:888
+msgid "faraday"
+msgstr ""
+
+#: units/__init__.py:892
+msgid "faraday constant"
+msgstr ""
+
+#: units/__init__.py:896
+msgid "fathom"
+msgstr ""
+
+#: units/__init__.py:900
+msgid "fermi"
+msgstr ""
+
+#: units/__init__.py:904
+msgid "fifteen degree calorie"
+msgstr ""
+
+#: units/__init__.py:908
+msgid "fifth"
+msgstr ""
+
+#: units/__init__.py:912
+msgid "fine structure constant"
+msgstr ""
+
+#: units/__init__.py:916
+msgid "first radiation constant"
+msgstr ""
+
+#: units/__init__.py:920
+msgid "fluid dram"
+msgstr ""
+
+#: units/__init__.py:924
+msgid "fluid ounce"
+msgstr ""
+
+#: units/__init__.py:928
+msgid "foot"
+msgstr ""
+
+#: units/__init__.py:932
+msgid "foot H2O"
+msgstr ""
+
+#: units/__init__.py:936
+msgid "foot per second"
+msgstr ""
+
+#: units/__init__.py:940
+msgid "foot pound"
+msgstr ""
+
+#: units/__init__.py:944
+msgid "gram-force"
+msgstr ""
+
+#: units/__init__.py:949
+msgid "kilogram-force"
+msgstr ""
+
+#: units/__init__.py:958 units/__init__.py:970
+msgid "tonne-force"
+msgstr ""
+
+#: units/__init__.py:962
+msgid "ounce-force"
+msgstr ""
+
+#: units/__init__.py:966
+msgid "pound-force"
+msgstr ""
+
+#: units/__init__.py:974
+msgid "fortnight"
+msgstr ""
+
+#: units/__init__.py:978
+msgid "franklin"
+msgstr ""
+
+#: units/__init__.py:982
+msgid "furlong"
+msgstr ""
+
+#: units/__init__.py:986
+msgid "galileo"
+msgstr ""
+
+#: units/__init__.py:990
+msgid "gallon"
+msgstr ""
+
+#: units/__init__.py:994 units/__init__.py:998
+msgid "gamma"
+msgstr ""
+
+#: units/__init__.py:1002
+msgid "gauss"
+msgstr ""
+
+#: units/__init__.py:1006
+msgid "gilbert"
+msgstr ""
+
+#: units/__init__.py:1010
+msgid "gill"
+msgstr ""
+
+#: units/__init__.py:1014
+msgid "grade"
+msgstr ""
+
+#: units/__init__.py:1018
+msgid "grain"
+msgstr ""
+
+#: units/__init__.py:1022
+msgid "gram"
+msgstr ""
+
+#: units/__init__.py:1026
+msgid "gray"
+msgstr ""
+
+#: units/__init__.py:1030
+msgid "gregorian year"
+msgstr ""
+
+#: units/__init__.py:1031
+msgctxt "unit"
+msgid "gregorian year"
+msgstr ""
+
+#: units/__init__.py:1034
+msgid "hand"
+msgstr ""
+
+#: units/__init__.py:1038
+msgid "hartree"
+msgstr ""
+
+#: units/__init__.py:1042
+msgid "hectare"
+msgstr ""
+
+#: units/__init__.py:1046
+msgid "henry"
+msgstr ""
+
+#: units/__init__.py:1050
+msgid "hertz"
+msgstr ""
+
+#: units/__init__.py:1054
+msgid "hogshead"
+msgstr ""
+
+#: units/__init__.py:1058
+msgid "horsepower"
+msgstr ""
+
+#: units/__init__.py:1062
+msgid "hour"
+msgstr ""
+
+#: units/__init__.py:1066
+msgid "hundredweight"
+msgstr ""
+
+#: units/__init__.py:1070
+msgid "impedance of free space"
+msgstr ""
+
+#: units/__init__.py:1074
+msgid "imperial barrel"
+msgstr ""
+
+#: units/__init__.py:1078
+msgid "imperial bushel"
+msgstr ""
+
+#: units/__init__.py:1082
+msgid "imperial cup"
+msgstr ""
+
+#: units/__init__.py:1086
+msgid "imperial fluid drachm"
+msgstr ""
+
+#: units/__init__.py:1090
+msgid "imperial fluid ounce"
+msgstr ""
+
+#: units/__init__.py:1094
+msgid "imperial fluid scruple"
+msgstr ""
+
+#: units/__init__.py:1098
+msgid "imperial gallon"
+msgstr ""
+
+#: units/__init__.py:1102
+msgid "imperial gill"
+msgstr ""
+
+#: units/__init__.py:1106
+msgid "imperial minim"
+msgstr ""
+
+#: units/__init__.py:1110
+msgid "imperial peck"
+msgstr ""
+
+#: units/__init__.py:1114
+msgid "imperial pint"
+msgstr ""
+
+#: units/__init__.py:1118
+msgid "imperial quart"
+msgstr ""
+
+#: units/__init__.py:1122
+msgid "inch"
+msgstr ""
+
+#: units/__init__.py:1126
+msgid "inch H20 39F"
+msgstr ""
+
+#: units/__init__.py:1130
+msgid "inch H20 60F"
+msgstr ""
+
+#: units/__init__.py:1134
+msgid "inch Hg"
+msgstr ""
+
+#: units/__init__.py:1138
+msgid "inch Hg 60F"
+msgstr ""
+
+#: units/__init__.py:1142
+msgid "international Btu"
+msgstr ""
+
+#: units/__init__.py:1146
+msgid "international calorie"
+msgstr ""
+
+#: units/__init__.py:1150
+msgid "Josephson constant"
+msgstr ""
+
+#: units/__init__.py:1154
+msgid "Joule"
+msgstr ""
+
+#: units/__init__.py:1158
+msgid "jute"
+msgstr ""
+
+#: units/__init__.py:1162
+msgid "katal"
+msgstr ""
+
+#: units/__init__.py:1166
+msgid "kelvin"
+msgstr ""
+
+#: units/__init__.py:1170
+msgid "kilometer per hour"
+msgstr ""
+
+#: units/__init__.py:1174
+msgid "kilometer per second"
+msgstr ""
+
+#: units/__init__.py:1178
+msgid "kip"
+msgstr ""
+
+#: units/__init__.py:1182
+msgid "kip per square inch"
+msgstr ""
+
+#: units/__init__.py:1186
+msgid "knot"
+msgstr ""
+
+#: units/__init__.py:1190
+msgid "lambda"
+msgstr ""
+
+#: units/__init__.py:1194
+msgid "lambert"
+msgstr ""
+
+#: units/__init__.py:1198
+msgid "langley"
+msgstr ""
+
+#: units/__init__.py:1202
+msgid "lattice constant"
+msgstr ""
+
+#: units/__init__.py:1206
+msgid "league"
+msgstr ""
+
+#: units/__init__.py:1210
+msgid "leap year"
+msgstr ""
+
+#: units/__init__.py:1211 units/__init__.py:1910 units/__init__.py:1911
+msgid "year"
+msgstr ""
+
+#: units/__init__.py:1214
+msgid "light year"
+msgstr ""
+
+#: units/__init__.py:1215
+msgid "ly"
+msgstr ""
+
+#: units/__init__.py:1218
+msgid "link"
+msgstr ""
+
+#: units/__init__.py:1219
+msgid "li"
+msgstr ""
+
+#: units/__init__.py:1222
+msgid "liter"
+msgstr ""
+
+#: units/__init__.py:1223
+msgid "L"
+msgstr ""
+
+#: units/__init__.py:1226
+msgid "log 10"
+msgstr ""
+
+#: units/__init__.py:1227
+msgid "ln10"
+msgstr ""
+
+#: units/__init__.py:1230
+msgid "long hundredweight"
+msgstr ""
+
+#: units/__init__.py:1238
+msgid "lumen"
+msgstr ""
+
+#: units/__init__.py:1242
+msgid "lux"
+msgstr ""
+
+#: units/__init__.py:1246
+msgid "magnetic flux quantum"
+msgstr ""
+
+#: units/__init__.py:1250
+msgid "maxwell"
+msgstr ""
+
+#: units/__init__.py:1254
+msgid "mean international ampere"
+msgstr ""
+
+#: units/__init__.py:1258
+msgid "mean international Ohm"
+msgstr ""
+
+#: units/__init__.py:1262
+msgid "mean international Volt"
+msgstr ""
+
+#: units/__init__.py:1266
+msgid "density of mercury"
+msgstr ""
+
+#: units/__init__.py:1270
+msgid "density of mercury 60F"
+msgstr ""
+
+#: units/__init__.py:1274
+msgid "meter"
+msgstr ""
+
+#: units/__init__.py:1278
+msgid "metric horsepower"
+msgstr ""
+
+#: units/__init__.py:1282
+msgid "metric ton"
+msgstr ""
+
+#: units/__init__.py:1286
+msgid "micron"
+msgstr ""
+
+#: units/__init__.py:1290
+msgid "mil"
+msgstr ""
+
+#: units/__init__.py:1294
+msgid "mile"
+msgstr ""
+
+#: units/__init__.py:1298
+msgid "mile per hour"
+msgstr ""
+
+#: units/__init__.py:1302 units/__init__.py:1303
+msgid "millenium"
+msgstr ""
+
+#: units/__init__.py:1306
+msgid "milliarcsecond"
+msgstr ""
+
+#: units/__init__.py:1310
+msgid "Hg millimeter"
+msgstr ""
+
+#: units/__init__.py:1314
+msgid "minim"
+msgstr ""
+
+#: units/__init__.py:1318
+msgid "minute"
+msgstr ""
+
+#: units/__init__.py:1322
+msgid "molar"
+msgstr ""
+
+#: units/__init__.py:1326
+msgid "molar gas constant"
+msgstr ""
+
+#: units/__init__.py:1330
+msgid "mole"
+msgstr ""
+
+#: units/__init__.py:1334
+msgid "month"
+msgstr ""
+
+#: units/__init__.py:1338
+msgid "nautical mile"
+msgstr ""
+
+#: units/__init__.py:1339
+msgid "nm"
+msgstr ""
+
+#: units/__init__.py:1342
+msgid "neper"
+msgstr ""
+
+#: units/__init__.py:1343
+msgid "Np"
+msgstr ""
+
+#: units/__init__.py:1346
+msgid "neutron mass"
+msgstr ""
+
+#: units/__init__.py:1350
+msgid "newton"
+msgstr ""
+
+#: units/__init__.py:1354
+msgid "newtonian constant of gravitation"
+msgstr ""
+
+#: units/__init__.py:1358
+msgid "nit"
+msgstr ""
+
+#: units/__init__.py:1362
+msgid "nuclear magneton"
+msgstr ""
+
+#: units/__init__.py:1366
+msgid "number english"
+msgstr ""
+
+#: units/__init__.py:1370
+msgid "number meter"
+msgstr ""
+
+#: units/__init__.py:1374
+msgid "oersted"
+msgstr ""
+
+#: units/__init__.py:1378
+msgid "ohm"
+msgstr ""
+
+#: units/__init__.py:1382
+msgid "oil barrel"
+msgstr ""
+
+#: units/__init__.py:1386
+msgid "ounce"
+msgstr ""
+
+#: units/__init__.py:1390
+msgid "parsec"
+msgstr ""
+
+#: units/__init__.py:1394
+msgid "particle"
+msgstr ""
+
+#: units/__init__.py:1398
+msgid "pascal"
+msgstr ""
+
+#: units/__init__.py:1402
+msgid "peak sun hour"
+msgstr ""
+
+#: units/__init__.py:1406
+msgid "peck"
+msgstr ""
+
+#: units/__init__.py:1410
+msgid "pennyweight"
+msgstr ""
+
+#: units/__init__.py:1418
+msgid "pica"
+msgstr ""
+
+#: units/__init__.py:1422
+msgid "pint"
+msgstr ""
+
+#: units/__init__.py:1426
+msgid "pixel"
+msgstr ""
+
+#: units/__init__.py:1430
+msgid "pixel per centimeter"
+msgstr ""
+
+#: units/__init__.py:1434
+msgid "pixel per inch"
+msgstr ""
+
+#: units/__init__.py:1438
+msgid "Planck constant"
+msgstr ""
+
+#: units/__init__.py:1442 units/__init__.py:1446
+msgid "Planck current"
+msgstr ""
+
+#: units/__init__.py:1443
+msgid "qP"
+msgstr ""
+
+#: units/__init__.py:1447
+msgid "lP"
+msgstr ""
+
+#: units/__init__.py:1450
+msgid "Planck mass"
+msgstr ""
+
+#: units/__init__.py:1451
+msgid "mP"
+msgstr ""
+
+#: units/__init__.py:1454
+msgid "Planck temperature"
+msgstr ""
+
+#: units/__init__.py:1455
+msgid "TP"
+msgstr ""
+
+#: units/__init__.py:1458
+msgid "Planck time"
+msgstr ""
+
+#: units/__init__.py:1459
+msgid "tP"
+msgstr ""
+
+#: units/__init__.py:1462
+msgid "point"
+msgstr ""
+
+#: units/__init__.py:1466
+msgid "poise"
+msgstr ""
+
+#: units/__init__.py:1470
+msgid "pound"
+msgstr ""
+
+#: units/__init__.py:1474
+msgid "pound force per square inch"
+msgstr ""
+
+#: units/__init__.py:1478
+msgid "poundal"
+msgstr ""
+
+#: units/__init__.py:1482
+msgid "proton mass"
+msgstr ""
+
+#: units/__init__.py:1486
+msgid "quadrillion Btu"
+msgstr ""
+
+#: units/__init__.py:1490
+msgid "quart"
+msgstr ""
+
+#: units/__init__.py:1494
+msgid "quarter"
+msgstr ""
+
+#: units/__init__.py:1498
+msgid "radian"
+msgstr ""
+
+#: units/__init__.py:1502
+msgid "rads"
+msgstr ""
+
+#: units/__init__.py:1506
+msgid "reciprocal centimeter"
+msgstr ""
+
+#: units/__init__.py:1510
+msgid "refrigeration ton"
+msgstr ""
+
+#: units/__init__.py:1514
+msgid "roentgen equivalent man"
+msgstr ""
+
+#: units/__init__.py:1518
+msgid "revolutions per minute"
+msgstr ""
+
+#: units/__init__.py:1519
+msgid "rpm"
+msgstr ""
+
+#: units/__init__.py:1522
+msgid "revolutions per second"
+msgstr ""
+
+#: units/__init__.py:1523
+msgid "rps"
+msgstr ""
+
+#: units/__init__.py:1526 units/__init__.py:1527
+msgid "reyn"
+msgstr ""
+
+#: units/__init__.py:1530
+msgid "reciprocal poise"
+msgstr ""
+
+#: units/__init__.py:1534
+msgid "rod"
+msgstr ""
+
+#: units/__init__.py:1538
+msgid "roentgen"
+msgstr ""
+
+#: units/__init__.py:1542
+msgid "rutherford"
+msgstr ""
+
+#: units/__init__.py:1546
+msgid "rydberg"
+msgstr ""
+
+#: units/__init__.py:1550
+msgid "rydberg constant"
+msgstr ""
+
+#: units/__init__.py:1554
+msgid "scaled point"
+msgstr ""
+
+#: units/__init__.py:1558
+msgid "scruple"
+msgstr ""
+
+#: units/__init__.py:1562
+msgid "second"
+msgstr ""
+
+#: units/__init__.py:1566
+msgid "millisecond"
+msgstr ""
+
+#: units/__init__.py:1570
+msgid "microsecond"
+msgstr ""
+
+#: units/__init__.py:1574
+msgid "second radiation constant"
+msgstr ""
+
+#: units/__init__.py:1578
+msgid "shake"
+msgstr ""
+
+#: units/__init__.py:1582
+msgid "shot"
+msgstr ""
+
+#: units/__init__.py:1586
+msgid "sidereal day"
+msgstr ""
+
+#: units/__init__.py:1587
+msgctxt "unit"
+msgid "sidereal day"
+msgstr ""
+
+#: units/__init__.py:1590
+msgid "sidereal month"
+msgstr ""
+
+#: units/__init__.py:1591
+msgctxt "unit"
+msgid "sidereal month"
+msgstr ""
+
+#: units/__init__.py:1594
+msgid "sidereal year"
+msgstr ""
+
+#: units/__init__.py:1595
+msgctxt "unit"
+msgid "sidereal year"
+msgstr ""
+
+#: units/__init__.py:1598
+msgid "siemens"
+msgstr ""
+
+#: units/__init__.py:1602
+msgid "sievert"
+msgstr ""
+
+#: units/__init__.py:1606
+msgid "slinch"
+msgstr ""
+
+#: units/__init__.py:1610
+msgid "slug"
+msgstr ""
+
+#: units/__init__.py:1614
+msgid "speed of light"
+msgstr ""
+
+#: units/__init__.py:1618
+msgid "square degree"
+msgstr ""
+
+#: units/__init__.py:1622
+msgid "square foot"
+msgstr ""
+
+#: units/__init__.py:1626
+msgid "square inch"
+msgstr ""
+
+#: units/__init__.py:1630
+msgid "square league"
+msgstr ""
+
+#: units/__init__.py:1634
+msgid "square mile"
+msgstr ""
+
+#: units/__init__.py:1638
+msgid "square rod"
+msgstr ""
+
+#: units/__init__.py:1642
+msgid "square survey mile"
+msgstr ""
+
+#: units/__init__.py:1646
+msgid "square yard"
+msgstr ""
+
+#: units/__init__.py:1650
+msgid "standard atmosphere"
+msgstr ""
+
+#: units/__init__.py:1654
+msgid "standard gravity"
+msgstr ""
+
+#: units/__init__.py:1658
+msgid "standard liter per minute"
+msgstr ""
+
+#: units/__init__.py:1694
+msgid "Stefan-Boltzmann constant"
+msgstr ""
+
+#: units/__init__.py:1698
+msgid "steradian"
+msgstr ""
+
+#: units/__init__.py:1702
+msgid "stere"
+msgstr ""
+
+#: units/__init__.py:1706
+msgid "stilb"
+msgstr ""
+
+#: units/__init__.py:1710
+msgid "stokes"
+msgstr ""
+
+#: units/__init__.py:1714
+msgid "stone"
+msgstr ""
+
+#: units/__init__.py:1718
+msgid "survey foot"
+msgstr ""
+
+#: units/__init__.py:1722
+msgid "survey mile"
+msgstr ""
+
+#: units/__init__.py:1730 units/__init__.py:1731
+msgid "synodic month"
+msgstr ""
+
+#: units/__init__.py:1734 units/__init__.py:1735
+msgid "tablespoon"
+msgstr ""
+
+#: units/__init__.py:1742 units/__init__.py:1743
+msgid "teaspoon"
+msgstr ""
+
+#: units/__init__.py:1746
+msgid "technical atmosphere"
+msgstr ""
+
+#: units/__init__.py:1774
+msgid "therm"
+msgstr ""
+
+#: units/__init__.py:1778
+msgid "thermochemical Btu"
+msgstr ""
+
+#: units/__init__.py:1782
+msgid "Thomson cross section"
+msgstr ""
+
+#: units/__init__.py:1790
+msgid "ton"
+msgstr ""
+
+#: units/__init__.py:1794
+msgid "ton of TNT"
+msgstr ""
+
+#: units/__init__.py:1798
+msgid "ton of oil equivalent"
+msgstr ""
+
+#: units/__init__.py:1799
+msgid "toe"
+msgstr ""
+
+#: units/__init__.py:1806 units/__init__.py:1807
+msgid "tropical month"
+msgstr ""
+
+#: units/__init__.py:1810 units/__init__.py:1811
+msgid "tropical year"
+msgstr ""
+
+#: units/__init__.py:1814 units/__init__.py:1815
+msgid "troy ounce"
+msgstr ""
+
+#: units/__init__.py:1818 units/__init__.py:1819
+msgid "troy pound"
+msgstr ""
+
+#: units/__init__.py:1822 units/__init__.py:1823
+msgid "turn"
+msgstr ""
+
+#: units/__init__.py:1826 units/__init__.py:1827
+msgid "unified atomic mass unit"
+msgstr ""
+
+#: units/__init__.py:1830
+msgid "unit pole"
+msgstr ""
+
+#: units/__init__.py:1834
+msgid "vacuum permeability"
+msgstr ""
+
+#: units/__init__.py:1838
+msgid "vacuum permittivity"
+msgstr ""
+
+#: units/__init__.py:1850
+msgid "Von Klitzing constant"
+msgstr ""
+
+#: units/__init__.py:1854
+msgid "Water volumic mass"
+msgstr ""
+
+#: units/__init__.py:1858
+msgid "Water volumic mass at 39F"
+msgstr ""
+
+#: units/__init__.py:1862
+msgid "Water volumic mass at 60F"
+msgstr ""
+
+#: units/__init__.py:1882
+msgid "wien frequency displacement law constant"
+msgstr ""
+
+#: units/__init__.py:1886
+msgid "wien u"
+msgstr ""
+
+#: units/__init__.py:1890
+msgid "wien displacement law constant"
+msgstr ""
+
+#: units/__init__.py:1894
+msgid "wien x"
+msgstr ""
+
+#: units/__init__.py:1898
+msgid "Cu X-ray wavelength"
+msgstr ""
+
+#: units/__init__.py:1902
+msgid "Mo X-ray wavelength"
+msgstr ""
+
+#: units/__init__.py:1906
+msgid "yard"
+msgstr ""
+
+#: units/__init__.py:1914
+msgid "zeta"
+msgstr ""
+
+#: units/__init__.py:1918
+msgid "decibelmilliwatt"
+msgstr ""
+
+#: units/__init__.py:1922
+msgid "decibelmicrowatt"
+msgstr ""
+
+#: units/__init__.py:1926
+msgid "Euler‘s number"
+msgstr ""
+
+#: units/__init__.py:1930
+msgid "octave"
+msgstr ""
+
+#: units/__init__.py:1934
+msgid "sound pressure level"
+msgstr ""
+
+#: units/__init__.py:1954
+msgid "milligram"
+msgstr ""
+
+#: units/__init__.py:1958
+msgid "kilogram"
+msgstr ""
+
+#: units/__init__.py:1962
+msgid "kilometer"
+msgstr ""
+
+#: units/__init__.py:1966
+msgid "centimeter"
+msgstr ""
+
+#: units/__init__.py:1970
+msgid "millimeter"
+msgstr ""
+
+#: units/__init__.py:1974
+msgid "centimeter per second"
+msgstr ""
+
+#: units/models.py:684
+msgid "Incompatible units"
+msgstr ""
+
+#: units/models.py:705
+msgid "Undefined unit in the registry"
+msgstr ""
