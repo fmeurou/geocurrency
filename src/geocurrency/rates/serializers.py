@@ -213,7 +213,8 @@ class RateConversionPayloadSerializer(serializers.Serializer):
                                                   or (self.initial_data.get('batch_id')
                                                       and not self.initial_data.get('eob'))):
             raise serializers.ValidationError(
-                'data has to be provided if batch_id is not provided or batch_id is provided and eob is False'
+                'data has to be provided if batch_id '
+                'is not provided or batch_id is provided and eob is False'
             )
         return super(RateConversionPayloadSerializer, self).is_valid()
 
