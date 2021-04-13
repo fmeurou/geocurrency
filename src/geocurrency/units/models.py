@@ -11,10 +11,10 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
-from geocurrency.converters.models import BaseConverter, ConverterResult, \
-    ConverterResultDetail, ConverterResultError, ConverterLoadError
 from sympy import sympify, SympifyError
 
+from geocurrency.converters.models import BaseConverter, ConverterResult, \
+    ConverterResultDetail, ConverterResultError, ConverterLoadError
 from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
     ADDITIONAL_BASE_UNITS, PREFIX_SYMBOL
 from .exceptions import *
@@ -260,8 +260,11 @@ class UnitSystem:
         """
         Return the dimensionality of a dimension based on the first compatible unit
         """
-        for dim in self.ureg.get_compatible_units(dimension):
-            return self.ureg.get_base_units(dim)[1]
+        try:
+            for dim in self.ureg.get_compatible_units(dimension):
+                return self.ureg.get_base_units(dim)[1]
+        except KeyError:
+            return {}
 
     def _generate_dimension_delta_dictionnary(self) -> {}:
         """
@@ -613,7 +616,6 @@ class UnitConverter(BaseConverter):
             self.key = key
             self.system = UnitSystem(system_name=base_system, user=user, key=key)
             self.unit = Unit(unit_system=self.system, code=base_unit)
-            self.compatible_units = [str(u) for u in self.unit.unit.compatible_units()]
         except (UnitSystemNotFound, UnitNotFound):
             raise UnitConverterInitError
 
@@ -676,15 +678,6 @@ class UnitConverter(BaseConverter):
         result = ConverterResult(id=self.id, target=self.base_unit)
         q_ = self.system.ureg.Quantity
         for quantity in self.data:
-            if quantity.unit not in self.compatible_units:
-                error = ConverterResultError(
-                    unit=quantity.unit,
-                    original_value=quantity.value,
-                    date=quantity.date_obj,
-                    error=_('Incompatible units')
-                )
-                result.errors.append(error)
-                continue
             try:
                 pint_quantity = q_(quantity.value, quantity.unit)
                 out = pint_quantity.to(self.base_unit)
@@ -703,6 +696,14 @@ class UnitConverter(BaseConverter):
                     original_value=quantity.value,
                     date=quantity.date_obj,
                     error=_('Undefined unit in the registry')
+                )
+                result.errors.append(error)
+            except pint.DimensionalityError:
+                error = ConverterResultError(
+                    unit=quantity.unit,
+                    original_value=quantity.value,
+                    date=quantity.date_obj,
+                    error=_('Dimensionality error, incompatible units')
                 )
                 result.errors.append(error)
         self.end_batch(result.end_batch())
