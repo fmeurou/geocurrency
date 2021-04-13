@@ -156,7 +156,7 @@ class UnitSystem:
             return False
         for key in units[self.system_name].keys():
             try:
-                test = self.unit(key).dimensionality and True
+                self.unit(key).dimensionality and True
             except pint.errors.UndefinedUnitError:
                 return False
         return True
@@ -849,8 +849,9 @@ class Expression:
     """
     expression = None
     operands = None
+    out_units = None
 
-    def __init__(self, expression: str, operands: [Operand]):
+    def __init__(self, expression: str, operands: [Operand], out_units: str = None):
         """
         Initialize Expression
         :param expression: string expression with placeholders
@@ -858,6 +859,7 @@ class Expression:
         """
         self.expression = expression
         self.operands = operands
+        self.out_units = out_units
 
     def validate(self, unit_system: UnitSystem) -> (bool, str):
         """
@@ -876,11 +878,16 @@ class Expression:
                 return False, "invalid operand"
         kwargs = {v.name: f"({v.value}*{v.unit})" for v in self.operands}
         try:
-            q_(self.expression.format(**kwargs))
+            result = q_(self.expression.format(**kwargs))
         except KeyError:
             return False, "Missing operand"
         except pint.errors.DimensionalityError:
             return False, "Incoherent dimensions"
+        if self.out_units:
+            try:
+                result.to(self.out_units)
+            except pint.errors.DimensionalityError:
+                return False, "Incoherent output dimensions"
         return True, ''
 
     def evaluate(self, unit_system: UnitSystem) -> pint.Quantity:
@@ -891,7 +898,11 @@ class Expression:
         is_valid, error = self.validate(unit_system=unit_system)
         if is_valid:
             kwargs = {v.name: f"({v.value}*{v.unit})" for v in self.operands}
-            return q_(self.expression.format(**kwargs))
+            result = q_(self.expression.format(**kwargs))
+            if self.out_units:
+                return result.to(self.out_units)
+            else:
+                return result
         else:
             raise ComputationError(f"Invalid formula: {error}")
 
@@ -928,13 +939,15 @@ class CalculationResultDetail:
     magnitude = None
     unit = None
 
-    def __init__(self, expression: str, operands: [], magnitude: float, unit: str):
+    def __init__(self, expression: str, operands: [],
+                 magnitude: float, unit: str):
         """
         Initialize detail
         :param expression: Expression in the form of a string e.g.: 3*{a} + 2 * {b}
         :param operands: List of Operands
         :param magnitude: result of the calculation
         :param units: dimension of the result
+        :param uncertainty: uncertainty of the calculation
         """
         self.expression = expression
         self.operands = operands
@@ -1082,7 +1095,7 @@ class ExpressionCalculator(BaseConverter):
             valid, exp_error = expression.validate(unit_system=self.system)
             if not valid:
                 error = CalculationResultError(
-                    expression=expression.unit,
+                    expression=expression.expression,
                     operands=expression.operands,
                     date=date.today(),
                     error=exp_error
@@ -1093,7 +1106,7 @@ class ExpressionCalculator(BaseConverter):
                 out = expression.evaluate(unit_system=self.system)
             except ComputationError as e:
                 error = CalculationResultError(
-                    expression=expression.unit,
+                    expression=expression.expression,
                     operands=expression.operands,
                     date=date.today(),
                     error=str(e)

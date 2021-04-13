@@ -1558,6 +1558,45 @@ class ExpressionCalculatorTest(TestCase):
                 ]
             }
         ]
+        self.expression_to_unit = [
+            {
+                'expression': "3*{a}+15*{b}",
+                'operands': [
+                    {
+                        "name": "a",
+                        "value": 200,
+                        "unit": "kg"
+                    },
+                    {
+                        "name": "b",
+                        "value": 150000,
+                        "unit": "g"
+                    }
+                ],
+                'out_units': 'pound'
+            },
+            {
+                'expression': "3*{a}+15*{b}+1000*{c}",
+                'operands': [
+                    {
+                        "name": "a",
+                        "value": 0.1,
+                        "unit": "kg"
+                    },
+                    {
+                        "name": "b",
+                        "value": 75,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "c",
+                        "value": 125,
+                        "unit": "mg"
+                    },
+                ],
+                'out_units': 'milligram'
+            }
+        ]
         self.trash_expressions = [
             {
                 'expression': "3*{a}+15*{b}+",
@@ -1593,6 +1632,27 @@ class ExpressionCalculatorTest(TestCase):
                         "unit": "s"
                     },
                 ]
+            },
+            {
+                'expression': "3*{a}+15*{b}+1000*{c}",
+                'operands': [
+                    {
+                        "name": "a",
+                        "value": 0.1,
+                        "unit": "kg"
+                    },
+                    {
+                        "name": "b",
+                        "value": 75,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "c",
+                        "value": 125,
+                        "unit": "mg"
+                    },
+                ],
+                'out_units': 'L'
             }
         ]
 
@@ -1622,7 +1682,10 @@ class ExpressionCalculatorTest(TestCase):
         Test adding trash to the calculator
         """
         calculator = ExpressionCalculator(unit_system='SI')
-        self.assertEqual(len(calculator.add_data(self.trash_expressions)), 2)
+        errors = calculator.add_data(self.trash_expressions)
+        self.assertEqual(len(errors), 3)
+        self.assertEqual([list(c.keys())[0] for c in errors],
+                         ['expression', 'expression', 'out_units'])
 
     def test_add_empty_data(self):
         """
@@ -1636,11 +1699,25 @@ class ExpressionCalculatorTest(TestCase):
         """
         Test computation
         """
+        errors = self.calculator.add_data(self.expressions)
         result = self.calculator.convert()
         self.assertEqual(result.id, self.calculator.id)
         self.assertEqual(self.calculator.status, self.calculator.FINISHED)
         self.assertEqual(len(result.errors), 0)
         self.assertEqual(len(result.detail), len(self.calculator.data))
+
+    def test_computation_and_conversion(self):
+        """
+        Test computation
+        """
+        errors = self.calculator.add_data(self.expression_to_unit)
+        result = self.calculator.convert()
+        self.assertEqual(result.id, self.calculator.id)
+        self.assertEqual(self.calculator.status, self.calculator.FINISHED)
+        self.assertEqual(len(result.errors), 0)
+        self.assertEqual(len(result.detail), len(self.calculator.data))
+        self.assertEqual(result.detail[0].unit, 'pound')
+        self.assertEqual(result.detail[1].unit, 'milligram')
 
 
 class ExpressionCalculatorAPITest(TestCase):
@@ -1693,9 +1770,9 @@ class ExpressionCalculatorAPITest(TestCase):
                 ]
             }
         ]
-        self.trash_expressions = [
+        self.expression_to_unit = [
             {
-                'expression': "3*{a}+15*{b}+",
+                'expression': "3*{a}+15*{b}",
                 'operands': [
                     {
                         "name": "a",
@@ -1707,7 +1784,8 @@ class ExpressionCalculatorAPITest(TestCase):
                         "value": 15,
                         "unit": "g"
                     }
-                ]
+                ],
+                'out_units': 'ton'
             },
             {
                 'expression': "3*{a}+15*{b}+1000*{c}",
@@ -1725,9 +1803,10 @@ class ExpressionCalculatorAPITest(TestCase):
                     {
                         "name": "c",
                         "value": 250,
-                        "unit": "s"
+                        "unit": "mg"
                     },
-                ]
+                ],
+                'out_units': 'hundredweight'
             }
         ]
 
@@ -1746,6 +1825,23 @@ class ExpressionCalculatorAPITest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json().get('detail')), len(self.expressions))
         self.assertEqual(response.json().get('detail')[0]['magnitude'], 0.525)
+
+    def test_convert_to_unit_request(self):
+        """
+        Test calculate API
+        """
+        client = APIClient()
+        response = client.post(
+            '/units/SI/formulas/calculate/',
+            data={
+                'data': self.expression_to_unit,
+                'unit_system': 'SI',
+            },
+            format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.json().get('detail')), len(self.expression_to_unit))
+        self.assertEqual(response.json().get('detail')[0]['unit'], 'ton')
+        self.assertEqual(response.json().get('detail')[1]['unit'], 'hundredweight')
 
     def test_convert_batch_request(self):
         """

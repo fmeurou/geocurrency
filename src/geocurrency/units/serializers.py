@@ -8,10 +8,10 @@ from datetime import date, datetime
 
 import pint
 from drf_yasg.utils import swagger_serializer_method
-from geocurrency.core.serializers import UserSerializer
 from rest_framework import serializers
 from sympy import sympify, SympifyError
 
+from geocurrency.core.serializers import UserSerializer
 from .models import Quantity, UnitConversionPayload, Dimension, \
     CustomUnit, Expression, CalculationPayload, UnitSystem, Operand, Unit, \
     CalculationResult, CalculationResultError, CalculationResultDetail
@@ -313,6 +313,8 @@ class ExpressionSerializer(serializers.Serializer):
                                                  "A recommended expression format "
                                                  "would be '{a}+{b}*{c}'")
     operands = OperandSerializer(label="List of operands", many=True, required=True)
+    out_units = serializers.CharField(label="Define output units", required=False,
+                                      help_text="Set output units, optional (e.g.: km/hour)")
 
     class Meta:
         """
@@ -337,56 +339,96 @@ class ExpressionSerializer(serializers.Serializer):
             expression=self.initial_data.get('expression'),
             operands=operands
         )
+        out_units = self.out_units_validation(
+            unit_system=unit_system,
+            out_units=self.initial_data.get('out_units')
+        )
         if expression:
             if dimensions_only:
                 self.dimensions_validation(
                     unit_system=unit_system,
                     expression=expression,
-                    operands=operands
+                    operands=operands,
+                    out_units=out_units
                 )
             else:
                 self.units_validation(
                     unit_system=unit_system,
                     expression=expression,
-                    operands=operands
+                    operands=operands,
+                    out_units=out_units
                 )
         if self._errors and raise_exception:
             raise serializers.ValidationError(self._errors)
         return not bool(self._errors)
 
-    def units_validation(self, unit_system: UnitSystem, expression: str, operands: [Operand]):
+    def units_validation(self,
+                         unit_system: UnitSystem,
+                         expression: str,
+                         operands: [Operand],
+                         out_units: str = None) -> bool:
         """
         Validate units based on the units of the operands
+        :param unit_system: Reference unit system with custom units
+        :param expression: Mathematical expression as string
+        :param operands: list of Operand objects
+        :param out_units: optional conversion to specific units
         """
         # Validate units
         q_ = unit_system.ureg.Quantity
         units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
         try:
-            return q_(expression.format(**units_kwargs))
+            result = q_(expression.format(**units_kwargs))
         except KeyError as e:
             self._errors['operands'] = "Missing operands"
-        except pint.errors.DimensionalityError as e:
+            return False
+        except pint.errors.DimensionalityError:
             self._errors['expression'] = "Incoherent dimension"
-        return None
+            return False
+        if out_units:
+            try:
+                result.to(out_units)
+            except pint.errors.DimensionalityError:
+                self._errors['out_units'] = "Incoherent output dimension"
+                return False
+        return True
 
-    def dimensions_validation(self, unit_system: UnitSystem, expression: str, operands: [Operand]):
+    def dimensions_validation(self,
+                              unit_system: UnitSystem,
+                              expression: str,
+                              operands: [Operand],
+                              out_units: str = None) -> bool:
         """
         Validate units dimensions based on get_unit of the operands
+        :param unit_system: Reference unit system with custom units
+        :param expression: Mathematical expression as string
+        :param operands: list of Operand objects
+        :param out_units: optional conversion to specific units
         """
-        Q_ = unit_system.ureg.Quantity
+        q_ = unit_system.ureg.Quantity
         operand_objs = [Operand(name=v['name'], value=v['value'], unit=v['unit']) for v in operands]
         units_kwargs = {v.name: f"{v.value} {v.get_unit(unit_system)}" for v in operand_objs}
         try:
-            return Q_(expression.format(**units_kwargs))
-        except KeyError as e:
+            result = q_(expression.format(**units_kwargs))
+        except KeyError:
             self._errors['operands'] = "Missing operands"
-        except pint.errors.DimensionalityError as e:
+            return False
+        except pint.errors.DimensionalityError:
             self._errors['expression'] = "Incoherent dimension"
-        return None
+            return False
+        if out_units:
+            try:
+                result.to(out_units)
+            except pint.errors.DimensionalityError:
+                self._errors['out_units'] = "Incoherent output dimension"
+                return False
+        return True
 
     def expression_validation(self, expression: str, operands: [Operand]):
         """
-        Check validity of expression
+        Check syntactic validity of expression
+        :param expression: Mathematical expression as string
+        :param operands: list of Operand objects
         """
         if not expression:
             self._errors['expression'] = "Empty expression"
@@ -394,9 +436,25 @@ class ExpressionSerializer(serializers.Serializer):
         value_kwargs = {v['name']: v['value'] for v in operands}
         try:
             sympify(expression.format(**value_kwargs))
-        except (SympifyError, KeyError) as e:
+        except (SympifyError, KeyError):
             self._errors['expression'] = f"Invalid operation"
         return expression
+
+    def out_units_validation(self, unit_system: UnitSystem, out_units: str):
+        """
+        Check validity of output units
+        :param unit_system: Reference unit system with custom units
+        :param out_units: optional conversion to specific units
+        """
+        if not out_units:
+            return None
+        q_ = unit_system.ureg.Quantity
+        try:
+            q_(1, out_units)
+        except pint.errors.DimensionalityError:
+            self._errors['out_units'] = "Incoherent output dimension"
+            return None
+        return out_units
 
     def operands_validation(self, operands):
         """
@@ -428,7 +486,8 @@ class ExpressionSerializer(serializers.Serializer):
                 operands.append(vs.create(vs.validated_data))
         return Expression(
             expression=validated_data.get('expression'),
-            operands=operands
+            operands=operands,
+            out_units=validated_data.get('out_units')
         )
 
     def update(self, instance, validated_data):
@@ -439,6 +498,7 @@ class ExpressionSerializer(serializers.Serializer):
         """
         instance.expression = validated_data.get('expression')
         instance.operands = validated_data.get('operands')
+        instance.out_units = validated_data.get('out_units')
         return instance
 
 
@@ -523,7 +583,6 @@ class CalculationResultSerializer(serializers.Serializer):
         instance.status = validated_data.get('status', instance.status)
         instance.errors = validated_data.get('errors', instance.errors)
         return instance
-
 
 
 class CalculationPayloadSerializer(serializers.Serializer):
