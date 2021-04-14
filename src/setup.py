@@ -80,7 +80,8 @@ setup(
         "Pint~=0.17",
         "networkx~=2.5",
         "sympy~=1.7",
-        "channels~=3.0"
+        "channels~=3.0",
+        "uncertainties~=3.1"
     ],
     packages=find_packages(),
     include_package_data=True,
