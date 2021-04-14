@@ -256,6 +256,11 @@ class OperandSerializer(serializers.Serializer):
                                  help_text="{a} in an expression should have an operand named 'a'")
     value = serializers.FloatField(label="Value of the operand as a float")
     unit = serializers.CharField(label="Units of the operand as a string")
+    uncertainty = serializers.CharField(label="Uncertainty value, either absolute, or percentage.",
+                                        required=False,
+                                         help_text="Uncertainty for value, "
+                                                   "if float, it is absolute (10), "
+                                                   "else, it must contain % (12%)")
 
     def is_valid(self, raise_exception=False) -> bool:
         """
@@ -376,9 +381,9 @@ class ExpressionSerializer(serializers.Serializer):
         """
         # Validate units
         q_ = unit_system.ureg.Quantity
-        units_kwargs = {v['name']: f"{v['value']} {v['unit']}" for v in operands}
         try:
-            result = q_(expression.format(**units_kwargs))
+            units_kwargs = {v['name']: q_(v['value'], v['unit']) for v in operands}
+            result = unit_system.ureg.parse_expression(expression, **units_kwargs)
         except KeyError as e:
             self._errors['operands'] = "Missing operands"
             return False
@@ -509,6 +514,7 @@ class CalculationResultDetailSerializer(serializers.Serializer):
     expression = serializers.CharField(label="Expression to evaluate")
     operands = OperandSerializer(many=True)
     magnitude = serializers.FloatField(label="Magnitude of result")
+    uncertainty = serializers.FloatField(label="Uncertainty of result")
     unit = serializers.CharField(label="Units of result")
 
     def create(self, validated_data):
@@ -526,7 +532,8 @@ class CalculationResultDetailSerializer(serializers.Serializer):
         """
         instance.expression = validated_data.get('expression', instance.expression)
         instance.operands = validated_data.get('operands', instance.operands)
-        instance.date = validated_data.get('date', instance.date)
+        instance.magnitude = validated_data.get('magnitude', instance.magnitude)
+        instance.uncertainty = validated_data.get('uncertainty', instance.operands)
         return instance
 
 
@@ -536,7 +543,7 @@ class CalculationResultErrorSerializer(serializers.Serializer):
     """
     expression = serializers.CharField(label="Expression to evaluate")
     operands = OperandSerializer(many=True)
-    date = serializers.DateField(label="Date of calculation")
+    calc_date = serializers.DateField(label="Date of calculation")
     error = serializers.CharField(label="Error during calculation")
 
     def create(self, validated_data):
@@ -554,7 +561,7 @@ class CalculationResultErrorSerializer(serializers.Serializer):
         """
         instance.expression = validated_data.get('expression', instance.expression)
         instance.operands = validated_data.get('operands', instance.operands)
-        instance.date = validated_data.get('date', instance.date)
+        instance.calc_date = validated_data.get('calc_date', instance.calc_date)
         instance.error = validated_data.get('error', instance.error)
         return instance
 

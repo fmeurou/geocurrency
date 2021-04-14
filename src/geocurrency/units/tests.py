@@ -1384,9 +1384,15 @@ class OperandTest(TestCase):
     """
 
     def setUp(self):
+        """
+        Setup unit system
+        """
         self.us = UnitSystem(system_name='SI')
 
     def test_validate(self):
+        """
+        Test operand validation
+        """
         op = Operand(
             name='test',
             value=0,
@@ -1413,6 +1419,9 @@ class OperandTest(TestCase):
         self.assertFalse(op.validate())
 
     def test_get_unit_units(self):
+        """
+        Test units of operand
+        """
         op = Operand(
             name='toto',
             value=15,
@@ -1421,7 +1430,38 @@ class OperandTest(TestCase):
         self.assertTrue(op.validate())
         self.assertEqual(op.get_unit(self.us), 'm/s')
 
+    def test_get_unit_uncertainty_and_magnitude(self):
+        """
+        Test uncertainty of operand
+        """
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='m/s',
+            uncertainty="0.01"
+        )
+        self.assertTrue(op.validate())
+        self.assertEqual(op.get_uncertainty(), 0.01)
+        self.assertEqual(op.get_magnitude(), 15)
+
+    def test_get_unit_uncertainty_percentage_and_magnitude(self):
+        """
+        Test uncertainty with a percentage
+        """
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='m/s',
+            uncertainty="10%"
+        )
+        self.assertTrue(op.validate())
+        self.assertEqual(op.get_uncertainty(), 15*0.1)
+        self.assertEqual(op.get_magnitude(), 15)
+
     def test_get_unit_dimensions(self):
+        """
+        Test dimensions of units
+        """
         q_ = self.us.ureg.Quantity
         op = Operand(
             name='toto',
@@ -1431,6 +1471,9 @@ class OperandTest(TestCase):
         self.assertIsInstance(q_(1, op.get_unit(self.us)), q_)
 
     def test_get_unit_mixed(self):
+        """
+        Test operand with dimensions
+        """
         q_ = self.us.ureg.Quantity
         op = Operand(
             name='toto',
@@ -1440,6 +1483,9 @@ class OperandTest(TestCase):
         self.assertIsInstance(q_(1, op.get_unit(self.us)), q_)
 
     def test_get_unit_mixed_custom(self):
+        """
+        Test Operand with custom units
+        """
         q_ = self.us.ureg.Quantity
         op = Operand(
             name='toto',
