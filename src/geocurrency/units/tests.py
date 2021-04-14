@@ -1421,6 +1421,28 @@ class OperandTest(TestCase):
         self.assertTrue(op.validate())
         self.assertEqual(op.get_unit(self.us), 'm/s')
 
+    def test_get_unit_uncertainty_and_magnitude(self):
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='m/s',
+            uncertainty="0.01"
+        )
+        self.assertTrue(op.validate())
+        self.assertEqual(op.get_uncertainty(), 0.01)
+        self.assertEqual(op.get_magnitude(), 15)
+
+    def test_get_unit_uncertainty_percentage_and_magnitude(self):
+        op = Operand(
+            name='toto',
+            value=15,
+            unit='m/s',
+            uncertainty="10%"
+        )
+        self.assertTrue(op.validate())
+        self.assertEqual(op.get_uncertainty(), 15*0.1)
+        self.assertEqual(op.get_magnitude(), 15)
+
     def test_get_unit_dimensions(self):
         q_ = self.us.ureg.Quantity
         op = Operand(

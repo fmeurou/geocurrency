@@ -7,6 +7,7 @@ import re
 from datetime import date
 
 import pint.systems
+import uncertainties
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
@@ -796,8 +797,13 @@ class Operand:
     name = None
     value = None
     unit = None
+    uncertainty = None
 
-    def __init__(self, name=None, value=None, unit=None):
+    def __init__(self,
+                 name: str = None,
+                 value: float = 0,
+                 unit: str = None,
+                 uncertainty: str = None):
         """
         Initialize Operand
         :param name: name of the operand that appears in the formula
@@ -807,6 +813,11 @@ class Operand:
         self.name = name
         self.value = value
         self.unit = unit
+        self.uncertainty = uncertainty
+        if self.validate():
+            self.uvalue = uncertainties.ufloat(value, self.parse_uncertainty())
+        else:
+            self.uvalue = uncertainties.ufloat(0, 0)
 
     def validate(self):
         """
@@ -817,6 +828,10 @@ class Operand:
         try:
             float(self.value)
         except ValueError:
+            return False
+        try:
+            self.parse_uncertainty()
+        except (ValueError, AttributeError):
             return False
         return True
 
@@ -837,6 +852,20 @@ class Operand:
         for key, item in replace_dict.items():
             self.unit = self.unit.replace(key, item)
         return self.unit
+
+    def get_magnitude(self):
+        return self.uvalue.n
+
+    def get_uncertainty(self):
+        return self.uvalue.s
+
+    def parse_uncertainty(self):
+        if not self.uncertainty:
+            return 0
+        if self.uncertainty.endswith('%'):
+            return self.value * float(self.uncertainty[:-1]) * 0.01
+        else:
+            return float(self.uncertainty)
 
 
 class ComputationError(Exception):
@@ -876,9 +905,9 @@ class Expression:
         for var in self.operands:
             if not var.validate():
                 return False, "invalid operand"
-        kwargs = {v.name: f"({v.value}*{v.unit})" for v in self.operands}
+        kwargs = {v.name: q_(v.value, v.unit) for v in self.operands}
         try:
-            result = q_(self.expression.format(**kwargs))
+            result = unit_system.ureg.parse_expression(self.expression, **kwargs)
         except KeyError:
             return False, "Missing operand"
         except pint.errors.DimensionalityError:
@@ -897,8 +926,8 @@ class Expression:
         q_ = unit_system.ureg.Quantity
         is_valid, error = self.validate(unit_system=unit_system)
         if is_valid:
-            kwargs = {v.name: f"({v.value}*{v.unit})" for v in self.operands}
-            result = q_(self.expression.format(**kwargs))
+            kwargs = {v.name: q_(v.uvalue, v.unit) for v in self.operands}
+            result = unit_system.ureg.parse_expression(self.expression, **kwargs)
             if self.out_units:
                 return result.to(self.out_units)
             else:
@@ -937,10 +966,11 @@ class CalculationResultDetail:
     expression = None
     operands = None
     magnitude = None
+    uncertainty = None
     unit = None
 
     def __init__(self, expression: str, operands: [],
-                 magnitude: float, unit: str):
+                 magnitude: uncertainties.ufloat, unit: str):
         """
         Initialize detail
         :param expression: Expression in the form of a string e.g.: 3*{a} + 2 * {b}
@@ -951,7 +981,8 @@ class CalculationResultDetail:
         """
         self.expression = expression
         self.operands = operands
-        self.magnitude = magnitude
+        self.magnitude = magnitude.n
+        self.uncertainty = magnitude.s
         self.unit = unit
 
 
@@ -961,10 +992,10 @@ class CalculationResultError:
     """
     expression = None
     operands = None
-    date = None
+    calc_date = None
     error = None
 
-    def __init__(self, expression: str, operands: [], date: date, error: str):
+    def __init__(self, expression: str, operands: [], calc_date: date, error: str):
         """
         Initialize error detail
         :param expression: Expression in the form of a string
@@ -974,7 +1005,7 @@ class CalculationResultError:
         """
         self.expression = expression
         self.operands = operands
-        self.date = date
+        self.calc_date = calc_date
         self.error = error
 
 
@@ -1097,7 +1128,7 @@ class ExpressionCalculator(BaseConverter):
                 error = CalculationResultError(
                     expression=expression.expression,
                     operands=expression.operands,
-                    date=date.today(),
+                    calc_date=date.today(),
                     error=exp_error
                 )
                 result.errors.append(error)
@@ -1108,7 +1139,7 @@ class ExpressionCalculator(BaseConverter):
                 error = CalculationResultError(
                     expression=expression.expression,
                     operands=expression.operands,
-                    date=date.today(),
+                    calc_date=date.today(),
                     error=str(e)
                 )
                 result.errors.append(error)
