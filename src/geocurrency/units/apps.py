@@ -9,5 +9,5 @@ class UnitsConfig(AppConfig):
     """
     Units configuration
     """
-    name = "units"
+    name = "geocurrency.units"
     verbose_name = "Units"

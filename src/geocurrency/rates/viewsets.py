@@ -261,7 +261,8 @@ class ConvertView(APIView):
                 base_currency=cp.target
             )
         if cp.data:
-            if errors := converter.add_data(data=cp.data):
+            errors = converter.add_data(data=cp.data)
+            if errors:
                 return Response(errors, status=HTTP_400_BAD_REQUEST)
         if cp.eob or not cp.batch_id:
             result = converter.convert()
