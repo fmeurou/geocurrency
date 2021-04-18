@@ -196,12 +196,13 @@ class RateManager(models.Manager):
             conv_value = 1
             for i in range(len(rates) - 1):
                 from_cur, to_cur = rates[i:i + 2]
-                if rate := self.find_rate(
+                rate = self.find_rate(
                         currency=from_cur,
                         base_currency=to_cur,
                         key=key,
                         date_obj=date_obj,
-                        use_forex=False):
+                        use_forex=False)
+                if rate:
                     conv_value *= rate.value
                 else:
                     raise NoRateFound(

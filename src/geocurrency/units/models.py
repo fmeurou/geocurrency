@@ -291,7 +291,8 @@ class UnitSystem:
         for dim in registry_dimensions:
             dimension = Dimension(unit_system=self, code=dim)
             try:
-                if units := self.ureg.get_compatible_units(dim):
+                units = self.ureg.get_compatible_units(dim)
+                if units:
                     output[dim] = units
             except KeyError:
                 continue

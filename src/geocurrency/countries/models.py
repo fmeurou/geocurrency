@@ -211,7 +211,8 @@ class Country:
         List colors present in the flag of the country
         :returns: array, list of colors
         """
-        if colors := cache.get('COLORS-' + self.alpha_2):
+        colors = cache.get('COLORS-' + self.alpha_2)
+        if colors:
             return colors
         else:
             return self.analyze_flag()

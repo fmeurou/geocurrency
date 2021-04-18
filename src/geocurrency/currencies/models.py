@@ -100,7 +100,8 @@ class Currency:
         :return: List of Country objects
         """
         countries = []
-        if cached_countries := cache.get(self.code + 'COUNTRIES'):
+        cached_countries = cache.get(self.code + 'COUNTRIES')
+        if cached_countries:
             return [Country(alpha_2) for alpha_2 in cached_countries]
         for country in Country.all_countries():
             try:
