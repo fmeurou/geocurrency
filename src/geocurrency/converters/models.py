@@ -179,7 +179,8 @@ class BaseConverter:
         """
         if not data:
             return [{'data': 'Empty data set', }]
-        if errors := self.check_data(data):
+        errors = self.check_data(data)
+        if errors:
             return errors
         self.status = self.INSERTING_STATUS
         self.save()

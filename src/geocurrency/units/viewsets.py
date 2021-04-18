@@ -163,7 +163,8 @@ class UnitViewset(ViewSet):
                                            'user') and request.user.is_authenticated else None
             us = UnitSystem(system_name=system_name, fmt_locale=language, user=user, key=key)
             units = []
-            if dimension_param := request.GET.get(key='dimension'):
+            dimension_param = request.GET.get(key='dimension')
+            if dimension_param:
                 try:
                     dimension = Dimension(unit_system=us, code=dimension_param)
                     units = dimension.units(user=user, key=key)
@@ -286,7 +287,8 @@ class ConvertView(APIView):
         except UnitConverterInitError:
             return Response("Error initializing converter", status=status.HTTP_400_BAD_REQUEST)
         if cp.data:
-            if errors := converter.add_data(data=cp.data):
+            errors = converter.add_data(data=cp.data)
+            if errors:
                 return Response(errors, status=HTTP_400_BAD_REQUEST)
         if cp.eob or not cp.batch_id:
             result = converter.convert()
@@ -464,7 +466,8 @@ class CalculationView(APIView):
         except ExpressionCalculatorInitError:
             return Response("Error initializing calculator", status=status.HTTP_400_BAD_REQUEST)
         if cp.data:
-            if errors := calculator.add_data(data=cp.data):
+            errors = calculator.add_data(data=cp.data)
+            if errors:
                 return Response(errors, status=HTTP_400_BAD_REQUEST)
         if cp.eob or not cp.batch_id:
             result = calculator.convert()

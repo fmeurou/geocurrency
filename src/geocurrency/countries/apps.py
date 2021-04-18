@@ -8,7 +8,7 @@ class CountryConfig(AppConfig):
     """
     CountryConfig class
     """
-    name = 'countries'
+    name = 'geocurrency.countries'
     verbose_name = "Countries query app"
 
     def ready(self):

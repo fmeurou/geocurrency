@@ -10,5 +10,5 @@ class RatesConfig(AppConfig):
     Rates configuration
     """
 
-    name = "rates"
+    name = "geocurrency.rates"
     verbose_name = "Rates"
