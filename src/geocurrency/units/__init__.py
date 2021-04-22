@@ -1947,7 +1947,7 @@ UNIT_EXTENDED_DEFINITION = {
         'symbol': 'm²'
     },
     'cubic_meter': {
-        'name': _('square meter'),
+        'name': _('cubic meter'),
         'symbol': 'm³'
     },
     'milligram': {
