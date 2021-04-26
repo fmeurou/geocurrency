@@ -225,6 +225,7 @@ class ExpressionSerializer(serializers.Serializer):
         """
         if not expression:
             self._errors['expression'] = "Empty expression"
+            return None
         # Validate syntax
         value_kwargs = {v['name']: v['value'] for v in operands}
         try:
@@ -265,6 +266,8 @@ class ExpressionSerializer(serializers.Serializer):
                 self._errors['operands'] = errors
         except json.JSONDecodeError as e:
             self._errors['operands'] = f"Invalid operands json format: {e}"
+        except TypeError:
+            self._errors['operands'] = f"Invalid operands input"
         return operands
 
     def create(self, validated_data):
