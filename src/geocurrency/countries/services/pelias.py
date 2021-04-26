@@ -8,7 +8,7 @@ from django.conf import settings
 from pycountry import countries
 
 from . import Geocoder
-from ..settings import *
+from ..settings import GEOCODING_SERVICE_SETTINGS
 
 
 class PeliasGeocoder(Geocoder):
@@ -25,11 +25,13 @@ class PeliasGeocoder(Geocoder):
         """
         return super(Geocoder, cls).__new__(cls)
 
-    def __init__(self, server_url: str = None, key: str = None, *args, **kwargs):
+    def __init__(self, server_url: str = None, key: str = None,
+                 *args, **kwargs):
         """
         Init pelias geocoder
         Init: Geocoder('pelias', server_url='serveur URL', key='API key')
-        :params server_url: Custom pelias URL, defaults to 'https://api.geocode.earth/v1/search'
+        :params server_url: Custom pelias URL,
+        defaults to 'https://api.geocode.earth/v1/search'
         :param key: API key
         """
         self.key = key or settings.GEOCODER_PELIAS_KEY
@@ -39,7 +41,8 @@ class PeliasGeocoder(Geocoder):
             pelias_url = GEOCODING_SERVICE_SETTINGS['pelias']['default_url']
         self.server_url = server_url or pelias_url
 
-    def search(self, address: str, language: str = None, bounds: str = None, region: str = None,
+    def search(self, address: str, language: str = None,
+               bounds: str = None, region: str = None,
                components: str = "") -> dict:
         """
         Search address
@@ -105,5 +108,7 @@ class PeliasGeocoder(Geocoder):
         if not data:
             return alphas
         for feature in data.get('features'):
-            alphas.append(countries.get(alpha_3=feature.get('properties').get('country_a')).alpha_2)
+            alphas.append(countries.get(
+                alpha_3=feature.get('properties'
+                                    ).get('country_a')).alpha_2)
         return alphas

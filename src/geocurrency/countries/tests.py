@@ -33,18 +33,27 @@ class CountryTestCase(TestCase):
         settings.GEOCODER_PELIAS_KEY = os.environ.get('PELIAS_API_KEY')
 
     def test_all(self):
-        """Numbers of countries is equal to number of countries in pycountry.countries"""
+        """Numbers of countries is equal to number
+        of countries in pycountry.countries"""
         all_countries = Country.all_countries()
         self.assertEqual(len(list(all_countries)), len(countries))
 
     def test_sorted_all(self):
-        """Numbers of countries is equal to number of countries in pycountry.countries"""
-        self.assertEqual(len(list(Country.all_countries())), len(countries))
-        self.assertEqual(Country.all_countries(ordering='name')[-1].alpha_2, 'AX')
-        self.assertEqual(Country.all_countries(ordering='alpha_2')[-1].alpha_2, 'ZW')
-        self.assertEqual(Country.all_countries(ordering='alpha_3')[-1].alpha_2, 'ZW')
-        self.assertEqual(Country.all_countries(ordering='numeric')[-1].alpha_2, 'ZM')
-        self.assertEqual(Country.all_countries(ordering='brouzouf')[-1].alpha_2, 'AX')
+        """Numbers of countries is equal to number
+        of countries in pycountry.countries"""
+        self.assertEqual(len(list(Country.all_countries())),
+                         len(countries))
+        self.assertEqual(Country.all_countries(ordering='name')[-1].alpha_2,
+                         'AX')
+        self.assertEqual(Country.all_countries(ordering='alpha_2')[-1].alpha_2,
+                         'ZW')
+        self.assertEqual(Country.all_countries(ordering='alpha_3')[-1].alpha_2,
+                         'ZW')
+        self.assertEqual(Country.all_countries(ordering='numeric')[-1].alpha_2,
+                         'ZM')
+        self.assertEqual(
+            Country.all_countries(ordering='brouzouf')[-1].alpha_2,
+            'AX')
 
     def test_base(self):
         """
@@ -76,7 +85,8 @@ class CountryTestCase(TestCase):
         """
         country = Country('FR')
         self.assertEqual(country.flag_path,
-                         os.path.join(settings.MEDIA_ROOT, country.alpha_2 + '.svg'))
+                         os.path.join(settings.MEDIA_ROOT,
+                                      country.alpha_2 + '.svg'))
 
     def test_flag_exists_and_download(self):
         """
@@ -124,7 +134,10 @@ class CountryAPITestCase(TestCase):
         testing name ordering on List API
         """
         client = APIClient()
-        response = client.get('/countries/', data={'ordering': 'name'}, format='json')
+        response = client.get(
+            '/countries/',
+            data={'ordering': 'name'},
+            format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(Country.all_countries()))
         self.assertEqual(response.data[-1].get('alpha_2'), 'AX')
@@ -134,7 +147,9 @@ class CountryAPITestCase(TestCase):
         testing numeric ordering on List API
         """
         client = APIClient()
-        response = client.get('/countries/', data={'ordering': 'numeric'}, format='json')
+        response = client.get(
+            '/countries/',
+            data={'ordering': 'numeric'}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(Country.all_countries()))
         self.assertEqual(response.data[-1].get('alpha_2'), 'ZM')
@@ -162,7 +177,8 @@ class CountryAPITestCase(TestCase):
             client = APIClient()
             response = client.get(
                 '/countries/geocode/',
-                data={'address': TEST_ADDRESS, 'key': settings.GEOCODER_GOOGLE_KEY},
+                data={'address': TEST_ADDRESS,
+                      'key': settings.GEOCODER_GOOGLE_KEY},
                 format='json')
             self.assertEqual(response.status_code, status.HTTP_200_OK)
         else:
@@ -176,7 +192,8 @@ class CountryAPITestCase(TestCase):
             client = APIClient()
             response = client.get(
                 '/countries/reverse/',
-                data={'lat': TEST_LAT, 'lon': TEST_LNG, 'key': settings.GEOCODER_GOOGLE_KEY},
+                data={'lat': TEST_LAT, 'lon': TEST_LNG,
+                      'key': settings.GEOCODER_GOOGLE_KEY},
                 format='json')
             self.assertEqual(response.status_code, status.HTTP_200_OK)
         else:
@@ -250,19 +267,22 @@ class GeocoderTestCase(TestCase):
         Testing Google service
         """
         if settings.GEOCODER_GOOGLE_KEY:
-            geocoder = service(service_type='geocoding', service_name='google',
+            geocoder = service(service_type='geocoding',
+                               service_name='google',
                                key=settings.GEOCODER_GOOGLE_KEY)
             self.assertEqual(geocoder.coder_type, 'google')
         else:
             with self.assertRaises(ValueError):
-                service(service_type='geocoding', service_name='google')
+                service(service_type='geocoding',
+                        service_name='google')
 
     def test_pelias(self):
         """
         Testing Pelias service
         """
         if settings.GEOCODER_PELIAS_KEY:
-            geocoder = service(service_type='geocoding', service_name='pelias',
+            geocoder = service(service_type='geocoding',
+                               service_name='pelias',
                                server_url=PELIAS_TEST_URL,
                                key=settings.GEOCODER_PELIAS_KEY)
             self.assertEqual(geocoder.coder_type, 'pelias')
@@ -274,7 +294,8 @@ class GeocoderTestCase(TestCase):
         Testing Google geocoding
         """
         if settings.GEOCODER_GOOGLE_KEY:
-            geocoder = service(service_type='geocoding', service_name='google',
+            geocoder = service(service_type='geocoding',
+                               service_name='google',
                                key=settings.GEOCODER_GOOGLE_KEY)
             data = geocoder.search(address=TEST_ADDRESS)
             self.assertIsNotNone(data)
@@ -286,7 +307,8 @@ class GeocoderTestCase(TestCase):
         Testing Google revrese geocoding
         """
         if settings.GEOCODER_GOOGLE_KEY:
-            geocoder = service(service_type='geocoding', service_name='google',
+            geocoder = service(service_type='geocoding',
+                               service_name='google',
                                key=settings.GEOCODER_GOOGLE_KEY)
             data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
             self.assertIsNotNone(data)
@@ -298,7 +320,8 @@ class GeocoderTestCase(TestCase):
         Testing Pelias geocoding
         """
         if settings.GEOCODER_PELIAS_KEY:
-            geocoder = service(service_type='geocoding', service_name='pelias',
+            geocoder = service(service_type='geocoding',
+                               service_name='pelias',
                                server_url=PELIAS_TEST_URL,
                                key=settings.GEOCODER_PELIAS_KEY)
             data = geocoder.search(address=TEST_ADDRESS)
@@ -311,7 +334,8 @@ class GeocoderTestCase(TestCase):
         Testing Pelias reverse geocoding
         """
         if settings.GEOCODER_PELIAS_KEY:
-            geocoder = service(service_type='geocoding', service_name='pelias',
+            geocoder = service(service_type='geocoding',
+                               service_name='pelias',
                                server_url=PELIAS_TEST_URL,
                                key=settings.GEOCODER_PELIAS_KEY)
             data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
@@ -324,7 +348,8 @@ class GeocoderTestCase(TestCase):
         Test with pelias search
         """
         if settings.GEOCODER_PELIAS_KEY:
-            geocoder = service(service_type='geocoding', service_name='pelias',
+            geocoder = service(service_type='geocoding',
+                               service_name='pelias',
                                server_url=PELIAS_TEST_URL,
                                key=settings.GEOCODER_PELIAS_KEY)
             data = geocoder.search(address=TEST_ADDRESS)
@@ -338,7 +363,8 @@ class GeocoderTestCase(TestCase):
         Test with pelias reverse
         """
         if settings.GEOCODER_PELIAS_KEY:
-            geocoder = service(service_type='geocoding', service_name='pelias',
+            geocoder = service(service_type='geocoding',
+                               service_name='pelias',
                                server_url=PELIAS_TEST_URL,
                                key=settings.GEOCODER_PELIAS_KEY)
             data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
@@ -355,7 +381,8 @@ class GeocoderTestCase(TestCase):
         Test with google search
         """
         if settings.GEOCODER_GOOGLE_KEY:
-            geocoder = service(service_type='geocoding', service_name='google',
+            geocoder = service(service_type='geocoding',
+                               service_name='google',
                                key=settings.GEOCODER_GOOGLE_KEY)
             data = geocoder.search(address=TEST_ADDRESS)
             self.assertIsNotNone(data)
@@ -368,7 +395,8 @@ class GeocoderTestCase(TestCase):
         Test with google reverse
         """
         if settings.GEOCODER_GOOGLE_KEY:
-            geocoder = service(service_type='geocoding', service_name='google',
+            geocoder = service(service_type='geocoding',
+                               service_name='google',
                                key=settings.GEOCODER_GOOGLE_KEY)
             data = geocoder.reverse(lat=TEST_LAT, lng=TEST_LNG)
             self.assertIsNotNone(data)

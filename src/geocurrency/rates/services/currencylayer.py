@@ -8,7 +8,7 @@ from django.conf import settings
 from typing import Iterator
 
 from . import RatesNotAvailableError, RateService
-from ..settings import *
+from ..settings import CURRENCYLAYER_API_KEY
 
 CURRENCYLAYER_API_URL = 'http://api.currencylayer.com/'
 CURRENCYLAYER_CURRENCIES_ENDPOINT = 'list'
@@ -17,9 +17,9 @@ CURRENCYLAYER_HISTORICAL_ENDPOINT = 'historical'
 CURRENCYLAYER_TIMEFRAME_ENDPOINT = 'timeframe'
 
 try:
-    CURRENCYLAYER_API_KEY = settings.CURRENCYLAYER_API_KEY
+    CL_API_KEY = settings.CURRENCYLAYER_API_KEY
 except AttributeError:
-    pass
+    CL_API_KEY = CURRENCYLAYER_API_KEY
 
 
 class CurrencyLayerService(RateService):
@@ -32,7 +32,7 @@ class CurrencyLayerService(RateService):
         List availbale currencies for the service
         """
         data = {
-            'access_key': CURRENCYLAYER_API_KEY
+            'access_key': CL_API_KEY
         }
         url = CURRENCYLAYER_API_URL + CURRENCYLAYER_CURRENCIES_ENDPOINT
         response = requests.get(url=url, data=data)
@@ -58,7 +58,7 @@ class CurrencyLayerService(RateService):
         :param to_obj: optional range parameter
         """
         data = {
-            'access_key': CURRENCYLAYER_API_KEY,
+            'access_key': CL_API_KEY,
             'source': base_currency
         }
         if currency:
@@ -76,7 +76,9 @@ class CurrencyLayerService(RateService):
         if response.status_code == 200:
             data = response.json()
             if 'quotes' in data:
-                return self.parse_result(base_currency=base_currency, data=data.get('quotes'))
+                return self.parse_result(
+                    base_currency=base_currency,
+                    data=data.get('quotes'))
             else:
                 return {}
         else:

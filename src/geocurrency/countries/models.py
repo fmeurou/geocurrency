@@ -17,7 +17,7 @@ from pycountry import countries
 from pytz import timezone
 
 from .helpers import ColorProximity, hextorgb
-from .settings import *
+from .settings import FLAG_SOURCE
 
 
 class CountryNotFoundError(Exception):
@@ -35,9 +35,12 @@ class CountryManager(models.Manager):
     @staticmethod
     def get_by_color(color, proximity=1):
         """
-        Take a hex color and finds near country based on flag and color proximity
-        :param color: hex color (FFF, FFFFFF, FFFFFFFF, #FFF, #FFFFFF, #FFFFFFFF)
-        :param proximity: succes rate, positive if below (100 is opposite, 0 is identical
+        Take a hex color and finds near country
+        based on flag and color proximity
+        :param color: hex color (FFF, FFFFFF,
+         FFFFFFFF, #FFF, #FFFFFF, #FFFFFFFF)
+        :param proximity: succes rate, positive
+         if below (100 is opposite, 0 is identical
         """
         cp = ColorProximity()
         rgb_color = hextorgb(color)
@@ -56,7 +59,8 @@ class Country:
     Country class
     Wrapper around pycountry object
     """
-    # data extracted from pycountry as basic data if CountryInfo for this country does not exist
+    # data extracted from pycountry as basic data
+    # if CountryInfo for this country does not exist
     alpha_2 = None
     alpha_3 = None
     name = None
@@ -76,7 +80,7 @@ class Country:
         self.numeric = country.numeric
 
     @classmethod
-    def search(cls, term:str) -> []:
+    def search(cls, term: str) -> []:
         """
         Search for Contruy by name, alpha_2, alpha_3, or numeric value
         :param term: Search term
@@ -92,7 +96,8 @@ class Country:
     @classmethod
     def all_countries(cls, ordering: str = 'name'):
         """
-        List all countries, instanciate CountryInfo for each country in pycountry.countries
+        List all countries, instanciate CountryInfo
+        for each country in pycountry.countries
         :param ordering: sort list
         """
         descending = False
@@ -117,12 +122,6 @@ class Country:
         """
         ci = CountryInfo(self.alpha_2)
         return ci.currencies()
-
-    def info(self):
-        """
-        Additional information on the country based on countryinfo module database
-        """
-        return CountryInfo(self.alpha_2).info()
 
     @property
     def unit_system(self) -> str:
@@ -153,7 +152,8 @@ class Country:
                 'name': tz_info,
                 'offset': f'UTC {offset}',
                 'numeric_offset': numeric_offset,
-                'current_time': base_time.astimezone(tz).strftime('%Y-%m-%d %H:%M')
+                'current_time': base_time.astimezone(
+                    tz).strftime('%Y-%m-%d %H:%M')
             })
         return sorted(output, key=lambda x: x['numeric_offset'])
 
@@ -201,7 +201,8 @@ class Country:
             return None
         with open(flag_path, 'r') as flag:
             content = flag.read()
-            result = re.findall(r'\#[0-9A-Fa-f]{1,2}[0-9A-Fa-f]{1,2}[0-9A-Fa-f]{1,2}', content)
+            result = re.findall(r'\#[0-9A-Fa-f]{1,2}[0-9A-Fa-f]'
+                                r'{1,2}[0-9A-Fa-f]{1,2}', content)
             if result:
                 cache.set('COLORS-' + self.alpha_2, result)
             return result

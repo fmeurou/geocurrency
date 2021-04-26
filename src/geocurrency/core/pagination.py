@@ -11,5 +11,6 @@ class PageNumberPagination(pagination.PageNumberPagination):
     Paginate with a page number
     """
     page_size_query_param = 'page_size'
-    max_page_size = getattr(settings, 'GEOCURRENCY_MAX_PAGE_SIZE', MAX_PAGE_SIZE)
-
+    max_page_size = getattr(settings,
+                            'GEOCURRENCY_MAX_PAGE_SIZE',
+                            MAX_PAGE_SIZE)
