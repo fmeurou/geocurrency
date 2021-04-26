@@ -15,12 +15,13 @@ from django.views.decorators.vary import vary_on_cookie
 from sendfile import sendfile
 
 from .models import Country, CountryNotFoundError
-from .settings import *
+from .settings import FLAG_SOURCE
 
 
 class FlagView(View):
     """
-    Try to get flag image from MEDIA_ROOT cache or download it from FLAG_SOURCE
+    Try to get flag image from MEDIA_ROOT cache
+    or download it from FLAG_SOURCE
     """
 
     @method_decorator(cache_page(60 * 60 * 2))
@@ -31,9 +32,14 @@ class FlagView(View):
         """
         try:
             country = Country(alpha_2=pk)
-            flag_path = os.path.join(settings.MEDIA_ROOT, country.alpha_2 + '.svg')
+            flag_path = os.path.join(
+                settings.MEDIA_ROOT,
+                country.alpha_2 + '.svg')
             if not os.path.exists(flag_path):
-                response = requests.get(FLAG_SOURCE.format(alpha_2=country.alpha_2))
+                response = requests.get(
+                    FLAG_SOURCE.format(
+                        alpha_2=country.alpha_2
+                    ))
                 try:
                     flag_content = response.text
                     flag_file = open(flag_path, 'w')

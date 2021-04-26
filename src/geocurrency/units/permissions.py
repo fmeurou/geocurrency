@@ -20,6 +20,7 @@ class CustomUnitObjectPermission(permissions.BasePermission):
             return True
         if request.method == 'POST':
             return True
-        elif request.method.lower() in ['put', 'patch', 'delete'] and request.user == obj.user:
+        elif request.method.lower() in ['put', 'patch', 'delete'] and \
+                request.user == obj.user:
             return True
         return False

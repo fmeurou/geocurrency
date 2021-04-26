@@ -26,12 +26,19 @@ class CurrencyTestCase(TestCase):
         """
         Test sorting of list of currencies
         """
-        self.assertEqual(list(Currency.all_currencies(ordering='code'))[0].code, 'AED')
-        self.assertEqual(list(Currency.all_currencies(ordering='name'))[0].code, 'AED')
-        self.assertEqual(list(Currency.all_currencies(ordering='currency_name'))[0].code, 'AFN')
-        self.assertEqual(list(Currency.all_currencies(ordering='exponent'))[0].code, 'XOF')
-        self.assertEqual(list(Currency.all_currencies(ordering='number'))[0].code, 'ALL')
-        self.assertEqual(list(Currency.all_currencies(ordering='value'))[0].code, 'AED')
+        self.assertEqual(
+            list(Currency.all_currencies(ordering='code'))[0].code, 'AED')
+        self.assertEqual(
+            list(Currency.all_currencies(ordering='name'))[0].code, 'AED')
+        self.assertEqual(
+            list(Currency.all_currencies(ordering='currency_name'))[0].code,
+            'AFN')
+        self.assertEqual(
+            list(Currency.all_currencies(ordering='exponent'))[0].code, 'XOF')
+        self.assertEqual(
+            list(Currency.all_currencies(ordering='number'))[0].code, 'ALL')
+        self.assertEqual(
+            list(Currency.all_currencies(ordering='value'))[0].code, 'AED')
 
     def test_creation(self):
         """
@@ -101,7 +108,9 @@ class CurrencyAPITestCase(TestCase):
         Test list with sorting
         """
         client = APIClient()
-        response = client.get('/currencies/', data={'ordering': 'code'}, format='json')
+        response = client.get('/currencies/',
+                              data={'ordering': 'code'},
+                              format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), len(Currency.all_currencies()))
         self.assertEqual(response.data[0].get('code'), 'AED')

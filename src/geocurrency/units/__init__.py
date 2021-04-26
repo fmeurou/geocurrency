@@ -8,49 +8,67 @@ DIMENSIONS = {
     '[length]': {'name': _('length'), 'dimension': 'meter', 'symbol': 'L'},
     '[time]': {'name': _('time'), 'dimension': 'second', 'symbol': 'T'},
     '[current]': {'name': _('current'), 'dimension': 'ampere', 'symbol': 'I'},
-    '[luminosity]': {'name': _('luminosity'), 'dimension': 'candela * radian ** 2',
+    '[luminosity]': {'name': _('luminosity'),
+                     'dimension': 'candela * radian ** 2',
                      'symbol': 'J'},
     '[mass]': {'name': _('mass'), 'dimension': 'kilogram', 'symbol': 'M'},
-    '[substance]': {'name': _('substance'), 'dimension': 'mole', 'symbol': 'N'},
-    '[temperature]': {'name': _('temperature'), 'dimension': 'kelvin', 'symbol': 'Θ'},
+    '[substance]': {'name': _('substance'),
+                    'dimension': 'mole', 'symbol': 'N'},
+    '[temperature]': {'name': _('temperature'),
+                      'dimension': 'kelvin', 'symbol': 'Θ'},
     '[]': {'name': _('constant'), 'dimension': 'bit', 'symbol': 'b'},
     '[area]': {'name': _('area'), 'dimension': 'meter ** 2', 'symbol': 'L²'},
-    '[volume]': {'name': _('volume'), 'dimension': 'meter ** 3', 'symbol': 'L³'},
-    '[frequency]': {'name': _('frequency'), 'dimension': 'count / second',
+    '[volume]': {'name': _('volume'),
+                 'dimension': 'meter ** 3', 'symbol': 'L³'},
+    '[frequency]': {'name': _('frequency'),
+                    'dimension': 'count / second',
                     'symbol': 'T⁻¹'},
-    '[wavenumber]': {'name': _('wavenumber'), 'dimension': '1 / meter', 'symbol': 'L⁻¹'},
+    '[wavenumber]': {'name': _('wavenumber'),
+                     'dimension': '1 / meter', 'symbol': 'L⁻¹'},
     '[velocity]': {'name': _('velocity'), 'dimension': 'meter / second',
                    'symbol': 'L.T⁻¹'},
-    '[acceleration]': {'name': _('acceleration'), 'dimension': 'meter / second ** 2',
+    '[acceleration]': {'name': _('acceleration'),
+                       'dimension': 'meter / second ** 2',
                        'symbol': 'L.T⁻²'},
-    '[force]': {'name': _('force'), 'dimension': 'kilogram * meter / second ** 2',
+    '[force]': {'name': _('force'),
+                'dimension': 'kilogram * meter / second ** 2',
                 'symbol': 'F'},
-    '[energy]': {'name': _('energy'), 'dimension': 'kilogram * meter ** 2 / second ** 2',
+    '[energy]': {'name': _('energy'),
+                 'dimension': 'kilogram * meter ** 2 / second ** 2',
                  'symbol': 'E'},
-    '[power]': {'name': _('power'), 'dimension': 'kilogram * meter ** 2 / second ** 3',
+    '[power]': {'name': _('power'),
+                'dimension': 'kilogram * meter ** 2 / second ** 3',
                 'symbol': 'P'},
-    '[density]': {'name': _('density'), 'dimension': 'kilogram / meter ** 3',
+    '[density]': {'name': _('density'),
+                  'dimension': 'kilogram / meter ** 3',
                   'symbol': 'M.L⁻³'},
-    '[pressure]': {'name': _('pressure'), 'dimension': 'kilogram / meter / second ** 2',
+    '[pressure]': {'name': _('pressure'),
+                   'dimension': 'kilogram / meter / second ** 2',
                    'symbol': 'Pa'},
-    '[torque]': {'name': _('torque'), 'dimension': 'kilogram * meter ** 2 / second ** 2',
+    '[torque]': {'name': _('torque'),
+                 'dimension': 'kilogram * meter ** 2 / second ** 2',
                  'symbol': 'F.L'},
-    '[viscosity]': {'name': _('viscosity'), 'dimension': 'kilogram / meter / second',
+    '[viscosity]': {'name': _('viscosity'),
+                    'dimension': 'kilogram / meter / second',
                     'symbol': 'M.L⁻¹.T⁻¹'},
     '[kinematic_viscosity]': {'name': _('kinematic viscosity'),
                               'dimension': 'meter ** 2 / second',
                               'symbol': 'L².T⁻¹'},
-    '[fluidity]': {'name': _('fluidity'), 'dimension': 'meter * second / kilogram',
+    '[fluidity]': {'name': _('fluidity'),
+                   'dimension': 'meter * second / kilogram',
                    'symbol': 'L.T.M⁻¹'},
-    '[concentration]': {'name': _('concentration'), 'dimension': 'mole / meter ** 3',
+    '[concentration]': {'name': _('concentration'),
+                        'dimension': 'mole / meter ** 3',
                         'symbol': 'N.L⁻³'},
-    '[activity]': {'name': _('activity'), 'dimension': 'mole / second',
+    '[activity]': {'name': _('activity'),
+                   'dimension': 'mole / second',
                    'symbol': 'N.T⁻¹'},
     '[entropy]': {'name': _('entropy'),
                   'dimension': 'kilogram * meter ** 2 / kelvin / second ** 2',
                   'symbol': ''},
     '[molar_entropy]': {'name': _('molar entropy'),
-                        'dimension': 'kilogram * meter ** 2 / kelvin / mole / second ** 2',
+                        'dimension': 'kilogram * meter ** 2 / '
+                                     'kelvin / mole / second ** 2',
                         'symbol': 'M.L².Θ⁻¹.N⁻¹.T⁻²'
                         },
     '[heat_transmission]': {'name': _('heat transmission'),
@@ -62,48 +80,59 @@ DIMENSIONS = {
                     'symbol': 'J.rad².L⁻²'
                     },
     '[luminous_flux]': {'name': _('luminous flux'),
-                        'dimension': 'candela * radian ** 2', 'symbol': 'J.rad²'
+                        'dimension': 'candela * radian ** 2',
+                        'symbol': 'J.rad²'
                         },
     '[illuminance]': {'name': _('illuminance'),
                       'dimension': 'candela * radian ** 2 / meter ** 2',
                       'symbol': 'J.rad².L⁻²'
                       },
-    '[intensity]': {'name': _('intensity'), 'dimension': 'kilogram / second ** 3',
+    '[intensity]': {'name': _('intensity'),
+                    'dimension': 'kilogram / second ** 3',
                     'symbol': 'M.T⁻³'},
-    '[charge]': {'name': _('charge'), 'dimension': 'ampere * second', 'symbol': 'Q'},
+    '[charge]': {'name': _('charge'),
+                 'dimension': 'ampere * second', 'symbol': 'Q'},
     '[electric_potential]': {'name': _('electric potential'),
-                             'dimension': 'kilogram * meter ** 2 / ampere / second ** 3',
+                             'dimension': 'kilogram * meter ** 2 '
+                                          '/ ampere / second ** 3',
                              'symbol': 'V'
                              },
     '[electric_field]': {'name': _('electric field'),
-                         'dimension': 'kilogram * meter / ampere / second ** 3',
+                         'dimension': 'kilogram * meter '
+                                      '/ ampere / second ** 3',
                          'symbol': ''
                          },
     '[resistance]': {'name': _('resistance'),
-                     'dimension': 'kilogram * meter ** 2 / ampere ** 2 / second ** 3',
+                     'dimension': 'kilogram * meter ** 2 /'
+                                  ' ampere ** 2 / second ** 3',
                      'symbol': 'Ω'
                      },
     '[conductance]': {'name': _('conductance'),
-                      'dimension': 'ampere ** 2 * second ** 3 / kilogram / meter ** 2',
+                      'dimension': 'ampere ** 2 * second ** 3 /'
+                                   ' kilogram / meter ** 2',
                       'symbol': 'S'
                       },
     '[capacitance]': {'name': _('capacitance'),
-                      'dimension': 'ampere ** 2 * second ** 4 / kilogram / meter ** 2',
+                      'dimension': 'ampere ** 2 * second ** 4 /'
+                                   ' kilogram / meter ** 2',
                       'symbol': 'F'
                       },
     '[inductance]': {'name': _('inductance'),
-                     'dimension': 'kilogram * meter ** 2 / ampere ** 2 / second ** 2',
+                     'dimension': 'kilogram * meter ** 2 / ampere ** 2 /'
+                                  ' second ** 2',
                      'symbol': 'H'
                      },
     '[magnetic_flux]': {'name': _('magnetic flux'),
-                        'dimension': 'kilogram * meter ** 2 / ampere / second ** 2',
+                        'dimension': 'kilogram * meter ** 2 /'
+                                     ' ampere / second ** 2',
                         'symbol': 'Wb'
                         },
     '[magnetic_field]': {'name': _('magnetic field'),
                          'dimension': 'kilogram / ampere / second ** 2',
                          'symbol': ''
                          },
-    '[magnetomotive_force]': {'name': _('magnetomotive force'), 'dimension': 'ampere',
+    '[magnetomotive_force]': {'name': _('magnetomotive force'),
+                              'dimension': 'ampere',
                               'symbol': 'I'
                               },
     '[electric_dipole]': {'name': _('electric dipole'),
@@ -121,50 +150,60 @@ DIMENSIONS = {
                         'symbol': 'pixel'
                         },
     '[gaussian_charge]': {'name': _('gaussian charge'),
-                          'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
+                          'dimension': 'kilogram ** 0.5 *'
+                                       ' meter ** 1.5 / second',
                           'symbol': ''
                           },
     '[gaussian_current]': {'name': _('gaussian current'),
-                           'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second ** 2',
+                           'dimension': 'kilogram ** 0.5 * '
+                                        'meter ** 1.5 / second ** 2',
                            'symbol': ''
                            },
-    '[gaussian_electric_potential]': {'name': _('gaussian electric potential'),
-                                      'dimension': 'kilogram ** 0.5 * meter ** 0.5 / second',
-                                      'symbol': ''
-                                      },
-    '[gaussian_electric_field]': {'name': _('gaussian electric field'),
-                                  'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
-                                  'symbol': ''
-                                  },
+    '[gaussian_electric_potential]': {
+        'name': _('gaussian electric potential'),
+        'dimension': 'kilogram ** 0.5 * meter ** 0.5 / second',
+        'symbol': ''
+    },
+    '[gaussian_electric_field]': {
+        'name': _('gaussian electric field'),
+        'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
+        'symbol': ''
+    },
     '[gaussian_electric_displacement_field]': {
         'name': _('gaussian electric displacement field'),
         'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
         'symbol': ''
     },
-    '[gaussian_electric_flux]': {'name': _('gaussian electric flux'),
-                                 'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
-                                 'symbol': ''
+    '[gaussian_electric_flux]': {
+        'name': _('gaussian electric flux'),
+        'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
+        'symbol': ''
                                  },
-    '[gaussian_magnetic_field]': {'name': _('gaussian magnetic field'),
-                                  'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
-                                  'symbol': ''
-                                  },
-    '[gaussian_magnetic_field_strength]': {'name': _('gaussian magnetic field strength'),
-                                           'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
-                                           'symbol': ''
-                                           },
-    '[gaussian_magnetic_flux]': {'name': _('gaussian magnetic flux'),
-                                 'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
-                                 'symbol': ''
-                                 },
+    '[gaussian_magnetic_field]': {
+        'name': _('gaussian magnetic field'),
+        'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
+        'symbol': ''
+    },
+    '[gaussian_magnetic_field_strength]': {
+        'name': _('gaussian magnetic field strength'),
+        'dimension': 'kilogram ** 0.5 / meter ** 0.5 / second',
+        'symbol': ''
+    },
+    '[gaussian_magnetic_flux]': {
+        'name': _('gaussian magnetic flux'),
+        'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
+        'symbol': ''
+    },
     '[gaussian_resistance]': {'name': _('gaussian resistance'),
                               'dimension': 'second / meter',
                               'symbol': ''
                               },
-    '[gaussian_resistivity]': {'name': _('gaussian resistivity'), 'dimension': 'second',
+    '[gaussian_resistivity]': {'name': _('gaussian resistivity'),
+                               'dimension': 'second',
                                'symbol': ''
                                },
-    '[gaussian_capacitance]': {'name': _('gaussian capacitance'), 'dimension': 'meter',
+    '[gaussian_capacitance]': {'name': _('gaussian capacitance'),
+                               'dimension': 'meter',
                                'symbol': ''
                                },
     '[gaussian_inductance]': {'name': _('gaussian inductance'),
@@ -175,18 +214,21 @@ DIMENSIONS = {
                                'dimension': 'meter / second',
                                'symbol': ''
                                },
-    '[esu_charge]': {'name': _('esu charge'),
-                     'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
-                     'symbol': ''
-                     },
-    '[esu_current]': {'name': _('esu current'),
-                      'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second ** 2',
-                      'symbol': ''
-                      },
-    '[esu_electric_potential]': {'name': _('esu electric potential'),
-                                 'dimension': 'kilogram ** 0.5 * meter ** 0.5 / second',
-                                 'symbol': ''
-                                 },
+    '[esu_charge]': {
+        'name': _('esu charge'),
+        'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second',
+        'symbol': ''
+    },
+    '[esu_current]': {
+        'name': _('esu current'),
+        'dimension': 'kilogram ** 0.5 * meter ** 1.5 / second ** 2',
+        'symbol': ''
+    },
+    '[esu_electric_potential]': {
+        'name': _('esu electric potential'),
+        'dimension': 'kilogram ** 0.5 * meter ** 0.5 / second',
+        'symbol': ''
+    },
     '[esu_magnetic_flux]': {'name': _('esu magnetic flux'),
                             'dimension': 'kilogram ** 0.5 * meter ** 0.5',
                             'symbol': ''
@@ -199,7 +241,8 @@ DIMENSIONS = {
                      'dimension': 'undefined',
                      'symbol': ''
                      },
-    '[custom]': {'name': _('Custom dimension'), 'dimension': 'undefined', 'symbol': ''},
+    '[custom]': {'name': _('Custom dimension'),
+                 'dimension': 'undefined', 'symbol': ''},
 }
 
 UNIT_SYSTEM_BASE_AND_DERIVED_UNITS = {

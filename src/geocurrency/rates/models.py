@@ -10,7 +10,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
-from geocurrency.converters.models import BaseConverter, ConverterResult, ConverterResultDetail, \
+from geocurrency.converters.models import BaseConverter, \
+    ConverterResult, ConverterResultDetail, \
     ConverterResultError
 from geocurrency.core.helpers import service
 
@@ -75,7 +76,8 @@ class RateManager(models.Manager):
                     date_obj: date = date.today(),
                     to_obj: date = None) -> []:
         """
-        Get rates from a service for a base currency and stores them in the database
+        Get rates from a service for a base currency
+        and stores them in the database
         :param rate_service: Service class to fetch from
         :param currency: currency to obtain rate for
         :param base_currency: base currency to get rate from
@@ -85,7 +87,10 @@ class RateManager(models.Manager):
         """
         service_name = rate_service or settings.RATE_SERVICE
         try:
-            rates = service(service_type='rates', service_name=service_name).fetch_rates(
+            rates = service(
+                service_type='rates',
+                service_name=service_name
+            ).fetch_rates(
                 base_currency=base_currency,
                 currency=currency,
                 date_obj=date_obj,
@@ -118,8 +123,9 @@ class RateManager(models.Manager):
         return Rate()
 
     @classmethod
-    def currency_shortest_path(cls, currency: str, base_currency: str, key: str = None,
-                               date_obj: date = date.today()) -> [str]:
+    def currency_shortest_path(
+            cls, currency: str, base_currency: str, key: str = None,
+            date_obj: date = date.today()) -> [str]:
         """
         Return the shortest path between 2 currencies for the given date
         :param currency: source currency code
@@ -130,14 +136,19 @@ class RateManager(models.Manager):
         """
         rates = Rate.objects.filter(value_date=date_obj).filter(
             models.Q(user=None) | models.Q(key=key))
-        rates_couples = rates.values('currency', 'base_currency', 'value', 'key')
+        rates_couples = rates.values(
+            'currency', 'base_currency', 'value', 'key')
         graph = nx.Graph()
         for k in rates_couples:
-            weight = 0.5 if k['base_currency'] == 'EUR' or k['currency'] == 'EUR' else 1
+            weight = 0.5 if k['base_currency'] == 'EUR' or \
+                            k['currency'] == 'EUR' else 1
             weight *= (0.5 if k['key'] else 1)
-            graph.add_edge(u_of_edge=k['currency'], v_of_edge=k['base_currency'], weight=weight)
+            graph.add_edge(
+                u_of_edge=k['currency'],
+                v_of_edge=k['base_currency'], weight=weight)
         try:
-            return nx.shortest_path(graph, currency, base_currency, weight='weight')
+            return nx.shortest_path(
+                graph, currency, base_currency, weight='weight')
         except nx.exception.NetworkXNoPath as exc:
             raise NoRateFound(
                 f"Rate {currency} to {base_currency} on "
@@ -222,13 +233,17 @@ class Rate(BaseRate):
     """
     Class Rate
     """
-    user = models.ForeignKey(User, related_name='rates', on_delete=models.PROTECT, null=True)
+    user = models.ForeignKey(User, related_name='rates',
+                             on_delete=models.PROTECT, null=True)
     key = models.CharField("User defined categorization key",
-                           max_length=255, default=None, db_index=True, null=True)
+                           max_length=255, default=None,
+                           db_index=True, null=True)
     value_date = models.DateField("Date of value")
     value = models.FloatField("Rate conversion factor", default=0)
-    currency = models.CharField("Currency to convert from", max_length=3, db_index=True)
-    base_currency = models.CharField("Currency to convert to", max_length=3, db_index=True,
+    currency = models.CharField("Currency to convert from",
+                                max_length=3, db_index=True)
+    base_currency = models.CharField("Currency to convert to",
+                                     max_length=3, db_index=True,
                                      default='EUR')
     objects = RateManager()
 
@@ -241,7 +256,8 @@ class Rate(BaseRate):
             models.Index(fields=['base_currency', 'value_date']),
             models.Index(fields=['currency', 'value_date']),
             models.Index(fields=['currency', 'base_currency', 'value_date']),
-            models.Index(fields=['key', 'currency', 'base_currency', 'value_date']),
+            models.Index(fields=['key', 'currency',
+                                 'base_currency', 'value_date']),
         ]
         unique_together = [['key', 'currency', 'base_currency', 'value_date']]
 
@@ -261,7 +277,8 @@ class Rate(BaseRate):
         :param date_obj: date of the rate
         :param amount: amount to convert
         """
-        converter = RateConverter(user=user, key=key, base_currency=base_currency)
+        converter = RateConverter(user=user, key=key,
+                                  base_currency=base_currency)
         converter.add_data(
             {
                 'currency': currency,
@@ -350,7 +367,14 @@ class BulkRate:
     from_date = None
     to_date = None
 
-    def __init__(self, base_currency, currency, value, key, from_date, to_date):
+    def __init__(
+            self,
+            base_currency,
+            currency,
+            value,
+            key,
+            from_date,
+            to_date):
         """
         Initialize
         :param key: key for user
@@ -438,14 +462,16 @@ class RateConverter(BaseConverter):
         Reads currencies in data and fetches rates, put them in memory
         """
         for line in self.data:
-            self.cached_currencies[line.date_obj] = self.cached_currencies.get(line.date_obj) or {}
+            self.cached_currencies[line.date_obj] = \
+                self.cached_currencies.get(line.date_obj) or {}
             rate = Rate.objects.rate_at_date(
                 key=self.key,
                 base_currency=self.base_currency,
                 currency=line.currency,
                 date_obj=line.date_obj)
             if rate.pk:
-                self.cached_currencies[line.date_obj][line.currency] = rate.value
+                self.cached_currencies[line.date_obj][line.currency] = \
+                    rate.value
 
     def convert(self) -> ConverterResult:
         """

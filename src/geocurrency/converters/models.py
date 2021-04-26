@@ -38,7 +38,8 @@ class ConverterResultDetail:
     conversion_rate = 0
     converted_value = 0
 
-    def __init__(self, unit: str, original_value: float, date: date, conversion_rate: float,
+    def __init__(self, unit: str, original_value: float,
+                 date: date, conversion_rate: float,
                  converted_value: float):
         """
         Initialize details
@@ -64,7 +65,8 @@ class ConverterResultError:
     date = None
     error = None
 
-    def __init__(self, unit: str, original_value: float, date: date, error: str):
+    def __init__(self, unit: str, original_value: float,
+                 date: date, error: str):
         """
         Initialize error
         :param unit: string of the dimension
@@ -89,7 +91,8 @@ class ConverterResult:
     status = None
     errors = []
 
-    def __init__(self, id: str = None, target: str = None, detail: [ConverterResultDetail] = None,
+    def __init__(self, id: str = None, target: str = None,
+                 detail: [ConverterResultDetail] = None,
                  sum: float = 0, status: str = BaseConverter.INITIATED_STATUS,
                  errors: [ConverterResultError] = None):
         """
@@ -118,7 +121,8 @@ class ConverterResult:
             float(value)
             self.sum += value
         except ValueError:
-            logging.error("invalid value, will not increment result sum", value)
+            logging.error("invalid value, "
+                          "will not increment result sum", value)
 
     def end_batch(self):
         """

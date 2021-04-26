@@ -24,8 +24,11 @@ class ForexService(RateService):
         rates = self.fetch_rates(base_currency='USD')
         return [r['currency'] for r in rates]
 
-    def _fetch_all_rates(self, provider: converter.CurrencyRates, base_currency: str,
-                         date_obj: date) -> []:
+    def _fetch_all_rates(
+            self,
+            provider: converter.CurrencyRates,
+            base_currency: str,
+            date_obj: date) -> []:
         """
         Fetch all rates for availbale currencies for this service
         :param provider: Currency rates
@@ -34,7 +37,9 @@ class ForexService(RateService):
         :return: List of conversion rates
         """
         try:
-            _rates = provider.get_rates(base_cur=base_currency, date_obj=date_obj)
+            _rates = provider.get_rates(
+                base_cur=base_currency,
+                date_obj=date_obj)
             return [self.serializer(
                 base_currency=base_currency,
                 currency=key,
@@ -50,7 +55,8 @@ class ForexService(RateService):
                            base_currency: str,
                            currency: str, date_obj: date) -> []:
         """
-        Fetch one conversion rate between a currency and a base currency at a given date
+        Fetch one conversion rate between a currency
+        and a base currency at a given date
         :param provider: provider of the values
         :param base_currency: base currency
         :param currency: currency to convert from
@@ -58,7 +64,10 @@ class ForexService(RateService):
         :return: List of rates
         """
         try:
-            value = provider.get_rate(dest_cur=currency, base_cur=base_currency, date_obj=date_obj)
+            value = provider.get_rate(
+                dest_cur=currency,
+                base_cur=base_currency,
+                date_obj=date_obj)
             return [self.serializer(
                 base_currency=base_currency,
                 currency=currency,
@@ -73,9 +82,11 @@ class ForexService(RateService):
     def fetch_rates(self,
                     base_currency: str = settings.BASE_CURRENCY,
                     currency: str = None,
-                    date_obj: date = date.today(), to_obj: date = None) -> []:
+                    date_obj: date = date.today(),
+                    to_obj: date = None) -> []:
         """
-        Get conversion rates between currency and base currency for a range of dates
+        Get conversion rates between currency
+         and base currency for a range of dates
         :param base_currency: currency to convert to
         :param currency: currency to convert from
         :param date_obj: beginning of range
@@ -87,12 +98,17 @@ class ForexService(RateService):
         _rates = []
         if currency:
             for i in range(((to_obj or date_obj) - date_obj).days + 1):
-                _rates = self._fetch_single_rate(c, base_currency=base_currency, currency=currency,
-                                                 date_obj=date_obj + timedelta(i))
+                _rates = self._fetch_single_rate(
+                    c,
+                    base_currency=base_currency,
+                    currency=currency,
+                    date_obj=date_obj + timedelta(i))
                 rates.extend(_rates)
         else:
             for i in range(((to_obj or date_obj) - date_obj).days + 1):
-                _rates = self._fetch_all_rates(c, base_currency=base_currency,
-                                               date_obj=date_obj + timedelta(i))
+                _rates = self._fetch_all_rates(
+                    c,
+                    base_currency=base_currency,
+                    date_obj=date_obj + timedelta(i))
                 rates.extend(_rates)
         return rates

@@ -78,15 +78,18 @@ class RateTest(TestCase):
         """
         Test fetching of rates at a given date
         """
-        rates = Rate.objects.fetch_rates(base_currency=self.base_currency,
-                                         date_obj=date(year=2020, month=6, day=1))
+        rates = Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            date_obj=date(year=2020, month=6, day=1))
         self.assertIsNotNone(rates)
 
     def test_fetch_rate(self):
         """
         Test fectch of a specific conversion rate
         """
-        rate = Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        rate = Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         self.assertIsNotNone(rate)
 
     def test_fetch_rate_with_date(self):
@@ -103,28 +106,46 @@ class RateTest(TestCase):
         """
         Find a rate between currencies
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
+        rate = Rate.objects.find_rate(
+            base_currency=self.base_currency,
+            currency=self.currency)
         self.assertIsNotNone(rate, msg="no rate found")
 
     def test_find_pivot_rate(self):
         """
         Find rate between currencies that are not directly linked
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency='AUD')
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.currency,
+            currency='AUD')
+        rate = Rate.objects.find_rate(
+            base_currency=self.base_currency,
+            currency='AUD')
         self.assertIsNotNone(rate, msg="no rate found")
 
     def test_rate_at_date(self):
         """
         Find rate at a specific date
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
-        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.currency,
+            currency='AUD')
+        rate = Rate.objects.find_rate(
+            base_currency=self.base_currency,
+            currency=self.currency)
         self.assertIsNotNone(rate.pk, msg="no direct rate found")
-        rate = Rate.objects.find_rate(base_currency=self.base_currency, currency='AUD')
+        rate = Rate.objects.find_rate(
+            base_currency=self.base_currency,
+            currency='AUD')
         self.assertIsNotNone(rate.pk, msg="no pivot rate found")
 
     def test_custom_rate(self):
@@ -140,7 +161,9 @@ class RateTest(TestCase):
             value_date='2021-01-01'
         )
         self.assertIsNotNone(
-            Rate.objects.filter(user=self.user, key=self.key, base_currency='AFN', currency='AUD'))
+            Rate.objects.filter(
+                user=self.user, key=self.key,
+                base_currency='AFN', currency='AUD'))
 
     def test_find_rate_chain(self):
         """
@@ -171,7 +194,8 @@ class RateTest(TestCase):
             value_date='2021-01-01'
         )
         rates = Rate.objects.currency_shortest_path(
-            currency='AUD', base_currency='BND', key=self.key, date_obj='2021-01-01')
+            currency='AUD', base_currency='BND',
+            key=self.key, date_obj='2021-01-01')
         self.assertEqual(rates, ['AUD', 'AFN', 'JPY', 'BND'])
 
     def test_find_mixed_rate_chain(self):
@@ -204,7 +228,8 @@ class RateTest(TestCase):
             value_date=datetime.date.today()
         )
         rates = Rate.objects.currency_shortest_path(
-            currency='ARS', base_currency='EUR', key=self.key, date_obj=datetime.date.today())
+            currency='ARS', base_currency='EUR',
+            key=self.key, date_obj=datetime.date.today())
         self.assertEqual(rates, ['ARS', 'AFN', 'BND', 'JPY', 'EUR'])
 
     def test_no_rate_path(self):
@@ -315,7 +340,8 @@ class RateTest(TestCase):
 
     def test_find_rate_override(self):
         """
-        Test having 2 rates for the same period, with a custom and a standard one
+        Test having 2 rates for the same period,
+         with a custom and a standard one
         """
         Rate.objects.fetch_rates(base_currency=self.base_currency)
         Rate.objects.create(
@@ -350,7 +376,7 @@ class RateTest(TestCase):
             value=100,
             value_date=datetime.date.today()
         )
-        jpy_eur = Rate.objects.get(
+        Rate.objects.get(
             base_currency='EUR',
             currency='JPY',
             user__isnull=True,
@@ -463,7 +489,8 @@ class RateAPITest(TestCase):
         """
         Test rate list
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(base_currency=self.base_currency,
+                                 currency=self.currency)
         client = APIClient()
         response = client.get(
             '/rates/',
@@ -474,7 +501,8 @@ class RateAPITest(TestCase):
         """
         Test rate stats
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(base_currency=self.base_currency,
+                                 currency=self.currency)
         client = APIClient()
         response = client.get(
             '/rates/stats/',
@@ -486,7 +514,8 @@ class RateAPITest(TestCase):
         """
         Test rates list for authenticated user
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(base_currency=self.base_currency,
+                                 currency=self.currency)
         client = APIClient()
         token = Token.objects.get(user__username=self.user.username)
         client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
@@ -515,7 +544,9 @@ class RateAPITest(TestCase):
             self.assertEqual(len(response.json()['results']),
                              len(anon_response.json()['results']) + 2)
         else:
-            self.assertEqual(len(response.json()), len(anon_response.json()) + 2)
+            self.assertEqual(
+                len(response.json()),
+                len(anon_response.json()) + 2)
 
     def test_list_with_key_request(self):
         """
@@ -540,7 +571,9 @@ class RateAPITest(TestCase):
             data={'key': self.key},
             format='json')
         if 'results' in response.json():
-            self.assertEqual(response.json()['results'][0]['key'], str(self.key))
+            self.assertEqual(
+                response.json()['results'][0]['key'],
+                str(self.key))
         else:
             self.assertEqual(response.json()[0]['key'], str(self.key))
 
@@ -562,7 +595,9 @@ class RateAPITest(TestCase):
             }
         )
         self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         response = client.get(
             '/rates/',
             data={'key_or_null': self.key},
@@ -590,7 +625,9 @@ class RateAPITest(TestCase):
             }
         )
         self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         response = client.get(
             '/rates/',
             data={'key_isnull': self.key},
@@ -693,7 +730,9 @@ class RateAPITest(TestCase):
         """
         Test retreiving a specific rate
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         rate = Rate.objects.first()
         client = APIClient()
         response = client.get(
@@ -721,10 +760,12 @@ class RateAPITest(TestCase):
             }
         )
         self.assertEqual(post_response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(len(post_response.json()),
-                         (datetime.date(year=2020, month=9, day=1) - datetime.date(year=2020,
-                                                                                   month=1,
-                                                                                   day=1)).days + 1)
+        self.assertEqual(
+            len(post_response.json()),
+            (datetime.date(
+                year=2020,
+                month=9,
+                day=1) - datetime.date(year=2020, month=1, day=1)).days + 1)
 
     def test_latest_currency_request(self):
         """
@@ -776,8 +817,10 @@ class RateConverterTest(TestCase):
         settings.RATE_SERVICE = 'forex'
         from_date = datetime.date(year=2020, month=7, day=20)
         to_date = datetime.date(year=2020, month=7, day=25)
-        Rate.objects.fetch_rates(base_currency=self.base_currency, date_obj=from_date,
-                                 to_obj=to_date)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            date_obj=from_date,
+            to_obj=to_date)
         self.user, created = User.objects.get_or_create(
             username='test',
             email='test@ipd.com'
@@ -817,16 +860,20 @@ class RateConverterTest(TestCase):
         """
         Test converter initial status
         """
-        self.assertEqual(self.converter.status, self.converter.INITIATED_STATUS)
+        self.assertEqual(self.converter.status,
+                         self.converter.INITIATED_STATUS)
 
     def test_add_data(self):
         """
         Test adding data to a converter
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         errors = self.converter.add_data(self.amounts)
         self.assertEqual(errors, [])
-        self.assertEqual(self.converter.status, self.converter.INSERTING_STATUS)
+        self.assertEqual(self.converter.status,
+                         self.converter.INSERTING_STATUS)
         self.assertIsNotNone(self.converter.cached_currencies)
         self.assertIsNotNone(cache.get(self.converter.id))
 
@@ -859,10 +906,12 @@ class RateConverterTest(TestCase):
         """
         Test converting currencies with indirect relation
         """
-        Rate.objects.fetch_rates(base_currency='EUR', currency='AUD',
-                                 date_obj=datetime.date(year=2020, month=7, day=23))
-        Rate.objects.fetch_rates(base_currency='JPY', currency='EUR',
-                                 date_obj=datetime.date(year=2020, month=7, day=23))
+        Rate.objects.fetch_rates(
+            base_currency='EUR', currency='AUD',
+            date_obj=datetime.date(year=2020, month=7, day=23))
+        Rate.objects.fetch_rates(
+            base_currency='JPY', currency='EUR',
+            date_obj=datetime.date(year=2020, month=7, day=23))
         converter = RateConverter(self.user, base_currency='JPY')
         amounts = [
             {
@@ -897,8 +946,10 @@ class RateConverterAPITest(TestCase):
         settings.RATE_SERVICE = 'forex'
         from_date = datetime.date(year=2020, month=7, day=20)
         to_date = datetime.date(year=2020, month=7, day=25)
-        Rate.objects.fetch_rates(base_currency=self.base_currency, date_obj=from_date,
-                                 to_obj=to_date)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            date_obj=from_date,
+            to_obj=to_date)
         self.user, created = User.objects.get_or_create(
             username='test',
             email='test@ipd.com'
@@ -938,7 +989,9 @@ class RateConverterAPITest(TestCase):
         """
         Test conversion request
         """
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         amounts = RateAmountSerializer(self.amounts, many=True)
         client = APIClient()
@@ -958,7 +1011,9 @@ class RateConverterAPITest(TestCase):
         Test batch conversion
         """
         batch_id = uuid.uuid4()
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
         Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
         client = APIClient()
         amounts = RateAmountSerializer(self.amounts, many=True)
@@ -972,7 +1027,9 @@ class RateConverterAPITest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), RateConverter.INSERTING_STATUS)
+        self.assertEqual(
+            response.json().get('status'),
+            RateConverter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
         response = client.post(
             '/rates/convert/',
@@ -983,16 +1040,24 @@ class RateConverterAPITest(TestCase):
                 'eob': True
             },
             format='json')
-        self.assertEqual(response.json().get('status'), RateConverter.FINISHED)
-        self.assertEqual(len(response.json().get('detail')), 2 * len(self.amounts))
+        self.assertEqual(
+            response.json().get('status'),
+            RateConverter.FINISHED)
+        self.assertEqual(
+            len(response.json().get('detail')),
+            2 * len(self.amounts))
 
     def test_watch_request(self):
         """
         Test observation of the batch
         """
         batch_id = uuid.uuid4()
-        Rate.objects.fetch_rates(base_currency=self.base_currency, currency=self.currency)
-        Rate.objects.fetch_rates(base_currency=self.currency, currency='AUD')
+        Rate.objects.fetch_rates(
+            base_currency=self.base_currency,
+            currency=self.currency)
+        Rate.objects.fetch_rates(
+            base_currency=self.currency,
+            currency='AUD')
         client = APIClient()
         amounts = RateAmountSerializer(self.amounts, many=True)
         response = client.post(
@@ -1005,11 +1070,15 @@ class RateConverterAPITest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), RateConverter.INSERTING_STATUS)
-        self.assertEqual(response.json().get('id'), str(batch_id))
+        self.assertEqual(
+            response.json().get('status'),
+            RateConverter.INSERTING_STATUS)
+        self.assertEqual(
+            response.json().get('id'), str(batch_id))
         response = client.get(
             f'/watch/{str(batch_id)}/',
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json().get('status'), RateConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('status'),
+                         RateConverter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))

@@ -1,7 +1,6 @@
 """
 Units tests
 """
-import json
 import uuid
 
 import pint
@@ -15,10 +14,11 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 
 from . import ADDITIONAL_BASE_UNITS
-from .exceptions import UnitSystemNotFound, UnitDuplicateError, UnitDimensionError, UnitValueError
-from .models import UnitSystem, UnitConverter, Dimension, DimensionNotFound, CustomUnit, \
-    ExpressionCalculator, Operand
-from .serializers import QuantitySerializer, ExpressionSerializer
+from .exceptions import UnitSystemNotFound, UnitDuplicateError, \
+    UnitDimensionError, UnitValueError
+from .models import UnitSystem, UnitConverter, \
+    Dimension, DimensionNotFound, CustomUnit
+from .serializers import QuantitySerializer
 
 
 class DimensionTest(TestCase):
@@ -73,7 +73,8 @@ class DimensionTest(TestCase):
         Test creation with wrong parameters
         """
         us = UnitSystem()
-        self.assertRaises(DimensionNotFound, Dimension, unit_system=us, code='length')
+        self.assertRaises(DimensionNotFound, Dimension,
+                          unit_system=us, code='length')
 
     def test_dimension_units(self):
         """
@@ -103,11 +104,13 @@ class DimensionTest(TestCase):
 
     def test_custom_dimension_superuser_key_units(self):
         """
-        Test units list for [custom] dimension with superuser rights with a key
+        Test units list for [custom] dimension
+        with superuser rights with a key
         """
         us = UnitSystem(user=self.admin, key=str(self.key))
         dimension = Dimension(unit_system=us, code='[custom]')
-        self.assertEqual(len(dimension.units(user=self.admin, key=self.key)), 1)
+        self.assertEqual(len(dimension.units(user=self.admin,
+                                             key=self.key)), 1)
 
     def test_custom_dimension_user_units(self):
         """
@@ -123,7 +126,8 @@ class DimensionTest(TestCase):
         """
         us = UnitSystem(user=self.user, key=str(self.key))
         dimension = Dimension(unit_system=us, code='[custom]')
-        self.assertEqual(len(dimension.units(user=self.user, key=self.key)), 1)
+        self.assertEqual(len(dimension.units(user=self.user,
+                                             key=self.key)), 1)
 
     def test_custom_dimension_no_user_units(self):
         """
@@ -164,8 +168,10 @@ class UnitTest(TestCase):
         unit = us.unit(unit_name='meter')
         self.assertEqual(unit.readable_dimension, _('length'))
         unit = us.unit(unit_name='US_international_ohm')
-        self.assertEqual(unit.readable_dimension,
-                         f"{_('length')}^2 * {_('mass')} / {_('current')}^2 / {_('time')}^3")
+        self.assertEqual(
+            unit.readable_dimension,
+            f"{_('length')}^2 * {_('mass')} / "
+            f"{_('current')}^2 / {_('time')}^3")
 
 
 class UnitAPITest(TestCase):
@@ -248,7 +254,7 @@ class UnitAPITest(TestCase):
         Test  units list with invalid dimension filter
         """
         client = APIClient()
-        us = UnitSystem(system_name='mks')
+        UnitSystem(system_name='mks')
         response = client.get(
             '/units/mks/units/',
             data={
@@ -271,7 +277,8 @@ class UnitAPITest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json()),
-                         len(Dimension(unit_system=us, code='[length]').units()))
+                         len(Dimension(unit_system=us,
+                                       code='[length]').units()))
 
     def test_list_with_compounded_dimension_request(self):
         """
@@ -287,7 +294,8 @@ class UnitAPITest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json()),
-                         len(Dimension(unit_system=us, code='[compounded]').units()))
+                         len(Dimension(unit_system=us,
+                                       code='[compounded]').units()))
 
     def test_list_with_dimension_2_request(self):
         """
@@ -303,7 +311,8 @@ class UnitAPITest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json()),
-                         len(Dimension(unit_system=us, code='[area]').units()))
+                         len(Dimension(unit_system=us,
+                                       code='[area]').units()))
 
     def test_retrieve_request(self):
         """
@@ -373,8 +382,9 @@ class UnitSystemTest(TestCase):
         """
         us = UnitSystem()
         available_systems = us.available_systems()
-        self.assertEqual(available_systems,
-                         ['Planck', 'SI', 'US', 'atomic', 'cgs', 'imperial', 'mks'])
+        self.assertEqual(
+            available_systems,
+            ['Planck', 'SI', 'US', 'atomic', 'cgs', 'imperial', 'mks'])
 
     def test_available_units(self):
         """
@@ -413,7 +423,8 @@ class UnitSystemTest(TestCase):
         Test additionnal units addition test
         """
         us = UnitSystem(system_name='SI')
-        available_units = us._test_additional_units(settings.GEOCURRENCY_ADDITIONAL_UNITS)
+        available_units = us._test_additional_units(
+            settings.GEOCURRENCY_ADDITIONAL_UNITS)
         self.assertFalse(available_units)
 
     def test_available_units_different(self):
@@ -586,7 +597,8 @@ class UnitConverterTest(TestCase):
         """
         Test converter  creation
         """
-        self.assertEqual(self.converter.status, self.converter.INITIATED_STATUS)
+        self.assertEqual(self.converter.status,
+                         self.converter.INITIATED_STATUS)
 
     def test_add_data(self):
         """
@@ -594,7 +606,8 @@ class UnitConverterTest(TestCase):
         """
         errors = self.converter.add_data(self.quantities)
         self.assertEqual(errors, [])
-        self.assertEqual(self.converter.status, self.converter.INSERTING_STATUS)
+        self.assertEqual(self.converter.status,
+                         self.converter.INSERTING_STATUS)
         self.assertIsNotNone(cache.get(self.converter.id))
 
     def test_trash_quantities(self):
@@ -699,7 +712,8 @@ class UnitConverterAPITest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('sum', response.json())
-        self.assertEqual(len(response.json().get('detail')), len(self.quantities))
+        self.assertEqual(len(response.json().get('detail')),
+                         len(self.quantities))
 
     def test_convert_batch_request(self):
         """
@@ -719,7 +733,8 @@ class UnitConverterAPITest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('status'),
+                         UnitConverter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
         response = client.post(
             '/units/convert/',
@@ -731,8 +746,10 @@ class UnitConverterAPITest(TestCase):
                 'eob': True
             },
             format='json')
-        self.assertEqual(response.json().get('status'), UnitConverter.FINISHED)
-        self.assertEqual(len(response.json().get('detail')), 2 * len(self.quantities))
+        self.assertEqual(response.json().get('status'),
+                         UnitConverter.FINISHED)
+        self.assertEqual(len(response.json().get('detail')),
+                         2 * len(self.quantities))
 
     def test_watch_request(self):
         """
@@ -752,13 +769,15 @@ class UnitConverterAPITest(TestCase):
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('status'),
+                         UnitConverter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
         response = client.get(
             f'/watch/{str(batch_id)}/',
             format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json().get('status'), UnitConverter.INSERTING_STATUS)
+        self.assertEqual(response.json().get('status'),
+                         UnitConverter.INSERTING_STATUS)
         self.assertEqual(response.json().get('id'), str(batch_id))
 
 
@@ -802,8 +821,9 @@ class CustomUnitTest(TestCase):
         self.assertEqual(cu.symbol, 'myu')
         self.assertEqual(cu.alias, 'myu')
         self.assertEqual(
-            CustomUnit.objects.filter(user=self.user, key=self.key, unit_system='SI',
-                                      code='my_unit').count(),
+            CustomUnit.objects.filter(
+                user=self.user, key=self.key,
+                unit_system='SI', code='my_unit').count(),
             1)
 
     def test_creation_with_dash(self):
@@ -828,8 +848,9 @@ class CustomUnitTest(TestCase):
         self.assertEqual(cu.symbol, 'm_yu')
         self.assertEqual(cu.alias, 'm_yu')
         self.assertEqual(
-            CustomUnit.objects.filter(user=self.user, key=self.key, unit_system='SI',
-                                      code='my_unit').count(),
+            CustomUnit.objects.filter(
+                user=self.user, key=self.key,
+                unit_system='SI', code='my_unit').count(),
             1)
 
     def test_invalid_creation_params(self):
@@ -1067,7 +1088,7 @@ class CustomUnitTestAPI(TestCase):
         """
         Test list of units with custom unit and connected user
         """
-        cu = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=self.key,
             unit_system='SI',
@@ -1084,7 +1105,8 @@ class CustomUnitTestAPI(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         if 'results' in response.json():
-            self.assertIn('ny_unit', [u['code'] for u in response.json()['results']])
+            self.assertIn('ny_unit', [u['code']
+                                      for u in response.json()['results']])
         else:
             self.assertIn('ny_unit', [u['code'] for u in response.json()])
 
@@ -1093,7 +1115,7 @@ class CustomUnitTestAPI(TestCase):
         Another test of a list of units with a custom unit
         """
         new_key = uuid.uuid4()
-        cu = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=self.key,
             unit_system='SI',
@@ -1102,7 +1124,7 @@ class CustomUnitTestAPI(TestCase):
             relation="1.5 meter",
             symbol="nyu",
             alias="nnyu")
-        cu2 = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=new_key,
             unit_system='SI',
@@ -1119,8 +1141,10 @@ class CustomUnitTestAPI(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         if 'results' in response.json():
-            self.assertIn('ny_unit', [u['code'] for u in response.json()['results']])
-            self.assertIn('py_unit', [u['code'] for u in response.json()['results']])
+            self.assertIn('ny_unit', [u['code']
+                                      for u in response.json()['results']])
+            self.assertIn('py_unit', [u['code']
+                                      for u in response.json()['results']])
         else:
             self.assertIn('ny_unit', [u['code'] for u in response.json()])
             self.assertIn('py_unit', [u['code'] for u in response.json()])
@@ -1130,7 +1154,7 @@ class CustomUnitTestAPI(TestCase):
         Test key isolation
         """
         new_key = uuid.uuid4()
-        cu = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=self.key,
             unit_system='SI',
@@ -1139,7 +1163,7 @@ class CustomUnitTestAPI(TestCase):
             relation="1.5 meter",
             symbol="nyu",
             alias="nnyu")
-        cu2 = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=new_key,
             unit_system='SI',
@@ -1166,7 +1190,7 @@ class CustomUnitTestAPI(TestCase):
         Another isolation test
         """
         new_key = uuid.uuid4()
-        cu = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=self.key,
             unit_system='SI',
@@ -1175,7 +1199,7 @@ class CustomUnitTestAPI(TestCase):
             relation="1.5 meter",
             symbol="nyu",
             alias="nnyu")
-        cu2 = CustomUnit.objects.create(
+        CustomUnit.objects.create(
             user=self.user,
             key=new_key,
             unit_system='SI',
@@ -1196,749 +1220,3 @@ class CustomUnitTestAPI(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('ny_unit', [u['code'] for u in response.json()])
         self.assertNotIn('py_unit', [u['code'] for u in response.json()])
-
-
-class ExpressionTest(TestCase):
-    """
-    Test Expression
-    """
-
-    def setUp(self):
-        """
-        Setup test environment
-        """
-        self.us = UnitSystem(system_name='SI')
-
-    def tearDown(self):
-        """
-        tear down environment
-        """
-        self.us = None
-
-    def test_valid_serializer_payload(self):
-        """
-        Test serializer validation
-        """
-        payload = {
-            'expression': '(3*{a}+15*{b})*6*{c}',
-            'operands': [
-                {
-                    'name': 'a',
-                    'value': 0.1,
-                    'unit': 'kg'
-                },
-                {
-                    'name': 'b',
-                    'value': 15,
-                    'unit': 'g'
-                },
-                {
-                    'name': 'c',
-                    'value': 12,
-                    'unit': 's'
-                }
-            ]
-        }
-        es = ExpressionSerializer(data=payload)
-        self.assertTrue(es.is_valid(unit_system=self.us))
-
-    def test_invalid_serializer_expression(self):
-        """
-        Test invalid payload
-        """
-        payload = {
-            'expression': '(3*{a}+15*{b}) -',
-            'operands': [
-                {
-                    'name': 'a',
-                    'value': 0.1,
-                    'unit': 'kg'
-                },
-                {
-                    'name': 'b',
-                    'value': 15,
-                    'unit': 'g'
-                },
-                {
-                    'name': 'c',
-                    'value': 12,
-                    'unit': 's'
-                }
-            ]
-        }
-        es = ExpressionSerializer(data=payload)
-        self.assertFalse(es.is_valid(unit_system=self.us))
-
-    def test_invalid_serializer_coherency(self):
-        """
-        Test Quantity coherency
-        """
-        payload = {
-            'expression': '(3*{a}+15*{b})-c',
-            'operands': [
-                {
-                    'name': 'a',
-                    'value': 0.1,
-                    'unit': 'kg'
-                },
-                {
-                    'name': 'b',
-                    'value': 15,
-                    'unit': 'g'
-                },
-                {
-                    'name': 'c',
-                    'value': 12,
-                    'unit': 's'
-                }
-            ]
-        }
-        es = ExpressionSerializer(data=payload)
-        self.assertFalse(es.is_valid(unit_system=self.us))
-
-    def test_invalid_serializer_parameters(self):
-        """
-        Test wrong parameters
-        """
-        payload = {
-            'expression': '(3*{a}+15*{b})-c',
-            'operands': [
-                {
-                    'name': 'a',
-                    'value': 0.1,
-                    'unit': 'kg'
-                },
-                {
-                    'name': 'b',
-                    'value': 15,
-                    'unit': 'g'
-                }
-            ]
-        }
-        es = ExpressionSerializer(data=payload)
-        self.assertFalse(es.is_valid(unit_system=self.us))
-
-    def test_empty_serializer_expression(self):
-        """
-        Test empty expression in payload
-        """
-        payload = {
-            'expression': '',
-            'operands': [
-                {
-                    'name': 'a',
-                    'value': 0.1,
-                    'unit': 'kg'
-                },
-                {
-                    'name': 'b',
-                    'value': 15,
-                    'unit': 'g'
-                }
-            ]
-        }
-        es = ExpressionSerializer(data=payload)
-        self.assertFalse(es.is_valid(unit_system=self.us))
-
-    def test_empty_serializer_operands(self):
-        """
-        Test empty operands list in payload
-        """
-        payload = {
-            'expression': '(3*{a}+15*{b})-c',
-            'operands': []
-        }
-        es = ExpressionSerializer(data=payload)
-        self.assertFalse(es.is_valid(unit_system=self.us))
-
-    def test_formula_validation_request(self):
-        """
-        Test formula syntax validation
-        """
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/validate/',
-            data=json.dumps({
-                'expression': "3*{a}+15*{b}",
-                "operands": [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 15,
-                        "unit": "g"
-                    }
-                ]
-            }),
-            content_type="application/json"
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-
-class OperandTest(TestCase):
-    """
-    Test Operand
-    """
-
-    def setUp(self):
-        """
-        Setup unit system
-        """
-        self.us = UnitSystem(system_name='SI')
-
-    def test_validate(self):
-        """
-        Test operand validation
-        """
-        op = Operand(
-            name='test',
-            value=0,
-            unit='m/s'
-        )
-        self.assertTrue(op.validate())
-        op = Operand(
-            name='',
-            value=1,
-            unit='m/s'
-        )
-        self.assertFalse(op.validate())
-        op = Operand(
-            name='test',
-            value=None,
-            unit='m/s'
-        )
-        self.assertFalse(op.validate())
-        op = Operand(
-            name='test',
-            value='a',
-            unit='m/s'
-        )
-        self.assertFalse(op.validate())
-
-    def test_get_unit_units(self):
-        """
-        Test units of operand
-        """
-        op = Operand(
-            name='toto',
-            value=15,
-            unit='m/s'
-        )
-        self.assertTrue(op.validate())
-        self.assertEqual(op.get_unit(self.us), 'm/s')
-
-    def test_get_unit_uncertainty_and_magnitude(self):
-        """
-        Test uncertainty of operand
-        """
-        op = Operand(
-            name='toto',
-            value=15,
-            unit='m/s',
-            uncertainty="0.01"
-        )
-        self.assertTrue(op.validate())
-        self.assertEqual(op.get_uncertainty(), 0.01)
-        self.assertEqual(op.get_magnitude(), 15)
-
-    def test_get_unit_uncertainty_percentage_and_magnitude(self):
-        """
-        Test uncertainty with a percentage
-        """
-        op = Operand(
-            name='toto',
-            value=15,
-            unit='m/s',
-            uncertainty="10%"
-        )
-        self.assertTrue(op.validate())
-        self.assertEqual(op.get_uncertainty(), 15*0.1)
-        self.assertEqual(op.get_magnitude(), 15)
-
-    def test_get_unit_dimensions(self):
-        """
-        Test dimensions of units
-        """
-        q_ = self.us.ureg.Quantity
-        op = Operand(
-            name='toto',
-            value=15,
-            unit='[mass]/[time]'
-        )
-        self.assertIsInstance(q_(1, op.get_unit(self.us)), q_)
-
-    def test_get_unit_mixed(self):
-        """
-        Test operand with dimensions
-        """
-        q_ = self.us.ureg.Quantity
-        op = Operand(
-            name='toto',
-            value=15,
-            unit='[mass]/[time]*L'
-        )
-        self.assertIsInstance(q_(1, op.get_unit(self.us)), q_)
-
-    def test_get_unit_mixed_custom(self):
-        """
-        Test Operand with custom units
-        """
-        q_ = self.us.ureg.Quantity
-        op = Operand(
-            name='toto',
-            value=15,
-            unit='[mass]/[time]*L*plouf'
-        )
-        self.assertRaises(pint.errors.UndefinedUnitError, q_, 1, op.get_unit(self.us))
-
-
-class ExpressionAPITest(TestCase):
-    """
-    Test Expression API
-    """
-
-    def setUp(self):
-        """
-        Setup test environment
-        """
-        self.us = UnitSystem(system_name='SI')
-
-    def test_formula_validation_variable_exception_request(self):
-        """
-        Test formaula validation API
-        """
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/validate/',
-            data=json.dumps({
-                'expression': "3*{a}+15*{b}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                ]
-            }),
-            content_type="application/json"
-        )
-        self.assertEqual(response.status_code, status.HTTP_406_NOT_ACCEPTABLE)
-
-    def test_formula_validation_expression_exception_request(self):
-        """
-        Test wrong formula validation API
-        """
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/validate/',
-            data=json.dumps({
-                'expression': "3*{a}+15*{b}+",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 15,
-                        "unit": "g"
-                    }
-                ]
-            }),
-            content_type="application/json"
-        )
-        self.assertEqual(response.status_code, status.HTTP_406_NOT_ACCEPTABLE)
-
-
-class ExpressionCalculatorTest(TestCase):
-    """
-    Test expression calculator
-    """
-    base_system = 'SI'
-    base_unit = 'meter'
-
-    def setUp(self) -> None:
-        """
-        Setup environment
-        """
-        self.calculator = ExpressionCalculator(unit_system='SI')
-        self.unit_system = UnitSystem(system_name='SI')
-        self.expressions = [
-            {
-                'expression': "3*{a}+15*{b}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 15,
-                        "unit": "g"
-                    }
-                ]
-            },
-            {
-                'expression': "3*{a}+15*{b}+1000*{c}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 150,
-                        "unit": "g"
-                    },
-                    {
-                        "name": "c",
-                        "value": 250,
-                        "unit": "mg"
-                    },
-                ]
-            }
-        ]
-        self.expression_to_unit = [
-            {
-                'expression': "3*{a}+15*{b}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 200,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 150000,
-                        "unit": "g"
-                    }
-                ],
-                'out_units': 'pound'
-            },
-            {
-                'expression': "3*{a}+15*{b}+1000*{c}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 75,
-                        "unit": "g"
-                    },
-                    {
-                        "name": "c",
-                        "value": 125,
-                        "unit": "mg"
-                    },
-                ],
-                'out_units': 'milligram'
-            }
-        ]
-        self.trash_expressions = [
-            {
-                'expression': "3*{a}+15*{b}+",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 15,
-                        "unit": "g"
-                    }
-                ]
-            },
-            {
-                'expression': "3*{a}+15*{b}+1000*{c}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 150,
-                        "unit": "g"
-                    },
-                    {
-                        "name": "c",
-                        "value": 250,
-                        "unit": "s"
-                    },
-                ]
-            },
-            {
-                'expression': "3*{a}+15*{b}+1000*{c}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 75,
-                        "unit": "g"
-                    },
-                    {
-                        "name": "c",
-                        "value": 125,
-                        "unit": "mg"
-                    },
-                ],
-                'out_units': 'L'
-            }
-        ]
-
-    def tearDown(self):
-        """
-        tear down environment
-        """
-        self.unit_system = None
-
-    def test_created(self):
-        """
-        Test calculator creation
-        """
-        self.assertEqual(self.calculator.status, self.calculator.INITIATED_STATUS)
-
-    def test_add_data(self):
-        """
-        Test adding data to calculator
-        """
-        errors = self.calculator.add_data(self.expressions)
-        self.assertEqual(errors, [])
-        self.assertEqual(self.calculator.status, self.calculator.INSERTING_STATUS)
-        self.assertIsNotNone(cache.get(self.calculator.id))
-
-    def test_trash_quantities(self):
-        """
-        Test adding trash to the calculator
-        """
-        calculator = ExpressionCalculator(unit_system='SI')
-        errors = calculator.add_data(self.trash_expressions)
-        self.assertEqual(len(errors), 3)
-        self.assertEqual([list(c.keys())[0] for c in errors],
-                         ['expression', 'expression', 'out_units'])
-
-    def test_add_empty_data(self):
-        """
-        Test adding empty data to the calculator
-        """
-        calculator = ExpressionCalculator(unit_system='SI')
-        errors = calculator.add_data(data=None)
-        self.assertEqual(len(errors), 1)
-
-    def test_computation(self):
-        """
-        Test computation
-        """
-        errors = self.calculator.add_data(self.expressions)
-        result = self.calculator.convert()
-        self.assertEqual(result.id, self.calculator.id)
-        self.assertEqual(self.calculator.status, self.calculator.FINISHED)
-        self.assertEqual(len(result.errors), 0)
-        self.assertEqual(len(result.detail), len(self.calculator.data))
-
-    def test_computation_and_conversion(self):
-        """
-        Test computation
-        """
-        errors = self.calculator.add_data(self.expression_to_unit)
-        result = self.calculator.convert()
-        self.assertEqual(result.id, self.calculator.id)
-        self.assertEqual(self.calculator.status, self.calculator.FINISHED)
-        self.assertEqual(len(result.errors), 0)
-        self.assertEqual(len(result.detail), len(self.calculator.data))
-        self.assertEqual(result.detail[0].unit, 'pound')
-        self.assertEqual(result.detail[1].unit, 'milligram')
-
-
-class ExpressionCalculatorAPITest(TestCase):
-    """
-    Test expression calculator API
-    """
-    base_system = 'SI'
-    base_unit = 'meter'
-
-    def setUp(self) -> None:
-        """
-        Setup environment
-        """
-        self.calculator = ExpressionCalculator(unit_system='SI')
-        self.unit_system = UnitSystem(system_name='SI')
-        self.expressions = [
-            {
-                'expression': "3*{a}+15*{b}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 15,
-                        "unit": "g"
-                    }
-                ]
-            },
-            {
-                'expression': "3*{a}+15*{b}+1000*{c}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 150,
-                        "unit": "g"
-                    },
-                    {
-                        "name": "c",
-                        "value": 250,
-                        "unit": "mg"
-                    },
-                ]
-            }
-        ]
-        self.expression_to_unit = [
-            {
-                'expression': "3*{a}+15*{b}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 15,
-                        "unit": "g"
-                    }
-                ],
-                'out_units': 'ton'
-            },
-            {
-                'expression': "3*{a}+15*{b}+1000*{c}",
-                'operands': [
-                    {
-                        "name": "a",
-                        "value": 0.1,
-                        "unit": "kg"
-                    },
-                    {
-                        "name": "b",
-                        "value": 150,
-                        "unit": "g"
-                    },
-                    {
-                        "name": "c",
-                        "value": 250,
-                        "unit": "mg"
-                    },
-                ],
-                'out_units': 'hundredweight'
-            }
-        ]
-
-    def test_convert_request(self):
-        """
-        Test calculate API
-        """
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/calculate/',
-            data={
-                'data': self.expressions,
-                'unit_system': 'SI',
-            },
-            format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json().get('detail')), len(self.expressions))
-        self.assertEqual(response.json().get('detail')[0]['magnitude'], 0.525)
-
-    def test_convert_to_unit_request(self):
-        """
-        Test calculate API
-        """
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/calculate/',
-            data={
-                'data': self.expression_to_unit,
-                'unit_system': 'SI',
-            },
-            format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.json().get('detail')), len(self.expression_to_unit))
-        self.assertEqual(response.json().get('detail')[0]['unit'], 'ton')
-        self.assertEqual(response.json().get('detail')[1]['unit'], 'hundredweight')
-
-    def test_convert_batch_request(self):
-        """
-        Test batch computation
-        """
-        batch_id = uuid.uuid4()
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/calculate/',
-            data={
-                'data': self.expressions,
-                'batch_id': batch_id,
-                'unit_system': 'SI',
-
-            },
-            format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), ExpressionCalculator.INSERTING_STATUS)
-        self.assertEqual(response.json().get('id'), str(batch_id))
-        response = client.post(
-            '/units/SI/formulas/calculate/',
-            data={
-                'data': self.expressions,
-                'unit_system': 'SI',
-                'batch_id': batch_id,
-                'eob': True
-            },
-            format='json')
-        self.assertEqual(response.json().get('status'), ExpressionCalculator.FINISHED)
-        self.assertEqual(len(response.json().get('detail')), 2 * len(self.expressions))
-
-    def test_watch_request(self):
-        """
-        Test observation of the calculator
-        """
-        batch_id = uuid.uuid4()
-        client = APIClient()
-        response = client.post(
-            '/units/SI/formulas/calculate/',
-            data={
-                'data': self.expressions,
-                'batch_id': batch_id,
-                'unit_system': 'SI',
-            },
-            format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('id', response.json())
-        self.assertEqual(response.json().get('status'), ExpressionCalculator.INSERTING_STATUS)
-        self.assertEqual(response.json().get('id'), str(batch_id))
-        response = client.get(f'/watch/{str(batch_id)}/', format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json().get('status'), ExpressionCalculator.INSERTING_STATUS)
-        self.assertEqual(response.json().get('id'), str(batch_id))

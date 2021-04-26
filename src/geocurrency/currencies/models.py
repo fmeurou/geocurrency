@@ -45,7 +45,8 @@ class Currency:
         """
         try:
             i = Iso4217(code)
-            for a in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
+            for a in ['code', 'name', 'currency_name',
+                      'exponent', 'number', 'value']:
                 setattr(self, a, getattr(i, a))
         except ValueError:
             raise CurrencyNotFoundError('Invalid currency code')
@@ -63,8 +64,10 @@ class Currency:
                  if term.lower() in str(getattr(c, attr)).lower()]
             )
         # search for symbol
-        result.extend([c.code for c in Iso4217 if term in cls.get_symbol(c.code)])
-        return sorted([Currency(r) for r in set(result)], key=lambda x: x.name)
+        result.extend([c.code for c in Iso4217
+                       if term in cls.get_symbol(c.code)])
+        return sorted([Currency(r)
+                       for r in set(result)], key=lambda x: x.name)
 
     @classmethod
     def is_valid(cls, cur: str) -> bool:
@@ -87,7 +90,8 @@ class Currency:
         if ordering and ordering[0] == '-':
             ordering = ordering[1:]
             descending = True
-        if ordering not in ['code', 'name', 'currency_name', 'exponent', 'number', 'value']:
+        if ordering not in ['code', 'name', 'currency_name',
+                            'exponent', 'number', 'value']:
             ordering = 'name'
         return sorted([Currency(c.code) for c in Iso4217],
                       key=lambda x: getattr(x, ordering),
@@ -108,9 +112,11 @@ class Currency:
                 if self.code in country.currencies():
                     countries.append(country)
             except KeyError:
-                # Some countries listed in pycountry are not present in countryinfo
+                # Some countries listed in pycountry
+                # are not present in countryinfo
                 pass
-        cache.set(self.code + 'COUNTRIES', [country.alpha_2 for country in countries])
+        cache.set(self.code + 'COUNTRIES',
+                  [country.alpha_2 for country in countries])
         return countries
 
     @classmethod
@@ -127,11 +133,13 @@ class Currency:
             logging.error(e)
             return []
 
-    def get_rates(self, user: User = None, key: str = None, base_currency: str = None,
+    def get_rates(self, user: User = None,
+                  key: str = None, base_currency: str = None,
                   start_date: date = None,
                   end_date: date = None) -> Iterator:
         """
-        Return a list of rates for this currency and an optional base currency between two dates
+        Return a list of rates for this currency
+        and an optional base currency between two dates
         :params base_currency: code of the base currency
         :params start_date: rates from that date included
         :params end_date: rates to that date included

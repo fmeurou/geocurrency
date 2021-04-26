@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'geocurrency.currencies',
     'geocurrency.rates',
     'geocurrency.units',
+    'geocurrency.calculations',
 ]
 
 MIDDLEWARE = [
@@ -115,22 +116,29 @@ TEMPLATES = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.'
+                'password_validation.NumericPasswordValidator',
     },
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PAGINATION_CLASS': 'geocurrency.core.pagination.PageNumberPagination',
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+    'DEFAULT_PAGINATION_CLASS':
+        'geocurrency.core.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
@@ -307,7 +315,8 @@ SERVICES = {
     },
     'rates': {
         'forex': 'geocurrency.rates.services.forex.ForexService',
-        'currencylayer': 'geocurrency.rates.services.currencylayer.CurrencyLayerService'
+        'currencylayer':
+            'geocurrency.rates.services.currencylayer.CurrencyLayerService'
     }
 }
 
@@ -349,14 +358,3 @@ CACHES = {
         'TIMEOUT': None
     }
 }
-
-from geocurrency.core.settings import *
-from geocurrency.countries.settings import *
-from geocurrency.currencies.settings import *
-from geocurrency.rates.settings import *
-from geocurrency.units.settings import *
-
-try:
-    from .local import *
-except ImportError:
-    pass

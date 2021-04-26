@@ -4,12 +4,8 @@ List of serializers for Converters and Calculators
 
 from rest_framework import serializers
 
-from .models import Batch, ConverterResultError, ConverterResultDetail, ConverterResult
-
-
-
-
-
+from .models import Batch, ConverterResultError, \
+    ConverterResultDetail, ConverterResult
 
 
 class ConverterResultDetailSerializer(serializers.Serializer):
@@ -36,7 +32,8 @@ class ConverterResultDetailSerializer(serializers.Serializer):
         :param validated_data: cleaned data
         """
         instance.unit = validated_data.get('unit', instance.unit)
-        instance.original_value = validated_data.get('original_value', instance.original_value)
+        instance.original_value = validated_data.get('original_value',
+                                                     instance.original_value)
         instance.date = validated_data.get('date', instance.date)
         return instance
 
@@ -64,7 +61,8 @@ class ConverterResultErrorSerializer(serializers.Serializer):
         :param validated_data: cleaned data
         """
         instance.unit = validated_data.get('unit', instance.unit)
-        instance.original_value = validated_data.get('original_value', instance.original_value)
+        instance.original_value = validated_data.get('original_value',
+                                                     instance.original_value)
         instance.date = validated_data.get('date', instance.date)
         instance.error = validated_data.get('error', instance.error)
         return instance
@@ -76,10 +74,12 @@ class ConverterResultSerializer(serializers.Serializer):
     """
     id = serializers.UUIDField(label="ID of the batch")
     target = serializers.CharField(label="Target conversion")
-    detail = ConverterResultDetailSerializer(label="Details of conversion", many=True)
+    detail = ConverterResultDetailSerializer(label="Details of conversion",
+                                             many=True)
     sum = serializers.FloatField(label="Sum of conversions")
     status = serializers.CharField(label="Status of the conversion")
-    errors = ConverterResultErrorSerializer(label="Errors during conversions", many=True)
+    errors = ConverterResultErrorSerializer(label="Errors during conversions",
+                                            many=True)
 
     def create(self, validated_data):
         """

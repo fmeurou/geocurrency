@@ -57,10 +57,3 @@ class UnitConverterConvertError(Exception):
     Error converting units
     """
     message = 'Error converting values'
-
-
-class ExpressionCalculatorInitError(Exception):
-    """
-    Error initializing  Calculator
-    """
-    message = "Error initializing Expression calculator"

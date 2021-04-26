@@ -33,7 +33,8 @@ schema_view = get_schema_view(
     openapi.Info(
         title=f"GeoCurrency {environment} API",
         default_version='v1',
-        description="APIs for GeoCurrency v" + '.'.join(map(str, geocurrency.__version__[:3])),
+        description="APIs for GeoCurrency v" +
+                    '.'.join(map(str, geocurrency.__version__[:3])),
         terms_of_service="/tos/",
         contact=openapi.Contact(email=contact_email),
         license=openapi.License(name="MIT License"),
@@ -45,10 +46,13 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),
+    url(r'^swagger(?P<format>\.json|\.yaml)$',
+        schema_view.without_ui(cache_timeout=0),
         name='schema-json'),
-    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0),
+        name='schema-swagger-ui'),
+    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0),
+        name='schema-redoc'),
     path('', include('django.contrib.auth.urls')),
     path('', include(geocurrency_urls))
 ]
