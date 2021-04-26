@@ -17,11 +17,19 @@ class CountrySerializer(serializers.Serializer):
     """
     Serializer for Country
     """
-    name = serializers.CharField(label="ISO-3306 Country name", read_only=True)
-    numeric = serializers.IntegerField(label="ISO numeric value", read_only=True)
-    alpha_2 = serializers.CharField(label="ISO alpha-2 representation")
-    alpha_3 = serializers.CharField(label="ISO alpha-3 representation", read_only=True)
-    translated_name = serializers.SerializerMethodField(label="Translated country name")
+    name = serializers.CharField(
+        label="ISO-3306 Country name",
+        read_only=True)
+    numeric = serializers.IntegerField(
+        label="ISO numeric value",
+        read_only=True)
+    alpha_2 = serializers.CharField(
+        label="ISO alpha-2 representation")
+    alpha_3 = serializers.CharField(
+        label="ISO alpha-3 representation",
+        read_only=True)
+    translated_name = serializers.SerializerMethodField(
+        label="Translated country name")
 
     @staticmethod
     def validate_alpha2(alpha_2):
@@ -61,9 +69,12 @@ class CountrySerializer(serializers.Serializer):
         request = self.context.get('request', None)
         if request:
             try:
-                language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
-                translation = gettext.translation('iso3166', pycountry.LOCALES_DIR,
-                                                  languages=[language])
+                language = validate_language(
+                    request.GET.get('language',
+                                    request.LANGUAGE_CODE))
+                translation = gettext.translation(
+                    'iso3166', pycountry.LOCALES_DIR,
+                    languages=[language])
                 translation.install()
                 return translation.gettext(obj.name)
             except FileNotFoundError:
@@ -76,16 +87,30 @@ class CountryDetailSerializer(serializers.Serializer):
     """
     Detailed Serializer for Country
     """
-    name = serializers.CharField(label="ISO-3306 Country name", read_only=True)
-    numeric = serializers.IntegerField(label="ISO-3306 numeric value", read_only=True)
-    alpha_2 = serializers.CharField(label="ISO alpha-2 representation", read_only=True)
-    alpha_3 = serializers.CharField(label="ISO alpha-3 representation", read_only=True)
-    region = serializers.SerializerMethodField(label="Geographic region of the country")
-    subregion = serializers.SerializerMethodField(label="Geographic subregion of the country")
-    tld = serializers.SerializerMethodField(label="Top Domain Level of the country")
-    capital = serializers.SerializerMethodField(label="Name of the capital city")
-    unit_system = serializers.SerializerMethodField(label="Main unit system for this country")
-    translated_name = serializers.SerializerMethodField(label="Country translated name")
+    name = serializers.CharField(
+        label="ISO-3306 Country name",
+        read_only=True)
+    numeric = serializers.IntegerField(
+        label="ISO-3306 numeric value",
+        read_only=True)
+    alpha_2 = serializers.CharField(
+        label="ISO alpha-2 representation",
+        read_only=True)
+    alpha_3 = serializers.CharField(
+        label="ISO alpha-3 representation",
+        read_only=True)
+    region = serializers.SerializerMethodField(
+        label="Geographic region of the country")
+    subregion = serializers.SerializerMethodField(
+        label="Geographic subregion of the country")
+    tld = serializers.SerializerMethodField(
+        label="Top Domain Level of the country")
+    capital = serializers.SerializerMethodField(
+        label="Name of the capital city")
+    unit_system = serializers.SerializerMethodField(
+        label="Main unit system for this country")
+    translated_name = serializers.SerializerMethodField(
+        label="Country translated name")
 
     @swagger_serializer_method(serializer_or_field=serializers.CharField)
     def get_region(self, obj: Country) -> str:
@@ -136,9 +161,12 @@ class CountryDetailSerializer(serializers.Serializer):
         request = self.context.get('request', None)
         if request:
             try:
-                language = validate_language(request.GET.get('language', request.LANGUAGE_CODE))
-                translation = gettext.translation('iso3166', pycountry.LOCALES_DIR,
-                                                  languages=[language])
+                language = validate_language(
+                    request.GET.get('language',
+                                    request.LANGUAGE_CODE))
+                translation = gettext.translation(
+                    'iso3166', pycountry.LOCALES_DIR,
+                    languages=[language])
                 translation.install()
                 return translation.gettext(obj.name)
             except FileNotFoundError:

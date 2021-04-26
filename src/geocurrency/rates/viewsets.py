@@ -20,11 +20,14 @@ from .filters import RateFilter
 from .forms import RateForm
 from .models import Rate, RateConverter
 from .permissions import RateObjectPermission
-from .serializers import RateSerializer, BulkSerializer, RateConversionPayloadSerializer, \
+from .serializers import RateSerializer, BulkSerializer, \
+    RateConversionPayloadSerializer, \
     RateStatSerializer
 
 
-class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
+class RateViewSet(mixins.CreateModelMixin,
+                  mixins.ListModelMixin,
+                  mixins.RetrieveModelMixin,
                   viewsets.GenericViewSet):
     """
     Rate API
@@ -119,23 +122,27 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
     base_currency_latest_values = openapi.Parameter(
         'base_currency_latest_values',
         openapi.IN_QUERY,
-        description="Base currency to filter on, limits results to latest values",
+        description="Base currency to filter on, "
+                    "limits results to latest values",
         type=openapi.TYPE_STRING)
 
     period = openapi.Parameter(
         'period',
         openapi.IN_QUERY,
-        description="period to aggregate on: month, week, year, defaults to month",
+        description="period to aggregate on: month, "
+                    "week, year, defaults to month",
         type=openapi.TYPE_STRING)
 
-    ordering = openapi.Parameter('ordering',
-                                 openapi.IN_QUERY,
-                                 description="Sort on currency, base_currency, value_date, value. "
-                                             "Prefix with - for descending sort",
-                                 type=openapi.TYPE_STRING)
+    ordering = openapi.Parameter(
+        'ordering',
+        openapi.IN_QUERY,
+        description="Sort on currency, base_currency, value_date, value. "
+                    "Prefix with - for descending sort",
+        type=openapi.TYPE_STRING)
 
     @swagger_auto_schema(manual_parameters=[
-        user, key, key_or_null, key_isnull, value_date, from_obj, to_obj, value,
+        user, key, key_or_null, key_isnull, value_date,
+        from_obj, to_obj, value,
         lower_bound, higher_bound, currency, base_currency,
         currency_latest_values, base_currency_latest_values, ordering],
         responses={200: RateSerializer})
@@ -147,7 +154,8 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
 
     @swagger_auto_schema(
         manual_parameters=[
-            user, key, key_or_null, key_isnull, value_date, from_obj, to_obj, value,
+            user, key, key_or_null, key_isnull,
+            value_date, from_obj, to_obj, value,
             lower_bound, higher_bound, currency, base_currency,
             currency_latest_values, base_currency_latest_values, period],
         responses={200: RateStatSerializer})
@@ -158,8 +166,13 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
         """
         period = request.GET.get('period', 'month')
         if period not in ['week', 'month', 'year']:
-            return Response("Invalid period", status=status.HTTP_400_BAD_REQUEST)
-        rate_filter = RateFilter(request.GET, queryset=self.queryset, request=request)
+            return Response(
+                "Invalid period",
+                status=status.HTTP_400_BAD_REQUEST)
+        rate_filter = RateFilter(
+            request.GET,
+            queryset=self.queryset,
+            request=request)
         qs = rate_filter.qs.values('currency', 'base_currency')
         if period == 'month':
             qs = qs.annotate(month=Extract('value_date', 'month'))
@@ -207,12 +220,16 @@ class RateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retriev
                 rate.user = request.user
                 rate.save()
                 serializer = RateSerializer(rate)
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(
+                    serializer.data,
+                    status=status.HTTP_201_CREATED)
             else:
                 return HttpResponseForbidden()
         else:
-            return Response(rate_form.errors, status=status.HTTP_400_BAD_REQUEST,
-                            content_type="application/json")
+            return Response(
+                rate_form.errors,
+                status=status.HTTP_400_BAD_REQUEST,
+                content_type="application/json")
 
     @swagger_auto_schema(method='post', request_body=BulkSerializer,
                          responses={201: RateSerializer})
@@ -243,7 +260,8 @@ class ConvertView(APIView):
     @action(['POST'], detail=False, url_path='', url_name="convert")
     def post(self, request, *args, **kwargs):
         """
-        Converts a list of amounts with currency and date to a reference currency
+        Converts a list of amounts with currency
+        and date to a reference currency
         :param request: HTTP request
         """
         cps = RateConversionPayloadSerializer(data=request.data)

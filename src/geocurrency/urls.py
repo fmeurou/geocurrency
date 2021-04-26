@@ -20,11 +20,13 @@ from .countries import urls as country_urls
 from .currencies import urls as currency_urls
 from .rates import urls as rate_urls
 from .units import urls as unit_urls
+from .calculations import urls as calculations_url
 
 urlpatterns = [
     path('currencies/', include(currency_urls)),
     path('countries/', include(country_urls)),
     path('rates/', include(rate_urls)),
     path('units/', include(unit_urls)),
+    path('calculations/', include(calculations_url)),
     url(r'^watch/(?P<converter_id>[0-9a-f-]{36})/$', WatchView.as_view()),
 ]

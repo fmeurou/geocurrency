@@ -3,9 +3,9 @@ Serializers for Rats module
 """
 from datetime import datetime, date
 
-from geocurrency.core.serializers import UserSerializer
 from rest_framework import serializers
 
+from geocurrency.core.serializers import UserSerializer
 from .models import Rate, Amount, BulkRate, RateConversionPayload
 
 
@@ -13,13 +13,19 @@ class BulkSerializer(serializers.Serializer):
     """
     Serializer for Bulk serializer
     """
-    base_currency = serializers.CharField(label="Currency to convert to", max_length=3,
+    base_currency = serializers.CharField(label="Currency to convert to",
+                                          max_length=3,
                                           required=True)
-    currency = serializers.CharField(label="Currency to convert from", max_length=3, required=True)
+    currency = serializers.CharField(label="Currency to convert from",
+                                     max_length=3,
+                                     required=True)
     value = serializers.FloatField(label="rate value", required=True)
-    key = serializers.CharField(label="User defined categorization ID", required=True)
-    from_date = serializers.DateField(label="Date to create the rate from", required=True)
-    to_date = serializers.DateField(label="Date to create the rate to", required=False)
+    key = serializers.CharField(label="User defined categorization ID",
+                                required=True)
+    from_date = serializers.DateField(label="Date to create the rate from",
+                                      required=True)
+    to_date = serializers.DateField(label="Date to create the rate to",
+                                    required=False)
 
     def create(self, validated_data):
         """
@@ -31,7 +37,8 @@ class BulkSerializer(serializers.Serializer):
         """
         Update a BulkRate object
         """
-        instance.base_currency = validated_data.get('base_currency', instance.base_currency)
+        instance.base_currency = validated_data.get(
+            'base_currency', instance.base_currency)
         instance.currency = validated_data.get('currency', instance.currency)
         instance.value = validated_data.get('value', instance.value)
         instance.key = validated_data.get('key', instance.key)
@@ -72,7 +79,8 @@ class BulkSerializer(serializers.Serializer):
         try:
             datetime.strptime(value, 'YYYY-MM-DD')
         except ValueError:
-            raise serializers.ValidationError('Invalid date format, use YYYY-MM-DD')
+            raise serializers.ValidationError(
+                'Invalid date format, use YYYY-MM-DD')
         return value
 
     @staticmethod
@@ -86,7 +94,8 @@ class BulkSerializer(serializers.Serializer):
         try:
             datetime.strptime(value, 'YYYY-MM-DD')
         except ValueError:
-            raise serializers.ValidationError('Invalid date format, use YYYY-MM-DD')
+            raise serializers.ValidationError(
+                'Invalid date format, use YYYY-MM-DD')
         return value
 
 
@@ -111,24 +120,33 @@ class RateStatItemSerializer(serializers.Serializer):
     """
     Rate statistics item for conversion
     """
-    currency = serializers.CharField(label="Currency to convert from", read_only=True)
-    base_currency = serializers.CharField(label="Currency to convert to", read_only=True)
-    period = serializers.CharField(label="Period over which to aggregate", read_only=True)
+    currency = serializers.CharField(label="Currency to convert from",
+                                     read_only=True)
+    base_currency = serializers.CharField(label="Currency to convert to",
+                                          read_only=True)
+    period = serializers.CharField(label="Period over which to aggregate",
+                                   read_only=True)
     avg = serializers.FloatField(label="Average value", read_only=True)
     max = serializers.FloatField(label="Max value", read_only=True)
     min = serializers.FloatField(label="Min value", read_only=True)
-    std_dev = serializers.FloatField(label="Standard deviation", read_only=True)
+    std_dev = serializers.FloatField(label="Standard deviation",
+                                     read_only=True)
 
 
 class RateStatSerializer(serializers.Serializer):
     """
     Rate statistics used in conversion
     """
-    key = serializers.CharField(label="User defined categorization key", read_only=True)
-    period = serializers.CharField(label="Period over which to aggregate", read_only=True)
-    from_date = serializers.DateField(label="start aggregation date", read_only=True)
-    to_date = serializers.DateField(label="end aggregation date", read_only=True)
-    results = RateStatItemSerializer(label="List of results", many=True, read_only=True)
+    key = serializers.CharField(label="User defined categorization key",
+                                read_only=True)
+    period = serializers.CharField(label="Period over which to aggregate",
+                                   read_only=True)
+    from_date = serializers.DateField(label="start aggregation date",
+                                      read_only=True)
+    to_date = serializers.DateField(label="end aggregation date",
+                                    read_only=True)
+    results = RateStatItemSerializer(label="List of results", many=True,
+                                     read_only=True)
 
 
 class RateAmountSerializer(serializers.Serializer):
@@ -173,7 +191,8 @@ class RateAmountSerializer(serializers.Serializer):
         try:
             datetime.strptime(value, 'YYYY-MM-DD')
         except ValueError:
-            raise serializers.ValidationError('Invalid date format, use YYYY-MM-DD')
+            raise serializers.ValidationError(
+                'Invalid date format, use YYYY-MM-DD')
         return value
 
     def create(self, validated_data: dict) -> Amount:
@@ -199,19 +218,24 @@ class RateConversionPayloadSerializer(serializers.Serializer):
     """
     Serialize a conversion payload
     """
-    data = RateAmountSerializer(label="Amounts to convert", many=True, required=False)
+    data = RateAmountSerializer(label="Amounts to convert", many=True,
+                                required=False)
     target = serializers.CharField(label="Target currency", required=True)
-    batch_id = serializers.CharField(label="User defined batch ID", required=False)
-    key = serializers.CharField(label="User defined categorization key", required=False)
-    eob = serializers.BooleanField(label="End of batch? Triggers the conversion", default=False)
+    batch_id = serializers.CharField(label="User defined batch ID",
+                                     required=False)
+    key = serializers.CharField(label="User defined categorization key",
+                                required=False)
+    eob = serializers.BooleanField(
+        label="End of batch? Triggers the conversion", default=False)
 
     def is_valid(self, raise_exception=False):
         """
         Check validity of the payload
         """
-        if not self.initial_data.get('data') and (not self.initial_data.get('batch_id')
-                                                  or (self.initial_data.get('batch_id')
-                                                      and not self.initial_data.get('eob'))):
+        if not self.initial_data.get('data') and \
+                (not self.initial_data.get('batch_id') or
+                 (self.initial_data.get('batch_id') and
+                  not self.initial_data.get('eob'))):
             raise serializers.ValidationError(
                 'data has to be provided if batch_id '
                 'is not provided or batch_id is provided and eob is False'

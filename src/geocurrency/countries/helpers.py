@@ -47,7 +47,9 @@ class ColorProximity(object):
         c_1 = self.rgb2lab(a_set)  # int int int
         c_2 = self.rgb2lab(b_set)
 
-        return sqrt(poww(c_1[0] - c_2[0], 2) + poww(c_1[1] - c_2[1], 2) + poww(c_1[2] - c_2[2], 2))
+        return sqrt(poww(c_1[0] - c_2[0], 2) +
+                    poww(c_1[1] - c_2[1], 2) +
+                    poww(c_1[2] - c_2[2], 2))
 
     @classmethod
     def rgb2lab(cls, c_set):
@@ -77,11 +79,17 @@ class ColorProximity(object):
             rgb[i] = value * 100
             i += 1
 
-        xyz[0] = (rgb[0] * 0.4124 + rgb[1] * 0.3576 + rgb[2] * 0.1805) / 95.047
+        xyz[0] = (rgb[0] * 0.4124 +
+                  rgb[1] * 0.3576 +
+                  rgb[2] * 0.1805) / 95.047
         # // ref_X =  95.047   Observer= 2deg, Illuminant= D65
-        xyz[1] = (rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722) / 100.0
+        xyz[1] = (rgb[0] * 0.2126 +
+                  rgb[1] * 0.7152 +
+                  rgb[2] * 0.0722) / 100.0
         # // ref_Y = 100.000
-        xyz[2] = (rgb[0] * 0.0193 + rgb[1] * 0.1192 + rgb[2] * 0.9505) / 108.883
+        xyz[2] = (rgb[0] * 0.0193 +
+                  rgb[1] * 0.1192 +
+                  rgb[2] * 0.9505) / 108.883
         # // ref_Z = 108.883
 
         i = 0

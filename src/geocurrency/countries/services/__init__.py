@@ -13,14 +13,20 @@ class Geocoder:
     Geocoder services
     """
 
-    def search(self, address, language=None, bounds=None, region=None, components=""):
+    def search(self,
+               address,
+               language=None,
+               bounds=None,
+               region=None,
+               components=""):
         """
         Search an address
         :params text: address to search for
         :params language: optional, language of result
         :params bounds: optional, limit results to bounds
         :params region: optional, limit results to region
-        :params components: optional, a components filter with elements separated by a pipe (|)
+        :params components: optional, a components filter
+         with elements separated by a pipe (|)
         :returns: Country
         """
         raise NotImplementedError("Use specific implementation")

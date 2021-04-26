@@ -3,22 +3,23 @@ Units models
 """
 
 import logging
-import re
 from datetime import date
 
 import pint.systems
-import uncertainties
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
-from sympy import sympify, SympifyError
 
 from geocurrency.converters.models import BaseConverter, ConverterResult, \
     ConverterResultDetail, ConverterResultError, ConverterLoadError
-from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
+from . import UNIT_EXTENDED_DEFINITION, DIMENSIONS, \
+    UNIT_SYSTEM_BASE_AND_DERIVED_UNITS, \
     ADDITIONAL_BASE_UNITS, PREFIX_SYMBOL
-from .exceptions import *
+from .exceptions import UnitConverterInitError, DimensionNotFound, \
+    UnitSystemNotFound, UnitNotFound, \
+    UnitDuplicateError, UnitDimensionError, \
+    UnitValueError
 from .settings import ADDITIONAL_UNITS, PREFIXED_UNITS_DISPLAY
 
 
@@ -31,7 +32,8 @@ class Quantity:
     value = 0
     date_obj = None
 
-    def __init__(self, system: str, unit: str, value: float, date_obj: date = None):
+    def __init__(self, system: str, unit: str,
+                 value: float, date_obj: date = None):
         """
         Initialize quantity on unit system
         """
@@ -63,10 +65,12 @@ class UnitSystem:
     system = None
     _additional_units = set()
 
-    def __init__(self, system_name: str = 'SI', fmt_locale: str = 'en', user: User = None,
+    def __init__(self, system_name: str = 'SI',
+                 fmt_locale: str = 'en', user: User = None,
                  key: str = None):
         """
-        Initialize UnitSystem from name and user / key information for loading custom units
+        Initialize UnitSystem from name and user / key
+        information for loading custom units
         """
         found = False
         for available_system in UnitSystem.available_systems():
@@ -81,7 +85,9 @@ class UnitSystem:
         except AttributeError:
             additional_units_settings = ADDITIONAL_UNITS
         try:
-            self.ureg = pint.UnitRegistry(system=system_name, fmt_locale=fmt_locale)
+            self.ureg = pint.UnitRegistry(
+                system=system_name,
+                fmt_locale=fmt_locale)
             self.system = getattr(self.ureg.sys, system_name)
             self._load_additional_units(units=ADDITIONAL_BASE_UNITS)
             self._load_additional_units(units=additional_units_settings)
@@ -98,25 +104,34 @@ class UnitSystem:
         """
         self.ureg._build_cache()
 
-    def _load_additional_units(self, units: dict, redefine: bool = False) -> bool:
+    def _load_additional_units(
+            self, units: dict,
+            redefine: bool = False) -> bool:
         """
         Load additional base units in registry
         """
         available_units = self.available_unit_names()
         if self.system_name not in units:
-            logging.warning(f"error loading additional units for {self.system_name}")
+            logging.warning(f"error loading additional units "
+                            f"for {self.system_name}")
             return False
         added_units = []
         for key, items in units[self.system_name].items():
             if key not in available_units:
-                self.ureg.define(f"{key} = {items['relation']} = {items['symbol']}")
+                self.ureg.define(
+                    f"{key} = {items['relation']} = {items['symbol']}")
                 added_units.append(key)
             elif redefine:
-                self.ureg.redefine(f"{key} = {items['relation']} = {items['symbol']}")
+                self.ureg.redefine(
+                    f"{key} = {items['relation']} = {items['symbol']}")
         self._additional_units = self._additional_units | set(added_units)
         return True
 
-    def _load_custom_units(self, user: User, key: str = None, redefine: bool = False) -> bool:
+    def _load_custom_units(
+            self,
+            user: User,
+            key: str = None,
+            redefine: bool = False) -> bool:
         """
         Load custom units in registry
         """
@@ -210,14 +225,16 @@ class UnitSystem:
         :return: Array of names of Unit systems
         """
         try:
-            prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
+            prefixed_units_display = \
+                settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
         except AttributeError:
             prefixed_units_display = PREFIXED_UNITS_DISPLAY
         prefixed_units = []
         for key, prefixes in prefixed_units_display.items():
             for prefix in prefixes:
                 prefixed_units.append(prefix + key)
-        return sorted(prefixed_units + dir(getattr(self.ureg.sys, self.system_name))
+        return sorted(prefixed_units +
+                      dir(getattr(self.ureg.sys, self.system_name))
                       + list(self._additional_units))
 
     def unit_dimensionality(self, unit: str) -> str:
@@ -226,7 +243,9 @@ class UnitSystem:
         :param unit: name of the unit to display
         :return: Human readable dimension
         """
-        return Unit.dimensionality_string(unit_system=self.system, unit_str=unit)
+        return Unit.dimensionality_string(
+            unit_system=self.system,
+            unit_str=unit)
 
     def available_dimensions(self, ordering: str = 'name') -> {}:
         """
@@ -239,8 +258,10 @@ class UnitSystem:
             descending = True
         if ordering not in ['code', 'name', 'dimension']:
             ordering = 'name'
-        return sorted([Dimension(unit_system=self, code=dim) for dim in DIMENSIONS.keys()],
-                      key=lambda x: getattr(x, ordering, ''), reverse=descending)
+        return sorted([Dimension(unit_system=self, code=dim)
+                       for dim in DIMENSIONS.keys()],
+                      key=lambda x: getattr(x, ordering, ''),
+                      reverse=descending)
 
     @property
     def _ureg_dimensions(self):
@@ -259,7 +280,8 @@ class UnitSystem:
 
     def _get_dimension_dimensionality(self, dimension: str) -> {}:
         """
-        Return the dimensionality of a dimension based on the first compatible unit
+        Return the dimensionality of a dimension
+        based on the first compatible unit
         """
         try:
             for dim in self.ureg.get_compatible_units(dimension):
@@ -289,7 +311,7 @@ class UnitSystem:
         output = {}
         registry_dimensions = dimensions or DIMENSIONS.keys()
         for dim in registry_dimensions:
-            dimension = Dimension(unit_system=self, code=dim)
+            Dimension(unit_system=self, code=dim)
             try:
                 units = self.ureg.get_compatible_units(dim)
                 if units:
@@ -319,7 +341,8 @@ class UnitSystem:
         List of dimensions available in the Unit system
         :return: list of dimensions for Unit system
         """
-        return set([Unit.dimensionality_string(self, unit_str) for unit_str in dir(self.system)])
+        return set([Unit.dimensionality_string(self, unit_str)
+                    for unit_str in dir(self.system)])
 
 
 class Dimension:
@@ -353,6 +376,24 @@ class Dimension:
         """
         return self.code
 
+    def _prefixed_units(self, unit_names):
+        """
+        Add prefixed units to list of units
+        :param unit_names: list of unit names
+        """
+        unit_list = []
+        try:
+            prefixed_units_display = \
+                settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
+        except AttributeError:
+            prefixed_units_display = PREFIXED_UNITS_DISPLAY
+        for unit, prefixes in prefixed_units_display.items():
+            if unit in unit_names:
+                for prefix in prefixes:
+                    unit_list.append(
+                        self.unit_system.unit(unit_name=prefix + unit))
+        return unit_list
+
     def units(self, user=None, key=None) -> [Unit]:
         """
         List of units for this dimension
@@ -365,13 +406,10 @@ class Dimension:
             return self._custom_units(user=user, key=key)
         unit_list = []
         try:
-            prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
-        except AttributeError:
-            prefixed_units_display = PREFIXED_UNITS_DISPLAY
-        try:
             unit_list.append(
                 self.unit_system.unit(
-                    UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
+                    UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[
+                        self.unit_system.system_name][self.code]
                 )
             )
         except (KeyError, UnitNotFound):
@@ -382,15 +420,14 @@ class Dimension:
             unit_list.extend(
                 [
                     Unit(unit_system=self.unit_system, pint_unit=unit)
-                    for unit in self.unit_system.ureg.get_compatible_units(self.code)
+                    for unit in
+                    self.unit_system.ureg.get_compatible_units(self.code)
                 ])
-        except KeyError as e:
-            logging.warning(f"Cannot find compatible units for this dimension {self.code}")
+        except KeyError:
+            logging.warning(f"Cannot find compatible units "
+                            f"for this dimension {self.code}")
         unit_names = [str(u) for u in unit_list]
-        for unit, prefixes in prefixed_units_display.items():
-            if unit in unit_names:
-                for prefix in prefixes:
-                    unit_list.append(self.unit_system.unit(unit_name=prefix + unit))
+        unit_names.extend(self._prefixed_units(unit_names))
         return set(sorted(unit_list, key=lambda x: x.name))
 
     @property
@@ -402,9 +439,12 @@ class Dimension:
         dimensioned_units = []
         for dimension_code in [d for d in DIMENSIONS.keys() if
                                d != '[compounded]' and d != '[custom]']:
-            dimension = Dimension(unit_system=self.unit_system, code=dimension_code)
+            dimension = Dimension(
+                unit_system=self.unit_system,
+                code=dimension_code)
             dimensioned_units.extend([u.code for u in dimension.units()])
-        return [self.unit_system.unit(au) for au in set(available_units) - set(dimensioned_units)]
+        return [self.unit_system.unit(au)
+                for au in set(available_units) - set(dimensioned_units)]
 
     def _custom_units(self, user: User, key: str = None) -> [Unit]:
         """
@@ -429,7 +469,8 @@ class Dimension:
         Base unit for this dimension in this Unit System
         """
         try:
-            return UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[self.unit_system.system_name][self.code]
+            return UNIT_SYSTEM_BASE_AND_DERIVED_UNITS[
+                self.unit_system.system_name][self.code]
         except KeyError:
             logging.warning(
                 f'dimension {self.dimension} is not part of '
@@ -445,7 +486,11 @@ class Unit:
     code = None
     unit = None
 
-    def __init__(self, unit_system: UnitSystem, code: str = '', pint_unit: pint.Unit = None):
+    def __init__(
+            self,
+            unit_system: UnitSystem,
+            code: str = '',
+            pint_unit: pint.Unit = None):
         """
         Initialize a Unit in a UnitSystem
         :param unit_system: UnitSystem instance
@@ -500,9 +545,10 @@ class Unit:
         """
         Return Dimensions of Unit
         """
-        dimensions = [Dimension(unit_system=self.unit_system, code=code) for code in
-                      DIMENSIONS.keys()
-                      if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
+        dimensions = [
+            Dimension(unit_system=self.unit_system, code=code) for code in
+            DIMENSIONS.keys()
+            if DIMENSIONS[code]['dimension'] == str(self.dimensionality)]
         return dimensions or '[compounded]'
 
     @staticmethod
@@ -515,7 +561,8 @@ class Unit:
         prefix = ''
         base_str = unit_str
         try:
-            prefixed_units_display = settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
+            prefixed_units_display = \
+                settings.GEOCURRENCY_PREFIXED_UNITS_DISPLAY
         except AttributeError:
             prefixed_units_display = PREFIXED_UNITS_DISPLAY
         for base, prefixes in prefixed_units_display.items():
@@ -535,7 +582,7 @@ class Unit:
         try:
             ext_unit = UNIT_EXTENDED_DEFINITION.get(base_str)
             return prefix + str(ext_unit['name'])
-        except (KeyError, TypeError) as e:
+        except (KeyError, TypeError):
             logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {base_str}')
             return unit_str
 
@@ -550,7 +597,7 @@ class Unit:
             prefix_symbol = PREFIX_SYMBOL[prefix]
             ext_unit = UNIT_EXTENDED_DEFINITION.get(base_str)
             return prefix_symbol + ext_unit['symbol']
-        except (KeyError, TypeError) as e:
+        except (KeyError, TypeError):
             logging.error(f'No UNIT_EXTENDED_DEFINITION for unit {base_str}')
             return ''
 
@@ -562,8 +609,9 @@ class Unit:
         :param unit_str: Unit name
         :return: str
         """
-        ds = str(getattr(unit_system.ureg, unit_str).dimensionality).replace('[', '').replace(']',
-                                                                                              '')
+        ds = str(getattr(
+            unit_system.ureg, unit_str
+        ).dimensionality).replace('[', '').replace(']', '')
         ds = ds.replace(' ** ', '^')
         ds = ds.split()
         return ' '.join([_(d) for d in ds])
@@ -593,7 +641,9 @@ class Unit:
         """
         Wrapper around Unit.dimensionality_string
         """
-        return Unit.dimensionality_string(unit_system=self.unit_system, unit_str=self.code)
+        return Unit.dimensionality_string(
+            unit_system=self.unit_system,
+            unit_str=self.code)
 
 
 class UnitConverter(BaseConverter):
@@ -605,8 +655,13 @@ class UnitConverter(BaseConverter):
     user = None
     key = None
 
-    def __init__(self, base_system: str, base_unit: str, user: User = None, key: key = None,
-                 id: str = None):
+    def __init__(
+            self,
+            base_system: str,
+            base_unit: str,
+            user: User = None,
+            key: key = None,
+            id: str = None):
         """
         Initialize the converter. It converts a payload into a destination unit
         """
@@ -616,8 +671,13 @@ class UnitConverter(BaseConverter):
             self.base_unit = base_unit
             self.user = user
             self.key = key
-            self.system = UnitSystem(system_name=base_system, user=user, key=key)
-            self.unit = Unit(unit_system=self.system, code=base_unit)
+            self.system = UnitSystem(
+                system_name=base_system,
+                user=user,
+                key=key)
+            self.unit = Unit(
+                unit_system=self.system,
+                code=base_unit)
         except (UnitSystemNotFound, UnitNotFound):
             raise UnitConverterInitError
 
@@ -648,17 +708,23 @@ class UnitConverter(BaseConverter):
         return errors
 
     @classmethod
-    def load(cls, id: str, user: User = None, key: str = None) -> BaseConverter:
+    def load(cls,
+             id: str,
+             user: User = None,
+             key: str = None) -> BaseConverter:
         """
         Load converter from ID
         """
         try:
             uc = super().load(id)
-            uc.system = UnitSystem(system_name=uc.base_system, user=user, key=key)
+            uc.system = UnitSystem(
+                system_name=uc.base_system,
+                user=user,
+                key=key)
             uc.unit = Unit(unit_system=uc.system, code=uc.base_unit)
             return uc
         except (UnitSystemNotFound, UnitNotFound, KeyError) as e:
-            raise ConverterLoadError
+            raise ConverterLoadError from e
 
     def save(self):
         """
@@ -723,8 +789,13 @@ class UnitConversionPayload:
     batch_id = ''
     eob = False
 
-    def __init__(self, base_system: UnitSystem, base_unit: Unit, data=None, key: str = None,
-                 batch_id: str = None, eob: bool = False):
+    def __init__(self,
+                 base_system: UnitSystem,
+                 base_unit: Unit,
+                 data=None,
+                 key: str = None,
+                 batch_id: str = None,
+                 eob: bool = False):
         """
         Initialize conversion payload
         """
@@ -749,18 +820,28 @@ class CustomUnit(models.Model):
         ('imperial', 'imperial'),
         ('mks', 'mks'),
     )
-    user = models.ForeignKey(User, related_name='units', on_delete=models.PROTECT)
-    key = models.CharField("Categorization field (e.g.: customer ID)",
-                           max_length=255, default=None, db_index=True, null=True, blank=True)
-    unit_system = models.CharField("Unit system to register the unit in", max_length=20,
-                                   choices=AVAILABLE_SYSTEMS)
+    user = models.ForeignKey(
+        User,
+        related_name='units',
+        on_delete=models.PROTECT)
+    key = models.CharField(
+        "Categorization field (e.g.: customer ID)",
+        max_length=255, default=None, db_index=True, null=True, blank=True)
+    unit_system = models.CharField(
+        "Unit system to register the unit in", max_length=20,
+        choices=AVAILABLE_SYSTEMS)
     code = models.SlugField("technical name of the unit (e.g.: myUnit)")
-    name = models.CharField("Human readable name (e.g.: My Unit)", max_length=255)
-    relation = models.CharField("Relation to an existing unit (e.g.: 12 kg*m/s)", max_length=255)
-    symbol = models.CharField("Symbol to use in a formula (e.g.: myu)", max_length=20, blank=True,
-                              null=True)
-    alias = models.CharField("Other code for this unit (e.g.: mybu)", max_length=20, null=True,
-                             blank=True)
+    name = models.CharField(
+        "Human readable name (e.g.: My Unit)",
+        max_length=255)
+    relation = models.CharField(
+        "Relation to an existing unit (e.g.: 12 kg*m/s)", max_length=255)
+    symbol = models.CharField(
+        "Symbol to use in a formula (e.g.: myu)",
+        max_length=20, blank=True, null=True)
+    alias = models.CharField(
+        "Other code for this unit (e.g.: mybu)",
+        max_length=20, null=True, blank=True)
 
     class Meta:
         """
@@ -780,8 +861,11 @@ class CustomUnit(models.Model):
         if self.code in us.available_unit_names():
             raise UnitDuplicateError
         try:
-            us.add_definition(code=self.code, relation=self.relation, symbol=self.symbol,
-                              alias=self.alias)
+            us.add_definition(
+                code=self.code,
+                relation=self.relation,
+                symbol=self.symbol,
+                alias=self.alias)
         except ValueError as e:
             raise UnitValueError(str(e)) from e
         try:
@@ -789,368 +873,3 @@ class CustomUnit(models.Model):
         except pint.errors.UndefinedUnitError:
             raise UnitDimensionError
         return super(CustomUnit, self).save(*args, **kwargs)
-
-
-class Operand:
-    """
-    Operand in a formula
-    """
-    name = None
-    value = None
-    unit = None
-    uncertainty = None
-
-    def __init__(self,
-                 name: str = None,
-                 value: float = 0,
-                 unit: str = None,
-                 uncertainty: str = None):
-        """
-        Initialize Operand
-        :param name: name of the operand that appears in the formula
-        :param value: float magnitude
-        :param unit: units
-        """
-        self.name = name
-        self.value = value
-        self.unit = unit
-        self.uncertainty = uncertainty
-        if self.validate():
-            self.uvalue = uncertainties.ufloat(value, self.parse_uncertainty())
-        else:
-            self.uvalue = uncertainties.ufloat(0, 0)
-
-    def validate(self):
-        """
-        Validate operand
-        """
-        if not self.name or self.value is None or self.unit is None:
-            return False
-        try:
-            float(self.value)
-        except ValueError:
-            return False
-        try:
-            self.parse_uncertainty()
-        except (ValueError, AttributeError):
-            return False
-        return True
-
-    def get_unit(self, unit_system: UnitSystem) -> str:
-        """
-        Transform unit if unit is a dimension
-        """
-        # Find dimensions
-        exp = r'(?P<dim>\[\w+\])'
-        replace_dict = {}
-        for dimension_name in re.findall(exp, self.unit):
-            try:
-                dim = Dimension(unit_system=unit_system, code=dimension_name)
-                replace_dict[dimension_name] = str(dim.units().pop())
-            except DimensionNotFound:
-                pass
-        # Replace in formula
-        for key, item in replace_dict.items():
-            self.unit = self.unit.replace(key, item)
-        return self.unit
-
-    def get_magnitude(self):
-        return self.uvalue.n
-
-    def get_uncertainty(self):
-        return self.uvalue.s
-
-    def parse_uncertainty(self):
-        if not self.uncertainty:
-            return 0
-        if self.uncertainty.endswith('%'):
-            return self.value * float(self.uncertainty[:-1]) * 0.01
-        else:
-            return float(self.uncertainty)
-
-
-class ComputationError(Exception):
-    pass
-
-
-class Expression:
-    """
-    Expression with operands
-    """
-    expression = None
-    operands = None
-    out_units = None
-
-    def __init__(self, expression: str, operands: [Operand], out_units: str = None):
-        """
-        Initialize Expression
-        :param expression: string expression with placeholders
-        :param operands: List of Operand corresponding to placeholders
-        """
-        self.expression = expression
-        self.operands = operands
-        self.out_units = out_units
-
-    def validate(self, unit_system: UnitSystem) -> (bool, str):
-        """
-        Validate syntax and homogeneity
-        :param unit_system: UnitSystem
-        """
-        q_ = unit_system.ureg.Quantity
-        if not self.expression:
-            return False, "missing expression"
-        try:
-            sympify(self.expression.format(**{v.name: v.value for v in self.operands}))
-        except SympifyError as e:
-            return False, "Improper expression"
-        for var in self.operands:
-            if not var.validate():
-                return False, "invalid operand"
-        kwargs = {v.name: q_(v.value, v.unit) for v in self.operands}
-        try:
-            result = unit_system.ureg.parse_expression(self.expression, **kwargs)
-        except KeyError:
-            return False, "Missing operand"
-        except pint.errors.DimensionalityError:
-            return False, "Incoherent dimensions"
-        if self.out_units:
-            try:
-                result.to(self.out_units)
-            except pint.errors.DimensionalityError:
-                return False, "Incoherent output dimensions"
-        return True, ''
-
-    def evaluate(self, unit_system: UnitSystem) -> pint.Quantity:
-        """
-        Validate formula
-        """
-        q_ = unit_system.ureg.Quantity
-        is_valid, error = self.validate(unit_system=unit_system)
-        if is_valid:
-            kwargs = {v.name: q_(v.uvalue, v.unit) for v in self.operands}
-            result = unit_system.ureg.parse_expression(self.expression, **kwargs)
-            if self.out_units:
-                return result.to(self.out_units)
-            else:
-                return result
-        else:
-            raise ComputationError(f"Invalid formula: {error}")
-
-
-class CalculationPayload:
-    """
-    Calculation payload: caculate expressions
-    """
-    data = None
-    unit_system = ''
-    user = ''
-    key = ''
-    batch_id = ''
-    eob = False
-
-    def __init__(self, unit_system: UnitSystem, key: str = None, data: [] = None,
-                 batch_id: str = None, eob: bool = False):
-        """
-        Initialize payload
-        """
-        self.data = data
-        self.unit_system = unit_system
-        self.key = key
-        self.batch_id = batch_id
-        self.eob = eob
-
-
-class CalculationResultDetail:
-    """
-    Details of an evaluation
-    """
-    expression = None
-    operands = None
-    magnitude = None
-    uncertainty = None
-    unit = None
-
-    def __init__(self, expression: str, operands: [],
-                 magnitude: uncertainties.ufloat, unit: str):
-        """
-        Initialize detail
-        :param expression: Expression in the form of a string e.g.: 3*{a} + 2 * {b}
-        :param operands: List of Operands
-        :param magnitude: result of the calculation
-        :param units: dimension of the result
-        :param uncertainty: uncertainty of the calculation
-        """
-        self.expression = expression
-        self.operands = operands
-        self.magnitude = magnitude.n
-        self.uncertainty = magnitude.s
-        self.unit = unit
-
-
-class CalculationResultError:
-    """
-    Error details of a wrong calculation
-    """
-    expression = None
-    operands = None
-    calc_date = None
-    error = None
-
-    def __init__(self, expression: str, operands: [], calc_date: date, error: str):
-        """
-        Initialize error detail
-        :param expression: Expression in the form of a string
-        :param operands: List of Operands
-        :param date: date of the evaluation
-        :param error: Error description
-        """
-        self.expression = expression
-        self.operands = operands
-        self.calc_date = calc_date
-        self.error = error
-
-
-class CalculationResult:
-    """
-    Result of a batch of evaluations
-    """
-    id = None
-    detail = []
-    status = None
-    errors = []
-
-    def __init__(self, id: str = None, detail: [CalculationResultDetail] = None,
-                 status: str = BaseConverter.INITIATED_STATUS,
-                 errors: [CalculationResultError] = None):
-        """
-        Initialize result
-        :param id: ID of the batch
-        :param detail: List of CalculationResultDetail
-        :param status: status of the batch
-        :param errors: List of CalculationResultErrors
-        """
-        self.id = id
-        self.detail = detail or []
-        self.status = status
-        self.errors = errors or []
-
-    def end_batch(self):
-        """
-        Puts a finall status on the batch
-        """
-        if self.errors:
-            self.status = BaseConverter.WITH_ERRORS
-        else:
-            self.status = BaseConverter.FINISHED
-        return self.status
-
-
-class ExpressionCalculator(BaseConverter):
-    """
-    Conversion between units
-    """
-    unit_system = None
-
-    def __init__(self, unit_system: str, user: User = None, key: str = '', id: str = None):
-        """
-        Initiate ExpressionCalculator
-        :param unit_system: unit system name
-        :param user: User
-        :param key: key of user
-        :param id: ID of the batch
-        """
-        try:
-            super().__init__(id=id)
-            self.unit_system = unit_system
-            self.user = user
-            self.key = key
-            self.system = UnitSystem(system_name=unit_system, user=self.user, key=self.key)
-        except UnitSystemNotFound as e:
-            raise ExpressionCalculatorInitError from e
-
-    def add_data(self, data: []) -> []:
-        """
-        Check data and add it to the dataset
-        Return list of errors
-        """
-        errors = super().add_data(data)
-        return errors
-
-    def check_data(self, data):
-        """
-        Validates that the data contains
-        - system (str)
-        - unit (str)
-        - value (float)
-        - date (YYYY-MM-DD)
-        """
-        from .serializers import ExpressionSerializer
-        errors = []
-        for line in data:
-            serializer = ExpressionSerializer(data=line)
-            if serializer.is_valid(unit_system=self.system):
-                self.data.append(serializer.create(serializer.validated_data))
-            else:
-                errors.append(serializer.errors)
-        return errors
-
-    @classmethod
-    def load(cls, id: str, user: User = None, key: str = None) -> BaseConverter:
-        """
-        Load converter from batch
-        :param id: ID of the batch
-        :param user: Users object
-        :param key: User defined category
-        """
-        try:
-            uc = super().load(id)
-            uc.system = UnitSystem(system_name=uc.unit_system, user=user, key=key)
-            return uc
-        except (UnitSystemNotFound, KeyError) as e:
-            raise ConverterLoadError
-
-    def save(self):
-        """
-        Save converter to caching system
-        """
-        system = self.system
-        self.system = None
-        super(ExpressionCalculator, self).save()
-        self.system = system
-
-    def convert(self) -> CalculationResult:
-        """
-        Converts data to base unit in base system
-        """
-        result = CalculationResult(id=self.id)
-        for expression in self.data:
-            valid, exp_error = expression.validate(unit_system=self.system)
-            if not valid:
-                error = CalculationResultError(
-                    expression=expression.expression,
-                    operands=expression.operands,
-                    calc_date=date.today(),
-                    error=exp_error
-                )
-                result.errors.append(error)
-                continue
-            try:
-                out = expression.evaluate(unit_system=self.system)
-            except ComputationError as e:
-                error = CalculationResultError(
-                    expression=expression.expression,
-                    operands=expression.operands,
-                    calc_date=date.today(),
-                    error=str(e)
-                )
-                result.errors.append(error)
-                continue
-            detail = CalculationResultDetail(
-                expression=expression.expression,
-                operands=expression.operands,
-                magnitude=out.magnitude,
-                unit=out.units
-            )
-            result.detail.append(detail)
-        self.end_batch(result.end_batch())
-        return result
