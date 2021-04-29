@@ -1,51 +1,36 @@
-# Geocurrency
+# django-physics
 
-API service that provides 
-- List of countries according to ISO-3166
-- List of currencies according to ISO-4217
-- List of conversion rates fetched from BCE APIs
-- Custom conversion rates support by key
-- List of units and Unit Systems
-- Conversions from from and to currencies
-- Conversion from and to units
+Django APIs for Physics
+
+## Countries
+ List of countries according to ISO-3166 and details of a country based on PyCountry module.
+ 
+## Currencies
+ List of currencies based on ISO-4217
+
+## Currencies conversion rates
+List of conversion rates fetched from BCE APIs. 
+The module provides a command line for fetching rates from different services. Custom services can be added.
+Custom conversion rates can be created by registered users.
+
+## Systems and Units
+List of unit systems, dimensions, and units based on the excellent Pint library. 
+Custom units can be created by registered users.
+
+## Conversions
+Conversions between currencies, with batch conversion support.
+Conversions between units in a unit system with batch conversion support
+
+## Evaluation
+Check the syntax and dimension of a formula with units, and evaluate its value
 
 ## Install
 
-### Preparation
-set the following environment variables
-- VENV_DIR: virtualenv directory
-- GEOCURRENCY_SRC: Source directory for geocurrency
-- GEOCURRENCY_DB_NAME: database name
-- GEOCURRENCY_DB_USERNAME: database username
-- GEOCURRENCY_DB_PASSWORD: database password
-
-### Docker
-Create a "packages" directory at the root of the project
-Generate packages from "build.sh"
-
-Folder "deployment/docker" provides an easy to setup docker environment running 
-- Django app
-- Redis cache
-- Postgres backend
-- nginx load balancer 
-
-just run "docker-compose up"
-
-### Using packages
-
-ENV_NAME=<env_name>
-PROJECT_NAME=<project_name>
-PYTHON_VERSION=/usr/bin/python3 # use pypy :)
-virtualenv -p $PYTHON_VERSION $ENV_NAME
-cd $ENV_NAME
-source bin/activate
 pip install geocurrency
-django-admin startproject $PROJECT_NAME
-cp site_packages/geocurrency/core/settings.example.py $PROJECT_NAME/$PROJECT_NAME/settings.py
-cp site_packages/geocurrency/core/urls.example.py $PROJECT_NAME/$PROJECT_NAME/urls.py
-cd $PROJECT_NAME
 
-Adapt settings and urls for your environment.
+## Docker
+
+doocker is available at fmeurou/geocurrency
 
 ## Usage
 
