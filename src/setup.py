@@ -85,7 +85,8 @@ setup(
         "networkx~=2.5",
         "sympy~=1.7",
         "channels~=3.0",
-        "uncertainties~=3.1"
+        "uncertainties~=3.1",
+        "chemicals"
     ],
     packages=find_packages(),
     include_package_data=True,
@@ -119,6 +120,7 @@ setup(
         'geocurrency.rates',
         'geocurrency.units',
         'geocurrency.converters',
-        'geocurrency.calculations'
+        'geocurrency.calculations',
+        'geocurrency.chemicals'
     ],
 )
