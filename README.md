@@ -1,4 +1,4 @@
-# django-physics
+# Geocurrency
 
 Django APIs for Physics
 
