@@ -1,3 +1,6 @@
+# This project has moved to [djangophyics](https://github.com/fmeurou/djangophysics)
+And [geocurrency.me](https://www.geocurrency.me) is moving to [geophysics.io](https://www.geophysics.io)
+
 # Geocurrency
 
 Django APIs for Physics
